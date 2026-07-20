@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arXiv 推荐系统论文周报 - 2026年7月15日</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79c0ff;
+            --border: #30363d;
+            --success: #3fb950;
+            --warning: #d29922;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* 左侧导航 */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        
+        .sidebar-header {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-section {
+            margin-bottom: 15px;
+        }
+        
+        .nav-section-title {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        
+        .nav-section-title:hover {
+            color: var(--accent);
+        }
+        
+        .nav-section-title::after {
+            content: '▼';
+            font-size: 0.7em;
+            transition: transform 0.2s;
+        }
+        
+        .nav-section.collapsed .nav-section-title::after {
+            transform: rotate(-90deg);
+        }
+        
+        .nav-section.collapsed .nav-items {
+            display: none;
+        }
+        
+        .nav-items {
+            list-style: none;
+            padding-left: 15px;
+        }
+        
+        .nav-item {
+            margin: 5px 0;
+        }
+        
+        .nav-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9em;
+            display: block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .nav-item a:hover {
+            color: var(--accent);
+            background-color: var(--bg-tertiary);
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            margin-left: 280px;
+            padding: 40px 60px;
+            flex: 1;
+            max-width: 900px;
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        .report-meta {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            margin: 40px 0 20px 0;
+            color: var(--accent);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            margin: 30px 0 15px 0;
+            color: var(--text-primary);
+        }
+        
+        h4 {
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+            color: var(--text-primary);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .paper-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .paper-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .paper-meta {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .paper-meta span {
+            margin-right: 15px;
+        }
+        
+        .paper-abstract {
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .paper-contribution {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--bg-tertiary);
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+        
+        .trend-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .trend-item::before {
+            content: '•';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+        
+        .ten-q-section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        code {
+            background-color: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9em;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+        
+        strong {
+            color: var(--text-primary);
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+        
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+    
+/* 侧边栏目录样式 */
+.toc-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: #161b22;
+    border-right: 1px solid #30363d;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+}
+
+.toc-sidebar.collapsed {
+    transform: translateX(-280px);
+}
+
+.toc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #21262d;
+    color: #c9d1d9;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.toc-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.toc-toggle {
+    background: transparent;
+    border: none;
+    color: #c9d1d9;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.toc-content {
+    padding: 15px 0;
+}
+
+.toc-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-item {
+    margin: 0;
+}
+
+.toc-item a {
+    display: block;
+    padding: 8px 20px;
+    color: #8b949e;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.toc-item a:hover {
+    background: #21262d;
+    color: #58a6ff;
+}
+
+.toc-h2 > a {
+    font-weight: 600;
+    color: #c9d1d9;
+}
+
+.toc-sublist {
+    margin-left: 0;
+}
+
+.toc-h3 > a {
+    padding-left: 35px;
+    font-size: 13px;
+}
+
+.toc-toggle-btn {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background: #21262d;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 1001;
+    font-size: 14px;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.toc-sidebar.collapsed + .toc-toggle-btn {
+    display: block;
+}
+
+.container {
+    margin-left: 300px;
+    transition: margin-left 0.3s ease;
+}
+
+.toc-sidebar.collapsed ~ .container {
+    margin-left: 0;
+}
+
+@media (max-width: 1024px) {
+    .toc-sidebar {
+        transform: translateX(-280px);
+    }
+    .toc-sidebar.expanded {
+        transform: translateX(0);
+    }
+    .container {
+        margin-left: 0;
+    }
+    .toc-toggle-btn {
+        display: block;
+    }
+}
+</style>
+</head>
+<body>
+<div class="toc-sidebar">
+<div class="toc-header">
+<span class="toc-title">目录</span>
+<button class="toc-toggle" onclick="toggleToc()">☰</button>
+</div>
+<div class="toc-content">
+<ul>
+<li class="toc-item toc-h2"><a href="#trends">一、本周趋势</a>
+<ul class="toc-sublist">
+<li class="toc-item toc-h3"><a href="#热门研究方向">热门研究方向</a></li>
+<li class="toc-item toc-h3"><a href="#breakthroughs">值得关注的技术突破</a></li>
+</ul>
+<li class="toc-item toc-h2"><a href="#二-分类汇总">二、分类汇总</a>
+<ul class="toc-sublist">
+</ul>
+<li class="toc-item toc-h2"><a href="#三-Top-5-论文十问">三、Top 5 论文十问</a>
+<ul class="toc-sublist">
+<li class="toc-item toc-h3"><a href="#论文-1--Not-Only-NTP--2607-12277v1">论文 1: Not Only NTP (2607.12277v1)</a></li>
+<li class="toc-item toc-h3"><a href="#论文-2--SlimPer--2607-12281v1">论文 2: SlimPer (2607.12281v1)</a></li>
+<li class="toc-item toc-h3"><a href="#论文-3--DANet--2607-12578v1">论文 3: DANet (2607.12578v1)</a></li>
+<li class="toc-item toc-h3"><a href="#论文-4--MESH--2607-12392v1">论文 4: MESH (2607.12392v1)</a></li>
+<li class="toc-item toc-h3"><a href="#论文-5--Proximity-Features--2607-12246v1">论文 5: Proximity Features (2607.12246v1)</a></li>
+</ul>
+<li class="toc-item toc-h2"><a href="#附录">附录</a>
+<ul class="toc-sublist">
+<li class="toc-item toc-h3"><a href="#本周论文统计">本周论文统计</a></li>
+<li class="toc-item toc-h3"><a href="#推荐阅读">推荐阅读</a></li>
+</ul></li>
+</ul></div></div>
+    <!-- 左侧导航 -->
+    <nav class="sidebar">
+        <div class="sidebar-header">📚 arXiv 周报导航</div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title" onclick="toggleSection(this)">一、本周趋势</div>
+            <ul class="nav-items">
+                <li class="nav-item"><a href="#trends">热门研究方向</a></li>
+                <li class="nav-item"><a href="#breakthroughs">技术突破</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title" onclick="toggleSection(this)">二、分类汇总</div>
+            <ul class="nav-items">
+                <li class="nav-item"><a href="#cat-gen-rec">生成式推荐</a></li>
+                <li class="nav-item"><a href="#cat-slim">轻量化架构</a></li>
+                <li class="nav-item"><a href="#cat-cvr">转化率预测</a></li>
+                <li class="nav-item"><a href="#cat-retrieval">检索优化</a></li>
+                <li class="nav-item"><a href="#cat-privacy">隐私合规</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-section-title" onclick="toggleSection(this)">三、Top 5 十问</div>
+            <ul class="nav-items">
+                <li class="nav-item"><a href="#paper1">1. NONTP</a></li>
+                <li class="nav-item"><a href="#paper2">2. SlimPer</a></li>
+                <li class="nav-item"><a href="#paper3">3. DANet</a></li>
+                <li class="nav-item"><a href="#paper4">4. MESH</a></li>
+                <li class="nav-item"><a href="#paper5">5. Proximity Features</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 主内容 -->
+    <main class="main-content">
+        <h1>arXiv 推荐系统论文周报</h1>
+        <div class="report-meta">
+            <strong>报告周期</strong>: 2026年7月15日 | <strong>论文总数</strong>: 300篇 | <strong>Top 5</strong>: 本周精选5篇高质量论文
+        </div>
+        
+        <!-- 一、本周趋势 -->
+        <h2 id="trends">一、本周趋势</h2>
+        
+        <p>本周 arXiv 推荐系统领域共有300篇新论文提交，主要趋势如下：</p>
+        
+        <h3 id="热门研究方向">热门研究方向</h3>
+        <div class="trend-item"><strong>生成式推荐 (Generative Recommendation)</strong>: 将大语言模型的思想应用于推荐系统成为热门方向</div>
+        <div class="trend-item"><strong>工业实践 (Industrial Practice)</strong>: 多篇来自美团、Meta、阿里巴巴、Pinterest、Airbnb等公司的工业实践论文</div>
+        <div class="trend-item"><strong>检索系统优化 (Retrieval Optimization)</strong>: 异构内容统一、规模化检索等方向持续受到关注</div>
+        <div class="trend-item"><strong>隐私合规推荐 (Privacy-Compliant Recommendation)</strong>: 隐私保护下的冷启动和个性化方案</div>
+        
+        <h3 id="breakthroughs">值得关注的技术突破</h3>
+        <div class="trend-item"><strong>训练信号覆盖扩展</strong>: NONTP提出解决NTP训练信号的时序和空间局部性问题</div>
+        <div class="trend-item"><strong>轻量化架构设计</strong>: SlimPer重新思考Transformer在推荐系统中的适用性</div>
+        <div class="trend-item"><strong>折扣感知建模</strong>: DANet首次系统建模折扣率对转化率的影响</div>
+        <div class="trend-item"><strong>异构内容统一</strong>: MESH解决多内容层级的扩展偏差问题</div>
+        <div class="trend-item"><strong>隐私合规特征</strong>: Proximity Features实现无需个人标识符的个性化</div>
+        
+        <!-- 二、分类汇总 -->
+        <h2 id="二-分类汇总">二、分类汇总</h2>
+        
+        <!-- 论文1 -->
+        <div class="paper-card" id="cat-gen-rec">
+            <div class="paper-title">1. Not Only NTP: Extending Training Signal Coverage for Generative Recommendation</div>
+            <div class="paper-meta">
+                <span>📄 2607.12277v1</span>
+                <span>👥 Changhao Li, Shuli Wang, et al.</span>
+                <span>🏢 美团</span>
+                <span class="tag">cs.IR</span>
+            </div>
+            <div class="paper-abstract">
+                <p><strong>中文摘要</strong>: 下一词预测(NTP)存在两个结构性的训练信号局限。首先，NTP仅优化单步预测，对学习更长范围的行为结构没有监督压力——我们称之为<strong>时间局部性</strong>。其次，在多领域序列中，每个目标物品嵌入仅从紧邻的前一隐藏状态接收梯度更新，没有来自跨领域上下文的显式梯度路径——我们称之为<strong>空间局部性</strong>。</p>
+                
+                <p>我们提出<strong>NONTP</strong>，通过两个辅助目标沿这两个维度扩展NTP的信号覆盖范围。<strong>TCL(时序对比学习)</strong>使用BYOL风格的EMA教师配合InfoNCE，将隐藏状态与K步未来的轨迹在表示空间中对齐。<strong>TDL(跨领域学习)</strong>对跨领域隐藏状态进行均值池化并通过共享预测头进行预测，在不增加参数的情况下开辟第二条梯度路径。两者在推理时均被丢弃：零开销。</p>
+                
+                <p>在美团四领域工业数据集(完整排序)上，NONTP相比NTP的HR@10提升<strong>34.3%</strong>，相比MBGR提升<strong>18.3%</strong>。在公开的Amazon Movie-Book-CDs基准上，HR@10提升<strong>2.8%</strong>，NDCG@10提升<strong>3.7%</strong>。在线A/B测试确认CTR提升<strong>1.8%</strong>，GMV提升<strong>2.1%</strong>(两者p&lt;0.01)。消融研究确认每个组件独立贡献，梯度冲突被分析为未来工作方向。</p>
+            </div>
+            <div class="paper-contribution">
+                <strong>核心贡献</strong>: 提出TCL和TDL两个辅助目标，解决NTP的训练信号局部性问题，在多个数据集上取得显著提升。
+                <br><a href="https://arxiv.org/abs/2607.12277v1" target="_blank">📎 论文链接</a>
+            </div>
+        </div>
+        
+        <!-- 论文2 -->
+        <div class="paper-card" id="cat-slim">
+            <div class="paper-title">2. SlimPer: Make Personalization Model Slim and Smart</div>
+            <div class="paper-meta">
+                <span>📄 2607.12281v1</span>
+                <span>👥 Siqi Wang, Xianjie Chen, et al.</span>
+                <span>🏢 Meta (Instagram)</span>
+                <span class="tag">cs.IR</span>
+                <span class="tag">cs.LG</span>
+            </div>
+            <div class="paper-abstract">
+                <p><strong>中文摘要</strong>: Transformer风格架构越来越多地被工业推荐系统采用，但它们继承了一个与任务不匹配的设计前提：生成模型依赖逐词元的自回归预测，这证明了维护随序列长度扩展的大型中间张量的合理性。相比之下，推荐系统为每个&lt;用户, 物品&gt;对生成一组相关性分数，而没有词元级别的监督。</p>
+                
+                <p>利用这一观察，我们提出<strong>SlimPer</strong>，将个性化排序重新表述为紧凑、统一的&lt;用户, 物品&gt;知识库的迭代精炼。在每一层，模型选择性地查询原始多模态用户侧词元，计算显式相关性匹配分数，并精炼知识库，所有操作都具有<strong>O(N)的每层成本</strong>和固定大小的中间表示。</p>
+                
+                <p>结果，<strong>模型深度与用户历史长度解耦</strong>，实现更深层的相关性理解而无需计算或内存成比例增长；仅请求优化通过在所有候选物品间共享用户侧词元的单份副本进一步削减内存。SlimPer在单一骨干内统一了稀疏、稠密和序列特征，并通过其注意力机制提供固有的可解释性。部署在Instagram Reels和Feed上，SlimPer在用户参与度方面产生可测量的改进，同时简化了整体系统并实现了对<strong>10k+细粒度用户历史事件</strong>的有效建模。</p>
+            </div>
+            <div class="paper-contribution">
+                <strong>核心贡献</strong>: 重新设计推荐系统架构，将模型深度与用户历史长度解耦，实现轻量化的同时保持性能。
+                <br><a href="https://arxiv.org/abs/2607.12281v1" target="_blank">📎 论文链接</a>
+            </div>
+        </div>
+        
+        <!-- 论文3 -->
+        <div class="paper-card" id="cat-cvr">
+            <div class="paper-title">3. Cheaper is Better: A Discount-Aware Network for Conversion Rate Prediction</div>
+            <div class="paper-meta">
+                <span>📄 2607.12578v1</span>
+                <span>👥 Ruocong Tang, Yang Huang, Xing Fang, et al.</span>
+                <span>🏢 阿里巴巴天猫</span>
+                <span class="tag">cs.IR</span>
+            </div>
+            <div class="paper-abstract">
+                <p><strong>中文摘要</strong>: 点击后转化率(CVR)是在线推荐系统的关键要素，需要解决数据稀疏(DS)、样本选择偏差(SSB)和延迟反馈等重大挑战。然而，<strong>物品折扣率</strong>——一个影响定价和用户购买行为的关键因素——受到的关注有限。</p>
+                
+                <p>本文引入<strong>感知折扣网络(DANet)</strong>来建模物品折扣率与CVR之间的关系。DANet包含三个主要组件：</p>
+                <p>1) <strong>时频变换模块</strong>：利用傅里叶变换导出频谱并捕获物品的长期折扣率趋势</p>
+                <p>2) <strong>分布去偏模块</strong>：旨在缓解由各种购买组合和促销活动引起的用户特定折扣率偏差，以及电商平台不同促销期相关的周期性偏差</p>
+                <p>3) <strong>监督回归辅助任务</strong>：建立显式物品折扣标签以增强模型在数值精度方面的性能，促进物品折扣率的有效表示</p>
+                
+                <p>真实数据集上的实验结果证明了DANet的优越性，离线AUC提升<strong>1.61%</strong>，在线A/B测试也显示DANet在pCVR上取得<strong>3.63%</strong>的显著提升，GMV提升<strong>2.23%</strong>。DANet已成功部署在阿里巴巴天猫APP上。</p>
+            </div>
+            <div class="paper-contribution">
+                <strong>核心贡献</strong>: 首次系统建模折扣率对转化率的影响，提出时频变换和分布去偏方法，在天猫取得显著业务提升。
+                <br><a href="https://arxiv.org/abs/2607.12578v1" target="_blank">📎 论文链接</a> | <a href="https://github.com/tangrc/DANet" target="_blank">🔗 代码仓库</a>
+            </div>
+        </div>
+        
+        <!-- 论文4 -->
+        <div class="paper-card" id="cat-retrieval">
+            <div class="paper-title">4. MESH: Scaling Up Retrieval with Heterogeneous Content Unification</div>
+            <div class="paper-meta">
+                <span>📄 2607.12392v1</span>
+                <span>👥 Jiaxing Qu, Yilin Chen, et al.</span>
+                <span>🏢 Pinterest</span>
+                <span class="tag">cs.IR</span>
+                <span class="tag">cs.LG</span>
+            </div>
+            <div class="paper-abstract">
+                <p><strong>中文摘要</strong>: 优化大规模检索取决于跨不同内容层级高效呈现候选的能力。然而，为了捕获新鲜和长尾内容等细分领域，现代系统通常求助于碎片化的专业化检索模型"动物园"。这种操作复杂性归因于异构检索系统中的一个根本挑战——<strong>异构性扩展偏差</strong>，即模型容量增益不会同等应用于不同内容层级。</p>
+                
+                <p>为弥合这一差距，我们提出<strong>MESH</strong>作为统一的检索扩展框架，通过集成门控偏差校正的模块化架构来缓解这种偏差。通过将特征空间划分为独立域，MESH强制执行结构归纳偏置，减少稀疏物品信号与高频参与特征之间的干扰。</p>
+                
+                <p>这种受保护的梯度路径改善了稀疏内容的扩展行为，经实证验证，<strong>新鲜物品的幂律扩展指数提升14倍</strong>。在Pinterest的Related Pins平台(十亿规模的物品到物品推荐系统)的在线评估中，这些改进转化为新鲜物品repin提升<strong>5.5%</strong>，漏斗效率提升<strong>55%</strong>，用户留存提升<strong>0.46%</strong>。最后，我们的异步服务策略通过提供<strong>2.87倍</strong>的系统吞吐量提升确保生产可行性。</p>
+            </div>
+            <div class="paper-contribution">
+                <strong>核心贡献</strong>: 提出统一检索框架解决异构性扩展偏差，在Pinterest大规模系统上实现新鲜内容召回和用户留存的双重提升。
+                <br><a href="https://arxiv.org/abs/2607.12392v1" target="_blank">📎 论文链接</a>
+            </div>
+        </div>
+        
+        <!-- 论文5 -->
+        <div class="paper-card" id="cat-privacy">
+            <div class="paper-title">5. Proximity Features: Privacy-Compliant Cold-Start Personalization at Airbnb</div>
+            <div class="paper-meta">
+                <span>📄 2607.12246v1</span>
+                <span>👥 Wei Jiang, Bin Xu, Hui Gao, et al.</span>
+                <span>🏢 Airbnb</span>
+                <span class="tag">cs.LG</span>
+            </div>
+            <div class="paper-abstract">
+                <p><strong>中文摘要</strong>: 双边市场的个性化严重依赖用户级特征，但对于购买频率低、考虑周期长的平台，大量用户缺乏足够的历史记录以实现有效推荐，涵盖付费和自然渠道。在Airbnb，相当一部分搜索请求来自未登录或首次用户，这一挑战在付费渠道落地页尤为突出，导致传统用户级特征对大量流量不可用。隐私法规和第三方Cookie限制的日益严格进一步限制了非必要用例的基于标识符的追踪。</p>
+                
+                <p>本文引入<strong>邻近特征(Proximity Features)</strong>，这是一个隐私合规的特征系统，使用geo-IP数据和自适应聚类算法按地理邻近性对用户分组，为约<strong>1000名附近用户</strong>的群体生成聚合的用户级信号，无需在推理时持久化个人标识符。</p>
+                
+                <p><strong>隐私通过设计得到保护</strong>：管道仅在同意门控的隐私控制内对已同意的聚合数据进行操作。该系统已在Airbnb生产环境中部署，服务于多个场景包括营销落地页和目的地推荐，参与邮件整合正在进行中。在线A/B实验显示预订量有统计学显著提升，在历史记录缺失或陈旧的用户中观察到最大收益。</p>
+            </div>
+            <div class="paper-contribution">
+                <strong>核心贡献</strong>: 提出隐私合规的邻近特征方案，解决冷启动用户个性化问题，在Airbnb生产环境取得显著业务提升。
+                <br><a href="https://arxiv.org/abs/2607.12246v1" target="_blank">📎 论文链接</a>
+            </div>
+        </div>
+        
+        <!-- 三、Top 5 论文十问 -->
+        <h2 id="三-Top-5-论文十问">三、Top 5 论文十问</h2>
+        
+        <div class="ten-q-section" id="paper1">
+            <h3 id="论文-1--Not-Only-NTP--2607-12277v1">论文 1: Not Only NTP (2607.12277v1)</h3>
+            <h1>论文十问：Not Only NTP: Extending Training Signal Coverage for Generative Recommendation<br>
+<br>
+<strong>论文ID</strong>: 2607.12277v1  <br>
+<strong>标题</strong>: Not Only NTP: Extending Training Signal Coverage for Generative Recommendation  <br>
+<strong>作者</strong>: Changhao Li, Shuli Wang, Junwei Yin, Senjie Kou, Yinqiu Huang, Chi Wang, Yinhua Zhu, Haitao Wang, Xingxing Wang  <br>
+<strong>作者单位</strong>: 美团（Meituan），成都/北京，中国  <br>
+<br>
+---<br>
+<br>
+<h2>十问回答<br>
+<br>
+<h3>1. 解决什么问题？<br>
+<br>
+本文解决生成式推荐（Generative Recommendation, GR）中 Next-Token Prediction (NTP) 训练信号的覆盖不足问题，具体表现为两个结构性局限：<br>
+<br>
+- <strong>时间局部性（Temporal Locality）</strong>：NTP 仅让隐藏状态 h_t 预测紧邻的下一个 item i_{t+1}，损失函数对 h_t 编码更远未来信息（i_{t+2}, i_{t+3}, ..., i_{t+K}）施加零监督压力。导致模型只记忆高频局部转移，无法捕获长程兴趣演化，且单步标签噪声敏感。<br>
+- <strong>空间局部性（Spatial Locality）</strong>：NTP 对共享预测头 E 中每个目标 item embedding 仅提供单条梯度通路（来自紧邻前驱 h_j）。在多域序列中，稀疏域 item 出现频率低，其 embedding 接收的梯度信号稀少且偏置于密集域模式，导致稀疏域推荐效果差。<br>
+<br>
+<h3>2. 是否是新问题？<br>
+<br>
+<strong>部分新问题</strong>。NTP 的近视性（myopia）在语言建模中已被独立发现（Nagarajan et al., 2025 证明 NTP 无法完成需隐式规划的任务），多域推荐中稀疏域效果差也是已知痛点（MBGR 的 LDR 即为解决此问题）。但本文首次将这两个问题统一为"训练信号覆盖不足"的双维度框架（时间轴+空间轴），并从梯度通路结构角度给出形式化分析，这一视角是新的。<br>
+<br>
+<h3>3. 科学假设是什么？<br>
+<br>
+核心假设：<strong>扩展 NTP 的训练信号覆盖范围——沿时间轴通过对比学习将监督延伸至 K 步未来轨迹、沿空间轴通过跨域均值池化为目标 item embedding 开辟第二条梯度通路——可以缓解 GR 的双局部性，提升推荐效果，尤其对稀疏域和长序列场景增益显著。</strong><br>
+<br>
+辅助假设：<br>
+- 在隐藏状态空间（而非 token 输出空间）做时序对齐更鲁棒，因为 RQ-VAE 语义 ID 的离散编码缺乏相邻 token 间的语义连续性。<br>
+- 跨域均值池化通过共享预测头提供第二条梯度通路，比标签空间硬路由（LDR）更有效。<br>
+<br>
+<h3>4. 相关研究如何归类？关键论文/研究者是谁？<br>
+<br>
+| 类别 | 关键工作 | 与本文关系 |<br>
+|------|---------|-----------|<br>
+| <strong>生成式推荐范式</strong> | TIGER (Rajput et al., 2023), HSTU (Zhai et al., 2024), OneRec (Deng et al., 2025) | 奠基工作，NONTP 基于 HSTU 骨干 |<br>
+| <strong>多域生成式推荐</strong> | MBGR (Li et al., 2026)：BID/MBP/LDR | NONTP 复用 BID/MBP，TDL 是 LDR 的表示空间演进 |<br>
+| <strong>NTP 局限性</strong> | Nagarajan et al. (2025)：NTP 近视性；APAO (Yu et al., 2026)：beam search 训练-推理失配 | 本文将 NTP 近视性引入推荐并扩展为双局部性 |<br>
+| <strong>连续表示替代</strong> | Cola DLM (Guo et al., 2026), ELF (Hu et al., 2026) | 放弃离散 token，本文保留离散框架、在训练信号层面扩展（互补） |<br>
+| <strong>未来监督</strong> | PinnerFormer (Pancha et al., 2022), Oracle4Rec (Xia et al., 2025) | 在判别式模型中用未来标签，本文在 GR 隐藏状态空间用对比学习 |<br>
+| <strong>对比/自监督学习</strong> | BYOL (Grill et al., 2020), CPC (van den Oord et al., 2018) | TCL 借鉴 BYOL EMA teacher + CPC InfoNCE 设计模式 |<br>
+<br>
+<h3>5. 核心方法是什么？<br>
+<br>
+<strong>NONTP = NTP + λ_tcl·L_TCL + λ_tdl·L_TDL</strong>（默认 λ_tcl = λ_tdl = 0.1）<br>
+<br>
+<strong>TCL（Temporal Contrastive Learning）</strong>：<br>
+- BYOL 风格 EMA teacher（m=0.999）生成稳定未来状态表示<br>
+- 对每个偏移 k∈{1,...,K}，线性预测器 g_k 将 h_j 映射为前向预测 s_j(k)<br>
+- InfoNCE 损失对齐 s_j(k) 与 EMA teacher 的 h_{j+k}^{ema}，负样本来自 batch 内其他序列<br>
+- 在隐藏状态空间操作（非 token 空间），K=3<br>
+<br>
+<strong>TDL（Trans-Domain Learning）</strong>：<br>
+- 对每个目标位置 j，收集跨域上下文集 C_j = {l < j : d_l ≠ d_{j+1}}<br>
+- 均值池化得到跨域表示 s_j^{tdl} = (1/|C_j|) Σ_{l∈C_j} h_l<br>
+- 通过与 NTP 共享的预测头 E 预测目标 item，为目标 embedding 开辟第二条梯度通路<br>
+- 无额外 head 参数，推理时丢弃<br>
+<br>
+<strong>关键设计原则</strong>：两辅助目标均在隐藏状态表示空间操作、不引入自定义标签、与 NTP 正交、推理时丢弃（零推理开销）。<br>
+<br>
+<h3>6. 实验如何设计？<br>
+<br>
+- <strong>离线实验</strong>：在两个数据集（工业四域 + Amazon 三域）上与 SASRec、TIGER、NTP(HSTU)、MBGR 对比，报告 HR@10、NDCG@10<br>
+- <strong>消融实验</strong>：+TCL only、+TDL only、NONTP full 三种变体；TDL 池化策略对比；超参敏感性（τ、λ、m）<br>
+- <strong>梯度冲突分析</strong>：验证简单加权求和在 λ=0.1 下为合作区；测试 PCGrad 梯度手术的额外增益<br>
+- <strong>在线 A/B 测试</strong>：在美团 DSP 平台召回阶段部署，5% 流量各一组，14 天，报告 CTR 和 GMV<br>
+<br>
+<h3>7. 用了什么数据集？代码是否开源？<br>
+<br>
+| 数据集 | 规模 | 域 | 序列长度 | 评估方式 |<br>
+|--------|------|-----|---------|---------|<br>
+| <strong>Meituan 工业数据集</strong> | 38.3M 用户, 54.9M items, 1年交互 | 4域(A/B/C/D)，密度差异大 | 平均 280 | 全量排序 HR@10 |<br>
+| <strong>Amazon Movie-Book-CDs</strong> | 1.24M 测试样本, 3.2M items | 3域(Movie/Book/CDs) | 平均 12 | 999 负采样 HR@1/5/10, NDCG@5/10 |<br>
+<br>
+<strong>代码/项目链接</strong>：论文未提供开源代码或项目链接。<br>
+<br>
+<h3>8. 结果是否支持假设？证据是否充分？<br>
+<br>
+<strong>工业数据集</strong>：NONTP All HR@10 = 0.0485，相比 NTP +34.3%，相比 MBGR +18.3%。稀疏域(C/D)绝对增益大于密集域(A)，符合双梯度通路假设。排序一致性 NONTP > TDL > TCL > NTP。<br>
+<br>
+<strong>Amazon 数据集</strong>：NONTP HR@10 +2.8%，NDCG@10 +3.7%，三域均有增益。短序列(12步)下增益较小，符合"短序列时单通路约束影响有限"的分析。<br>
+<br>
+<strong>在线 A/B</strong>：CTR +1.8%，GMV +2.1%（p<0.01），离线-在线一致。<br>
+<br>
+<strong>证据充分性</strong>：充分。双数据集+消融+超参+梯度冲突+在线A/B 五层验证，且增益模式与理论分析一致（稀疏域增益更大、长序列增益更显著）。<br>
+<br>
+<h3>9. 核心贡献是什么？<br>
+<br>
+1. <strong>问题定义</strong>：首次将 GR 中 NTP 的训练信号局限统一为时间局部性+空间局部性双维度框架，建立与 NLP 中 NTP 近视性的联系<br>
+2. <strong>TCL</strong>：将 BYOL+CPC 设计模式适配到 GR，在隐藏状态空间用 EMA teacher + InfoNCE 将时序监督延伸至 K 步未来轨迹<br>
+3. <strong>TDL</strong>：提出跨域均值池化+共享预测头的表示空间方法，为目标 item embedding 开辟第二条梯度通路，是从 LDR（标签空间硬路由）到表示空间软聚合的演进<br>
+4. <strong>零推理开销</strong>：所有辅助组件在推理时丢弃，部署成本仅增加训练阶段（~20-25% 时间，~40% 显存）<br>
+<br>
+<h3>10. 局限与下一步方向是什么？<br>
+<br>
+<strong>局限</strong>：<br>
+1. TDL 依赖域标签，无显式标注时需通过聚类推断<br>
+2. TCL 的 EMA 动量调度敏感，自适应调度是开放问题<br>
+3. TDL 需至少两个跨域位置，在极短序列（<10步）上效果有限<br>
+4. 简单加权求和多损失存在梯度冲突风险（λ>0.3 时退化），PCGrad 仅部分解决<br>
+<br>
+<strong>下一步方向</strong>：<br>
+- 自适应域标签推断（无需显式域标注）<br>
+- 动态 K 选择（TCL 未来步数自适应）<br>
+- 改进多目标梯度协调（超越 PCGrad 的投影方法）<br>
+- 将训练信号覆盖框架扩展到更广泛的序列建模场景<br>
+<br>
+---<br>
+<br>
+<h2>补充信息<br>
+<br>
+<h3>作者单位<br>
+美团（Meituan），成都/北京，中国。所有作者均为美团员工（@meituan.com 邮箱）。<br>
+<br>
+<h3>代码/项目链接<br>
+未开源，论文未提供代码或项目链接。<br>
+<br>
+<h3>数据集<br>
+- Meituan 工业四域数据集（非公开）<br>
+- Amazon Movie-Book-CDs（公开，基于 Amazon Review Corpus）<br>
+<br>
+<h3>业务启发<br>
+<br>
+| 维度 | 分析 |<br>
+|------|------|<br>
+| <strong>可落地链路</strong> | ① 在已有 GR/HSTU 模型上叠加 TCL+TDL 辅助训练目标，推理无额外开销；② TDL 适用于任何多业务线混合序列推荐场景（外卖+到店+酒旅等）；③ TCL 适用于长序列用户行为建模 |<br>
+| <strong>业务价值</strong> | ① 稀疏业务线推荐效果提升显著（美团实验中稀疏域 HR@10 绝对增益 0.011+）；② 在线 CTR +1.8%、GMV +2.1%，直接可量化收入提升；③ 训练信号覆盖框架为后续 GR 模型优化提供系统性诊断工具 |<br>
+| <strong>风险成本</strong> | ① 训练成本增加 ~20-25% 时间 + ~40% 显存（EMA teacher 需完整骨干副本）；② EMA 动量(m=0.999)和温度(τ=0.07)需调参，不当设置可导致不稳定；③ 多损失梯度冲突在 λ>0.3 时退化，需验证合作区；④ TDL 依赖域标签，业务线划分需明确 |<br>
+| <strong>优先级</strong> | <strong>高</strong>——零推理开销的纯训练阶段优化，对已有 GR 系统是低侵入性升级，且在线效果已验证 |<br>
+| <strong>建议动作</strong> | ① 在现有 GR 模型训练流程中集成 TCL+TDL，先在离线数据验证双局部性是否存在（对比 NTP vs +TCL/+TDL 消融）；② 优先在稀疏业务线（如酒旅、到店）评估 TDL 增益；③ 长序列场景（>100步）优先评估 TCL 增益；④ 监控训练稳定性，必要时引入 PCGrad 梯度手术；⑤ 灰度上线验证 CTR/GMV |<br>
+
+        </div>
+        
+        <div class="ten-q-section" id="paper2">
+            <h3 id="论文-2--SlimPer--2607-12281v1">论文 2: SlimPer (2607.12281v1)</h3>
+            <h1>SlimPer: Make Personalization Model Slim and Smart — 中文十问回答<br>
+<br>
+> 论文 ID: 2607.12281v1  <br>
+> 标题: SlimPer: Make Personalization Model Slim and Smart  <br>
+> 作者: Siqi Wang<em>, Xianjie Chen</em>†, Shaofeng Deng, Albert Chen, Romil Shah 等（共 40+ 位作者）  <br>
+> 作者单位: Meta Platforms, Inc., USA  <br>
+<br>
+---<br>
+<br>
+<h2>1. 解决什么问题？<br>
+<br>
+<strong>核心问题：推荐系统直接移植 Transformer 架构带来的效率-质量两难困境。</strong><br>
+<br>
+当前工业推荐系统（如 Instagram 的排序模型）流行将 Transformer 架构从 LLM 搬运过来，用于建模用户行为序列或统一多模态特征。然而推荐系统与 LLM 存在根本结构差异：<br>
+<br>
+- <strong>LLM</strong> 需要逐位置自回归监督，计算成本被所有 token 位置的预测分摊；<br>
+- <strong>推荐系统</strong> 只需判别式预测——对每个 ⟨user, item⟩ 对输出一组相关性分数，无需 token 级自回归损失。<br>
+<br>
+这导致 Transformer 式设计在推荐中面临不必要困境：要么跨层压缩中间表示导致信息丢失，要么保留大中间张量导致内存和计算开销随输入 token 数 N 二次增长（O(N²)）。SlimPer 旨在从根本上解决这一架构不匹配问题，使个性化模型既<strong>轻量（Slim）</strong>又<strong>智能（Smart）</strong>。<br>
+<br>
+---<br>
+<br>
+<h2>2. 是否是新问题？<br>
+<br>
+<strong>问题本身不新，但切入角度和解决方案新颖。</strong><br>
+<br>
+- 推荐系统的效率-质量权衡是长期存在的工程问题，已有大量工作（SIM、MIMN、HSTU、LONGER 等）尝试降低长序列建模成本。<br>
+- 但这些工作均<strong>在 Transformer 框架内做修补</strong>（如检索子集、压缩序列、离线聚合），本质上仍在用序列建模范式处理判别式任务。<br>
+- SlimPer 的创新在于<strong>重新审视了推荐与 LLM 的结构差异</strong>，提出推荐的本质抽象不是序列建模而是<strong>迭代精炼（Iterative Refinement）</strong>，这是一个新的问题框架。<br>
+<br>
+---<br>
+<br>
+<h2>3. 科学假设是什么？<br>
+<br>
+<strong>核心假设：判别式推荐排序的恰当抽象是"对紧凑知识库的迭代精炼"，而非"序列建模"。</strong><br>
+<br>
+具体推论：<br>
+1. 推荐只需输出 ⟨user, item⟩ 相关性分数，不需要维护 N 个 token 级表示；<br>
+2. 用固定大小 K 的知识库（Knowledge Base）作为信息瓶颈，逐层精炼即可捕获用户偏好；<br>
+3. 模型深度可与输入序列长度解耦——增加层数不增加与 N 相关的内存；<br>
+4. 每层通过 QKV 注意力直接查询原始多模态证据（不压缩），避免信息损失；<br>
+5. 通过 Request-Only Optimization (ROO)，所有候选 item 共享一份用户侧 token，消除逐候选复制开销。<br>
+<br>
+---<br>
+<br>
+<h2>4. 相关研究如何归类？关键论文/研究者是谁？<br>
+<br>
+论文将相关工作分为三条主线：<br>
+<br>
+<h3>4.1 特征交互学习（固定大小输入）<br>
+- <strong>FM</strong> (Rendle, 2010)、<strong>DeepFM</strong> (Guo et al., 2017)、<strong>DLRM</strong> (Naumov et al., 2019)：二阶/显式特征交叉<br>
+- <strong>DCN/DCNv2</strong> (Wang et al., 2017/2021)：有界度特征交叉网络<br>
+- <strong>AutoInt</strong> (Song et al., 2019)：多头自注意力隐式高阶交互<br>
+- <strong>DHEN</strong> (Zhang et al., 2022)、<strong>Wukong</strong> (Zhang et al., 2024)：堆叠交互模块的扩展性研究<br>
+<br>
+<h3>4.2 用户历史建模（变长序列）<br>
+- <strong>DIN/DIEN</strong> (Zhou et al., 2018/2019)：目标感知注意力<br>
+- <strong>BST/BERT4Rec/SASRec</strong>：全自注意力，O(N²) 成本<br>
+- <strong>SIM</strong> (Pi et al., 2020)：两阶段硬检索；<strong>MIMN</strong> (Pi et al., 2019)：固定大小记忆<br>
+- <strong>LONGER</strong> (Chai et al., 2025)：token 合并；<strong>HSTU</strong> (Zhai et al., 2024)：随机长度采样<br>
+- <strong>TWIN-V2</strong> (Si et al., 2024)、<strong>DV365</strong> (Lyu et al., 2025)：离线预计算<br>
+<br>
+<h3>4.3 跨注意力瓶颈架构（相邻领域）<br>
+- <strong>Perceiver</strong> (Jaegle et al., 2021)：用固定大小 latent array 通过交叉注意力处理变长输入<br>
+- <strong>Set Transformer</strong> (Lee et al., 2019)：诱导集上的注意力<br>
+<br>
+<strong>关键研究者/团队：</strong> Meta 的 HSTU/Wukong 团队（Instagram 排序系统）、Google 的 Perceiver 团队。<br>
+<br>
+---<br>
+<br>
+<h2>5. 核心方法是什么？<br>
+<br>
+<h3>5.1 整体架构<br>
+SlimPer 将个性化排序建模为<strong>对固定大小知识库的迭代精炼过程</strong>：<br>
+<br>
+1. <strong>多模态 Tokenization</strong>：将 Sparse/Dense/Sequence 三种模态统一 token 化<br>
+   - Sparse → Embedding Pooling (E-P)<br>
+   - Sequence → Event Modeling (E-M)：每个事件编码为 1×d 向量<br>
+   - Dense → Dense Processing (D-P)：MLP 投影<br>
+<br>
+2. <strong>知识库初始化</strong>：X₀ = L(S_in)，从非用户侧（item 侧/交叉侧）稀疏特征初始化，形状 K×d（K=64, d=256）<br>
+<br>
+3. <strong>SlimPer 层迭代精炼</strong>（每层执行三步）：<br>
+   - <strong>Matching</strong>：知识库 X_k 作为 Query，对原始用户历史序列 E 和稀疏 token S 做交叉注意力，计算相关性权重<br>
+   - <strong>Refinement</strong>：基于匹配权重，从原始 token 中聚合信息，通过 MLP 更新知识库<br>
+   - <strong>Update</strong>：X_{k+1} = X_k + ΔX_k（残差更新）<br>
+<br>
+4. <strong>Request-Only Optimization (ROO)</strong>：同一请求中所有候选 item 共享用户侧 token（E 和 S），仅 item 侧 token 随候选变化，消除 O(C×N) 的用户侧复制开销<br>
+<br>
+<h3>5.2 复杂度优势<br>
+| 指标 | Transformer 基线 (HSTU+Wukong) | SlimPer |<br>
+|------|------|------|<br>
+| 每层计算 | O(N²) | O(K·N) |<br>
+| 跨层内存 | O(L·N·d) | O(L·K·d) |<br>
+| 用户侧复制 | O(C·N) | O(N) (ROO) |<br>
+<br>
+- K=64 ≪ N（N 可达数千至数万），实现 8-25× FLOPs 降低<br>
+<br>
+---<br>
+<br>
+<h2>6. 实验如何设计？<br>
+<br>
+<h3>6.1 离线实验<br>
+- <strong>基线</strong>：Instagram 现有 late-fusion 架构（HSTU 建模用户历史 + Wukong 建模固定特征）<br>
+- <strong>评估指标</strong>：Normalized Entropy (NE)，0.03% NE 改善即视为显著<br>
+- <strong>对比维度</strong>：<br>
+  - 不同序列长度（1k/2k/4k/5k/6k）<br>
+  - 不同产品面（Reels 和 Feed）<br>
+  - 多任务（reshare, skip, like, comment, follow, save）<br>
+  - QPS（吞吐量）和内存占用<br>
+<br>
+<h3>6.2 在线 A/B 测试<br>
+- Reels: SlimPer w/ 5k events 全流量上线<br>
+- Feed: SlimPer w/ 4k events 全流量上线<br>
+- 评估多维度参与度指标 + 生态护栏指标（完整性、多样性、时效性）<br>
+<br>
+<h3>6.3 消融实验<br>
+- 知识库大小 K ∈ {4, 8, 16, 32, 64}<br>
+- 精炼层数 L ∈ {3, 5, 7, 9}<br>
+- 上下文编码策略（无上下文 / 事件类型 / 完整上下文）<br>
+<br>
+<h3>6.4 可解释性分析<br>
+- 跨层注意力热力图：低层关注广泛历史，高层聚焦近期行为<br>
+<br>
+---<br>
+<br>
+<h2>7. 用了什么数据集？代码是否开源？<br>
+<br>
+<h3>数据集<br>
+- <strong>Instagram 内部数据</strong>：Reels 和 Feed 的最终排序（final-stage ranking）训练/评估数据<br>
+- 使用与现有生产模型相同的训练和评估日期范围<br>
+- 数据规模为工业级（数十亿级样本），非公开基准数据集<br>
+<br>
+<h3>代码开源<br>
+- <strong>未开源</strong>。论文提供了详细架构超参数（Appendix A）、仅使用标准构建块（MLP、QKV attention、线性投影、RMSNorm），声称足以复现，但代码/模型权重未公开。<br>
+<br>
+---<br>
+<br>
+<h2>8. 结果是否支持假设？证据是否充分？<br>
+<br>
+<h3>离线结果（支持假设）<br>
+| 配置 | NE 改善 | QPS 变化 | 内存变化 |<br>
+|------|---------|---------|---------|<br>
+| Reels 2k | -0.51% (reshare) | +11.0% | -9.32% |<br>
+| Reels 5k | -0.80% (reshare) | -10.0% | +4.59% |<br>
+| Feed 1k | -0.49% (reshare) | +11.4% | -18.0% |<br>
+| Feed 4k | -0.94% (reshare) | -16.0% | — |<br>
+<br>
+- <strong>同序列长度下同时获得质量提升和效率提升</strong>（如 2k 时 NE -0.51%, QPS +11%），直接验证了迭代精炼范式的效率优势<br>
+- <strong>序列越长优势越大</strong>：NE 改善从 1k 的 -0.49% 增长到 4k 的 -0.94%，符合 O(K·N) vs O(N²) 的理论预测<br>
+- <strong>FLOPs 分析</strong>：2k 时 SlimPer 约为基线的 1/8，6k 时约为 1/4<br>
+<br>
+<h3>在线 A/B 结果（强支持）<br>
+- 全流量上线，<strong>统计显著的参与度提升</strong>，聚合顶层影响约为典型显著上线的 <strong>10×</strong><br>
+- 无生态护栏指标回归，GPU 容量近似中性<br>
+- 2026 年已扩展至 10k+ 事件，持续验证可扩展性<br>
+<br>
+<h3>消融结果（支持设计选择）<br>
+- K=64 提供最优质量-效率平衡；K=4 时 NE 退化 +1.2%<br>
+- 7 层精炼效果良好，9 层仍有收益（-0.12% NE）<br>
+- 上下文编码带来约 -0.15% NE 改善<br>
+<br>
+<h3>证据充分性评估<br>
+- <strong>充分</strong>：离线多面多任务 + 在线全流量 A/B + 消融 + FLOPs 分析 + 可解释性分析，形成完整证据链<br>
+- <strong>局限</strong>：仅在 Instagram 内部数据验证，无公开基准复现<br>
+<br>
+---<br>
+<br>
+<h2>9. 核心贡献是什么？<br>
+<br>
+1. <strong>范式创新</strong>：首次明确提出推荐排序的恰当抽象是"迭代精炼"而非"序列建模"，从根本架构层面解决 Transformer 不匹配问题<br>
+2. <strong>SlimPer 架构</strong>：统一多模态的迭代精炼架构，包含：<br>
+   - 固定大小知识库（K×d）作为信息瓶颈<br>
+   - 逐层 Matching-Refinement-Update 循环<br>
+   - Request-Only Optimization (ROO) 消除候选间用户侧复制<br>
+3. <strong>效率-质量同时提升</strong>：同序列长度下 NE 和 QPS 同时改善，打破传统效率换质量的权衡<br>
+4. <strong>线性可扩展性</strong>：O(K·N) 每层复杂度，使模型能扩展到 10k+ 事件序列<br>
+5. <strong>内在可解释性</strong>：注意力权重直接关联推荐与用户历史事件，支持调试和审计<br>
+6. <strong>工业验证</strong>：在 Instagram Reels 和 Feed 全流量上线，取得显著业务收益<br>
+<br>
+---<br>
+<br>
+<h2>10. 局限与下一步方向是什么？<br>
+<br>
+<h3>局限<br>
+1. <strong>未与最新统一架构直接对比</strong>：基线为 HSTU+Wukong 混合架构，未直接对比 OneTrans、HHFT、RankMixer 等统一 Transformer 架构（论文论证了混合基线更强）<br>
+2. <strong>内部数据不可复现</strong>：所有实验基于 Instagram 内部数据，无法独立复现<br>
+3. <strong>匹配和精炼模块较简单</strong>：当前使用点积匹配 + MLP 更新，表达力可能受限<br>
+<br>
+<h3>下一步方向<br>
+1. <strong>扩展证据源</strong>：迭代精炼天然支持无序证据源（跨面参与信号、上游候选生成系统），无需架构改动<br>
+2. <strong>跨排序阶段部署</strong>：ROO 设计使 SlimPer 可高效部署到早期排序阶段（候选集更大，摊销优势更明显）<br>
+3. <strong>增强匹配/精炼表达力</strong>：在保持 O(K·N) 复杂度和固定内存的前提下，探索更强的匹配和精炼算子<br>
+4. <strong>推荐专属架构设计</strong>：围绕推荐独特的计算和建模需求，继续推动推荐架构创新<br>
+<br>
+---<br>
+<br>
+<h2>附加信息<br>
+<br>
+<h3>作者单位<br>
+<strong>Meta Platforms, Inc., USA</strong>（全部作者均来自 Meta）<br>
+<br>
+<h3>代码/项目链接<br>
+- <strong>未开源</strong>，无公开代码或项目链接<br>
+<br>
+<h3>数据集<br>
+- Instagram Reels 和 Feed 的内部 final-stage ranking 数据（非公开）<br>
+<br>
+<h3>业务启发<br>
+<br>
+| 维度 | 分析 |<br>
+|------|------|<br>
+| <strong>可落地链路</strong> | 1. 替换现有推荐排序模型中的 Transformer 序列建模组件为 SlimPer 迭代精炼模块；2. 统一多模态特征（稀疏/稠密/序列）到单一骨干网络，消除 late-fusion 拼接；3. 利用 ROO 优化降低推理成本 |<br>
+| <strong>业务价值</strong> | 1. <strong>效率提升</strong>：同序列长度下 QPS 提升 11%+，内存降低 9-18%，直接节省推理 GPU 成本；2. <strong>质量提升</strong>：NE 改善 0.3-0.9%+，在线 A/B 聚合影响约 10× 典型显著上线；3. <strong>可扩展性</strong>：支持 10k+ 事件序列，捕获更长期用户偏好；4. <strong>可解释性</strong>：注意力权重支持推荐归因和审计 |<br>
+| <strong>风险成本</strong> | 1. 架构迁移成本：需重构现有排序系统，从 late-fusion 改为统一骨干；2. 超参数调优：知识库大小 K、层数 L、query/template slots 需针对业务调优；3. 内部数据依赖：论文结果在 Instagram 数据验证，其他业务场景需独立验证 |<br>
+| <strong>优先级</strong> | <strong>高</strong>——已在 Meta 全流量验证，且效率-质量同时提升的范式创新具有广泛适用性 |<br>
+| <strong>建议动作</strong> | 1. 在离线环境复现 SlimPer 架构（论文提供了足够细节），在自有推荐数据集验证 NE/QPS 改善；2. 优先在长序列场景（用户历史 > 2k）试点，此处 SlimPer 优势最显著；3. 从知识库大小 K=64、层数 L=5-7 起步，按消融结果调优；4. 关注 ROO 优化的工程实现，这是推理效率提升的关键；5. 利用注意力可解释性建立推荐归因分析能力 |<br>
+
+        </div>
+        
+        <div class="ten-q-section" id="paper3">
+            <h3 id="论文-3--DANet--2607-12578v1">论文 3: DANet (2607.12578v1)</h3>
+            <h1>arXiv 2607.12578v1 十问回答<br>
+<br>
+<h2>论文信息<br>
+- <strong>标题</strong>: Cheaper is Better: A Discount-Aware Network for Conversion Rate Prediction in E-commerce Recommendation System<br>
+- <strong>作者</strong>: Ruocong Tang, Yang Huang, Xing Fang, Chenyi Yan, Chuike Sun, Jing Wang<br>
+- <strong>作者单位</strong>: Alibaba Group, 杭州, 中国<br>
+- <strong>发表会议</strong>: SIGIR '26 (49th International ACM SIGIR Conference, 2026年7月20-24日, 墨尔本)<br>
+- <strong>代码链接</strong>: https://github.com/tangrc/DANet<br>
+- <strong>数据集</strong>: Alibaba Tmall 平台内部数据（不公开），时间范围 2025/08/26-2025/11/25<br>
+<br>
+---<br>
+<br>
+<h2>1. 解决什么问题？<br>
+<br>
+本文解决电商推荐系统中<strong>折扣率（Discount Rate, DR）对点击后转化率（Post-click CVR）预测的影响未被充分建模</strong>的问题。现有CVR预测方法主要关注数据稀疏（DS）、样本选择偏差（SSB）和延迟反馈等挑战，但忽略了商品折扣率这一关键因素。DR受三方因素交织影响：1）卖家针对不同品类的长期定价策略；2）平台组织的促销折扣活动；3）用户对折扣的敏感度及参与程度。由于折扣活动的动态性和个性化（如满减优惠），DR在结算前难以提前获取，使得直接建模非常困难。<br>
+<br>
+<h2>2. 是否是新问题？<br>
+<br>
+<strong>部分是新问题</strong>。CVR预测本身是经典问题，但将<strong>折扣率（而非绝对价格）显式建模进CVR预测</strong>是新提出的视角。此前仅有少数工作关注价格因素：PASBR（Feng et al., 2023）引入价格并模拟用户价格容忍度；CoHHN（Zhang et al., 2022）联合建模用户兴趣和价格偏好。但直接建模价格面临跨品类分布差异巨大（几元到数万元）的挑战，本文提出用DR替代价格是新视角。同时，利用时频分析（FFT/IFFT）建模DR时间序列的长周期趋势也是CVR领域的新做法。<br>
+<br>
+<h2>3. 科学假设是什么？<br>
+<br>
+核心假设是：<strong>折扣率（DR）比绝对价格更适合建模价格对CVR的影响，且DR可通过时频变换、分布纠偏和监督回归三方面被有效表征，从而显著提升CVR预测精度</strong>。具体子假设包括：<br>
+- DR的时间序列包含可被FFT分解的低频趋势和高频波动，分别对应长期定价策略和短期促销影响；<br>
+- 不同用户对同一商品的DR敏感度不同，需用户级纠偏（DCM-User）；<br>
+- 不同促销时段DR上限不同，需上下文级纠偏（DCM-Context）；<br>
+- 通过MSE监督回归辅助任务学习显式DR标签，可增强DR表征质量。<br>
+<br>
+<h2>4. 相关研究如何归类？关键论文/研究者是谁？<br>
+<br>
+相关研究可分为以下几类：<br>
+<br>
+| 类别 | 关键论文/研究者 |<br>
+|------|----------------|<br>
+| <strong>CVR预测基础问题</strong> | DS: Lyu et al. (2023) ESL框架；SSB: Huang et al. (2024) 半监督学习；延迟反馈: Chen et al. (2022) 标签校正 |<br>
+| <strong>价格因素建模</strong> | PASBR (Feng et al., 2023)：价格容忍度图建模；CoHHN (Zhang et al., 2022)：双通道兴趣+价格偏好；Umberto (2015)：价格敏感推荐系统 |<br>
+| <strong>折扣/促销行为研究</strong> | Zhao et al. (2015)：个性化促销推荐；Gong et al. (2018)：折扣决策机制；Qibtiyah et al. (2021)：折扣对复购意图影响 |<br>
+| <strong>时频分析/序列建模</strong> | FEDformer (Zhou et al., 2022)：频域增强分解Transformer；FAN (Ye et al., 2024)：非平稳序列频率自适应归一化 |<br>
+| <strong>注意力机制与行为建模</strong> | DIN (Zhou et al., 2018)：深度兴趣网络；MHTA (Vaswani et al., 2017)：多头注意力；PEPNet (Chang et al., 2023)：个性化先验注入 |<br>
+| <strong>多任务/电商推荐系统</strong> | MMOE (Ma et al., 2018)：多门控混合专家；MIND (Li et al., 2019)：多兴趣动态路由；MetaCVR (Pan et al., 2022)：元学习CVR |<br>
+<br>
+<h2>5. 核心方法是什么？<br>
+<br>
+DANet由两大子网络组成：<strong>兴趣偏好网络（Interest-Prefer Net, IPN）</strong> 和 <strong>折扣偏好网络（Discount-Prefer Net, DPN）</strong>。<br>
+<br>
+<strong>IPN</strong>: 使用Multi-Head Target-Attention（MHTA）对用户行为序列（点击、加购、购买）建模，输入包括用户特征x_u、商品特征x_i、上下文特征x_c和行为序列x_seq，输出h_I。<br>
+<br>
+<strong>DPN包含三个核心模块</strong>：<br>
+<br>
+1. <strong>时频变换模块（TFTM）</strong>: 对商品DR时间序列（T=400天）应用FFT转频域，经MLP滤波保留低频稳定信息，再IFFT回时域得到低频趋势x_l；残差网络提取高频分量x_h = x_d - x_l。32点FFT，复杂度O(N log N)。<br>
+<br>
+2. <strong>分布纠偏模块（DCM）</strong>:<br>
+   - <strong>DCM-User</strong>: Attribute-Attention机制，基于用户购买行为序列，将每个行为embedding拆分为折扣、品类、价格三个属性向量，以候选商品embedding为query计算注意力权重，输出h_Du捕捉用户DR偏好。<br>
+   - <strong>DCM-Context</strong>: 参考PEPNet思想，根据促销时段上下文特征动态组合偏置embedding，与DCM-User输出逐元素相乘，输出h_D = f(h_Du) ⊗ g(x_promo)，捕捉不同促销时段的周期性DR偏置。<br>
+<br>
+3. <strong>监督回归辅助任务</strong>: 对购买样本(y=1)构造显式DR标签d_n，用MSE损失监督DPN输出d̂_DPN，增强DR表征质量。<br>
+<br>
+<strong>最终预测</strong>: 将h_I、h_D、x_h、x_l拼接后经MLP输出CVR预测ŷ。总损失 = CE Loss + λ × MSE(d_n, d̂_DPN)（仅购买样本）。<br>
+<br>
+<h2>6. 实验如何设计？<br>
+<br>
+<strong>离线实验</strong>: 在内部测试集Tmall_test上重复5次，以AUC为指标。对比IPN-Base、DIN、PASBR、CoHHN，以及逐步添加各模块的消融实验。<br>
+<br>
+<strong>在线A/B测试</strong>: 在天猫APP首页轮流测试各模型，以pCVR（点击后转化率）和GMV（成交总额）为关键指标。<br>
+<br>
+<strong>消融实验</strong>: 逐步从IPN-Base添加DCM-User (A)、DCM-Context (B)、TFTM (C)、Auxiliary task (D)，观察各模块贡献。<br>
+<br>
+<strong>案例分析</strong>: 可视化TFTM的低频x_l和高频x_h信号，验证时频分解的有效性。<br>
+<br>
+<h2>7. 用了什么数据集？代码是否开源？<br>
+<br>
+<strong>数据集</strong>: Alibaba Tmall平台内部日志，时间范围2025/08/26-2025/11/25。<br>
+- 训练集 Tmall_train (08/26-11/10): 9.76M用户, 5.08M商品, 2.41B曝光, 100.12M点击, 5.08M购买<br>
+- 测试集 Tmall_test (11/11-11/25): 4.45M用户, 3.41M商品, 0.96B曝光, 33.39M点击, 1.67M购买<br>
+<br>
+<strong>数据不公开</strong>（因缺乏最终支付价格数据，据作者称无公开DR相关数据集）。<br>
+<br>
+<strong>代码开源</strong>: ✅ https://github.com/tangrc/DANet<br>
+<br>
+<strong>实现</strong>: 分布式TensorFlow 1.4，10个参数服务器 + 4块NVIDIA Tesla V100 16GB GPU。Item ID embedding=64, category/brand=32, 其他类别特征=8。8头注意力隐藏维度128，TFTM 32点FFT，Adagrad优化器lr=0.1，batch=1024。<br>
+<br>
+<h2>8. 结果是否支持假设？证据是否充分？<br>
+<br>
+<strong>支持假设，证据较为充分</strong>：<br>
+<br>
+| 模型 | 离线AUC (mean±std) | 在线pCVR增益 | 在线GMV增益 |<br>
+|------|-------------------|-------------|------------|<br>
+| IPN-Base | 0.8345±0.00062 | 0% | 0% |<br>
+| +DCM-User | 0.8361±0.00131 | +0.85% | +0.22% |<br>
+| +DCM-Context | 0.8357±0.00276 | +0.59% | +0.08% |<br>
+| +TFTM | 0.8389±0.00052 | +2.65% | +1.60% |<br>
+| +Auxiliary task | 0.8347±0.00048 | +0.30% | +0.02% |<br>
+| PASBR | 0.8370±0.00021 | +1.62% | +0.79% |<br>
+| CoHHN | 0.8337±0.00253 | -0.74% | -0.91% |<br>
+| DIN | 0.8343±0.00132 | -0.01% | -0.04% |<br>
+| <strong>DANet (全模块)</strong> | <strong>0.8479±0.00163</strong> | <strong>+3.63%</strong> | <strong>+2.23%</strong> |<br>
+<br>
+关键证据：<br>
+1. DANet全面超越所有对比方法（离线AUC比runner-up PASBR高1.61%，在线pCVR +3.63%，GMV +2.23%）；<br>
+2. 消融实验中TFTM贡献最大（+2.65% pCVR），验证了DR长周期趋势建模的重要性；<br>
+3. DCM-User和DCM-Context均有正向贡献，验证了用户和上下文纠偏的必要性；<br>
+4. 辅助任务虽单独贡献小但与其他模块组合后有协同效果；<br>
+5. TFTM的可视化案例验证了高低频信号分离的有效性。<br>
+<br>
+<strong>不足</strong>: 数据集不公开，无法复现离线实验；仅有单一数据集验证；在线折扣商品曝光率（PVR）提升47.32%的细节未充分阐述。<br>
+<br>
+<h2>9. 核心贡献是什么？<br>
+<br>
+1. <strong>首次提出用折扣率（DR）替代绝对价格建模CVR</strong>，并论证DR在电商场景中的三方交织影响机制（卖家策略、平台促销、用户敏感度），解决了价格分布差异大难以直接建模的痛点。<br>
+<br>
+2. <strong>提出DANet架构</strong>，包含三个创新模块：<br>
+   - TFTM：将FFT/IFFT时频分析引入CVR预测，自适应捕获商品DR长周期趋势和高频波动；<br>
+   - DCM（User + Context）：Attribute-Attention纠偏用户DR偏好偏差，动态偏置纠偏促销时段周期偏差；<br>
+   - 监督回归辅助任务：利用显式DR标签增强表征学习。<br>
+<br>
+3. <strong>在天猫APP大规模部署验证</strong>，离线AUC +1.61%，在线pCVR +3.63%，GMV +2.23%，响应时间增加<5%，证明工业可行性。<br>
+<br>
+<h2>10. 局限与下一步方向是什么？<br>
+<br>
+<strong>局限</strong>：<br>
+1. 数据集不公开（缺乏支付价格数据），影响学术可复现性和方法普适性验证；<br>
+2. 仅在天猫单一平台验证，跨平台/跨品类泛化性未验证；<br>
+3. DR定义依赖最终支付金额，在实时推荐场景中结算前DR不可知，需依赖历史预估；<br>
+4. 辅助任务单独贡献微弱（AUC仅+0.0002），其与主任务的交互机制未深入分析；<br>
+5. TFTM设置T=400天、32点FFT为固定参数，对不同品类/促销周期的自适应性有限；<br>
+6. 论文未讨论DR建模在非促销期间（日常售价期）的表现差异；<br>
+7. 未与更多最新CVR方法（如ESMM、MLEM等）对比。<br>
+<br>
+<strong>下一步方向</strong>：<br>
+1. 发布DR相关公开数据集或构建仿真数据集，推动学术研究；<br>
+2. 探索DR实时预估方法（在结算前预测用户实际DR），减少信息延迟；<br>
+3. 将TFTM扩展为自适应周期检测（如自动识别促销周期长度）；<br>
+4. 跨平台验证（如京东、拼多多等不同促销节奏的平台）；<br>
+5. 结合多任务学习框架（CTR+CVR+DR预测联合优化）；<br>
+6. 探索DR与用户价格敏感度的更深层交互建模（如因果推断视角）；<br>
+7. 研究DR建模在长效运营指标（复购率、LTV）上的影响。<br>
+<br>
+---<br>
+<br>
+<h2>业务启发<br>
+<br>
+<h3>可落地链路<br>
+1. <strong>折扣率特征工程</strong>: 在现有CVR/CTR模型中增加商品DR时间序列特征（近7天/30天/90天平均DR、DR波动率、DR趋势），低成本快速验证。<br>
+2. <strong>用户折扣偏好建模</strong>: 在用户行为序列模型中引入DR、品类、价格属性拆分的注意力机制，捕捉用户"贪便宜"vs"不敏感"的差异化偏好。<br>
+3. <strong>促销时段偏置注入</strong>: 在大促/日常不同时段动态调整模型偏置，类似PEPNet的个性化先验注入思路。<br>
+4. <strong>辅助任务增强表征</strong>: 对购买样本增加DR回归MSE辅助loss，增强折扣表征质量。<br>
+<br>
+<h3>业务价值<br>
+- pCVR提升3.63% → 直接提升转化流量效率，降低获客成本<br>
+- GMV提升2.23% → 直接增收，对千亿级平台意味着数亿级增量<br>
+- 折扣商品曝光率提升47.32% → 促销资源更精准分配，提升促销ROI<br>
+- 响应时间增加<5% → 工程代价可控<br>
+<br>
+<h3>风险成本<br>
+- <strong>数据风险</strong>: DR依赖最终支付金额，需解决结算前实时预估问题；支付数据涉及隐私合规<br>
+- <strong>工程成本</strong>: FFT计算开销需评估，但论文称32点FFT复杂度可控；需构建DR时间序列特征管道<br>
+- <strong>冷启动风险</strong>: 新商品无历史DR序列，需设计fallback策略（如品类平均DR）<br>
+- <strong>过拟合风险</strong>: 大促期间DR分布突变，需关注模型在极端场景的鲁棒性<br>
+<br>
+<h3>优先级<br>
+<strong>高优先级</strong>。DR建模直击电商核心痛点（价格/折扣是购买决策第一驱动力），在天猫已验证大规模效果，且思路可迁移至任何有促销机制的电商平台。<br>
+<br>
+<h3>建议动作<br>
+1. <strong>短期（1-2周）</strong>: 在离线训练数据中计算商品DR时间序列特征，加入现有CVR模型做快速A/B验证<br>
+2. <strong>中期（1-2月）</strong>: 实现TFTM模块，验证FFT时频分解在本平台DR序列上的效果<br>
+3. <strong>长期（3-6月）</strong>: 完整部署DANet架构，包括DCM-User/Context和辅助任务，在线A/B测试全模型效果<br>
+4. <strong>持续</strong>: 监控DR特征管道的数据质量和实时性，建立DR实时预估模块<br>
+
+        </div>
+        
+        <div class="ten-q-section" id="paper4">
+            <h3 id="论文-4--MESH--2607-12392v1">论文 4: MESH (2607.12392v1)</h3>
+            <h1>MESH: Scaling Up Retrieval with Heterogeneous Content Unification — 中文十问<br>
+<br>
+<strong>论文ID</strong>: 2607.12392v1  <br>
+<strong>标题</strong>: MESH: Scaling Up Retrieval with Heterogeneous Content Unification  <br>
+<strong>发表</strong>: arXiv 2026, Accepted at ACM RecSys 2026 Industry Track  <br>
+<strong>作者</strong>: Jiaxing Qu, Yilin Chen, Junpeng Hou, Jinfeng Rao, Olafur Gudmundsson, Sai Xiao, Huizhong Du  <br>
+<strong>单位</strong>: Pinterest Inc., San Francisco, CA, USA  <br>
+<br>
+---<br>
+<br>
+<h2>1. 解决什么问题？<br>
+<br>
+论文解决<strong>异构检索系统中的Scaling Bias of Heterogeneity（异构性缩放偏差）</strong>问题：在大规模统一检索（unified retrieval）系统中，增加模型容量带来的收益在不同内容层级（content tiers）之间分配不均——高频"evergreen"（常青）内容获得显著性能提升，而稀疏的"fresh"（新鲜）和"long-tail"（长尾）内容的收益远低于预期。这导致了一个<strong>rich-get-richer（富者愈富）</strong>的反馈循环：缩放计算主要服务于重定义热门item的表示，新内容被困在次优缩放区间，形成模型容量与生态系统整体健康之间的差距。<br>
+<br>
+<h2>2. 是否是新问题？<br>
+<br>
+<strong>部分新问题</strong>。缩放定律（scaling laws）本身在推荐系统领域已有研究（DRLM, DIN, RankMixer, OneTrans等），但这些工作主要关注全局指标随模型参数增长的预测性提升，忽略了<strong>intra-corpus分布偏移</strong>——即容量增益在不同内容层级间的不均匀分配。本文首次系统性地将这种不均匀性命名为"Scaling Bias of Heterogeneity"，并通过大规模实证研究量化了该偏差。因此，虽然缩放定律本身不是新问题，但<strong>异构性下的缩放公平性</strong>是一个新被识别和正式定义的挑战。<br>
+<br>
+<h2>3. 科学假设是什么？<br>
+<br>
+核心假设为：<strong>在全局耦合（globally coupled）的架构中，额外计算被高频内容不成比例地消耗，稀疏fresh内容的信号被交互层中的head特征统计特性有效掩盖；而通过对特征空间进行模块化域隔离（modular domain isolation），可以建立"受保护的梯度路径"（protected gradient path），从而减少稀疏item信号与高频engagement特征之间的干扰，实现更公平的缩放行为，使fresh内容的缩放指数显著提升。</strong><br>
+<br>
+具体量化假设：<br>
+- flat架构下 α_fresh ≈ 0.0059（几乎不缩放），α_evergreen ≈ 0.0274<br>
+- MESH框架下 α_fresh 提升至 0.0826，实现14×缩放指数改进<br>
+<br>
+<h2>4. 相关研究如何归类？关键论文/研究者是谁？<br>
+<br>
+可归为三类：<br>
+<br>
+<strong>（1）推荐系统缩放定律</strong>：<br>
+- DRLM (Zhou et al., 2018) — 早期证明深度/维度增长带来CTR预测增益<br>
+- DIN (Naumov et al., 2019) — Deep learning recommendation model<br>
+- RankMixer (Zhu et al., 2025) — Flat tokenization + massive Transformer backbone<br>
+- OneTrans (Zhang et al., 2025) — 统一特征交互与序列建模<br>
+- Longer (Chai et al., 2025) — 长序列建模缩放<br>
+<br>
+<strong>（2）模型去偏与统一化</strong>：<br>
+- PAL (Guo et al., 2019) — 位置偏置学习框架<br>
+- MeLU (Lee et al., 2019) — Meta-learning冷启动<br>
+- Two-tower retrieval (Yi et al., 2019) — 用户-物品分离表示<br>
+- DCNv2 (Wang et al., 2021), DHEN (Zhang et al., 2022) — 高阶特征交互<br>
+<br>
+<strong>（3）特征交互与高阶算子</strong>：<br>
+- FM (Rendle, 2010), FFM (Juan et al., 2016) — 因式分解<br>
+- AutoInt (Song et al., 2019) — 自注意力交互<br>
+- DHEN (Zhang et al., 2022) — 递归交叉机制，state-of-the-art<br>
+<br>
+关键研究者：Pinterest团队（Qu, Chen, Hou, Rao, Gudmundsson, Xiao, Du），以及Zhang et al. (DHEN/OneTrans)、Zhu et al. (RankMixer)、Wang et al. (DCNv2)等。<br>
+<br>
+<h2>5. 核心方法是什么？<br>
+<br>
+MESH（Modularized Effective Scaling for Heterogeneity）包含三大核心组件：<br>
+<br>
+<strong>（1）模块化子塔（Modularized Sub-Towers）+ Group-wise Manifold Initialization</strong>：<br>
+- 将异构信号（user、item、context）分区到3个独立的语义子塔<br>
+- 每个子塔先经LayerNorm独立的manifold初始化（group-wise inductive bias），确保item域的内部方差独立于user/context域，防止高频频率偏差污染fresh item的初始潜在表示<br>
+- 子塔之间通过TorchScript JIT实现inter-op并行推理，避免PyTorch串行调度导致的GPU利用率低下<br>
+<br>
+<strong>（2）域内语义信号放大器（Intra-tower Semantic Signal Amplifier）</strong>：<br>
+- 对稀疏实体（fresh item等）应用域特定encoder（使用DHEN的递归残差投影结构）<br>
+- 每层执行投影操作，反复将原始语义manifold编码回潜在状态，确保item特征在暴露于全局engagement偏差前被充分展开<br>
+- 这防止了"语义洗脱"（semantic washout）——即稀疏长尾特征在深度非线性变换中的语义坍塌<br>
+<br>
+<strong>（3）残差门控偏差纠正（Residual Gated Bias Correction, RGBC）</strong>：<br>
+- 在全局交叉前，提取清洁的内在亲和度（intrinsic affinity）：⟨z_user, z_item⟩（Hadamard积）<br>
+- 利用context token生成置信度门控 σ(w₂ · MLP_gate(z_context))，动态调制语义信号相对于环境偏差的强度<br>
+- 最终输入全局交叉：LayerNorm(σ · z_core + (1-σ) · z_residual)，在高偏差场景中context吸收engagement方差，让user-item塔聚焦内容效用<br>
+<br>
+<h2>6. 实验如何设计？<br>
+<br>
+<strong>（1）离线缩放定律分析</strong>：系统性地变化结构超参数（输入特征维度d、输出embedding维度L、DHEN交互模块数C），拟合power-law关系 α = PerformanceMetric · FLOPs^α_s，量化各层级（evergreen vs fresh）的缩放指数差异。<br>
+<br>
+<strong>（2）消融实验</strong>：依次移除语义放大器（替换为flat embedding层）、模块化交叉骨干（替换为等效参数MLP）、RGBC机制（替换为标准加法），验证各组件对α_fresh的贡献。<br>
+<br>
+<strong>（3）在线A/B测试</strong>：在Pinterest生产Related Pins平台部署，3周实验，流量随机化分控制组（flat模型）与处理组（MESH），测量：<br>
+- segment-specific engagements/impressions<br>
+- 漏斗效率（Survival Rate, CG@50）<br>
+- 用户留存（sessions >5min, SSv2, time spent）<br>
+- 推理效率（P99 latency, CPU利用率）<br>
+<br>
+<strong>（4）对比实验</strong>：将MESH与RankMixer（SOTA flat scaling架构）在两个规模（28M和135M参数）下对比，验证Scaling Bias是否为结构问题而非容量问题。<br>
+<br>
+<h2>7. 用了什么数据集？代码是否开源？<br>
+<br>
+<strong>数据集</strong>：<br>
+- Pinterest Related Pins平台的15天用户engagement日志<br>
+- 约1B训练记录（after sampling strategies）<br>
+- 离线评估集：独立3天窗口，5% off-policy uniform random traffic slice，450M test examples<br>
+- 分层为evergreen（>28天稳定engagement）和fresh（≤28天新发布）corpora<br>
+- 额外包含shopping long-tail语义分布<br>
+<br>
+<strong>代码</strong>：<strong>未开源</strong>。论文未提供代码或项目链接。<br>
+<br>
+<h2>8. 结果是否支持假设？证据是否充分？<br>
+<br>
+<strong>充分支持假设</strong>：<br>
+<br>
+- <strong>Scaling exponent改进</strong>：α_fresh从0.0059提升至0.0826（14×改进），α_evergreen从0.0274增至0.0160（更高效重分配）<br>
+- <strong>95% CI验证</strong>：bootstrap 1000次重采样，α_fresh under MESH CI=[0.0772, 0.0874]，下界仍远超flat baseline的0.0059<br>
+- <strong>梯度统计</strong>：flat baseline中evergreen L2梯度比fresh大12.4×；MESH下比率降至4.7×（62%改善）<br>
+- <strong>内容特征归因</strong>：MESH相对flat提升28%的Integrated Gradients attribution<br>
+- <strong>消融实验</strong>：语义放大器贡献最大（移除后α_fresh从0.0826降至0.0071），DHEN交叉骨干次之（-36.1%），RGBC第三（-21.9%）<br>
+- <strong>在线A/B</strong>：fresh +5.5% impressions/+4.9% repins；shopping +1.46% impressions/+2.33% repins；total +0.41% impressions/+0.96% repins<br>
+- <strong>漏斗效率</strong>：fresh warm-start CE +55.0%/SR +6.0%；shopping CE +58.2%/SR +4.36%；evergreen CE -21.0%（战略性trade-off而非退步）<br>
+- <strong>用户留存</strong>：sessions>5min +0.46%，SSv2 +0.19%<br>
+- <strong>推理效率</strong>：2.87× speedup（14.8ms vs 42.5ms P99）<br>
+- <strong>对比RankMixer</strong>： widening反而扩大性能差距而非缩小，验证Scaling Bias是结构问题<br>
+<br>
+<h2>9. 核心贡献是什么？<br>
+<br>
+1. <strong>识别并定义Scaling Bias of Heterogeneity</strong>：首次通过大规模实证研究揭示flat统一检索架构中的系统性缩放偏差——容量增益被高频内容不成比例地消费，fresh/long-tail信号被掩盖<br>
+2. <strong>提出MESH框架</strong>：模块化域隔离+语义信号放大+RGBC门控纠正的三层架构，建立受保护梯度路径，实现14×缩放指数改进<br>
+3. <strong>工业级验证</strong>：在billion-scale Pinterest Related Pins平台验证，fresh内容+5.5% repins/+55% funnel efficiency，用户留存+0.46%，推理2.87×加速，证明MESH可替代fragmented模型生态<br>
+<br>
+<h2>10. 局限与下一步方向是什么？<br>
+<br>
+<strong>局限</strong>：<br>
+- 评估仅依赖Pinterest proprietary数据，缺乏公共benchmark验证（公共数据集如MovieLens/Amazon Reviews在低模型容量下饱和，无法拟合可靠power-law曲线）<br>
+- evergreen corpus在MESH下CE下降21.0%，虽解释为战略性trade-off，但实际业务中需权衡<br>
+- 子塔数G=3（user/item/context）为固定选择，G=4的边际收益(+0.3%/+0.5%)不足以justify额外serving复杂度<br>
+- RGBC依赖context token的门控质量，极端context噪声下可能失效<br>
+- 仅验证了两塔检索架构（request-level修改），未涉及candidate-side（item tower）的端到端训练<br>
+<br>
+<strong>下一步方向</strong>：<br>
+- 模块化语义子塔为架构灵活性提供基础，可过渡到sophisticated neural retrieval和complex interaction layers<br>
+- 结构性域解耦支持strategic hybrid inference——高容量item塔可offload至offline batching/caching，提升大规模统一检索的效率与可持续性<br>
+- 面向generative和multi-modal discovery时代，MESH的模块性与缩放公平性原则提供实用架构框架<br>
+- 探索更多子塔分区策略和encoder选择（已验证MLP/DCNv2也可工作但幅度较小）<br>
+<br>
+---<br>
+<br>
+<h2>附：额外信息<br>
+<br>
+<h3>作者单位<br>
+Pinterest Inc., San Francisco, CA, USA（全部作者均来自同一公司）<br>
+<br>
+<h3>代码/项目链接<br>
+未提供代码或项目开源链接<br>
+<br>
+<h3>数据集<br>
+- Pinterest Related Pins平台私有数据（15天engagement日志+3天评估窗口）<br>
+- 约1B训练记录，450M测试样本<br>
+<br>
+<h3>业务启发<br>
+<br>
+<strong>可落地链路</strong>：<br>
+- 适用于所有存在异构内容分布（evergreen vs fresh vs long-tail）的推荐/检索系统，特别是电商（新商品发现）、内容平台（新内容冷启动）、广告（新广告主接入）<br>
+- 模块化子塔设计可直接融入现有two-tower架构，仅修改request-level（user tower）即可上线<br>
+- RGBC门控机制可用于任何存在context偏差的交叉阶段<br>
+<br>
+<strong>业务价值</strong>：<br>
+- Fresh内容+5.5% repins → 直接提升新内容分发效率，加速内容生态健康<br>
+- Shopping长尾+1.46% impressions → 电商场景下新品/小众商品曝光提升<br>
+- 推理2.87×加速 → 降低serving成本或支撑更大模型规模<br>
+- 用户留存+0.46% → 长期用户价值提升<br>
+<br>
+<strong>风险成本</strong>：<br>
+- Evergreen CE下降21%需要业务权衡——热门内容过度曝光的减少可能影响短期指标<br>
+- 模块化架构增加训练/部署复杂度（3个子塔+RGBC+TorchScript并行）<br>
+- 需要高质量的context特征来支撑RGBC门控<br>
+<br>
+<strong>优先级</strong>：<strong>高</strong> — 对于任何有fresh/long-tail分发瓶颈的平台，MESH提供了一条可立即落地的架构改进路径<br>
+<br>
+<strong>建议动作</strong>：<br>
+1. 优先在现有two-tower架构的request端引入模块化子塔分区+group-wise LayerNorm<br>
+2. 为sparse item特征添加DHEN-based语义放大器<br>
+3. 在全局交叉层前引入RGBC或类似的context门控<br>
+4. 利用TorchScript JIT实现inter-op并行推理优化<br>
+5. A/B测试时重点监控fresh/long-tail segment指标而非仅看全局<br>
+
+        </div>
+        
+        <div class="ten-q-section" id="paper5">
+            <h3 id="论文-5--Proximity-Features--2607-12246v1">论文 5: Proximity Features (2607.12246v1)</h3>
+            <h1>论文十问：2607.12246v1<br>
+<br>
+<strong>标题：Proximity Features: Privacy-Compliant Cold-Start Personalization at Airbnb</strong><br>
+<br>
+---<br>
+<br>
+<h2>1. 解决什么问题？<br>
+<br>
+解决双边市场（如 Airbnb）中冷启动用户的个性化问题：大量用户因未登录、无历史行为或隐私合规限制而无法使用传统的 user_id 或 cookie-based visitor_id 特征，导致搜索排序、推荐、营销等 ML 模型无法提供有效个性化服务。正文明确指出："cold-start refers to both cases: users for whom individual identifiers are inaccessible and users with insufficient behavioral history."<br>
+<br>
+---<br>
+<br>
+<h2>2. 是否是新问题？<br>
+<br>
+问题本身（冷启动推荐）是经典问题，但本文提出了<strong>新的约束和场景组合</strong>：<br>
+- <strong>隐私合规约束</strong>：GDPR 要求 cookie-tracking 需明确授权，第三方 cookie 限制日益收紧，传统 ID-based 方法在匿名用户场景下失效<br>
+- <strong>无需个体标识符</strong>：系统在推理时完全不依赖 user_id 或 cookie-based visitor_id<br>
+- <strong>群体聚合而非个体追踪</strong>：通过地理群体聚合信号替代个体行为特征<br>
+<br>
+相关工作章节指出：现有方法（Geohash、S2、H3）使用固定分辨率，无法适应用户密度的极端变化；KD-trees 需 O(n log n) 构建成本；冷启动推荐常用 content-based filtering、hybrid models，但都需要个体级数据。本文填补了"无个体标识符 + 隐私合规"这一空白。<br>
+<br>
+---<br>
+<br>
+<h2>3. 科学假设是什么？<br>
+<br>
+作者的核心假设：<strong>来自同一地理区域的用户表现出相关的旅行偏好——他们倾向于搜索和预订相似的目的地、偏好相似的价格区间、共享人口统计特征</strong>。通过将约 1,000 名用户聚合到 proximity bucket 中，可以为冷启动用户提供有效的个性化特征，且无需个体级标识符。<br>
+<br>
+---<br>
+<br>
+<h2>4. 相关研究如何归类？关键论文/研究者是谁？<br>
+<br>
+从 Related Work 章节提取：<br>
+<br>
+| 类别 | 关键方法/论文 | 研究者 |<br>
+|------|--------------|--------|<br>
+| <strong>空间索引</strong> | Geohash、Google S2、Uber H3 | Niemeyer (2008), Google (2017), Brodsky (2018) |<br>
+| <strong>自适应分区</strong> | KD-trees、Quadtrees、Adaptive Mesh Refinement | Bentley (1975), Finkel & Bentley (1974), Berger & Oliger (1984) |<br>
+| <strong>冷启动推荐</strong> | Content-based filtering、Hybrid models | Schein et al. (2002), Lam et al. (2008), Pazzani & Billsus (2007), Burke (2002) |<br>
+| <strong>Airbnb 搜索排序</strong> | Deep Learning for Search、Embedding-based Personalization | Haldar et al. (2020), Grbovic & Cheng (2018) |<br>
+| <strong>隐私保护 ML</strong> | Federated Learning、Differential Privacy、k-Anonymity | McMahan et al. (2017), Dwork et al. (2006), Sweeney (2002) |<br>
+| <strong>Geo-IP 应用</strong> | IP Geolocation Databases | Poese et al. (2011) |<br>
+<br>
+---<br>
+<br>
+<h2>5. 核心方法是什么？<br>
+<br>
+<strong>Proximity Features</strong> 是一个基于聚合 geo-IP 信号的特征系统，核心包含三部分：<br>
+<br>
+1. <strong>Proximity Key 构造</strong>：<code>key = base64(⌊lat × s⌋, ⌊lng × s⌋, h(ip) mod b)</code>，其中 s 是地理粒度标量，b 是 IP hash 桶数量。proximity key 作为 user_id 的隐私安全替代，标识约 1,000 用户的地理群体。<br>
+<br>
+2. <strong>自适应聚类算法（两阶段）</strong>：<br>
+   - Phase 1（密集区域）：对用户数 ≥ T 且 IP 数 ≥ n_ip_min 的坐标，使用 IP hash 细分为多个 bucket<br>
+   - Phase 2（稀疏区域）：多轮粗化，从精细到粗糙迭代，直到每个 tile 满足最小用户数约束<br>
+<br>
+3. <strong>特征计算与服务</strong>：每日聚合短期/长期行为特征（目的地分布、价格偏好、搜索参数等），通过 KV 存储提供实时服务，推理时仅需 client_ip。<br>
+<br>
+---<br>
+<br>
+<h2>6. 实验如何设计？<br>
+<br>
+<strong>离线评估</strong>：<br>
+- 数据集：Airbnb 内部 90 天用户行为数据，后续 90 天预订作为标签<br>
+- 评估指标：Recall@k（k=1,3,5）用于目的地预测<br>
+- 用户群体：low-activity users（低活跃用户）<br>
+<br>
+<strong>在线 A/B 实验</strong>：<br>
+- 对比设置：Treatment（含 proximity features）vs Control（不含 proximity features）<br>
+- 显著性水平：95% 置信度<br>
+- 实验时间跨度：2024 年 12 月至 2026 年 3 月<br>
+<br>
+<strong>消融实验</strong>：对 Destination Intent Model V2 进行离线消融，添加 proximity features 提升 Top-3 accuracy 约 2%。<br>
+<br>
+---<br>
+<br>
+<h2>7. 用了什么数据集？代码是否开源？<br>
+<br>
+<strong>数据集</strong>：<br>
+- Airbnb 内部数据：站点访问日志、Geo-IP 数据库、预订/浏览行为数据<br>
+- 用户群体：low-activity users（低活跃用户是主要目标群体）<br>
+- 时间窗口：观察期 90 天，标签期后续 90 天<br>
+<br>
+<strong>代码/项目链接</strong>：<br>
+- ❌ 未开源代码<br>
+- 论文为工业应用案例，基于 Airbnb 生产系统<br>
+<br>
+---<br>
+<br>
+<h2>8. 结果是否支持假设？证据是否充分？<br>
+<br>
+<strong>离线结果</strong>（Table 1）：<br>
+| Feature | R@1 | R@3 | R@5 |<br>
+|---------|-----|-----|-----|<br>
+| Booked geos (365d) | 12.06% | 22.88% | 29.14% |<br>
+| Viewed geos (7d) | 11.81% | 23.12% | 30.03% |<br>
+<br>
+Proximity features 单独即可达到约 29-30% 的 Recall@5，证明地理群体信号具有强预测能力。<br>
+<br>
+<strong>在线 A/B 结果</strong>（Table 2）：<br>
+| Surface | Metric | Lift |<br>
+|---------|--------|------|<br>
+| Marketing Landing Pages | Global Bookings | +0.011% |<br>
+| Marketing Landing Pages | <strong>First-time Bookers</strong> | <strong>+2.0%</strong> |<br>
+| Marketing Landing Pages | Searchers w/ Dates | +0.054% |<br>
+| AutoSuggest | Global Bookings | +0.16% |<br>
+| AutoSuggest | <strong>First-time Bookings</strong> | <strong>+0.33%</strong> |<br>
+<br>
+<strong>用户群体分析</strong>（Figure 3）：<br>
+- Never-Booked（65% 流量）：+0.33% booking lift<br>
+- Dormant（11% 流量）：+0.27% booking lift<br>
+- Active（23% 流量）：+0.15% booking lift<br>
+<br>
+<strong>结论</strong>：结果充分支持假设——对无历史或历史陈旧的用户（Never-Booked、Dormant），proximity features 提供了显著的增量价值；首次预订者提升 +2.0% 和 +0.33% 直接证明冷启动场景的有效性。<br>
+<br>
+---<br>
+<br>
+<h2>9. 核心贡献是什么？<br>
+<br>
+从 Conclusion 提取：<br>
+<br>
+1. <strong>新特征系统</strong>：Proximity Features 引入 proximity key——一个本地地理群体的紧凑标识符——作为 user_id 的隐私安全替代，使 ML 特征管线可以在无需持久个体标识符的情况下为匿名和冷启动用户提供个性化特征。<br>
+<br>
+2. <strong>隐私合规设计</strong>：系统完全基于聚合的、经授权的 geo-IP 数据运行，推理时无需 user_id 或 cookie-based visitor_id，对第三方 cookie 废弃具有韧性，并设计为符合 GDPR 等隐私法规。<br>
+<br>
+---<br>
+<br>
+<h2>10. 局限与下一步方向是什么？<br>
+<br>
+<strong>局限性</strong>（正文 Conclusion）：<br>
+1. <strong>稀疏区域精度下降</strong>：粗化算法在稀疏区域产生更大的 bucket，牺牲地理精度，可能降低农村用户的特征相关性<br>
+2. <strong>Geo-IP 精度有限</strong>：内部分析显示城市级准确率约 80%，部分用户会被分配到地理上不正确的 bucket<br>
+3. <strong>个体错配影响有限</strong>：由于特征是群体聚合的，个体错配对群体级信号质量影响较小<br>
+<br>
+<strong>未来方向</strong>：<br>
+1. <strong>分层 proximity keys</strong>：为同一 IP 分配多个不同地理分辨率的 key，提供多尺度特征<br>
+2. <strong>版本化 key 分区</strong>：优雅处理 geo-IP 数据库随时间的自然变化<br>
+3. <strong>扩展到更多场景</strong>：Nearby Search、营销归因模型<br>
+4. <strong>实时 proximity key 更新</strong>：捕获日内流量模式<br>
+<br>
+---<br>
+<br>
+<h2>附录信息<br>
+<br>
+<h3>作者单位<br>
+Airbnb（从论文内容和引用风格推断为工业界论文，正文未明确列出作者信息）<br>
+<br>
+<h3>代码/项目链接<br>
+- ❌ 未开源<br>
+<br>
+<h3>数据集<br>
+- Airbnb 内部生产数据（站点访问日志、Geo-IP 数据库、用户行为数据）<br>
+- 无公开数据集<br>
+<br>
+---<br>
+<br>
+<h2>业务启发<br>
+<br>
+<h3>可落地链路<br>
+1. <strong>冷启动用户个性化</strong>：适用于电商平台、OTA、内容平台等需要为新用户/匿名用户提供个性化推荐的场景<br>
+2. <strong>隐私合规场景</strong>：在 GDPR/CCPA 等隐私法规约束下，无需 cookie/用户 ID 即可提供基础个性化<br>
+3. <strong>第三方 cookie 废弃应对</strong>：作为替代方案，无需依赖即将被淘汰的第三方 cookie<br>
+<br>
+<h3>业务价值<br>
+| 指标 | 提升幅度 | 业务意义 |<br>
+|------|----------|----------|<br>
+| 首次预订者 | +2.0% | 直接提升新用户转化 |<br>
+| 全球预订量 | +0.011%~0.16% | 规模化后收益显著 |<br>
+| 搜索转化 | +0.054% | 提升用户参与度 |<br>
+<br>
+<h3>风险成本<br>
+1. <strong>Geo-IP 数据质量依赖</strong>：需持续维护高质量的 Geo-IP 数据库<br>
+2. <strong>稀疏区域效果受限</strong>：农村/低密度区域特征精度下降<br>
+3. <strong>VPN 用户处理</strong>：VPN 用户会被分配到 VPN 出口节点的 bucket，可能降低相关性<br>
+<br>
+<h3>优先级建议<br>
+- <strong>高优先级</strong>：对于冷启动用户占比高（>50%）的平台，如广告着陆页、SEO 流量场景<br>
+- <strong>中优先级</strong>：对于有部分历史行为的用户，作为现有特征的补充<br>
+- <strong>低优先级</strong>：对于活跃用户占主导的场景<br>
+<br>
+<h3>建议动作<br>
+1. <strong>技术可行性评估</strong>：确认 Geo-IP 数据源覆盖率和精度<br>
+2. <strong>A/B 实验设计</strong>：选择冷启动流量高的入口页面进行小规模测试<br>
+3. <strong>特征工程</strong>：设计短/长期行为聚合特征（目的地分布、价格偏好、搜索参数等）<br>
+4. <strong>隐私合规审查</strong>：与法务确认聚合特征是否符合本地隐私法规<br>
+5. <strong>系统架构</strong>：搭建 offline pipeline（聚类 + 特征聚合）和 online serving API<br>
+<br>
+---<br>
+<br>
+<em>文档生成时间：2026-07-15</em><br>
+
+        </div>
+        
+        <!-- 附录 -->
+        <h2 id="附录">附录</h2>
+        
+        <h3 id="本周论文统计">本周论文统计</h3>
+        <div class="trend-item">总论文数: 300篇</div>
+        <div class="trend-item">主要分类: cs.IR (信息检索), cs.LG (机器学习)</div>
+        <div class="trend-item">工业界论文占比: 约15%</div>
+        <div class="trend-item">中国作者论文占比: 约25%</div>
+        
+        <h3 id="推荐阅读">推荐阅读</h3>
+        <p>本周Top 5论文均来自工业界实践，涵盖生成式推荐、轻量化架构、转化率预测、检索优化和隐私合规等方向，代表了推荐系统领域的最新实践趋势。</p>
+        
+        <p style="color: var(--text-secondary); margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <em>报告生成时间: 2026-07-15 | 数据来源: arXiv.org</em>
+        </p>
+    </main>
+    
+    <script>
+        function toggleSection(element) {
+            const section = element.parentElement;
+            section.classList.toggle('collapsed');
+        }
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+<button class="toc-toggle-btn" onclick="toggleToc()">目录</button><script>
+function toggleToc() {
+    const sidebar = document.querySelector('.toc-sidebar');
+    sidebar.classList.toggle('collapsed');
+    sidebar.classList.toggle('expanded');
+}
+</script></body>
+</html>
