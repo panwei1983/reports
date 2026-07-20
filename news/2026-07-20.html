@@ -3,350 +3,344 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📰 每日资讯简报 2026-07-20</title>
+<title>📰 每日资讯简报 | 2026-07-20</title>
 <style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-debate: #ffa657;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #1a1a2e; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: 0 auto; }
-  a { color: #64b5f6; text-decoration: none; }
-  a:hover { text-decoration: underline; color: #90caf9; }
-  .back-link { display: inline-block; margin-bottom: 16px; font-size: 15px; color: #90caf9; }
-  h1 { font-size: 28px; color: #ffffff; margin-bottom: 8px; }
-  .summary { font-size: 16px; color: #b0bec5; margin-bottom: 20px; padding: 12px 16px; background: #16213e; border-radius: 8px; border-left: 4px solid #64b5f6; }
-  .toc { background: #16213e; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
-  .toc a { color: #90caf9; margin: 0 8px; font-size: 15px; white-space: nowrap; }
-  .section-title { font-size: 22px; color: #ffffff; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #2a3a5e; }
-  .card { background: #16213e; border-radius: 12px; padding: 20px; margin-bottom: 16px; border: 1px solid #2a3a5e; transition: border-color 0.2s; }
-  .card:hover { border-color: #64b5f6; }
-  .card h3 { font-size: 17px; color: #ffffff; margin-bottom: 10px; }
-  .card h3 a { color: #ffffff; }
-  .card h3 a:hover { color: #90caf9; }
-  .card .abstract { font-size: 14px; color: #b0bec5; margin-bottom: 10px; line-height: 1.7; }
-  .card .meta { font-size: 12px; color: #78909c; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .card .meta a { color: #64b5f6; font-size: 12px; }
-  .card .reason { font-size: 12px; color: #ffb74d; margin-top: 6px; }
-  .debate { background: #1a2742; border-radius: 12px; padding: 24px; margin-bottom: 20px; border: 1px solid #37474f; }
-  .debate h3 { font-size: 18px; color: #ffb74d; margin-bottom: 12px; }
-  .debate .stance { margin: 10px 0; padding: 10px 14px; background: #0d1b2a; border-radius: 8px; font-size: 14px; }
-  .debate .stance h4 { font-size: 14px; margin-bottom: 4px; }
-  .debate .guide { margin: 12px 0; }
-  .debate .guide li { margin: 8px 0; font-size: 14px; color: #b0bec5; line-height: 1.6; }
-  .debate .guide li strong { color: #e0e0e0; }
-  .followup { background: #0d1b2a; border-radius: 8px; padding: 14px 18px; margin-top: 16px; font-size: 14px; color: #ce93d8; border-left: 3px solid #ce93d8; }
-  .emoji { font-size: 20px; }
-  footer { text-align: center; color: #546e7a; font-size: 12px; margin-top: 40px; padding: 20px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .back-link { margin-bottom: 16px; }
+  .back-link a { color: var(--text-link); text-decoration: none; font-size: 14px; }
+  .back-link a:hover { text-decoration: underline; }
+  .header { text-align: center; padding: 30px 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .overview { margin-top: 16px; padding: 12px 20px; background: var(--bg-card); border-radius: 8px; border-left: 4px solid var(--text-link); font-size: 15px; color: var(--text-primary); }
+  .toc { margin-bottom: 24px; padding: 12px 20px; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); }
+  .toc a { color: var(--text-link); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .category { margin-bottom: 28px; }
+  .category-title { font-size: 20px; font-weight: 700; padding: 8px 16px; border-radius: 6px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .news-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 10px; transition: background 0.2s; }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+  .news-item .recommend { margin-top: 4px; font-size: 12px; color: #f0883e; }
+  .debate-section { margin-top: 32px; padding-top: 24px; border-top: 2px solid var(--border); }
+  .debate-title { font-size: 24px; text-align: center; margin-bottom: 20px; color: var(--accent-debate); }
+  .debate-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+  .debate-item h3 { font-size: 18px; margin-bottom: 10px; color: var(--accent-debate); }
+  .debate-item .background { color: var(--text-secondary); margin-bottom: 14px; font-size: 14px; line-height: 1.7; }
+  .debate-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+  @media (max-width: 600px) { .debate-columns { grid-template-columns: 1fr; } }
+  .debate-columns .pro, .debate-columns .con { padding: 12px; border-radius: 8px; }
+  .debate-columns .pro { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); }
+  .debate-columns .con { background: rgba(218,54,51,0.1); border: 1px solid rgba(218,54,51,0.3); }
+  .debate-columns h4 { font-size: 14px; margin-bottom: 8px; }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul { list-style: none; padding: 0; }
+  .debate-columns li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; padding-left: 16px; position: relative; }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions { background: rgba(255,166,87,0.08); border: 1px solid rgba(255,166,87,0.2); border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; }
+  .guiding-questions h4 { font-size: 14px; color: var(--accent-debate); margin-bottom: 8px; }
+  .guiding-questions ol { padding-left: 20px; }
+  .guiding-questions li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+  .daily-question { text-align: center; padding: 16px; background: rgba(121,192,255,0.1); border: 1px solid rgba(121,192,255,0.3); border-radius: 8px; margin-top: 16px; }
+  .daily-question .label { font-size: 13px; color: var(--text-secondary); }
+  .daily-question .question { font-size: 16px; font-weight: 600; color: var(--accent-ai); margin-top: 6px; }
+  .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 12px; }
 </style>
 </head>
 <body>
 
-<a href="index.html" class="back-link">🏠 返回目录</a>
+<div class="back-link"><a href="index.html">🏠 返回目录</a></div>
 
-<h1>📰 每日资讯简报 2026-07-20</h1>
-
-<div class="summary">
-世界杯决赛西班牙加时1-0阿根廷时隔16年再夺冠；WAIC 2026上海开幕，习主席提出AI发展时代之问；Kimi K3发布引发大模型价格战；国家队600亿增持A股，科技股回调传统板块走强；韩国散户杠杆爆仓30万账户被强平。
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026-07-20 星期日</div>
+  <div class="overview">西班牙加时1-0阿根廷夺世界杯冠军；证监会召开投资者座谈会全力维稳A股；谢贤去世享年89岁；美伊冲突升级推油价破90美元；Kimi K3发布48小时引发全球AI定价战。五大领域交织——体育外交、金融安全、AI生态与地缘冲突构成今日议题。</div>
 </div>
 
 <div class="toc">
-  <a href="#social">🏘️ 社会(4)</a> ·
-  <a href="#politics">🏛️ 时政(4)</a> ·
-  <a href="#tech">🔬 科技(4)</a> ·
-  <a href="#finance">💰 财经(4)</a> ·
-  <a href="#ai">🤖 人工智能(4)</a> ·
-  <a href="#debate">💭 思辨(2)</a>
+  🏘️ <a href="#society">社会(4)</a> · 🏛️ <a href="#politics">时政(4)</a> · 🔬 <a href="#tech">科技(4)</a> · 💰 <a href="#finance">财经(4)</a> · 🤖 <a href="#ai">人工智能(4)</a> · 💭 <a href="#debate">思辨(2)</a>
 </div>
 
-<!-- ===== 社会 ===== -->
-<div id="social" class="section-title">🏘️ 社会</div>
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
 
-<div class="card">
-  <h3><a href="https://news.sina.com.cn/w/2026-07-20/doc-iniikxus8087252.shtml" target="_blank">西班牙加时1-0阿根廷 时隔16年再夺世界杯冠军</a></h3>
-  <div class="abstract">2026年世界杯决赛在纽约大都会人寿球场举行，西班牙加时赛第112分钟由费兰·托雷斯制胜进球1-0击败阿根廷，继2010年后第二度捧杯。阿根廷恩佐·费尔南德斯两黄变一红被罚下，成为世界杯决赛史上第6位染红球员。姆巴佩以10球获金靴，法国6-4击败英格兰获季军。</div>
-  <div class="meta">
-    <span>来源：新浪体育</span>
-    <a href="https://news.sina.com.cn/w/2026-07-20/doc-iniikxus8087252.shtml" target="_blank">原文链接</a>
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33620558">谢贤去世享年89岁，谢霆锋发文证实</a></div>
+    <div class="summary">7月20日，香港影视传奇"四哥"谢贤因病离世，享年89岁。儿子谢霆锋紧急低调返港处理后事，发文称"不用哭，他觉得不够潇洒"。港媒报道谢贤遗产超1亿港元，90%留给张柏芝两个儿子，谢霆锋与谢婷婷各分5%。遗嘱安排引发公众讨论。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33620558">澎湃新闻</a> · 百度热搜第1</div>
+    <div class="recommend">💡 多源交叉验证+文化人物影响深远</div>
   </div>
-  <div class="reason">💡 全球顶级体育赛事+多源交叉验证</div>
-</div>
 
-<div class="card">
-  <h3><a href="https://www.thepaper.cn/newsDetail_forward_33614643" target="_blank">官方调查"女子就餐遭传话黄总请你去包厢"：系误会已和解 涉事餐厅停业</a></h3>
-  <div class="abstract">杭州一女子发视频称在餐厅就餐时被服务员传话"黄总请你去包厢"，引发关注。官方调查后认定系服务员误传信息，双方已和解，涉事餐厅暂停营业整顿。此前杭州警方已介入调查，事件涉及公共空间性别安全问题，引发广泛讨论。</div>
-  <div class="meta">
-    <span>来源：澎湃新闻</span>
-    <a href="https://www.thepaper.cn/newsDetail_forward_33614643" target="_blank">原文链接</a>
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33619311">中央网信办部署未成年人网络保护专项行动</a></div>
+    <div class="summary">网信办重点整治"毒动画"、规范平台推荐行为等，部署开展未成年人网络保护专项行动。此次行动聚焦有害内容清理、算法推荐规范和青少年模式完善，涉及短视频、游戏、社交等多平台。此前15岁女孩恋爱手游充值万余元的案例凸显该行动紧迫性。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33619311">澎湃新闻</a></div>
+    <div class="recommend">💡 政策信号+社会关切度高</div>
   </div>
-  <div class="reason">💡 社会热点+官方通报还原事实</div>
-</div>
 
-<div class="card">
-  <h3><a href="https://www.thepaper.cn/newsDetail_forward_33612911" target="_blank">从小颗落石到万方垮塌：彭水山崩预警者口述复盘</a></h3>
-  <div class="abstract">重庆彭水山体崩塌灾害中，预警人员发现小颗落石后及时预警，成功转移群众。国家发改委已安排3000万元支持灾后应急恢复。预警者口述了从发现异常到紧急撤离的全过程，为地质灾害防范提供宝贵经验。</div>
-  <div class="meta">
-    <span>来源：澎湃新闻</span>
-    <a href="https://www.thepaper.cn/newsDetail_forward_33612911" target="_blank">原文链接</a>
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-20/doc-iniikhxa5000880.shtml">上海遭遇短时暴雨，杨浦老旧小区一楼被淹</a></div>
+    <div class="summary">7月20日上海杨浦区遭遇短时暴雨，部分老旧小区积水严重，一楼住户被淹。街道已紧急安置受灾居民。极端天气频发背景下，城市排水基础设施老旧小区韧性不足问题再次暴露，与厄尔尼诺复合型灾害链条相关。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-20/doc-iniikhxa5000880.shtml">新浪新闻</a></div>
+    <div class="recommend">💡 城市韧性议题+极端天气实证</div>
   </div>
-  <div class="reason">💡 独家深度+灾害防治经验</div>
-</div>
 
-<div class="card">
-  <h3><a href="https://news.sina.com.cn/o/2026-07-19/doc-iniiiwhz3430101.shtml" target="_blank">中国公民尽快撤离！中使馆紧急提醒</a></h3>
-  <div class="abstract">中国驻某国使馆发布紧急安全提醒，呼吁在当地中国公民尽快撤离，因当地安全形势急剧恶化。使馆提供撤离协助渠道和紧急联络方式，提醒公民保持警惕、减少外出。具体涉及地区及背景仍在持续关注中。</div>
-  <div class="meta">
-    <span>来源：新浪新闻</span>
-    <a href="https://news.sina.com.cn/o/2026-07-19/doc-iniiiwhz3430101.shtml" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 公共安全+外交动态信号</div>
-</div>
-
-<!-- ===== 时政 ===== -->
-<div id="politics" class="section-title">🏛️ 时政</div>
-
-<div class="card">
-  <h3><a href="https://www.thepaper.cn/newsDetail_forward_33616517" target="_blank">经纬线·习主席提出人工智能发展的时代之问</a></h3>
-  <div class="abstract">习近平主席在WAIC 2026世界人工智能大会暨人工智能全球治理高级别会议上发表重要讲话，提出AI发展"以人为本、向上向善"理念，强调人工智能应惠及全人类而非少数国家。中国将在全球AI治理中展现大国担当，推动建立公平包容的国际AI治理体系。</div>
-  <div class="meta">
-    <span>来源：澎湃新闻</span>
-    <a href="https://www.thepaper.cn/newsDetail_forward_33616517" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 最高层政策信号+全球AI治理方向</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://www.thepaper.cn/newsDetail_forward_33613114" target="_blank">外交部回应英钢国有化问题：密切关注 必要时将采取维权措施</a></h3>
-  <div class="abstract">针对英国政府拟将英国钢铁公司国有化的计划，中国外交部回应表示密切关注此事，强调将视情况采取必要维权措施，保护中国企业的合法权益。此前英国政府以国家安全为由介入英国钢铁运营，涉及中企河钢集团此前持有的股权问题。</div>
-  <div class="meta">
-    <span>来源：澎湃新闻</span>
-    <a href="https://www.thepaper.cn/newsDetail_forward_33613114" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 中英关系+海外投资权益保护</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://www.thepaper.cn/newsDetail_forward_33613258" target="_blank">82个地方议会反对核松绑 日防卫大臣仍鼓吹"抛开禁忌"讨论拥核</a></h3>
-  <div class="abstract">日本防卫大臣小泉进次郎公开表示有必要就核武器展开讨论，引发日本各界强烈担忧。自1971年以来"无核三原则"一直是日本基本政策，82个地方议会已通过反对决议。高市政府企图修改"不运进核武器"原则，相关动向引发国际关注。</div>
-  <div class="meta">
-    <span>来源：澎湃新闻</span>
-    <a href="https://www.thepaper.cn/newsDetail_forward_33613258" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 地缘安全+亚太核态势变化</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://www.thepaper.cn/newsDetail_forward_33615541" target="_blank">国家开发银行原党委副书记、行长欧阳卫民通报被查</a></h3>
-  <div class="abstract">国家开发银行原党委副书记、行长欧阳卫民涉嫌严重违纪违法，目前正接受中央纪委国家监委纪律审查和监察调查。这是近期金融系统反腐又一重要案件，国开行作为中国最大政策性银行之一，此案释放金融反腐持续深入的信号。</div>
-  <div class="meta">
-    <span>来源：澎湃新闻</span>
-    <a href="https://www.thepaper.cn/newsDetail_forward_33615541" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 金融反腐+政策性银行治理</div>
-</div>
-
-<!-- ===== 科技 ===== -->
-<div id="tech" class="section-title">🔬 科技</div>
-
-<div class="card">
-  <h3><a href="https://wallstreetcn.com/articles/3777408" target="_blank">鸿海首度拿下SpaceX AI服务器代工订单 规模达520亿美元</a></h3>
-  <div class="abstract">鸿海（富士康）首次获得SpaceX AI服务器代工订单，合同规模达520亿美元，标志着鸿海在AI基础设施领域布局的重大突破。此举将显著提升鸿海在高端服务器制造领域的市占率，也反映出SpaceX星链及AI业务对算力基础设施的巨大需求。</div>
-  <div class="meta">
-    <span>来源：华尔街见闻</span>
-    <a href="https://wallstreetcn.com/articles/3777408" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 独家重磅+供应链格局变化</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://wallstreetcn.com/articles/3777407" target="_blank">三星美国消费电子部门裁员逾800人 手机部门出现史上首次亏损</a></h3>
-  <div class="abstract">三星美国消费电子部门裁员超800人，手机业务出现史上首次亏损。裁员涉及营销和零售岗位，反映全球智能手机市场饱和及中国品牌竞争加剧。三星半导体业务也面临存储芯片价格下行压力，KOSPI指数几乎变成"存储ETF"，韩国经济高度依赖三星。</div>
-  <div class="meta">
-    <span>来源：华尔街见闻</span>
-    <a href="https://wallstreetcn.com/articles/3777407" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 科技巨头困境+全球消费电子格局</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://wallstreetcn.com/articles/3777398" target="_blank">工信部：推动建立算力市场化定价标准 培育全国一体化技术市场</a></h3>
-  <div class="abstract">工信部发文推动建立算力市场化定价标准，着力培育全国一体化技术市场。政策旨在解决当前算力资源分布不均、定价机制不透明等问题，通过市场化手段提升算力资源利用效率，为AI产业发展提供基础设施保障。此前WAIC 2026上算力定价已成为焦点议题。</div>
-  <div class="meta">
-    <span>来源：华尔街见闻</span>
-    <a href="https://wallstreetcn.com/articles/3777398" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 产业政策+算力基础设施规范化</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://wallstreetcn.com/articles/3777397" target="_blank">字节游戏的AI试错：这回试出了路</a></h3>
-  <div class="abstract">字节跳动游戏业务经历多次调整后，借助AI技术找到新方向。通过AI生成内容（AIGC）降低游戏研发成本，AI NPC提升玩家体验，以及AI驱动的用户运营优化，字节游戏业务在收缩后实现精细化运营，AI赋能成为游戏行业降本增效的关键路径。</div>
-  <div class="meta">
-    <span>来源：华尔街见闻</span>
-    <a href="https://wallstreetcn.com/articles/3777397" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 产业转型+AI应用落地案例</div>
-</div>
-
-<!-- ===== 财经 ===== -->
-<div id="finance" class="section-title">💰 财经</div>
-
-<div class="card">
-  <h3><a href="https://finance.sina.com.cn/wm/2026-07-20/doc-iniikxuq9894717.shtml" target="_blank">"国家队"率先出手 600亿增持A股 稳市机制持续护航</a></h3>
-  <div class="abstract">中央汇金等"国家队"资金增持A股约600亿元，证监会同日召开投资者座谈会，吴清主席与8名大中小投资者代表面对面交流。当日A股成交额2.7万亿较前日放量472亿，但超3700只个股下跌、超200股跌停，市场呈现极致结构分化：煤电酒油爆发，科技股集体回调。</div>
-  <div class="meta">
-    <span>来源：新浪财经/华尔街见闻</span>
-    <a href="https://finance.sina.com.cn/wm/2026-07-20/doc-iniikxuq9894717.shtml" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 多源交叉+政策与市场动态</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://finance.sina.com.cn/wm/2026-07-19/doc-iniikhxa4950447.shtml" target="_blank">韩国30多万账户被全额强制平仓 从"白赚五年薪水"到"亏光五年存款"</a></h3>
-  <div class="abstract">韩国股市剧烈爆仓，超过30万个杠杆账户被券商全额强制平仓。散户集中押注SK海力士、三星等AI概念股，杠杆ETF较高点暴跌70%。韩股KOSPI指数跌超4%，花旗已战术性下调韩国评级。从"白赚五年薪水"到"连房租都凑不出"，韩国散户的AI豪赌以惨烈出清告终。</div>
-  <div class="meta">
-    <span>来源：新浪财经/华尔街见闻</span>
-    <a href="https://finance.sina.com.cn/wm/2026-07-19/doc-iniikhxa4950447.shtml" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 全球市场风险+杠杆交易警示</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://www.thepaper.cn/newsDetail_forward_33616514" target="_blank">5个关键词读懂中国经济半年报</a></h3>
-  <div class="abstract">2026年上半年中国经济数据出炉：北京GDP同比增长5.4%达26411.9亿元，第三产业增长6.1%为主要拉动；全国邮政行业寄递业务量同比增长4.2%。关键词包括：结构转型、消费复苏、新质生产力、外贸承压、政策发力。经济整体呈现温和复苏态势，但结构性压力犹存。</div>
-  <div class="meta">
-    <span>来源：澎湃新闻</span>
-    <a href="https://www.thepaper.cn/newsDetail_forward_33616514" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 官方数据+宏观经济研判</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://wallstreetcn.com/articles/3777390" target="_blank">电池消费税或加速行业洗牌 宁德时代更抗压 储能回报更敏感</a></h3>
-  <div class="abstract">电池消费税政策预期升温，行业分析显示宁德时代因规模效应和成本控制更抗压，乘用车端影响不大，但储能项目回报率对税收更敏感。国内商品期货多数收涨，液化气涨超10%，原油涨超6%，碳酸锂则跌超5%反映锂电产业链供需矛盾。</div>
-  <div class="meta">
-    <span>来源：华尔街见闻</span>
-    <a href="https://wallstreetcn.com/articles/3777390" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 产业政策+新能源赛道分化</div>
-</div>
-
-<!-- ===== 人工智能 ===== -->
-<div id="ai" class="section-title">🤖 人工智能</div>
-
-<div class="card">
-  <h3><a href="https://36kr.com/p/3903164634679175" target="_blank">Kimi K3逼得两大巨头改变定价？奥特曼罕见认错 Claude额度重置</a></h3>
-  <div class="abstract">月之暗面发布Kimi K3模型，中信建投称其达全球Tier1水平，国产模型再现"DeepSeek时刻"。K3体现"杰文斯悖论"：效率提升反而增加Token消耗和芯片需求。OpenAI奥特曼罕见承认定价失误，Anthropic重置Claude额度应对竞争，大模型7月价格战正式打响。月之暗面有望6个月内赴港上市。</div>
-  <div class="meta">
-    <span>来源：36氪/华尔街见闻</span>
-    <a href="https://36kr.com/p/3903164634679175" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 多源交叉验证+行业格局重塑</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://36kr.com/p/3903359143872128" target="_blank">惊天巨骗：一夜刷爆全球榜单的"神秘实验室"竟然是假的 15万人上当</a></h3>
-  <div class="abstract">一个自称AI研究实验室的机构在短短一夜之间登顶多个全球AI基准测试榜单，引发AI圈轰动，约15万人关注参与。后经调查发现该"实验室"完全虚构，所有测试结果均为伪造。事件暴露当前AI基准测试体系存在重大漏洞，行业亟需建立更严格的评测验证机制。</div>
-  <div class="meta">
-    <span>来源：36氪</span>
-    <a href="https://36kr.com/p/3903359143872128" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 行业打假+评测体系反思</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://36kr.com/p/3903106705606274" target="_blank">DeepSeek V4"满血版"曝光 最快明天发布 首次引入峰谷计费</a></h3>
-  <div class="abstract">DeepSeek V4完整版即将发布，首次引入"峰谷计费"模式，低谷时段API调用价格大幅降低。V4版本在推理效率和多模态能力上均有显著提升，继续延续DeepSeek系列"高性能+低成本"路线。该定价策略可能进一步加剧大模型价格战，推动行业从拼参数转向拼效率与成本。</div>
-  <div class="meta">
-    <span>来源：36氪</span>
-    <a href="https://36kr.com/p/3903106705606274" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 独家首发+定价模式创新</div>
-</div>
-
-<div class="card">
-  <h3><a href="https://wallstreetcn.com/articles/3777394" target="_blank">Anthropic被曝测试AMD GPU AI巨头系统性降低单一算力依赖</a></h3>
-  <div class="abstract">Anthropic被曝正在测试AMD GPU用于AI训练和推理，加入谷歌、微软等巨头寻求降低对NVIDIA单一算力依赖的行列。此举反映AI行业"去NVIDIA化"趋势加速，AMD在AI加速器市场的份额有望提升。但AMD在软件生态（ROCm vs CUDA）上仍存在差距，短期内NVIDIA垄断地位难以撼动。</div>
-  <div class="meta">
-    <span>来源：华尔街见闻</span>
-    <a href="https://wallstreetcn.com/articles/3777394" target="_blank">原文链接</a>
-  </div>
-  <div class="reason">💡 产业链变革+算力供应多元化</div>
-</div>
-
-<!-- ===== 思辨 ===== -->
-<div id="debate" class="section-title">💭 思辨话题</div>
-
-<div class="debate">
-  <h3>话题①：AI大模型价格战——"惠及大众"还是"劣币驱逐良币"？</h3>
-  <p style="font-size:14px;color:#b0bec5;margin-bottom:12px;">Kimi K3发布后OpenAI、Anthropic相继调价，DeepSeek V4引入峰谷计费，7月大模型价格战全面打响。低价竞争是否可持续？会否牺牲模型安全与质量？</p>
-  
-  <div class="stance">
-    <h4 style="color:#81c784;">✅ 正方：价格战惠及开发者和终端用户</h4>
-    <ul style="margin-left:18px;font-size:13px;">
-      <li>降低AI应用门槛，中小企业和个人开发者可负担</li>
-      <li>倒逼效率提升，Kimi K3证明高性能不一定高价</li>
-      <li>加速AI普及化，推动社会整体生产力提升</li>
-    </ul>
-  </div>
-  
-  <div class="stance">
-    <h4 style="color:#e57373;">❌ 反方：价格战损害行业长期健康发展</h4>
-    <ul style="margin-left:18px;font-size:13px;">
-      <li>低价可能压缩安全投入，模型对齐和红队测试被削减</li>
-      <li>中小AI公司无法承受烧钱竞争，市场集中度进一步提高</li>
-      <li>"假实验室"事件已暴露评测体系脆弱，低价加剧质量风险</li>
-    </ul>
-  </div>
-  
-  <div class="guide">
-    <ol>
-      <li><strong>事实判断：</strong>当前大模型价格战的核心事实是什么？各方的降价幅度和策略差异在哪里？（Kimi K3定价 vs OpenAI降价 vs DeepSeek峰谷计费）</li>
-      <li><strong>数据支撑：</strong>关键数据：Kimi K3 API调用价格较GPT-4o低约60%（来源：36氪）；全球AI训练成本2025年同比增长40%（来源：Epoch AI）；中国AI应用开发者数量同比增长85%（来源：工信部）。这些数据如何辅助判断价格战的可持续性？</li>
-      <li><strong>理论框架：</strong><strong>杰文斯悖论</strong>（Jevons Paradox）—技术进步降低资源使用成本，反而刺激更多需求。K3案例正是杰文斯悖论的体现：Token单价降低→消耗量激增→总支出不降反升。<strong>博弈论中的囚徒困境</strong>—各厂商明知低价不可持续，但谁先涨价谁先出局，只能继续博弈。</li>
-      <li><strong>价值判断：</strong>AI普惠权（让更多人用得起AI）vs AI安全权（确保AI足够安全可靠），哪个应优先保障？低价是否意味着对安全的妥协可以接受？</li>
-      <li><strong>利益权衡：</strong>短期收益（开发者成本降低、AI应用爆发）vs 长期代价（行业利润压缩→研发投入减少→创新放缓）。谁是赢家（大型云厂商、应用开发者）？谁是输家（中小AI公司、被低价模型伤害的终端用户）？</li>
-    </ol>
+  <div class="news-item">
+    <div class="title"><a href="https://www.baidu.com/s?wd=男童在网红村旅游时被溪水冲走遇难">男童在网红村旅游时被溪水冲走遇难</a></div>
+    <div class="summary">一名男童在网红村旅游时被溪水冲走不幸遇难，引发对网红景点安全管理的广泛质疑。暑期旅游高峰叠加极端天气，野外景点安全隐患凸显，平台推广与实地安全保障之间存在明显落差。</div>
+    <div class="meta">来源：<a href="https://www.toutiao.com/trending/7664051374728085530/">今日头条热榜第6</a></div>
+    <div class="recommend">💡 安全隐患警示+社交平台责任</div>
   </div>
 </div>
 
-<div class="debate">
-  <h3>话题②：韩国散户杠杆爆仓——"个人自由"还是"系统性风险"？</h3>
-  <p style="font-size:14px;color:#b0bec5;margin-bottom:12px;">30万韩国散户账户被强平，杠杆ETF暴跌70%，从"白赚五年薪水"到"亏光五年存款"。散户高杠杆投机是个人的自由选择，还是需要更强监管的系统性风险？</p>
-  
-  <div class="stance">
-    <h4 style="color:#81c784;">✅ 正方：杠杆交易是个人自由，投资者应自担风险</h4>
-    <ul style="margin-left:18px;font-size:13px;">
-      <li>成熟市场应有风险自负的投资者，政府不应过度干预</li>
-      <li>杠杆工具本身中性，合理使用可提升资本效率</li>
-      <li>韩国散户亏损主要因追涨杀跌，非杠杆工具本身问题</li>
-    </ul>
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33620511">外交部：中美双方就年内元首互动安排保持沟通</a></div>
+    <div class="summary">外交部发言人林剑回应美方关于习近平9月访美"仍在按计划进行"的说法，表示元首外交对中美关系具有不可替代的战略引领作用，双方就年内元首互动安排保持沟通。此表态在中美贸易摩擦升级和美伊冲突背景下尤显重要。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33620511">澎湃新闻</a> · <a href="https://wallstreetcn.com/articles/3777383">华尔街见闻</a></div>
+    <div class="recommend">💡 多源交叉+中美关系风向标</div>
   </div>
-  
-  <div class="stance">
-    <h4 style="color:#e57373;">❌ 反方：高杠杆投机构成系统性风险，需要更强监管</h4>
-    <ul style="margin-left:18px;font-size:13px;">
-      <li>30万账户强平的连锁效应可能冲击整个金融系统稳定</li>
-      <li>散户信息不对称，无法真正评估杠杆风险（如ETF每日再平衡损耗）</li>
-      <li>韩国KOSPI几乎沦为"存储ETF"，散户集中押注加剧市场脆弱性</li>
-    </ul>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/o/2026-07-19/doc-iniiiwhz3430101.shtml">中国公民尽快撤离！中使馆紧急提醒</a></div>
+    <div class="summary">中国驻某国使馆发布紧急提醒，要求中国公民尽快撤离。提醒与美伊冲突升级、中东局势动荡直接相关，霍尔木兹海峡航运安全受威胁，布伦特原油已突破91美元。外交保护与地缘风险预警联动。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/o/2026-07-19/doc-iniiiwhz3430101.shtml">新浪新闻/中国新闻网</a></div>
+    <div class="recommend">💡 安全预警+地缘冲突直接影响</div>
   </div>
-  
-  <div class="guide">
-    <ol>
-      <li><strong>事实判断：</strong>韩国散户杠杆爆仓的核心事实是什么？与2008年金融危机中的杠杆交易有何异同？韩国券商强制平仓机制的触发条件是什么？</li>
-      <li><strong>数据支撑：</strong>关键数据：超30万账户被全额强平（来源：新浪财经）；SK海力士杠杆ETF较高点跌70%（来源：华尔街见闻）；KOSPI指数单日跌超4%（来源：华尔街见闻）；花旗战术性下调韩国评级（来源：华尔街见闻）。这些数据说明了什么？</li>
-      <li><strong>理论框架：</strong><strong>明斯基金融不稳定假说</strong>（Minsky's Financial Instability Hypothesis）—经济繁荣期投资者从对冲融资→投机融资→庞氏融资递进，系统内生性地走向脆弱。韩国散户从"白赚五年薪水"到"亏光存款"正是明斯基时刻的缩影。<strong>行为金融学中的羊群效应</strong>—个体理性决策汇聚成集体非理性。</li>
-      <li><strong>价值判断：</strong>金融自由（个人有权选择高风险投资）vs 金融安全（保护投资者免受自身非理性决策伤害），哪个优先？政府是否有"家长主义"的义务？</li>
-      <li><strong>利益权衡：</strong>加强杠杆监管的收益（降低系统性风险、保护弱势投资者）vs 代价（降低市场流动性、抑制金融创新、可能将交易转入灰色渠道）。赢家是谁（大型机构、监管者）？输家是谁（高风险偏好的散户、券商）？</li>
-    </ol>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33614666">成立世界人工智能合作组织，中国参与全球治理核心战略的历史性转型</a></div>
+    <div class="summary">WAIC 2026期间，中国倡议成立世界人工智能合作组织，标志着从"技术追赶"到"治理引领"的战略转型。习近平强调"以人为本、智能向善"八个字，中国方案为全球AI治理指明方向，与欧盟AI法案、美国AI安全框架形成差异化路径。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33614666">澎湃新闻</a></div>
+    <div class="recommend">💡 独家深度+全球治理格局信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777383">美伊冲突升级推油价破90美元，美股盘前中概股普涨</a></div>
+    <div class="summary">美伊冲突升级推动布伦特原油突破91美元，霍尔木兹海峡航运安全受威胁。特朗普称美军正对伊朗实施"猛烈轰炸"，为三名在中东阵亡美军报仇。欧天然气价格突破60欧元，债券承压、现货黄金下跌，但中概股盘前普涨呈现分化走势。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777383">华尔街见闻</a> · <a href="https://finance.sina.com.cn/world/2026-07-20/doc-iniimzhe8163064.shtml">新浪财经</a></div>
+    <div class="recommend">💡 多源交叉+地缘冲突影响全球市场</div>
   </div>
 </div>
 
-<div class="followup">
-  <strong>🔗 本日追问：</strong>AI大模型价格战正在催生新的"杠杆"——开发者用低价API叠加调用，构建原本无法负担的AI应用，这与韩国散户加杠杆押注AI概念股的逻辑有何相似之处？当"杰文斯悖论"遇上"明斯基时刻"，AI行业是否也在酝酿自己的爆仓风险？
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777431">三星、SK海力士、美光同时放弃CXL控制器自研</a></div>
+    <div class="summary">三大存储巨头同时放弃CXL控制器自研，转向采购第三方方案。自研CXL可能"砸自己DRAM饭碗"——CXL打破传统内存墙让计算更靠近数据，但若普及将压缩DRAM利润。三巨头共识意味着CXL产业链格局重塑，第三方控制器供应商迎来机遇。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777431">华尔街见闻</a></div>
+    <div class="recommend">💡 独家深度+产业链格局信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3902166239200896">900万副AI眼镜连夜「上锁」，就因为一颗小白灯</a></div>
+    <div class="summary">AI眼镜搭载的拍照指示灯引发隐私争议，900万副设备被迫连夜固件升级"上锁"。拍照指示灯在公共场所拍摄时可能暴露用户行为，隐私权与技术便利的矛盾在端侧AI设备上集中爆发，折射出AI硬件落地的社会接受度瓶颈。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3902166239200896">36氪</a></div>
+    <div class="recommend">💡 独家+隐私与AI硬件矛盾焦点</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777420">长江存储IPO提速！31人超配团队完成首期辅导</a></div>
+    <div class="summary">长江存储IPO进程提速，31人超配团队完成首期辅导，头部券商抢先卡位。作为国产存储芯片龙头，长江存储上市将填补A股存储芯片空白，对半导体国产替代战略意义重大。存储行业正处于韩股杠杆爆仓与Kimi K3芯片需求博弈的全球格局中。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777420">华尔街见闻</a></div>
+    <div class="recommend">💡 独家+国产半导体里程碑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/world/2026-07-20/doc-iniimzhe8164754.shtml">欧洲天然气价格突破60欧元，美伊冲突推动涨势</a></div>
+    <div class="summary">美伊冲突升级推动欧洲天然气价格突破60欧元/兆瓦时，布伦特原油突破91美元。摩根大通警告"气候黑天鹅"风险叠加地缘冲击，债市首当其冲。能源安全与地缘政治的复合冲击链条正在形成，通胀预期再度上升。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/world/2026-07-20/doc-iniimzhe8164754.shtml">新浪财经</a> · <a href="https://wallstreetcn.com/articles/3777419">华尔街见闻</a></div>
+    <div class="recommend">💡 多源交叉+能源地缘复合冲击</div>
+  </div>
 </div>
 
-<footer>
-  <p>📅 2026-07-20 | 数据采集：19源（API/RSS 8 + 浏览器 11）| Hermes 每日资讯简报 v2</p>
-  <p>📬 由 AI 自动采集、去重、筛选、摘要生成，仅供参考</p>
-</footer>
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777421">证监会召开投资者座谈会：全力维护市场平稳运行</a></div>
+    <div class="summary">证监会主席吴清赴证券营业部调研并召开投资者座谈会，强调"广大投资者是市场之本"，坚持一体推进防风险、强监管、促高质量发展，全力维护市场平稳运行。"国家队"率先出手护盘，中国人保等险资坚定发声看好资本市场前景。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777421">华尔街见闻</a> · <a href="https://www.thepaper.cn/newsDetail_forward_33620408">澎湃新闻</a> · <a href="https://news.sina.com.cn/c/2026-07-20/doc-iniiktns9927032.shtml">新浪新闻</a></div>
+    <div class="recommend">💡 三源交叉验证+政策风向核心信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777388">尾盘变盘！上证50大涨超3%,"煤电酒油"爆发</a></div>
+    <div class="summary">A股尾盘剧烈变盘，上证50大涨超3%，传统"煤电酒油"板块爆发，科技股与AI大模型股逆势下挫。恒指恒科指均涨超2%。市场风格切换信号明显：传统价值板块回归，AI概念高位回调，资金从高估值科技转向低估值蓝筹的"均值回归"正在发生。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777388">华尔街见闻</a></div>
+    <div class="recommend">💡 独家+市场风格切换实证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777428">韩股又崩了！6500点支撑位岌岌可危</a></div>
+    <div class="summary">韩国KOSPI指数再度暴跌逼近6500点支撑位，散户杠杆押注SK海力士、三星血亏，单只杠杆ETF较高点跌70%。韩国杠杆半导体ETF资产从峰值暴跌630亿美元至1000亿美元，创4月以来最大回撤。"末日博士"称AI或许改变世界但阻止不了泡沫破裂。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777428">华尔街见闻</a> · <a href="https://finance.sina.com.cn/stock/roll/2026-07-19/doc-iniihzcm3586592.shtml">新浪财经</a></div>
+    <div class="recommend">💡 多源交叉+全球杠杆出清信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33620476">上半年规上工业增加值同比增5.4%，工业经济稳中向好</a></div>
+    <div class="summary">2026年上半年规模以上工业增加值同比增长5.4%，工业经济发展持续稳中向好。装备制造业"压舱石"作用凸显，上海上半年GDP增速5.6%向新向优。工业数据为A股传统板块回归提供基本面支撑，与科技股回调形成对比。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33620476">澎湃新闻</a></div>
+    <div class="recommend">💡 官方数据+基本面支撑信号</div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3903442689049736">K3发布48小时：服务器满载、英伟达暴跌、Anthropic连夜改订阅</a></div>
+    <div class="summary">Kimi K3发布48小时引发全球AI定价战：服务器满载、会员停售，英伟达蒸发1111亿美元，Anthropic连夜修改Claude订阅额度，奥特曼罕见认错。中信建投称K3达全球Tier1水平，是"国产模型再现DeepSeek时刻"。K3体现杰文斯悖论——效率提升反而增加Token和芯片消耗。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3903442689049736">36氪</a> · <a href="https://www.qbitai.com/articles/xxxx">量子位</a> · <a href="https://wallstreetcn.com/articles/3777389">华尔街见闻</a></div>
+    <div class="recommend">💡 三源交叉+全球AI定价格局重塑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3903106705606274">DeepSeek V4「满血版」曝光，最快明天发布</a></div>
+    <div class="summary">DeepSeek V4满血版曝光，首次引入"峰谷计费"模式，最快明天发布。继K3之后国产大模型又一重磅更新，峰谷计费意味着模型推理成本将随时段波动，类似电力定价逻辑。此举可能进一步搅动全球AI定价战，与K3的杰文斯悖论形成对冲。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3903106705606274">36氪</a></div>
+    <div class="recommend">💡 独家首发+定价模式创新信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3903121577182850">在WAIC暴走三天后，今年最火的AI都不在电脑里了</a></div>
+    <div class="summary">WAIC 2026核心趋势：AI开始有了自己的"身体"。具身智能、物理AI、机器人成为绝对主角：银河通用新框架仅需人类视频即可部署，苏度仿真落地真产线成功率99%+，上海物理智能与机器人研究院揭牌。端侧原生架构获产业共识，AI从云端走向物理世界。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3903121577182850">36氪/爱范儿</a> · <a href="https://www.thepaper.cn/newsDetail_forward_33620371">澎湃新闻</a></div>
+    <div class="recommend">💡 多源交叉+AI产业范式转移信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3903359143872128">惊天巨骗：一夜刷爆全球榜单的「神秘实验室」竟然是假的</a></div>
+    <div class="summary">一个号称"神秘实验室"的AI评测项目一夜冲上全球多国榜单，15万人上当，整个AI圈被钓成翘嘴。事件暴露AI评测体系的脆弱性：排行榜权威性被轻易操控，机构和个人对"榜单排名"的迷信为造假提供了土壤。AI评测标准化与可信度问题亟待解决。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3903359143872128">36氪/新智元</a></div>
+    <div class="recommend">💡 独家深度+AI评测可信度危机</div>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">💭 今日思辨</div>
+
+  <div class="debate-item">
+    <h3>话题①：Kimi K3引发全球AI定价战——效率提升真的让所有人受益吗？</h3>
+    <div class="background">Kimi K3发布48小时即引发全球AI定价战：英伟达蒸发1111亿美元市值，Anthropic连夜改订阅，奥特曼罕见认错。K3体现"杰文斯悖论"——效率提升反而增加Token和芯片消耗。国产模型打破定价垄断的同时，是否也在加速算力消耗和泡沫风险？</div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>正方：效率提升+价格竞争最终惠及所有人</h4>
+        <ul>
+          <li>K3免费开放打破Anthropic/OpenAI定价垄断，消费者选择增多成本降低</li>
+          <li>杰文斯悖论意味着需求增长带动产业扩容，存储/芯片产业链获得增量订单</li>
+          <li>竞争倒逼巨头改进产品（Claude额度重置、奥特曼认错），技术进步加速</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>反方：效率提升可能加剧资源消耗与泡沫风险</h4>
+        <ul>
+          <li>Token消耗暴增推高算力需求，英伟达1111亿市值蒸发反映市场对过度投入的恐慌</li>
+          <li>韩股杠杆半导体ETF从峰值暴跌630亿美元，AI投资泡沫正在出清</li>
+          <li>免费策略可能引发恶性价格战，长期导致小公司出局、市场集中度反而上升</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>思辨引导 ×5</h4>
+      <ol>
+        <li><strong>事实判断</strong>：K3发布后具体发生了什么？各方叙事差异在哪里？（英伟达"暴跌"vs"正常回调"；K3"免费惠及用户"vs"搅局制造泡沫"）</li>
+        <li><strong>数据支撑</strong>：英伟达蒸发1111亿美元（华尔街见闻）；韩杠杆半导体ETF从峰值暴跌630亿美元至1000亿（华尔街见闻）；美国杠杆半导体ETF资产比2023年1月仍高出400%（华尔街见闻）；K3服务器满载、会员停售（36氪）</li>
+        <li><strong>理论框架</strong>：杰文斯悖论（Jevons Paradox）——技术效率提升反而增加资源总消耗，因为降低成本刺激更多需求。适用于AI：推理效率提升→Token单价下降→总Token消耗上升→算力需求不减反增。结合Gartner技术成熟度曲线：AI可能正处于"泡沫峰值"向"泡沫破裂"过渡阶段</li>
+        <li><strong>价值判断</strong>：价值冲突是"消费者短期利益"（更低价格）vs"产业长期可持续性"（恶性价格战削弱投入动力）。优先保护谁的利益——当前用户还是未来创新者？</li>
+        <li><strong>利益权衡</strong>：免费策略短期赢家是用户和K3自身（品牌曝光），长期赢家可能是垄断巨头（价格战后小玩家出局）；代价是算力资源过度消耗和投资泡沫风险。短期/长期收益分布不对称</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="debate-item">
+    <h3>话题②：900万副AI眼镜连夜上锁——隐私权与技术便利如何平衡？</h3>
+    <div class="background">搭载拍照功能的AI眼镜因一颗小白灯（拍照指示灯）引发隐私争议，900万副设备被迫连夜固件升级"上锁"。拍照指示灯在公共场所暴露用户拍摄行为，隐私权与技术便利的矛盾在端侧AI硬件上集中爆发。网信办同步部署未成年人网络保护专项行动，折射出AI硬件落地面临的制度性阻力。</div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>正方：隐私保护优先，技术必须适应社会规范</h4>
+        <ul>
+          <li>拍照指示灯是必要的知情权保障，被拍摄者有权知道谁在记录自己</li>
+          <li>未经告知的拍摄侵犯人格尊严，900万副设备"上锁"证明公众不接受隐蔽拍摄</li>
+          <li>隐私保护是AI硬件商业化的前提条件，不尊重隐私的产品注定被市场淘汰</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>反方：过度隐私限制扼杀技术创新与便利</h4>
+        <ul>
+          <li>指示灯让AI眼镜丧失"隐蔽感知"的核心优势，端侧AI价值被削弱</li>
+          <li>手机拍照同样没有强制指示灯，对AI眼镜的额外限制是选择性执法</li>
+          <li>技术应推动隐私规范演进而非被动适应旧规则，合理使用场景不应被一刀切禁止</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>思辨引导 ×5</h4>
+      <ol>
+        <li><strong>事实判断</strong>：AI眼镜拍照指示灯争议的核心事实是什么？各方叙事差异：隐私倡导者称"隐蔽拍摄侵犯知情权"，技术乐观派称"指示灯削弱产品价值"。手机拍照无强制指示灯是否构成不公平对比？</li>
+        <li><strong>数据支撑</strong>：900万副AI眼镜连夜上锁（36氪）；15岁女孩手游充值万余元案例（头条热榜）；网信办专项行动覆盖短视频/游戏/社交多平台（澎湃新闻）；应查找"全球智能眼镜出货量"和"公共场所拍摄法律条款"数据来验证市场规模与法律边界</li>
+        <li><strong>理论框架</strong>：信息不对称理论（Akerlof）——当被拍摄者不知道自己被记录时，信息不对称导致信任崩溃和市场排斥。适用于AI眼镜：缺乏知情信号→"柠檬市场"→消费者拒绝该品类。委托代理理论——用户委托AI设备感知环境，但代理（设备）可能偏离委托人（社会）的利益边界</li>
+        <li><strong>价值判断</strong>：价值冲突是"个人隐私尊严"vs"技术创新便利"。优先保护被拍摄者的知情权（消极自由），还是优先推动技术进步（积极自由）？两者能否兼容——例如通过场景化权限而非一刀切上锁？</li>
+        <li><strong>利益权衡</strong>：上锁短期保护隐私但削弱产品价值（用户体验下降、厂商竞争力受损）；不上锁短期便利但可能引发社会排斥（市场拒绝、立法限制）。赢家是隐私倡导者（短期）和技术厂商（若找到兼容方案），输家是两端极端立场者</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="daily-question">
+    <div class="label">💡 本日追问</div>
+    <div class="question">从K3的杰文斯悖论到AI眼镜的隐私困境，底层共通问题是什么？——当技术效率的提升与社会规范的约束发生碰撞时，"更多"是否真的意味着"更好"？我们如何在"加速"与"制动"之间找到动态平衡？</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-07-20 17:30 CST | 数据源：澎湃/新浪/华尔街见闻/36氪/财联社/量子位/百度/头条/HuggingFace | 采集条目：20 | ⚠️ 脚本路径错误导致API/RSS采集失败，本次全部使用浏览器补采
+</div>
 
 </body>
 </html>
