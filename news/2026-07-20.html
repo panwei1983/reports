@@ -37,6 +37,14 @@
   .header h1 { font-size: 28px; margin-bottom: 8px; }
   .header .date { color: var(--text-secondary); font-size: 16px; }
   .header .overview { margin-top: 16px; padding: 12px 20px; background: var(--bg-card); border-radius: 8px; border-left: 4px solid var(--text-link); font-size: 15px; color: var(--text-primary); }
+  .highlights { display: grid; gap: 8px; margin-top: 16px; }
+  .highlights .hl-row { display: flex; align-items: flex-start; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 14px; line-height: 1.6; }
+  .hl-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; white-space: nowrap; min-width: 36px; text-align: center; }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
   .toc { margin-bottom: 24px; padding: 12px 20px; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); }
   .toc a { color: var(--text-link); text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
@@ -47,15 +55,16 @@
   .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
   .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
   .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
-  .news-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 10px; transition: background 0.2s; }
+  .news-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; transition: background 0.2s; }
   .news-item:hover { background: var(--bg-card-hover); }
-  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.5; }
   .news-item .title a { color: var(--text-primary); text-decoration: none; }
-  .news-item .title a:hover { color: var(--text-link); }
-  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
-  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .title a:hover { color: var(--text-link); text-decoration: underline; }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 10px; }
+  .news-item .meta { font-size: 12px; color: var(--text-secondary); opacity: 0.8; }
   .news-item .meta a { color: var(--text-link); text-decoration: none; }
-  .news-item .recommend { margin-top: 4px; font-size: 12px; color: #f0883e; }
+  .news-item .meta a:hover { text-decoration: underline; }
+  .news-item .recommend { margin-top: 6px; font-size: 12px; color: #f0883e; padding: 4px 8px; background: rgba(240,136,62,0.08); border-radius: 4px; display: inline-block; }
   .debate-section { margin-top: 32px; padding-top: 24px; border-top: 2px solid var(--border); }
   .debate-title { font-size: 24px; text-align: center; margin-bottom: 20px; color: var(--accent-debate); }
   .debate-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
@@ -67,21 +76,20 @@
   .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
   .debate-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
   @media (max-width: 600px) { .debate-columns { grid-template-columns: 1fr; } }
-  .debate-columns .pro, .debate-columns .con { padding: 12px; border-radius: 8px; }
-  .debate-columns .pro { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); }
-  .debate-columns .con { background: rgba(218,54,51,0.1); border: 1px solid rgba(218,54,51,0.3); }
-  .debate-columns h4 { font-size: 14px; margin-bottom: 8px; }
+  .debate-columns .pro, .debate-columns .con { padding: 16px 18px; border-radius: 8px; }
+  .debate-columns .pro { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25); }
+  .debate-columns .con { background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.25); }
+  .debate-columns h4 { font-size: 15px; margin-bottom: 10px; }
   .debate-columns .pro h4 { color: var(--accent-tech); }
   .debate-columns .con h4 { color: var(--accent-politics); }
   .debate-columns ul { list-style: none; padding: 0; }
-  .debate-columns li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; padding-left: 16px; position: relative; }
-  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
-  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
-  .guiding-questions { background: rgba(255,166,87,0.08); border: 1px solid rgba(255,166,87,0.2); border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; }
-  .guiding-questions h4 { font-size: 14px; color: var(--accent-debate); margin-bottom: 8px; }
+  .debate-columns li { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; padding-left: 20px; position: relative; line-height: 1.7; }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); font-weight: 700; }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); font-weight: 700; }
   .guiding-questions ol { padding-left: 20px; }
-  .guiding-questions li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
-  .daily-question { text-align: center; padding: 16px; background: rgba(121,192,255,0.1); border: 1px solid rgba(121,192,255,0.3); border-radius: 8px; margin-top: 16px; }
+  .guiding-questions li { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.7; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 6px; border-left: 3px solid rgba(255,166,87,0.3); }
+  .guiding-questions li strong { color: var(--text-primary); }
+  .daily-question { text-align: center; padding: 16px; background: rgba(121,192,255,0.1); border: 1px solid rgba(121,192,255,0.3); border-radius: 8px; margin: 16px 0; }
   .daily-question .label { font-size: 13px; color: var(--text-secondary); }
   .daily-question .question { font-size: 16px; font-weight: 600; color: var(--accent-ai); margin-top: 6px; }
   .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 12px; }
@@ -94,7 +102,14 @@
 <div class="header">
   <h1>📰 每日资讯简报</h1>
   <div class="date">2026-07-20 星期一</div>
-  <div class="overview">西班牙加时1-0阿根廷夺世界杯冠军；证监会召开投资者座谈会全力维稳A股；谢贤去世享年89岁；美伊冲突升级推油价破90美元；Kimi K3发布48小时引发全球AI定价战。 五大领域交织——体育外交、金融安全、AI生态与地缘冲突构成今日议题。</div>
+  <p class="overview">今日一句话总览：AI定价战升级、地缘冲突推油价、A股维稳信号明确</p>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> Kimi K3发布48小时引发全球AI定价战，英伟达蒸发1111亿美元</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 证监会召开投资者座谈会释放维稳信号，上证50大涨超3%</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 谢贤去世享年89岁；网信办启动未成年人网络保护专项行动</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 美伊冲突推油价破90美元；成立世界人工智能合作组织</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> 900万副AI眼镜连夜上锁；存储巨头放弃CXL控制器自研</div>
+  </div>
 </div>
 
 <div class="toc">
