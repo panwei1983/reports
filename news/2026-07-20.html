@@ -61,6 +61,10 @@
   .debate-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
   .debate-item h3 { font-size: 18px; margin-bottom: 10px; color: var(--accent-debate); }
   .debate-item .background { color: var(--text-secondary); margin-bottom: 14px; font-size: 14px; line-height: 1.7; }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
   .debate-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
   @media (max-width: 600px) { .debate-columns { grid-template-columns: 1fr; } }
   .debate-columns .pro, .debate-columns .con { padding: 12px; border-radius: 8px; }
@@ -269,7 +273,26 @@
   <!-- 话题①： 热点思辨 -->
   <div class="debate-item">
     <h3>话题①：Kimi K3引发全球AI定价战——效率提升真的让所有人受益吗？</h3>
-    <div class="background"><strong>K3是什么？</strong>7月17日凌晨，中国AI公司月之暗面（Moonshot AI）发布Kimi K3——2.8万亿参数的开源MoE大模型，支持100万token上下文窗口，综合性能仅落后Anthropic Fable 5和OpenAI GPT-5.6 Sol，排名全球第三，是迄今最强开源模型。<strong>技术突破：</strong>K3核心创新有三：(1)RL Scaling——源自2024年K0-Math的理念，让模型自己刷题、自己改错，而非"死记硬背刷题库"，K3将此能力扩展到带视觉反馈的"视觉闭环"（Vision in the Loop）；(2)Kimi Delta Attention + Attention Residuals降低长上下文推理成本；(3)Stable LatentMoE——896个专家中每个token仅激活16个，扩展效率达K2的2.5倍。<strong>定价：</strong>缓存命中输入0.3美元/百万token，输出15美元/百万token，远低于同级闭源模型。<br><br><strong>48小时连锁反应：</strong>①<em>服务器满载</em>——请求量逼近算力承载极限，7月19日深夜Kimi发布公告暂停新用户会员订阅，会员体系拆分为Kimi主权益和Kimi Code权益；②<em>英伟达暴跌</em>——K3发布首个交易日蒸发约1111亿美元市值，费城半导体指数单周跌12.5%（15个月最差），摩根大通称"DeepSeek 2.0"；③<em>美国科技顾问发话</em>——大卫·塞克斯（David Sacks）称"中国模型第一次在前端编程拿下第一，照此以往美国将输掉AI竞赛"；④<em>奥特曼罕见认错</em>——"过去12个月我们的表现并不理想"，OpenAI临时取消5小时使用限制、轮番重置用户额度，Codex活跃用户4天从600万暴增至900万；⑤<em>Anthropic连夜调整</em>——Claude Fable 5付费访问再延一次，Claude Code周额度上调50%；⑥<em>Kimi寻求IPO</em>——估值超300亿美元，ARR三个月翻三倍（1亿→2亿→3亿美元），API占比超70%；⑦<em>华尔街出手</em>——花旗称"杰文斯悖论"案例，美银称"模型差距收窄会提高领先者维持优势的成本"。</div>
+    <div class="background">
+      <p><span class="bg-label">K3是什么？</span>7月17日凌晨，中国AI公司月之暗面（Moonshot AI）发布Kimi K3——2.8万亿参数的开源MoE大模型，支持100万token上下文窗口，综合性能仅落后Anthropic Fable 5和OpenAI GPT-5.6 Sol，排名全球第三，是迄今最强开源模型。</p>
+      <p><span class="bg-label">技术突破</span></p>
+      <ol class="timeline">
+        <li><strong>RL Scaling</strong>——源自2024年K0-Math的理念，让模型自己刷题、自己改错，而非"死记硬背刷题库"。K3将此能力扩展到带视觉反馈的"视觉闭环"（Vision in the Loop）：写代码→看效果→发现问题→迭代修改</li>
+        <li><strong>Kimi Delta Attention + Attention Residuals</strong>——降低100万token上下文窗口的推理成本</li>
+        <li><strong>Stable LatentMoE</strong>——896个专家中每个token仅激活16个，扩展效率达K2的2.5倍</li>
+      </ol>
+      <p><span class="bg-label">定价</span>缓存命中输入 <strong>0.3美元/百万token</strong>，输出 <strong>15美元/百万token</strong>，远低于同级闭源模型。</p>
+      <p><span class="bg-label">48小时连锁反应</span></p>
+      <ol class="timeline">
+        <li><strong>服务器满载</strong>——请求量逼近算力承载极限，7月19日深夜Kimi发布公告暂停新用户会员订阅，会员体系拆分为Kimi主权益和Kimi Code权益</li>
+        <li><strong>英伟达暴跌</strong>——K3发布首个交易日蒸发约1111亿美元市值，费城半导体指数单周跌12.5%（15个月最差），摩根大通称"DeepSeek 2.0"</li>
+        <li><strong>美国科技顾问发话</strong>——大卫·塞克斯（David Sacks）称"中国模型第一次在前端编程拿下第一，照此以往美国将输掉AI竞赛"</li>
+        <li><strong>奥特曼罕见认错</strong>——"过去12个月我们的表现并不理想"，OpenAI临时取消5小时使用限制、轮番重置用户额度，Codex活跃用户4天从600万暴增至900万</li>
+        <li><strong>Anthropic连夜调整</strong>——Claude Fable 5付费访问再延一次，Claude Code周额度上调50%</li>
+        <li><strong>Kimi寻求IPO</strong>——估值超300亿美元，ARR三个月翻三倍（1亿→2亿→3亿美元），API占比超70%</li>
+        <li><strong>华尔街出手</strong>——花旗称"杰文斯悖论"案例，美银称"模型差距收窄会提高领先者维持优势的成本"</li>
+      </ol>
+    </div>
     <div class="debate-columns">
       <div class="pro">
         <h4>✅ 效率提升+价格竞争最终惠及所有人</h4>
@@ -304,7 +327,15 @@
   <!-- 话题②: 冷思考辨 -->
   <div class="debate-item">
     <h3>话题②：900万副AI眼镜连夜上锁——隐私权与技术便利如何平衡？</h3>
-    <div class="background"><strong>事件经过：</strong>约900万副Meta Ray-Ban AI智能眼镜因一颗白色拍照指示灯被批量固件升级"上锁"。该指示灯设计初衷是当眼镜录制视频或拍照时自动亮起，告知周围人"我正在记录你"——相当于数字时代的快门声。然而这颗小白灯在社交场景中暴露佩戴者的录制行为，引发两难：开着灯→周围人知道你在拍，社交尴尬甚至冲突；关着灯→隐蔽拍摄侵犯他人知情权。<strong>争议升级：</strong>欧洲隐私监管机构施压后，Meta最终选择默认关闭指示灯，并通过OTA固件推送至所有设备。900万副眼镜一夜之间被"上锁"，用户无法自行重新开启。<strong>深层矛盾：</strong>AI眼镜与手机的关键区别在于"隐蔽性"——手机举起来拍照大家都知道，但眼镜随时在脸上、摄像头始终对着前方，旁人无法判断你是在看还是在拍。指示灯本意是消除这种信息不对称，但实际使用中却让佩戴者陷入"要么被当偷拍者、要么真成偷拍者"的困境。同步发生的网信办未成年人网络保护专项行动，折射出AI硬件落地面临的制度性阻力正在加大。</div>
+    <div class="background">
+      <p><span class="bg-label">事件经过</span>约900万副Meta Ray-Ban AI智能眼镜因一颗白色拍照指示灯被批量固件升级"上锁"。该指示灯设计初衷是当眼镜录制视频或拍照时自动亮起，告知周围人"我正在记录你"——相当于数字时代的快门声。然而这颗小白灯在社交场景中暴露佩戴者的录制行为，引发两难：</p>
+      <ol class="timeline">
+        <li><strong>开着灯</strong>→周围人知道你在拍，社交尴尬甚至冲突</li>
+        <li><strong>关着灯</strong>→隐蔽拍摄侵犯他人知情权</li>
+      </ol>
+      <p><span class="bg-label">争议升级</span>欧洲隐私监管机构施压后，Meta最终选择默认关闭指示灯，并通过OTA固件推送至所有设备。900万副眼镜一夜之间被"上锁"，用户无法自行重新开启。</p>
+      <p><span class="bg-label">深层矛盾</span>AI眼镜与手机的关键区别在于"隐蔽性"——手机举起来拍照大家都知道，但眼镜随时在脸上、摄像头始终对着前方，旁人无法判断你是在看还是在拍。指示灯本意是消除这种信息不对称，但实际使用中却让佩戴者陷入<strong>"要么被当偷拍者、要么真成偷拍者"</strong>的困境。同步发生的网信办未成年人网络保护专项行动，折射出AI硬件落地面临的制度性阻力正在加大。</p>
+    </div>
     <div class="debate-columns">
       <div class="pro">
         <h4>✅ 隐私保护优先，技术必须适应社会规范</h4>
