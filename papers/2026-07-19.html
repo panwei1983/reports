@@ -281,250 +281,427 @@
 <body>
 <div class="container">
 <nav>
-<a href="#一分类汇总">📚 一、分类汇总</a>
-<a href="#排序重排6-篇" class="h3">排序/重排（6 篇）</a>
-<a href="#推荐系统7-篇" class="h3">推荐系统（7 篇）</a>
-<a href="#广告系统3-篇" class="h3">广告系统（3 篇）</a>
-<a href="#llmrag4-篇" class="h3">LLM/RAG（4 篇）</a>
-<a href="#二top-5-论文阅读十问">🏆 二、Top 5 论文阅读十问</a>
-<a href="#top-1-privacy-preserving-recommender-systems-balancing-perso" class="h3"><span style="color:var(--star)">⭐</span> Top 1. Privacy Preserving Recommender Systems Balancing Personalization with Privacy</a>
-<a href="#top-2-nowjcoliee-2026-adaptive-pipelines-for-legal-retrieval" class="h3"><span style="color:var(--star)">⭐</span> Top 2. NOWJ@COLIEE 2026: Adaptive Pipelines for Legal Retrieval and Reasoning</a>
-<a href="#top-3-ramp-robust-ad-recommendation-under-limited-personaliz" class="h3"><span style="color:var(--star)">⭐</span> Top 3. RAMP: Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways</a>
-<a href="#top-4-evidence-in-the-loop-trace-driven-optimization-for-cus" class="h3"><span style="color:var(--star)">⭐</span> Top 4. Evidence-in-the-Loop: Trace-Driven Optimization for Customer-Service LLM Agents</a>
-<a href="#top-5-vector-search-as-nearest-neighbor-matching-rag-based-p" class="h3"><span style="color:var(--star)">⭐</span> Top 5. Vector Search As Nearest Neighbor Matching: RAG-based Policy Learning in Causal Inference</a>
+<a href="#一分类汇总">一、分类汇总</a>
+<a href="#召回--检索--matching" class="h3">召回 / 检索 / Matching</a>
+<a href="#排序--重排--learning-to-rank" class="h3">排序 / 重排 / Learning to Rank</a>
+<a href="#推荐--用户建模--personalization" class="h3">推荐 / 用户建模 / Personalization</a>
+<a href="#广告--ctr--cvr--ads" class="h3">广告 / CTR / CVR / Ads</a>
+<a href="#llm--rag--embedding--agent" class="h3">LLM / RAG / Embedding / Agent</a>
+<a href="#建议精读汇总" class="h3">建议精读汇总</a>
+<a href="#二top-papers-论文阅读十问">二、Top Papers 论文阅读十问</a>
+<a href="#1-nowjcoliee-2026-adaptive-pipelines-for-legal-retrieval-and" class="h3">1. NOWJ@COLIEE 2026: Adaptive Pipelines for Legal Retrieval and Reasoning</a>
+<a href="#2-personalizing-incremental-video-search-with-hybrid-text-an" class="h3">2. Personalizing Incremental Video Search with Hybrid Text and ID Embeddings</a>
+<a href="#3-evidence-in-the-loop-trace-driven-optimization-for-custome" class="h3">3. Evidence-in-the-Loop: Trace-Driven Optimization for Customer-Service LLM Agents</a>
+<a href="#4-ramp-robust-ad-recommendation-under-limited-personalized-f" class="h3">4. RAMP: Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways</a>
+<a href="#5-vector-search-as-nearest-neighbor-matching-rag-based-polic" class="h3">5. Vector Search As Nearest Neighbor Matching: RAG-based Policy Learning in Causal Inference</a>
+<a href="#三本周趋势">三、本周趋势</a>
 </nav>
 <div class="content">
-<h1 id="搜索推荐广告召回排序论文周报">📊 搜索/推荐/广告召回排序论文周报</h1>
+<h1 id="搜索--推荐--广告召回排序论文周报">搜索 / 推荐 / 广告召回排序论文周报</h1>
 
-<p><strong>时间范围</strong>：2026-07-13 至 2026-07-19</p>
-<p><strong>arXiv 返回</strong>：248 | <strong>初筛命中</strong>：248 | <strong>进入周报</strong>：20</p>
-<p><strong>分类统计</strong>：排序/重排 6 | 推荐系统 7 | 广告系统 3 | LLM/RAG 4</p>
+<p><strong>时间范围</strong>：2026-07-13 至 2026-07-19（最近 7 天）</p>
+<p><strong>关注方向</strong>：召回、排序、推荐广告模型、大模型技术</p>
+<p><strong>arXiv 返回</strong>：293；<strong>抓取去重</strong>：293；<strong>进入周报</strong>：20</p>
 
-<p><strong>选稿逻辑</strong>：综合评分 = 关键词命中数 × 40% + 作者单位权重 × 60%，取 Top 20 进入周报</p>
-
-<hr>
-
-<h2 id="一分类汇总">📚 一、分类汇总</h2>
-
-<h3 id="排序重排6-篇">排序/重排（6 篇）</h3>
-
-<h4 id="1--nowjcoliee-2026-adaptive-pipelines-for-legal-retrieval-an">1. <span style="color:var(--star)">⭐</span> NOWJ@COLIEE 2026: Adaptive Pipelines for Legal Retrieval and Reasoning</h4>
-
-<li><strong>评分</strong>：6.70（关键词 16.0 + 机构 0.5）| <strong>日期</strong>：2026-07-18 | <strong><a href="https://arxiv.org/abs/2607.16603v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Thuong-Hieu Ngo, Hoang-Trung Nguyen, Huu-Dong Nguyen, Xuan-Bach Le, Le-Dung Nguyen et al.</li>
-<li><strong>摘要</strong>：This paper presents the methodologies and results of the NOWJ team's participation across all five tasks of the COLIEE 2026 competition. For Task 1 (Legal Case Retrieval), we propose a four-stage pipeline comprising candidate filtering, dense retrieval with complementary embedding models, cross-encoder reranking via fine-tuned generative rerankers and MLP-based pairwise classification, and adaptive per-query cutoff prediction. For Task 2 (Legal Case Entailment), we combine BM25 filtering, T5-based reranking, and LLM-based entailment verification with consensus ensemble. For Task 3 (Statute Law Retrieval and Entailment), we adopt a retrieval-augmented generation framework with dense retrieval, attention-based reranking, and few-shot-prompted LLM reasoning. For Task 4 (Legal Textual Entailment), we introduce a dynamic routing pipeline that classifies query difficulty and dispatches cases to either a balanced few-shot solver or a structured zero-shot chain-of-thought solver. For the Pilot Task (Legal Judgment Prediction), we combine hierarchical transformers with CRF layers, argument relation mining, and probabilistic argumentation graph reasoning.</li>
-
-<h4 id="2--evidence-in-the-loop-trace-driven-optimization-for-custom">2. <span style="color:var(--star)">⭐</span> Evidence-in-the-Loop: Trace-Driven Optimization for Customer-Service LLM Agents</h4>
-
-<li><strong>评分</strong>：5.70（关键词 13.5 + 机构 0.5）| <strong>日期</strong>：2026-07-20 | <strong><a href="https://arxiv.org/abs/2607.18039v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Chunming Wu, Dafei Qiu, Congde Yuan, Charles Quan, Jun Wu et al.</li>
-<li><strong>摘要</strong>：Production customer-service bots must improve answer quality across iterative releases, yet large language models must not bypass evidence boundaries, policy rules, or human-handoff safeguards. We present an \textbf{Evidence-Grounded Customer-Service Agent Workflow} deployed in a real-world customer-service setting. BM25 recall, issue-title-vector recall, issue-description-vector recall, weighted RRF fusion, and cross-encoder reranking construct grounded FAQ evidence for controlled LLM decisions. Policy-guided orchestration then combines this RAG evidence with scenario-specific rule evidence, conversation memory, and clarification state inside a fixed LangGraph DAG~\cite{langgraph2024}. The paper contributes three reusable deployment patterns: \textbf{hybrid RAG evidence construction}, where multi-channel retrieval and reranking produce auditable FAQ candidates; \textbf{evidence-grounded issue/action decision}, where an Evidence-Grounded Decision Module selects an issue/action from typed FAQ evidence and scenario-specific rule evidence; and \textbf{trace-driven RAG and reranker improvement}, where traces diagnose whether failures come from recall, ranking, final candidate selection, clarification, rule-derived evidence, or action policy, and where reranker fine-tuning is evaluated not only for in-domain gain but also for forgetting risk.</li>
-
-<h4 id="3-finsagent-corpus-aligned-multi-agent-rag-framework-for-evi">3. FinSAgent: Corpus-Aligned Multi-Agent RAG Framework for Evidence-Grounded SEC Filing Question Answering</h4>
-
-<li><strong>评分</strong>：5.50（关键词 13.0 + 机构 0.5）| <strong>日期</strong>：2026-07-20 | <strong><a href="https://arxiv.org/abs/2607.18102v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Jijun Chi, Zhenghan Tai, Hanwei Wu, Tung Sum Thomas Kwok, Hailin He et al.</li>
-<li><strong>摘要</strong>：Financial question answering over U.S. Securities and Exchange Commission (SEC) filings requires retrieving and synthesizing heterogeneous evidence dispersed across long, standardized, and highly redundant disclosures. Existing retrieval-augmented and multi-agent systems typically derive retrieval queries directly from the user's question and rank candidates by semantic similarity. Together, these choices create prior-corpus misalignment: a mismatch between model priors and the target filings' structure, terminology, and evidence standards. As a result, query generation misses corpus-specific evidence, while semantic reranking favors topically similar but evidentially invalid false-positive chunks. We propose FinSAgent, an evidence-grounded multi-agent framework that reframes SEC filing QA as corpus-aligned retrieval planning and corrects both ends with a single principle: inject corpus-side conditioning wherever model priors would otherwise dominate. FinSAgent combines (1) role-specialized agents anchored to the mandated 10-K item structure, (2) database-aware query decomposition that conditions each agent's sub-queries on a lightweight, summary-level view of the local corpus, and (3) multi-path retrieval with a learned feature-gated reranker that separates evidential validity from semantic similarity. Across five offline financial QA benchmarks, FinSAgent improves retrieval coverage and answer correctness over strong single-agent and multi-agent baselines; in a three-arm randomized online experiment with 1,000 anonymous user ratings, it also receives higher scores than baselines.</li>
-
-<h4 id="4-optimizing-visibility-in-generative-engines-a-critical-sur">4. Optimizing Visibility in Generative Engines: A Critical Survey of Generative Engine Optimization (2023-2026)</h4>
-
-<li><strong>评分</strong>：5.50（关键词 13.0 + 机构 0.5）| <strong>日期</strong>：2026-07-15 | <strong><a href="https://arxiv.org/abs/2607.14035v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Olivier Martinez</li>
-<li><strong>摘要</strong>：Generative Engine Optimization (GEO) seeks to increase content's presence, likelihood of citation, or influence in answers produced by generative engines. Since the foundational GEO paper, the field has expanded rapidly, but terminology, metrics, and evidence standards remain heterogeneous. This critical survey reviews 45 studies selected under a November 2023-July 2026 publication window, including one earlier preprint published at EMNLP after the window opened, plus relevant RAG and evaluation work. We argue that GEO is not a single ranking task but a stochastic, partially observable pipeline spanning search activation, crawling and indexing, retrieval, reranking and context allocation, citation, prominence, factual absorption, fidelity, and user behavior. The foundational paper's widely cited gains are valid within its experimental setting but conditional on a source already being present in a fixed context; they establish neither organic discoverability nor durable traffic effects. Reviewed work indicates that topical relevance and context position are the most reproducible levers, generic heuristics transfer poorly, competition can erode individual gains, and citation-oriented rewrites can impair retrieval. Commercial audits further reveal low source overlap, substantial run-to-run variability, and persistent fidelity gaps. We contribute a multistage formal model, a visibility vector separating discoverability, citation, absorption, and economic outcomes, an evidence hierarchy, and a reproducible protocol based on repeated measurements, paraphrases, controls, human validation, and multi-actor interference. Within this corpus, the evidence is narrow: already-retrieved content can causally alter its citation or use, but no reviewed technique shows a stable, longitudinal, cross-platform causal effect on organic discoverability or downstream behavior.</li>
-
-<h4 id="5-towards-vision-free-cir-attribute-augmented-scoring-and-ll">5. Towards Vision-Free CIR: Attribute-Augmented Scoring and LLM-Based Reranking for Zero-Shot Composed Image Retrieval</h4>
-
-<li><strong>评分</strong>：4.90（关键词 11.5 + 机构 0.5）| <strong>日期</strong>：2026-07-14 | <strong><a href="https://arxiv.org/abs/2607.12621v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Ryotaro Shimada, Yu-Chieh Lin, Yuji Nozawa, Youyang Ng, Osamu Torii et al.</li>
-<li><strong>摘要</strong>：Recent work has shown that "Vision-Free'' approaches (representing images as text) can be effective for standard image retrieval tasks. However, it remains unclear whether this paradigm can effectively handle a more complex, multimodal task, Composed Image Retrieval (CIR), due to the inherent information loss in textual descriptions. In this paper, we introduce a Vision-Free CIR framework that addresses this challenge through two key techniques: (1) Attribute-Augmented Hybrid Scoring, which compensates for lost visual details via explicit attribute matching, and (2) LLM-Based Reranking, which verifies semantic consistency of top candidates. Experiments on the open-domain CIRR dataset show that our approach outperforms existing Zero-shot CIR methods (44.04% R@1, +8.79%). On FashionIQ, our results highlight the trade-off between semantic reasoning and fine-grained visual matching. Ablation studies reveal that both attribute-augmented scoring and LLM-Based Reranking consistently improve performance.</li>
-
-<h4 id="6-synh-rank-quality-aware-code-search-via-diverse-data-synth">6. SynH-Rank: Quality-Aware Code Search via Diverse Data Synthesis and Hierarchical Ranking Training</h4>
-
-<li><strong>评分</strong>：4.68（关键词 10.5 + 机构 0.8）| <strong>日期</strong>：2026-07-19 | <strong><a href="https://arxiv.org/abs/2607.17139v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Keyu Liang, Haoye Wang, Yanfu Yan, Zhiyuan Wan, Zhongxin Liu</li>
-<li><strong>摘要</strong>：Code search enhances developer productivity by enabling efficient code reuse. Current code search systems often use a retrieve-then-rerank pipeline, where rerankers focus on modeling semantic relevance between queries and code. However, these rerankers overlook critical non-functional qualities like execution speed, memory usage, and maintainability, which are essential for practical software development. Studies reveal developers expect results to maintain high coding standards and satisfy specific needs, such as resource optimization, highlighting the importance of quality-aware code search. Achieving quality-aware code search faces two major challenges: the scarcity of quality-annotated datasets for effective training and the limitations of standard contrastive learning objectives, which fail to capture the ordinal relationships among high-quality, low-quality, and irrelevant code. Although contrastive learning excels in distinguishing relevant from irrelevant code, its binary objective does not support nuanced quality distinctions.To address these challenges, we propose SynH-Rank, a quality-aware code reranking framework that combines LLM-driven diverse data synthesis with hierarchical ranking training. SynH-Rank employs a three-level labeling scheme to explicitly model the hierarchy: high-quality relevant > low-quality relevant > irrelevant. Additionally, we introduce a new benchmark with 4,209 pairs and two novel metrics: Quality Preference Accuracy (QPA) for assessing prioritization of high-quality code and Multi-Condition Accuracy (MCA) for evaluating performance under complex constraints.Experimental results show SynH-Rank improves QPA by 20.15\% over backbone models and outperforms standard relevance-only contrastive training by 15.80\%, while simultaneously enhancing traditional relevance metrics and multi-condition generalizability.</li>
-
-<h3 id="推荐系统7-篇">推荐系统（7 篇）</h3>
-
-<h4 id="7--privacy-preserving-recommender-systems-balancing-personal">7. <span style="color:var(--star)">⭐</span> Privacy Preserving Recommender Systems Balancing Personalization with Privacy</h4>
-
-<li><strong>评分</strong>：6.88（关键词 16.0 + 机构 0.8）| <strong>日期</strong>：2026-07-14 | <strong><a href="https://arxiv.org/abs/2607.13328v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Ranjeet K Jha, Venkata Suresh Gummadilli</li>
-<li><strong>摘要</strong>：Personalized recommendation systems are central to modern e-commerce and retail platforms, but they typically rely on centralized storage of detailed user interaction data, creating significant privacy and regulatory challenges. With increasing requirements from regulations such as GDPR, CCPA, and CPRA, organizations must develop recommendation systems that preserve user privacy without substantially degrading recommendation quality. This work presents and evaluates a privacy-preserving recommendation framework that combines federated learning, differential privacy, cohort-level modeling, and privacy-aware intelligent agents. The framework keeps raw user data decentralized while introducing mathematically bounded noise to model updates. Experiments were conducted on synthetic retail datasets that emulate customer clickstream and purchase behavior. Recommendation quality was evaluated using Click-Through Rate (CTR), Precision@K, Recall@K, and Normalized Discounted Cumulative Gain (NDCG@K) across multiple differential privacy budgets. We evaluate matrix factorization, neural collaborative filtering, and GRU4Rec under varying privacy constraints and analyze the trade-off between privacy and utility. An interactive Streamlit dashboard was developed to visualize recommendation performance, ranking stability, privacy-utility trade-offs, and fairness metrics. Results show that the proposed framework maintains competitive recommendation quality at moderate privacy budgets (approximately $ε\approx 5$), demonstrating that strong privacy guarantees can be achieved with limited impact on recommendation effectiveness. This work provides a practical framework for deploying privacy-preserving recommendation systems that balance personalization, regulatory compliance, and business objectives, offering a scalable approach for next-generation AI-driven retail platforms.</li>
-
-<h4 id="8-not-only-ntp-extending-training-signal-coverage-for-genera">8. Not Only NTP: Extending Training Signal Coverage for Generative Recommendation</h4>
-
-<li><strong>评分</strong>：5.20（关键词 11.5 + 机构 1.0）| <strong>日期</strong>：2026-07-14 | <strong><a href="https://arxiv.org/abs/2607.12277v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Changhao Li, Shuli Wang, Junwei Yin, Senjie Kou, Yinqiu Huang et al.</li>
-<li><strong>摘要</strong>：Next-Token Prediction (NTP) carries two structural training signal limitations. First, NTP optimizes for single-step prediction only, placing no supervised pressure on learning longer-range behavioral structure -- we term this \textbf{temporal locality}. Second, in multi-domain sequences, each target item embedding receives gradient updates exclusively from the immediately preceding hidden state, with no explicit gradient pathway from cross-domain context -- we term this \textbf{spatial locality}. We propose \textbf{NONTP}, extending NTP's signal coverage along both dimensions through two auxiliary objectives. \textbf{TCL (Temporal Contrastive Learning)} uses a BYOL-style EMA teacher with InfoNCE to align hidden states against a $K$-step future trajectory in representation space. \textbf{TDL (Trans-Domain Learning)} mean-pools cross-domain hidden states and predicts through the shared prediction head, opening a second gradient pathway with no additional parameters. Both are discarded at inference: zero overhead. On a four-domain Meituan industrial dataset (full ranking), NONTP achieves HR@10 +34.3\% over NTP and +18.3\% over MBGR. On the public Amazon Movie-Book-CDs benchmark, HR@10 +2.8\% and NDCG@10 +3.7\%. Online A/B tests confirm CTR +1.8\% and GMV +2.1\% (both $p < 0.01$). Ablation studies confirm each component contributes independently, with gradient conflict analyzed as a direction for future work.</li>
-
-<h4 id="9-personalizing-incremental-video-search-with-hybrid-text-an">9. Personalizing Incremental Video Search with Hybrid Text and ID Embeddings</h4>
-
-<li><strong>评分</strong>：5.00（关键词 11.0 + 机构 1.0）| <strong>日期</strong>：2026-07-15 | <strong><a href="https://arxiv.org/abs/2607.13493v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Vivek Kanojiya, Vishalaksh Aggarwal, Daeho Baek, Lyndon Kennedy, Xuetao Yin</li>
-<li><strong>摘要</strong>：Incremental video search requires high-quality ranking after each keystroke, where intent is often underspecified (e.g., 1-3 character prefixes). We present a personalization system for Apple TV search that combines complementary semantic and collaborative signals at ranking time. Our approach learns two item embedding spaces: (i) a text-based multilingual encoder (TextEmb) fine-tuned on co-engagement triplets via contrastive learning, and (ii) an ID-based collaborative embedding model (IdEmb) trained on interaction-derived positives. At serving time, we construct user representations from recent watch history and inject text- and ID-based user-item cosine similarities into a pairwise XGBoost ranker. We evaluate with temporally held-out offline datasets and a three-week online controlled experiment. Offline, for sessions with user history, the personalized ranker improves NDCG@10 by 2.99% and MRR by 3.30% over the non-personalized baseline. Slice analyses show that personalization is most needed in incremental search, where intent is still forming: on ambiguous prefix queries (1-3 characters), NDCG@10 lift is +8.63%, versus +1.46% on longer, fully specified queries. Longer-history users benefit more: NDCG lift rises from +2.13% for users with 1-5 history items to +4.37% for users with 51-100, even though baseline relevance is lower for these cohorts (NDCG@10 drops from 0.733 to 0.680), indicating that personalization adds the most value where default ranking underperforms. Online, treatment yields statistically significant gains of +1.14% tap-through rate and +1.23% conversion rate, with a 2.91% improvement in converted-item rank position. We further analyze coverage-precision trade-offs between semantic and collaborative embeddings via ablations isolating each signal, and evaluate embedding quality on a held-out corpus with LLM-judged similarity labels to reduce click/exposure bias.</li>
-
-<h4 id="10-tmallgs-scaling-unified-feature-and-sequence-modeling-for">10. TMallGS: Scaling Unified Feature and Sequence Modeling for Generative E-commerce Search</h4>
-
-<li><strong>评分</strong>：4.90（关键词 11.5 + 机构 0.5）| <strong>日期</strong>：2026-07-15 | <strong><a href="https://arxiv.org/abs/2607.13398v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Zhentao Song, Yufeng Gao, Xing Fang, Jing Wang, Guangxin Song et al.</li>
-<li><strong>摘要</strong>：In industrial search and ranking systems, Click-Through Rate (CTR) prediction is shifting from traditional Deep Learning Recommendation Models (DLRM) toward unified, compute-intensive Transformer architectures. This transition is driven by the need to improve Model FLOPs Utilization (MFU) and achieve predictable gains through scaling laws. However, existing approaches such as OneTrans and Climber often adopt an all-in-tokenization strategy when adapting Large Language Model (LLM) architectures, overlooking the heterogeneous nature of ranking features. We propose TmallGS, a scalable ranking architecture for Tmall search. TmallGS includes five key components: (1) Hierarchical Distribution-Calibrated Tokenization, which combines Field-wise Saliency Reweighting (FSR) and Distribution-Calibrated Projection (DCP) to map diverse features into optimized subspaces; (2) a Field-Adaptive Gated Transformer Backbone with per-field QKV projections and noise-adaptive gating for refined semantic interaction; (3) Decoupled FiLM Late Fusion to preserve explicit high-frequency signals; (4) a Context-Aware Bias Net to decouple systemic bias from user intent; and (5) Error-Aware Progressive Training with dynamically weighted losses for robust learning. Extensive offline experiments and online A/B tests on Tmall Search show that TmallGS improves training throughput and achieves substantial gains in UCTCVR and GMV.</li>
-
-<h4 id="11-learning-sparse-representations-of-multimodal-content-for">11. Learning Sparse Representations of Multimodal Content for Enhanced Cold Item Recommendation</h4>
-
-<li><strong>评分</strong>：4.68（关键词 10.5 + 机构 0.8）| <strong>日期</strong>：2026-07-19 | <strong><a href="https://arxiv.org/abs/2607.17184v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Gregor Meehan, Johan Pauwels</li>
-<li><strong>摘要</strong>：The scale and rapid growth of item catalogs in modern digital platforms present significant challenges to recommender system (RS) practitioners. Most RSs use embedding similarity to predict user-item preferences, but embedding storage and low-latency retrieval is challenging in industry-scale catalogs. Furthermore, newly added items do not have corresponding embeddings and cannot be recommended effectively; previous works often tackle this item cold-start problem by generating cold item representations from auxiliary content, such as images or descriptive text, so that user preferences can be predicted without historical interactions. In this paper, we argue that sparse embeddings have notable advantages over standard dense vectors in this content-based cold-start paradigm. We describe how existing cold-start training regimes can be adapted for sparse representation learning, and build on insights from linear attention to design a pre-sparsification activation technique that induces sharpness and denoising effects in learned item-item similarities. We show that the resulting sparse embeddings achieve significant improvements in cold-start recommendation accuracy over dense embeddings at considerably lower storage costs, especially for users with multiple interests. Through comprehensive experiments on four multimodal RS datasets, we also demonstrate the interpretability of sparse content embeddings and their robustness in the trade-off between size and accuracy.</li>
-
-<h4 id="12-llm-based-re-ranking-for-real-estate-search">12. LLM-Based Re-Ranking for Real Estate Search</h4>
-
-<li><strong>评分</strong>：4.50（关键词 10.5 + 机构 0.5）| <strong>日期</strong>：2026-07-16 | <strong><a href="https://arxiv.org/abs/2607.14835v2">论文链接</a></strong></li>
-<li><strong>作者</strong>：Nkateko Ntimane, Rafael Guedes, Tiago Cunha, Pedro Nogueira</li>
-<li><strong>摘要</strong>：QuintoAndar Group operates the leading housing marketplace in Latin America for both rentals and sales. The platform replaces traditionally paper-heavy workflows with a fully digital experience, making housing transactions faster and more accessible to tenants, buyers, and landlords in the region. Finding the ideal home in such a vast catalog is inherently difficult. At the same time, the widespread adoption of conversational assistants is reshaping user expectations: people increasingly want to express their needs through open, multi-turn dialog rather than rigid filter menus and faceted search. This shift is particularly pronounced in housing, where intent is multi-dimensional, context-dependent, and rarely reducible to a small set of structured constraints. To meet these expectations, we propose a Large Language Model (LLM) based re-ranker that augments a conversational recommendation system by reordering retrieved candidates according to the nuanced, context-rich intent expressed across the user's conversation. We additionally construct a large-scale offline evaluation dataset for conversational real-estate search, containing 960,000 query-item pairs constructed from both synthetic and production queries and annotated using an LLM-as-a-Judge framework with human validation. We validate our approach both offline, on this proprietary dataset, and online, through a production A/B test. Both evaluations show consistent improvements in ranking quality, including a statistically significant increase in production of +5.3% in click-through rate and +4.8% in scheduled visits, demonstrating the value of integrating conversational context into housing recommendations.</li>
-
-<h4 id="13-slimper-make-personalization-model-slim-and-smart">13. SlimPer: Make Personalization Model Slim and Smart</h4>
-
-<li><strong>评分</strong>：4.30（关键词 10.0 + 机构 0.5）| <strong>日期</strong>：2026-07-14 | <strong><a href="https://arxiv.org/abs/2607.12281v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Siqi Wang, Xianjie Chen, Shaofeng Deng, Albert Chen, Romil Shah et al.</li>
-<li><strong>摘要</strong>：Transformer-style architectures are increasingly adopted for industrial recommendation systems, yet they inherit a design premise misaligned with the task: generative models rely on per-token autoregressive prediction, which justifies maintaining large intermediate tensors that scale with sequence length. In contrast, recommendation systems produce a single set of relevance scores for each <user, item> pair without token-level supervision. Leveraging this observation, we propose SlimPer, which reformulates personalized ranking as iterative refinement of a compact, unified <user, item> knowledge base. At each layer, the model selectively queries raw multi-modal user-side tokens, computes explicit relevance matching scores, and refines the knowledge base, all in O(N) per-layer cost with a fixed-size intermediate representation. As a result, model depth is decoupled from user history length, enabling deeper relevance understanding without proportional growth in compute or memory; request-only optimization further trims memory by sharing a single copy of user-side tokens across all candidate items. SlimPer unifies sparse, dense, and sequence features within a single backbone and provides inherent interpretability through its attention mechanism. Deployed on Instagram Reels and Feed, SlimPer yields measurable improvements in user engagement while streamlining the overall system and enabling effective modeling of 10k+ fine-grained user history events.</li>
-
-<h3 id="广告系统3-篇">广告系统（3 篇）</h3>
-
-<h4 id="14--ramp-robust-ad-recommendation-under-limited-personalized">14. <span style="color:var(--star)">⭐</span> RAMP: Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways</h4>
-
-<li><strong>评分</strong>：6.08（关键词 14.0 + 机构 0.8）| <strong>日期</strong>：2026-07-20 | <strong><a href="https://arxiv.org/abs/2607.17473v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Dairui Liu, Zhongyi Lu, Roger Zhe Li, Changhong Jin, Jitao Lu et al.</li>
-<li><strong>摘要</strong>：Click-through rate (CTR) and conversion rate (CVR) prediction are fundamental tasks in online advertising, aiming to estimate the likelihood of user interactions based on various features. While personalized attributes such as age and gender can significantly enhance predictive accuracy, their use is increasingly restricted by privacy regulations, thereby limiting available data for both training and inference. To address this challenge, we propose RAMP (Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways), which is designed to improve CTR/CVR prediction accuracy when personalized features are not accessible, thus supporting deployment in privacy-constrained settings.RAMP consists of (i) a personalized pathway built upon a dual-tower component with identical inputs but independent parameters, where output masking separates predictions for personalized and non-personalized signals, (ii) a separate non-personalized pathway trained with non-personalized features only, and (iii) a distillation-inspired prediction-alignment architecture between (i) and (ii) that improves prediction when personalized features are unavailable. We conduct comprehensive experiments using both public benchmarks and industrial datasets to evaluate the performance of RAMP. Our evaluation spans multiple backbone models and different settings: with and without access to personalized features. The results show that RAMP consistently outperforms state-of-the-art methods when personalized features are missing, while maintaining competitive performance when all features are available. %demonstrating its effectiveness and practicality for real-world advertising systems. Our code is publicly available at https://github.com/Ruixinhua/RAMP.</li>
-
-<h4 id="15-turbovec-a-case-study-in-cost-efficient-private-retrieval">15. TurboVec: A Case Study in Cost-Efficient Private Retrieval for Enterprise RAG via Codebook-Oblivious Quantization</h4>
-
-<li><strong>评分</strong>：4.48（关键词 10.0 + 机构 0.8）| <strong>日期</strong>：2026-07-18 | <strong><a href="https://arxiv.org/abs/2607.16973v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Navnit Shukla, Kamal Pandey, Omsankar Tiwari</li>
-<li><strong>摘要</strong>：Retrieval-Augmented Generation (RAG) systems increasingly power enterprise LLM applications, yet the vector retrieval layer introduces two underexplored challenges: (1) trained codebook quantizers may expose corpus statistics during index construction, creating a leakage channel in multi-tenant deployments, and (2) post-hoc filtering for tenant isolation degrades recall on selective queries. We study TurboVec, an open-source vector index built on TurboQuant - a codebook-oblivious scalar quantizer requiring no corpus-dependent training. On the DBpedia OpenAI embeddings benchmark (d=1536, 100K-999K vectors), TurboQuant 4-bit outperforms trained FAISS Product Quantization at the same memory budget by 8.5-8.9 percentage points in Recall@5 across all scales. Compared to HNSW (R@5=0.991) and IVF-PQ (R@5=0.840), TurboQuant occupies a distinct design point: higher recall than IVF-PQ without training, at 4-8x less memory than HNSW. Deployed on Snowpark Container Services, TurboVec achieves 11ms median query latency at 100K vectors versus 707ms for warehouse brute-force scan. Kernel-level allowlist filtering maintains 0.86-0.93 Recall@10 across 10-1000 tenant workloads versus 0.09-0.19 for post-filter baselines. Codebook-oblivious design reduces membership inference accuracy to near-random (50.0%) versus 57.3% for PQ codebooks. Limitations include single dataset evaluation, uncompressed HNSW comparison, and privacy evaluation on synthetic data only.</li>
-
-<h4 id="16-long-history-user-transformers-for-real-time-ad-ranking">16. Long-History User Transformers for Real-Time Ad Ranking</h4>
-
-<li><strong>评分</strong>：4.48（关键词 10.0 + 机构 0.8）| <strong>日期</strong>：2026-07-15 | <strong><a href="https://arxiv.org/abs/2607.14331v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Viacheslav Ovchinnikov, Georgii Smirnov, Nikolai Savushkin, Veronika Ivanova, Maksim Kuzin</li>
-<li><strong>摘要</strong>：Long interaction histories are among the most informative inputs for click-through rate (CTR) prediction, yet in online advertising they collide with a hard serving constraint: ads must be scored within a few hundred milliseconds to enter the auction, which rules out running a large sequence encoder at request time. We describe how a production advertising system resolves this conflict by decoupling history encoding from real-time inference. A high-capacity offline transformer asynchronously encodes the user's full cross-surface interaction history into a compact representation cached in a feature store, while a lightweight runtime model combines this cached representation with the user's most recent events and the request context at serving time. The offline encoder is pre-trained autoregressively on large-scale interaction logs with a dual objective - feedback prediction and next-item prediction - and the two-stage architecture is then fine-tuned for CTR prediction on the target advertising surface. Offline, the split design recovers 72-80% of the quality of a full-history runtime transformer that would be too expensive to deploy, and the cached representation is robust enough to staleness to permit inexpensive refresh policies. In production A/B experiments, the system improves the primary ranking metric by +2.77% in search advertising and +2.1% on the Yandex Advertising Network, with revenue gains of +2.26% and +0.43% respectively - without increasing serving latency.</li>
-
-<h3 id="llmrag4-篇">LLM/RAG（4 篇）</h3>
-
-<h4 id="17--vector-search-as-nearest-neighbor-matching-rag-based-pol">17. <span style="color:var(--star)">⭐</span> Vector Search As Nearest Neighbor Matching: RAG-based Policy Learning in Causal Inference</h4>
-
-<li><strong>评分</strong>：5.70（关键词 13.5 + 机构 0.5）| <strong>日期</strong>：2026-07-20 | <strong><a href="https://arxiv.org/abs/2607.18225v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Masahiro Kato, Taka Kato</li>
-<li><strong>摘要</strong>：We propose one-step and two-step methods for policy learning with retrieval-augmented generation (RAG). We formulate RAG-based action selection under the potential outcome framework. In the two-step method, vector search retrieves action-specific neighboring evidence in an embedding space, the generator estimates conditional expected outcomes or their contrasts, and a plug-in rule selects an action. This formulation connects action-specific vector search with nearest-neighbor matching in causal inference. We decompose the regret of the two-step method into candidate-generation regret and within-candidate choice regret, and we bound the latter using prediction-error guarantees for nearest-neighbor estimators and transformers. We evaluate the one-step method directly as a policy because its intermediate computation is unobserved.</li>
-
-<h4 id="18-d-nova-in-storage-retrieval-accelerator-via-dual-bound-3d">18. D-NOVA: In-Storage Retrieval Accelerator via Dual-Bound 3D NAND-Optimized Similarity Search with Vector Adaptation</h4>
-
-<li><strong>评分</strong>：5.28（关键词 12.0 + 机构 0.8）| <strong>日期</strong>：2026-07-20 | <strong><a href="https://arxiv.org/abs/2607.17538v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Chang Eun Song, Sumukh Pinge, Tianqi Zhang, Sung Eun Kim, Tajana S. Rosing et al.</li>
-<li><strong>摘要</strong>：Retrieval-Augmented Generation (RAG) enhances the factual grounding of large language model (LLM) inference by retrieving relevant information from external knowledge bases. However, its dense vector retrieval introduces significant latency and energy overhead, becoming the primary performance bottleneck. Although recent in-storage accelerators aim to reduce data movement, they still rely on host or embedded processors outside the memory, where nearly 70% of the total retrieval time is spent. As a result, they cannot fully overcome the bandwidth limitations, leading to yet another memory bottleneck. To tackle these limitations, we present D-NOVA, a hardware-software co-designed in-storage retrieval accelerator. D-NOVA executes an inverted file (IVF)-based hierarchical retrieval pipeline by deeply embedding the search functionality directly into the NAND memory array. This is achieved by incorporating a new distance metric, Dual-Bound Tight Similarity Sensing (DTS), which is specifically tailored for searching within the NAND string. In addition, we introduce a lightweight contrastive adapter that maps embedding vectors into a DTS-friendly domain, recovering near-software recall while improving performance and energy efficiency. D-NOVA is up to 41.7x faster and 71x more energy-efficient than a CPU baseline, and achieves 12.13x higher throughput while being up to 1.26x more energy-efficient than state-of-the-art in-storage RAG accelerators, demonstrating the potential of fully in-storage vector search for scalable RAG acceleration.</li>
-
-<h4 id="19-qubo-optimized-evidence-selection-for-retrieval-augmented">19. QUBO-Optimized Evidence Selection for Retrieval-Augmented Question Answering with Unconventional Solvers</h4>
-
-<li><strong>评分</strong>：4.50（关键词 10.5 + 机构 0.5）| <strong>日期</strong>：2026-07-14 | <strong><a href="https://arxiv.org/abs/2607.12334v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Rahul Singh, Madhav Vadlamani</li>
-<li><strong>摘要</strong>：Retrieval-augmented question answering depends on selecting evidence passages that jointly support answer generation. However, many RAG pipelines rely on top-\(k\) ranking, where passages are selected mainly by individual relevance scores, even though multi-hop questions often require complementary evidence satisfying multiple information requirements. Recent LLM-based selectors address this by treating retrieval as set selection, but using an LLM for this intermediate stage can be costly and difficult to scale. In this work, we formulate evidence selection as a Quadratic Unconstrained Binary Optimization (QUBO) problem. Given a question, candidate passages, and decomposed information requirements, our method constructs an energy function that balances relevance, requirement coverage, support strength, redundancy, complementarity, and compactness. Low-energy solutions correspond to compact evidence subsets that cover the needed requirements while avoiding unnecessary or repetitive context. The selected passages are then passed to a downstream language model for answer generation, separating combinatorial evidence selection from semantic answer generation. We evaluate the proposed QUBO selector on HotpotQA and compare it with LLM-based set selectors and non-LLM baselines including BM25, relevance top-\(k\), maximal marginal relevance, hybrid lexical--semantic ranking, greedy coverage, and random selection. The QUBO selector achieves competitive exact-match and token-F1 performance relative to LLM-based selectors while providing a solver-compatible formulation for structured evidence selection. These results suggest that multi-hop evidence selection can be cast as discrete optimization, opening a path toward RAG pipelines where LLMs are reserved for semantic processing and answer generation, while context selection is handled by Ising/QUBO-compatible solvers.</li>
-
-<h4 id="20-rims-preference-optimization-via-smoothed-multi-pair-aggr">20. RIMS: Preference Optimization via Smoothed Multi-pair Aggregation for Small-Scale LLM Retrieval-Augmented Generation</h4>
-
-<li><strong>评分</strong>：4.28（关键词 9.5 + 机构 0.8）| <strong>日期</strong>：2026-07-17 | <strong><a href="https://arxiv.org/abs/2607.16431v1">论文链接</a></strong></li>
-<li><strong>作者</strong>：Pei Tian, Zihan Dong, Tianci Liu, Linjun Zhang, Haoyu Wang</li>
-<li><strong>摘要</strong>：Small-scale language models (SLMs) are attractive for retrieval-augmented generation (RAG) in resource-constrained settings, but their limited capacity makes them highly sensitive to noisy or spurious retrieved evidence. Existing preference-based methods such as RoseRAG select only the hardest single preference pair via hard argmin/argmax, discarding the remaining signal; others treat multiple pairs as independent binary comparisons, resulting in low data utilization. We propose RIMS, a three-stage preference optimization framework comprising (1) synthetic chain-of-thought preference data generation via rejection sampling using the target SLM itself without relying on proprietary models, (2) a differentiable soft aggregation mechanism that replaces hard selection with a smooth operator, preserving gradient signal from all preference pairs while retaining the discriminative structure of margin-aware selection, and (3) preference optimization with the smoothed objective applied to multiple alignment algorithms. We theoretically show that the smoothed approximation admits a controllable error bound and that smooth aggregation yields provably tighter gradient alignment to the oracle objective than hard selection. Experiments on four multi-hop question answering benchmarks show that our approach outperforms state-of-the-art baselines across multiple SLM backbones, achieving consistent gains in Exact Match and F1 under noisy retrieval conditions. Our implementation is available at https://github.com/tptrix29/RIMS.</li>
+<blockquote>说明：Top 论文的"论文阅读十问"基于 arXiv HTML 全文回答，简洁扼要，引用具体事实。报告使用中文。</blockquote>
 
 <hr>
 
-<h2 id="二top-5-论文阅读十问">🏆 二、Top 5 论文阅读十问</h2>
+<h2 id="一分类汇总">一、分类汇总</h2>
 
-<blockquote>以下对综合评分最高的 5 篇论文，基于 arXiv HTML 全文回答"论文阅读十问"。</blockquote>
+<h3 id="召回--检索--matching">召回 / 检索 / Matching</h3>
 
-<h3 id="top-1-privacy-preserving-recommender-systems-balancing-perso"><span style="color:var(--star)">⭐</span> Top 1. Privacy Preserving Recommender Systems Balancing Personalization with Privacy</h3>
+<li><strong><a href="https://arxiv.org/abs/2607.18225">Vector Search As Nearest Neighbor Matching: RAG-based Policy Learning in Causal Inference</a></strong> <span style="color:var(--star)">⭐</span>建议精读</li>
+<p>  - 分类：召回/检索 | 评分：5.70</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：We propose one-step and two-step methods for policy learning with retrieval-augmented generation (RAG). We formulate RAG-based action selection under the potential outcome framework. In the two-step method, vector search retrieves action-specific neighboring evidence in an embedding space, the generator estimates conditional expected outcomes or their contrasts, and a plug-in rule selects an action. This formulation connects action-specific vector search with nearest-neighbor matching in causal inference. We decompose the regret of the two-step method into candidate-generation regret and within-candidate choice regret, and we bound the latter using prediction-error guarantees for nearest-neighbor estimators and transformers. We evaluate the one-step method directly as a policy because its intermediate computation is unobserved.</p>
 
-<p><strong>论文链接</strong>：<a href="https://arxiv.org/abs/2607.13328v1">https://arxiv.org/abs/2607.13328v1</a> | <strong>HTML全文</strong>：<a href="https://arxiv.org/html/2607.13328v1">https://arxiv.org/html/2607.13328v1</a></p>
+<li><strong><a href="https://arxiv.org/abs/2607.17538">D-NOVA: In-Storage Retrieval Accelerator via Dual-Bound 3D NAND-Optimized Similarity Search with Vector Adaptation</a></strong></li>
+<p>  - 分类：召回/检索 | 评分：5.48</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Retrieval-Augmented Generation (RAG) enhances the factual grounding of large language model (LLM) inference by retrieving relevant information from external knowledge bases. However, its dense vector retrieval introduces significant latency and energy overhead, becoming the primary performance bottleneck. Although recent in-storage accelerators aim to reduce data movement, they still rely on host or embedded processors outside the memory, where nearly 70% of the total retrieval time is spent. As a result, they cannot fully overcome the bandwidth limitations, leading to yet another memory bottleneck. To tackle these limitations, we present D-NOVA, a hardware-software co-designed in-storage retrieval accelerator. D-NOVA executes an inverted file (IVF)-based hierarchical retrieval pipeline by deeply embedding the search functionality directly into the NAND memory array. This is achieved by incorporating a new distance metric, Dual-Bound Tight Similarity Sensing (DTS), which is specifically tailored for searching within the NAND string. In addition, we introduce a lightweight contrastive adapter that maps embedding vectors into a DTS-friendly domain, recovering near-software recall while improving performance and energy efficiency. D-NOVA is up to 41.7x faster and 71x more energy-efficient than a CPU baseline, and achieves 12.13x higher throughput while being up to 1.26x more energy-efficient than state-of-the-art in-storage RAG accelerators, demonstrating the potential of fully in-storage vector search for scalable RAG acceleration.</p>
 
-<p><strong>十问</strong>：</p>
+<li><strong><a href="https://arxiv.org/abs/2607.17184">Learning Sparse Representations of Multimodal Content for Enhanced Cold Item Recommendation</a></strong></li>
+<p>  - 分类：召回/检索 | 评分：5.10</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：The scale and rapid growth of item catalogs in modern digital platforms present significant challenges to recommender system (RS) practitioners. Most RSs use embedding similarity to predict user-item preferences, but embedding storage and low-latency retrieval is challenging in industry-scale catalogs. Furthermore, newly added items do not have corresponding embeddings and cannot be recommended effectively; previous works often tackle this item cold-start problem by generating cold item representations from auxiliary content, such as images or descriptive text, so that user preferences can be predicted without historical interactions. In this paper, we argue that sparse embeddings have notable advantages over standard dense vectors in this content-based cold-start paradigm. We describe how existing cold-start training regimes can be adapted for sparse representation learning, and build on insights from linear attention to design a pre-sparsification activation technique that induces sharpness and denoising effects in learned item-item similarities. We show that the resulting sparse embeddings achieve significant improvements in cold-start recommendation accuracy over dense embeddings at considerably lower storage costs, especially for users with multiple interests. Through comprehensive experiments on four multimodal RS datasets, we also demonstrate the interpretability of sparse content embeddings and their robustness in the trade-off between size and accuracy.</p>
 
-<p>1. <strong>论文解决什么问题？</strong>：（需基于全文回答）</p>
-<p>2. <strong>核心创新点是什么？</strong>：（需基于全文回答）</p>
-<p>3. <strong>关键技术方案是什么？</strong>：（需基于全文回答）</p>
-<p>4. <strong>实验效果如何？</strong>：（需基于全文回答）</p>
-<p>5. <strong>与现有方法对比如何？</strong>：（需基于全文回答）</p>
-<p>6. <strong>有什么局限性？</strong>：（需基于全文回答）</p>
-<p>7. <strong>对工业界有什么启示？</strong>：（需基于全文回答）</p>
-<p>8. <strong>落地优先级如何？</strong>：（需基于全文回答）</p>
-<p>9. <strong>风险和成本？</strong>：（需基于全文回答）</p>
-<p>10. <strong>建议的下一步行动？</strong>：（需基于全文回答）</p>
+<li><strong><a href="https://arxiv.org/abs/2607.14835">LLM-Based Re-Ranking for Real Estate Search</a></strong></li>
+<p>  - 分类：召回/检索 | 评分：4.70</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：QuintoAndar Group operates the leading housing marketplace in Latin America for both rentals and sales. The platform replaces traditionally paper-heavy workflows with a fully digital experience, making housing transactions faster and more accessible to tenants, buyers, and landlords in the region. Finding the ideal home in such a vast catalog is inherently difficult. At the same time, the widespread adoption of conversational assistants is reshaping user expectations: people increasingly want to express their needs through open, multi-turn dialog rather than rigid filter menus and faceted search. This shift is particularly pronounced in housing, where intent is multi-dimensional, context-dependent, and rarely reducible to a small set of structured constraints. To meet these expectations, we propose a Large Language Model (LLM) based re-ranker that augments a conversational recommendation system by reordering retrieved candidates according to the nuanced, context-rich intent expressed across the user's conversation. We additionally construct a large-scale offline evaluation dataset for conversational real-estate search, containing 960,000 query-item pairs constructed from both synthetic and production queries and annotated using an LLM-as-a-Judge framework with human validation. We validate our approach both offline, on this proprietary dataset, and online, through a production A/B test. Both evaluations show consistent improvements in ranking quality, including a statistically significant increase in production of +5.3% in click-through rate and +4.8% in scheduled visits, demonstrating the value of integrating conversational context into housing recommendations.</p>
 
-<h3 id="top-2-nowjcoliee-2026-adaptive-pipelines-for-legal-retrieval"><span style="color:var(--star)">⭐</span> Top 2. NOWJ@COLIEE 2026: Adaptive Pipelines for Legal Retrieval and Reasoning</h3>
+<li><strong><a href="https://arxiv.org/abs/2607.16973">TurboVec: A Case Study in Cost-Efficient Private Retrieval for Enterprise RAG via Codebook-Oblivious Quantization</a></strong></li>
+<p>  - 分类：召回/检索 | 评分：4.68</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Retrieval-Augmented Generation (RAG) systems increasingly power enterprise LLM applications, yet the vector retrieval layer introduces two underexplored challenges: (1) trained codebook quantizers may expose corpus statistics during index construction, creating a leakage channel in multi-tenant deployments, and (2) post-hoc filtering for tenant isolation degrades recall on selective queries. We study TurboVec, an open-source vector index built on TurboQuant - a codebook-oblivious scalar quantizer requiring no corpus-dependent training. On the DBpedia OpenAI embeddings benchmark (d=1536, 100K-999K vectors), TurboQuant 4-bit outperforms trained FAISS Product Quantization at the same memory budget by 8.5-8.9 percentage points in Recall@5 across all scales. Compared to HNSW (R@5=0.991) and IVF-PQ (R@5=0.840), TurboQuant occupies a distinct design point: higher recall than IVF-PQ without training, at 4-8x less memory than HNSW. Deployed on Snowpark Container Services, TurboVec achieves 11ms median query latency at 100K vectors versus 707ms for warehouse brute-force scan. Kernel-level allowlist filtering maintains 0.86-0.93 Recall@10 across 10-1000 tenant workloads versus 0.09-0.19 for post-filter baselines. Codebook-oblivious design reduces membership inference accuracy to near-random (50.0%) versus 57.3% for PQ codebooks. Limitations include single dataset evaluation, uncompressed HNSW comparison, and privacy evaluation on synthetic data only.</p>
 
-<p><strong>论文链接</strong>：<a href="https://arxiv.org/abs/2607.16603v1">https://arxiv.org/abs/2607.16603v1</a> | <strong>HTML全文</strong>：<a href="https://arxiv.org/html/2607.16603v1">https://arxiv.org/html/2607.16603v1</a></p>
+<li><strong><a href="https://arxiv.org/abs/2607.13551">Cost-Pragmatic Quality Gating and Selection-Fusion Multi-Model Combiners for BioASQ Phases A+ and B</a></strong></li>
+<p>  - 分类：召回/检索 | 评分：4.30</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：We describe our BioASQ Task 14B 2026 system. The work centers on two design decisions: how aggressively to re-retrieve when first-stage retrieval is weak, and how to combine multiple language-model answers. Retrieval unions two parallel pipelines - a hybrid first stage (dense BGE + BM25 + RRF, reaching R@200 = 99.3% on the BioASQ-13b historical archive) and an agent-driven pipeline that decomposes the question over PubMed, Europe PMC, and iCite - with a BGE cross-encoder quality gate flagging weakly-supported questions for selective re-retrieval. On Task 12B 2024 validation, a cost-pragmatic re-retrieval policy beats a skill-strict baseline significantly on list F1 and list precision, at 12% lower re-retrieval cost. Holding prompt and model fixed across val and test 13B (different question sets), list F1 rises by +0.132 absolute on the BioASQ-released gold-input pool, consistent with substantial retrieval-side headroom. For Phase B answering we decompose multi-model ensemble lift into a selection component bounded by the per-question oracle and a fusion component that aggregators can exceed. The decomposition predicts before any experiment that LLM-as-judge wins on selection-dominated metrics (yes/no, multi-reference ROUGE) but is structurally insufficient on the recall component of fusion-friendly metrics (factoid rank-1, list recall). On Task 13B 2025 our synonym-union resolver wins list recall on every head, while GPT-5.5 solo retains the list-F1 lead because the resolver's wider item set costs precision. On the Task 14B 2026 preliminary leaderboard our team places first on the combined-exact aggregate on three of the eight (phase x batch) leaderboards, wins four individual question-type cells, and takes #1 on Phase B b3 ideal.</p>
 
-<p><strong>十问</strong>：</p>
+<li><strong><a href="https://arxiv.org/abs/2607.17535">Salience Induction against Multi-Hop RAG Agents: Threat and Defense</a></strong></li>
+<p>  - 分类：召回/检索 | 评分：4.28</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Agentic retrieval-augmented generation (RAG) systems increasingly retrieve external evidence and orchestrate tools for knowledge-intensive applications. In Multi-Hop question answering, agents chain facts across documents. Existing defenses focus on content poisoning, which injects false facts, and prompt injection, which embeds directives. We identify a third attack surface: the salience channel, through which fact position, emphasis, framing, and semantic proximity can redirect reasoning even when all retrieved claims are true and no instructions are present. We formalize Salience Induction as truth-preserving edits that redirect Multi-Hop attribute binding while leaving the retrieval trace semantically intact. We define six Salience-Editing operator classes and build an iterative proposer-verifier pipeline under factual and stealth constraints. We also introduce SalientWiki-MH, a decoy-annotated Multi-Hop benchmark. Evaluations across five frontier model families (GPT, Claude, Gemini, DeepSeek, and Qwen) and three agent architectures (ReAct, Reflexion, and tool-calling) show broad generalization. Under a 30% edit budget, Salience Induction achieves an 83.3% attack success rate; the strongest evaluated baseline defense leaves 75.7% post-defense ASR. Untargeted rewriting further reduces attacks only by degrading neutral task success. Our lightweight input-side defense, Salience Normalization, reduces attack success to 15.3% under standard attacks and 23.6% under an adaptive attack. These results show that truthfulness and instruction filtering alone are insufficient: robust agentic RAG also requires defenses against salience-relevance decoupling.</p>
 
-<p>1. <strong>论文解决什么问题？</strong>：（需基于全文回答）</p>
-<p>2. <strong>核心创新点是什么？</strong>：（需基于全文回答）</p>
-<p>3. <strong>关键技术方案是什么？</strong>：（需基于全文回答）</p>
-<p>4. <strong>实验效果如何？</strong>：（需基于全文回答）</p>
-<p>5. <strong>与现有方法对比如何？</strong>：（需基于全文回答）</p>
-<p>6. <strong>有什么局限性？</strong>：（需基于全文回答）</p>
-<p>7. <strong>对工业界有什么启示？</strong>：（需基于全文回答）</p>
-<p>8. <strong>落地优先级如何？</strong>：（需基于全文回答）</p>
-<p>9. <strong>风险和成本？</strong>：（需基于全文回答）</p>
-<p>10. <strong>建议的下一步行动？</strong>：（需基于全文回答）</p>
+<h3 id="排序--重排--learning-to-rank">排序 / 重排 / Learning to Rank</h3>
 
-<h3 id="top-3-ramp-robust-ad-recommendation-under-limited-personaliz"><span style="color:var(--star)">⭐</span> Top 3. RAMP: Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways</h3>
+<li><strong><a href="https://arxiv.org/abs/2607.16603">NOWJ@COLIEE 2026: Adaptive Pipelines for Legal Retrieval and Reasoning</a></strong> <span style="color:var(--star)">⭐</span>建议精读</li>
+<p>  - 分类：排序/重排 | 评分：7.70</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：This paper presents the methodologies and results of the NOWJ team's participation across all five tasks of the COLIEE 2026 competition. For Task 1 (Legal Case Retrieval), we propose a four-stage pipeline comprising candidate filtering, dense retrieval with complementary embedding models, cross-encoder reranking via fine-tuned generative rerankers and MLP-based pairwise classification, and adaptive per-query cutoff prediction. For Task 2 (Legal Case Entailment), we combine BM25 filtering, T5-based reranking, and LLM-based entailment verification with consensus ensemble. For Task 3 (Statute Law Retrieval and Entailment), we adopt a retrieval-augmented generation framework with dense retrieval, attention-based reranking, and few-shot-prompted LLM reasoning. For Task 4 (Legal Textual Entailment), we introduce a dynamic routing pipeline that classifies query difficulty and dispatches cases to either a balanced few-shot solver or a structured zero-shot chain-of-thought solver. For the Pilot Task (Legal Judgment Prediction), we combine hierarchical transformers with CRF layers, argument relation mining, and probabilistic argumentation graph reasoning.</p>
 
-<p><strong>论文链接</strong>：<a href="https://arxiv.org/abs/2607.17473v1">https://arxiv.org/abs/2607.17473v1</a> | <strong>HTML全文</strong>：<a href="https://arxiv.org/html/2607.17473v1">https://arxiv.org/html/2607.17473v1</a></p>
+<li><strong><a href="https://arxiv.org/abs/2607.18039">Evidence-in-the-Loop: Trace-Driven Optimization for Customer-Service LLM Agents</a></strong> <span style="color:var(--star)">⭐</span>建议精读</li>
+<p>  - 分类：排序/重排 | 评分：6.10</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Production customer-service bots must improve answer quality across iterative releases, yet large language models must not bypass evidence boundaries, policy rules, or human-handoff safeguards. We present an \textbf{Evidence-Grounded Customer-Service Agent Workflow} deployed in a real-world customer-service setting. BM25 recall, issue-title-vector recall, issue-description-vector recall, weighted RRF fusion, and cross-encoder reranking construct grounded FAQ evidence for controlled LLM decisions. Policy-guided orchestration then combines this RAG evidence with scenario-specific rule evidence, conversation memory, and clarification state inside a fixed LangGraph DAG~\cite{langgraph2024}. The paper contributes three reusable deployment patterns: \textbf{hybrid RAG evidence construction}, where multi-channel retrieval and reranking produce auditable FAQ candidates; \textbf{evidence-grounded issue/action decision}, where an Evidence-Grounded Decision Module selects an issue/action from typed FAQ evidence and scenario-specific rule evidence; and \textbf{trace-driven RAG and reranker improvement}, where traces diagnose whether failures come from recall, ranking, final candidate selection, clarification, rule-derived evidence, or action policy, and where reranker fine-tuning is evaluated not only for in-domain gain but also for forgetting risk.</p>
 
-<p><strong>十问</strong>：</p>
+<li><strong><a href="https://arxiv.org/abs/2607.18102">FinSAgent: Corpus-Aligned Multi-Agent RAG Framework for Evidence-Grounded SEC Filing Question Answering</a></strong></li>
+<p>  - 分类：排序/重排 | 评分：5.70</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Financial question answering over U.S. Securities and Exchange Commission (SEC) filings requires retrieving and synthesizing heterogeneous evidence dispersed across long, standardized, and highly redundant disclosures. Existing retrieval-augmented and multi-agent systems typically derive retrieval queries directly from the user's question and rank candidates by semantic similarity. Together, these choices create prior-corpus misalignment: a mismatch between model priors and the target filings' structure, terminology, and evidence standards. As a result, query generation misses corpus-specific evidence, while semantic reranking favors topically similar but evidentially invalid false-positive chunks. We propose FinSAgent, an evidence-grounded multi-agent framework that reframes SEC filing QA as corpus-aligned retrieval planning and corrects both ends with a single principle: inject corpus-side conditioning wherever model priors would otherwise dominate. FinSAgent combines (1) role-specialized agents anchored to the mandated 10-K item structure, (2) database-aware query decomposition that conditions each agent's sub-queries on a lightweight, summary-level view of the local corpus, and (3) multi-path retrieval with a learned feature-gated reranker that separates evidential validity from semantic similarity. Across five offline financial QA benchmarks, FinSAgent improves retrieval coverage and answer correctness over strong single-agent and multi-agent baselines; in a three-arm randomized online experiment with 1,000 anonymous user ratings, it also receives higher scores than baselines.</p>
 
-<p>1. <strong>论文解决什么问题？</strong>：（需基于全文回答）</p>
-<p>2. <strong>核心创新点是什么？</strong>：（需基于全文回答）</p>
-<p>3. <strong>关键技术方案是什么？</strong>：（需基于全文回答）</p>
-<p>4. <strong>实验效果如何？</strong>：（需基于全文回答）</p>
-<p>5. <strong>与现有方法对比如何？</strong>：（需基于全文回答）</p>
-<p>6. <strong>有什么局限性？</strong>：（需基于全文回答）</p>
-<p>7. <strong>对工业界有什么启示？</strong>：（需基于全文回答）</p>
-<p>8. <strong>落地优先级如何？</strong>：（需基于全文回答）</p>
-<p>9. <strong>风险和成本？</strong>：（需基于全文回答）</p>
-<p>10. <strong>建议的下一步行动？</strong>：（需基于全文回答）</p>
+<li><strong><a href="https://arxiv.org/abs/2607.14035">Optimizing Visibility in Generative Engines: A Critical Survey of Generative Engine Optimization (2023-2026)</a></strong></li>
+<p>  - 分类：排序/重排 | 评分：5.70</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Generative Engine Optimization (GEO) seeks to increase content's presence, likelihood of citation, or influence in answers produced by generative engines. Since the foundational GEO paper, the field has expanded rapidly, but terminology, metrics, and evidence standards remain heterogeneous. This critical survey reviews 45 studies selected under a November 2023-July 2026 publication window, including one earlier preprint published at EMNLP after the window opened, plus relevant RAG and evaluation work. We argue that GEO is not a single ranking task but a stochastic, partially observable pipeline spanning search activation, crawling and indexing, retrieval, reranking and context allocation, citation, prominence, factual absorption, fidelity, and user behavior. The foundational paper's widely cited gains are valid within its experimental setting but conditional on a source already being present in a fixed context; they establish neither organic discoverability nor durable traffic effects. Reviewed work indicates that topical relevance and context position are the most reproducible levers, generic heuristics transfer poorly, competition can erode individual gains, and citation-oriented rewrites can impair retrieval. Commercial audits further reveal low source overlap, substantial run-to-run variability, and persistent fidelity gaps. We contribute a multistage formal model, a visibility vector separating discoverability, citation, absorption, and economic outcomes, an evidence hierarchy, and a reproducible protocol based on repeated measurements, paraphrases, controls, human validation, and multi-actor interference. Within this corpus, the evidence is narrow: already-retrieved content can causally alter its citation or use, but no reviewed technique shows a stable, longitudinal, cross-platform causal effect on organic discoverability or downstream behavior.</p>
 
-<h3 id="top-4-evidence-in-the-loop-trace-driven-optimization-for-cus"><span style="color:var(--star)">⭐</span> Top 4. Evidence-in-the-Loop: Trace-Driven Optimization for Customer-Service LLM Agents</h3>
+<li><strong><a href="https://arxiv.org/abs/2607.17139">SynH-Rank: Quality-Aware Code Search via Diverse Data Synthesis and Hierarchical Ranking Training</a></strong></li>
+<p>  - 分类：排序/重排 | 评分：5.28</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Code search enhances developer productivity by enabling efficient code reuse. Current code search systems often use a retrieve-then-rerank pipeline, where rerankers focus on modeling semantic relevance between queries and code. However, these rerankers overlook critical non-functional qualities like execution speed, memory usage, and maintainability, which are essential for practical software development. Studies reveal developers expect results to maintain high coding standards and satisfy specific needs, such as resource optimization, highlighting the importance of quality-aware code search. Achieving quality-aware code search faces two major challenges: the scarcity of quality-annotated datasets for effective training and the limitations of standard contrastive learning objectives, which fail to capture the ordinal relationships among high-quality, low-quality, and irrelevant code. Although contrastive learning excels in distinguishing relevant from irrelevant code, its binary objective does not support nuanced quality distinctions.To address these challenges, we propose SynH-Rank, a quality-aware code reranking framework that combines LLM-driven diverse data synthesis with hierarchical ranking training. SynH-Rank employs a three-level labeling scheme to explicitly model the hierarchy: high-quality relevant > low-quality relevant > irrelevant. Additionally, we introduce a new benchmark with 4,209 pairs and two novel metrics: Quality Preference Accuracy (QPA) for assessing prioritization of high-quality code and Multi-Condition Accuracy (MCA) for evaluating performance under complex constraints.Experimental results show SynH-Rank improves QPA by 20.15\% over backbone models and outperforms standard relevance-only contrastive training by 15.80\%, while simultaneously enhancing traditional relevance metrics and multi-condition generalizability.</p>
 
-<p><strong>论文链接</strong>：<a href="https://arxiv.org/abs/2607.18039v1">https://arxiv.org/abs/2607.18039v1</a> | <strong>HTML全文</strong>：<a href="https://arxiv.org/html/2607.18039v1">https://arxiv.org/html/2607.18039v1</a></p>
+<li><strong><a href="https://arxiv.org/abs/2607.16848">Beyond Memory Leaderboards: Evaluating Scientific Memory as Budgeted Context Restoration</a></strong></li>
+<p>  - 分类：排序/重排 | 评分：4.70</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Long-term memory is becoming a core component of LLM agents, but most memory benchmarks evaluate conversations or compact summaries, while research agents need to restore evidence from full scientific papers. We introduce two full-text scientific-memory benchmarks, Public AI Memory (PAIM; 81 papers, 66 questions) and Public Transformers (PTr; 252 papers, 98 questions). We evaluate eight memory/retrieval systems, including our own proposed Theoria, plus a no-retrieval baseline. Our results show that memory leaderboards are not interpretable without the full protocol: ingestion granularity, raw-text preservation, retrieval budget, retrieval modality, rubric audit, and judge choice all affect the outcome. For example, on PAIM Graphiti wins convincingly but uses 2.6M characters of retrieved context per query, and after controlling for retrieval budget the lead disappears. On PTr, for the systems where BM25 retrieval can be added cleanly, the sparse-dense hybrid is the single most significant intervention: hybrid variants of Simple RAG, Mem0, and Theoria tie for the lead within 0.03 points. Multi-judge and human side-by-side calibration show that LLM-as-a-judge rankings are consistent across frontier judges and agree with human evaluation, with an effective resolution of roughly one point on a ten-point scale. We argue that scientific memory should be evaluated as budgeted, modality-aware context restoration rather than as an unconstrained architecture leaderboard, and we release the datasets, harness, raw outputs, judgments, and scripts to reproduce our results and serve as tools for such evaluation. Our code is available at http://gitlab.com/quantellence/research/scientific-recall-bench , and the datasets are available at http://huggingface.co/datasets/quantellence/srb-data .</p>
 
-<p><strong>十问</strong>：</p>
+<li><strong><a href="https://arxiv.org/abs/2607.17751">MagicSelector: Joint Optimization for Agent Tool Selection via Counterfactual Decomposition and Progressive Reranking</a></strong></li>
+<p>  - 分类：排序/重排 | 评分：4.28</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：We present MagicSelector, a joint optimization framework integrating Counterfactual task decomposition, Progressive reranking, and Dynamic Top-K, designed to address the fundamental challenges of tool retrieval in agents. MagicSelector is a specialized framework capable of translating ambiguous user instructions into executable atomic subtasks and guiding high-precision tool retrieval, effectively mitigating redundant noise and severe context distraction in out-of-domain (OOD) scenarios.We empower MagicSelector with these capabilities through three key contributions: (1) a preferenceguided counterfactual task decomposition mechanism that utilizes a counterfactual reward to quantify the marginal causal gain of decomposition on retrieval ranking, effectively imposing fine-grained structural supervision on logical coherence; (2) a progressive tool reranking method driven by self-distillation hard negative mining, which optimizes both point-wise and list-wise relevance to enhance fine-grained discrimination among highly similar tools; and (3) a dual semantic boundary-aware dynamic Top-K strategy that adaptively monitors reranking score cliffs and inter-tool semantic shifts to dynamically truncate the candidate list, maximizing relevant tool recall while filtering long-tail noise. Evaluated on MTDTool, the first task decomposition benchmark we constructed tailored for mobile multi-turn interactions with process-level annotations, MagicSelector yields promising performance. Extensive experiments demonstrate that MagicSelector significantly outperforms state-of-the-art methods in terms of tool retrieval accuracy, OOD generalization capability, and overall token efficiency, thereby demonstrating the effectiveness of our proposed framework.</p>
 
-<p>1. <strong>论文解决什么问题？</strong>：（需基于全文回答）</p>
-<p>2. <strong>核心创新点是什么？</strong>：（需基于全文回答）</p>
-<p>3. <strong>关键技术方案是什么？</strong>：（需基于全文回答）</p>
-<p>4. <strong>实验效果如何？</strong>：（需基于全文回答）</p>
-<p>5. <strong>与现有方法对比如何？</strong>：（需基于全文回答）</p>
-<p>6. <strong>有什么局限性？</strong>：（需基于全文回答）</p>
-<p>7. <strong>对工业界有什么启示？</strong>：（需基于全文回答）</p>
-<p>8. <strong>落地优先级如何？</strong>：（需基于全文回答）</p>
-<p>9. <strong>风险和成本？</strong>：（需基于全文回答）</p>
-<p>10. <strong>建议的下一步行动？</strong>：（需基于全文回答）</p>
+<h3 id="推荐--用户建模--personalization">推荐 / 用户建模 / Personalization</h3>
 
-<h3 id="top-5-vector-search-as-nearest-neighbor-matching-rag-based-p"><span style="color:var(--star)">⭐</span> Top 5. Vector Search As Nearest Neighbor Matching: RAG-based Policy Learning in Causal Inference</h3>
+<li><strong><a href="https://arxiv.org/abs/2607.13493">Personalizing Incremental Video Search with Hybrid Text and ID Embeddings</a></strong> <span style="color:var(--star)">⭐</span>建议精读</li>
+<p>  - 分类：推荐系统 | 评分：6.20</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Incremental video search requires high-quality ranking after each keystroke, where intent is often underspecified (e.g., 1-3 character prefixes). We present a personalization system for Apple TV search that combines complementary semantic and collaborative signals at ranking time. Our approach learns two item embedding spaces: (i) a text-based multilingual encoder (TextEmb) fine-tuned on co-engagement triplets via contrastive learning, and (ii) an ID-based collaborative embedding model (IdEmb) trained on interaction-derived positives. At serving time, we construct user representations from recent watch history and inject text- and ID-based user-item cosine similarities into a pairwise XGBoost ranker. We evaluate with temporally held-out offline datasets and a three-week online controlled experiment. Offline, for sessions with user history, the personalized ranker improves NDCG@10 by 2.99% and MRR by 3.30% over the non-personalized baseline. Slice analyses show that personalization is most needed in incremental search, where intent is still forming: on ambiguous prefix queries (1-3 characters), NDCG@10 lift is +8.63%, versus +1.46% on longer, fully specified queries. Longer-history users benefit more: NDCG lift rises from +2.13% for users with 1-5 history items to +4.37% for users with 51-100, even though baseline relevance is lower for these cohorts (NDCG@10 drops from 0.733 to 0.680), indicating that personalization adds the most value where default ranking underperforms. Online, treatment yields statistically significant gains of +1.14% tap-through rate and +1.23% conversion rate, with a 2.91% improvement in converted-item rank position. We further analyze coverage-precision trade-offs between semantic and collaborative embeddings via ablations isolating each signal, and evaluate embedding quality on a held-out corpus with LLM-judged similarity labels to reduce click/exposure bias.</p>
 
-<p><strong>论文链接</strong>：<a href="https://arxiv.org/abs/2607.18225v1">https://arxiv.org/abs/2607.18225v1</a> | <strong>HTML全文</strong>：<a href="https://arxiv.org/html/2607.18225v1">https://arxiv.org/html/2607.18225v1</a></p>
+<li><strong><a href="https://arxiv.org/abs/2607.13398">TMallGS: Scaling Unified Feature and Sequence Modeling for Generative E-commerce Search</a></strong></li>
+<p>  - 分类：推荐系统 | 评分：4.90</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：In industrial search and ranking systems, Click-Through Rate (CTR) prediction is shifting from traditional Deep Learning Recommendation Models (DLRM) toward unified, compute-intensive Transformer architectures. This transition is driven by the need to improve Model FLOPs Utilization (MFU) and achieve predictable gains through scaling laws. However, existing approaches such as OneTrans and Climber often adopt an all-in-tokenization strategy when adapting Large Language Model (LLM) architectures, overlooking the heterogeneous nature of ranking features. We propose TmallGS, a scalable ranking architecture for Tmall search. TmallGS includes five key components: (1) Hierarchical Distribution-Calibrated Tokenization, which combines Field-wise Saliency Reweighting (FSR) and Distribution-Calibrated Projection (DCP) to map diverse features into optimized subspaces; (2) a Field-Adaptive Gated Transformer Backbone with per-field QKV projections and noise-adaptive gating for refined semantic interaction; (3) Decoupled FiLM Late Fusion to preserve explicit high-frequency signals; (4) a Context-Aware Bias Net to decouple systemic bias from user intent; and (5) Error-Aware Progressive Training with dynamically weighted losses for robust learning. Extensive offline experiments and online A/B tests on Tmall Search show that TmallGS improves training throughput and achieves substantial gains in UCTCVR and GMV.</p>
 
-<p><strong>十问</strong>：</p>
+<h3 id="广告--ctr--cvr--ads">广告 / CTR / CVR / Ads</h3>
 
-<p>1. <strong>论文解决什么问题？</strong>：（需基于全文回答）</p>
-<p>2. <strong>核心创新点是什么？</strong>：（需基于全文回答）</p>
-<p>3. <strong>关键技术方案是什么？</strong>：（需基于全文回答）</p>
-<p>4. <strong>实验效果如何？</strong>：（需基于全文回答）</p>
-<p>5. <strong>与现有方法对比如何？</strong>：（需基于全文回答）</p>
-<p>6. <strong>有什么局限性？</strong>：（需基于全文回答）</p>
-<p>7. <strong>对工业界有什么启示？</strong>：（需基于全文回答）</p>
-<p>8. <strong>落地优先级如何？</strong>：（需基于全文回答）</p>
-<p>9. <strong>风险和成本？</strong>：（需基于全文回答）</p>
-<p>10. <strong>建议的下一步行动？</strong>：（需基于全文回答）</p>
+<li><strong><a href="https://arxiv.org/abs/2607.17473">RAMP: Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways</a></strong> <span style="color:var(--star)">⭐</span>建议精读</li>
+<p>  - 分类：广告系统 | 评分：6.08</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Click-through rate (CTR) and conversion rate (CVR) prediction are fundamental tasks in online advertising, aiming to estimate the likelihood of user interactions based on various features. While personalized attributes such as age and gender can significantly enhance predictive accuracy, their use is increasingly restricted by privacy regulations, thereby limiting available data for both training and inference. To address this challenge, we propose RAMP (Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways), which is designed to improve CTR/CVR prediction accuracy when personalized features are not accessible, thus supporting deployment in privacy-constrained settings.RAMP consists of (i) a personalized pathway built upon a dual-tower component with identical inputs but independent parameters, where output masking separates predictions for personalized and non-personalized signals, (ii) a separate non-personalized pathway trained with non-personalized features only, and (iii) a distillation-inspired prediction-alignment architecture between (i) and (ii) that improves prediction when personalized features are unavailable. We conduct comprehensive experiments using both public benchmarks and industrial datasets to evaluate the performance of RAMP. Our evaluation spans multiple backbone models and different settings: with and without access to personalized features. The results show that RAMP consistently outperforms state-of-the-art methods when personalized features are missing, while maintaining competitive performance when all features are available. %demonstrating its effectiveness and practicality for real-world advertising systems. Our code is publicly available at https://github.com/Ruixinhua/RAMP.</p>
 
+<li><strong><a href="https://arxiv.org/abs/2607.14331">Long-History User Transformers for Real-Time Ad Ranking</a></strong></li>
+<p>  - 分类：广告系统 | 评分：5.28</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Long interaction histories are among the most informative inputs for click-through rate (CTR) prediction, yet in online advertising they collide with a hard serving constraint: ads must be scored within a few hundred milliseconds to enter the auction, which rules out running a large sequence encoder at request time. We describe how a production advertising system resolves this conflict by decoupling history encoding from real-time inference. A high-capacity offline transformer asynchronously encodes the user's full cross-surface interaction history into a compact representation cached in a feature store, while a lightweight runtime model combines this cached representation with the user's most recent events and the request context at serving time. The offline encoder is pre-trained autoregressively on large-scale interaction logs with a dual objective - feedback prediction and next-item prediction - and the two-stage architecture is then fine-tuned for CTR prediction on the target advertising surface. Offline, the split design recovers 72-80% of the quality of a full-history runtime transformer that would be too expensive to deploy, and the cached representation is robust enough to staleness to permit inexpensive refresh policies. In production A/B experiments, the system improves the primary ranking metric by +2.77% in search advertising and +2.1% on the Yandex Advertising Network, with revenue gains of +2.26% and +0.43% respectively - without increasing serving latency.</p>
+
+<h3 id="llm--rag--embedding--agent">LLM / RAG / Embedding / Agent</h3>
+
+<li><strong><a href="https://arxiv.org/abs/2607.17586">Detection, Attribution, Narration: An End-to-End Pipeline for Explainable Money Mule Identification</a></strong></li>
+<p>  - 分类：LLM/RAG | 评分：2.30</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：Money mule accounts are critical facilitators of financial fraud, yet detecting them at scale remains challenging due to the heterogeneous nature of transactional and behavioural data. We present an end-to-end pipeline for customer-level mule detection comprising three stages: (1) a LightGBM classifier trained on 280 engineered features spanning transaction patterns, account demographics, network topology, and temporal behaviour; (2) a TreeSHAP attribution layer that decomposes each prediction into feature contributions; and (3) a large language model (LLM) module that converts SHAP attributions into analyst-facing natural-language narratives. We evaluate across three open-weight LLM families and assess explanation quality through analyst feedback. In a live production deployment, the system achieves a yield rate of 89%, up from 61% under the incumbent rule-based system, with monthly alert volume expanding from 211 to 302, reflecting broader true-positive coverage rather than increased noise. This corresponds to a 60% incremental adverse detection beyond existing review workflows, substantially outperforming the rule-based approach. Qualitative feedback from analysts indicates that LLM-generated narratives reduce cognitive load during alert triage. We further discuss implications of deploying LLM-augmented explainability in regulated financial environments.</p>
+
+<li><strong><a href="https://arxiv.org/abs/2607.16777">JOR-Bench: Japanese Operations Research Benchmarks for Large Language Models</a></strong></li>
+<p>  - 分类：LLM/RAG | 评分：2.30</p>
+<p>  - 摘要：[待翻译]</p>
+<p>  - 英文摘要：We present JOR-Bench, a collection of five Japanese-language benchmarks for evaluating the ability of large language models (LLMs) to formulate and solve operations research (OR) problems. Each benchmark is a Japanese translation of an existing English benchmark: IndustryOR, MAMO Complex LP, NL4OPT, OptiBench, and OptMATH, covering 1,319 problems spanning linear programming, mixed-integer programming, non-linear programming, and combinatorial optimization. JOR-Bench is a solver-independent benchmark that can be used with any solver or programming language, and consists of pairs of Japanese problem statements and expected numerical answers. We evaluate seven LLMs, including multilingual general-purpose models and Japanese-specialized models, on both the original English and the new Japanese versions, and compare performance across languages. For the main evaluation, we standardize execution with the Python interface to OR-Tools to make model outputs comparable and reproducible with open-source software. Our results show that OR formulation ability is largely language-neutral for strong multilingual models; the overall average accuracy difference between English and Japanese is only $-0.3$ pp. Yet error analysis reveals subtle cross-lingual differences, including a pragmatic disambiguation failure in some domains that causes models to output decision-variable values instead of the objective value when the prompt is in Japanese.</p>
+
+<h3 id="建议精读汇总">建议精读汇总</h3>
+
+<p>| # | 论文 | 主要分类 | 核心方法 | 关键结果 | 精读理由 |</p>
+<p>|---|------|---------|---------|---------|---------|</p>
+<p>| 1 | <a href="https://arxiv.org/abs/2607.16603">NOWJ@COLIEE 2026: Adaptive Pip</a> | 排序/重排 | [待补充] | [待补充] | [待补充] |</p>
+<p>| 2 | <a href="https://arxiv.org/abs/2607.13493">Personalizing Incremental Vide</a> | 推荐系统 | [待补充] | [待补充] | [待补充] |</p>
+<p>| 3 | <a href="https://arxiv.org/abs/2607.18039">Evidence-in-the-Loop: Trace-Dr</a> | 排序/重排 | [待补充] | [待补充] | [待补充] |</p>
+<p>| 4 | <a href="https://arxiv.org/abs/2607.17473">RAMP: Robust Ad Recommendation</a> | 广告系统 | [待补充] | [待补充] | [待补充] |</p>
+<p>| 5 | <a href="https://arxiv.org/abs/2607.18225">Vector Search As Nearest Neigh</a> | 召回/检索 | [待补充] | [待补充] | [待补充] |</p>
+
+<hr>
+
+<h2 id="二top-papers-论文阅读十问">二、Top Papers 论文阅读十问</h2>
+
+<h3 id="1-nowjcoliee-2026-adaptive-pipelines-for-legal-retrieval-and">1. NOWJ@COLIEE 2026: Adaptive Pipelines for Legal Retrieval and Reasoning</h3>
+
+<li><strong>arXiv</strong>：https://arxiv.org/abs/2607.16603</li>
+<li><strong>时间</strong>：2026-07-18</li>
+<li><strong>category</strong>：cs.CL</li>
+<li><strong>标签</strong>：排序/重排</li>
+<li><strong>相关性</strong>：5/5</li>
+
+<p><strong>论文阅读十问（基于论文正文回答，简洁扼要）</strong></p>
+
+<p><strong>1. 解决什么问题？</strong></p>
+<p>论文针对法律领域五类核心任务——<strong>案例检索（Task 1）、案例蕴含判定（Task 2）、成文法检索与蕴含（Task 3）、法律文本蕴含（Task 4）、判决预测（Pilot Task）</strong>——设计自适应多阶段流水线，解决法律文本处理中文档过长（4,000–60,000词）、缺乏标准化结构、混合语言内容（英语/法语）等挑战。</p>
+
+<p><strong>2. 是否是新问题？</strong></p>
+<p><strong>不完全是新问题。</strong> COLIEE竞赛已举办13届，法律检索与蕴含是长期研究课题。但论文提出<strong>自适应per-query cutoff</strong>、<strong>难度动态路由</strong>、<strong>argumentation graph推理</strong>等新机制，属于方法创新。</p>
+
+<p><strong>3. 科学假设是什么？</strong></p>
+<p>将密集检索与任务特定的重排/推理策略集成到多阶段流水线中，结合自适应机制（per-query cutoff、难度路由），可以显著优于单一策略方法。具体假设包括：MLP特征化重排优于通用生成式reranker（Task 1）、LLM共识ensemble提高精度（Task 2）、QRHeAD注意力重排增强LLM推理（Task 3）等。</p>
+
+<p><strong>4. 相关研究如何归类？关键论文/研究者是谁？</strong></p>
+<li><strong>多阶段检索流水线</strong>：JNLP（Nguyen et al., 2025/2026）、UTLegalAI（Tang et al., 2025）</li>
+<li><strong>通用生成式重排</strong>：Qwen3-Reranker（Zhang et al., 2025b）</li>
+<li><strong>交叉编码重排</strong>：MonoT5、QRHeAD（Zhang et al., 2025a）</li>
+<li><strong>LLM零样本/few-shot推理</strong>：KIS（Onaga & Kano, 2026）</li>
+<li><strong>LoRA低秩适配</strong>：Hu et al. (2021)</li>
+
+<p><strong>5. 核心方法是什么？</strong></p>
+<p>为5个任务分别设计自适应流水线：(1) <strong>Task 1</strong>四阶段——候选过滤→双嵌入模型密集检索（Octen-E8B + E5-Mistral-7B，MaxSim+余弦融合）→双路重排（Qwen3-Reranker + MLP特征化pairwise分类）→XGBoost+MLP自适应per-query cutoff；(2) <strong>Task 2</strong>：BM25→T5重排→双LLM共识ensemble；(3) <strong>Task 3</strong>：密集检索→QRHeAD注意力重排→few-shot LLM推理；(4) <strong>Task 4</strong>：难度分类器路由Easy/Hard；(5) <strong>Pilot Task</strong>：层次Transformer+CRF+论证图推理。</p>
+
+<p><strong>6. 实验如何设计？</strong></p>
+<p>COLIEE 2026官方数据集，每个任务提交3组运行结果做消融对比。评价指标：Task 1用F1/Precision/Recall；Task 2用F1/Precision/Recall；Task 3用Accuracy/F2/Recall；Task 4用Accuracy；Pilot Task用Accuracy和micro-F1。</p>
+
+<p><strong>7. 用了什么数据集？代码是否开源？</strong></p>
+<p>COLIEE 2026竞赛官方数据集（加拿大联邦法院案例语料、日本民法条文等）。使用的基础模型均为开源模型，但作者代码仓库未在文中披露。</p>
+
+<p><strong>8. 结果是否支持假设？证据是否充分？</strong></p>
+<p><strong>总体支持，部分存在局限。</strong> Task 1 MLP reranker获第1名（F1=0.4220），优于Qwen3-Reranker（0.3880）；Task 3 QRHeAD获第1名（Accuracy=0.9512）；Task 4难度路由在盲测中<strong>失效</strong>（few-shot baseline 87.80% > hybrid 80.49%）。证据整体充分但Task 4是重要反例。</p>
+
+<p><strong>9. 核心贡献是什么？</strong></p>
+<p>"Our system achieves competitive performance across all tasks, demonstrating the effectiveness of multi-stage pipelines that integrate dense retrieval with task-specific reranking and reasoning strategies." 关键发现：MLP手工特征reranker优于通用cross-encoder；attention-based reranking显著提升LLM推理准确率；难度路由容易受分布偏移影响。</p>
+
+<p><strong>10. 局限与下一步方向是什么？</strong></p>
+<p>Task 2高精度但低召回（需放宽阈值）；Task 3 F2低（需解耦过滤与蕴含预测）；Task 4 zero-shot CoT守卫在分布偏移下失效（需fine-tuned模型替代）；Pilot Task需原生日语数据训练论证关系模型。</p>
+
+<p><strong>业务启发</strong></p>
+<li>可落地链路：重排（MLP特征化reranker、QRHeAD注意力重排）、自适应per-query cutoff、难度路由</li>
+<li>业务价值：中-高。自适应cutoff减少无关结果推送；难度路由降低推理成本</li>
+<li>落地风险/成本：法律领域特殊性强，跨域泛化需验证；多阶段流水线推理成本高</li>
+<li>优先级：<strong>中</strong></li>
+<li>建议动作：<strong>小实验</strong>——验证MLP特征化reranker在现有精排流程中的增益</li>
+
+<hr>
+
+<h3 id="2-personalizing-incremental-video-search-with-hybrid-text-an">2. Personalizing Incremental Video Search with Hybrid Text and ID Embeddings</h3>
+
+<li><strong>arXiv</strong>：https://arxiv.org/abs/2607.13493</li>
+<li><strong>时间</strong>：2026-07-15</li>
+<li><strong>category</strong>：cs.IR</li>
+<li><strong>标签</strong>：推荐系统</li>
+<li><strong>相关性</strong>：5/5</li>
+
+<p><strong>论文阅读十问（基于论文正文回答，简洁扼要）</strong></p>
+
+<p><strong>1. 解决什么问题？</strong></p>
+<p>增量视频搜索（Incremental Video Search）中的个性化排序问题。在 Apple TV 搜索场景下，用户每敲一个键都需要返回高质量排序结果，但短前缀查询（1-3个字符）意图高度模糊，非个性化排序难以区分用户真实意图。论文旨在通过融合语义信号与协同信号，在排序阶段实现个性化。</p>
+
+<p><strong>2. 是否是新问题？</strong></p>
+<p>不是全新问题。搜索个性化、协同过滤、语义嵌入均有大量前人工作。但<strong>增量搜索场景下的个性化</strong>（特别是 TV 端逐字符搜索、短前缀意图模糊的场景）是一个相对新颖且实用的问题设定。</p>
+
+<p><strong>3. 科学假设是什么？</strong></p>
+<p>混合语义嵌入（TextEmb）与协同嵌入（IdEmb）作为排序特征注入，可以在增量搜索中显著提升个性化效果，且短前缀查询和长历史用户的提升幅度更大。两种嵌入互补——语义嵌入覆盖冷启动和泛化，协同嵌入捕捉协同过滤信号，融合后效果优于任一单信号。</p>
+
+<p><strong>4. 相关研究如何归类？关键论文/研究者是谁？</strong></p>
+<li><strong>语义文本嵌入</strong>：多语言编码器、对比学习用于搜索</li>
+<li><strong>协同过滤/ID嵌入</strong>：基于交互数据的item嵌入</li>
+<li><strong>搜索个性化</strong>：用户历史表示注入排序模型</li>
+<li><strong>增量搜索</strong>：逐字符搜索的排序问题</li>
+
+<p><strong>5. 核心方法是什么？</strong></p>
+<p>提出两套互补嵌入 + 成对排序架构：(1) <strong>TextEmb</strong>：基于多语言文本编码器，在co-engagement三元组上通过对比学习微调，生成语义嵌入；(2) <strong>IdEmb</strong>：基于ID的协同嵌入模型，在交互派生正样本上训练，捕捉协同过滤信号；(3) <strong>排序阶段</strong>：从用户近期观看历史构建用户表示，计算user-item余弦相似度（文本和ID两路），作为特征注入pairwise XGBoost ranker进行个性化排序。</p>
+
+<p><strong>6. 实验如何设计？</strong></p>
+<p>离线评估：时间held-out数据集，指标NDCG@10和MRR，按查询长度和历史长度做切片分析；在线A/B实验：三周对照实验，指标tap-through rate、conversion rate、converted-item rank position；消融实验：隔离语义/协同信号分析coverage-precision权衡。</p>
+
+<p><strong>7. 用了什么数据集？代码是否开源？</strong></p>
+<p>Apple TV搜索真实用户交互数据（专有数据集，非公开）。代码<strong>未开源</strong>（Apple公司背景）。</p>
+
+<p><strong>8. 结果是否支持假设？证据是否充分？</strong></p>
+<p><strong>支持，证据充分。</strong> 离线：有历史用户NDCG@10 +2.99%，MRR +3.30%；短前缀查询NDCG@10提升+8.63%（vs长查询仅+1.46%）；在线：tap-through rate +1.14%，conversion rate +1.23%，均统计显著。消融实验验证两种嵌入互补性。</p>
+
+<p><strong>9. 核心贡献是什么？</strong></p>
+<p>(1) 提出面向增量视频搜索的个性化系统，融合TextEmb和IdEmb作为排序特征，通过pairwise XGBoost ranker实现个性化排序；(2) 证明个性化在短前缀查询上增益最大（NDCG@10 +8.63%），在线A/B实验取得统计显著的点击率和转化率提升。</p>
+
+<p><strong>10. 局限与下一步方向是什么？</strong></p>
+<p>语义嵌入与协同嵌入存在coverage-precision权衡；协同嵌入对冷启动item效果有限；评估存在点击/曝光偏差。未来：更细粒度用户建模、跨域信号融合、更高效的增量更新机制。</p>
+
+<p><strong>业务启发</strong></p>
+<li>可落地链路：精排/重排 — user-item相似度特征注入排序模型；也可用于召回阶段向量召回</li>
+<li>业务价值：高。增量搜索（搜索SUG/前缀搜索）是各平台核心场景，短前缀个性化增益显著(+8.63% NDCG)</li>
+<li>落地风险/成本：中。需构建两套嵌入系统（文本+ID），冷启动用户效果有限</li>
+<li>优先级：<strong>高</strong></li>
+<li>建议动作：<strong>精读+小实验</strong></li>
+
+<hr>
+
+<h3 id="3-evidence-in-the-loop-trace-driven-optimization-for-custome">3. Evidence-in-the-Loop: Trace-Driven Optimization for Customer-Service LLM Agents</h3>
+
+<li><strong>arXiv</strong>：https://arxiv.org/abs/2607.18039</li>
+<li><strong>时间</strong>：2026-07-20</li>
+<li><strong>category</strong>：cs.IR</li>
+<li><strong>标签</strong>：排序/重排</li>
+<li><strong>相关性</strong>：5/5</li>
+
+<p><strong>论文阅读十问（基于论文正文回答，简洁扼要）</strong></p>
+
+<p><strong>1. 解决什么问题？</strong></p>
+<p>生产级客服LLM Agent面临两大挑战：(1) 用户意图、产品政策和知识库持续演进，而基座LLM和FAQ语料滞后；(2) 证据不完整时LLM容易产生幻觉、过度泛化或违反政策的回复。本文提出一种证据驱动的客服Agent工作流，让LLM在可审计证据约束下做决策，并通过trace（执行轨迹）驱动持续优化。</p>
+
+<p><strong>2. 是否是新问题？</strong></p>
+<p>问题本身不是全新的——客服自动化和RAG是成熟领域。但本文的核心切入点是<strong>在部署场景中将"证据"作为一阶对象来统一检索、规则、澄清和人工转接</strong>，并通过trace归因实现精准定位和迭代优化，这种"Evidence-in-the-Loop"的部署范式在已有文献中未被系统性地解决。</p>
+
+<p><strong>3. 科学假设是什么？</strong></p>
+<p>将LLM置于证据约束的工作流中（而非自由生成），并通过trace归因定位失败子系统（检索/重排/规则/澄清/转接），可以比单纯扩大模型规模更有效地提升客服Agent的准确性和可控性。E1诊断实验显示：替换backbone（Qwen→GPT-4o）对issue-election准确率影响<1pp，而重排器优化带来显著提升（Hit@1: 56.76→75.68）。</p>
+
+<p><strong>4. 相关研究如何归类？关键论文/研究者是谁？</strong></p>
+<li><strong>RAG与自适应检索</strong>：Lewis et al. (2020), Self-RAG (Asai et al., 2024), Jeong et al. (2024)</li>
+<li><strong>混合检索与重排</strong>：BM25/向量/RRF融合 (Robertson & Zaragoza, 2009; Chen et al., 2022), cross-encoder重排 (Nogueira & Cho, 2019; Xiao et al., 2024 BGE系列)</li>
+<li><strong>工具增强Agent</strong>：ReAct (Yao et al., 2023), Toolformer (Schick et al., 2023), ToolLLM (Qin et al., 2024)</li>
+<li><strong>任务型对话与约束路由</strong>：Young et al. (2013), Wen et al. (2017), Chung et al. (2023)</li>
+
+<p><strong>5. 核心方法是什么？</strong></p>
+<p>核心是<strong>Evidence-Grounded Customer-Service Agent Workflow</strong>，基于LangGraph StateGraph实现固定DAG：(1) <strong>混合RAG证据构建</strong>：词法检索（BM25）+ 语义向量检索 → 加权RRF融合 → cross-encoder重排；(2) <strong>规则派生场景证据</strong>：通过MCP（Model Context Protocol，模型上下文协议）获取权限上下文，构建规则证据，与RAG证据并行；(3) <strong>Trace驱动改进闭环</strong>：工作流trace将失败归因到具体子系统（意图路由/澄清/规则触发/召回/重排/候选选择/行动策略），精准指导KB/reranker/prompt/规则的更新。</p>
+
+<p><strong>6. 实验如何设计？</strong></p>
+<p>四个评估块逐步递进：E1管道诊断（N=309+544消融）定位瓶颈；E2重排器优化（T-Set 492/52/37划分+C-MTEB）；E3 B-Set会话验证（200多轮会话KB-grounded审查）；E4决策阶段DPO训练。评价指标：Hit@K、C-MTEB Avg、KB-grounded会话准确率。</p>
+
+<p><strong>7. 用了什么数据集？代码是否开源？</strong></p>
+<p>T-Set：内部标注FAQ issue选举数据集（492/52/37划分）；B-Set：200多轮会话holdout集；C-MTEB：公开中文文本嵌入基准。代码<strong>未开源</strong>（生产系统，涉及内部基础设施）。</p>
+
+<p><strong>8. 结果是否支持假设？证据是否充分？</strong></p>
+<p><strong>充分支持。</strong> E1：换backbone差异<1pp，验证"证据质量>模型规模"；E2：蒸馏重排器Hit@1从56.76→75.68(+18.92pp)；E3：会话准确率86.5%→88.5%；E4：最佳组合(distilled reranker+DPO)达92.5%。局限：单域验证、B-Set仅200会话。</p>
+
+<p><strong>9. 核心贡献是什么？</strong></p>
+<p>(1) "A deployment pattern in which LLMs participate in customer-service decisions while deterministic workflow code retains authority over evidence access and policy boundaries"；(2) "Trace-driven improvement turns traces into concrete update targets rather than a generic 'bad answer' bucket"。</p>
+
+<p><strong>10. 局限与下一步方向是什么？</strong></p>
+<p>局限：单域（金融客服）、B-Set仅200会话、机器翻译可能影响结果、澄清/规则标签尚未全面标注。未来：更广泛replay评估、跨域迁移、噪声规则触发下候选融合形式化分析、多语言端到端评估。</p>
+
+<p><strong>业务启发</strong></p>
+<li>可落地链路：RAG / 重排 / 用户建模</li>
+<li>业务价值：高。trace归因机制可显著降低运维调试成本，DPO+reranker适配组合可提升6pp会话准确率</li>
+<li>落地风险/成本：中等。需搭建完整trace日志和KB-grounded评审体系</li>
+<li>优先级：<strong>高</strong></li>
+<li>建议动作：<strong>精读+小实验</strong></li>
+
+<hr>
+
+<h3 id="4-ramp-robust-ad-recommendation-under-limited-personalized-f">4. RAMP: Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways</h3>
+
+<li><strong>arXiv</strong>：https://arxiv.org/abs/2607.17473</li>
+<li><strong>时间</strong>：2026-07-20</li>
+<li><strong>category</strong>：cs.IR</li>
+<li><strong>标签</strong>：广告系统</li>
+<li><strong>相关性</strong>：5/5</li>
+
+<p><strong>论文阅读十问（基于论文正文回答，简洁扼要）</strong></p>
+
+<p><strong>论文阅读十问（基于论文正文回答，简洁扼要）</strong></p>
+
+<p><strong>1. 解决什么问题？</strong></p>
+<p>在线广告中，CTR（Click-Through Rate，点击率）和 CVR（Conversion Rate，转化率）预测高度依赖个性化特征（如年龄、性别、用户ID、行为历史），但这些特征因隐私法规（GDPR、中国PIPL等）和用户未授权而经常不可用，导致"特征缺失场景"下预测精度显著下降。论文旨在解决<strong>个性化特征受限/缺失时如何保持CTR/CVR预测精度</strong>的问题。</p>
+
+<p><strong>2. 是否是新问题？</strong></p>
+<p><strong>半新问题。</strong> 特征缺失对CTR/CVR预测的影响已被观察到（论文Figure 1展示了移除个性化特征后PNN/FINAL/FCN等强baseline的显著性能下降），但<strong>显式针对"个性化特征不可用"场景进行模型侧鲁棒性优化的工作很少</strong>。现有隐私相关工作主要关注数据隐私保护（联邦学习等），而非在特征可用性约束下维持预测性能。</p>
+
+<p><strong>3. 科学假设是什么？</strong></p>
+<p>通过<strong>双塔输出掩码（Output Masking）+ 独立非个性化通路 + 蒸馏启发的预测对齐（Distillation-Inspired Prediction-Alignment）</strong>三组件协同，可以在个性化特征缺失时显著恢复预测精度，同时在特征完整时保持竞争力。</p>
+
+<p><strong>4. 相关研究如何归类？关键论文/研究者是谁？</strong></p>
+<li><strong>交互建模类</strong>：Wide&Deep (Cheng et al., 2016)、DeepFM (Guo et al., 2017)、DCN/DCNv2 (Wang et al., 2017, 2021a)</li>
+<li><strong>特征重要性/选择类</strong>：FiBiNet (Huang et al., 2019)、MaskNet (Wang et al., 2021b)、FCN (Li et al., 2025)</li>
+<li><strong>知识蒸馏类</strong>：prediction-level (Hinton et al., 2015)、representation-level (Kang et al., 2020)</li>
+
+<p><strong>5. 核心方法是什么？</strong></p>
+<p>RAMP由三个核心组件构成：(1) <strong>Personalized Pathway（个性化通路）</strong>：基于双塔组件，通过输出掩码根据流量类型选择性输出；(2) <strong>Non-Personalized Pathway（非个性化通路）</strong>：仅用非个性化特征独立训练；(3) <strong>蒸馏启发的预测对齐</strong>：用轻量级损失将两条通路的预测对齐，使个性化通路推理时隐式吸收非个性化通路知识。</p>
+
+<p><strong>6. 实验如何设计？</strong></p>
+<p>4个真实数据集（Avazu、TaoBaoAd、CriteoPrivateAd1、IndustryAd），16个深度CTR/CVR baseline，评价指标LogLoss和AUC。构造personalized和non-personalized两种版本评估。</p>
+
+<p><strong>7. 用了什么数据集？代码是否开源？</strong></p>
+<p>公开数据集：Avazu、TaoBaoAd、CriteoPrivateAd1；私有数据集：IndustryAd（自然含80:20个性化/非个性化流量比例）。代码开源：https://github.com/Ruixinhua/RAMP</p>
+
+<p><strong>8. 结果是否支持假设？证据是否充分？</strong></p>
+<p><strong>支持，证据较充分。</strong> RAMP在4个数据集的non-personalized场景下一致优于所有16个baseline，差异经t检验在p=0.001水平显著。消融实验验证了三个组件的独立贡献。</p>
+
+<p><strong>9. 核心贡献是什么？</strong></p>
+<p>"We addressed the challenge of effective advertising under modern privacy constraints by proposing RAMP to enhance CTR/CVR prediction for non-personalized data."</p>
+
+<p><strong>10. 局限与下一步方向是什么？</strong></p>
+<p>(1) Item侧特征增强：可通过知识图谱等辅助数据源增强；(2) 分布偏移：特征掩码模拟无法完全捕捉真实非授权用户的行为分布差异；(3) 架构扩展：可与MoE架构集成。</p>
+
+<p><strong>业务启发</strong></p>
+<li>可落地链路：精排/CTR-CVR</li>
+<li>业务价值：高。非授权流量占比可达20%+</li>
+<li>落地风险/成本：中低。plug-in设计，推理时无额外开销</li>
+<li>优先级：<strong>高</strong></li>
+<li>建议动作：<strong>复现→小实验</strong></li>
+
+<hr>
+
+<h3 id="5-vector-search-as-nearest-neighbor-matching-rag-based-polic">5. Vector Search As Nearest Neighbor Matching: RAG-based Policy Learning in Causal Inference</h3>
+
+<li><strong>arXiv</strong>：https://arxiv.org/abs/2607.18225</li>
+<li><strong>时间</strong>：2026-07-20</li>
+<li><strong>category</strong>：econ.EM, cs.LG, math.ST, stat.ME, stat.ML</li>
+<li><strong>标签</strong>：召回/检索</li>
+<li><strong>相关性</strong>：5/5</li>
+
+<p><strong>论文阅读十问（基于论文正文回答，简洁扼要）</strong></p>
+
+<p><strong>1. 解决什么问题？</strong></p>
+<p>RAG（Retrieval-Augmented Generation，检索增强生成）已成为基于语言模型系统的常见决策架构，但其<strong>决策理论保证（decision-theoretic guarantees）尚未被充分研究</strong>。论文将RAG的动作选择问题形式化为因果推断下的策略学习（policy learning），为其提供理论regret上界和实证验证。</p>
+
+<p><strong>2. 是否是新问题？</strong></p>
+<p><strong>部分是新问题。</strong> 策略学习在因果推断中已有大量研究（Athey & Wager, 2021等），但<strong>将RAG系统的向量检索组件与最近邻匹配（nearest-neighbor matching）建立因果推断联系</strong>是新的视角。现有RAG研究关注检索质量与生成质量，未从潜在结果框架（Neyman-Rubin因果模型）出发分析决策regret。</p>
+
+<p><strong>3. 科学假设是什么？</strong></p>
+<li>H1：RAG中的动作特异性向量检索可解释为最近邻匹配，且匹配计数密度比率极限与逆倾向得分成比例；</li>
+<li>H2：两步RAG-PL方法的regret可分解为候选集生成regret与候选内选择regret，后者可通过最近邻估计器和Transformer的预测误差保证来约束上界；</li>
+<li>H3：基于协变量的RAG-PL比无协变量的RAG具有更低的regret。</li>
+
+<p><strong>4. 相关研究如何归类？关键论文/研究者是谁？</strong></p>
+<li><strong>策略学习/因果推断</strong>：Athey & Wager (2021); Kitagawa & Tetenov (2018); Swaminathan & Joachims (2015)</li>
+<li><strong>RAG/检索增强</strong>：Guu et al. (2020); Lewis et al. (2020); Izacard & Grave (2021)</li>
+<li><strong>非参数神经网络/Transformer理论</strong>：Schmidt-Hieber (2020); Suzuki (2019); Oko et al. (2024)</li>
+<li><strong>最近邻匹配</strong>：Abadie & Imbens (2006); Lin et al. (2023); Kato (2025b)</li>
+
+<p><strong>5. 核心方法是什么？</strong></p>
+<p>提出<strong>RAG-PL（RAG-based Policy Learning）</strong>，含两种形式：(1) <strong>One-step RAG-PL</strong>：直接由协变量输出动作；(2) <strong>Two-step RAG-PL</strong>：第一步RAG生成候选集g(x)⊆A，第二步对每个候选动作检索最近邻证据R_k(x,a)，由生成器估计条件期望结果，再用plug-in规则选择最优动作。关键组件：嵌入映射φ、动作特异性最近邻检索、条件期望结果估计器、margin条件约束regret上界。</p>
+
+<p><strong>6. 实验如何设计？</strong></p>
+<p>3个模拟DGP：DGP1（2动作、线性条件效应）、DGP2（2动作、非线性条件效应）、DGP3（24干预、奖励匹配员工需求与干预特征）。Baseline为无协变量RAG。模型GPT-5.4 mini，评价指标Mean regret、Optimal-action probability。每DGP 20次重复。</p>
+
+<p><strong>7. 用了什么数据集？代码是否开源？</strong></p>
+<p>全部为模拟合成数据（DGP1-3），无真实数据集。代码<strong>未开源</strong>。</p>
+
+<p><strong>8. 结果是否支持假设？证据是否充分？</strong></p>
+<p><strong>基本支持，但证据有限。</strong> DGP1 regret从4.5450降至3.3700；DGP2 regret从2.3638降至1.5676；DGP3 Two-step regret 1.2154 < One-step 1.4985。不足：仅3个合成DGP、20次重复、依赖单一LLM，缺乏真实数据验证。</p>
+
+<p><strong>9. 核心贡献是什么？</strong></p>
+<p>(1) "We interpreted the vector-search component of RAG as nearest-neighbor matching and related this matching procedure to propensity-score weighting, density-ratio estimation, and Riesz regression."；(2) "We derived regret upper bounds by combining policy-learning analysis with nonparametric prediction-error bounds for nearest-neighbor estimators and transformers."</p>
+
+<p><strong>10. 局限与下一步方向是什么？</strong></p>
+<p>嵌入匹配仅在表示保留调整所需信息时才充分；仅验证合成数据，缺乏真实场景实证；候选集生成regret的理论保证较弱；仅用单一LLM。未来：真实数据验证、结合工具变量处理可交换性失败、改进候选集生成、跨模型robustness分析。</p>
+
+<p><strong>业务启发</strong></p>
+<li>可落地链路：RAG + 精排/重排 — 将向量召回解释为最近邻匹配，在精排阶段估计条件期望结果；regret分解框架可量化召回与排序质量对最终决策的独立贡献</li>
+<li>业务价值：中。为RAG决策流程提供因果推断理论保证，可指导何时信赖RAG推荐vs需要额外校准</li>
+<li>落地风险/成本：需历史数据含协变量-动作-结果三元组；嵌入须保留因果调整所需信息</li>
+<li>优先级：<strong>中</strong></li>
+<li>建议动作：<strong>观察+小实验</strong></li>
+
+<hr>
+
+<h2 id="三本周趋势">三、本周趋势</h2>
+
+<p>[待补充]</p>
+
+<hr>
 </div>
 </div>
 </body>
