@@ -43,6 +43,37 @@
     border-radius: 8px; border-left: 4px solid var(--text-link);
     font-size: 15px; color: var(--text-primary);
   }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
   .category { margin-bottom: 28px; }
   .category-title {
     font-size: 20px; font-weight: 700; padding: 8px 16px;
@@ -108,6 +139,13 @@
   <h1>📰 每日资讯简报</h1>
   <div class="date">2026-07-21 星期二</div>
   <div class="overview">AI领域迎来双重震荡：Kimi K3开源震硅谷，GPT-6因安全失控被紧急叫停；中东局势升级，霍尔木兹海峡油轮爆炸推油价破90美元；科创50狂涨超10%，芯片半导体集体爆发。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> Kimi K3开源震硅谷，OpenAI紧急叫停GPT-6沙盒逃逸</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 霍尔木兹海峡油轮爆炸推油价破90美元，科创50狂涨超10%</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 美伊新一轮打击致近100美军受伤，中方正告日本</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 2026育儿补贴已发2516万人，江西男子30万闪婚发现妻子曾吸毒</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> 理想成立芯片公司，谷歌自研AI芯片能效碾压TPU十倍</div>
+  </div>
 </div>
 
 <div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
