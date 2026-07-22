@@ -18,6 +18,7 @@
     --accent-politics: #da3633;
     --accent-tech: #3fb950;
     --accent-finance: #d2a8ff;
+    --accent-market: #22d3ee;
     --accent-ai: #79c0ff;
     --accent-debate: #ffa657;
   }
@@ -85,6 +86,7 @@
   .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
   .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
   .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
   .category {
     margin-bottom: 28px;
   }
@@ -102,6 +104,7 @@
   .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
   .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
   .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
   .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
   .news-item {
     background: var(--bg-card);
@@ -265,10 +268,11 @@
 <div class="header">
   <h1>📰 每日资讯简报</h1>
   <div class="date">2026年7月22日 星期三</div>
-  <div class="overview">地缘政治紧张加剧美伊冲突风险，AI产业迎来Gemini 4发布潮，财政数据显示经济稳中向好，黄金突破4100美元创历史新高。</div>
+  <div class="overview">地缘政治紧张加剧美伊冲突风险，AI产业迎来Gemini 4发布潮，财政数据显示经济稳中向好，黄金突破4100美元创历史新高，A股创业板跌超3%科技股调整。</div>
   <div class="highlights">
     <div class="hl-row"><span class="hl-tag tag-ai">AI</span> 谷歌Gemini 4一夜三连发，Token价格大幅下降</div>
     <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 黄金强势站上4100美元，富国银行预测2027年望达6000美元</div>
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> 创业板跌超3%，有色金属爆发，腾讯大跌7%</div>
     <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 小泉进次郎涉核武器言论引发中方强烈回应，称极具挑衅性</div>
     <div class="hl-row"><span class="hl-tag tag-society">社会</span> 国家林草局原副局长李春良受贿案一审被判无期</div>
     <div class="hl-row"><span class="hl-tag tag-tech">科技</span> 英伟达GB200能效三个月翻4倍，Rubin芯片客户已获测试机架</div>
@@ -276,7 +280,7 @@
 </div>
 
 <div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
-  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(4)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(4)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(4)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(4)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a>
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(3)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(4)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(4)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a>
 </div>
 
 <!-- 社会新闻 -->
@@ -293,12 +297,6 @@
     <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33636101">澎湃新闻12周年｜文化演艺界的祝福已收到，这阵容真藏不住</a></div>
     <div class="summary">澎湃新闻迎来12周年，文化演艺界多位知名人士送上祝福。作为国内领先的时政与思想类媒体，澎湃新闻持续深耕深度报道和时事评论。</div>
     <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33636101">澎湃新闻</a> | 推荐理由：媒体行业动态+品牌影响力</div>
-  </div>
-  
-  <div class="news-item">
-    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-21/doc-iniiqkpe4857641.shtml">退钱哥晒世界杯观赛球票账单：共看了20场比赛，个人自费买了8张票，总计花费13万余元</a></div>
-    <div class="summary">知名球迷"退钱哥"公开2026世界杯观赛账单，20场比赛自费超13万元。此数据折射出大型体育赛事观赛成本，引发对体育消费门槛的讨论。</div>
-    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-21/doc-iniiqkpe4857641.shtml">潇湘晨报</a> | 推荐理由：社会话题+数据详实</div>
   </div>
   
   <div class="news-item">
@@ -331,12 +329,6 @@
     <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-21/doc-iniiqkpe4871032.shtml">界面新闻</a> | 推荐理由：地缘政治热点+突发性高</div>
   </div>
   
-  <div class="news-item">
-    <div class="title"><a href="https://news.sina.com.cn/w/2026-07-21/doc-iniippii2664236.shtml">武契奇公布辞职后的打算：不当总统了，改去当总理</a></div>
-    <div class="summary">塞尔维亚总统武契奇宣布辞职后计划转任总理。此举被解读为应对国内政治压力的策略调整，可能影响塞尔维亚与欧盟、俄罗斯的关系平衡。</div>
-    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-21/doc-iniippii2664236.shtml">长安街知事</a> | 推荐理由：国际政坛变动+策略性关注</div>
-  </div>
-  
 </div>
 
 <!-- 科技新闻 -->
@@ -359,12 +351,6 @@
     <div class="title"><a href="https://news.sina.com.cn/w/2026-07-22/doc-iniirshn7913938.shtml">美新版"空军一号"刚上岗就回炉，引发美媒吐槽和批评</a></div>
     <div class="summary">美国新版"空军一号"专机刚投入使用就因技术问题返厂维修。美媒批评波音公司项目管理能力，延期和成本超支问题持续困扰这一象征性项目。</div>
     <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-22/doc-iniirshn7913938.shtml">环球时报</a> | 推荐理由：航空技术+项目管理警示</div>
-  </div>
-  
-  <div class="news-item">
-    <div class="title"><a href="https://www.cls.cn/telegraph">20号胶期货引入首家境外交割库交割</a></div>
-    <div class="summary">上海国际能源交易中心批准泰国泰华树胶成为20号胶期货首家境外交割库，核定库容2万吨。此举标志中国期货市场交割服务"走出去"迈出实质性一步。</div>
-    <div class="meta">来源：<a href="https://www.cls.cn/telegraph">财联社</a> | 推荐理由：期货市场创新+国际化进程</div>
   </div>
   
 </div>
@@ -391,10 +377,34 @@
     <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> | 推荐理由：外汇市场+政策信号</div>
   </div>
   
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+  
   <div class="news-item">
     <div class="title"><a href="https://wallstreetcn.com">创业板跌超3%，有色金属爆发，科技股陷入调整，腾讯大跌7%</a></div>
     <div class="summary">A股创业板指跌超3%，有色金属板块逆势爆发，科技股普遍调整。港股恒生科技指数跌超3%，科网股普跌，腾讯控股大跌7%，市场避险情绪升温。</div>
-    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> | 推荐理由：股市动态+板块轮动</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> | 推荐理由：A股港股联动+板块轮动</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com">AI交易热情回落，美股盘前存储芯片股普跌，SK海力士跌约5%</a></div>
+    <div class="summary">美股盘前存储芯片股普跌，SK海力士跌约5%，日韩股市几乎抹去涨幅。AI交易热情回落，金银走强，市场风险偏好下降。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> | 推荐理由：美股芯片股+全球联动</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/telegraph">联讯仪器：预计上半年净利润5.1-5.8亿元，同比增长802%-926%</a></div>
+    <div class="summary">联讯仪器预计上半年净利润5.1至5.8亿元，较上年同期增长801.96%至925.75%。受益于AI技术发展及全球算力需求提升，数据中心建设加速推动光通信产品需求高速增长。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/telegraph">财联社</a> | 推荐理由：业绩大增+AI算力受益</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com">北京国管：已统筹自有资金累计投入近百亿元布局股票市场</a></div>
+    <div class="summary">北京国有资本运营管理有限公司表示，截至目前已统筹自有资金累计投入近百亿元布局股票市场。战略资金持续流入为市场企稳提供支撑，说明市场下行空间有限。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> | 推荐理由：国家队入场+市场信心</div>
   </div>
   
 </div>
