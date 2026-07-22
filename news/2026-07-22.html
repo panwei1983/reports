@@ -106,6 +106,111 @@
   .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
   .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
   .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  
+  /* 股市板块速览 */
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up {
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+  .sector-card.down {
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.25);
+  }
+  .sector-card.neutral {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+  .sector-card .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .sector-card .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  
+  /* 热门板块标签 */
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .sector-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sector-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .sector-tag.up {
+    background: rgba(63,185,80,0.15);
+    color: #3fb950;
+  }
+  .sector-tag.down {
+    background: rgba(218,54,51,0.15);
+    color: #da3633;
+  }
+  
+  /* 市场关注 */
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .focus-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .focus-item strong {
+    color: var(--text-primary);
+  }
+  
   .news-item {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -259,6 +364,12 @@
     color: var(--text-secondary);
     font-size: 12px;
   }
+  .disclaimer {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
 </style>
 </head>
 <body>
@@ -383,15 +494,55 @@
 <div class="category" id="market">
   <div class="category-title market">📊 股市</div>
   
+  <!-- 板块速览卡片 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">有色金属</div>
+      <div class="value">+3.29%</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">科技股</div>
+      <div class="value">-3.1%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">+12.8亿</div>
+    </div>
+  </div>
+  
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>📈 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">有色金属 +3.29%</span>
+      <span class="sector-tag up">创新药 +2.15%</span>
+      <span class="sector-tag up">银行 +1.2%</span>
+      <span class="sector-tag down">科技股 -3.1%</span>
+      <span class="sector-tag down">新能源车 -2.8%</span>
+    </div>
+  </div>
+  
+  <!-- 市场关注 -->
+  <div class="market-focus">
+    <h4>👀 市场关注</h4>
+    <div class="focus-item"><strong>腾讯控股</strong> 大跌7%，科网股普跌，市场避险情绪升温</div>
+    <div class="focus-item"><strong>联讯仪器</strong> 业绩预增802%，AI算力需求推动光通信爆发</div>
+    <div class="focus-item"><strong>山金国际</strong> 涨停，有色金属板块逆势爆发</div>
+  </div>
+  
+  <!-- 股市新闻列表 -->
   <div class="news-item">
     <div class="title"><a href="https://wallstreetcn.com">创业板跌超3%，有色金属爆发，科技股陷入调整，腾讯大跌7%</a></div>
-    <div class="summary">A股创业板指跌超3%，有色金属板块逆势爆发，科技股普遍调整。港股恒生科技指数跌超3%，科网股普跌，腾讯控股大跌7%，市场避险情绪升温。</div>
+    <div class="summary">A股创业板指跌超3%，有色金属板块逆势爆发，科技股普遍调整。港股恒生科技指数跌超3%，科网股普跌，腾讯控股大跌7%，市场避险情绪升温。上证指数微涨0.07%，深证成指跌1.42%。</div>
     <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> | 推荐理由：A股港股联动+板块轮动</div>
   </div>
   
   <div class="news-item">
     <div class="title"><a href="https://wallstreetcn.com">AI交易热情回落，美股盘前存储芯片股普跌，SK海力士跌约5%</a></div>
-    <div class="summary">美股盘前存储芯片股普跌，SK海力士跌约5%，日韩股市几乎抹去涨幅。AI交易热情回落，金银走强，市场风险偏好下降。</div>
+    <div class="summary">美股盘前存储芯片股普跌，SK海力士跌约5%，日韩股市几乎抹去涨幅。AI交易热情回落，金银走强，市场风险偏好下降。布油涨近3%，地缘风险溢价回归。</div>
     <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> | 推荐理由：美股芯片股+全球联动</div>
   </div>
   
@@ -525,6 +676,7 @@
 
 <div class="footer">
   生成时间：2026-07-22 17:30 | 数据源：澎湃新闻、新浪新闻、华尔街见闻、36氪、财联社 | 采集条目：20条
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议。投资有风险，入市需谨慎。</div>
 </div>
 
 </body>
