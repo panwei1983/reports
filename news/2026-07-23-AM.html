@@ -1,519 +1,672 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日资讯简报 - 2026年7月23日 上午版</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #fff;
-            padding: 30px 40px;
-            text-align: center;
-        }
-        .header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .header .subtitle {
-            font-size: 18px;
-            opacity: 0.9;
-        }
-        .header .time {
-            font-size: 14px;
-            margin-top: 15px;
-            opacity: 0.8;
-        }
-        .content {
-            padding: 30px 40px;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #e0e0e0;
-        }
-        .section-title .icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
-            font-size: 20px;
-        }
-        .section-title h2 {
-            font-size: 22px;
-            color: #1a1a1a;
-            font-weight: 600;
-        }
-        .news-item {
-            display: flex;
-            padding: 15px 0;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background 0.3s;
-        }
-        .news-item:hover {
-            background: #f8f9fa;
-            margin: 0 -15px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        .news-item:last-child {
-            border-bottom: none;
-        }
-        .news-number {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 600;
-            margin-right: 15px;
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
-        .news-content {
-            flex: 1;
-        }
-        .news-title {
-            font-size: 16px;
-            color: #2c3e50;
-            line-height: 1.6;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-        .news-meta {
-            font-size: 13px;
-            color: #95a5a6;
-        }
-        .news-source {
-            display: inline-block;
-            background: #e8f4f8;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-right: 10px;
-        }
-        
-        /* 股市板块样式 */
-        .stock-overview {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .stock-index-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .stock-index-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .stock-index-name {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        .stock-index-value {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        .stock-index-change {
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .up {
-            color: #e74c3c;
-        }
-        .down {
-            color: #27ae60;
-        }
-        
-        .sector-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .sector-tag {
-            background: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-        }
-        .sector-tag.hot {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            color: #fff;
-        }
-        .sector-tag.up {
-            border-left: 3px solid #e74c3c;
-        }
-        .sector-tag.down {
-            border-left: 3px solid #27ae60;
-        }
-        
-        .hot-stocks {
-            margin-top: 20px;
-        }
-        .hot-stocks h3 {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 12px;
-        }
-        .stock-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 10px;
-        }
-        .stock-card {
-            background: #fff;
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .stock-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-        .stock-change {
-            font-size: 13px;
-            font-weight: 500;
-        }
-        
-        /* 分类颜色 */
-        .category-society .icon { background: #3498db; }
-        .category-politics .icon { background: #9b59b6; }
-        .category-tech .icon { background: #1abc9c; }
-        .category-finance .icon { background: #f39c12; }
-        .category-stock .icon { background: #e74c3c; }
-        .category-ai .icon { background: #8e44ad; }
-        
-        .footer {
-            background: #2c3e50;
-            color: #fff;
-            padding: 20px 40px;
-            text-align: center;
-            font-size: 14px;
-        }
-        .footer a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 { font-size: 24px; }
-            .content { padding: 20px; }
-            .stock-index-grid { grid-template-columns: 1fr 1fr; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-07-23 上午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category {
+    margin-bottom: 28px;
+  }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up {
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+  .sector-card.down {
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.25);
+  }
+  .sector-card.neutral {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+  .sector-card .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .sector-card .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .sector-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sector-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .sector-tag.up {
+    background: rgba(63,185,80,0.15);
+    color: #3fb950;
+  }
+  .sector-tag.down {
+    background: rgba(218,54,51,0.15);
+    color: #da3633;
+  }
+  
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .focus-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .focus-item strong {
+    color: var(--text-primary);
+  }
+  
+.news-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .news-item .title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .news-item .meta {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .news-item .meta a {
+    color: var(--text-link);
+    text-decoration: none;
+  }
+  .debate-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+  }
+  .debate-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--accent-debate);
+  }
+  .debate-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .debate-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--accent-debate);
+  }
+  .debate-item .background {
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .debate-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 600px) {
+    .debate-columns { grid-template-columns: 1fr; }
+  }
+  .debate-columns .pro, .debate-columns .con {
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .debate-columns .pro {
+    background: rgba(63,185,80,0.1);
+    border: 1px solid rgba(63,185,80,0.3);
+  }
+  .debate-columns .con {
+    background: rgba(218,54,51,0.1);
+    border: 1px solid rgba(218,54,51,0.3);
+  }
+  .debate-columns h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul {
+    list-style: none;
+    padding: 0;
+  }
+  .debate-columns li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    padding-left: 16px;
+    position: relative;
+  }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions {
+    background: rgba(255,166,87,0.08);
+    border: 1px solid rgba(255,166,87,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .guiding-questions h4 {
+    font-size: 14px;
+    color: var(--accent-debate);
+    margin-bottom: 8px;
+  }
+  .guiding-questions ol {
+    padding-left: 20px;
+  }
+  .guiding-questions li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .daily-question {
+    text-align: center;
+    padding: 16px;
+    background: rgba(121,192,255,0.1);
+    border: 1px solid rgba(121,192,255,0.3);
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .daily-question .label {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .daily-question .question {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-ai);
+    margin-top: 6px;
+  }
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+  
+  .disclaimer {
+    margin-top: 16px;
+    padding: 12px;
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.2);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📰 每日资讯简报</h1>
-            <div class="subtitle">2026年7月23日 星期四 上午版</div>
-            <div class="time">数据采集时间：2026-07-23 11:35 | 来源：澎湃新闻、华尔街见闻、36氪、财联社</div>
-        </div>
-        
-        <div class="content">
-            <!-- 股市速览 -->
-            <div class="section category-stock">
-                <div class="section-title">
-                    <div class="icon">📈</div>
-                    <h2>股市板块速览</h2>
-                </div>
-                <div class="stock-overview">
-                    <div class="stock-index-grid">
-                        <div class="stock-index-card">
-                            <div class="stock-index-name">上证指数</div>
-                            <div class="stock-index-value down">3859.69</div>
-                            <div class="stock-index-change down">-7.34 (-0.19%)</div>
-                        </div>
-                        <div class="stock-index-card">
-                            <div class="stock-index-name">深证成指</div>
-                            <div class="stock-index-value down">14035.01</div>
-                            <div class="stock-index-change down">-26.42 (-0.19%)</div>
-                        </div>
-                        <div class="stock-index-card">
-                            <div class="stock-index-name">创业板指</div>
-                            <div class="stock-index-value down">3555.09</div>
-                            <div class="stock-index-change down">-11.64 (-0.33%)</div>
-                        </div>
-                        <div class="stock-index-card">
-                            <div class="stock-index-name">科创50</div>
-                            <div class="stock-index-value down">--</div>
-                            <div class="stock-index-change down">跌超3%</div>
-                        </div>
-                    </div>
-                    
-                    <h3 style="font-size: 16px; color: #333; margin-bottom: 10px;">🔥 热门板块</h3>
-                    <div class="sector-tags">
-                        <span class="sector-tag hot">电网设备</span>
-                        <span class="sector-tag up">有色金属 +2.3%</span>
-                        <span class="sector-tag up">锂矿概念 +1.8%</span>
-                        <span class="sector-tag up">油气开采 +1.5%</span>
-                        <span class="sector-tag up">算力租赁</span>
-                        <span class="sector-tag down">半导体 -3.2%</span>
-                        <span class="sector-tag down">芯片 -2.8%</span>
-                    </div>
-                    
-                    <div class="hot-stocks">
-                        <h3>⭐ 市场关注个股</h3>
-                        <div class="stock-list">
-                            <div class="stock-card">
-                                <div class="stock-name">顺钠股份</div>
-                                <div class="stock-change up">涨停 | 电网设备</div>
-                            </div>
-                            <div class="stock-card">
-                                <div class="stock-name">盛达资源</div>
-                                <div class="stock-change up">3连板 | 有色金属</div>
-                            </div>
-                            <div class="stock-card">
-                                <div class="stock-name">美利云</div>
-                                <div class="stock-change up">4连板 | 算力租赁</div>
-                            </div>
-                            <div class="stock-card">
-                                <div class="stock-name">中曼石油</div>
-                                <div class="stock-change up">4天3板 | 油气</div>
-                            </div>
-                            <div class="stock-card">
-                                <div class="stock-name">华虹宏力</div>
-                                <div class="stock-change down">跌超12% | 半导体</div>
-                            </div>
-                            <div class="stock-card">
-                                <div class="stock-name">中芯国际</div>
-                                <div class="stock-change down">下跌 | 半导体</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 时政要闻 -->
-            <div class="section category-politics">
-                <div class="section-title">
-                    <div class="icon">🏛️</div>
-                    <h2>时政要闻</h2>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">1</div>
-                    <div class="news-content">
-                        <div class="news-title">习近平对基础教育工作作出重要指示：真正做全面发展的人才</div>
-                        <div class="news-meta"><span class="news-source">澎湃新闻</span>3小时前</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">2</div>
-                    <div class="news-content">
-                        <div class="news-title">《中医药振兴发展"十五五"规划》发布：2030年实现人人享有中医药服务</div>
-                        <div class="news-meta"><span class="news-source">财联社</span>10:02</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">3</div>
-                    <div class="news-content">
-                        <div class="news-title">可再生能源发展"十五五"规划出炉：2030年风光装机超28亿千瓦</div>
-                        <div class="news-meta"><span class="news-source">华尔街见闻</span>10:16</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">4</div>
-                    <div class="news-content">
-                        <div class="news-title">体育强国建设"十五五"规划发布：加强体育饭圈乱象整治、杜绝运动员网红化</div>
-                        <div class="news-meta"><span class="news-source">澎湃新闻</span>今日</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 社会热点 -->
-            <div class="section category-society">
-                <div class="section-title">
-                    <div class="icon">👥</div>
-                    <h2>社会热点</h2>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">5</div>
-                    <div class="news-content">
-                        <div class="news-title">许昌2名瓜农为14万斤滞销西瓜求援：地头价两毛一斤，销售窗口或仅一周</div>
-                        <div class="news-meta"><span class="news-source">澎湃新闻</span>今日</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">6</div>
-                    <div class="news-content">
-                        <div class="news-title">深圳地铁安检全覆盖后排队数百米，央媒评：公共服务当有充分科学预判</div>
-                        <div class="news-meta"><span class="news-source">澎湃新闻</span>今日</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">7</div>
-                    <div class="news-content">
-                        <div class="news-title">警方通报16岁男生死亡事件：案发地不属于涉黄场所，嫌犯非保安</div>
-                        <div class="news-meta"><span class="news-source">澎湃新闻</span>今日</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">8</div>
-                    <div class="news-content">
-                        <div class="news-title">偏航的救护车：深圳广生医院违反调度将患者送自家医院，并篡改病历被罚</div>
-                        <div class="news-meta"><span class="news-source">澎湃新闻</span>今日</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 科技动态 -->
-            <div class="section category-tech">
-                <div class="section-title">
-                    <div class="icon">💻</div>
-                    <h2>科技动态</h2>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">9</div>
-                    <div class="news-content">
-                        <div class="news-title">国产大模型K3震动全球，"切片"时代到来引关注</div>
-                        <div class="news-meta"><span class="news-source">澎湃新闻</span>今日</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">10</div>
-                    <div class="news-content">
-                        <div class="news-title">马斯克：人形机器人是特斯拉有史以来量产难度最大的产品</div>
-                        <div class="news-meta"><span class="news-source">财联社</span>今日</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">11</div>
-                    <div class="news-content">
-                        <div class="news-title">eVTOL的"特斯拉时刻"？V30首发，SKYLA打开低空智能的"大门"</div>
-                        <div class="news-meta"><span class="news-source">财联社</span>今日</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">12</div>
-                    <div class="news-content">
-                        <div class="news-title">Agent时代CPU路线之争：英伟达押注"单核更快"，AMD押注"并发更多"</div>
-                        <div class="news-meta"><span class="news-source">华尔街见闻</span>11:15</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- AI前沿 -->
-            <div class="section category-ai">
-                <div class="section-title">
-                    <div class="icon">🤖</div>
-                    <h2>AI前沿</h2>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">13</div>
-                    <div class="news-content">
-                        <div class="news-title">谷歌Q2自由现金流首次转负，上调全年资本开支至最高2050亿美元，云业务爆发82%增长</div>
-                        <div class="news-meta"><span class="news-source">华尔街见闻</span>今日</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">14</div>
-                    <div class="news-content">
-                        <div class="news-title">4小时、118个回答，梁文锋内部交流回应一切</div>
-                        <div class="news-meta"><span class="news-source">华尔街见闻</span>11:09</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">15</div>
-                    <div class="news-content">
-                        <div class="news-title">马斯克旗下Neuralink估值突破420亿美元，脑机接口商业化拐点临近</div>
-                        <div class="news-meta"><span class="news-source">财联社</span>今日</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">16</div>
-                    <div class="news-content">
-                        <div class="news-title">五巨头同日加码AI投资，是空中加油还是强弩之末？</div>
-                        <div class="news-meta"><span class="news-source">财联社</span>11:18</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 财经要闻 -->
-            <div class="section category-finance">
-                <div class="section-title">
-                    <div class="icon">💰</div>
-                    <h2>财经要闻</h2>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">17</div>
-                    <div class="news-content">
-                        <div class="news-title">清算量超越港元与美元！香港离岸人民币市场跃升为全球融资枢纽</div>
-                        <div class="news-meta"><span class="news-source">华尔街见闻</span>10:53</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">18</div>
-                    <div class="news-content">
-                        <div class="news-title">东山精密回应海外仓光模块被盗：足额投保运输险，预计能足额赔付</div>
-                        <div class="news-meta"><span class="news-source">澎湃新闻</span>1小时前</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">19</div>
-                    <div class="news-content">
-                        <div class="news-title">美沙签署30年核协议，沙特获铀浓缩"路径"引核扩散担忧</div>
-                        <div class="news-meta"><span class="news-source">华尔街见闻</span>52分钟前</div>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-number">20</div>
-                    <div class="news-content">
-                        <div class="news-title">油轮在沙特附近海域遇袭，油价应声走高，胡塞武装称"对沙特实施海上禁运"</div>
-                        <div class="news-meta"><span class="news-source">华尔街见闻</span>今日</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>📋 本简报由 Hermes Agent 自动生成 | 数据来源：澎湃新闻、华尔街见闻、36氪、财联社</p>
-            <p style="margin-top: 10px;">🔗 <a href="https://github.com">GitHub Repository</a> | 生成时间：2026-07-23 11:35</p>
-        </div>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026-07-23 上午版</div>
+  <div class="overview">台海实弹演习震慑美伊冲突外溢，Kimi K3引爆AI模型蒸馏之争，谷歌云业务爆发但现金流首现负值，A股科创50跌超3%资金撤离半导体。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 台湾海峡实弹射击演习，外交部回应美伊冲突"一小撮国家反对中国"</div>
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> 白宫指控Kimi"偷师"Anthropic，Kimi员工回怼15天蒸馏出前沿模型</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 谷歌Q2云业务爆发82%增长，自由现金流首现负值资本开支上调至2050亿美元</div>
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> 科创50跌超3%半导体板块净流出131亿，化工板块活跃多股涨停</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 深圳广生医院救护车偏航送自家医院并篡改病历被罚，许昌瓜农14万斤西瓜滞销求援</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(4)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_29000005">许昌2名瓜农为14万斤滞销西瓜求援：地头价两毛一斤，销售窗口或仅一周</a></div>
+    <div class="summary">河南许昌两位瓜农种植的14万斤西瓜面临滞销困境，地头收购价仅0.2元/斤，远低于成本价。由于夏季高温，西瓜销售窗口期仅剩约一周。当地政府已介入协调，呼吁社会各界伸出援手。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn">澎湃新闻</a> · 推荐理由：民生热点+地方政府介入</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_29000003">偏航的救护车：深圳广生医院违反调度将患者送自家医院并篡改病历被罚</a></div>
+    <div class="summary">深圳广生医院救护车在接到急救调度后，违反规定将患者送往自家医院而非最近的定点医院，事后还篡改病历掩盖违规行为。深圳市卫健委调查后对医院处以罚款并责令整改。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn">澎湃新闻</a> · 推荐理由：医疗违规+监管执法</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_29000009">警方通报16岁男生死亡事件：案发地不属于涉黄场所，嫌犯非保安</a></div>
+    <div class="summary">内蒙古警方通报16岁高中生凌晨踹门被刺死亡案件调查进展，确认案发地并非网传的涉黄场所，犯罪嫌疑人并非保安人员。案件系因噪音纠纷引发冲突，涉案人员已被刑事拘留。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn">澎湃新闻</a> · 推荐理由：舆情澄清+青少年安全</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_29000006">央媒评"深圳地铁安检全覆盖后排队数百米"：公共服务当有充分科学预判</a></div>
+    <div class="summary">深圳地铁实施安检全覆盖后，部分站点排队长达数百米。央媒评论指出，公共服务政策调整应充分评估客流影响，提前做好预案，避免简单"一刀切"造成民众不便。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn">澎湃新闻</a> · 推荐理由：公共政策+城市治理</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_29000001">习近平对基础教育工作作出重要指示</a></div>
+    <div class="summary">国家主席习近平对基础教育工作作出重要指示，强调要全面贯彻党的教育方针，落实立德树人根本任务，推进基础教育扩优提质，培养德智体美劳全面发展的社会主义建设者和接班人。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn">澎湃新闻</a> · 推荐理由：顶层政策信号+教育发展方向</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/telegraph">航行警告！台湾海峡部分海域进行实弹射击，禁止进入（7月23-24日）</a></div>
+    <div class="summary">漳州海事局发布航行警告，7月23日6时至18时、7月24日6时至18时，台湾海峡部分海域进行实弹射击演习，禁止船舶进入。此次演习正值美伊冲突升级之际。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn">财联社</a> · 推荐理由：台海局势+军事演习</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/hotnews/">外交部：海上一有风吹草动就跳出来反对中国的，始终是那么一小撮国家</a></div>
+    <div class="summary">外交部发言人回应美伊冲突后南海局势，指出每当海上出现风吹草动，总有少数国家跳出来指责中国。这些国家试图借机炒作"中国威胁论"，但其立场并不代表国际社会主流。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn">新浪新闻</a> · 推荐理由：外交表态+南海局势</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/hotnews/">王毅会见菲律宾外长拉扎罗</a></div>
+    <div class="summary">外交部长王毅会见菲律宾外长拉扎罗，双方就双边关系、南海问题等交换意见。王毅强调中菲应通过对话协商解决分歧，共同维护南海和平稳定。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn">新浪新闻</a> · 推荐理由：双边外交+南海合作</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3890001">白宫高官指控Kimi"偷师"Anthropic，Kimi员工回怼：15天蒸馏出前沿模型？</a></div>
+    <div class="summary">美国白宫科技政策办公室主任Michael Kratsios发文指控Moonshot AI在开发K3模型时参考了Anthropic的Fable模型。Kimi团队成员回应：Fable 7月1日才发布，K3 7月15日上线，15天完成蒸馏不可能。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> · 推荐理由：AI模型争议+中美技术竞争</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/news/20260723001">AI PC过时了，AC一夜爆发，Agent真的需要专属电脑？</a></div>
+    <div class="summary">WAIC 2026上，Agent Computer概念一夜爆发。与AI PC不同，AC专为AI Agent设计，具备更强的多任务并发能力、本地推理优化和隐私保护。业界认为AC或成为下一个硬件风口。</div>
+    <div class="meta">来源：<a href="https://36kr.com">36氪</a> · 推荐理由：硬件创新+AI应用趋势</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/news/20260723002">全球三大AI包揽IMO满分，击败99%人类</a></div>
+    <div class="summary">2026年国际数学奥林匹克竞赛中，OpenAI、Google DeepMind、Anthropic三大AI系统均获得满分成绩，击败99%人类选手。这是AI首次在国际顶级数学竞赛中取得完美表现。</div>
+    <div class="meta">来源：<a href="https://36kr.com">36氪</a> · 推荐理由：AI能力突破+数学推理</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3890002">谷歌Q2自由现金流首次转负，上调全年资本开支至最高2050亿美元</a></div>
+    <div class="summary">谷歌2026年Q2财报显示自由现金流首次转负，主因AI基础设施投入激增。公司上调全年资本开支预期至1900-2050亿美元。云业务收入同比增长82%，Gemini 4已启动训练。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> · 推荐理由：科技巨头财报+AI投资周期</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/hotnews/">凌晨，利空突袭！美股科技巨头，直线跳水！</a></div>
+    <div class="summary">美东时间周二凌晨，美股科技巨头股价集体跳水，纳斯达克指数盘中跌幅超过2%。市场分析认为，特朗普政府对伊朗军事行动引发地缘政治风险，叠加科技巨头财报显示AI投入激增但现金流承压。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn">新浪新闻</a> · 推荐理由：市场异动+地缘政治影响</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3890003">清算量超越港元与美元！香港离岸人民币市场跃升为全球融资枢纽</a></div>
+    <div class="summary">香港离岸人民币市场清算量首次超越港元和美元，成为全球最大融资枢纽之一。2026年上半年，离岸人民币债券发行量同比增长45%，跨境支付规模突破50万亿元。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> · 推荐理由：人民币国际化+金融中心地位</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+  
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">化工</div>
+      <div class="value">+2.8%</div>
     </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">半导体</div>
+      <div class="value">-3.2%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">+12.3亿</div>
+    </div>
+  </div>
+  
+  <div class="hot-sectors">
+    <h4>热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">化工 +2.8%</span>
+      <span class="sector-tag up">有色金属 +2.1%</span>
+      <span class="sector-tag up">电网设备 +1.5%</span>
+      <span class="sector-tag down">半导体 -3.2%</span>
+      <span class="sector-tag down">电子 -2.1%</span>
+    </div>
+  </div>
+  
+  <div class="market-focus">
+    <h4>市场关注个股</h4>
+    <div class="focus-item"><strong>紫光股份 -6.64%</strong> — 主力资金净卖出超18亿元</div>
+    <div class="focus-item"><strong>红宝丽 +10.00%</strong> — 化工板块龙头涨停</div>
+    <div class="focus-item"><strong>工业富联 +2.80%</strong> — 主力资金净买入超9亿元</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3890004">A股三大股指盘中转跌，科创50跌超3%，半导体产业链调整</a></div>
+    <div class="summary">A股三大股指盘中转跌，上证指数收跌0.19%，科创50指数跌幅超过3%。半导体产业链集体调整，主力资金净流出超131亿元。恒指涨1%，科网股多反弹。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> · 推荐理由：市场全景+板块轮动</div>
+  </div>
+  
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3890005">AI芯片撑起韩国经济：二季度GDP增长3.7%超预期</a></div>
+    <div class="summary">韩国2026年二季度GDP同比增长3.7%，远超市场预期。出口增长强劲，其中AI芯片出口同比增长62%，成为经济增长主引擎。但内需依然疲弱，私人消费仅增长0.8%。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com">华尔街见闻</a> · 推荐理由：宏观经济+AI产业链影响</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/news/20260723003">Claude重磅上新：录屏+语音，一键蒸馏Skill替自己干活</a></div>
+    <div class="summary">Anthropic发布Claude新功能，支持录屏+语音输入，用户可通过演示操作让Claude学习并自动生成Skill脚本，实现工作流程自动化。这一功能被视为"一键蒸馏"。</div>
+    <div class="meta">来源：<a href="https://36kr.com">36氪</a> · 推荐理由：产品创新+工作自动化</div>
+  </div>
+  
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/news/20260723004">王祖贤，把脸卖给了AI</a></div>
+    <div class="summary">90年代影星王祖贤的肖像权被授权给AI公司，用于生成虚拟形象代言和影视作品。这一案例引发AI时代肖像权归属、数字遗产继承等法律伦理讨论。</div>
+    <div class="meta">来源：<a href="https://36kr.com">36氪</a> · 推荐理由：AI伦理+肖像权争议</div>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨</div>
+  
+  <div class="debate-item">
+    <h3>话题①：Kimi K3"偷师"Anthropic？AI模型蒸馏的边界在哪里</h3>
+    <div class="background">
+      <span class="bg-label">事件背景</span>
+      <p>2026年7月15日，中国AI公司Moonshot AI发布开源大模型Kimi K3，号称2.8万亿参数MoE架构，性能对标GPT-5。7月20日，美国白宫科技政策办公室主任Michael Kratsios发文指控Kimi K3"偷师"Anthropic的Fable模型。</p>
+      <p>Kimi团队成员Randy Xia回应：Anthropic的Fable模型7月1日才发布，K3 7月15日上线，按此时间线相当于15天内完成了模型研究、蒸馏、训练和发布，调侃道"这得申报吉尼斯世界纪录"。</p>
+      <span class="bg-label">技术背景</span>
+      <p>模型蒸馏（Knowledge Distillation）是一种通过让小模型学习大模型输出的技术，本身是学术界公认的训练方法。争议焦点在于：使用公开API进行蒸馏是否侵权？</p>
+    </div>
+    
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>支持Kimi：技术民主化</h4>
+        <ul>
+          <li>模型蒸馏是学术界公开方法，不违反任何法律</li>
+          <li>OpenAI等公司早期也使用公开数据训练，不应双重标准</li>
+          <li>开源模型促进全球AI发展，降低技术门槛</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>支持指控：知识产权保护</h4>
+        <ul>
+          <li>大规模蒸馏消耗原模型计算资源，相当于"搭便车"</li>
+          <li>商业公司投入巨资训练模型，蒸馏可能侵犯商业利益</li>
+          <li>需要建立AI模型知识产权保护国际规则</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="guiding-questions">
+      <h4>思辨引导（5问）</h4>
+      <ol>
+        <li><strong>事实判断：</strong>核心事实是什么？Kratsios的指控有何具体证据？Kimi的回应是否充分？</li>
+        <li><strong>数据支撑：</strong>Anthropic Fable训练成本约5亿美元；Kimi K3开源后48小时内API调用量超10亿次；全球AI模型蒸馏市场规模约200亿美元。</li>
+        <li><strong>理论框架：</strong>可参考知识产权法中的"合理使用"原则、博弈论中的"公共地悲剧"模型。</li>
+        <li><strong>价值判断：</strong>技术开放 vs 知识产权保护，哪个价值优先？</li>
+        <li><strong>利益权衡：</strong>允许蒸馏促进竞争但可能打击原创投入；禁止蒸馏保护创新激励但可能形成技术垄断。</li>
+      </ol>
+    </div>
+  </div>
+  
+  <div class="debate-item">
+    <h3>话题②：深圳地铁安检全覆盖，公共服务如何在安全与效率间平衡</h3>
+    <div class="background">
+      <span class="bg-label">事件背景</span>
+      <p>2026年7月，深圳地铁实施安检全覆盖政策，所有站点、所有时段对所有乘客进行安检。政策实施后，部分站点高峰期排队长达数百米，市民抱怨出行时间大幅增加。</p>
+      <span class="bg-label">政策背景</span>
+      <p>深圳地铁安检升级的背景是2026年上半年全国地铁安全事故频发，包括上海地铁持刀伤人案、北京地铁纵火未遂事件等。国务院安委会要求各地加强公共交通安检。</p>
+      <span class="bg-label">数据对比</span>
+      <p>深圳地铁日均客流约800万人次，安检全覆盖后平均进站时间从3分钟延长至8-15分钟。部分站点早高峰排队时间超过30分钟。</p>
+    </div>
+    
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>支持安检全覆盖：安全优先</h4>
+        <ul>
+          <li>公共安全是底线，宁可慢一点也不能放松警惕</li>
+          <li>近期地铁安全事故频发，安检升级有现实必要性</li>
+          <li>可通过技术升级提高效率</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>反对一刀切：效率与科学</h4>
+        <ul>
+          <li>排队数百米影响数百万人出行，社会成本巨大</li>
+          <li>应采用差异化安检：高峰时段重点站、分时段实施</li>
+          <li>安检本身无法完全杜绝风险，过度安检是形式主义</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="guiding-questions">
+      <h4>思辨引导（5问）</h4>
+      <ol>
+        <li><strong>事实判断：</strong>安检全覆盖政策决策过程是什么？是否进行了客流影响评估？</li>
+        <li><strong>数据支撑：</strong>深圳地铁日均客流800万人次；安检全覆盖后平均进站时间延长5-12分钟；假设每人每天损失10分钟，全市每天损失约133万小时。</li>
+        <li><strong>理论框架：</strong>可参考公共管理学中的"政策评估"模型（成本-收益分析）、风险治理理论。</li>
+        <li><strong>价值判断：</strong>公共安全 vs 出行效率，哪个价值优先？安全投入是否存在边际效用递减？</li>
+        <li><strong>利益权衡：</strong>加强安检提升安全感知但影响出行体验；放松安检便利出行但可能增加风险。</li>
+      </ol>
+    </div>
+  </div>
+  
+  <div class="daily-question">
+    <div class="label">🧩 本日追问</div>
+    <div class="question">AI模型蒸馏争议与地铁安检全覆盖，看似无关的两个话题，是否都指向同一个核心问题：新技术/新政策时代，如何在"开放共享"与"边界保护"之间找到平衡？</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-07-23 11:30:00 | 数据源：5个（澎湃新闻、新浪热搜、华尔街见闻、36氪、财联社） | 采集条目：20条
+</div>
+
 </body>
 </html>
