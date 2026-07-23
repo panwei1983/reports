@@ -1,72 +1,171 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日资讯简报 · panwei1983</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #0d1117;
-      color: #c9d1d9;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 8px;
-      color: #58a6ff;
-    }
-    .subtitle {
-      color: #8b949e;
-      margin-bottom: 30px;
-      font-size: 0.9em;
-    }
-    ul {
-      list-style: none;
-      max-width: 500px;
-      width: 100%;
-    }
-    li {
-      margin-bottom: 10px;
-    }
-    a {
-      display: block;
-      padding: 12px 16px;
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      color: #c9d1d9;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    a:hover {
-      background: #1f2937;
-      border-color: #58a6ff;
-      color: #58a6ff;
-    }
-    .footer {
-      margin-top: 40px;
-      color: #484f58;
-      font-size: 0.8em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日资讯简报索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px 40px;
+        }
+        .date-section {
+            margin-bottom: 25px;
+        }
+        .date-title {
+            font-size: 20px;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .report-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .report-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .report-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .report-link .icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        .footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .new-badge {
+            background: #e74c3c;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
 </head>
 <body>
-  <h1>📰 每日资讯简报 · panwei1983</h1>
-  <p class="subtitle">自动生成 · 每日更新 · <a href="../index.html" style="display:inline; padding:0; background:none; border:none; color:#58a6ff;">🏠 返回主页</a></p>
-  <ul>
-      <li><a href="2026-07-23-AM.html">📰 2026-07-23 星期四 · 上午版</a></li>
-      <li><a href="2026-07-22.html">📰 2026-07-22 星期三</a></li>
-      <li><a href="2026-07-21.html">📰 2026-07-21 星期二</a></li>
-      <li><a href="2026-07-20.html">📰 2026-07-20 星期一</a></li>
-      <li><a href="2026-07-19.html">📰 2026-07-19 星期日</a></li>
-  </ul>
-  <p class="footer">Powered by Hermes Agent · 2026-07-23</p>
+    <div class="container">
+        <div class="header">
+            <h1>📰 每日资讯简报索引</h1>
+            <div class="subtitle">自动生成 · 每日更新 · 多源聚合</div>
+        </div>
+        
+        <div class="content">
+            <div class="date-section">
+                <div class="date-title">📅 2026年7月23日</div>
+                <div class="report-links">
+                    <a href="2026-07-23-AM.html" class="report-link">
+                        <span class="icon">🌅</span>
+                        上午版
+                        <span class="new-badge">NEW</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="date-section">
+                <div class="date-title">📅 2026年7月22日</div>
+                <div class="report-links">
+                    <a href="2026-07-22-PM.html" class="report-link">
+                        <span class="icon">🌙</span>
+                        下午版
+                    </a>
+                </div>
+            </div>
+            
+            <div class="date-section">
+                <div class="date-title">📅 2026年7月21日</div>
+                <div class="report-links">
+                    <a href="2026-07-21.html" class="report-link">
+                        <span class="icon">📊</span>
+                        全天版
+                    </a>
+                </div>
+            </div>
+            
+            <div class="date-section">
+                <div class="date-title">📅 2026年7月20日</div>
+                <div class="report-links">
+                    <a href="2026-07-20.html" class="report-link">
+                        <span class="icon">📊</span>
+                        全天版
+                    </a>
+                </div>
+            </div>
+            
+            <div class="date-section">
+                <div class="date-title">📅 2026年7月19日</div>
+                <div class="report-links">
+                    <a href="2026-07-19.html" class="report-link">
+                        <span class="icon">📊</span>
+                        全天版
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📋 本简报由 Hermes Agent 自动生成</p>
+            <p style="margin-top: 10px;">数据来源：澎湃新闻、华尔街见闻、36氪、财联社、新浪热搜</p>
+        </div>
+    </div>
 </body>
 </html>
