@@ -404,37 +404,44 @@
           <h3 id="召回-检索-7-篇" class="category-title">🔍 召回/检索（7 篇）</h3>
      <div class="paper-card" id="paper-1">
        <div class="paper-title">⭐ 1. Vector Search As Nearest Neighbor Matching: RAG-based Policy Learning in Causal Inference</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Masahiro Kato, Taka Kato</span><span>⭐ 评分: ：5.70（关键词 13.5 + 机构 0.5）| ：2026-07-20 |</span></div>
+       <div class="paper-abstract">：我们提出了基于检索增强生成（RAG, Retrieval-Augmented Generation）的策略学习的一步法和两步法。我们在潜在结果框架下构建了基于RAG的行动选择。在两步法中，向量搜索在嵌入空间中检索特定行动的邻近证据，生成器估计条件期望结果或其对比量，插件规则选择一个行动。这一构建将特定行动的向量搜索与因果推断中的最近邻匹配联系起来。我们将两步法的遗憾分解为候选生成遗憾和候选内选择遗憾，并利用最近邻估计器和Transformer的预测误差保证对后者进行了上界约束。由于一步法的中间计算不可观测，我们直接将其作为策略进行评估。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.18225" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-2">
        <div class="paper-title">⭐ 2. D-NOVA: In-Storage Retrieval Accelerator via Dual-Bound 3D NAND-Optimized Similarity Search with Vector Adaptation</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Chang Eun Song, Sumukh Pinge, Tianqi Zhang, Sung Eun Kim, Tajana S. Rosing et al.</span><span>⭐ 评分: ：5.48（关键词 12.5 + 机构 0.8）| ：2026-07-20 |</span></div>
+       <div class="paper-abstract">：检索增强生成（RAG, Retrieval-Augmented Generation）通过从外部知识库中检索相关信息，增强了大语言模型（LLM, Large Language Model）推理的事实依据。然而，其稠密向量检索引入了显著的延迟和能耗开销，成为主要的性能瓶颈。尽管最近的存储内加速器旨在减少数据移动，但它们仍依赖于内存外部的主机或嵌入式处理器，近70%的总检索时间消耗于此。因此，它们无法完全克服带宽限制，导致又一种内存瓶颈。为解决这些限制，我们提出了D-NOVA，一种软硬件协同设计的存储内检索加速器。D-NOVA通过将搜索功能深度嵌入NAND存储阵列中，执行基于倒排文件（IVF, Inverted File）的层次化检索流水线。这通过引入一种新的距离度量——双边界紧相似度感知（DTS, Dual-Bound Tight Similarity Sensing）——来实现，该度量专门针对NAND串内的搜索而定制。此外，我们引入了一种轻量级对比适配器，将嵌入向量映射到对DTS友好的域中，在恢复接近软件召回率的同时提升性能和能效。D-NOVA比CPU基线快达41.7倍、能效高71倍，与最先进的存储内RAG加速器相比，吞吐量高12.13倍且能效高1.26倍，证明了全存储内向量搜索在可扩展RAG加速方面的潜力。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.17538" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-3">
        <div class="paper-title">⭐ 3. Learning Sparse Representations of Multimodal Content for Enhanced Cold Item Recommendation</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Gregor Meehan, Johan Pauwels</span><span>⭐ 评分: ：5.10（关键词 12.0 + 机构 0.5）| ：2026-07-19 |</span></div>
+       <div class="paper-abstract">：现代数字平台中物品目录的规模和快速增长给推荐系统（RS, Recommender System）从业者带来了重大挑战。大多数推荐系统使用嵌入相似度来预测用户-物品偏好，但在工业级目录中嵌入存储和低延迟检索面临困难。此外，新添加的物品没有对应的嵌入，无法被有效推荐；先前的工作通常通过从辅助内容（如图像或描述性文本）生成冷启动物品表示来解决这一物品冷启动问题，从而无需历史交互即可预测用户偏好。在本文中，我们论证了在这一基于内容的冷启动范式中，稀疏嵌入相比标准稠密向量具有显著优势。我们描述了如何将现有冷启动训练方案适配于稀疏表示学习，并基于线性注意力的洞见设计了一种预稀疏化激活技术，该技术在学到的物品-物品相似度中引入锐化和去噪效果。我们表明，所得的稀疏嵌入在冷启动推荐准确度上显著优于稠密嵌入，且存储成本大幅降低，尤其对于具有多种兴趣的用户。通过对四个多模态推荐系统数据集的全面实验，我们还展示了稀疏内容嵌入的可解释性及其在大小与准确度权衡中的鲁棒性。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.17184" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-4">
        <div class="paper-title">⭐ 4. LLM-Based Re-Ranking for Real Estate Search</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Nkateko Ntimane, Rafael Guedes, Tiago Cunha, Pedro Nogueira</span><span>⭐ 评分: ：4.70（关键词 11.0 + 机构 0.5）| ：2026-07-16 |</span></div>
+       <div class="paper-abstract">：QuintoAndar集团运营着拉丁美洲领先的住房租赁和销售市场平台。该平台以完全数字化的体验取代了传统的纸质繁重工作流程，使该地区的租户、买家和房东能够更快速、更便捷地进行住房交易。在如此庞大的目录中找到理想的房屋本质上是很困难的。与此同时，对话助手的广泛采用正在重塑用户期望：人们越来越希望通过开放的、多轮对话而非僵化的筛选菜单和分面搜索来表达需求。这种转变在住房领域尤为明显，因为用户的意图是多维的、依赖于上下文的，且很少能简化为一小组结构化约束。为满足这些期望，我们提出了一种基于大语言模型（LLM, Large Language Model）的重排序器，通过根据用户对话中表达的细腻、丰富的上下文意图对检索到的候选结果重新排序，来增强对话式推荐系统。我们还构建了一个大规模的对话式房地产搜索离线评估数据集，包含960,000个查询-物品对，由合成查询和生产查询构建，并使用LLM作为评判者（LLM-as-a-Judge）框架结合人工验证进行标注。我们通过该专有数据集进行离线验证，并通过生产环境A/B测试进行在线验证。两项评估均显示排序质量的一致提升，包括在生产环境中点击率（CTR, Click-Through Rate）的+5.3%统计显著提升和预约看房的+4.8%提升，证明了将对话上下文集成到住房推荐中的价值。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.14835v2" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-5">
        <div class="paper-title">⭐ 5. TurboVec: A Case Study in Cost-Efficient Private Retrieval for Enterprise RAG via Codebook-Oblivious Quantization</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Navnit Shukla, Kamal Pandey, Omsankar Tiwari</span><span>⭐ 评分: ：4.68（关键词 10.5 + 机构 0.8）| ：2026-07-18 |</span></div>
+       <div class="paper-abstract">：检索增强生成（RAG, Retrieval-Augmented Generation）系统日益驱动企业大语言模型（LLM, Large Language Model）应用，但向量检索层引入了两个尚未充分探索的挑战：（1）训练过的码本量化器可能在索引构建期间暴露语料库统计信息，在多租户部署中造成泄露通道；（2）用于租户隔离的事后过滤会降低选择性查询的召回率。我们研究了TurboVec，一种基于TurboQuant构建的开源向量索引——TurboQuant是一种无需依赖语料库训练的码本无关标量量化器。在DBpedia OpenAI嵌入基准（d=1536，100K-999K向量）上，TurboQuant 4位量化在相同内存预算下，Recall@5比训练过的FAISS乘积量化（PQ, Product Quantization）高8.5-8.9个百分点（在所有规模上）。与HNSW（R@5=0.991）和IVF-PQ（R@5=0.840）相比，TurboQuant占据了一个独特的设计点：无需训练即可获得比IVF-PQ更高的召回率，且内存消耗仅为HNSW的1/4到1/8。部署在Snowpark容器服务上，TurboVec在100K向量时实现11毫秒的中位查询延迟，而仓库暴力扫描为707毫秒。内核级白名单过滤在10-1000租户工作负载下维持0.86-0.93的Recall@10，而事后过滤基线仅为0.09-0.19。码本无关设计将成员推理准确率降至接近随机水平（50.0%），而PQ码本为57.3%。局限性包括单数据集评估、与未压缩HNSW的比较，以及仅在合成数据上进行隐私评估。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.16973" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-6">
        <div class="paper-title">6. Cost-Pragmatic Quality Gating and Selection-Fusion Multi-Model Combiners for BioASQ Phases A+ and B</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Dima Galat, Marian-Andrei Rizoiu</span><span>⭐ 评分: ：4.30（关键词 10.0 + 机构 0.5）| ：2026-07-15 |</span></div>
+       <div class="paper-abstract">：我们描述了我们的BioASQ Task 14B 2026系统。该工作围绕两个设计决策：当第一阶段检索较弱时，应多积极地重新检索；以及如何组合多个语言模型的答案。检索合并了两条并行流水线——混合第一阶段（稠密BGE + BM25 + RRF，在BioASQ-13b历史档案上达到R@200 = 99.3%）和一条智能体驱动的流水线，将问题在PubMed、Europe PMC和iCite上进行分解——并使用BGE交叉编码器质量门控标记支持不足的问题以进行选择性重检索。在Task 12B 2024验证中，成本务实的重检索策略在列表F1和列表精确率上显著优于技能严格基线，同时重检索成本降低12%。在验证集和测试集13B（不同问题集）上保持提示和模型固定的情况下，列表F1在BioASQ发布的黄金输入池上绝对值提升+0.132，与检索侧的巨大提升空间一致。对于阶段B的问答，我们将多模型集成提升分解为一个由每问题最优界定的选择组件和一个聚合器可以超越的融合组件。该分解在任何实验之前就预测：LLM作为评判者（LLM-as-judge）在选择主导型指标（是/否、多引用ROUGE）上获胜，但在融合友好型指标的召回组件（事实型排名1、列表召回）上结构性地不足。在Task 13B 2025上，我们的同义词合并解析器在每个头部上都赢得了列表召回，而GPT-5.5单独使用保留了列表F1领先，因为解析器更宽泛的物品集损害了精确率。在Task 14B 2026初步排行榜上，我们的团队在八个（阶段×批次）排行榜中的三个上获得综合精确聚合第一名，赢得四个单独问题类型单元，并在阶段B b3 ideal上排名第一。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.13551" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-7">
        <div class="paper-title">7. Salience Induction against Multi-Hop RAG Agents: Threat and Defense</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Xingfu Zhou, Pengfei Wang, Yuan Zhou, Wei Xie, Xu Zhou</span><span>⭐ 评分: ：4.28（关键词 9.5 + 机构 0.8）| ：2026-07-20 |</span></div>
+       <div class="paper-abstract">：智能体式检索增强生成（RAG, Retrieval-Augmented Generation）系统日益检索外部证据并编排工具以服务于知识密集型应用。在多跳问答中，智能体跨文档链接事实。现有防御措施侧重于内容投毒（注入虚假事实）和提示注入（嵌入指令）。我们识别了第三个攻击面：显著性通道，通过该通道，事实位置、强调、框架和语义邻近度可以重定向推理，即使所有检索到的声明都是真实的且不存在任何指令。我们将显著性诱导（Salience Induction）形式化为保持真实性的编辑，在使检索痕迹语义保持不变的同时重定向多跳属性绑定。我们定义了六类显著性编辑算子，并在事实性和隐蔽性约束下构建了一个迭代提议-验证流水线。我们还引入了SalientWiki-MH，一个带有诱饵标注的多跳基准。在五个前沿模型家族（GPT、Claude、Gemini、DeepSeek和Qwen）和三种智能体架构（ReAct、Reflexion和工具调用）上的评估表明了广泛的泛化性。在30%的编辑预算下，显著性诱导实现了83.3%的攻击成功率（ASR, Attack Success Rate）；最强的评估基线防御仍留下75.7%的防御后ASR。无目标重写仅在降低中性任务成功率的情况下进一步减少攻击。我们提出的轻量级输入侧防御——显著性归一化（Salience Normalization），在标准攻击下将攻击成功率降至15.3%，在自适应攻击下降至23.6%。这些结果表明，仅靠真实性和指令过滤是不够的：鲁棒的智能体式RAG还需要防御显著性-相关性解耦。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.17535" target="_blank">论文链接</a></div>
      </div>
         </div>
@@ -442,37 +449,44 @@
           <h3 id="排序-重排-7-篇" class="category-title">📊 排序/重排（7 篇）</h3>
      <div class="paper-card" id="paper-8">
        <div class="paper-title">8. NOWJ@COLIEE 2026: Adaptive Pipelines for Legal Retrieval and Reasoning</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Thuong-Hieu Ngo, Hoang-Trung Nguyen, Huu-Dong Nguyen, Xuan-Bach Le, Le-Dung Nguyen et al.</span><span>⭐ 评分: ：7.70（关键词 18.5 + 机构 0.5）| ：2026-07-18 |</span></div>
+       <div class="paper-abstract">：本文介绍了NOWJ团队参加COLIEE 2026竞赛全部五项任务的方法和结果。对于任务1（法律案例检索），我们提出了一个四阶段流水线，包括候选过滤、使用互补嵌入模型的稠密检索、通过微调生成式重排器和基于MLP（多层感知机, Multi-Layer Perceptron）的成对分类进行交叉编码器重排序，以及自适应逐查询截断预测。对于任务2（法律案例蕴含），我们结合了BM25过滤、基于T5的重排序和基于LLM（大语言模型, Large Language Model）的蕴含验证与共识集成。对于任务3（成文法检索与蕴含），我们采用了检索增强生成（RAG, Retrieval-Augmented Generation）框架，结合稠密检索、基于注意力的重排序和少样本提示的LLM推理。对于任务4（法律文本蕴含），我们引入了一种动态路由流水线，对查询难度进行分类并将案例分派到平衡少样本求解器或结构化零样本思维链求解器。对于试点任务（法律判决预测），我们结合了层次化Transformer与CRF（条件随机场, Conditional Random Field）层、论证关系挖掘和概率论证图推理。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.16603" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-9">
        <div class="paper-title">9. Evidence-in-the-Loop: Trace-Driven Optimization for Customer-Service LLM Agents</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Chunming Wu, Dafei Qiu, Congde Yuan, Charles Quan, Jun Wu et al.</span><span>⭐ 评分: ：6.10（关键词 14.5 + 机构 0.5）| ：2026-07-20 |</span></div>
+       <div class="paper-abstract">：生产环境客服机器人必须在迭代发布中提升回答质量，而大语言模型（LLM, Large Language Model）不得绕过证据边界、策略规则或人工转接保障。我们提出了一种，部署在真实的客服场景中。BM25召回、问题标题向量召回、问题描述向量召回、加权RRF（倒数排名融合, Reciprocal Rank Fusion）融合以及交叉编码器重排序构建了受控LLM决策的基于FAQ（常见问题, Frequently Asked Questions）的证据。策略引导的编排随后将此RAG（检索增强生成, Retrieval-Augmented Generation）证据与场景特定规则证据、对话记忆和澄清状态在固定的LangGraph DAG（有向无环图, Directed Acyclic Graph）中结合。本文贡献了三种可复用的部署模式：，其中多通道检索和重排序产生可审计的FAQ候选；，其中证据驱动决策模块从有类型的FAQ证据和场景特定规则证据中选择问题/动作；以及，其中追踪诊断失败是来自召回、排序、最终候选选择、澄清、规则派生证据还是动作策略，并且重排序器微调不仅评估域内增益，还评估遗忘风险。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.18039" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-10">
        <div class="paper-title">10. FinSAgent: Corpus-Aligned Multi-Agent RAG Framework for Evidence-Grounded SEC Filing Question Answering</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Jijun Chi, Zhenghan Tai, Hanwei Wu, Tung Sum Thomas Kwok, Hailin He et al.</span><span>⭐ 评分: ：5.70（关键词 13.5 + 机构 0.5）| ：2026-07-20 |</span></div>
+       <div class="paper-abstract">：对美国证券交易委员会（SEC, U.S. Securities and Exchange Commission）文件进行的金融问答（QA, Question Answering）需要检索和综合分散在冗长、标准化且高度冗余的披露文件中的异构证据。现有的检索增强和多智能体系统通常直接从用户问题派生检索查询，并通过语义相似度对候选进行排序。这些选择共同造成了先验-语料库错位：模型先验与目标文件的结构、术语和证据标准之间的不匹配。因此，查询生成遗漏了语料库特定的证据，而语义重排序偏好主题相似但证据上无效的假阳性片段。我们提出了FinSAgent，一个证据驱动的多智能体框架，将SEC文件QA重新定义为语料库对齐的检索规划，并以单一原则纠正两端：在模型先验可能占主导的地方注入语料库侧条件。FinSAgent结合了（1）锚定于强制性10-K条目结构的角色专业化智能体，（2）数据库感知的查询分解，将每个智能体的子查询条件化于本地语料库的轻量级摘要级视图，以及（3）多路径检索与学习到的特征门控重排序器，将证据有效性从语义相似性中分离。在五个离线金融QA基准测试中，FinSAgent在检索覆盖率和答案正确性上优于强大的单智能体和多智能体基线；在1000名匿名用户评分的三臂随机在线实验中，它也获得了高于基线的评分。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.18102" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-11">
        <div class="paper-title">11. Optimizing Visibility in Generative Engines: A Critical Survey of Generative Engine Optimization (2023-2026)</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Olivier Martinez</span><span>⭐ 评分: ：5.70（关键词 13.5 + 机构 0.5）| ：2026-07-15 |</span></div>
+       <div class="paper-abstract">：生成式引擎优化（GEO, Generative Engine Optimization）旨在提高内容在生成式引擎生成的答案中的存在感、被引用可能性或影响力。自奠基性GEO论文发表以来，该领域迅速扩展，但术语、指标和证据标准仍然异质。本批判性综述回顾了在2023年11月至2026年7月出版窗口内选取的45项研究，包括一篇在窗口开启后在EMNLP发表的较早预印本，以及相关的RAG（检索增强生成, Retrieval-Augmented Generation）和评估工作。我们认为GEO不是单一排名任务，而是一个随机的、部分可观测的流水线，跨越搜索激活、爬取和索引、检索、重排序和上下文分配、引用、显著性、事实吸收、保真度和用户行为。奠基性论文被广泛引用的增益在其实验设置内是有效的，但条件是源内容已存在于固定上下文中；它们既不能证明有机可发现性，也不能证明持久的流量效应。被综述的工作表明，主题相关性和上下文位置是最可复制的杠杆，通用启发式方法迁移性差，竞争可能侵蚀个体收益，而面向引用的改写可能损害检索。商业审计进一步揭示了低源重叠、大量的运行间变异性和持续存在的保真度差距。我们贡献了一个多阶段形式模型、一个分离可发现性、引用、吸收和经济结果的可见性向量、一个证据层次结构，以及一个基于重复测量、改写、对照、人工验证和多参与者干扰的可复现协议。在此语料库中，证据是狭窄的：已被检索的内容可以因果性地改变其引用或使用，但没有被综述的技术显示出对有机可发现性或下游行为的稳定的、纵向的、跨平台的因果效应。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.14035" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-12">
        <div class="paper-title">12. SynH-Rank: Quality-Aware Code Search via Diverse Data Synthesis and Hierarchical Ranking Training</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Keyu Liang, Haoye Wang, Yanfu Yan, Zhiyuan Wan, Zhongxin Liu</span><span>⭐ 评分: ：5.28（关键词 12.0 + 机构 0.8）| ：2026-07-19 |</span></div>
+       <div class="paper-abstract">：代码搜索通过实现高效的代码复用来提升开发者生产力。当前的代码搜索系统通常使用先检索后重排序的流水线，其中重排序器专注于建模查询与代码之间的语义相关性。然而，这些重排序器忽略了关键的非功能质量，如执行速度、内存使用和可维护性，这些对于实际的软件开发至关重要。研究表明，开发者期望结果保持高编码标准并满足特定需求（如资源优化），凸显了质量感知代码搜索的重要性。实现质量感知代码搜索面临两大挑战：用于有效训练的质量标注数据集的稀缺，以及标准对比学习目标的局限性，后者无法捕获高质量、低质量和无关代码之间的序数关系。虽然对比学习在区分相关与无关代码方面表现出色，但其二元目标不支持细粒度的质量区分。为应对这些挑战，我们提出了SynH-Rank，一个质量感知的代码重排序框架，结合了LLM（大语言模型, Large Language Model）驱动的多样化数据合成与层次化排序训练。SynH-Rank采用三级标注方案来显式建模层次关系：高质量相关 > 低质量相关 > 无关。此外，我们引入了一个包含4,209对的新基准和两个新指标：质量偏好准确率（QPA, Quality Preference Accuracy）用于评估高质量代码的优先级，以及多条件准确率（MCA, Multi-Condition Accuracy）用于评估复杂约束下的性能。实验结果表明，SynH-Rank在QPA上比骨干模型提升了20.15%，比标准仅相关性对比训练提升了15.80%，同时增强了传统相关性指标和多条件泛化能力。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.17139" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-13">
        <div class="paper-title">13. Beyond Memory Leaderboards: Evaluating Scientific Memory as Budgeted Context Restoration</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Maksim Sheverev, David Finkelstein, Sergey Nikolenko</span><span>⭐ 评分: ：4.70（关键词 11.0 + 机构 0.5）| ：2026-07-18 |</span></div>
+       <div class="paper-abstract">：长期记忆正在成为LLM（大语言模型, Large Language Model）智能体的核心组件，但大多数记忆基准评估对话或紧凑摘要，而研究智能体需要从完整的科学论文中恢复证据。我们引入了两个全文科学记忆基准：Public AI Memory（PAIM；81篇论文，66个问题）和Public Transformers（PTr；252篇论文，98个问题）。我们评估了八种记忆/检索系统，包括我们提出的Theoria，以及一个无检索基线。我们的结果表明，如果没有完整的协议，记忆排行榜是不可解释的：摄入粒度、原始文本保留、检索预算、检索模态、评分标准审查和评判器选择都会影响结果。例如，在PAIM上，Graphiti以明显优势获胜，但每个查询使用了260万字符的检索上下文，在控制检索预算后，其领先优势消失。在PTr上，对于可以干净地添加BM25检索的系统，稀疏-稠密混合是唯一最显著的干预：Simple RAG（检索增强生成, Retrieval-Augmented Generation）、Mem0和Theoria的混合变体在0.03分以内并列领先。多评判器和人工并排校准表明，LLM-as-a-judge排名在不同前沿评判器之间保持一致，并与人工评估一致，在十分制量表上的有效分辨率约为1分。我们认为科学记忆应作为预算化的、模态感知的上下文恢复来评估，而不是作为无约束的架构排行榜，我们发布数据集、测试工具、原始输出、评判和脚本来复现我们的结果并作为此类评估的工具。代码可在 http://gitlab.com/quantellence/research/scientific-recall-bench 获取，数据集可在 http://huggingface.co/datasets/quantellence/srb-data 获取。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.16848" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-14">
        <div class="paper-title">14. MagicSelector: Joint Optimization for Agent Tool Selection via Counterfactual Decomposition and Progressive Reranking</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ： HONOR Agentic Search Team, Zhengzong Chen, Lei Tang, Lijun Liu, Chuandi Jiang et al.</span><span>⭐ 评分: ：4.28（关键词 9.5 + 机构 0.8）| ：2026-07-20 |</span></div>
+       <div class="paper-abstract">：我们提出了MagicSelector，一个集成反事实任务分解、渐进重排序和动态Top-K的联合优化框架，旨在解决智能体中工具检索的根本挑战。MagicSelector是一个专用框架，能够将模糊的用户指令转换为可执行的原子子任务并引导高精度工具检索，有效缓解域外（OOD, Out-of-Domain）场景中的冗余噪声和严重的上下文干扰。我们通过三个关键贡献赋予MagicSelector这些能力：（1）偏好引导的反事实任务分解机制，利用反事实奖励来量化分解对检索排序的边际因果增益，有效地对逻辑连贯性施加细粒度结构监督；（2）由自蒸馏硬负例挖掘驱动的渐进工具重排序方法，优化逐点和逐列表相关性以增强高度相似工具之间的细粒度区分；（3）双重语义边界感知的动态Top-K策略，自适应地监控重排序分数断崖和工具间语义偏移以动态截断候选列表，最大化相关工具召回的同时过滤长尾噪声。在MTDTool上评估——这是我们为移动多轮交互构建的首个带有过程级标注的任务分解基准——MagicSelector取得了有前景的性能。大量实验表明，MagicSelector在工具检索精度、OOD泛化能力和整体令牌效率方面显著优于最先进的方法，从而证明了我们提出框架的有效性。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.17751" target="_blank">论文链接</a></div>
      </div>
         </div>
@@ -480,12 +494,14 @@
           <h3 id="推荐系统-2-篇" class="category-title">🎯 推荐系统（2 篇）</h3>
      <div class="paper-card" id="paper-15">
        <div class="paper-title">15. Personalizing Incremental Video Search with Hybrid Text and ID Embeddings</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Vivek Kanojiya, Vishalaksh Aggarwal, Daeho Baek, Lyndon Kennedy, Xuetao Yin</span><span>⭐ 评分: ：6.20（关键词 14.0 + 机构 1.0）| ：2026-07-15 |</span></div>
+       <div class="paper-abstract">：增量视频搜索需要在每次按键后实现高质量排序，而此时用户意图往往未被充分明确（例如，1-3个字符的前缀）。我们为Apple TV搜索提出了一种个性化系统，该系统在排序时融合了互补的语义信号和协同信号。我们的方法学习了两种物品嵌入空间：（i）一种基于文本的多语言编码器（TextEmb），通过对比学习在共同参与三元组上进行微调；以及（ii）一种基于ID的协同嵌入模型（IdEmb），在交互衍生的正样本上进行训练。在服务时，我们从最近的观看历史构建用户表示，并将基于文本和基于ID的用户-物品余弦相似度注入到一个成对XGBoost排序器中。我们使用时间留出的离线数据集和为期三周的在线对照实验进行评估。离线结果表明，对于有用户历史的会话，个性化排序器相比非个性化基线将NDCG（归一化折损累积增益，Normalized Discounted Cumulative Gain）@10提升了2.99%，将MRR（平均倒数排名，Mean Reciprocal Rank）提升了3.30%。切片分析表明，个性化在增量搜索中最有价值，此时意图仍在形成：在模糊的前缀查询（1-3个字符）上，NDCG@10的提升为+8.63%，而在较长、完全明确的查询上仅为+1.46%。历史更长的用户获益更多：NDCG的提升从拥有1-5条历史记录用户的+2.13%增长到拥有51-100条历史记录用户的+4.37%，尽管这些群体的基线相关性较低（NDCG@10从0.733降至0.680），这表明个性化在默认排序表现不佳时能增加最大价值。在线结果表明，处理组在点击穿透率上实现了+1.14%的统计显著增益，在转化率上实现了+1.23%的统计显著增益，已转化物品的排名位置改善了2.91%。我们进一步通过分别隔离每种信号的消融实验分析了语义嵌入和协同嵌入之间的覆盖率-精确度权衡，并在一个留出语料库上使用LLM（大语言模型，Large Language Model）判断的相似性标签评估了嵌入质量，以减少点击/曝光偏差。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.13493" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-16">
        <div class="paper-title">16. TMallGS: Scaling Unified Feature and Sequence Modeling for Generative E-commerce Search</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Zhentao Song, Yufeng Gao, Xing Fang, Jing Wang, Guangxin Song et al.</span><span>⭐ 评分: ：4.90（关键词 11.5 + 机构 0.5）| ：2026-07-15 |</span></div>
+       <div class="paper-abstract">：在工业搜索和排序系统中，CTR（点击率，Click-Through Rate）预测正在从传统的DLRM（深度学习推荐模型，Deep Learning Recommendation Models）转向统一的、计算密集型Transformer架构。这一转变由提高MFU（模型FLOPs利用率，Model FLOPs Utilization）并通过缩放定律实现可预测增益的需求所驱动。然而，现有方法如OneTrans和Climber在适配LLM（大语言模型，Large Language Model）架构时往往采用全token化策略，忽视了排序特征的异构性。我们提出了TmallGS，一种面向天猫搜索的可扩展排序架构。TmallGS包含五个关键组件：（1）层次化分布校准token化，结合了FSR（字段显著性重加权，Field-wise Saliency Reweighting）和DCP（分布校准投影，Distribution-Calibrated Projection），将多样化特征映射到优化子空间；（2）字段自适应门控Transformer主干网络，具有逐字段的QKV投影和噪声自适应门控，用于精细化的语义交互；（3）解耦FiLM（Feature-wise Linear Modulation）后期融合，以保留显式的高频信号；（4）上下文感知偏差网络，将系统性偏差与用户意图解耦；以及（5）误差感知渐进式训练，通过动态加权损失实现鲁棒学习。在天猫搜索上的大量离线实验和在线A/B测试表明，TmallGS提高了训练吞吐量，并在UCTCVR和GMV（商品交易总额，Gross Merchandise Volume）上取得了显著增益。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.13398" target="_blank">论文链接</a></div>
      </div>
         </div>
@@ -493,12 +509,14 @@
           <h3 id="广告系统-2-篇" class="category-title">💰 广告系统（2 篇）</h3>
      <div class="paper-card" id="paper-17">
        <div class="paper-title">17. RAMP: Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Dairui Liu, Zhongyi Lu, Roger Zhe Li, Changhong Jin, Jitao Lu et al.</span><span>⭐ 评分: ：6.08（关键词 14 + 机构 0.8）| ：2026-07-20 |</span></div>
+       <div class="paper-abstract">：CTR（点击率，Click-Through Rate）和CVR（转化率，Conversion Rate）预测是在线广告的基础任务，旨在根据各种特征估计用户交互的可能性。虽然个性化属性（如年龄和性别）可以显著提高预测准确性，但其使用日益受到隐私法规的限制，从而限制了训练和推理时可用的数据。为了解决这一挑战，我们提出了RAMP（通过掩码和对齐路径在有限个性化特征可用性下实现鲁棒广告推荐，Robust Ad Recommendation Under Limited Personalized-Feature Availability via Masking and Alignment Pathways），旨在在个性化特征不可访问时提高CTR/CVR预测准确性，从而支持在隐私受限环境中的部署。RAMP由以下部分组成：（i）基于双塔组件的个性化路径，具有相同输入但独立参数，其中输出掩码将个性化信号和非个性化信号的预测分离；（ii）一个仅使用非个性化特征训练的独立非个性化路径；以及（iii）一个受蒸馏启发的预测对齐架构，在（i）和（ii）之间，当个性化特征不可用时改善预测。我们使用公共基准和工业数据集进行了全面的实验来评估RAMP的性能。我们的评估涵盖多个主干模型和不同设置：有无个性化特征的访问权限。结果表明，当个性化特征缺失时，RAMP始终优于最先进的方法，同时当所有特征可用时保持竞争力。我们的代码已在https://github.com/Ruixinhua/RAMP公开发布。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.17473" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-18">
        <div class="paper-title">18. Long-History User Transformers for Real-Time Ad Ranking</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Viacheslav Ovchinnikov, Georgii Smirnov, Nikolai Savushkin, Veronika Ivanova, Maksim Kuzin</span><span>⭐ 评分: ：5.28（关键词 12 + 机构 0.8）| ：2026-07-15 |</span></div>
+       <div class="paper-abstract">：长交互历史是CTR（点击率，Click-Through Rate）预测中最具信息量的输入之一，但在在线广告中，它们与一个硬性服务约束冲突：广告必须在几百毫秒内完成评分才能进入竞价，这排除了在请求时运行大型序列编码器的可能性。我们描述了一个生产广告系统如何通过将历史编码与实时推理解耦来解决这一冲突。一个高容量的离线Transformer异步地将用户的全跨平台交互历史编码为紧凑表示，缓存在特征存储中，而一个轻量级的运行时模型在服务时将此缓存表示与用户最近的 events 和请求上下文相结合。离线编码器在大规模交互日志上以双目标——反馈预测和下一项预测——进行自回归预训练，然后两阶段架构在目标广告表面上针对CTR预测进行微调。离线结果表明，分离设计恢复了全历史运行时Transformer72-80%的质量（该Transformer过于昂贵而无法部署），并且缓存表示对过期具有足够的鲁棒性，允许廉价的刷新策略。在生产A/B实验中，该系统在搜索广告中将主要排序指标提升了+2.77%，在Yandex广告网络上提升了+2.1%，收入增益分别为+2.26%和+0.43%，且未增加服务延迟。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.14331" target="_blank">论文链接</a></div>
      </div>
         </div>
@@ -506,12 +524,14 @@
           <h3 id="LLM-RAG-2-篇" class="category-title">🤖 LLM/RAG（2 篇）</h3>
      <div class="paper-card" id="paper-19">
        <div class="paper-title">19. Detection, Attribution, Narration: An End-to-End Pipeline for Explainable Money Mule Identification</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Yuge Zhang, Yuanxing Zhang, Yichao Jin, Khairul Amsyar Mohd Razis, Nicholas Qi An Choo et al.</span><span>⭐ 评分: ：2.30（关键词 5.0 + 机构 0.5）| ：2026-07-20 |</span></div>
+       <div class="paper-abstract">：资金骡子账户是金融欺诈的关键推动者，但由于交易和行为数据的异构性，大规模检测它们仍然具有挑战性。我们提出了一种用于客户级别骡子检测的端到端管道，包含三个阶段：（1）一个LightGBM分类器，在280个工程特征上训练，涵盖交易模式、账户人口统计、网络拓扑和时间行为；（2）一个TreeSHAP归因层，将每个预测分解为特征贡献；以及（3）一个LLM（大语言模型，Large Language Model）模块，将SHAP（SHapley Additive exPlanations）归因转换为面向分析师的自然语言叙述。我们在三个开源权重LLM家族上进行评估，并通过分析师反馈评估解释质量。在实时生产部署中，该系统达到了89%的产出率，相比前任基于规则的系统的61%，每月警报量从211扩展到302，反映了更广泛的真正阳性覆盖而非增加的噪声。这相当于在现有审查工作流程之外60%的增量有害检测，大大优于基于规则的方法。分析师的定性反馈表明，LLM生成的叙述减少了警报分诊期间的认知负荷。我们进一步讨论了在受监管的金融环境中部署LLM增强的可解释性的影响。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.17586" target="_blank">论文链接</a></div>
      </div>
      <div class="paper-card" id="paper-20">
        <div class="paper-title">20. JOR-Bench: Japanese Operations Research Benchmarks for Large Language Models</div>
-       <div class="paper-meta"></div>
+       <div class="paper-meta"><span>👤 ：Yuu Jinnai</span><span>⭐ 评分: ：2.30（关键词 5.0 + 机构 0.5）| ：2026-07-18 |</span></div>
+       <div class="paper-abstract">：我们提出了JOR-Bench，一套五个日语基准，用于评估LLM（大语言模型，Large Language Model）制定和解决OR（运筹学，Operations Research）问题的能力。每个基准都是现有英文基准的日语翻译版本：IndustryOR、MAMO Complex LP（线性规划，Linear Programming）、NL4OPT、OptiBench和OptMATH，涵盖1,319个问题，涉及LP（线性规划）、MIP（混合整数规划，Mixed-Integer Programming）、NLP（非线性规划，Non-Linear Programming）和组合优化。JOR-Bench是一个求解器无关的基准，可以与任何求解器或编程语言一起使用，由日语问题陈述和预期数值答案的配对组成。我们在原始英文版本和新的日语版本上评估了七个LLM，包括多语言通用模型和日语专用模型，并比较了跨语言的性能。对于主要评估，我们使用OR-Tools的Python接口标准化执行，使模型输出可比较且可通过开源软件复现。我们的结果表明，OR建模能力对于强大的多语言模型在很大程度上是语言中性的；英文和日文之间的总体平均准确率差异仅为-0.3个百分点。然而，错误分析揭示了细微的跨语言差异，包括在某些领域中存在的语用歧义消解失败，导致模型在提示为日语时输出决策变量值而非目标值。</div>
        <div class="paper-link"><a href="https://arxiv.org/abs/2607.16777" target="_blank">论文链接</a></div>
      </div>
         </div>
