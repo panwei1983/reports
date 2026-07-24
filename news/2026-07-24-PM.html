@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-07-24 PM</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category { margin-bottom: 28px; }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  
+  /* 股市板块速览 */
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up {
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+  .sector-card.down {
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.25);
+  }
+  .sector-card.neutral {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+  .sector-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .sector-card .name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value { font-size: 14px; font-weight: 500; }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .sector-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sector-tag { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+  .sector-tag.up { background: rgba(63,185,80,0.15); color: #3fb950; }
+  .sector-tag.down { background: rgba(218,54,51,0.15); color: #da3633; }
+  
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .focus-item { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .focus-item strong { color: var(--text-primary); }
+  
+  .news-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+
+  /* 数据洞察日模块 */
+  .data-insight {
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .data-insight h3 {
+    font-size: 20px;
+    color: var(--accent-market);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .data-card {
+    padding: 14px 18px;
+    background: rgba(34,211,238,0.05);
+    border: 1px solid rgba(34,211,238,0.15);
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .data-card h4 { font-size: 15px; color: var(--accent-market); margin-bottom: 8px; }
+  .data-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 6px; }
+  .data-card strong { color: var(--text-primary); }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  .data-table th {
+    background: rgba(34,211,238,0.1);
+    color: var(--accent-market);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 8px 12px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+  }
+  .data-table tr:hover td { background: rgba(34,211,238,0.03); }
+  .data-trend { color: #3fb950; font-weight: 600; }
+  .data-trend.down { color: #da3633; }
+
+  .debate-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+  }
+  .debate-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--accent-debate);
+  }
+  .debate-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .debate-item h3 { font-size: 18px; margin-bottom: 10px; color: var(--accent-debate); }
+  .debate-item .background { color: var(--text-secondary); margin-bottom: 14px; font-size: 14px; line-height: 1.7; }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .debate-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 600px) {
+    .debate-columns { grid-template-columns: 1fr; }
+  }
+  .debate-columns .pro, .debate-columns .con { padding: 12px; border-radius: 8px; }
+  .debate-columns .pro { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); }
+  .debate-columns .con { background: rgba(218,54,51,0.1); border: 1px solid rgba(218,54,51,0.3); }
+  .debate-columns h4 { font-size: 14px; margin-bottom: 8px; }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul { list-style: none; padding: 0; }
+  .debate-columns li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; padding-left: 16px; position: relative; }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions {
+    background: rgba(255,166,87,0.08);
+    border: 1px solid rgba(255,166,87,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .guiding-questions h4 { font-size: 14px; color: var(--accent-debate); margin-bottom: 8px; }
+  .guiding-questions ol { padding-left: 20px; }
+  .guiding-questions li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+  .daily-question {
+    text-align: center;
+    padding: 16px;
+    background: rgba(121,192,255,0.1);
+    border: 1px solid rgba(121,192,255,0.3);
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .daily-question .label { font-size: 13px; color: var(--text-secondary); }
+  .daily-question .question { font-size: 16px; font-weight: 600; color: var(--accent-ai); margin-top: 6px; }
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+  .disclaimer {
+    margin-top: 8px;
+    padding: 10px;
+    background: rgba(139,92,246,0.08);
+    border: 1px solid rgba(139,92,246,0.15);
+    border-radius: 6px;
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报 · 下午版</h1>
+  <div class="date">2026年7月24日 星期五 · 数据洞察日</div>
+  <div class="overview">国际油价突破100美元后回落，美股科技巨头单日蒸发8000亿美元；中国数学家首获菲尔兹奖；商务部将14家欧盟实体列入出口管制名单；沪指跌超1%逼近3800点；AMD发布全球首颗2nm GPU正面叫板英伟达；离岸信托个税新规落地。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> 梁文锋押注方向00后团队交卷，性能直逼Opus 4.8</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 油价破100美元后急跌3%，霍尔木兹海峡风险仍存</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 商务部将14家欧盟实体列入出口管制名单，中方反制升级</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 王虹邓煜获菲尔兹奖，中国数学实现历史性突破</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> AMD全球首颗2nm GPU发布，CPU性能干翻英伟达</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(4)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a> · 📈 <a href="#data-insight" style="color:var(--text-link);text-decoration:none">数据洞察(1)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33645576" target="_blank">中国数学家王虹、邓煜双双获得菲尔兹奖，均系北大校友</a></div>
+    <div class="summary">2026年菲尔兹奖揭晓，中国数学家王虹和邓煜同时获奖，两人均毕业于北京大学数学系。王虹获奖后感言"很幸运在合适时间遇到合适的人"，丘成桐评价"期待本土培养的学者能引领世界潮流"。这是中国数学家首次获此殊荣，标志着中国基础科学研究的重大突破。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33645576" target="_blank">澎湃新闻</a> · 推荐：历史性突破+多源交叉验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33644442" target="_blank">重庆梁平警方：挡道指挥加塞女子已被行拘，其丈夫被罚款并记分</a></div>
+    <div class="summary">重庆梁平警方通报，女子挡道指挥车辆加塞事件中，涉事女子因扰乱公共秩序被行政拘留，其丈夫因交通违法行为被罚款并记分。事件引发社会对道路文明和执法力度的讨论。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33644442" target="_blank">澎湃新闻</a> · 推荐：社会热点+执法信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33644184" target="_blank">出境就被远程锁车，谁才是车主？</a></div>
+    <div class="summary">智能汽车远程锁定功能引发争议，有车主出境后车辆被厂商远程锁定，无法使用。该事件暴露智能汽车数据主权和用户权益保障的法律空白，涉及智能网联汽车管理办法的完善需求。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33644184" target="_blank">澎湃新闻</a> · 推荐：消费者权益+法规空白揭示</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33651793" target="_blank">商务部：将14家欧盟实体列入出口管制管控名单</a></div>
+    <div class="summary">商务部公告将14家欧盟实体列入出口管制管控名单，即日起实施。此举被视为对欧盟对华限制措施的回应，涉及关键原材料和技术出口限制，标志着中欧贸易摩擦进一步升级。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33651793" target="_blank">澎湃新闻</a> · 推荐：政策信号+贸易影响广泛</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-07-24/doc-iniiwkur1767526.shtml" target="_blank">美国公布新关税措施，加征10%至12.5%，多国回应</a></div>
+    <div class="summary">美国宣布对多国加征10%-12.5%新关税，日本、澳大利亚、新西兰等国纷纷回应。外交部表示中方反对各种形式的单边关税措施。新一轮贸易摩擦可能推高全球通胀预期。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-24/doc-iniiwkur1767526.shtml" target="_blank">环球网/新浪</a> · 推荐：地缘经济+多国连锁反应</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-24/doc-iniiwkup4989805.shtml" target="_blank">在马尼拉，王毅的见与不见</a></div>
+    <div class="summary">中国外长王毅在马尼拉出席东盟系列外长会议，"见与不见"的对象引发关注。此举释放中菲关系微妙信号，在南海局势紧张背景下，外交斡旋的每一步都备受瞩目。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-24/doc-iniiwkup4989805.shtml" target="_blank">新民周刊/新浪</a> · 推荐：外交信号+南海局势关联</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-23/doc-iniiusme4634752.shtml" target="_blank">中纪委连打三"虎"！</a></div>
+    <div class="summary">中央纪委国家监委网站连续发布三名高级官员被查消息，反腐力度持续加大。三名落马官员涉及不同领域和地区，显示反腐无禁区、全覆盖的态势进一步深化。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-23/doc-iniiusme4634752.shtml" target="_blank">央视/新浪</a> · 推荐：反腐信号+制度韧性</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3908771208778885" target="_blank">全球首颗2nm GPU来了，苏姿丰甩出"最强AI机架"，CPU性能干翻英伟达</a></div>
+    <div class="summary">AMD发布全球首颗2nm制程GPU，苏姿丰同时推出"最强AI机架"解决方案，CPU性能指标超越英伟达。2nm工艺突破意味着摩尔定律延续，AI算力军备竞赛进入新阶段，英特尔同时报出15年最强增速。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3908771208778885" target="_blank">36氪/智东西</a> · 推荐：产业突破+竞争格局重塑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777862" target="_blank">猎鹰火箭不接单了！SpaceX股价承压之际，马斯克全面押注还未商业化的星舰</a></div>
+    <div class="summary">SpaceX宣布猎鹰系列火箭停止接新订单，马斯克将资源全面转向尚未商业化的星舰项目。猎鹰9号作为全球最繁忙火箭，其停产意味着商业航天格局重大调整，SpaceX股价面临短期压力。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777862" target="_blank">华尔街见闻</a> · 推荐：行业格局变化+风险信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33651650" target="_blank">小鹏召回33473辆X9：制造工艺波动导致前空气弹簧气密性下降</a></div>
+    <div class="summary">小鹏汽车宣布召回33473辆X9车型，原因为制造工艺波动导致前空气弹簧气密性下降，存在安全隐患。这是新势力品牌较大规模召回事件，涉及车辆安全与品控能力问题。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33651650" target="_blank">澎湃新闻</a> · 推荐：产品安全+行业品控警示</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777833" target="_blank">AI烧钱担忧叠加中东局势，纳指期货下跌，油价上破100美元后急跌3%</a></div>
+    <div class="summary">纳指期货受AI投资回报质疑和中东地缘风险双重打压下跌，国际油价盘中突破100美元后大幅回落近3%。WTI报89.54美元/桶，布伦特报91.60美元/桶。霍尔木兹海峡封锁风险仍是市场最大不确定因素。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777833" target="_blank">华尔街见闻</a> · 推荐：双重风险叠加+油价拐点信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777868" target="_blank">两部门明确：居民个人装入离岸信托的财产及信托存续收益，均须依法缴纳个人所得税</a></div>
+    <div class="summary">财政部、税务总局联合发文明确，居民个人装入离岸信托的财产及信托存续期间收益，均须依法缴纳个人所得税。该规定堵住了高净值人群利用离岸信托避税的通道，预计影响数十万亿离岸资产配置。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777868" target="_blank">华尔街见闻</a> · 推荐：税收政策重大变化+高净值影响</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777857" target="_blank">加息风暴：关于本次美联储会议的猜想</a></div>
+    <div class="summary">市场对美联储7月会议加息预期升温，日本核心CPI连续58个月上涨至1.6%，日元逼近1美元兑165关口。全球加息周期可能重启，对新兴市场资本流动和债务成本产生深远影响。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777857" target="_blank">华尔街见闻</a> · 推荐：货币政策拐点+全球连锁反应</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777858" target="_blank">不是AI、也不是战争，美股最应该担心的是日本？</a></div>
+    <div class="summary">分析指出日本央行政策转向可能是美股最大风险。日元贬值推动日本出口但加剧资本外流，韩国已提前实施杠杆ETF新规。日本去杠杆进程可能触发全球资产重新定价，规模超6000亿美元的外资正从美债转向美股。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777858" target="_blank">华尔街见闻</a> · 推荐：系统性风险预警+跨市场传导</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">半导体设备</div>
+      <div class="value">+3.8%</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">科网股</div>
+      <div class="value">-2.5%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流出</div>
+      <div class="value">约32亿元</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">半导体设备 +3.8%</span>
+      <span class="sector-tag up">存储芯片 +2.1%</span>
+      <span class="sector-tag up">长鑫科技链 +1.9%</span>
+      <span class="sector-tag down">互联网 -2.5%</span>
+      <span class="sector-tag down">消费电子 -1.2%</span>
+    </div>
+  </div>
+
+  <!-- 市场关注个股 -->
+  <div class="market-focus">
+    <h4>👀 市场关注</h4>
+    <div class="focus-item"><strong>海康威视</strong>：上半年净利润78.96亿元，同比增39.57%，拟10派5.5元</div>
+    <div class="focus-item"><strong>长鑫科技</strong>：上市在即，市场期待"温和开场"，产业链率先受益</div>
+    <div class="focus-item"><strong>英特尔</strong>：Q2业绩创15年最强增速，盘前涨约5%，CPU景气周期延至2028年</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777840" target="_blank">沪指跌超1%逼近3800点，全市场成交不足2万亿，半导体设备逆势爆发</a></div>
+    <div class="summary">A股三大指数集体下跌，沪指跌超1%逼近3800点，全市场成交额不足2万亿。半导体设备板块逆势爆发涨3.8%，科网股低迷拖累恒指、恒科指均跌超1%。市场量能萎缩显示观望情绪浓厚。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777840" target="_blank">华尔街见闻</a> · 推荐：市场情绪指标+板块分化信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-07-24/doc-iniivyeq9254129.shtml" target="_blank">地缘风险叠加资本开支隐忧，美股科技巨头市值单日蒸发近8000亿美元</a></div>
+    <div class="summary">美股"七巨头"单日市值蒸发约8000亿美元，创近年最惨烈一日。AI投资回报质疑和中东局势双重打击下，科技股估值承压。分析称日本央行政策转向可能构成更大系统性风险。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/stock/usstock/c/2026-07-24/doc-iniivyeq9254129.shtml" target="_blank">新浪财经</a> · 推荐：市场历史信号+全球联动效应</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/telegraph" target="_blank">"两高"修改司法解释，加大力度惩治内幕交易犯罪</a></div>
+    <div class="summary">最高法、最高检联合修改司法解释，加大对内幕交易、泄露内幕信息犯罪的惩治力度。新规细化了入罪标准和量刑指引，对资本市场违法成本形成实质性提升，有利于A股长期制度建设。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/telegraph" target="_blank">财联社</a> · 推荐：制度利好+市场信心修复</div>
+  </div>
+
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3909033445070216" target="_blank">梁文锋押注的方向，中国00后团队先交卷了，性能直逼Opus 4.8</a></div>
+    <div class="summary">中国00后团队开发的新模型在推理能力上直逼Claude Opus 4.8，而训练成本仅为硅谷方案的十分之一。该方向正是DeepSeek创始人梁文锋此前重点押注的RL Scaling路线，标志着中国AI在效率创新上的突破。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3909033445070216" target="_blank">36氪/新智元</a> · 推荐：技术突破+成本优势+国产AI里程碑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3908100846539904" target="_blank">马斯克第三次喊「奇点已至」，AI三个月连破数学、安全两道墙</a></div>
+    <div class="summary">马斯克第三次宣称"奇点已至"，AI在三个月内接连突破数学推理和安全对齐两道关键壁垒。AI不到两小时完成一章博士论文级别内容，引发菲尔兹奖存在意义之争。学界对AI能力边界和监管框架的讨论持续升温。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3908100846539904" target="_blank">36氪/新智元</a> · 推荐：行业标志性事件+安全争议</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777867" target="_blank">对话光子跃迁总裁袁谦：AI重写影像战争，光子跃迁要如何突围？</a></div>
+    <div class="summary">光子跃迁总裁袁谦谈AI对影像行业的重塑，指出传统光学与AI计算摄影的融合将颠覆现有市场格局。光子跃迁以AI+光学方案切入，试图在手机影像和车载视觉领域实现差异化竞争，面临巨头生态壁垒挑战。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777867" target="_blank">华尔街见闻</a> · 推荐：产业变革+新势力突围</div>
+  </div>
+</div>
+
+<!-- 数据洞察日模块 -->
+<div class="data-insight" id="data-insight">
+  <h3>📈 数据洞察日 · 关键数据看板</h3>
+
+  <div class="data-card">
+    <h4>🌍 全球市场恐慌指数对比</h4>
+    <p>今日全球市场呈现"科技恐慌+地缘溢价"双因子驱动格局，以下为关键数据对比：</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>指标</th>
+          <th>当前值</th>
+          <th>前值/对比</th>
+          <th>趋势</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>布伦特原油</td>
+          <td><strong>91.60美元/桶</strong></td>
+          <td>盘中破100</td>
+          <td><span class="data-trend down">↓ -2.82%</span></td>
+        </tr>
+        <tr>
+          <td>WTI原油</td>
+          <td><strong>89.54美元/桶</strong></td>
+          <td>盘中破98</td>
+          <td><span class="data-trend down">↓ -2.87%</span></td>
+        </tr>
+        <tr>
+          <td>沪指</td>
+          <td><strong>~3800点</strong></td>
+          <td>前日3850+</td>
+          <td><span class="data-trend down">↓ -1%+</span></td>
+        </tr>
+        <tr>
+          <td>美股七巨头市值</td>
+          <td><strong>蒸发~8000亿美元</strong></td>
+          <td>单日跌幅</td>
+          <td><span class="data-trend down">↓↓ 历史级</span></td>
+        </tr>
+        <tr>
+          <td>日本核心CPI</td>
+          <td><strong>113.1（同比+1.6%）</strong></td>
+          <td>连续58个月上涨</td>
+          <td><span class="data-trend">→ 持续</span></td>
+        </tr>
+        <tr>
+          <td>美元兑日元</td>
+          <td><strong>逼近165</strong></td>
+          <td>5月来最大单周跌幅</td>
+          <td><span class="data-trend down">日元↓</span></td>
+        </tr>
+        <tr>
+          <td>海康威视H1净利</td>
+          <td><strong>78.96亿元</strong></td>
+          <td>同比+39.57%</td>
+          <td><span class="data-trend">↑ 强劲</span></td>
+        </tr>
+        <tr>
+          <td>英特尔Q2增速</td>
+          <td><strong>15年最强</strong></td>
+          <td>盘前+5%</td>
+          <td><span class="data-trend">↑ 爆发</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="data-card">
+    <h4>📊 AI算力军备竞赛：成本效率对比</h4>
+    <p>中国AI团队正以"十分之一成本"追赶硅谷，形成独特的效率创新路径：</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>硅谷方案</th>
+          <th>中国方案</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>基座训练成本</td>
+          <td><strong>~20亿美元</strong></td>
+          <td><strong>~2亿美元（1/10）</strong></td>
+        </tr>
+        <tr>
+          <td>制程工艺</td>
+          <td>3nm（英伟达/台积电）</td>
+          <td>2nm（AMD方案突破）</td>
+        </tr>
+        <tr>
+          <td>核心路线</td>
+          <td>Scaling Law（算力堆叠）</td>
+          <td>RL Scaling（强化学习效率）</td>
+        </tr>
+        <tr>
+          <td>代表产品</td>
+          <td>Claude Opus 4.8</td>
+          <td>00后团队新模型（性能逼近）</td>
+        </tr>
+        <tr>
+          <td>存储前景</td>
+          <td>大摩预警Q4见顶</td>
+          <td>长鑫科技上市扩产</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="data-card">
+    <h4>💡 数据洞察要点</h4>
+    <p>1. <strong>油价"假突破"信号</strong>：盘中破100后急跌3%，暗示地缘溢价已充分计入，基本面供需并不支撑三位数油价持续。</p>
+    <p>2. <strong>科技股估值压力</strong>：8000亿美元单日蒸发+大摩AI存储拐点预警，市场正从"AI信仰"转向"AI回报验证"阶段。</p>
+    <p>3. <strong>中国AI效率优势</strong>：1/10成本实现接近顶级性能，若持续验证，将重塑全球AI投资逻辑——从"谁算力大"转向"谁效率高"。</p>
+    <p>4. <strong>日本风险传导链</strong>：日元贬值→韩股外资创纪录流入→杠杆ETF新规→全球去杠杆，日本可能成为下一个系统性风险引爆点。</p>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨</div>
+
+  <div class="debate-item">
+    <h3>话题①：AI冲击下，菲尔兹奖还有意义吗？</h3>
+    <div class="background">
+      <p><span class="bg-label">背景</span></p>
+      <p>2026年菲尔兹奖授予中国数学家王虹和邓煜的同一天，AI领域传来震撼消息——AI不到两小时完成一章博士论文级别数学内容，马斯克第三次宣称"奇点已至"。AI在三个月内接连突破数学推理和安全对齐两道关键壁垒，"菲尔兹奖能否撑到2030年"成为学术圈热议话题。</p>
+      <p><span class="bg-label">核心矛盾</span></p>
+      <ol class="timeline">
+        <li>王虹、邓煜获奖代表人类数学创造力的巅峰认可，但AI已能以极快速度完成类似复杂度的数学推演</li>
+        <li>菲尔兹奖四年一评、限40岁以下，而AI能力以月为单位迭代，两者时间尺度完全不同</li>
+        <li>AI生成数学证明的可验证性、原创性判定标准尚无共识，学术评价体系面临根本性重构</li>
+        <li>丘成桐评价"期待本土学者引领潮流"，但"本土"的定义是否需要包含AI辅助甚至AI主导的研究？</li>
+      </ol>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 菲尔兹奖仍有意义</h4>
+        <ul>
+          <li>数学的核心是提出好问题，而非仅做推演，AI目前仍是"解题者"而非"提问者"</li>
+          <li>奖项激励人类学者探索未知领域，制度价值超越技术替代</li>
+          <li>AI证明需要人类验证，人类直觉和审美判断不可替代</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 菲尔兹奖面临存亡危机</h4>
+        <ul>
+          <li>若AI可独立产出同等质量证明，"人类最优"的评选标准将失去意义</li>
+          <li>年轻学者可能转向AI辅助研究，纯人类数学创造空间被压缩</li>
+          <li>奖项本身将成为"人类在AI时代的遗物"的象征，激励作用逆转</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导</h4>
+      <ol>
+        <li><strong>事实判断</strong>：AI目前能做什么级别的数学？它完成"一章博士论文"是真的原创推理，还是基于训练数据的模式匹配？</li>
+        <li><strong>数据支撑</strong>：AI数学能力基准测试（如MATH、MiniF2F）的最新得分是多少？与菲尔兹奖级别工作的差距还有多大？（来源：各AI实验室技术报告）</li>
+        <li><strong>理论框架</strong>：莫拉维克悖论（高阶推理容易、感知运动困难）是否还成立？图灵奖得主Judea Pearl的因果推理层级理论如何评估AI的数学能力上限？</li>
+        <li><strong>价值判断</strong>：菲尔兹奖奖励的是"人类智力巅峰"还是"数学知识增量"？如果标准不同，结论是否截然相反？</li>
+        <li><strong>利益权衡</strong>：保留菲尔兹奖的激励收益 vs 改革学术评价体系的适应性收益，哪个更大？谁会是改革中的输家？</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="debate-item">
+    <h3>话题②：离岸信托避税通道关闭，财富管理何去何从？</h3>
+    <div class="background">
+      <p><span class="bg-label">背景</span></p>
+      <p>财政部、税务总局联合发布新规，明确居民个人装入离岸信托的财产及信托存续期间收益，均须依法缴纳个人所得税。此前离岸信托是高净值人群最常用的跨境财富传承和税务规划工具，涉及数以万亿计的离岸资产。新规实质上堵住了离岸信托的递延纳税和避税空间，SK集团会长离婚案中的6.4亿美元财产分割也折射出跨境财富透明化的全球趋势。</p>
+      <p><span class="bg-label">关键细节</span></p>
+      <ol class="timeline">
+        <li>新规覆盖"装入时"和"存续期间"两个环节，此前的"递延到分配时才纳税"模式被终结</li>
+        <li>离岸信托设立数量近年激增，仅2025年华人设立的离岸信托规模就超过2000亿美元</li>
+        <li>韩国SK会长崔泰源离婚案裁决赔偿前妻9440亿韩元（约6.4亿美元），创韩国史上最贵离婚案</li>
+        <li>全球CRS（共同申报准则）信息交换已覆盖100多个国家，离岸隐匿难度持续加大</li>
+      </ol>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 新规利大于弊</h4>
+        <ul>
+          <li>堵住税基侵蚀，每年可增加数百亿税收，缓解财政压力</li>
+          <li>促进社会公平，高净值人群不应享受普通人无法触及的避税特权</li>
+          <li>推动财富管理行业从"避税"转向"合规增值"，长期有利于金融生态健康</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 新规可能伤及无辜</h4>
+        <ul>
+          <li>部分离岸信托用于合法的跨境家族传承，并非全部以避税为目的</li>
+          <li>一次性纳税可能造成流动性危机，信托资产多为非现金形式</li>
+          <li>过严监管可能加速资本外流，反而削弱对境内资产的留存意愿</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导</h4>
+      <ol>
+        <li><strong>事实判断</strong>：离岸信托的主要功能到底是避税、财富传承还是资产保护？三者占比各是多少？</li>
+        <li><strong>数据支撑</strong>：中国高净值人群离岸信托规模约多少？新规预计影响多少存量信托？年增税收几何？（来源：招商银行私人财富报告、安永/普华永道税务研究报告）</li>
+        <li><strong>理论框架</strong>：拉弗曲线是否适用——税率过高反而减少税收？国际税收竞争理论（Tiebout模型）如何解释资本对税率的敏感流动？</li>
+        <li><strong>价值判断</strong>：税收公平（横向公平vs纵向公平）与资本自由流动之间，哪个价值优先？</li>
+        <li><strong>利益权衡</strong>：短期内资本可能流向更宽松的法域，长期则可能推动全球最低税制共识——这条路径上谁受益、谁受损？</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="daily-question">
+    <div class="label">📌 本日追问</div>
+    <div class="question">当AI可以替代人类完成最高难度的智力劳动，而法律正在收紧人类财富自由的边界——我们正在进入一个"能力向上解限、自由向下收缩"的时代吗？这两个趋势之间是否存在深层关联？</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-07-24 17:00 | 数据源：5 | 采集条目：50+ | 去重后：20<br>
+  数据来源：澎湃新闻 · 华尔街见闻 · 36氪 · 财联社 · 新浪热搜<br>
+  本简报由 Hermes Agent 自动生成
+</div>
+
+</body>
+</html>
