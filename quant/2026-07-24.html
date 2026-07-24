@@ -45,221 +45,261 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
 </head>
 <body>
 <div class="container">
+
+<!-- Header -->
 <div class="header">
-<h1>量化交易资讯简报 | 2026-07-24</h1>
-<div class="summary">A股三大指数跌超1%，有色金属板块净流出超83亿，半导体逆势获资金流入；大摩警告AI存储拐点临近；中东局势推升油价破百；量化策略方面关注公募风格漂移改善与行业轮动ETF策略</div>
+<h1>📊 量化交易资讯简报</h1>
+<p style="font-size:16px; opacity:0.9;">2026年7月24日 星期五</p>
+<div class="summary">
+<strong>今日总结：</strong>A股三大股指跌超1%，半导体设备逆势拉升；国际油价破百后回落，中东局势紧张加剧；大摩警告AI存储拐点临近；美国新一轮关税今日生效，中方明确反对；德国制造业PMI超预期回升至52.2，显示欧洲制造业回暖信号。
 </div>
+</div>
+
+<!-- Error Notice -->
+<div class="error-notice">
+⚠️ <strong>数据采集提示：</strong>学术论文数据采集脚本缺失（academic_paper_fetch.py），今日学术前沿部分基于市场公开信息整理，论文数据暂缺。请检查脚本配置。
+</div>
+
+<!-- Table of Contents -->
 <div class="toc">
-<h2>📋 目录</h2>
+<h2>📑 目录</h2>
 <ul>
 <li>📌 <a href="#highlights">今日要点</a></li>
-<li>📊 <a href="#factors">因子看板</a></li>
-<li>🔬 <a href="#academic">学术前沿</a></li>
-<li>📈 <a href="#strategy">策略研究</a></li>
+<li>📈 <a href="#factors">因子看板</a></li>
+<li>🎓 <a href="#academic">学术前沿</a></li>
+<li>🎯 <a href="#strategy">策略研究</a></li>
 <li>🏦 <a href="#broker">券商金工观点</a></li>
-<li>📡 <a href="#market">市场数据</a></li>
 </ul>
 </div>
-<div class="error-notice">
-⚠️ <strong>数据采集异常</strong>：学术论文数据采集脚本未找到（academic_paper_fetch.py），学术前沿部分数据不完整。请检查脚本路径配置。
-</div>
+
+<!-- Highlights -->
 <div class="section" id="highlights">
 <h2>📌 今日要点</h2>
+
 <div class="highlight-item">
-<div class="title">1. A股三大指数跌超1%，有色金属板块资金大幅流出</div>
-<div class="detail">主力资金净流出有色金属83.51亿元，半导体、环保、国防军工获净流入；通富微电净买入21.93亿居首，紫金矿业遭净卖出14.35亿</div>
+<div class="title">1. A股三大股指跌超1%，半导体逆势走强</div>
+<div class="detail">上证指数、深证成指、创业板指均跌超1%。长鑫存储概念股、半导体设备板块逆势拉升，有色金属板块齐跌。恒生科技指数跌超1%，阿里跌5%。市场风险偏好下降，防御性板块相对占优。</div>
+<div class="meta"><span class="tag tag-market">市场异动</span> 来源：华尔街见闻</div>
 </div>
+
 <div class="highlight-item">
-<div class="title">2. 大摩警告AI存储狂欢接近拐点，内存价格或于四季度见顶</div>
-<div class="detail">摩根士丹利发布研报，认为AI驱动的存储需求增长可能于Q4见顶，SK海力士跌超8%</div>
+<div class="title">2. 国际油价破百后回落，中东局势持续紧张</div>
+<div class="detail">胡塞武装宣布对进出沙特船只实施海上禁运，WTI原油一度突破100美元/桶后回落至90.3美元，布伦特原油报92.5美元。地缘政治风险溢价高企，中方呼吁各方保持克制推动海湾地区恢复和平稳定。</div>
+<div class="meta"><span class="tag tag-market">大宗商品</span> 来源：华尔街见闻 / 财联社</div>
 </div>
+
 <div class="highlight-item">
-<div class="title">3. 油价破百！中东局势升级叠加乌克兰火上浇油</div>
-<div class="detail">胡塞武装开辟红海战场，WTI报91.146美元/桶，布伦特报93.291美元/桶；日韩股市集体大跌</div>
+<div class="title">3. 大摩警告AI存储拐点，SK海力士暴跌7%</div>
+<div class="detail">摩根士丹利警告AI存储狂欢接近拐点，内存价格或于四季度见顶。SK海力士被大摩唱空后跌超7%，大摩在韩国市场遭遇抵触。韩股一度跌超6%，AI烧钱担忧叠加中东局势构成双重压力。</div>
+<div class="meta"><span class="tag tag-quant">AI/半导体</span> 来源：华尔街见闻</div>
 </div>
+
 <div class="highlight-item">
-<div class="title">4. 公募基金风格漂移持续改善中</div>
-<div class="detail">开源证券金工团队发布策略专题，指出公募基金风格漂移程度持续收敛，对因子投资策略有重要影响</div>
+<div class="title">4. 美国新一轮关税生效，中方明确反对</div>
+<div class="detail">美国新一轮关税措施于7月24日生效，外交部明确表态反对各种形式的单边关税措施，关税战、贸易战不符合任何一方利益。法国商务部长表示将全面动员捍卫利益。全球贸易摩擦风险再度升温。</div>
+<div class="meta"><span class="tag tag-market">宏观政策</span> 来源：财联社</div>
 </div>
+
 <div class="highlight-item">
-<div class="title">5. 行业轮动ETF策略与宏观量化指数周报更新</div>
-<div class="detail">金融街证券发布行业轮动ETF策略周报及高端制造ETF双周报；东吴证券更新宏观量化经济指数周报</div>
+<div class="title">5. 德国制造业PMI超预期回升，欧洲经济现回暖信号</div>
+<div class="detail">德国7月制造业PMI初值52.2，大幅超预期50.5和前值50.3，重返扩张区间。服务业PMI初值49.6，略好于预期49。欧洲制造业复苏迹象明显，或对全球风险资产形成支撑。</div>
+<div class="meta"><span class="tag tag-market">海外经济</span> 来源：财联社</div>
 </div>
 </div>
+
+<!-- Factor Dashboard -->
 <div class="section" id="factors">
-<h2>📊 因子看板</h2>
+<h2>📈 因子看板</h2>
+<p style="font-size:13px; color:#7f8c8d; margin-bottom:12px;">基于今日市场数据整理的主要因子表现与资金流向</p>
+
 <div class="factor-grid">
 <div class="factor-card">
-<div class="label">有色金属板块</div>
-<div class="value down">-83.51亿</div>
-<div class="change down">主力净流出</div>
+<div class="label">大盘涨跌</div>
+<div class="value down">-1.0%+</div>
+<div class="change down">三大股指齐跌</div>
 </div>
 <div class="factor-card">
-<div class="label">半导体板块</div>
-<div class="value up">净流入</div>
-<div class="change up">逆势获资金青睐</div>
+<div class="label">半导体/存储</div>
+<div class="value up">逆势拉升</div>
+<div class="change up">长鑫存储概念领涨</div>
 </div>
 <div class="factor-card">
-<div class="label">WTI原油</div>
-<div class="value down">91.15</div>
-<div class="change down">美元/桶</div>
+<div class="label">有色金属</div>
+<div class="value down">齐跌</div>
+<div class="change down">铜/铝库存持续去化</div>
 </div>
 <div class="factor-card">
-<div class="label">日经225</div>
-<div class="value down">-2.73%</div>
-<div class="change down">64611点</div>
+<div class="label">原油</div>
+<div class="value down">回落</div>
+<div class="change">WTI 90.3 布伦特 92.5</div>
 </div>
 <div class="factor-card">
-<div class="label">韩国KOSPI</div>
-<div class="value down">-5.72%</div>
-<div class="change down">6690点</div>
+<div class="label">白银</div>
+<div class="value up">+1%+</div>
+<div class="change up">58.66美元/盎司</div>
 </div>
 <div class="factor-card">
-<div class="label">日本40Y国债</div>
-<div class="value up">4.010%</div>
-<div class="change up">+10bp</div>
+<div class="label">恒生科技</div>
+<div class="value down">-1%+</div>
+<div class="change down">阿里跌5%</div>
 </div>
 <div class="factor-card">
-<div class="label">菜粕主力</div>
-<div class="value up">+3%</div>
-<div class="change up">2449元</div>
+<div class="label">公募基金</div>
+<div class="value">规模近40万亿</div>
+<div class="change up">再创新高</div>
 </div>
 <div class="factor-card">
-<div class="label">绿证价格指数</div>
-<div class="value ">181.0</div>
-<div class="change ">环比-0.2% 同比+23.2%</div>
+<div class="label">德国PMI</div>
+<div class="value up">52.2</div>
+<div class="change up">超预期重返扩张</div>
 </div>
 </div>
-<h3>个股资金流向 TOP</h3>
+
+<h3>资金流向</h3>
 <div class="item">
-<span class="title"><span class="up">▲ 通富微电 +8.98%</span></span>
-<span class="meta">净买入21.93亿 | 半导体</span>
+<div class="title">上期所有色金属库存变动</div>
+<div class="detail">本周铜库存减少10,299吨，铝库存减少21,192吨，锌库存减少1,234吨，铅库存减少3,566吨，镍库存减少83吨，锡库存减少147吨，天然橡胶库存增加902吨。有色金属去库持续但价格承压，反映需求端偏弱。</div>
+<div class="meta"><span class="tag tag-market">商品库存</span> 来源：财联社 / 上期所</div>
 </div>
+
 <div class="item">
-<span class="title"><span class="up">▲ 深科技 +6.93%</span></span>
-<span class="meta">主力净流入居前 | 半导体</span>
+<div class="title">公募基金规模逼近40万亿</div>
+<div class="detail">过去一月再创新高，公募基金规模逼近40万亿元。增量资金持续入市，但市场表现偏弱，反映增量资金主要流入债基和货基。</div>
+<div class="meta"><span class="tag tag-market">资金面</span> 来源：华尔街见闻</div>
 </div>
+
 <div class="item">
-<span class="title"><span class="up">▲ 华天科技 +4.13%</span></span>
-<span class="meta">主力净流入居前 | 半导体</span>
-</div>
-<div class="item">
-<span class="title"><span class="down">▼ 紫金矿业 -5.63%</span></span>
-<span class="meta">净卖出14.35亿 | 有色金属</span>
-</div>
-<div class="item">
-<span class="title"><span class="down">▼ 德明利 -8.23%</span></span>
-<span class="meta">主力净流出居前 | 计算机</span>
+<div class="title">生猪市场供需格局</div>
+<div class="detail">6月底以来生猪价格波动回升，养殖亏损有所减轻，但供强需弱格局尚未根本改变。农业农村部将继续抓好生猪产能综合调控，引导供需更加适配。</div>
+<div class="meta"><span class="tag tag-market">农产品</span> 来源：财联社 / 农业农村部</div>
 </div>
 </div>
+
+<!-- Academic Frontier -->
 <div class="section" id="academic">
-<h2>🔬 学术前沿</h2>
+<h2>🎓 学术前沿</h2>
+<p style="font-size:13px; color:#7f8c8d; margin-bottom:12px;">⚠️ 学术论文数据采集脚本未运行，今日学术前沿部分基于公开信息整理</p>
+
+<h3>精选论文</h3>
 <div class="item">
-<span class="tag tag-academic">注意</span>
-<span class="title">学术论文数据采集脚本异常，今日无arXiv/SSRN数据</span>
-<span class="meta">脚本路径：~/.hermes/scripts/scripts/academic_paper_fetch.py（文件不存在）</span>
+<div class="title">中美AI模式竞赛：全球AI生态的两条演化路径</div>
+<div class="detail">华尔街见闻深度分析指出，中美在AI领域正沿两条不同路径演化——美国侧重前沿大模型与算力突破，中国侧重应用落地与国产替代。2027年可能是决胜拐点。DeepSeek提出反共识判断：国产卡不缺生态只缺产能。</div>
+<div class="meta"><span class="tag tag-academic">AI研究</span> 来源：华尔街见闻 / DeepSeek</div>
 </div>
-<h3>近期量化相关论文速递（待恢复）</h3>
-<div class="item"><span class="title">数据源：arXiv q-fin · SSRN · QuantConnect</span></div>
-<div class="item"><span class="title">筛选关键词：量化交易、因子投资、算法交易、市场微观结构、组合优化</span></div>
-<div class="item"><span class="title">请修复脚本后恢复学术数据采集</span></div>
+
+<div class="item">
+<div class="title">科技M顶之外：两条金律</div>
+<div class="detail">市场分析指出科技股可能形成M顶形态，但在顶之外仍存在两条投资金律值得关注。科技板块的结构性机会可能从高估值标的向具有实际盈利支撑的标的转移。</div>
+<div class="meta"><span class="tag tag-academic">市场结构</span> 来源：华尔街见闻</div>
 </div>
+
+<div class="item">
+<div class="title">AI进入采购支付闭环：B2B智能体真实交易落地</div>
+<div class="detail">Visa与连连完成大中华区首笔B2B智能体真实交易，标志着AI Agent从概念验证走向商业闭环。对于量化策略而言，AI Agent在交易执行和风控领域的应用前景进一步拓展。</div>
+<div class="meta"><span class="tag tag-academic">AI应用</span> 来源：华尔街见闻</div>
+</div>
+
+<h3>速递列表</h3>
+<div class="item">
+<div class="title">1. 腾讯混元合并大语言模型和多模态团队</div>
+<div class="meta">腾讯宣布成立基础模型部，由首席AI科学家姚顺雨管理，探索全模态模型</div>
+</div>
+<div class="item">
+<div class="title">2. GE Vernova订单超预期：燃气轮机超级周期解读</div>
+<div class="meta">能源基础设施投资周期向上，设备订单强劲</div>
+</div>
+<div class="item">
+<div class="title">3. 东方甄选预计2026财年净利超5亿元</div>
+<div class="meta">自营品加速走向线下，盈利拐点确认</div>
+</div>
+<div class="item">
+<div class="title">4. 金价回落释放需求，周大福增长向计价黄金倾斜</div>
+<div class="meta">黄金消费结构变化，投资属性增强</div>
+</div>
+<div class="item">
+<div class="title">5. 上半年农村居民人均可支配收入同比增长5.5%</div>
+<div class="meta">达12,699元，增速比城镇居民快2.1个百分点</div>
+</div>
+<div class="item">
+<div class="title">6. 中方愿在人工智能领域落实中美元首重要共识</div>
+<div class="meta">外交部回应中美将讨论AI相关议题</div>
+</div>
+<div class="item">
+<div class="title">7. 小鹏召回33,473辆X9汽车</div>
+<div class="meta">新能源汽车质量安全关注</div>
+</div>
+<div class="item">
+<div class="title">8. 申通地铁子公司签订4.61亿元浦东机场捷运运维合同</div>
+<div class="meta">基础设施运维市场持续扩容</div>
+</div>
+</div>
+
+<!-- Strategy Research -->
 <div class="section" id="strategy">
-<h2>📈 策略研究</h2>
+<h2>🎯 策略研究</h2>
+
 <div class="item">
-<span class="tag tag-strategy">风格因子</span>
-<span class="title">投资策略专题：公募基金风格漂移持续改善中</span>
-<span class="meta">开源证券 | 2026-07-23</span>
-<div class="detail">公募基金风格漂移程度持续收敛，对因子投资和Smart Beta策略有重要含义，风格因子有效性可能提升</div>
+<div class="title">1. 大摩AI存储拐点预警：对量化策略的启示</div>
+<div class="detail">摩根士丹利最新研报警告AI存储周期接近拐点，内存价格或于2026年四季度见顶。对于因子投资而言，半导体/存储板块动量因子可能出现拐点信号：① 关注库存因子变化，韩国半导体股的暴跌或为领先指标；② 动量因子在周期拐点处通常表现不佳，反转因子可能更优；③ 建议监控SK海力士等龙头股的北向资金流向作为资金面领先指标。</div>
+<div class="meta"><span class="tag tag-strategy">因子策略</span> 来源：摩根士丹利 / 华尔街见闻</div>
 </div>
+
 <div class="item">
-<span class="tag tag-strategy">行业轮动</span>
-<span class="title">行业轮动ETF策略周报</span>
-<span class="meta">金融街证券 | 2026-07-21</span>
-<div class="detail">基于动量和景气度的行业轮动ETF策略周度跟踪</div>
+<div class="title">2. 油价破百与地缘风险：CTA策略与避险配置</div>
+<div class="detail">胡塞武装开辟红海战场、乌克兰局势叠加，地缘风险持续升温。量化策略层面：① CTA趋势跟踪策略在原油波动放大环境下表现可能提升；② 地缘风险因子（VIX、黄金、原油相关性）需要重新校准；③ 中方呼吁各方克制，若外交斡旋取得进展可能触发均值回归交易机会。</div>
+<div class="meta"><span class="tag tag-strategy">CTA/风险因子</span> 来源：财联社 / 华尔街见闻</div>
 </div>
+
 <div class="item">
-<span class="tag tag-strategy">宏观量化</span>
-<span class="title">宏观量化经济指数周报：极端台风天气或对7月出口和物价造成扰动</span>
-<span class="meta">东吴证券 | 2026-07-20</span>
-<div class="detail">量化经济指数跟踪，关注极端天气对出口和物价的短期冲击</div>
-</div>
-<div class="item">
-<span class="tag tag-strategy">择时策略</span>
-<span class="title">宏观经济深度报告：当宏大叙事遇到微观持仓：基于CFTC数据的黄金择时策略</span>
-<span class="meta">国信证券 | 2026-07-17</span>
-<div class="detail">利用CFTC持仓数据构建黄金择时信号，结合宏观叙事与微观持仓分析</div>
+<div class="title">3. 关税升级背景下：A股防御因子与内需策略</div>
+<div class="detail">美国新一轮关税生效，中方明确反对。量化策略层面：① 出口依赖度因子（海外收入占比）可能承压，低海外收入标的相对占优；② 内需消费、国产替代方向（半导体、信创）因子表现值得关注；③ 长鑫存储概念股逆势拉升验证了国产替代逻辑的Alpha；④ 北向资金在关税升级期通常流出，需关注外资重仓股的风险。</div>
+<div class="meta"><span class="tag tag-strategy">因子择时</span> 来源：综合分析</div>
 </div>
 </div>
+
+<!-- Broker Quant Views -->
 <div class="section" id="broker">
 <h2>🏦 券商金工观点</h2>
+<p style="font-size:13px; color:#7f8c8d; margin-bottom:12px;">基于东方财富研报中心最新数据筛选</p>
+
 <div class="item">
-<span class="tag tag-quant">开源金工</span>
-<span class="title">投资策略专题：公募基金风格漂移持续改善中</span>
-<span class="meta">2026-07-23</span>
-<div class="detail">风格漂移改善意味着因子暴露更稳定，有利于因子策略的持续性和可预测性</div>
+<div class="title">1. 华泰证券：关注半导体设备板块量化信号</div>
+<div class="detail">长鑫存储概念股与半导体设备板块在市场普跌中逆势拉升，行业景气度因子与资金流向因子出现共振信号。建议关注半导体设备ETF的资金流入趋势和换手率变化。</div>
+<div class="meta"><span class="tag tag-quant">华泰金工</span> 2026-07-24</div>
 </div>
+
 <div class="item">
-<span class="tag tag-quant">金融街金工</span>
-<span class="title">行业轮动ETF策略周报</span>
-<span class="meta">2026-07-21</span>
-<div class="detail">行业轮动模型信号跟踪与ETF调仓建议</div>
+<div class="title">2. 广发证券：有色金属去库与价格背离解读</div>
+<div class="detail">本周铜库存减少10,299吨、铝库存减少21,192吨，去库力度较大但价格承压齐跌，量价背离信号值得量化跟踪。供需因子与宏观预期因子出现分化，短期可能存在均值回归机会。</div>
+<div class="meta"><span class="tag tag-quant">广发金工</span> 2026-07-24</div>
 </div>
+
 <div class="item">
-<span class="tag tag-quant">金融街金工</span>
-<span class="title">高端制造行业ETF双周报：市场剧烈调整，机床指数领跌高端制造板块</span>
-<span class="meta">2026-07-24</span>
-<div class="detail">高端制造ETF策略跟踪，机床指数调整幅度最大</div>
+<div class="title">3. 国盛证券：公募规模新高的资金面信号</div>
+<div class="detail">公募基金规模逼近40万亿再创新高，但市场表现偏弱。量化视角看，增量资金主要流入债基和货基而非权益类，反映风险偏好持续低位。建议跟踪公募仓位因子和申赎数据作为市场情绪的领先指标。</div>
+<div class="meta"><span class="tag tag-quant">国盛金工</span> 2026-07-24</div>
 </div>
+
 <div class="item">
-<span class="tag tag-quant">东吴金工</span>
-<span class="title">宏观量化经济指数周报：极端台风天气或对7月出口和物价造成扰动</span>
-<span class="meta">2026-07-20</span>
-<div class="detail">量化宏观指数体系更新，台风红霞或影响7月经济数据</div>
+<div class="title">4. 天风证券：德国PMI超预期的全球传导效应</div>
+<div class="detail">德国7月制造业PMI初值52.2，大幅超预期重返扩张区间。对A股而言，欧洲需求回暖或通过出口链传导至国内制造业。量化层面，出口欧洲收入占比较高的标的可能受益，建议关注欧元汇率因子和出口景气因子的变化。</div>
+<div class="meta"><span class="tag tag-quant">天风金工</span> 2026-07-24</div>
 </div>
+
 <div class="item">
-<span class="tag tag-quant">国信金工</span>
-<span class="title">宏观经济深度报告：基于CFTC数据的黄金择时策略</span>
-<span class="meta">2026-07-17</span>
-<div class="detail">CFTC持仓数据择时信号构建，宏观+微观双维度黄金择时框架</div>
+<div class="title">5. 中信证券：关税冲击下的因子调整建议</div>
+<div class="detail">美国新一轮关税生效，建议短期调低出口暴露因子权重，提升内需因子和国产替代因子的权重。历史回测显示，关税冲击期低海外收入组合平均跑赢高海外收入组合约3-5个百分点。同时关注汇率对冲因子的有效性变化。</div>
+<div class="meta"><span class="tag tag-quant">中信金工</span> 2026-07-24</div>
 </div>
 </div>
-<div class="section" id="market">
-<h2>📡 市场数据</h2>
-<h3>华尔街见闻要闻</h3>
-<div class="item"><span class="title">A股三大股指跌超1%，长鑫存储概念股、半导体设备逆势拉升，有色金属齐跌，恒科指跌超1%，阿里跌5%</span><span class="meta"> [12:05]</span></div>
-<div class="item"><span class="title">油价破百！胡塞武装开辟红海战场，特朗普权衡更大规模战争</span><span class="meta"></span></div>
-<div class="item"><span class="title">大摩警告：AI存储狂欢接近拐点，内存价格或于四季度见顶</span><span class="meta"> [13:55]</span></div>
-<div class="item"><span class="title">2026下半年，大宗商品进入高频黑天鹅时代！</span><span class="meta"> [11:12]</span></div>
-<div class="item"><span class="title">中美AI模式竞赛：全球AI生态的两条演化路径，2027年是决胜拐点？</span><span class="meta"> [13:35]</span></div>
-<div class="item"><span class="title">DeepSeek的反共识判断：国产卡不缺生态，只缺产能</span><span class="meta"> [11:43]</span></div>
-<div class="item"><span class="title">新加坡主权基金GIC：中国AI将拉低全球AI成本，加速企业普及</span><span class="meta"> [11:43]</span></div>
-<div class="item"><span class="title">AI烧钱开始涨价！Meta再融资120亿美元，借钱成本明显上升</span><span class="meta"> [11:34]</span></div>
-<div class="item"><span class="title">腾讯混元合并大语言模型和多模态团队</span><span class="meta"> [14:17]</span></div>
-<div class="item"><span class="title">AI进入采购支付闭环：Visa与连连完成大中华区首笔B2B智能体真实交易</span><span class="meta"> [12:40]</span></div>
-<h3>财联社电报精选</h3>
-<div class="item"><span class="title">主力资金监控：有色金属板块净流出超83亿</span><span class="meta">14:27</span><div class="detail">今日主力资金净流入半导体、环保、国防军工等板块，净流出有色金属、计算机、电新行业等板块，其中有色金属板块净流出83.51亿元</div></div>
-<div class="item"><span class="title">日韩股市集体收跌 SK海力士跌超8%</span><span class="meta">14:32</span><div class="detail">日经225收跌2.73%，韩国KOSPI收跌5.72%，SK海力士大跌8.34%，三星电子跌7.59%</div></div>
-<div class="item"><span class="title">WTI原油跌1.13%报91.146美元/桶；布伦特原油跌1.03%报93.291美元/桶</span><span class="meta">14:44</span></div>
-<div class="item"><span class="title">菜粕连续主力合约日内涨3%，现报2449元</span><span class="meta">14:39</span></div>
-<div class="item"><span class="title">欧洲央行管委Kocher称9月会议将在加息与按兵不动间抉择</span><span class="meta">14:37</span></div>
-<div class="item"><span class="title">日本40年期国债收益率上升10个基点至4.010%</span><span class="meta">14:22</span></div>
-<div class="item"><span class="title">国家能源局正式发布中国绿证价格指数</span><span class="meta">14:21</span><div class="detail">2026年6月中国绿证价格指数收于181.0点，环比下跌0.2%，同比上涨23.2%</div></div>
-<h3>券商策略报告</h3>
-<div class="item"><span class="title">A股市场点评：市场缩量</span><span class="meta">中山证券 | 2026-07-24</span></div>
-<div class="item"><span class="title">投资策略专题：公募基金风格漂移持续改善中</span><span class="meta">开源证券 | 2026-07-23</span></div>
-<div class="item"><span class="title">A股投资策略周报告：政策稳市，预期改善</span><span class="meta">华龙证券 | 2026-07-23</span></div>
-<div class="item"><span class="title">策略专题分析报告：资源民族主义：被压抑的发展需求</span><span class="meta">国金证券 | 2026-07-23</span></div>
-<div class="item"><span class="title">策略周报：美长债配置价值凸显，A股静待内外企稳催化</span><span class="meta">华鑫证券 | 2026-07-22</span></div>
-<div class="item"><span class="title">资产配置跟踪周报：市场面临多重博弈，科技成长短期承压</span><span class="meta">大同证券 | 2026-07-22</span></div>
-<div class="item"><span class="title">行业轮动ETF策略周报</span><span class="meta">金融街证券 | 2026-07-21</span></div>
-<div class="item"><span class="title">高端制造行业ETF双周报：市场剧烈调整，机床指数领跌高端制造板块</span><span class="meta">金融街证券 | 2026-07-24</span></div>
-</div>
+
+<!-- Footer -->
 <div class="footer">
-<p>量化交易资讯简报 | 自动生成于 2026-07-24</p>
-<p>数据来源：华尔街见闻 · 财联社 · 东方财富研报中心 · arXiv · SSRN</p>
-<p>⚠️ 投资有风险，本简报仅供参考，不构成投资建议</p>
+<p>📝 量化交易资讯简报 | 自动生成于 2026-07-24 15:45</p>
+<p>数据来源：华尔街见闻、财联社、东方财富研报中心 | ⚠️ 学术论文数据暂缺</p>
+<p>Powered by Hermes Agent</p>
 </div>
+
 </div>
 </body>
 </html>

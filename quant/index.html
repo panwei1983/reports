@@ -1,141 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>量化交易简报索引</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: #0d1117;
-            border-radius: 16px;
-            border: 1px solid #30363d;
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #0d1117 0%, #1c2333 100%);
-            color: #e6edf3;
-            padding: 30px 40px;
-            text-align: center;
-            border-bottom: 1px solid #30363d;
-        }
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .header .subtitle {
-            font-size: 16px;
-            color: #8b949e;
-        }
-        .content {
-            padding: 30px 40px;
-        }
-        .date-section {
-            margin-bottom: 25px;
-        }
-        .date-title {
-            font-size: 20px;
-            color: #e6edf3;
-            font-weight: 600;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #30363d;
-        }
-        .report-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .report-link {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 15px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .report-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(167, 139, 250, 0.4);
-        }
-        .report-link .icon {
-            margin-right: 8px;
-            font-size: 18px;
-        }
-        .footer {
-            background: #0d1117;
-            color: #8b949e;
-            padding: 20px 40px;
-            text-align: center;
-            font-size: 14px;
-            border-top: 1px solid #30363d;
-        }
-        .footer a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-        .new-badge {
-            background: #22d3ee;
-            color: #0d1117;
-            font-size: 11px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 8px;
-            font-weight: 600;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #8b949e;
-        }
-        .empty-state .icon {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量化交易资讯简报 | 索引</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
+.header h1 { font-size: 24px; margin-bottom: 8px; }
+.header p { font-size: 14px; opacity: 0.85; }
+.report-list { background: white; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.report-list h2 { font-size: 18px; color: #1a237e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8eaf6; }
+.report-item { padding: 12px 0; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; }
+.report-item:last-child { border-bottom: none; }
+.report-item a { color: #3949ab; text-decoration: none; font-size: 15px; font-weight: 500; }
+.report-item a:hover { text-decoration: underline; }
+.report-item .date { font-size: 13px; color: #7f8c8d; }
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #95a5a6; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div style="text-align: left; margin-bottom: 15px;">
-                <a href="../index.html" style="color: rgba(255,255,255,0.9); text-decoration: none; font-size: 14px;">🏠 返回主页</a>
-            </div>
-            <h1>📊 量化交易简报索引</h1>
-            <div class="subtitle">专业深度 · 每日更新 · 全球视野</div>
-        </div>
-        
-        <div class="content">
-            <div class="date-section">
-                <div class="date-title">2026年7月</div>
-                <div class="report-links">
-                    <a href="2026-07-24.html" class="report-link">
-                        <span class="icon">📊</span>
-                        <span>2026-07-24 <span class="new-badge">NEW</span></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>📋 本简报由 Hermes Agent 自动生成</p>
-            <p style="margin-top: 10px;">数据来源：arXiv、SSRN、QuantConnect、券商金工、华尔街见闻</p>
-            <p style="margin-top: 10px;">⚠️ 所有内容仅供学习研究，不构成投资建议</p>
-        </div>
-    </div>
+<div class="container">
+<div class="header">
+<h1>📊 量化交易资讯简报</h1>
+<p>每日自动采集学术论文、市场数据与券商金工观点</p>
+</div>
+
+<div class="report-list">
+<h2>📅 历史简报</h2>
+
+<div class="report-item">
+<a href="2026-07-24.html">2026-07-24 A股跌超1%半导体逆势拉升，油价破百后回落，大摩警告AI存储拐点</a>
+<span class="date">2026-07-24</span>
+</div>
+
+</div>
+
+<div class="footer">
+<p>Powered by Hermes Agent | 自动生成</p>
+</div>
+
+</div>
 </body>
 </html>
