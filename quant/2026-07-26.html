@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 量化交易简报 | 2026-07-26</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📊%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-academic: #a78bfa;
+    --accent-strategy: #22d3ee;
+    --accent-broker: #ffa657;
+    --accent-market: #4ade80;
+    --accent-trading: #60a5fa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .back-link { margin-bottom: 16px; }
+  .back-link a { color: var(--text-link); text-decoration: none; font-size: 14px; }
+  .header { text-align: center; padding: 30px 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .subtitle { color: var(--text-secondary); font-size: 14px; }
+  .summary { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; font-size: 15px; line-height: 1.7; }
+  .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
+  .toc h3 { margin-bottom: 10px; font-size: 16px; }
+  .toc ul { list-style: none; }
+  .toc li { padding: 4px 0; }
+  .toc a { color: var(--text-link); text-decoration: none; font-size: 14px; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 32px; }
+  .section-title {
+    font-size: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .section-title .icon { margin-right: 8px; }
+  .highlight-list { list-style: none; }
+  .highlight-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--accent-market);
+  }
+  .highlight-item strong { color: var(--text-primary); }
+  .highlight-item .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    color: #fff;
+  }
+  .tag-red { background: #ef4444; }
+  .tag-blue { background: #3b82f6; }
+  .tag-green { background: #22c55e; }
+  .tag-purple { background: #a855f7; }
+  .tag-orange { background: #f97316; }
+  .factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .factor-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  .factor-card .name { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
+  .factor-card .value { font-size: 22px; font-weight: bold; }
+  .factor-card .change { font-size: 12px; margin-top: 2px; }
+  .up { color: #ef4444; }
+  .down { color: #22c55e; }
+  .paper-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--accent-academic);
+  }
+  .paper-card .paper-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .paper-card .paper-title a { color: var(--accent-academic); text-decoration: none; }
+  .paper-card .paper-title a:hover { text-decoration: underline; }
+  .paper-card .meta { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+  .paper-card .core-view { font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+  .paper-card .score {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 4px;
+    background: rgba(167,139,250,0.15);
+    color: var(--accent-academic);
+  }
+  .strategy-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--accent-strategy);
+  }
+  .strategy-card .strategy-title { font-weight: 600; margin-bottom: 4px; }
+  .strategy-card .strategy-title a { color: var(--accent-strategy); text-decoration: none; }
+  .strategy-card .strategy-title a:hover { text-decoration: underline; }
+  .strategy-card .strategy-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .broker-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--accent-broker);
+  }
+  .broker-card .broker-org { font-size: 12px; color: var(--accent-broker); margin-bottom: 4px; }
+  .broker-card .broker-title { font-weight: 600; margin-bottom: 4px; }
+  .broker-card .broker-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .paper-list { list-style: none; }
+  .paper-list li {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .paper-list li:last-child { border-bottom: none; }
+  .paper-list a { color: var(--text-link); text-decoration: none; }
+  .paper-list a:hover { text-decoration: underline; }
+  .paper-list .source { font-size: 11px; color: var(--text-secondary); }
+  .market-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .market-section h4 { color: var(--accent-market); margin-bottom: 8px; font-size: 15px; }
+  .market-item { font-size: 13px; padding: 4px 0; color: var(--text-secondary); line-height: 1.6; }
+  .footer { text-align: center; padding: 20px 0; color: var(--text-secondary); font-size: 12px; border-top: 1px solid var(--border); margin-top: 32px; }
+</style>
+</head>
+<body>
+
+<div class="back-link">
+  <a href="index.html">← 返回简报索引</a>
+</div>
+
+<div class="header">
+  <h1>📊 量化交易资讯简报</h1>
+  <div class="subtitle">2026年7月26日 星期日 | 每日深度版</div>
+</div>
+
+<div class="summary">
+  <strong>📝 今日总结：</strong>美日央行利率决议周来临，市场波动率预计显著上升；A股上周五缩量调整，创业板指跌超2%，成交额跌破2万亿创三个月新低；有色金属板块净流出超83亿，半导体设备逆势获资金青睐；学术前沿方面，趋势跟踪系统研究、量子核方法与股票截面收益、拓扑数据分析与组合优化等论文值得深入研读；QuantPedia最新探讨收益预测目标优化及商品危机对组合冲击。
+</div>
+
+<div class="toc">
+  <h3>📑 今日目录</h3>
+  <ul>
+    <li><a href="#highlights">📌 今日要点</a></li>
+    <li><a href="#factors">📊 因子看板</a></li>
+    <li><a href="#academic">🎓 学术前沿</a></li>
+    <li><a href="#strategy">🔬 策略研究</a></li>
+    <li><a href="#broker">🏢 券商金工观点</a></li>
+    <li><a href="#market">📈 市场数据</a></li>
+  </ul>
+</div>
+
+<!-- ====== 今日要点 ====== -->
+<div class="section" id="highlights">
+  <h2 class="section-title"><span class="icon">📌</span>今日要点</h2>
+  <ul class="highlight-list">
+    <li class="highlight-item">
+      <strong>超级央行周来临：美日英央行利率决议+美联储PCE数据</strong>
+      <span class="tag tag-red">宏观风险</span><br>
+      下周全球瞩目：美联储、日本央行、英国央行先后公布利率决议，美联储PCE通胀数据同步登场。市场对沃什"不给指引"立场高度紧张，油价飙升背景下加息可能性被重新讨论。
+    </li>
+    <li class="highlight-item">
+      <strong>A股缩量调整：创业板指跌2.65%，成交额跌破2万亿</strong>
+      <span class="tag tag-red">市场异动</span><br>
+      沪深两市成交1.93万亿创三个多月新低，较前一日缩量2642亿。全市场超4900只个股下跌。半导体设备概念逆势活跃，托伦斯20CM4天3板；有色金属板块净流出超83亿元。
+    </li>
+    <li class="highlight-item">
+      <strong>地缘紧张升级：特朗普暂停空袭伊朗，红海战线升级</strong>
+      <span class="tag tag-orange">地缘政治</span><br>
+      特朗普下令暂停持续13天的对伊朗每日空袭；胡塞武装一天两次袭击沙特红海港口石油设施。卡塔尔宣布恢复海上航行。中东地缘风险仍是油价核心驱动。
+    </li>
+    <li class="highlight-item">
+      <strong>高盛交易主管：美股"操作难度依然极高"，建议逢低布局黄金</strong>
+      <span class="tag tag-blue">机构观点</span><br>
+      高盛交易主管Tony Pasquariello认为美股操作难度极高，建议逢低布局黄金。CFTC黄金净多头仓位反弹，历史上一直领先于现货金价走势；央行购金势头开始恢复。
+    </li>
+    <li class="highlight-item">
+      <strong>韩国签9500亿美元芯片大单，AI算力竞赛升级</strong>
+      <span class="tag tag-green">产业趋势</span><br>
+      三星、SK海力士与英伟达、博通等签9500亿美元芯片大单。下周MAG7（微软、苹果、亚马逊、Meta）及SK海力士、三星等存储巨头集中放榜，AI资本开支方向值得关注。
+    </li>
+  </ul>
+</div>
+
+<!-- ====== 因子看板 ====== -->
+<div class="section" id="factors">
+  <h2 class="section-title"><span class="icon">📊</span>因子看板</h2>
+  
+  <div class="factor-grid">
+    <div class="factor-card">
+      <div class="name">沪深300</div>
+      <div class="value down">-1.38%</div>
+      <div class="change">缩量下行</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">创业板指</div>
+      <div class="value down">-2.65%</div>
+      <div class="change">大幅调整</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">科创50</div>
+      <div class="value">冲高回落</div>
+      <div class="change">半导体分化</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">成交额</div>
+      <div class="value down">1.93万亿</div>
+      <div class="change">3个月新低</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">WTI原油</div>
+      <div class="value up">89.4美元</div>
+      <div class="change">-2.98%回落</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">现货黄金</div>
+      <div class="value up">4057美元</div>
+      <div class="change">+0.21%</div>
+    </div>
+  </div>
+
+  <div class="market-section">
+    <h4>💹 资金流向（7月24日）</h4>
+    <div class="market-item">• <strong>主力净流入：</strong>半导体（+21.9亿通富微电）、环保、国防军工</div>
+    <div class="market-item">• <strong>主力净流出：</strong>有色金属（-83.5亿，紫金矿业-14.3亿）、计算机、电新行业</div>
+    <div class="market-item">• <strong>涨停结构：</strong>全市场40股涨停，连板股17只，晋级率26%；封板率78%</div>
+    <div class="market-item">• <strong>焦点个股：</strong>通富微电+9.77%资金净买入21.9亿居首；托伦斯20CM4天3板</div>
+  </div>
+
+  <div class="market-section">
+    <h4>🌏 全球资产动向</h4>
+    <div class="market-item">• <strong>美股期货：</strong>道指期货+0.45%，标普期货+0.26%，纳指期货+0.21%</div>
+    <div class="market-item">• <strong>原油：</strong>WTI -2.98%报89.44美元，布伦特-2.78%报91.64美元</div>
+    <div class="market-item">• <strong>贵金属：</strong>现货黄金+0.21%报4057.71美元，白银+1.51%报58.50美元</div>
+    <div class="market-item">• <strong>韩股杠杆风险：</strong>韩股Kospi杠杆牛特征显著，类比2014-2015年A股中证1000走势</div>
+  </div>
+</div>
+
+<!-- ====== 学术前沿 ====== -->
+<div class="section" id="academic">
+  <h2 class="section-title"><span class="icon">🎓</span>学术前沿</h2>
+
+  <!-- 精选论文 -->
+  <div class="paper-card">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2607.19497" target="_blank">The Science and Practice of Trend-Following Systems</a></div>
+    <div class="meta">Artur Sepp, Vladimir Lucic | arXiv:2607.19497 | 2026-07-25</div>
+    <div class="core-view">
+      本文系统研究了趋势跟踪策略的科学原理与实践应用，从信号生成、仓位管理到风险控制的全流程进行了深入分析。作者结合经典CTA策略框架与机器学习方法，提出了一种自适应趋势跟踪系统，在不同市场环境下均表现稳健。该研究对CTA策略开发与组合配置具有重要参考价值。
+    </div>
+    <span class="score">可落地性：⭐⭐⭐⭐ (8/10) — 趋势跟踪是可直落地的量化策略方向</span>
+  </div>
+
+  <div class="paper-card">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2607.20168" target="_blank">Quantum Kernels and the Cross-Section of Stock Returns: Anatomy of a Vanishing Advantage</a></div>
+    <div class="meta">Junchi Shen | arXiv:2607.20168 | 2026-07-25</div>
+    <div class="core-view">
+      本文解剖了量子核方法在股票截面收益预测中"优势消失"的原因。研究发现，量子核在经典模拟下的预测能力与经典核方法相当，量子优势在噪声和有限样本下趋于消失。该研究对评估量子计算在量化金融中的真实价值具有警示意义。
+    </div>
+    <span class="score">可落地性：⭐⭐ (4/10) — 量子计算尚处早期，实践落地门槛高</span>
+  </div>
+
+  <div class="paper-card">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2607.21170" target="_blank">Portfolio Optimization under Dynamic Rebalancing via Topological Data Analysis and News Sentiments</a></div>
+    <div class="meta">Divyanee Garg | arXiv:2607.21170 | 2026-07-25</div>
+    <div class="core-view">
+      本文结合拓扑数据分析（TDA）与新闻情感因子，提出了一种动态再平衡组合优化框架。TDA用于捕捉市场结构变化，新闻情感因子提供方向性信号。实验表明，该框架在风险调整收益和回撤控制方面优于传统均值-方差方法，为多因子组合管理提供了新思路。
+    </div>
+    <span class="score">可落地性：⭐⭐⭐ (7/10) — TDA+情感因子组合有实践潜力，需数据工程支撑</span>
+  </div>
+
+  <!-- 论文速递列表 -->
+  <h3 style="margin-top: 20px; margin-bottom: 12px; font-size: 16px;">📄 论文速递</h3>
+  <ul class="paper-list">
+    <li>
+      <a href="https://arxiv.org/abs/2607.20093" target="_blank">Retail Trader's Ruin: An Anatomy of Popular Signal Failure</a>
+      <span class="source"> — Adam Darmanin | 分析散户信号失败机制</span>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2607.19005" target="_blank">Observable Matrix Dynamics of Stocks</a>
+      <span class="source"> — Igor Halperin | 股票可观测矩阵动力学</span>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2607.20762" target="_blank">Quantifying Sub-Optimality in Routing for Automated Market Makers</a>
+      <span class="source"> — Weiye Xi, Ciamac C. Moallemi | AMM路由次优性量化</span>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2607.20343" target="_blank">Path-Space Model Risk via Signature-Induced Optimal Transport</a>
+      <span class="source"> — Tomoyuki Ichiba, Qijin Shi | 签名诱导最优传输的路径空间模型风险</span>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2607.19218" target="_blank">Denoising Subordinated Probabilistic Models: Diffusion with a Tempered-Stable Volatility Clock</a>
+      <span class="source"> — Junchi Shen, Helin Zhao | 带温稳波动率时钟的去噪扩散模型</span>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2607.19453" target="_blank">Predictive Extrema, Unprofitable Policies: An AI-Assisted Audit of Candle-Based Binance Spot Timing Models</a>
+      <span class="source"> — Ayoub Jadouli | AI审计K线择时模型</span>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2607.19030" target="_blank">Pricing Options on Illiquid Assets Using Liquid Market Benchmarks</a>
+      <span class="source"> — Federico Aluigi et al. | 非流动性资产期权定价</span>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2607.21512" target="_blank">Group Boarding for Airplanes: Benchmarking Static Policies and Optimizing Dynamic Assignment with Deep RL</a>
+      <span class="source"> — Minyu Shen et al. | 深度强化学习优化登机策略</span>
+    </li>
+  </ul>
+</div>
+
+<!-- ====== 策略研究 ====== -->
+<div class="section" id="strategy">
+  <h2 class="section-title"><span class="icon">🔬</span>策略研究</h2>
+
+  <div class="strategy-card">
+    <div class="strategy-title"><a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction</a></div>
+    <div class="strategy-desc">
+      QuantPedia最新研究探讨了收益预测中目标变量的选择问题。传统方法直接预测未来收益率，但实际中不同目标定义（如超额收益、排名收益、分类标签）对策略表现影响巨大。研究建议量化研究者应更关注预测目标的构建，而非单纯优化模型架构，这对多因子选股和alpha研究有直接启示。
+    </div>
+  </div>
+
+  <div class="strategy-card">
+    <div class="strategy-title"><a href="https://quantpedia.com/commodity-crisis-analysis-how-portfolios-react-to-commodity-shocks/" target="_blank">Commodity Crisis Analysis – How Portfolios React to Commodity Shocks</a></div>
+    <div class="strategy-desc">
+      QuantPedia分析了商品危机对多资产组合的冲击效应。在当前油价突破100美元、地缘风险持续的背景下，该研究特别具有现实意义。研究发现商品冲击期间，传统60/40股债组合表现脆弱，而趋势跟踪CTA策略和实物资产配置能提供有效对冲。这为量化组合的风险预算和尾部风险管理提供了实证支持。
+    </div>
+  </div>
+
+  <div class="strategy-card">
+    <div class="strategy-title"><a href="https://quantpedia.com/can-ai-do-financial-research/" target="_blank">Can AI Do Financial Research?</a></div>
+    <div class="strategy-desc">
+      评估AI Agent独立完成金融研究的能力，聚焦9个权益市场异象的复制实验。研究发现AI在数据处理和基础分析上表现良好，但在因果推断和护栏机制方面仍需人工干预。该研究对量化研究中AI辅助决策的边界提出了重要参考——AI更适合作为研究助理而非独立研究者。
+    </div>
+  </div>
+</div>
+
+<!-- ====== 券商金工观点 ====== -->
+<div class="section" id="broker">
+  <h2 class="section-title"><span class="icon">🏢</span>券商金工观点</h2>
+
+  <div class="broker-card">
+    <div class="broker-org">华鑫证券</div>
+    <div class="broker-title">算力光纤需求持续爆发，全链条制造壁垒巩固长期盈利弹性</div>
+    <div class="broker-desc">
+      7月26日最新研报，关注AI算力基础设施产业链。算力光纤作为光通信核心组件，需求随AI资本开支持续扩张。制造壁垒（特种光纤拉丝工艺、涂层技术等）构成长期护城河。结合下周MAG7财报季，AI资本开支指引将为相关产业链提供方向信号。
+    </div>
+  </div>
+
+  <div class="broker-card">
+    <div class="broker-org">东吴证券</div>
+    <div class="broker-title">保险行业6月月报：车险业务增速逐步改善，寿险保费单月降幅环比收窄</div>
+    <div class="broker-desc">
+      保险行业6月数据显示车险增速改善、寿险降幅收窄，维持增持评级。从量化视角看，保险板块低估值+利率企稳预期构成左侧配置逻辑，但需关注利率决议周对长端利率的扰动。
+    </div>
+  </div>
+
+  <div class="broker-card">
+    <div class="broker-org">高盛交易台</div>
+    <div class="broker-title">美股操作难度极高，逢低布局黄金</div>
+    <div class="broker-desc">
+      高盛交易主管Tony Pasquariello明确表示美股操作难度依然极高。黄金方面，CFTC净多头仓位反弹领先于价格走势，央行购金势头恢复。叠加下周美联储利率决议不确定性，黄金4000美元附近获显著支撑，趋势跟踪信号偏多。
+    </div>
+  </div>
+
+  <div class="broker-card">
+    <div class="broker-org">开源证券</div>
+    <div class="broker-title">中矿资源深度：资源禀赋深厚，多金属布局打开成长空间</div>
+    <div class="broker-desc">
+      锂铯铷多金属资源禀赋公司深度覆盖。从量化因子视角，资源类标的受益于通胀预期上行（油价破百、PCE数据临近），但需警惕有色金属板块资金大幅流出（上周净流出83.5亿）的短期压力。
+    </div>
+  </div>
+
+  <div class="broker-card">
+    <div class="broker-org">市场综合研判</div>
+    <div class="broker-title">下周关键事件：政治局会议+央行决议+财报季，波动率预计上升</div>
+    <div class="broker-desc">
+      国内7月政治局会议预计召开，中国PMI数据出炉；海外美日英央行利率决议，美联储PCE数据公布；MAG7及存储巨头财报集中放榜；长鑫科技科创板挂牌。多事件叠加下，市场波动率预计显著上升，建议关注波动率交易和防御性配置。
+    </div>
+  </div>
+</div>
+
+<!-- ====== 市场数据 ====== -->
+<div class="section" id="market">
+  <h2 class="section-title"><span class="icon">📈</span>市场数据</h2>
+
+  <div class="market-section">
+    <h4>🇨🇳 A股市场（7月24日收盘）</h4>
+    <div class="market-item">• <strong>指数表现：</strong>沪深300 -1.38%，创业板指 -2.65%，科创50冲高回落</div>
+    <div class="market-item">• <strong>成交额：</strong>沪深两市1.93万亿，创三个多月新低，较前日缩量2642亿</div>
+    <div class="market-item">• <strong>涨跌结构：</strong>全市场超4900只个股下跌，逾20股跌停</div>
+    <div class="market-item">• <strong>热点板块：</strong>半导体设备（托伦斯20CM4天3板、至纯科技涨停）、端侧AI（博通集成涨停）、军工（长城军工2连板）、电网设备</div>
+    <div class="market-item">• <strong>弱势板块：</strong>算力租赁（利通电子跌停）、电力（京能电力、大唐发电大跌）、有色金属（板块净流出83.5亿）</div>
+    <div class="market-item">• <strong>连板结构：</strong>40股涨停，17只连板股，晋级率26%；艾艾精工9天6板，长缆科技4连板，爱丽家居4连板</div>
+  </div>
+
+  <div class="market-section">
+    <h4>🌍 全球市场</h4>
+    <div class="market-item">• <strong>美股期货：</strong>道指+0.45%，标普+0.26%，纳指+0.21%（7月24日盘前）</div>
+    <div class="market-item">• <strong>原油：</strong>WTI 89.44美元（-2.98%），布伦特91.64美元（-2.78%），地缘溢价仍存</div>
+    <div class="market-item">• <strong>贵金属：</strong>黄金4057.71美元（+0.21%），白银58.50美元（+1.51%）</div>
+    <div class="market-item">• <strong>韩股杠杆风险：</strong>韩股Kospi杠杆牛特征显著，类比2014-2015年A股中证1000</div>
+    <div class="market-item">• <strong>地缘动态：</strong>特朗普暂停对伊朗空袭（持续13天后首次暂停）；胡塞武装袭击沙特红海港口；卡塔尔恢复海上航行</div>
+  </div>
+
+  <div class="market-section">
+    <h4>📅 下周关注</h4>
+    <div class="market-item">• <strong>7/28-29：</strong>美联储FOMC利率决议+PCE通胀数据</div>
+    <div class="market-item">• <strong>7/31：</strong>日本央行利率决议</div>
+    <div class="market-item">• <strong>7/31：</strong>英国央行利率决议</div>
+    <div class="market-item">• <strong>国内：</strong>7月政治局会议预计召开，中国PMI数据出炉</div>
+    <div class="market-item">• <strong>财报：</strong>微软、苹果、亚马逊、Meta、SK海力士、三星电子、铠侠集中放榜</div>
+    <div class="market-item">• <strong>IPO：</strong>长鑫科技科创板、中际旭创港股挂牌</div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>📊 量化交易资讯简报 | 2026-07-26 | 由 Hermes Agent 自动生成</p>
+  <p>数据来源：华尔街见闻、财联社、东方财富、arXiv q-fin、QuantPedia</p>
+</div>
+
+</body>
+</html>

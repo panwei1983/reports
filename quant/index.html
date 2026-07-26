@@ -4,44 +4,61 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>量化交易资讯简报 | 索引</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📊%3C/text%3E%3C/svg%3E">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #2c3e50; line-height: 1.6; }
-.container { max-width: 960px; margin: 0 auto; padding: 20px; }
-.header { background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
-.header h1 { font-size: 24px; margin-bottom: 8px; }
-.header p { font-size: 14px; opacity: 0.85; }
-.report-list { background: white; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.report-list h2 { font-size: 18px; color: #1a237e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e8eaf6; }
-.report-item { padding: 12px 0; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; }
-.report-item:last-child { border-bottom: none; }
-.report-item a { color: #3949ab; text-decoration: none; font-size: 15px; font-weight: 500; }
-.report-item a:hover { text-decoration: underline; }
-.report-item .date { font-size: 13px; color: #7f8c8d; }
-.footer { text-align: center; padding: 20px; font-size: 12px; color: #95a5a6; }
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 { text-align: center; margin: 30px 0; font-size: 28px; }
+  h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+  .report-list { list-style: none; }
+  .report-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .report-item a { color: var(--text-link); text-decoration: none; font-size: 15px; }
+  .report-item a:hover { text-decoration: underline; }
+  .report-item .date { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+  .footer { text-align: center; padding: 20px 0; color: var(--text-secondary); font-size: 12px; border-top: 1px solid var(--border); margin-top: 32px; }
 </style>
 </head>
 <body>
-<div class="container">
-<div class="header">
+
 <h1>📊 量化交易资讯简报</h1>
-<p>每日自动采集学术论文、市场数据与券商金工观点</p>
-</div>
 
-<div class="report-list">
 <h2>📅 历史简报</h2>
-
-<div class="report-item">
-<a href="2026-07-24.html">2026-07-24 A股跌超1%半导体逆势拉升，油价破百后回落，大摩警告AI存储拐点</a>
-<span class="date">2026-07-24</span>
-</div>
-
-</div>
+<ul class="report-list">
+  <li class="report-item">
+    <a href="2026-07-26.html">2026-07-26 超级央行周来临，A股缩量调整创三月新低，趋势跟踪与TDA组合优化前沿论文值得关注</a>
+    <div class="date">2026年7月26日 星期日</div>
+  </li>
+  <li class="report-item">
+    <a href="2026-07-24.html">2026-07-24 A股跌超1%半导体逆势拉升，油价破百后回落，大摩警告AI存储拐点</a>
+    <div class="date">2026年7月24日 星期四</div>
+  </li>
+</ul>
 
 <div class="footer">
-<p>Powered by Hermes Agent | 自动生成</p>
+  <p>📊 量化交易资讯简报索引 | 由 Hermes Agent 自动维护</p>
 </div>
 
-</div>
 </body>
 </html>
