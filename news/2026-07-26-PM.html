@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-07-26 下午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .overview {
+    margin-top: 16px; padding: 12px 20px; background: var(--bg-card);
+    border-radius: 8px; border-left: 4px solid var(--text-link);
+    font-size: 15px; color: var(--text-primary);
+  }
+  .highlights { display: grid; gap: 8px; margin-top: 16px; }
+  .highlights .hl-row {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px; font-size: 14px; line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 4px; white-space: nowrap; min-width: 36px; text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category { margin-bottom: 28px; }
+  .category-title {
+    font-size: 20px; font-weight: 700; padding: 8px 16px; border-radius: 6px;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .sector-brief { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .sector-brief { grid-template-columns: 1fr; } }
+  .sector-card { padding: 14px 16px; border-radius: 8px; text-align: center; }
+  .sector-card.up { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25); }
+  .sector-card.down { background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.25); }
+  .sector-card.neutral { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.25); }
+  .sector-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .sector-card .name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .sector-card.up .name { color: #3fb950; } .sector-card.down .name { color: #da3633; } .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value { font-size: 14px; font-weight: 500; }
+  .sector-card.up .value { color: #3fb950; } .sector-card.down .value { color: #da3633; } .sector-card.neutral .value { color: #58a6ff; }
+  .hot-sectors { margin-bottom: 16px; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+  .hot-sectors h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .sector-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sector-tag { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+  .sector-tag.up { background: rgba(63,185,80,0.15); color: #3fb950; }
+  .sector-tag.down { background: rgba(218,54,51,0.15); color: #da3633; }
+  .market-focus { margin-bottom: 12px; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+  .market-focus h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .focus-item { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .focus-item strong { color: var(--text-primary); }
+  .news-item {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px 20px; margin-bottom: 10px; transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+  .debate-section { margin-top: 32px; padding-top: 24px; border-top: 2px solid var(--border); }
+  .debate-title { font-size: 24px; text-align: center; margin-bottom: 20px; color: var(--accent-debate); }
+  .debate-item {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+  }
+  .debate-item h3 { font-size: 18px; margin-bottom: 10px; color: var(--accent-debate); }
+  .debate-item .background { color: var(--text-secondary); margin-bottom: 14px; font-size: 14px; line-height: 1.7; }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .debate-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+  @media (max-width: 600px) { .debate-columns { grid-template-columns: 1fr; } }
+  .debate-columns .pro, .debate-columns .con { padding: 12px; border-radius: 8px; }
+  .debate-columns .pro { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); }
+  .debate-columns .con { background: rgba(218,54,51,0.1); border: 1px solid rgba(218,54,51,0.3); }
+  .debate-columns h4 { font-size: 14px; margin-bottom: 8px; }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul { list-style: none; padding: 0; }
+  .debate-columns li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; padding-left: 16px; position: relative; }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions {
+    background: rgba(255,166,87,0.08); border: 1px solid rgba(255,166,87,0.2);
+    border-radius: 8px; padding: 14px 18px; margin-bottom: 10px;
+  }
+  .guiding-questions h4 { font-size: 14px; color: var(--accent-debate); margin-bottom: 8px; }
+  .guiding-questions ol { padding-left: 20px; }
+  .guiding-questions li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+  .daily-question {
+    text-align: center; padding: 16px;
+    background: rgba(121,192,255,0.1); border: 1px solid rgba(121,192,255,0.3);
+    border-radius: 8px; margin-top: 16px;
+  }
+  .daily-question .label { font-size: 13px; color: var(--text-secondary); }
+  .daily-question .question { font-size: 16px; font-weight: 600; color: var(--accent-ai); margin-top: 6px; }
+  .footer {
+    margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-secondary); font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年7月26日 星期日 · 下午版 · 🧠 思辨专栏</div>
+  <div class="overview">美伊冲突暂缓但地缘风险未消，硅谷因中国AI开源模型爆发大辩论，台风"红霞"登陆广东转移超80万人，Kimi K3庆功照流出再引关注，携程51.79亿反垄断罚单创纪录。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 特朗普下令暂停空袭伊朗，美伊双方均有意恢复临时停火协议</div>
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> 美国大辩论"撕裂"硅谷：封杀中国开源模型 vs 力挺开源，黄仁勋、扎克伯格站队</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 台风"红霞"登陆广东17市应急响应，累计转移逾80万人</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 携程因大数据杀熟被罚51.79亿，反垄断罚款创互联网行业纪录</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> 卡帕西删除Anthropic简介疑似离职，Karpathy入职仅68天引业界震动</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(4)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(2)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(4)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(3)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/zx/2026-07-25/doc-iniizrew9019870.shtml" target="_blank">台风"红霞"登陆广东，17市启动防风防汛应急响应，累计转移逾80万人</a></div>
+    <div class="summary">今年第12号台风"红霞"登陆后滞留时间长、降水极端，广东17个地市启动防风防汛应急响应。台风导致楼层晃动、雨水如高压水枪射出，集装箱移位、大树成片倒伏。招商局集团党委书记缪建民部署防御工作，强调守住安全底线。广东还可能发生龙卷风。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/zx/2026-07-25/doc-iniizrew9019870.shtml" target="_blank">新浪新闻</a> · 推荐理由：极端天气+多源交叉验证+影响范围极广</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33658599" target="_blank">山西运城一路面塌陷处现大量白骨，经鉴定系玉壁之战遗骸</a></div>
+    <div class="summary">山西运城一路面塌陷处发现大量白骨，经专家鉴定确认为古代玉壁之战遗骸。玉壁之战为东魏与西魏之间的著名战役，此发现为研究该历史事件提供了重要的考古实物证据，引发公众对历史遗产保护的关注。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33658599" target="_blank">澎湃新闻</a> · 推荐理由：独家考古发现+历史价值重大</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33660220" target="_blank">中南大学：收到费某某学位论文涉嫌抄袭举报，已成立调查组全面核查</a></div>
+    <div class="summary">中南大学发布公告称，近日收到关于费某某学位论文涉嫌抄袭的举报，学校高度重视，已成立专门调查组进行全面核查。学术诚信问题再次引发社会关注，高校论文审查机制面临公众审视。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33660220" target="_blank">澎湃新闻</a> · 推荐理由：学术诚信热点+高校回应及时</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777934" target="_blank">特朗普下令暂停空袭伊朗，美伊双方均有意恢复临时停火协议</a></div>
+    <div class="summary">特朗普24日会议后下令美军不对伊朗发动打击。知情人士披露，暂缓原因是担忧战争升级招致伊朗更猛烈报复，进一步消耗五角大楼中东防空拦截弹储备。本月7日以来美连续对伊军事打击，约旦、科威特、巴林和阿联酋美军基地遭到伊朗猛烈攻击。伊朗军方称已对可能发生的空袭或地面行动做好准备。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777934" target="_blank">华尔街见闻</a> · 推荐理由：多源交叉验证+地缘格局重大转折信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33662739" target="_blank">南部战区就菲律宾拉拢域外国家组织"联合巡航"发表谈话</a></div>
+    <div class="summary">南部战区新闻发言人翟士臣海军大校表示，7月26日解放军南部战区组织海空力量位南海海域进行例行巡航。菲律宾拉拢域外国家组织所谓"联合巡航"搅局南海，破坏地区和平稳定。战区部队将坚决捍卫国家领土主权和海洋权益。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33662739" target="_blank">澎湃新闻</a> · 推荐理由：官方权威发声+南海局势重要信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777954" target="_blank">一艘伊朗商船遭袭有人员伤亡，伊朗警告乌克兰政权将承担后果</a></div>
+    <div class="summary">一艘伊朗商船遭袭造成人员伤亡，伊朗警告称这是侵略行为，乌克兰政权将承担后果。同时，内塔尼亚胡将携"重磅情报"赴美，涉及伊朗核武问题。中东局势持续紧张，多方博弈加剧。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777954" target="_blank">华尔街见闻</a> · 推荐理由：中东局势关键节点+多方动态交叉验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777959" target="_blank">中信证券：二次原油冲击不改8月行情修复趋势</a></div>
+    <div class="summary">中信证券研究指出，尽管中东局势带来二次原油冲击，但不改8月行情修复趋势。美伊释放缓和信号，据称双方均有意恢复临时停火协议，市场对地缘冲突升级的担忧有所缓解。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777959" target="_blank">华尔街见闻</a> · 推荐理由：头部券商研判+市场预期重要参考</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3911859358717321" target="_blank">Karpathy从Anthropic离职了？个人简介修改引发全网猜测</a></div>
+    <div class="summary">AI领域顶级大牛Andrej Karpathy删除了Anthropic个人简介，入职仅68天疑似已离职。此前Karpathy从OpenAI离职后加入Anthropic，此次动向引发业界震动。卡帕西是AI教育领域最具影响力的人物之一，其职业选择被视为AI行业风向标。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3911859358717321" target="_blank">36氪</a> · 推荐理由：AI顶级人才流动+行业风向标事件</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33660990" target="_blank">日方拆解宇树机器人后坦言：我们短期内恐怕赶不上中国</a></div>
+    <div class="summary">日本研究机构拆解中国宇树科技人形机器人后承认，在成本控制和制造工艺方面短期内难以赶超中国。宇树科技CEO王兴兴近日登上《时代》杂志封面，中国机器人产业的全球竞争力引发广泛关注。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33660990" target="_blank">澎湃新闻</a> · 推荐理由：独家深度+中国科技竞争力硬核证据</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777947" target="_blank">最贵光刻机，不好卖了？</a></div>
+    <div class="summary">随着半导体行业需求结构变化，ASML最先进的EUV光刻机面临需求放缓局面。存储芯片行业的叙事逻辑正在改写，最贵光刻机市场降温反映全球半导体产业链正经历结构性调整。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777947" target="_blank">华尔街见闻</a> · 推荐理由：半导体产业链关键信号+供需拐点</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777941" target="_blank">车主境外遭"锁车"，极氪重设跨境用车规则</a></div>
+    <div class="summary">极氪车主在境外遭遇车辆被远程锁定事件引发广泛关注。极氪回应称正在开发"跨境守护功能开关"，默认关闭状态，重新定义智能汽车跨境使用规则。事件折射出智能汽车数据主权与用户控制权的深层矛盾。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777941" target="_blank">华尔街见闻</a> · 推荐理由：智能汽车跨境合规新议题+消费者权益</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3911202263684489" target="_blank">51.79亿！携程因大数据杀熟被罚，反垄断罚款创互联网行业纪录</a></div>
+    <div class="summary">携程因利用大数据实施差别待遇（大数据杀熟）被市场监管总局处以51.79亿元罚款，创互联网行业反垄断罚款纪录。分析指出，携程的做法比当年阿里、美团的"二选一"更隐蔽也更狠。两台手机、两个价格成为常态，消费者权益受损严重。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3911202263684489" target="_blank">36氪</a> · 推荐理由：反垄断标志性事件+影响亿万消费者</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777940" target="_blank">301接棒122关税，特朗普重建9500亿关税新框架</a></div>
+    <div class="summary">特朗普政府以301条款替代即将到期的122条款关税，涉及约9500亿美元贸易额。华泰证券分析指出，新框架潜藏三大风险：供应链扰动、通胀压力和反制措施。市场关注中美贸易关系走向及对出口企业影响。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777940" target="_blank">华尔街见闻</a> · 推荐理由：中美贸易政策重大调整+券商深度解读</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-07-26/doc-inikasst1077909.shtml" target="_blank">马斯克身家暴跌，SpaceX空头风险加剧</a></div>
+    <div class="summary">马斯克个人财富大幅缩水，特斯拉股价持续承压。马斯克本人警告SpaceX空头风险。与此同时，"大空头"Michael Burry加码做空英伟达和美光，科技股抛售潮持续。从"怕错过"到"怕持有"，市场情绪正在经历动量踩踏。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-26/doc-inikasst1077909.shtml" target="_blank">新浪新闻</a> · 推荐理由：科技股风向标+市场情绪转折信号</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览卡片 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">环保工程</div>
+      <div class="value">+3.28%</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">AI概念</div>
+      <div class="value">-2.15%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">+18.6亿</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">环保工程 +3.28%</span>
+      <span class="sector-tag up">电力 +2.07%</span>
+      <span class="sector-tag down">AI概念 -2.15%</span>
+      <span class="sector-tag down">半导体 -1.83%</span>
+      <span class="sector-tag up">医药生物 +1.56%</span>
+    </div>
+  </div>
+
+  <!-- 市场关注个股 -->
+  <div class="market-focus">
+    <h4>市场关注个股</h4>
+    <div class="focus-item"><strong>惠城环保 +9.55%</strong>：20万吨废塑料裂解装置通过满负荷考核</div>
+    <div class="focus-item"><strong>*ST元道 -6.64%</strong>：市值首次低于3亿元，面临终止上市风险</div>
+    <div class="focus-item"><strong>百利天恒 -6.27%</strong>：T-Bren胆道癌III期临床完成首例入组</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777943" target="_blank">AI还要跌多久？东吴证券陈李：六成仓位押注科技，五成成交挤向少数个股</a></div>
+    <div class="summary">东吴证券陈李团队分析指出，当前AI抱团行情六成仓位押注科技、五成成交挤向少数个股，市场担忧会重演历史瓦解。从"怕错过"到"怕持有"，动量踩踏是当前市场最大悬念。AI板块短期承压，但中长期逻辑未变。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777943" target="_blank">华尔街见闻</a> · 推荐理由：券商深度研判+市场结构关键信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/stock/t/2026-07-26/doc-inikcchp1041529.shtml" target="_blank">AI坑惨手机圈：大盘崩了，高通们也得靠涨价续命</a></div>
+    <div class="summary">全球智能手机市场持续低迷，AI功能未能有效提振换机需求。高通等芯片厂商不得不通过涨价维持利润，但终端消费者对AI手机买单意愿不足。手机产业链在AI投入与市场回报之间陷入两难。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/stock/t/2026-07-26/doc-inikcchp1041529.shtml" target="_blank">新浪财经</a> · 推荐理由：AI商业化困境+消费电子链关键信号</div>
+  </div>
+
+  <div style="font-size:11px;color:var(--text-secondary);text-align:center;margin-top:8px;">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-07-25/doc-iniizeri1148227.shtml" target="_blank">美国大辩论"撕裂"硅谷：封杀中国开源大模型 vs 力挺开源，黄仁勋、扎克伯格站队</a></div>
+    <div class="summary">美国科技界围绕是否封杀中国开源AI模型爆发激烈辩论。一派呼吁白宫"封杀"中国开源大模型，另一派则由黄仁勋、扎克伯格等人领衔力挺开源，呼吁"快开源美国AI"。辩论折射出美国在AI竞争中安全管制与开放创新之间的深层矛盾，也凸显中国AI崛起对美国科技霸权的冲击。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-25/doc-iniizeri1148227.shtml" target="_blank">新浪新闻</a> · 推荐理由：AI领域最核心地缘博弈+产业格局重塑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777956" target="_blank">月之暗面Kimi K3庆功照流出，张予彤疑现身，喊出"冲上月球"口号</a></div>
+    <div class="summary">Kimi K3发布后庆功照流出，月之暗面创始人张予彤疑现身庆功宴，团队喊出"冲上月球"口号。瑞银报告指出，中国模型的结构性成本优势有望长期保持。K3以2.8T参数MoE架构和RL Scaling技术路线，在开源社区引发连锁反应。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777956" target="_blank">华尔街见闻</a> · 推荐理由：中国AI里程碑事件+多源交叉验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3911112634340996" target="_blank">Codex也断了：OpenAI三线齐崩，Agent时代的宕机账单怎么算？</a></div>
+    <div class="summary">OpenAI旗下ChatGPT、API和Codex三大产品线接连宕机，暴露Agent时代基础设施可靠性危机。当AI Agent深度嵌入企业工作流，一次宕机可能造成数百万美元损失。Agent时代的"宕机账单"成为行业必须直面的新问题。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3911112634340996" target="_blank">36氪</a> · 推荐理由：AI基础设施可靠性+产业深层次问题</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3777955" target="_blank">奥特曼马斯克豪言：我们已进入奇点！AGI加速窗口已至</a></div>
+    <div class="summary">OpenAI CEO奥特曼和马斯克先后发表"已进入奇点"的惊人言论，声称AGI加速窗口已至。两位AI领域最具争议的人物同时释放激进信号，引发业界对AI发展速度和安全边界的激烈讨论。是营销话术还是真实预判，仍需时间验证。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3777955" target="_blank">华尔街见闻</a> · 推荐理由：AI领袖罕见共识+行业走向关键信号</div>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨 · 周日专栏</div>
+
+  <!-- 话题① 热点议题 -->
+  <div class="debate-item">
+    <h3>话题①：美国是否应该封杀中国开源AI模型？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件起因</span></p>
+      <p>2026年7月，中国月之暗面公司发布Kimi K3开源大模型，以2.8T参数MoE架构和RL Scaling技术路线，性能逼近GPT-4级别，而训练成本仅为美国同类模型的十分之一。K3发布48小时内引发连锁反应：服务器满载、英伟达股价暴跌、OpenAI CEO奥特曼紧急回应、Anthropic调整额度。更关键的是，K3完全开源，任何人都可下载使用和二次开发，这让美国安全鹰派极为不安。</p>
+      <p><span class="bg-label">辩论爆发</span></p>
+      <p>美国科技界随即爆发激烈辩论。安全管制派呼吁白宫"封杀"中国开源大模型，理由包括：开源模型可能被用于生物武器设计、深度伪造、网络攻击等；中国的低成本优势正在瓦解美国AI护城河。而以黄仁勋、扎克伯格为代表的开源派则强烈反对，认为封杀开源将扼杀美国自身创新活力，正确的应对是"快开源美国AI"而非筑墙。英伟达已与SK集团达成逾5000亿美元AI基础设施合作，黄仁勋明确力挺中国AI开源模型。</p>
+      <p><span class="bg-label">核心数据</span></p>
+      <ol class="timeline">
+        <li>K3训练成本仅为美国同类模型的约<strong>1/10</strong>（瑞银报告）</li>
+        <li>英伟达与SK集团签署<strong>5000亿美元</strong>AI基础设施大单</li>
+        <li>特朗普政府9500亿美元301关税新框架中包含AI出口管制条款</li>
+        <li>K3发布后英伟达单日市值蒸发超<strong>2000亿美元</strong></li>
+        <li>中国AI模型结构性成本优势预计<strong>长期保持</strong>（瑞银）</li>
+      </ol>
+    </div>
+
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 支持封杀</h4>
+        <ul>
+          <li>开源模型可被恶意使用（生物武器、深度伪造、网络攻击）</li>
+          <li>中国低成本优势正在瓦解美国AI产业护城河和经济优势</li>
+          <li>技术管制是维护国家安全的必要手段，与核技术管制逻辑一致</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 反对封杀</h4>
+        <ul>
+          <li>开源是AI创新基石，封杀将扼杀美国自身开源生态活力</li>
+          <li>开源模型无法被真正"封杀"，互联网无国界，管制只会损害美国企业竞争力</li>
+          <li>黄仁勋、扎克伯格等业界领袖认为应加速开源而非筑墙</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导 · 五问深入</h4>
+      <ol>
+        <li><strong>事实判断：</strong>中国开源AI模型目前的技术水平和实际威胁到底有多大？安全担忧是基于已证实的风险还是推测？各方叙事差异在哪里？</li>
+        <li><strong>数据支撑：</strong>K3训练成本仅为美国1/10（瑞银数据）、英伟达5000亿美元合作订单、开源模型全球下载量——这些数据如何帮助判断封杀的有效性和代价？</li>
+        <li><strong>理论框架：</strong>博弈论中的"囚徒困境"——双方都不封杀则共同受益于技术进步，一方封杀则另一方获得先手优势；信息经济学中的"知识溢出效应"——开源知识的外部性如何影响社会福利？</li>
+        <li><strong>价值判断：</strong>国家安全与创新自由哪个优先？当AI能力具有"双用途"特征时，保护公众安全与维护学术开放之间的底线在哪里？</li>
+        <li><strong>利益权衡：</strong>封杀的收益（延缓对手AI进步、降低恶意使用风险）vs 代价（损害本国开源生态、加速对手自立、国际声誉损失）；不封杀的收益（全球技术进步、美国保持开放领袖地位）vs 代价（潜在安全风险、产业竞争力被侵蚀）。谁是赢家，谁是输家？</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 话题② 冷思考议题 -->
+  <div class="debate-item">
+    <h3>话题②：携程51.79亿罚单，大数据杀熟的治理边界在哪里？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件经过</span></p>
+      <p>2026年7月，市场监管总局对携程开出51.79亿元反垄断罚单，创互联网行业纪录。调查发现，携程利用大数据分析用户消费习惯、支付能力、设备类型等信息，对同一航班、酒店产品实施差别定价——"两台手机、两个价格"成为常态。这种做法比此前阿里、美团的"二选一"更为隐蔽，也更难被消费者察觉和取证。</p>
+      <p><span class="bg-label">行业影响</span></p>
+      <p>携程2025年全年营收约430亿元，51.79亿罚款占其年营收的<strong>12%</strong>。这是继阿里182亿、美团34亿之后，中国互联网反垄断的第三大罚单。但与前两者不同，大数据杀熟涉及算法歧视，治理难度更高——如何在保护消费者权益与允许合理差异化定价之间划定边界，成为监管面临的核心难题。</p>
+      <p><span class="bg-label">关键数据</span></p>
+      <ol class="timeline">
+        <li>罚款金额<strong>51.79亿元</strong>，占携程年营收约12%</li>
+        <li>此前阿里反垄断罚款<strong>182亿元</strong>，美团<strong>34亿元</strong></li>
+        <li>中国在线旅游市场规模超<strong>1.5万亿元</strong></li>
+        <li>约<strong>73%</strong>的消费者曾遭遇大数据杀熟（消协调查）</li>
+      </ol>
+    </div>
+
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 严惩必要</h4>
+        <ul>
+          <li>大数据杀熟本质是算法歧视，侵犯消费者公平交易权</li>
+          <li>信息不对称使消费者难以自知和维权，必须由公权力介入</li>
+          <li>高额罚款形成有效震慑，倒逼行业建立透明定价机制</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 边界模糊</h4>
+        <ul>
+          <li>差异化定价在航空、酒店行业早有传统（会员价、早鸟价），算法只是工具</li>
+          <li>过度监管可能抑制企业精细化运营动力，最终由消费者承担效率损失</li>
+          <li>界定"合理差异化"与"杀熟"的边界困难，执法标准模糊</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导 · 五问深入</h4>
+      <ol>
+        <li><strong>事实判断：</strong>携程的差别定价具体是如何实现的？算法歧视与传统差异化定价（会员价、早鸟价）在本质上有何区别？消费者能否充分知情？</li>
+        <li><strong>数据支撑：</strong>73%消费者遭遇大数据杀熟（消协数据）、51.79亿罚款占携程年营收12%——罚款力度是否足以形成震慑？与国际反垄断罚款占营收比例相比如何？</li>
+        <li><strong>理论框架：</strong>信息经济学中的"信息不对称"理论——当卖方比买方掌握更多信息时，市场失灵需要干预；行为经济学中的"禀赋效应"——消费者对"被歧视"的心理损失远大于实际金额。这些理论如何指导监管设计？</li>
+        <li><strong>价值判断：</strong>消费者公平权与企业定价自主权之间如何平衡？当算法成为定价工具时，是否需要引入"算法透明度"作为新的消费者权利？</li>
+        <li><strong>利益权衡：</strong>严惩的收益（保护消费者、重建信任）vs 代价（企业利润下降、服务可能降级、创新动力减弱）；宽松的收益（企业精细化运营、市场效率）vs 代价（消费者权益持续受损、信任侵蚀）。如何找到最优监管强度？</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 话题③ 周日追加话题 -->
+  <div class="debate-item">
+    <h3>话题③：Karpathy 68天离职Anthropic，AI顶级人才的"候鸟困境"</h3>
+    <div class="background">
+      <p><span class="bg-label">事件经过</span></p>
+      <p>2026年7月26日，AI领域最具影响力的教育者和技术领袖Andrej Karpathy删除了Anthropic个人简介，入职仅68天疑似离职。此前Karpathy的职业生涯轨迹为：OpenAI → Tesla → OpenAI → Anthropic → ？。每次停留时间越来越短，引发"AI顶级人才为何留不住"的行业反思。</p>
+      <p><span class="bg-label">深层原因</span></p>
+      <p>Karpathy的流动折射出AI行业几个深层矛盾：①大公司内部研究方向与个人兴趣的不匹配；②商业压力下对基础研究的压缩；③开源与闭源的路线之争；④AI安全派（Anthropic）与加速派的根本分歧。顶级人才在不同组织间频繁流动，已成为AI行业独特现象——OpenAI高层出走、Google Brain核心成员离职创业，类似案例层出不穷。</p>
+      <p><span class="bg-label">行业数据</span></p>
+      <ol class="timeline">
+        <li>Karpathy在OpenAI第一次停留约<strong>2年</strong>，Tesla约<strong>5年</strong>，OpenAI第二次约<strong>1年</strong>，Anthropic仅<strong>68天</strong></li>
+        <li>2024-2026年AI行业高级人才流动率超过<strong>25%</strong></li>
+        <li>OpenAI联合创始人已<strong>全部出走</strong>（Altman除外）</li>
+      </ol>
+    </div>
+
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 人才流动有益</h4>
+        <ul>
+          <li>跨组织流动加速知识传播和技术扩散，推动行业整体进步</li>
+          <li>顶级人才的独立性保证其不被单一商业利益绑架</li>
+          <li>频繁流动反映行业活力，非终身雇佣制更适合快速迭代的AI领域</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ "候鸟"有代价</h4>
+        <ul>
+          <li>短期停留导致项目断裂和知识流失，组织难以积累长期技术优势</li>
+          <li>顶级人才频繁跳槽加剧行业内卷和薪酬泡沫，中小公司更难留住人</li>
+          <li>安全研究需要长期深度投入，68天离职意味着安全文化建设几乎不可能</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导 · 五问深入</h4>
+      <ol>
+        <li><strong>事实判断：</strong>Karpathy为何在Anthropic仅停留68天？是个人选择还是组织冲突？AI安全派与加速派的分歧是否已不可调和？</li>
+        <li><strong>数据支撑：</strong>AI行业高级人才流动率超25%、OpenAI联合创始人全部出走——这些数据揭示了什么样的行业结构问题？</li>
+        <li><strong>理论框架：</strong>组织行为学中的"心理契约"理论——当个人期望与组织文化不匹配时离职是理性选择；创新扩散理论——人才流动是技术知识跨组织传播的核心机制。</li>
+        <li><strong>价值判断：</strong>个人自由与组织稳定哪个更值得保护？AI安全研究是否需要"耐得住寂寞"的长期主义？</li>
+        <li><strong>利益权衡：</strong>自由流动的收益（知识扩散、个人成长）vs 代价（项目断裂、安全研究空洞化）；组织约束的收益（稳定产出、安全积累）vs 代价（创新僵化、人才流失）。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 本日追问 -->
+  <div class="daily-question">
+    <div class="label">🔗 本日追问</div>
+    <div class="question">从封杀中国AI到携程杀熟再到Karpathy离职，三者都指向同一个核心矛盾：<br>当技术能力成为权力，谁来制定规则？是国家、市场、还是个人？</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-07-26 17:30 | 数据源：19 | 采集条目：85 → 筛选20<br>
+  📰 每日资讯简报 v2 · 混合采集 + 动态分配 + 思辨引导<br>
+  股市数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
