@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量化交易资讯简报 | 2026-07-27</title>
+<style>
+  :root { --primary: #1a73e8; --bg: #f8f9fa; --card: #fff; --text: #333; --accent: #e8453c; --green: #2e7d32; --border: #e0e0e0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+  .header { background: linear-gradient(135deg, #1a237e, #0d47a1); color: #fff; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
+  .header h1 { font-size: 24px; font-weight: 700; }
+  .header .summary { font-size: 16px; margin-top: 10px; opacity: 0.9; }
+  .header .date { font-size: 13px; opacity: 0.7; margin-top: 6px; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 24px; margin-bottom: 24px; }
+  .toc a { color: var(--primary); text-decoration: none; display: block; padding: 4px 0; }
+  .toc a:hover { text-decoration: underline; }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin-bottom: 20px; }
+  .section h2 { color: var(--primary); font-size: 18px; border-bottom: 2px solid var(--primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .highlight-card { background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px 16px; margin-bottom: 12px; border-radius: 4px; }
+  .highlight-card strong { color: #e65100; }
+  .paper-card { border: 1px solid var(--border); border-radius: 6px; padding: 16px; margin-bottom: 12px; }
+  .paper-card h3 { font-size: 15px; margin-bottom: 8px; }
+  .paper-card h3 a { color: var(--primary); text-decoration: none; }
+  .paper-card h3 a:hover { text-decoration: underline; }
+  .paper-meta { font-size: 12px; color: #666; margin-bottom: 8px; }
+  .paper-summary { font-size: 14px; line-height: 1.6; }
+  .star { color: #ffc107; }
+  .star-dim { color: #ccc; }
+  .paper-list { list-style: none; padding: 0; }
+  .paper-list li { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+  .paper-list li:last-child { border-bottom: none; }
+  .paper-list li a { color: var(--primary); text-decoration: none; }
+  .paper-list li a:hover { text-decoration: underline; }
+  .report-item { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+  .report-item:last-child { border-bottom: none; }
+  .report-item .org { font-weight: 600; color: #1565c0; }
+  .report-item .title { font-size: 14px; }
+  .report-item .meta { font-size: 12px; color: #666; }
+  .factor-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .factor-table th { background: #e3f2fd; padding: 10px; text-align: left; }
+  .factor-table td { padding: 10px; border-bottom: 1px solid var(--border); }
+  .factor-table .positive { color: var(--green); }
+  .factor-table .negative { color: var(--accent); }
+  .market-item { padding: 8px 0; font-size: 14px; border-bottom: 1px dotted #e0e0e0; }
+  .tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 3px; font-size: 12px; margin-right: 4px; }
+  .footer { text-align: center; font-size: 12px; color: #999; padding: 20px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>📊 量化交易资讯简报</h1>
+  <div class="summary">长鑫科技上市引爆A股，创业板涨超1%全市场近4900股上涨；ML预测目标选择研究揭示排名预测优于收益率；QuantPedia推出因子数据库API；Q2基金季报暴露"老登卖老登、小登买小登"风格分化</div>
+  <div class="date">2026年7月27日 · 星期一 · 自动生成</div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <strong>📋 目录</strong>
+  <a href="#highlights">一、今日要点 (Highlights)</a>
+  <a href="#factor">二、因子看板</a>
+  <a href="#academic">三、学术前沿</a>
+  <a href="#strategy">四、策略研究</a>
+  <a href="#broker">五、券商金工观点</a>
+  <a href="#market">六、市场数据速览</a>
+</div>
+
+<!-- Highlights -->
+<div class="section" id="highlights">
+  <h2>🔥 今日要点</h2>
+  <div class="highlight-card">
+    <strong>1. 长鑫科技上市首日暴涨531%，成交1221亿创A股历史纪录</strong><br>
+    长鑫科技（DRAM龙头）上市首日高开471%，总市值超3.3万亿，半日成交额破千亿，超越工行成为A股市值一哥。创业板指涨超1.55%，全市场近4900只个股上涨。
+  </div>
+  <div class="highlight-card">
+    <strong>2. ML收益预测目标选择：排名预测大幅优于收益率预测</strong><br>
+    QuantPedia最新研究指出，Cakici和Zaremba论文证明：机器学习模型训练时预测股票排名而非原始收益率，可显著提升预测性能，这对因子投研方法论有重要启示。
+  </div>
+  <div class="highlight-card">
+    <strong>3. Q2基金季报揭示风格分化："老登卖老登、小登买小登"</strong><br>
+    国信证券发现：管理年限>10年基金经理减配电力设备(-5.1pp)和食品饮料(-3.5pp)；年限<5年经理增配通信(+3.0pp)、建筑材料(+2.8pp)等AI板块。从业年限越短，对AI板块配置力度越高。
+  </div>
+  <div class="highlight-card">
+    <strong>4. 中国6月工业利润同比+15.1%，电子行业利润大增96.9%</strong><br>
+    上半年电子行业利润大幅增长96.9%，显示科技制造板块基本面持续强劲。
+  </div>
+  <div class="highlight-card">
+    <strong>5. AI自主研究框架发布：从假设生成到结果验证全流程</strong><br>
+    Google/BC/Columbia团队提出AI Research Agent框架，LLM自主完成金融研究的假设发现循环，配备66个会计原语和标准化评估环境。
+  </div>
+</div>
+
+<!-- Factor Dashboard -->
+<div class="section" id="factor">
+  <h2>📈 因子看板</h2>
+  <table class="factor-table">
+    <tr>
+      <th>因子/板块</th>
+      <th>今日表现</th>
+      <th>趋势</th>
+    </tr>
+    <tr>
+      <td>创业板指</td>
+      <td class="positive">+1.55%</td>
+      <td>震荡上行</td>
+    </tr>
+    <tr>
+      <td>深成指</td>
+      <td class="positive">+1%以上</td>
+      <td>反弹</td>
+    </tr>
+    <tr>
+      <td>创新药概念</td>
+      <td class="positive">强势</td>
+      <td>哈三联4天3板</td>
+    </tr>
+    <tr>
+      <td>脑机接口</td>
+      <td class="positive">爆发</td>
+      <td>爱朋医疗20CM涨停</td>
+    </tr>
+    <tr>
+      <td>AI应用</td>
+      <td class="positive">异动拉升</td>
+      <td>智度股份涨停</td>
+    </tr>
+    <tr>
+      <td>算力硬件</td>
+      <td class="positive">拉升</td>
+      <td>长鑫科技带动</td>
+    </tr>
+    <tr>
+      <td>动力电池</td>
+      <td class="positive">爆发</td>
+      <td>政策+宁德双驱动</td>
+    </tr>
+    <tr>
+      <td>原油/能源期货</td>
+      <td class="negative">纯苯-6%/SC原油-6%</td>
+      <td>美伊局势扰动</td>
+    </tr>
+    <tr>
+      <td>贵金属</td>
+      <td class="positive">沪银+3%/铂+2%</td>
+      <td>避险需求</td>
+    </tr>
+    <tr>
+      <td>港股新消费</td>
+      <td class="positive">小米+7%/沪上阿姨+4%</td>
+      <td>持续走强</td>
+    </tr>
+  </table>
+  <p style="font-size:13px; color:#666; margin-top:12px;">
+    <strong>资金流向：</strong>沪深两市半日成交1.35万亿，较上日放量1242亿。<br>
+    <strong>北向资金：</strong>数据待更新（本周为全球央行决议密集周）。<br>
+    <strong>板块轮动：</strong>热点快速轮动，算力→创新药→脑机接口→AI应用交替领涨。
+  </p>
+</div>
+
+<!-- Academic Front -->
+<div class="section" id="academic">
+  <h2>🎓 学术前沿</h2>
+
+  <!-- Featured Papers -->
+  <div class="paper-card">
+    <h3>📌 <a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction</a></h3>
+    <div class="paper-meta">
+      来源：QuantPedia | 作者：Cakici & Zaremba | 发表：2026-07-23 | 可落地性：<span class="star">★★★</span><span class="star-dim">★★</span>
+    </div>
+    <div class="paper-summary">
+      该研究聚焦ML在股票收益预测中的一个被忽视的维度——预测目标的选择。作者证明，相比于直接预测收益率水平，<strong>预测股票排名</strong>能大幅提升模型表现。这一发现对因子投研的模型设计有直接启示：在训练截面收益预测模型时，应优先考虑排序目标而非绝对收益目标。
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <h3>📌 <a href="https://quantpedia.com/can-ai-do-financial-research/" target="_blank">Can AI Do Financial Research?</a></h3>
+    <div class="paper-meta">
+      来源：QuantPedia | 作者：Google, Boston College, Columbia | 发表：2026-07-16 | 可落地性：<span class="star">★★★</span><span class="star-dim">★★</span>
+    </div>
+    <div class="paper-summary">
+      来自Google、BC和Columbia的研究团队提出<strong>AI Research Agent框架</strong>，LLM不再仅是数据获取工具，而是能在"假设发现循环"中自主导航的研究代理。框架配备66个会计原语和标准化评估环境，实现从假设生成到结果验证的全流程自动化，为量化研究自动化提供新范式。
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <h3>📌 <a href="https://quantpedia.com/guardrails-make-the-researcher-what-an-ai-agent-got-right-and-wrong-replicating-nine-equity-anomalies/" target="_blank">Guardrails Make the Researcher: AI Agent Replicating Nine Equity Anomalies</a></h3>
+    <div class="paper-meta">
+      来源：QuantPedia | 发表：2026-06-30 | 可落地性：<span class="star">★★★★</span><span class="star-dim">★</span>
+    </div>
+    <div class="paper-summary">
+      自主研究代理在干净数据上复现9个已发表的美国股票异象。结果显示：<strong>样本外衰减是常态</strong>，忠实构建后无一存活——唯一的"幸存者"被发现是构建错误。该研究同时评估了AI代理的可信度问题，"护栏"(Guardrails)机制是确保研究质量的关键。
+    </div>
+  </div>
+
+  <!-- Paper Quick List -->
+  <h3 style="margin-top:20px; font-size:15px;">📄 论文速递</h3>
+  <ul class="paper-list">
+    <li><a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/commodity-crisis-analysis-how-portfolios-react-to-commodity-shocks/" target="_blank">Commodity Crisis Analysis – How Portfolios React to Commodity Shocks</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/can-ai-do-financial-research/" target="_blank">Can AI Do Financial Research?</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/quantpedia-api-as-an-on-demand-factor-database/" target="_blank">QuantPedia API as an On-Demand Factor Database</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/silicon-vs-satoshi-tactical-asset-rotation-between-nasdaq-100-and-bitcoin/" target="_blank">Silicon vs. Satoshi: Tactical Asset Rotation Between NASDAQ-100 and Bitcoin</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/guardrails-make-the-researcher-what-an-ai-agent-got-right-and-wrong-replicating-nine-equity-anomalies/" target="_blank">Guardrails Make the Researcher: AI Agent Replicating Nine Equity Anomalies</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/understanding-investment-products-through-factor-analysis-and-replication/" target="_blank">Understanding Investment Products Through Factor Analysis and Replication</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/quantpedia-in-june-2026/" target="_blank">QuantPedia in June 2026: 14 New Premium Strategies + Live Reporting Section</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/quantpepdia-premium-update-july-10th/" target="_blank">QuantPedia Premium Update – July 10th: 9 New Strategies</a> — QuantPedia</li>
+    <li><a href="https://quantpedia.com/quantpedia-premium-update-june-30th/" target="_blank">QuantPedia Premium Update – June 30th: 5 New Strategies</a> — QuantPedia</li>
+  </ul>
+  <p style="font-size:13px; color:#999; margin-top:8px;">注：arXiv q-fin RSS 今日无新论文返回，QuantConnect博客RSS亦未成功获取。</p>
+</div>
+
+<!-- Strategy Research -->
+<div class="section" id="strategy">
+  <h2>💡 策略研究</h2>
+
+  <div class="paper-card">
+    <h3><a href="https://quantpedia.com/silicon-vs-satoshi-tactical-asset-rotation-between-nasdaq-100-and-bitcoin/" target="_blank">Silicon vs. Satoshi：NASDAQ-100与比特币战术资产轮动</a></h3>
+    <div class="paper-meta">
+      来源：QuantPedia | 发表：2026-07-02 | <span class="tag">战术轮动</span><span class="tag">另类资产</span>
+    </div>
+    <div class="paper-summary">
+      BTC与QQQ在现代零售注意力经济中是竞争叙事，共享同一池投机资本。研究提出战术轮动策略，当科技叙事主导时资本集中QQQ/AI交易，BTC突破时注意力转向加密。利用FOMO、羊群效应和近期偏好等行为学因素构建轮动信号。
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <h3><a href="https://quantpedia.com/quantpedia-api-as-an-on-demand-factor-database/" target="_blank">QuantPedia API：按需因子数据库</a></h3>
+    <div class="paper-meta">
+      来源：QuantPedia | 发表：2026-07-07 | <span class="tag">因子分析</span><span class="tag">API</span><span class="tag">工具</span>
+    </div>
+    <div class="paper-summary">
+      投资者常面临只看到策略净值曲线却不知其驱动因素的问题。QuantPedia推出多因子分析API，可对任意净值曲线进行因子归因分解——揭示其中隐藏的动量、战术配置、防御叠加、跨资产轮动等系统性效应，为策略诊断提供标准化工具。
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <h3><a href="https://quantpedia.com/commodity-crisis-analysis-how-portfolios-react-to-commodity-shocks/" target="_blank">商品危机分析：投资组合如何应对商品冲击</a></h3>
+    <div class="paper-meta">
+      来源：QuantPedia | 发表：2026-07-18 | <span class="tag">风险管理</span><span class="tag">大宗商品</span>
+    </div>
+    <div class="paper-summary">
+      美伊冲突推升能源不确定性，原油供应风险加剧。研究分析商品冲击对更广泛金融资产的影响，为组合风险管理提供压力测试框架。当前霍尔木兹海峡与曼德海峡通航量下降，油价上行风险突出。
+    </div>
+  </div>
+</div>
+
+<!-- Broker Financial Engineering -->
+<div class="section" id="broker">
+  <h2>🏦 券商金工观点</h2>
+
+  <div class="report-item">
+    <span class="org">东吴证券 · 芦哲</span>
+    <div class="title">宏观量化经济指数周报：7月30大中城市商品房成交有望再度转正</div>
+    <div class="meta">2026-07-26 | 宏观量化</div>
+  </div>
+
+  <div class="report-item">
+    <span class="org">东吴证券 · 芦哲、唐遥衎</span>
+    <div class="title">宏观深度报告：如何用AI自动写研报？——搭建Hermes架构的证券分析师"超级助理"</div>
+    <div class="meta">2026-07-26 | <span class="tag">AI+金工</span></div>
+  </div>
+
+  <div class="report-item">
+    <span class="org">国信证券 · 邵兴宇、田地、董德志</span>
+    <div class="title">多资产周报：美债收益率持续冲高</div>
+    <div class="meta">2026-07-27 | 多资产配置</div>
+  </div>
+
+  <div class="report-item">
+    <span class="org">国信证券</span>
+    <div class="title">"老登"基金经理卖"老登"、"小登"基金经理买"小登"：Q2基金季报风格分化深度分析</div>
+    <div class="meta">2026-07-27 | <span class="tag">资金流向</span><span class="tag">风格因子</span></div>
+  </div>
+
+  <div class="report-item">
+    <span class="org">东海证券 · 王鸿行等</span>
+    <div class="title">资产配置周报：海外需求复苏与油价上涨，关注政策方向和科技巨头业绩指引</div>
+    <div class="meta">2026-07-27 | 资产配置</div>
+  </div>
+
+  <div class="report-item">
+    <span class="org">国金证券 · 牟一凌、季宏坤</span>
+    <div class="title">A股策略周报：静候</div>
+    <div class="meta">2026-07-26 | 策略</div>
+  </div>
+
+  <div class="report-item">
+    <span class="org">东吴证券 · 陈刚、孔思迈</span>
+    <div class="title">策略周评：如何把握后续的科技硬件修复机会</div>
+    <div class="meta">2026-07-26 | <span class="tag">科技硬件</span></div>
+  </div>
+
+  <div class="report-item">
+    <span class="org">中银证券 · 王君、徐沛东</span>
+    <div class="title">策略周报：静待共识凝聚</div>
+    <div class="meta">2026-07-26 | 策略</div>
+  </div>
+</div>
+
+<!-- Market Data -->
+<div class="section" id="market">
+  <h2>📊 市场数据速览</h2>
+
+  <h3 style="font-size:15px; margin-bottom:10px;">A股市场</h3>
+  <div class="market-item">✅ 创业板指 +1.55%，深成指涨超1%</div>
+  <div class="market-item">✅ 长鑫科技上市首日涨531%，半日成交1221亿，创A股个股单日成交历史纪录</div>
+  <div class="market-item">✅ 沪深两市半日成交1.35万亿，较上日放量1242亿</div>
+  <div class="market-item">✅ 全市场近4900只个股上涨</div>
+  <div class="market-item">✅ 创新药概念走强：哈三联4天3板</div>
+  <div class="market-item">✅ 脑机接口概念爆发：创新医疗3天2板，爱朋医疗20CM涨停</div>
+  <div class="market-item">✅ AI应用异动拉升：智度股份涨停</div>
+
+  <h3 style="font-size:15px; margin-bottom:10px; margin-top:16px;">港股市场</h3>
+  <div class="market-item">✅ 港股新消费持续走强：小米集团+7%，沪上阿姨+4%</div>
+  <div class="market-item">✅ 港交所推出中际旭创股票期权</div>
+
+  <h3 style="font-size:15px; margin-bottom:10px; margin-top:16px;">期货市场</h3>
+  <div class="market-item">🔴 纯苯/燃料油/SC原油跌超6%（美伊局势冲击）</div>
+  <div class="market-item">🔴 合成橡胶/苯乙烯跌近6%</div>
+  <div class="market-item">🟢 沪银涨近3%，钯铂涨超2%</div>
+
+  <h3 style="font-size:15px; margin-bottom:10px; margin-top:16px;">宏观经济</h3>
+  <div class="market-item">✅ 中国6月规模以上工业企业利润同比+15.1%</div>
+  <div class="market-item">✅ 上半年电子行业利润大增96.9%</div>
+  <div class="market-item">✅ 本周全球瞩目：美日央行利率决议+MAG7财报+国内重磅会议</div>
+
+  <h3 style="font-size:15px; margin-bottom:10px; margin-top:16px;">海外动态</h3>
+  <div class="market-item">🟡 英伟达拟为OpenAI数据中心提供2500亿美元担保</div>
+  <div class="market-item">🟡 美伊暂停互袭，霍尔木兹海峡航运管理会谈有进展</div>
+  <div class="market-item">🟡 大和将特斯拉目标价从395美元下调至345美元</div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  量化交易资讯简报 · 自动生成 · 数据来源：arXiv, QuantPedia, 华尔街见闻, 财联社, 东方财富<br>
+  Powered by Hermes Agent · 2026
+</div>
+
+</div>
+</body>
+</html>
