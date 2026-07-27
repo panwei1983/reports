@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <title>arXiv 论文周报 - 2026年7月27日</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-orange: #ffa657;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #bc8cff;
+            --border: #30363d;
+            --link: #58a6ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* TOC Sidebar */
+        .toc-sidebar {
+            width: 280px;
+            min-width: 280px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 20px 15px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .toc-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .toc-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .toc-content a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .toc-content a:hover {
+            color: var(--accent);
+            background-color: var(--bg-tertiary);
+        }
+
+        .toc-content .toc-h2 {
+            font-weight: 600;
+            margin-top: 8px;
+            color: var(--text-primary);
+        }
+
+        .toc-content .toc-h3 {
+            padding-left: 20px;
+        }
+
+        .toc-content .toc-paper {
+            padding-left: 35px;
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            padding: 30px 40px;
+            margin: 0 auto;
+        }
+
+        /* Headings - 改进层级 */
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: var(--accent);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 12px 0;
+            color: var(--accent-orange);
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 15px 0 8px 0;
+            color: var(--text-primary);
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+
+        .paper-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .paper-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .paper-meta span {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .paper-abstract {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .paper-contribution {
+            font-size: 13px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+            color: var(--accent-green);
+        }
+
+        .paper-link {
+            margin-top: 8px;
+        }
+
+        .paper-link a {
+            color: var(--link);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .paper-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        /* Ten-Q Section */
+        .ten-q-section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+
+        .tenq-paper-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .question-item {
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .question-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .question-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 6px;
+        }
+
+        .question-answer {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-left: 12px;
+            border-left: 2px solid var(--border);
+        }
+
+        .question-answer strong {
+            color: var(--accent-green);
+        }
+
+        .question-answer code {
+            background-color: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .question-answer a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        /* Trend Item */
+        .trend-item {
+            padding: 6px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .trend-item strong {
+            color: var(--accent-green);
+        }
+
+        /* Reading List Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: var(--bg-tertiary);
+            color: var(--accent);
+            padding: 8px 12px;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+        }
+
+        td a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Paragraphs and lists */
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Back navigation */
+        .back-nav {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.9);
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        .back-nav a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .back-nav a:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .toc-sidebar {
+                display: none;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 左侧导航 -->
+    <nav class="toc-sidebar">
+        <div class="toc-header">
+            <span class="toc-title">📋 目录</span>
+            <button class="toc-toggle" onclick="toggleToc()">☰</button>
+        </div>
+        <div class="toc-content">
+            <a href="#trends" class="toc-h2">一、本周趋势</a>
+            <a href="#categories" class="toc-h2">二、分类汇总（20 篇）</a>
+            <a href="#广告系统-3-篇" class="toc-h3">💰 广告系统（3 篇）</a>
+            <a href="#排序-重排-2-篇" class="toc-h3">📊 排序/重排（2 篇）</a>
+            <a href="#召回-检索-5-篇" class="toc-h3">🔍 召回/检索（5 篇）</a>
+            <a href="#推荐系统-5-篇" class="toc-h3">🎯 推荐系统（5 篇）</a>
+            <a href="#LLM-RAG-4-篇" class="toc-h3">🤖 LLM/RAG（4 篇）</a>
+            <a href="#表示学习-1-篇" class="toc-paper">🧠 表示学习（1 篇）</a>
+            <a href="#reading-list" class="toc-h2">建议精读汇总</a>
+            <a href="#top-papers" class="toc-h2">三、Top Papers 论文阅读十问（0 篇）</a>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-content">
+        <div class="back-nav"><a href="index.html">← 返回周报列表</a></div>
+        <h1>📊 搜索/推荐/广告召回排序论文周报</h1>
+        <div class="report-meta" style="color: var(--text-secondary); margin-bottom: 20px;">2026年7月27日 | 共 20 篇论文，6 个方向</div>
+        <h2 id="trends">📈 一、本周趋势</h2>
+     <div class="trend-item"><strong>广告系统方向</strong>：检索增强生成（RAG, Retrieval-Augmented Generation）技术深入广告搜索场景，Walmart 提出 Inventory-Aware RAG 模型将库存感知与语义检索结合，实现赞助搜索查询的动态优化，填充率提升 68%；LLM 微调（LoRA, Low-Rank Adaptation）增强广告相关性判断准确率达 89.43%；IntentTune 解决电商搜索中大量"未知"意图查询问题。</div>
+     <div class="trend-item"><strong>排序/重排方向</strong>：扩散模型（Diffusion Model）首次应用于重排（Reranking）场景，Diffusion-GR2 将生成推理与重排统一；UniSGR 提出语义 ID（Semantic ID）生成与排序的端到端统一框架。</div>
+     <div class="trend-item"><strong>召回/检索方向</strong>：大语言模型（LLM, Large Language Model）赋能双塔检索的实时负采样，通过聚类提升负样本质量；词汇鸿沟（Vocabulary Gap）桥接方法解决稠密编码器在稀疏检索上的性能差距；离策略 REINFORCE 实现生成式检索的长期稳定优化。</div>
+     <div class="trend-item"><strong>推荐系统方向</strong>：异构生成推荐 HGenPush 在快手推送系统落地，日活提升 0.181%；智能体推荐系统（Agentic Recommender System）路线图定义主动信息寻求能力；LBR 缓解 LLM 推荐中的长度偏差（Length Bias）；时间间隔编码（Temporal Gap Tokenization）增强生成式推荐的时间感知。</div>
+     <div class="trend-item"><strong>LLM/RAG方向</strong>：PRA-RAG 提出可证明鲁棒的聚合方法抵御检索腐蚀（Retrieval Corruption）；逻辑查询树（Logical Query Tree）实现 RAG 的多步查询规划；行为锚定 LLM 搜索评估与用户历史偏好对齐；成本感知多模态 RAG 区分模态相关性与模态效用。</div>
+        <h2 id="categories">📚 二、分类汇总（20 篇）</h2>
+        <div class="category-section">
+          <h3 id="广告系统-3-篇" class="category-title">💰 广告系统（3 篇）</h3>
+     <div class="paper-card" id="paper-1">
+       <div class="paper-title">⭐ 1. Next-Gen Sponsored Search: Crafting the Perfect Query with Inventory-Aware RAG (InvAwr-RAG) Based GenAI</div>
+       <div class="paper-meta"><span>👤 ：Md Omar Faruk Rokon, Weizhi Du, Zhaodong Wang, Musen Wen</span><span>⭐ 评分: ：5.80（关键词 14.0 + 机构 0.6）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：赞助搜索（Sponsored Search）在电商收入生成中扮演关键角色，广告主通过竞价关键词捕获用户搜索查询的注意力。然而，由于关键词空间庞大且不断演化、意图模糊及主题多样性，识别相关关键词面临重大挑战。本文指出大量查询无法检索到任何赞助广告，存在显著的收入机会。为此提出库存感知 RAG 生成式 AI 模型（InvAwr-RAG, Inventory-Aware RAG-based Generative AI），将高级语义检索与实时库存数据整合，结合动态生成和历史成功的查询，与可用库存和广告活动对齐，同时多样化重写查询以增强相关性和用户参与度。初步结果显示填充率显著提升 68%，且相关性指标保持平衡，表明广告收入增长潜力巨大。InvAwr-RAG 为动态查询优化树立新标准，显著改善广告相关性、广告主投资回报率（ROI, Return on Investment）及 Walmart 数字平台的用户体验。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.03880" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-2">
+       <div class="paper-title">2. Enhancement of E-commerce Sponsored Search Relevancy with LLM</div>
+       <div class="paper-meta"><span>👤 ：Md Omar Faruk Rokon, Andrei Simion, Weizhi Du, Musen Wen, Hong Yao, Kuang-chih Lee</span><span>⭐ 评分: ：5.40（关键词 13.0 + 机构 0.6）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：赞助搜索是搜索引擎的核心收入来源，广告主竞价与用户查询对齐的关键词。然而关键词空间庞大且不断演化、意图模糊及多语言主题范围使广告相关性判断极具挑战。本文提出基于预训练大语言模型（LLM, Large Language Model）的广告相关性模型，通过低秩自适应（LoRA, Low-Rank Adaptation）微调 LLAMA2 7B 模型，显著增强搜索精度和运营效率。引入查询-广告标题分类器，将搜索交互分为相关、部分相关和不相关三类。微调模型在综合测试数据集上达到 89.43% 的准确率，超越基线模型和 GPT-4 等先进语言模型。LoRA 与基础模型的整合在搜索准确率、成本效率和运营隐私方面均取得显著提升。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.03886" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-3">
+       <div class="paper-title">3. IntentTune: Using user demand and personalization to resolve "unknown" query intents for e-commerce search</div>
+       <div class="paper-meta"><span>👤 ：Rachith Aiyappa, Ishita Khan, Chester Palen-Michel, Jayanth Yetukuri, Samarth Agrawal, Mehran Elyasi, Shuang Zhou</span><span>⭐ 评分: ：4.80（关键词 11.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：理解用户意图是电商搜索返回相关结果的基础。然而，大量真实查询未被充分指定（如"手表"或"衬衫"），缺乏性别或年龄段等显式属性。这种模糊性对查询意图检测模型构成重大挑战。本文提出 IntentTune 框架，利用（1）用户特定行为信号（搜索历史、浏览活动和画像属性）或（2）汇总所有用户的群体级需求模式来解决模糊或未指定查询的意图问题。实验在真实电商数据上进行，首先证明群体级需求模式不足以可靠推断未指定查询的意图，然后证明用户特定行为信号——尤其是先前搜索查询——在从未指定查询推断性别、年龄段、产品类别和尺码意图方面优于群体级统计和静态画像信息。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.01530" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="排序-重排-2-篇" class="category-title">📊 排序/重排（2 篇）</h3>
+     <div class="paper-card" id="paper-4">
+       <div class="paper-title">⭐ 4. Diffusion-GR2: Diffusion Generative Reasoning Re-ranker</div>
+       <div class="paper-meta"><span>👤 ：Zhuoxuan Zhang, Kangqi Ni, Yuhang Chen, Mingfu Liang, Xiaohan Wei, Yunchen Pu, Fei Tian, Chonglin Sun, Frank Shyu, Adam (Yang)Song, Sandeep Pandey, Luke Simon, Tianlong Chen, Xi Liu</span><span>⭐ 评分: ：5.60（关键词 13.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：生成推理重排器（Generative Reasoning Re-ranker）通过在重排候选列表前发出思维链（CoT, Chain-of-Thought）实现强推荐精度，但推理速度慢：自回归（AR, Autoregressive）解码器对每个推理 token 执行一次顺序前向传播，且推理轨迹远超其产生的排序结果。为降低此成本，块扩散语言模型（Block-Diffusion Language Model）通过少量去噪步骤并行解码多个位置，速度显著提升。然而将 AR 重排器直接转换为扩散模型会引入两个精度差距：（1）结构差距：答案位置并行去噪且独立评分，导致解码器发出无效排序（重复、遗漏或超出集合的标识符）；（2）分布差距：在固定教师轨迹上微调转换模型相对于自身推理解码是离策略的。为同时弥合两个差距并保持加速，本文提出 Diffusion-GR2 方法，将 AR 推理重排器 GR2 转换为块扩散重排器。首先，转换微调（CFT）使 AR 初始化的扩散模型自行去噪为有效排列；然后，在线策略蒸馏（OPD）在模型自身解码轨迹上用 AR 教师的密集逐 token 目标进行监督；最后，在 OPD 的在线策略基础上应用强化学习（RL, Reinforcement Learning）阶段优化重排奖励。在 Amazon Beauty 上的实验表明 Diffusion-GR2 恢复至与 AR 重排器近乎持平，同时块并行解码将推理吞吐量提升 2.4-3.5 倍。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.01170" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-5">
+       <div class="paper-title">5. UniSGR: Unified Framework for Semantic ID Generation and Ranking</div>
+       <div class="paper-meta"><span>👤 ：Jiawei Sun, Jun Yang, Ziyue Guo, Dongyue Xu, Jianan Yan, Lifang Deng, Xiaoyi Zeng</span><span>⭐ 评分: ：5.20（关键词 12.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：推荐系统在现代电商平台中扮演关键角色。虽然生成式检索（Generative Retrieval）已成为缓解多阶段级联架构局限的有前途范式，但现有方法仍难以实现细粒度多目标排序。为弥合此差距，本文提出 UniSGR 统一框架，将语义 ID（Semantic ID）生成与排序统一。UniSGR 采用两阶段训练范式：多场景预训练阶段从混合业务场景数据学习，随后场景特定对齐阶段联合优化价值感知并行多 token 预测（VA-PMTP, Value-Aware Parallel Multi-Token Prediction）和统一多目标排序模块。为更好对齐生成与下游排序，引入由漏斗感知对比学习（Funnel-Aware Contrastive Learning）引导的任务感知 token（TAT, Task-Aware Tokens）。此外，提出带重组 KV 缓存的语义树注意力（STARK, Semantic Tree Attention with Reorganized KV cache）推理策略，消除传统束搜索的关键效率瓶颈。在大规模电商平台上的离线实验验证了 UniSGR 的有效性和可扩展性。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.04068" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="召回-检索-5-篇" class="category-title">🔍 召回/检索（5 篇）</h3>
+     <div class="paper-card" id="paper-6">
+       <div class="paper-title">⭐ 6. Real-Time Hard Negative Sampling via LLM-based Clustering for Large-Scale Two-Tower Retrieval</div>
+       <div class="paper-meta"><span>👤 ：Ivan Ji, Liuyi Hu, Harrison (Zihao)Zhao, Lei Huang, Qunshu Zhang, Max (Xiangjun)Fan, Aameek Singh</span><span>⭐ 评分: ：5.50（关键词 13.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：双塔模型（Two-Tower Model）广泛用于大规模推荐系统的检索阶段。业界训练双塔模型的标准方法通常涉及批内和/或批外负采样。然而这些方法通常产生模型可快速学习的简单负样本，未能充分挑战模型。为解决此问题，本文提出一种基于大语言模型（LLM, Large Language Model）聚类的自监督困难负采样技术，在模型训练期间利用 LLM 从同一聚类生成困难负样本。通过利用 LLM 学习媒体表示，所提方法确保生成的负样本更具挑战性和信息量。该实时采样框架设计为可无缝集成到生产模型中，能够处理数十亿训练数据点且计算复杂度极低。在公开数据集上的实验以及大规模在线系统的部署表明，所提负采样技术优于广泛使用的业界方法。此外，工业应用分析揭示该方法有助于打破推荐中的固有反馈循环并显著减少流行度偏差（Popularity Bias）。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.00448" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-7">
+       <div class="paper-title">7. Why Advanced Encoders Lag on Sparse Retrieval? The Answer and an Approach to Bridging Vocabulary Gaps</div>
+       <div class="paper-meta"><span>👤 ：Zhichao Geng, Yang Yang</span><span>⭐ 评分: ：5.10（关键词 12.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：虽然先进基础模型如 ModernBERT 在稠密检索（Dense Retrieval）上显著超越旧架构，但它们在学习的稀疏检索（LSR, Learned Sparse Retrieval）上却令人惊讶地落后于老化的 BERT-base 基线。本文识别根本原因为词汇鸿沟（Vocabulary Gap）：现代分词器使用原始的、大小写敏感的词汇表进行无损重建，将单一语义单元映射到冗余的表面形式，浪费模型容量于形态噪声并阻碍词汇匹配。我们通过理论框架形式化这一直觉，证明适当的词汇粗粒化可以在保持语义完整性的条件下通过降低假设类复杂度来紧化泛化边界。为此提出词汇迁移（VT, Vocabulary Transfer），一种模型无关的框架，以最小计算成本将先进编码器迁移到稀疏友好的规范化词汇表。VT 利用基于空间拓扑的语义初始化（Semantic Initialization）保持几何结构，以及激活势校准（APC, Activation Potential Calibration）机制对齐预训练流形与稀疏约束，防止标准微调中观察到的死神经元和稠密坍缩。实验上，VT 普遍有效：使 ModernBERT 在 BEIR 基准上达到 52.4 nDCG（+4.7 提升），挽救 RoBERTa-large 等失败模型，并无缝泛化到无推理架构和特定领域。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.00004" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-8">
+       <div class="paper-title">8. Long-Term Optimization for Large-Scale Generative Retrieval with Off-Policy REINFORCE</div>
+       <div class="paper-meta"><span>👤 ：Artem Matveev, Sergei Makeev, Aleksei Krasilnikov, Vladimir Baikalov, Sergei Liamaev, Kirill Khrylchenko</span><span>⭐ 评分: ：4.80（关键词 11.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：生成式检索已成为大规模推荐的热门范式，但通常以监督下一项预测目标训练，未直接优化长期用户满意度。本文将推荐建模为会话级序列决策问题，引入基于离策略 REINFORCE 的自回归方法训练生成式检索器。与先前工作的单步离策略校正不同，提出基于自回归形式的多步重要性权重近似。为支持离线评估，训练用户反馈模型模拟用户对生成推荐的响应，将双重鲁棒离策略评估（Doubly Robust Off-Policy Evaluation）适配到推荐的序列决策设置。进一步引入基于反馈模型的测试时扩展（Test-Time Scaling）程序，模拟未来响应并选择具有最高预测长期回报的推荐。在公开大规模 Yambda-5B 数据集上的实验表明，RL 智能体在会话累积奖励的离线估计上优于下一项和下一正预测基线，同时基本保持检索质量。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.02818" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-9">
+       <div class="paper-title">9. Relevance-Based Embeddings: Lightweight Candidate Retrieval via Heavy-Ranker Calls</div>
+       <div class="paper-meta"><span>👤 ：Kirill Shevkunov, Andrey Ploskonosov, Liudmila Prokhorenkova</span><span>⭐ 评分: ：4.60（关键词 10.5 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：在许多机器学习应用中，需要高效检索查询的最相关物品。相关性函数通常是昂贵的相似度模型，使穷举搜索不可行。典型解决方案是训练另一模型将查询和物品分别嵌入到向量空间，通过点积或余弦相似度定义相似度，允许通过快速近似最近邻搜索查找相关物品，代价是质量有所降低。为补偿此降低，找到的物品（候选）由昂贵排序模型重新排序。本文研究一种替代候选选择方法，利用昂贵模型的分数来改进查询和物品的表示。核心思想是将每个查询（物品）描述为其对一组支持物品（查询）的相关性，并使用这些新表示获得查询（物品）嵌入。理论上证明此类嵌入在温和条件下足够强大以近似任何复杂相似度模型。还研究了支持物品的选择，这是所提方法的关键要素。在多种学术和生产数据集上的实验展示了该方法的有效性。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.03515" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-10">
+       <div class="paper-title">10. Planning over Matrix-Factorization MDPs for Candidate Generation</div>
+       <div class="paper-meta"><span>👤 ：Mikhail Trapeznikov, Maksim Utushkin</span><span>⭐ 评分: ：4.40（关键词 10.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：对于推荐服务，我们将用户旅程视为物品推荐链：有用的物品改变用户状态，因此决定下一步应检索什么。标准矩阵分解检索忽略这一点——构建一个用户向量并按静态分数返回 Top-K 物品，将其视为独立。本文提出一个窄问题：何时值得在用户状态动态上进行规划？为此将 Top-K 检索建模为基于隐式 ALS 后验 (A⁻¹, u) 的马尔可夫决策过程（MDP, Markov Decision Process），其中动作是物品，转移是封闭形式的秩一折叠，轨迹奖励结合相关性相似度和后验对齐项。在相同固定嵌入下，比较静态检索、单步规划和视野-K 的蒙特卡洛树搜索（MCTS, Monte Carlo Tree Search）在五个数据集和两种协议上的表现。动态感知规划在所有数据集的留末-n 分割下倾向于超越静态检索，且在 MovieLens-1M 和 VK-LSVD 切片的全局时间分割下增益保持。单步前瞻已捕获大部分增益，因此轻量级规划层将静态 Top-K 评分转化为短决策，在固定协同过滤嵌入上改善检索，无需重训练或改变表示。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.02115" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="推荐系统-5-篇" class="category-title">🎯 推荐系统（5 篇）</h3>
+     <div class="paper-card" id="paper-11">
+       <div class="paper-title">⭐ 11. HGenPush: A Heterogeneous Generative Recommendation Architecture for Industrial Push Notification Systems</div>
+       <div class="paper-meta"><span>👤 ：Xiao Liang, Jiali Feng, Xin Feng, Yiqing Wang, Baolin Ye, Siyao Feng, Zhihui Deng, Cunyi Zhang, Huajin Sun, Xuanping Li, Kaiqiao Zhan, Yanan Niu, Kun Gai</span><span>⭐ 评分: ：5.30（关键词 12.5 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：随着内容平台的爆发式增长，推荐系统需要更好地满足用户需求以提升用户满意度和留存率。以短视频平台为例，用户不仅寻求高质量内容，还寻求可信作者。虽然生成式推荐系统近年来取得突破，但现有方法主要生成单一类型推荐内容，且通常采用低效的自回归范式生成语义 ID（Semantic ID）。本文提出端到端异构生成推荐架构 HGenPush。首先设计混合用户行为理解模块，整合多场景和多视角行为以捕捉精确用户兴趣；然后设计双分支异构生成推荐模块，在统一框架内整合视频推荐和作者推荐；此外，为提高生成效率，设计轻量级多 token 预测方法摒弃自回归范式；最后设计用户消费偏好对齐模块，利用用户反馈作为奖励信号引导模型生成更高质量内容。HGenPush 已部署在快手推送通知系统上，实现日活跃用户 0.181% 的显著提升。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.03362" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-12">
+       <div class="paper-title">12. Autonomous Information Seeking: A Roadmap for Agentic Recommender Systems</div>
+       <div class="paper-meta"><span>👤 ：Xinyu Lin, Yashar Deldjoo, Sunhao Dai, Honghui Bao, Xiaopeng Ye, Fatemeh Nazary, Wenjie Wang, Tommaso Di Noia, Jun Xu, Tat-Seng Chua</span><span>⭐ 评分: ：5.00（关键词 12.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：基于大语言模型（LLM, Large Language Model）的智能体在推荐系统中的快速整合推动了从静态、基于排序的流水线向能够推理、规划和行动的自主交互系统的转变。本综述提供了这一新兴领域的全面概述，引入了基于自主性水平和三个核心范式的统一分类法：智能体辅助推荐、智能体作为推荐器和智能体作为用户模拟器。自主性框架沿递增的主动性、上下文感知、交互灵活性和适应性能力组织现有方法。在此基础上，综述分析了每个范式如何采用不同的智能体架构，以及智能体如何增强配置、记忆、工具使用、工作流和优化机制等关键组件。进一步考察了智能体推荐的评估方法，涵盖自动指标、基于 LLM 的评判和基于模拟的评估，并讨论了其在捕捉推理质量、用户体验和系统行为方面的局限。最后概述了终身用户建模、上下文抽象、多模态对齐、可控性、可信度、隐私、可扩展性和效率等方面的开放挑战。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.04433" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-13">
+       <div class="paper-title">13. Bi-NAS: Towards Effective and Personalized Explanation for Recommender Systems via Bi-Level Neural Architecture Search</div>
+       <div class="paper-meta"><span>👤 ：Longfeng Wu, Yao Zhou, Tong Zeng, Zhimin Peng, Bhanu Pratap Singh Rawat, Lecheng Zheng, Giovanni Seni, Dawei Zhou</span><span>⭐ 评分: ：4.70（关键词 11.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：推荐系统在帮助用户导航海量信息方面至关重要，提供个性化建议和有效解释。虽然先前努力试图提供此类解释，但在各种场景中评估其有效性仍是挑战。增强这些解释对于提升用户参与度、信任和决策至关重要。为促进推荐系统中的有效解释，本文提出双层神经架构搜索（Bi-NAS, Bi-Level Neural Architecture Search）框架优化解释。该方法通过探索层内和层间设计空间同时精炼交叉注意力机制和特征交互函数。此外，集成大语言模型（LLM, Large Language Model）通过零样本提示增强解释生成，产生更有效和个性化的论证。通过将用户特征偏好与物品质量分数对齐，确保解释反映用户意图和物品属性，提高透明度和推理深度。在四个真实数据集上的广泛评估表明 Bi-NAS 不仅提升推荐精度，还显著改善推荐系统解释的有效性。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.01387" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-14">
+       <div class="paper-title">14. LBR: Towards Mitigating Length Bias in Large Language Models for Recommendation</div>
+       <div class="paper-meta"><span>👤 ：Hongchen Li, Bohao Wang, Jingbang Chen, Weiqin Yang, Hang Pan, Bingde Hu, Can Wang, Jiawei Chen</span><span>⭐ 评分: ：4.50（关键词 10.5 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：大语言模型（LLM, Large Language Model）近期作为推荐系统的强大骨干出现，将推荐重新表述为 token 级生成任务。尽管有前景，本文识别了一个普遍但未被充分探索的问题：长度偏差（Length Bias）。由于物品由不同长度的文本描述表示，基于 LLM 的推荐器可能在两方面系统性地偏差：在输入侧，较长的物品描述在上下文中占据更多 token，因此在用户偏好建模期间获得不成比例的聚合注意力质量；在输出侧，基于求和自回归对数似然分数的解码本质上不利于长物品。更糟糕的是，传统长度归一化可能引入额外偏差甚至降低推荐性能。为解决此问题，提出 LBR（Length Bias Reduction），一种轻量级模型无关框架缓解 LLM 推荐中的长度偏差。LBR 通过长度感知注意力校准（Length-Aware Attention Calibration）缓解输入侧偏差，将长度相关偏移纳入注意力 logits 以中和注意力偏斜；对于输出侧，引入有效信息长度归一化（Effective Information Length Normalization），用从前缀树分支结构导出的信息论长度替代替代朴素 token 计数。在三个真实 Amazon 数据集和两个代表性 LLM 推荐器上的实验表明 LBR 显著缓解长度偏差，同时一致提升推荐精度和公平性，额外训练和推理开销可忽略不计（NDCG@5 平均增益 16.82%）。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.04270" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-15">
+       <div class="paper-title">15. Beyond Item Order: Temporal Gap Tokenization for Generative Recommendation with Semantic IDs</div>
+       <div class="paper-meta"><span>👤 ：Chengkai Huang, Tianqi Gao, Hongtao Huang, Quan Z. Sheng, Lina Yao</span><span>⭐ 评分: ：4.30（关键词 10.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：基于语义 ID（Semantic ID）的生成式推荐近期成为序列推荐的可扩展范式，其中每个物品由紧凑的离散编码序列表示，下一项预测被表述为代码生成。然而现有方法通常将用户历史构建为静态物品标识符序列，将连续交互间的经过时间排除在生成输入之外。这种时间盲目性是有问题的，因为交互间间隔提供关于兴趣连续性和偏好漂移的有用线索。本文提出 ChronoSID，一种轻量级时间增强框架用于基于语义 ID 的生成式推荐。ChronoSID 从两个互补视角将时间信号注入标准三阶段语义 ID 流水线：首先，引入时间感知场感知掩码自编码（TA-FAMAE, Time-Aware Field-Aware Masked Auto-Encoding），以辅助时间间隔预测目标正则化物品表示学习；其次，将历史交互间隔离散化为固定对数尺度间隔 token，并与语义 ID 元组交错作为序列到序列生成器的编码器输入。此设计在保持紧凑 SID 生成范式的同时使模型能够捕捉时间感知转移模式。在 Amazon 评论基准上的实验表明 ChronoSID 一致优于 ReSID 和其他竞争性生成式推荐基线。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.03918" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="LLM-RAG-4-篇" class="category-title">🤖 LLM/RAG（4 篇）</h3>
+     <div class="paper-card" id="paper-16">
+       <div class="paper-title">⭐ 16. PRA-RAG: Provably Robust Aggregation in Retrieval-Augmented Generation against Retrieval Corruption</div>
+       <div class="paper-meta"><span>👤 ：Xue Tan, Yi Zheng, Chang Huo, Yunruo Zhang, Yu Liu, Hao Luan, Zhuyang Yu, Xiaoyan Sun, Ping Chen, Jun Dai</span><span>⭐ 评分: ：5.40（关键词 13.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：检索增强生成（RAG, Retrieval-Augmented Generation）通过引入外部知识增强大语言模型（LLM, Large Language Model），有效缓解其固有的知识局限。然而 RAG 仍易受投毒攻击（Poisoning Attack）影响，攻击者操纵检索文本误导模型输出。现有防御机制通常缺乏理论鲁棒性保证，且当 LLM 对检索内容知识有限时表现不可靠。本文提出 PRA-RAG，一种可证明鲁棒的检索聚合算法，旨在抵御对检索文本的投毒攻击。PRA-RAG 采样多组检索文本组合，利用嵌入空间中的几何结构识别鲁棒子集，从中导出稳定的聚合表示。提供了被腐蚀检索内容最大影响的理论边界，并建立了 RAG 鲁棒性的定量度量。在多个基准和 RAG 架构上的实验表明，PRA-RAG 将攻击成功率降至低至 1%，同时保持 71% 的准确率，显著优于代表性最先进方法。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.00012" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-17">
+       <div class="paper-title">17. When RAG Meets Query Planning: Logical Query Trees for Resolving Exploratory Reasoning Problems</div>
+       <div class="paper-meta"><span>👤 ：Ganlin Xu, Linghao Zhang, Zhitao Yin, Hongda Xi, Chen Yang, Jiaqing Liang, Weijia Lu, Sihang Jiang, Yanghua Xiao, Deqing Yang</span><span>⭐ 评分: ：5.00（关键词 12.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：检索增强生成（RAG, Retrieval-Augmented Generation）有效将大语言模型（LLM, Large Language Model）锚定于外部知识，但在探索性推理问题（ERP, Exploratory Reasoning Problem）——即涉及高不确定性和模糊性的复杂查询——上表现挣扎。解决 ERP 需要路径不明确的复杂推理，容易导致检索噪声和误差累积。此外，缺乏端到端规划机制使生成有效轨迹变得困难。受数据库查询规划启发，本文引入 PlanRAG 框架，将自然语言 ERP 建模为逻辑查询树（LQT, Logical Query Tree）。将 ERP 转换为 LQT 并非易事，因为结构化 SQL 和非结构化自然语言之间存在表示和优化差距。本文首先将 ERP 分解为原子查询，然后使用由多互补维度成本模型引导的动态规划将其组织为 LQT。最后在 LQT 上执行迭代聚合、重写、检索和生成，并发处理节点并向上传播中间结果，跨多线程进一步并行化以提高效率。在新建的 WikiWeb-ERP 数据集上的实验表明 PlanRAG 优于最先进的迭代式和图式 RAG 系统。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.00508" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-18">
+       <div class="paper-title">18. As It Was: Aligning LLM Search Evaluation with Historical User Preferences</div>
+       <div class="paper-meta"><span>👤 ：Ali Vardasbi, Gustavo Penha, Enrico Palumbo, Claudia Hauff, Hugues Bouchard, Mounia Lalmas</span><span>⭐ 评分: ：4.60（关键词 10.5 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：大规模搜索系统的演进速度超出人工质量保证的扩展能力，尤其是对长尾意图和多语言查询。LLM 作为评判者（LLM-as-a-Judge）方法提供了评估搜索引擎结果页面（SERP, Search Engine Result Page）相关性的可扩展替代方案，但仅基于语义相似度或世界知识的判断可能偏离实际用户偏好，尤其对模糊查询。本文引入行为锚定 LLM 评判器，以轻量级可审计的行为先验——查询-相关性-展示（QRI, Query-Relevance-Impressions）卡片——增强每个 SERP 项。每张卡片总结用户如何历史性地与类似查询和结果交互，提供紧凑的经验证据供评判器引用以解决模糊性并做出更一致的相关性判断，同时仍依赖语义推理。在 Spotify 大规模音乐搜索评估中，使用从 6,000 个重组 SERP 的历史用户交互导出的相关性估计，行为锚定评判器实现与用户偏好更强的对齐，Spearman 排名相关系数整体提升约 5%，在分歧案例上产生 91% 的相对改善。在跨越五种语言的多语言人工评判数据集上，锚定进一步将与人工作判的相关性提升 15%。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.01040" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-19">
+       <div class="paper-title">19. Modality Relevance is not Modality Utility: Post-hoc Selective Modality Escalation for Cost-Aware Multimodal RAG</div>
+       <div class="paper-meta"><span>👤 ：Xue Li, Yiming Gai</span><span>⭐ 评分: ：4.40（关键词 10.0 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：多模态检索增强生成（Multimodal RAG, Multimodal Retrieval-Augmented Generation）将生成器锚定于从异构模态——文本、表格和图像——提取的证据。主流部署选择是二元的且在模型尝试回答前做出：要么运行廉价文本（+表格）流水线，要么为每个图像支付昂贵的视觉语言模型（VLM, Vision-Language Model）。近期自适应系统通过在检索前选择模态或保真度来改进此点，从问题条件化的模态需求预测器出发。本文证明这是错误的决策点。通过 MultiModalQA 上的先知余量分析，发现模态与问题的相关性是模态是否实际需要以正确回答的弱预测器：大量黄金支持包含图像的问题仍可仅从文本和表格回答，而基于表观视觉相关性升级的预检索路由器相对于先知过度升级。提出后验选择性模态升级（Post-hoc Selective Modality Escalation）：从文本和表格廉价回答，在（查询、草稿答案、证据）元组上运行验证器定位缺失模态，仅在那里支付 VLM 证据。校准的升级价值路由器然后决定预期精度增益是否证明视觉成本合理。在 MultiModalQA 上，路由器恢复始终开启 VLM 流水线的精度同时发出远更少的视觉调用，并关闭与先知升级率的大部分差距。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.05438" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="表示学习-1-篇" class="category-title">🧠 表示学习（1 篇）</h3>
+     <div class="paper-card" id="paper-20">
+       <div class="paper-title">20. Aligning Sentence Embeddings to Human Concepts via Sparse Autoencoders</div>
+       <div class="paper-meta"><span>👤 ：Wonseok Shin, Songkuk Kim</span><span>⭐ 评分: ：4.20（关键词 9.5 + 机构 0.5）| ：2026-07-27 |</span></div>
+       <div class="paper-abstract">：稠密句子嵌入（Dense Sentence Embedding）是现代检索增强生成（RAG, Retrieval-Augmented Generation）系统的基础，但由于特征叠加（Feature Superposition）缺乏可解释性。这种不透明性阻碍了检索过程与人类意图的对齐，因为纠缠的表示难以分析或控制。本文提出使用 Top-k 稀疏自编码器（SAE, Sparse Autoencoder）将句子变换器（如 E5）的稠密表示解耦为人类可解释概念的方法。证明这些解耦特征与特定语义、句法和语用类别对齐。进一步引入激活引导（Activation Steering）机制，允许对检索过程进行精确干预。通过钳位特定潜在特征，证明可以重新排序搜索结果以更好地与用户约束对齐，而无需重训练骨干模型。研究结果表明基于 SAE 的分解为透明和可引导的神经信息检索（IR, Information Retrieval）提供了可行路径。</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2607.00023" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <h2 id="reading-list">📋 建议精读汇总</h2>
+        
+        <h2 id="top-papers">🔬 三、Top Papers 论文阅读十问（0 篇）</h2>
+
+    </main>
+
+    <script>
+        function toggleToc() {
+            const sidebar = document.querySelector('.toc-sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
