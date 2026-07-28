@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-07-28 下午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+ :root {
+ --bg-primary: #0d1117;
+ --bg-card: #161b22;
+ --bg-card-hover: #1c2333;
+ --border: #30363d;
+ --text-primary: #e6edf3;
+ --text-secondary: #8b949e;
+ --text-link: #58a6ff;
+ --accent-society: #f0883e;
+ --accent-politics: #da3633;
+ --accent-tech: #3fb950;
+ --accent-finance: #d2a8ff;
+ --accent-ai: #79c0ff;
+ --accent-market: #22d3ee;
+ --accent-debate: #ffa657;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body {
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+ background: var(--bg-primary);
+ color: var(--text-primary);
+ line-height: 1.6;
+ }
+ .container { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+ a { color: var(--text-link); text-decoration: none; }
+ a:hover { text-decoration: underline; }
+ .back-home { display: inline-block; margin-bottom: 12px; font-size: 14px; color: var(--text-secondary); }
+ .back-home:hover { color: var(--text-link); }
+
+ /* Header */
+ .header { margin-bottom: 24px; }
+ .header h1 { font-size: 24px; margin-bottom: 8px; }
+ .header .overview { font-size: 15px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.7; }
+
+ /* Highlights */
+ .highlights { margin-bottom: 16px; padding: 14px 16px; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border); }
+ .hl-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 14px; line-height: 1.5; }
+ .hl-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; color: #fff; flex-shrink: 0; }
+ .tag-society { background: var(--accent-society); }
+ .tag-politics { background: var(--accent-politics); }
+ .tag-tech { background: #0d9488; }
+ .tag-finance { background: #8b5cf6; }
+ .tag-ai { background: #6366f1; }
+ .tag-market { background: #0891b2; }
+
+ /* TOC */
+ .toc { margin-bottom: 20px; padding: 12px 16px; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); }
+ .toc a { color: var(--text-link); margin-right: 8px; }
+
+ /* Category */
+ .category { margin-bottom: 24px; }
+ .category-title { font-size: 18px; font-weight: 600; padding: 8px 14px; border-radius: 6px; margin-bottom: 12px; }
+ .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+ .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+ .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+ .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+ .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+ .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+
+ /* Card */
+ .news-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; transition: background 0.2s; }
+ .news-card:hover { background: var(--bg-card-hover); }
+ .news-card .title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+ .news-card .title a { color: var(--text-primary); }
+ .news-card .title a:hover { color: var(--text-link); }
+ .news-card .summary { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px; }
+ .news-card .meta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-secondary); }
+ .news-card .source a { color: var(--text-link); }
+ .news-card .recommend { font-style: italic; color: #6e7681; }
+
+ /* Sector Brief */
+ .sector-brief { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+ .sector-card { padding: 12px 14px; border-radius: 8px; text-align: center; }
+ .sector-card.up { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25); }
+ .sector-card.down { background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.25); }
+ .sector-card.neutral { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.25); }
+ .sector-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+ .sector-card .name { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+ .sector-card.up .name { color: #3fb950; }
+ .sector-card.down .name { color: #da3633; }
+ .sector-card.neutral .name { color: #58a6ff; }
+ .sector-card .value { font-size: 13px; font-weight: 500; }
+ .sector-card.up .value { color: #3fb950; }
+ .sector-card.down .value { color: #da3633; }
+ .sector-card.neutral .value { color: #58a6ff; }
+
+ .hot-sectors { margin-bottom: 14px; padding: 10px 14px; background: rgba(88,166,255,0.06); border-radius: 6px; border: 1px solid rgba(88,166,255,0.15); font-size: 13px; display: flex; flex-wrap: wrap; gap: 8px; }
+ .hot-sectors .sector-tag { padding: 3px 10px; border-radius: 4px; background: rgba(88,166,255,0.12); color: var(--text-link); }
+ .market-focus { margin-bottom: 14px; padding: 10px 14px; background: rgba(34,211,238,0.06); border-radius: 6px; border: 1px solid rgba(34,211,238,0.15); }
+ .market-focus .focus-item { font-size: 13px; margin-bottom: 4px; }
+ .market-disclaimer { font-size: 11px; color: var(--text-secondary); text-align: center; margin-top: 8px; padding: 6px; background: rgba(139,148,158,0.08); border-radius: 4px; }
+
+ .footer { margin-top: 30px; padding: 16px; text-align: center; font-size: 12px; color: var(--text-secondary); border-top: 1px solid var(--border); }
+
+ @media (max-width: 600px) {
+  .sector-brief { grid-template-columns: 1fr; }
+  .container { padding: 12px 8px; }
+ }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="index.html" class="back-home">🏠 返回目录</a>
+
+<div class="header">
+<h1>📰 每日资讯简报 · 2026年7月28日 下午版</h1>
+<p class="overview">全球芯片股遭血洗日：韩股熔断、日股暴跌2000点，Kimi K3开源2.8万亿参数震动AI圈，日本7.1级地震致高架桥断裂，央行数据显示房贷余额持续下降，长鑫科技上市造富批量诞生亿万富翁。</p>
+
+<div class="highlights">
+ <div class="hl-row"><span class="hl-tag tag-ai">AI</span> Kimi K3开源2.8万亿参数，海外开发者称"本地版Fable 5"，CUDA护城河被Claude单枪匹马突破</div>
+ <div class="hl-row"><span class="hl-tag tag-market">股市</span> 全球芯片股血洗：韩股熔断跌11%，SK海力士重挫13%，创业板跌超7%</div>
+ <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 商务部发"产能过剩"中方立场，回应美301调查；泽连斯基称与伊朗已处于战争</div>
+ <div class="hl-row"><span class="hl-tag tag-society">社会</span> 青海兴海县18分钟连发5.7、5.8级地震；日本熊本7.1级地震致高架桥断裂</div>
+ <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 央行数据：房贷余额50.74万亿同比下降4.9%，消费贷余额下降1.7%；飞天茅台自营店涨价至1719元</div>
+</div>
+</div>
+
+<div class="toc">
+ 📑 目录：
+ <a href="#society">🏘️ 社会(3)</a> ·
+ <a href="#politics">🏛️ 时政(3)</a> ·
+ <a href="#tech">🔬 科技(4)</a> ·
+ <a href="#finance">💰 财经(4)</a> ·
+ <a href="#market">📊 股市(3)</a> ·
+ <a href="#ai">🤖 人工智能(3)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+ <div class="category-title society">🏘️ 社会</div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33673227" target="_blank">青海兴海县18分钟连发5.7、5.8级地震，当地居民：整栋房子都在晃，附近有山体滑坡</a></div>
+  <div class="summary">7月28日，青海海南州兴海县在18分钟内连续发生5.7级和5.8级地震，震源深度均为10公里。当地居民反映整栋房子剧烈晃动，附近出现山体滑坡。暂无人员伤亡报告，应急救援力量已赶赴震区排查灾情。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33673227" target="_blank">澎湃新闻</a></span>
+   <span class="recommend">热点事件+多源关注</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://news.sina.com.cn/c/2026-07-28/doc-inikhisz0654958.shtml" target="_blank">网红景区10人遇难，三次预警为何失效</a></div>
+  <div class="summary">甘肃渭源一网红景区突发山洪已致10人遇难。新京报调查发现，事发前气象部门曾三次发布预警，但景区未及时疏散游客。事件暴露基层防灾预警"最后一公里"传递断层问题，公众质疑景区安全管理与应急响应机制。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://news.sina.com.cn/c/2026-07-28/doc-inikhisz0654958.shtml" target="_blank">新京报/新浪</a></span>
+   <span class="recommend">深度调查+公共安全议题</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://news.sina.com.cn/c/2026-07-28/doc-inikiewr0419455.shtml" target="_blank">衡水一中学创办人举报多名公职人员侵吞学校资产，2元买走价值8亿股权</a></div>
+  <div class="summary">河北衡水一中学创办人举报，多名公职人员以2元价格强迫转让价值8亿元的学校股权。衡水市已成立联合调查组全面深入调查核查。事件涉及教育资产公权私用、公职人员利益输送等敏感问题，社会关注度极高。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://news.sina.com.cn/c/2026-07-28/doc-inikiewr0419455.shtml" target="_blank">极目新闻/新浪</a></span>
+   <span class="recommend">反腐焦点+多平台热搜</span>
+  </div>
+ </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+ <div class="category-title politics">🏛️ 时政</div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33671920" target="_blank">商务部发布《关于所谓"产能过剩"问题的中方立场》</a></div>
+  <div class="summary">商务部正式发布中方立场文件，系统回应美方"产能过剩"指控。文件指出不能将超过国内需求的生产能力狭隘定义为"产能过剩"，更无权通过301调查单方面认定并采取限制措施。商务部政研室主任林卫龙在国新办发布会上敦促美方纠正错误做法。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33671920" target="_blank">澎湃新闻/新华社</a></span>
+   <span class="recommend">权威立场+中美经贸关键信号</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://news.sina.com.cn/w/2026-07-28/doc-inikiewn9413615.shtml" target="_blank">泽连斯基：与伊朗已处于战争中</a></div>
+  <div class="summary">乌克兰总统泽连斯基公开宣称与伊朗已处于战争状态，此前卫星图像显示多处沙特石油设施升腾起黑烟，中东地缘局势急剧升温。伊朗方面暂未正式回应，但霍尔木兹海峡通航安全引发全球关注，油价波动加剧。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://news.sina.com.cn/w/2026-07-28/doc-inikiewn9413615.shtml" target="_blank">观察者网/新浪</a></span>
+   <span class="recommend">地缘重大事件+多国连锁反应</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33672805" target="_blank">外交部回应强闯中国使馆的村田晃大被起诉</a></div>
+  <div class="summary">日本右翼分子村田晃大此前强闯中国驻日本使领馆，现已被日方起诉。中国外交部对此回应，要求日方依法严惩肇事者，切实保障中国驻日使领馆安全和尊严。事件凸显中日关系中的民间摩擦与外交博弈。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33672805" target="_blank">澎湃新闻</a></span>
+   <span class="recommend">外交焦点+中日关系信号</span>
+  </div>
+ </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+ <div class="category-title tech">🔬 科技</div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://wallstreetcn.com/articles/3778078" target="_blank">刚刚Kimi K3开源！2.8万亿参数全面开放，海外开发者称其为"本地版Fable 5"</a></div>
+  <div class="summary">月之暗面正式开源Kimi K3模型，参数量达2.8万亿（MoE架构），关键技术一并开放。海外开发者将其类比"本地版Fable 5"，模型在推理、代码生成等基准测试中表现突出。此举被视为中国大模型开源战略的重要里程碑，48小时内引发全球AI圈连锁反应。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://wallstreetcn.com/articles/3778078" target="_blank">华尔街见闻</a></span>
+   <span class="recommend">重大技术突破+全球AI格局影响</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://36kr.com/p/3914508098573443" target="_blank">CUDA 20年护城河一个周末崩了，Claude独自跑通AMD新GPU</a></div>
+  <div class="summary">Anthropic的Claude AI在无人工干预下，仅用一个周末就成功将工作负载迁移至AMD最新GPU并完成全流程运行。这一突破意味着英伟达CUDA生态20年来构建的软件护城河可能被AI自主编程能力瓦解，AMD在数据中心GPU市场迎来历史性机遇。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://36kr.com/p/3914508098573443" target="_blank">新智元/36氪</a></span>
+   <span class="recommend">行业颠覆性事件+GPU竞争格局</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://wallstreetcn.com/articles/3778109" target="_blank">从卖芯片到租机房，英伟达500亿数据中心租约曝光</a></div>
+  <div class="summary">英伟达正从纯芯片销售向"芯片+数据中心租赁"模式转型，已签署价值500亿美元的数据中心长期租约。商业模式转变意味着英伟达将更深介入AI基础设施全链条运营，也引发市场对AI投入回报可持续性的担忧，成为全球芯片股抛售的催化剂之一。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://wallstreetcn.com/articles/3778109" target="_blank">华尔街见闻</a></span>
+   <span class="recommend">商业模式巨变+行业趋势信号</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://36kr.com/p/3913707381560456" target="_blank">马斯克彻底向ASI投降，10年后万亿财富都将"归0"</a></div>
+  <div class="summary">马斯克公开表示向人工超级智能（ASI）"投降"，预测10年内ASI将使所有人类财富失去意义。他认为ASI将"视金钱如粪土"，当前万亿美元级别的财富积累在超级智能面前将变得无关紧要。言论引发关于AI终极威胁与人类经济秩序的深层讨论。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://36kr.com/p/3913707381560456" target="_blank">新智元/36氪</a></span>
+   <span class="recommend">AI终局思考+科技领袖表态</span>
+  </div>
+ </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+ <div class="category-title finance">💰 财经</div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://www.cls.cn/telegraph" target="_blank">央行：二季度末人民币房地产贷款余额50.74万亿，同比下降4.9%</a></div>
+  <div class="summary">央行发布2026年二季度金融机构贷款投向统计报告：房地产贷款余额50.74万亿元，同比下降4.9%，上半年减少1.23万亿；个人住房贷款余额36.29万亿，同比下降3.8%，上半年减少7163亿元。不含房贷的消费贷余额20.83万亿，同比下降1.7%，上半年减少3400亿元。居民部门持续去杠杆趋势明确。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://www.cls.cn/telegraph" target="_blank">财联社/央行</a></span>
+   <span class="recommend">权威数据+宏观趋势关键指标</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33672542" target="_blank">飞天茅台双价格体系：自营门店价格上调至1719元/瓶，多家称"无现货"</a></div>
+  <div class="summary">贵州茅台线下自营门店飞天零售价已上调至1719元/瓶，较i茅台平台售价1639元高出80元，标志着同属自营渠道的"双价格体系"正式形成。但多家门店均表示无现货，个人购买仍需通过i茅台APP抽签。价格双轨制引发渠道管控与品牌溢价讨论。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33672542" target="_blank">澎湃新闻</a></span>
+   <span class="recommend">消费巨头定价策略+市场信号</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33672729" target="_blank">红海与波斯湾要道同时告急，航运成本暴涨或引发全球连锁通胀</a></div>
+  <div class="summary">红海胡塞武装持续袭击商船，波斯湾地区沙特石油设施遭袭升腾黑烟，两条全球最关键航运要道同时告急。集装箱运费已较年初上涨超200%，保险费率飙升。分析师警告，若两条水道持续受阻，全球供应链成本将推动新一轮通胀，影响各国央行货币政策走向。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33672729" target="_blank">澎湃新闻</a></span>
+   <span class="recommend">全球供应链风险+通胀传导链条</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://news.sina.com.cn/c/2026-07-28/doc-inikiewm2603613.shtml" target="_blank">长鑫科技批量造富：12名核心成员身家过亿，雷军旗下公司、蔚来战投浮盈均超7亿元</a></div>
+  <div class="summary">长鑫科技挂牌上市首日涨幅最高535%，12名核心成员身家过亿。雷军旗下顺为资本、蔚来战投浮盈均超7亿元，李斌现身答谢晚宴。合肥产投集团作为最大国有投资方连续重仓十年，助力长鑫成长为中国最大DRAM企业，硬科技造富效应引发关注。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://news.sina.com.cn/c/2026-07-28/doc-inikiewm2603613.shtml" target="_blank">每日经济新闻/新浪</a></span>
+   <span class="recommend">硬科技IPO造富+产业资本标杆</span>
+  </div>
+ </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+ <div class="category-title market">📊 股市</div>
+
+ <!-- 板块速览 -->
+ <div class="sector-brief">
+  <div class="sector-card up">
+   <div class="label">领涨板块</div>
+   <div class="name">光刻机</div>
+   <div class="value">逆势活跃</div>
+  </div>
+  <div class="sector-card down">
+   <div class="label">领跌板块</div>
+   <div class="name">芯片/算力</div>
+   <div class="value">集体重挫</div>
+  </div>
+  <div class="sector-card neutral">
+   <div class="label">北向资金</div>
+   <div class="name">净流出</div>
+   <div class="value">市场观望</div>
+  </div>
+ </div>
+
+ <div class="hot-sectors">
+  <span class="sector-tag">光刻机 ↑</span>
+  <span class="sector-tag">大消费 ↑</span>
+  <span class="sector-tag">芯片 ↓↓</span>
+  <span class="sector-tag">算力硬件 ↓↓</span>
+  <span class="sector-tag">AI大模型 ↓</span>
+ </div>
+
+ <div class="market-focus">
+  <div class="focus-item">📌 长鑫科技：挂牌首日最高涨535%，DRAM国产替代龙头受资金追捧</div>
+  <div class="focus-item">📌 智谱：港股AI大模型双雄下挫，智谱跌近20%</div>
+  <div class="focus-item">📌 SK海力士：重挫13%，全球存储芯片抛售潮核心标的</div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://wallstreetcn.com/articles/3778088" target="_blank">创业板跌超7%，光刻机、大消费逆势活跃，芯片、算力硬件齐跌</a></div>
+  <div class="summary">A股创业板暴跌超7%，芯片、算力硬件板块集体重挫，港股AI大模型标的智谱跌近20%。光刻机、大消费板块逆势活跃成为市场唯一亮点。全球芯片股抛售潮蔓延至A股，AI回报质疑成为市场核心担忧。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://wallstreetcn.com/articles/3778088" target="_blank">华尔街见闻</a></span>
+   <span class="recommend">A股盘面全景+市场情绪解读</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://wallstreetcn.com/articles/3778106" target="_blank">黑色星期二！全球芯片股遭血洗，SK海力士重挫13%，AI回报成市场最大担心</a></div>
+  <div class="summary">全球芯片股遭遇"黑色星期二"：韩国KOSPI指数暴跌触发熔断、跌幅近11%，三星电子跌超13%，SK海力士重挫13%，美光盘前跌近5%，日本股市跌超2000点。市场核心担忧从地缘风险转向AI投入回报可持续性，英伟达数据中心租赁模式转型加剧疑虑。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://wallstreetcn.com/articles/3778106" target="_blank">华尔街见闻</a></span>
+   <span class="recommend">全球市场风暴+核心逻辑分析</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://wallstreetcn.com/articles/3778115" target="_blank">韩国散户从FOMO急转JOMO，KOSPI指数7月已暴跌33%</a></div>
+  <div class="summary">韩国KOSPI指数7月暴跌33%，散户情绪从FOMO（害怕错过）急转JOMO（害怕亏损），"没买股票的才是赢家"成为流行语。杠杆ETF成为韩国散户"绞肉机"，有人五次补仓账户仍腰斩，开始喊话"国家赔偿"。韩国金融监管拟设"借钱炒股"20%封顶线遏制杠杆过热。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://wallstreetcn.com/articles/3778115" target="_blank">华尔街见闻</a></span>
+   <span class="recommend">极端市场案例+散户行为学</span>
+  </div>
+ </div>
+
+ <div class="market-disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+ <div class="category-title ai">🤖 人工智能</div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://36kr.com/p/3914177904661639" target="_blank">刚刚，Kimi K3开源，2.8万亿参数砸向全球，硅谷巨头看傻了</a></div>
+  <div class="summary">月之暗面开源Kimi K3模型，2.8万亿参数采用MoE架构，关键技术同步开放。这是中国大模型迄今为止最大规模的开源行动，海外开发者将其对标"本地版Fable 5"。K3在推理、代码生成、多语言理解等基准上表现强劲，48小时内引发硅谷巨头紧急应对。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://36kr.com/p/3914177904661639" target="_blank">智东西/36氪</a></span>
+   <span class="recommend">中国AI里程碑+开源战略转折点</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://36kr.com/p/3914516361254281" target="_blank">北大校友翁荔官宣离职，AI时代最好的「对齐」是照顾好自己</a></div>
+  <div class="summary">北大校友、AI安全领域知名研究者翁荔官宣离职，发文称"人无法像模型一样无限扩展"，AI时代最好的对齐是照顾好自己。翁荔曾深度参与大模型安全对齐工作，其离职引发AI安全人才流失与行业可持续发展的反思。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://36kr.com/p/3914516361254281" target="_blank">爱范儿/36氪</a></span>
+   <span class="recommend">AI安全核心人物动向+行业人文思考</span>
+  </div>
+ </div>
+
+ <div class="news-card">
+  <div class="title"><a href="https://wallstreetcn.com/articles/3778114" target="_blank">车企扎堆"造人"！比亚迪人形机器人8月发布、小鹏IRON量产在即，理想双路并进</a></div>
+  <div class="summary">比亚迪确认8月在"迪空间"发布人形机器人，小鹏IRON机器人量产在即，理想汽车双路并进布局人形机器人赛道。车企利用自身在供应链、制造、传感器方面的优势跨界"造人"，成为继新能源之后的新竞争主线，人形机器人产业化进程显著加速。</div>
+  <div class="meta">
+   <span class="source">来源：<a href="https://wallstreetcn.com/articles/3778114" target="_blank">华尔街见闻</a></span>
+   <span class="recommend">产业趋势+跨赛道竞争新格局</span>
+  </div>
+ </div>
+</div>
+
+<div class="footer">
+ 生成时间：2026-07-28 17:30 | 数据源：5（澎湃/新浪/华尔街见闻/36氪/财联社） | 采集条目：20 | 版本：下午版（周二·纯资讯日）
+</div>
+
+</div>
+</body>
+</html>
