@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-07-28 上午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights { display: grid; gap: 8px; margin-top: 16px; }
+  .highlights .hl-row {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px; font-size: 14px; line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 4px; white-space: nowrap;
+    min-width: 36px; text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category { margin-bottom: 28px; }
+  .category-title {
+    font-size: 20px; font-weight: 700; padding: 8px 16px;
+    border-radius: 6px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .sector-brief { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .sector-brief { grid-template-columns: 1fr; } }
+  .sector-card { padding: 14px 16px; border-radius: 8px; text-align: center; }
+  .sector-card.up { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25); }
+  .sector-card.down { background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.25); }
+  .sector-card.neutral { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.25); }
+  .sector-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .sector-card .name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value { font-size: 14px; font-weight: 500; }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  .hot-sectors { margin-bottom: 16px; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+  .hot-sectors h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .sector-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sector-tag { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+  .sector-tag.up { background: rgba(63,185,80,0.15); color: #3fb950; }
+  .sector-tag.down { background: rgba(218,54,51,0.15); color: #da3633; }
+  .market-focus { margin-bottom: 12px; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+  .market-focus h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .focus-item { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .focus-item strong { color: var(--text-primary); }
+  .news-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px 20px; margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+  .footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-secondary); font-size: 12px;
+  }
+  .market-disclaimer {
+    margin-top: 12px; padding: 10px 16px;
+    background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.2);
+    border-radius: 8px; font-size: 12px; color: var(--text-secondary);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报 · 上午版</h1>
+  <div class="date">2026年7月28日 周二 · 🌅 上午版</div>
+  <div class="overview">全球芯片股遭遇"黑色星期一"，韩股熔断、日股暴跌；AI烧钱疑虑重燃重创科技股；长鑫科技上市引爆造富神话；Kimi K3开源震撼海外；中东局势持续升级。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> Kimi K3开源2.8万亿参数，Claude独自跑通AMD GPU打破CUDA护城河，AI烧钱疑虑重燃芯片股全线崩盘</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 长鑫科技上市造富：12名核心成员身家过亿，阿里76亿→1600亿，携程滥用支配地位被罚51.79亿</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 泽连斯基宣布与伊朗处于战争中，沙特石油设施冒黑烟，特朗普暂停打击伊朗给谈判"最后一次机会"</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 日本作家东野圭吾去世终年68岁，衡水中学创办人举报公职人员2元买走8亿股权，网红景区10人遇难</div>
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> 韩股KOSPI跌10%触发熔断，创业板跌超4%，算力硬件齐跌光刻机逆势爆发，北向资金净流出</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(4)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33666828">日本作家东野圭吾去世，终年68岁</a></div>
+    <div class="summary">日本著名推理小说家东野圭吾于7月28日去世，终年68岁。代表作《嫌疑人X的献身》获直木奖，全球累计销量超2亿册，多部作品被改编为影视。他以推理见众生、写人间，被视为日本作家中的"顶流"，其离世标志推理文学黄金时代的落幕。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33666828">澎湃新闻</a> · 推荐理由：文化名人离世+多源交叉验证（36氪同步报道）</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-28/doc-inikiewr0419455.shtml">衡水中学创办人举报公职人员侵吞学校资产，2元买走8亿股权</a></div>
+    <div class="summary">衡水一中学创办人举报多名公职人员强迫以2元转让价值8亿元的学校股权，河北省衡水市纪委等部门已介入调查。事件涉及公权力滥用与民办教育产权保护争议，引发社会对教育领域"权力掠夺"的强烈关注。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-28/doc-inikiewr0419455.shtml">新浪热搜/极目新闻</a> · 推荐理由：多源验证+社会关注度高+权力滥用典型案例</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-28/doc-inikhisz0654958.shtml">网红景区10人遇难，三次预警为何失效</a></div>
+    <div class="summary">某网红景区发生严重安全事故导致10人遇难。新京报调查发现事发前曾有三次预警但均未有效执行，暴露出景区安全管理体系中的预警传导链条断裂问题——信息到行动之间缺乏强制性响应机制。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-28/doc-inikhisz0654958.shtml">新京报</a> · 推荐理由：公共安全议题+深度追问制度缺陷</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-07-28/doc-inikiewn9413615.shtml">泽连斯基：与伊朗已处于战争中</a></div>
+    <div class="summary">乌克兰总统泽连斯基公开宣布与伊朗已处于战争状态。卫星图像同步显示多处沙特石油设施升腾黑烟，中东局势急剧升级。全球油价波动加剧，霍尔木兹海峡安全成为国际焦点，能源供应链面临重大不确定性。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-28/doc-inikiewn9413615.shtml">观察者网</a> · 推荐理由：地缘政治重大事件+多源交叉验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778056">特朗普：暂停打击伊朗是给谈判"最后一次机会"，谈不拢就"重新大打"</a></div>
+    <div class="summary">特朗普宣布暂停对伊朗的军事打击，称这是给谈判"再一次机会"。他表示会谈可能取得成果，但如果谈不拢将"重新大打"。600名以色列前高官联名致信特朗普警告约旦河西岸局势可能升级，中东和平前景依然脆弱。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778056">华尔街见闻</a> · 推荐理由：独家深度+政策信号明确</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33671240">习近平为斯洛伐克总统佩列格里尼举行欢迎仪式</a></div>
+    <div class="summary">国家主席习近平在北京人民大会堂为来华进行国事访问的斯洛伐克总统佩列格里尼举行欢迎仪式并举行会谈。此次访问聚焦中欧关系深化，在欧盟对华政策调整背景下，斯洛伐克作为中东欧国家展现出务实合作姿态。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33671240">澎湃新闻</a> · 推荐理由：官方权威+外交政策信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/wm/2026-07-28/doc-inikiewh8107460.shtml">巴基斯坦拿下一个历史性协议</a></div>
+    <div class="summary">巴基斯坦近期达成一项历史性协议，涉及重要地缘经济布局。在中美博弈背景下，南亚国家正积极寻求多边合作突破，巴基斯坦的战略地位使其成为大国竞争中的关键节点，协议签署可能重塑区域经济格局。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/wm/2026-07-28/doc-inikiewh8107460.shtml">牛弹琴</a> · 推荐理由：地缘经济信号+独家分析视角</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778079">数据中心将遭遇断电？美国电网扛不住了</a></div>
+    <div class="summary">美国电网面临严峻挑战，数据中心用电需求激增导致电网承载力逼近极限。多州电网运营商警告可能出现区域性断电，影响AI训练和云计算服务连续性。美国能源部数据显示数据中心用电占比已从2020年的1.5%升至2026年的6%以上。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778079">华尔街见闻</a> · 推荐理由：AI基础设施瓶颈+影响判断明确</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33669079">黄仁勋斥巨资在旧金山建艺术学院</a></div>
+    <div class="summary">英伟达CEO黄仁勋斥巨资在旧金山筹建艺术学院，此举引发广泛关注。作为AI芯片帝国掌舵人，黄仁勋转向艺术投资的决策背后，折射出科技巨头对人文价值重新审视的趋势，也暗示硅谷精英对"技术至上"叙事的反思。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33669079">澎湃新闻</a> · 推荐理由：科技领袖动向+人文视角反差</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3913349129574016">花260元救活一副AirPods Pro，旧耳机将很难被淘汰</a></div>
+    <div class="summary">一位用户仅花260元成功修复一副报废的AirPods Pro，揭示消费电子维修的经济价值。随着AI功能持续推送至旧款设备，硬件更换周期正在拉长——从手机配件到AI硬件，"修而非换"正成为消费新逻辑，对苹果换机策略构成挑战。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3913349129574016">36氪/雷科技</a> · 推荐理由：消费趋势洞察+维修经济数据</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33671152">国家税务总局：上半年税收收入超10万亿元，同比增长4.9%</a></div>
+    <div class="summary">国家税务总局公布上半年税收收入超过10万亿元，同比增长4.9%。超2亿纳税人办理个税汇算，超1亿纳税人申报退税金额突破1500亿元。前10%收入群体缴纳个税占比约九成，个税收入达9000亿元同比增长13%，反映收入分配结构。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33671152">澎湃新闻</a> · 推荐理由：官方权威数据+经济基本面指标</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778076">76亿元→1600亿元！投资长鑫科技，阿里"赢麻了"</a></div>
+    <div class="summary">长鑫科技上市引爆造富神话，阿里早期投资76亿元现已膨胀至1600亿元，回报超21倍。12名核心成员身家过亿，雷军旗下公司、蔚来战投浮盈均超7亿元。长鑫作为中国DRAM巨头打破全球存储芯片格局，碧桂园却因提前退出痛失470亿。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778076">华尔街见闻/上海证券报</a> · 推荐理由：多源交叉验证+具体造富数据+产业突破</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33669419">"东方证券+上海证券"合并重组草案出炉，交易定价251.2亿元</a></div>
+    <div class="summary">东方证券与上海证券合并重组草案正式出炉，交易定价251.2亿元。此次合并是上海国资体系券商整合的重要一步，重组后总资产规模将大幅提升，旨在打造与国泰君安、海通齐肩的上海券商新巨头，行业集中度进一步提高。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33669419">澎湃新闻</a> · 推荐理由：独家深度+行业整合信号+具体交易数据</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3913118530819457">携程因滥用市场支配地位被罚没51.79亿元</a></div>
+    <div class="summary">携程因滥用市场支配地位被罚没51.79亿元，涉及在线旅游平台不正当竞争行为。这是近年来反执法领域最大罚单之一，标志着中国反垄断执法从互联网平台延伸至垂直领域，对OTA行业竞争格局产生深远影响。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3913118530819457">36氪</a> · 推荐理由：重大执法事件+行业竞争格局影响</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">光刻机</div>
+      <div class="value">逆势爆发</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">算力硬件</div>
+      <div class="value">跌幅超10%</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">北向资金</div>
+      <div class="name">净流出</div>
+      <div class="value">电子板块流出277亿</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">光刻机 +爆发</span>
+      <span class="sector-tag down">算力租赁 -跌停</span>
+      <span class="sector-tag down">半导体 -277亿流出</span>
+      <span class="sector-tag down">存储芯片 -全球承压</span>
+      <span class="sector-tag down">CPO光模块 -13%跌幅</span>
+    </div>
+  </div>
+
+  <!-- 市场关注个股 -->
+  <div class="market-focus">
+    <h4>市场关注个股</h4>
+    <div class="focus-item"><strong>长鑫科技</strong>：IPO次日低开近8%后翻红，上市造富效应延续</div>
+    <div class="focus-item"><strong>兆易创新</strong>：遭主力净卖出超40亿元，跌停</div>
+    <div class="focus-item"><strong>比亚迪</strong>：获主力净流入+1.19%，汽车板块逆势走强</div>
+  </div>
+
+  <div class="market-disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778088">创业板跌超4%，光刻机逆势爆发，算力硬件齐跌</a></div>
+    <div class="summary">A股早盘创业板跌超4%，算力硬件板块全线重挫——中际旭创跌12.65%、新易盛跌13.32%、东山精密跌停。光刻机概念逆势爆发成为唯一亮点。长鑫科技IPO次日低开近8%后翻红，恒指冲高回落转跌，老铺黄金大跌17%。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778088">华尔街见闻</a> · 推荐理由：A股核心走势+板块分化数据详实</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778080">AI烧钱疑虑重燃，韩股重挫8%，芯片股全线承压</a></div>
+    <div class="summary">全球芯片股遭遇"黑色星期一"。韩国KOSPI跌10%、KOSDAQ触发熔断；三星电子跌超12%、SK海力士跌超13%；日本铠侠跌18%、日经225跌超4%；费城半导体指数逼近关键支撑位。市场担忧AI建设过度集中、企业债务上升。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778080">华尔街见闻</a> · 推荐理由：全球联动+熔断级事件+AI产业转折信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778075">英伟达市值蒸发2500亿美元，市场"用脚投票"</a></div>
+    <div class="summary">英伟达为OpenAI担保2500亿美元数据中心融资，但市场反应却是英伟达市值应声蒸发2500亿美元——投资者担忧"循环融资"风险。英伟达CDS创纪录飙升，甲骨文遭降级，AI发债潮正变得"更加挑剔"，市场对烧钱模式信心动摇。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778075">华尔街见闻</a> · 推荐理由：重大资金事件+市场反直觉信号+融资风险预警</div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778078">Kimi K3开源！2.8万亿参数全面开放，海外开发者称"本地版Fable 5"</a></div>
+    <div class="summary">月之暗面宣布Kimi K3正式开源，2.8万亿参数MoE架构全面开放，采用RL Scaling训练范式。海外开发者称其为"本地版Fable 5"，可替代闭源大模型用于本地部署。开源冲击波迅速传导：OpenAI紧急回应、Anthropic调整额度、华尔街重评AI商业化路径。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778078">华尔街见闻/智东西</a> · 推荐理由：重大开源事件+全球连锁反应+多源验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3914508098573443">CUDA 20年护城河一个周末崩了，Claude独自跑通AMD新GPU</a></div>
+    <div class="summary">Anthropic的Claude在周末独立完成了AMD新GPU的适配运行，打破了英伟达CUDA长达20年的生态护城河。这被视为来自ASI的降维打击——AI系统自行解决硬件兼容问题的能力，可能从根本上改变芯片生态的竞争逻辑，对英伟达垄断地位构成深层威胁。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3914508098573443">36氪/新智元</a> · 推荐理由：独家深度+生态格局颠覆性信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3914516361254281">北大校友翁荔官宣离职，AI时代最好的"对齐"是照顾好自己</a></div>
+    <div class="summary">北大校友翁荔（Liren Weng）官宣离职。作为AI对齐领域的重要研究者，她的离职引发行业对"人无法像模型一样无限扩展"的反思——AI时代最好的对齐或许不是算法优化，而是照顾好自己。这也折射出AI行业高强度竞争下的人才倦怠问题。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3914516361254281">36氪/爱范儿</a> · 推荐理由：人才动向+行业倦态反思</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-07-28 11:00 AM | 数据源：澎湃新闻、新浪热搜、华尔街见闻、36氪、财联社 | 采集条目：20
+  <br><br>📋 本简报由 Hermes Agent 自动生成 · 上午版以资讯为主，适合通勤阅读
+</div>
+
+</body>
+</html>
