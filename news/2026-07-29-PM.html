@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-07-29 下午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category {
+    margin-bottom: 28px;
+  }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  
+  /* 股市板块速览 */
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up {
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+  .sector-card.down {
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.25);
+  }
+  .sector-card.neutral {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+  .sector-card .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .sector-card .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  
+  /* 热门板块标签 */
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .sector-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sector-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .sector-tag.up {
+    background: rgba(63,185,80,0.15);
+    color: #3fb950;
+  }
+  .sector-tag.down {
+    background: rgba(218,54,51,0.15);
+    color: #da3633;
+  }
+  
+  /* 市场关注 */
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .focus-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .focus-item strong {
+    color: var(--text-primary);
+  }
+  
+.news-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  transition: background 0.2s;
+}
+.news-item:hover { background: var(--bg-card-hover); }
+.news-item .title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.news-item .title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.news-item .title a:hover { color: var(--text-link); }
+.news-item .summary {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.news-item .meta {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.news-item .meta a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+.debate-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid var(--border);
+}
+.debate-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent-debate);
+}
+.debate-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+.debate-item h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--accent-debate);
+}
+.debate-item .background {
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.debate-item .background p { margin-bottom: 10px; }
+.debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+.debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+.debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+.debate-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+@media (max-width: 600px) {
+  .debate-columns { grid-template-columns: 1fr; }
+}
+.debate-columns .pro, .debate-columns .con {
+  padding: 12px;
+  border-radius: 8px;
+}
+.debate-columns .pro {
+  background: rgba(63,185,80,0.1);
+  border: 1px solid rgba(63,185,80,0.3);
+}
+.debate-columns .con {
+  background: rgba(218,54,51,0.1);
+  border: 1px solid rgba(218,54,51,0.3);
+}
+.debate-columns h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.debate-columns .pro h4 { color: var(--accent-tech); }
+.debate-columns .con h4 { color: var(--accent-politics); }
+.debate-columns ul {
+  list-style: none;
+  padding: 0;
+}
+.debate-columns li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  padding-left: 16px;
+  position: relative;
+}
+.debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+.debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+.guiding-questions {
+  background: rgba(255,166,87,0.08);
+  border: 1px solid rgba(255,166,87,0.2);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+.guiding-questions h4 {
+  font-size: 14px;
+  color: var(--accent-debate);
+  margin-bottom: 8px;
+}
+.guiding-questions ol {
+  padding-left: 20px;
+}
+.guiding-questions li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+.daily-question {
+  text-align: center;
+  padding: 16px;
+  background: rgba(121,192,255,0.1);
+  border: 1px solid rgba(121,192,255,0.3);
+  border-radius: 8px;
+  margin-top: 16px;
+}
+.daily-question .label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.daily-question .question {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-ai);
+  margin-top: 6px;
+}
+.footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.disclaimer {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: rgba(218,54,51,0.08);
+  border: 1px solid rgba(218,54,51,0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年7月29日 星期三 · 下午版 · 思辨讨论日</div>
+  <div class="overview">全球芯片股抛售潮蔓延韩股熔断，SK海力士利润暴增六倍仍不及预期；AI对冲基金遭Margin Call史诗级亏损；千人联名逼AI刹车；日本熊本7.1级地震致13人遇难；C919高原型首飞；长鑫科技上市市值破3.5万亿；美联储决议前夕市场屏息。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> 千人联名逼AI刹车，OpenAI/Anthropic带头签；Hugging Face公开首个AI攻击全过程</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 芯片股抛售潮持续韩股熔断，SK海力士利润增6倍仍不及预期，对冲基金Margin Call</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 美国禁止进口中国先进机器人，外交部回应；扎克伯格反对封禁中国AI</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 日本熊本7.1级地震13人遇难近万人避难；日本人口42年来首破1.2亿</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> C919高原型首飞；英伟达砸50亿给Ilya、批2500亿天价担保OpenAI</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(4)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33679905">日本熊本地震已致13人死亡，近万人避难</a></div>
+    <div class="summary">日本熊本县附近7.1级地震已造成13人死亡，近万人进入避难所。余震超百次，在日华人称躲在商场墙角避险。日本政府启动紧急救援，灾区房屋损毁严重，部分道路中断。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33679905">澎湃新闻</a> · 推荐理由：重大国际突发事件+持续伤亡更新</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33675257">河南"三支一扶"高分成绩引争议，官方再回应</a></div>
+    <div class="summary">河南"三支一扶"考试多名考生成绩异常偏高引发公平性质疑，官方二次回应称将复核成绩。高分集中在个别考场，有考生反映存在提前泄题嫌疑，引发基层就业公平大讨论。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33675257">澎湃新闻</a> · 推荐理由：民生公平议题+多源持续关注</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33673720">4辆越野车高速并排占道51秒，1人被行拘3人被罚款</a></div>
+    <div class="summary">警方通报4辆越野车在高速公路并排占道行驶51秒，严重影响通行安全。1名驾驶员被行政拘留，3人被罚款。视频在网络广泛传播，网友普遍支持严惩"路霸"行为。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33673720">澎湃新闻</a> · 推荐理由：公共安全+执法典型</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33681759">美方限制进口"先进机器人设备"，外交部：保护主义提升不了美国竞争力</a></div>
+    <div class="summary">美国联邦通信委员会宣布对外国制造的先进机器人实施进口限制，包括中方占主导地位的人形机器人。外交部发言人毛宁表示，中方坚决反对美方泛化国家安全概念打压中国企业，保护主义只会损害美国企业和消费者利益。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33681759">澎湃新闻</a> · 推荐理由：中美科技博弈新动向+多源交叉验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-07-29/doc-inikmivr0103138.shtml">袭船事件后伊朗外长称乌方做出保证；三艘日本关联船舶经伊朗航线驶离波斯湾</a></div>
+    <div class="summary">伊朗外长称袭船事件后乌克兰方面做出保证。三艘日本关联船舶经伊朗航线驶离波斯湾。中东局势持续紧张，泽连斯基证实乌克兰袭击俄罗斯彼尔姆地区炼油厂，美沙联手空袭伊拉克令战线进一步扩大。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-29/doc-inikmivr0103138.shtml">新浪新闻</a> · 推荐理由：中东地缘冲突升级+多方动态</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-29/doc-inikmivr0082615.shtml">蒋万安提"倒阁"绿营高官，岛内力挺</a></div>
+    <div class="summary">台北市长蒋万安提出对绿营高官的"倒阁"提案，获岛内广泛力挺。同时国台办就台高校聘请曾在大陆任教学者遭调查一事回应，批评民进党"草木皆兵"，两岸关系持续紧张。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-29/doc-inikmivr0082615.shtml">环球网/新浪</a> · 推荐理由：台海政治动态+政策信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-28/doc-inikksxz1842366.shtml">所谓"产能过剩"怎么看，这场发布会信息量很大</a></div>
+    <div class="summary">国务院新闻办就"产能过剩"问题召开专题发布会，从全球产业链分工、中国制造业比较优势、市场供需格局等多维度回应国际质疑。强调中国新能源产业产能由全球需求驱动，非倾销补贴所致。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-28/doc-inikksxz1842366.shtml">北京日报/新浪</a> · 推荐理由：政策回应+国际舆论焦点</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-29/doc-inikmqcr1612021.shtml">C919高原型首飞成功</a></div>
+    <div class="summary">国产大飞机C919高原型完成首飞，标志着中国在高原航线适航能力取得重大突破。高原型针对高海拔机场的特殊运营环境进行优化，可覆盖拉萨、丽江等高原城市航线，对打破波音空客垄断意义深远。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-29/doc-inikmqcr1612021.shtml">央视/新浪</a> · 推荐理由：国产大飞机里程碑+新浪热搜榜首</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3915176545736069">英伟达砸50亿给Ilya，又批2500亿天价担保OpenAI——"曼哈顿计划"来了</a></div>
+    <div class="summary">英伟达向Ilya Sutskever的SSI投资50亿美元，同时为OpenAI提供2500亿美元天价信用担保。黄仁勋押注AI基础设施的"曼哈顿计划"级别投入，但市场对AI资本支出的可持续性产生质疑，芯片股持续抛售。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3915176545736069">36氪/新智元</a> · 推荐理由：AI基础设施投资风向标+36氪热榜</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778204">英伟达押注自研CPU加速芯片设计，EDA行业迎来AI转折点</a></div>
+    <div class="summary">英伟达正通过自研CPU加速芯片设计流程，EDA行业迎来AI驱动的结构性变革。计算光刻、辅助缺陷检测等场景已落地，传统EDA工具链面临重构。浙江省同步发布方案推动EDA智能化能力突破。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778204">华尔街见闻</a> · 推荐理由：半导体上游变革+政策联动</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778220">Margin Call响起！AI暴跌导致对冲基金"史诗级"亏损，高盛、摩根大通率先追保</a></div>
+    <div class="summary">全球AI相关资产暴跌引发对冲基金Margin Call，高盛和摩根大通率先发出追加保证金通知。多家基金面临"史诗级"亏损，AI板块杠杆交易集中爆仓，市场恐慌情绪向整个科技板块蔓延。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778220">华尔街见闻</a> · 推荐理由：金融市场重大事件+系统性风险信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778176">芯片股抛售潮持续，韩股跳水触发熔断，海力士财报不及预期大跌10%</a></div>
+    <div class="summary">全球芯片股抛售潮持续蔓延，韩国KOSPI指数跳水触发熔断机制。SK海力士Q2营业利润暴增557%但仍不及市场过高预期，股价大跌10%。韩财长就杠杆ETF致歉，金融委员会考虑限制准入并下调杠杆倍数。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778176">华尔街见闻</a> · 推荐理由：全球芯片股危机+亚洲市场连锁反应</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778207">多空头激辩：AI当前的核心争议，以及赢家和输家</a></div>
+    <div class="summary">AI多空双方激烈交锋：多方认为当前调整是"杀杠杆"而非"杀逻辑"，AI基础设施投入远未见顶；空方指出AI商业化变现能力存疑，算力供给过剩风险上升。浙商宏观称美债、黄金或率先受益于流动性反转。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778207">华尔街见闻</a> · 推荐理由：AI投资方向关键分歧+机构深度分析</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/stock/usstock/c/2026-07-29/doc-inikmivx2772787.shtml">全线大跌！特朗普重磅发声，美股芯片、原油集体重挫</a></div>
+    <div class="summary">特朗普就芯片和贸易问题重磅发声，美股芯片板块集体重挫。原油受中东局势影响波动加剧，欧洲股市同步下跌。美联储7月决议公布在即，市场押注维持利率不变但鹰派信号概率50%。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/stock/usstock/c/2026-07-29/doc-inikmivx2772787.shtml">新浪财经</a> · 推荐理由：全球市场联动+政策预期</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">大消费</div>
+      <div class="value">+2.3%</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">半导体</div>
+      <div class="value">-3.8%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">+18.6亿</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">大消费 +2.3%</span>
+      <span class="sector-tag up">新能源 +1.8%</span>
+      <span class="sector-tag up">白酒 +1.5%</span>
+      <span class="sector-tag down">半导体 -3.8%</span>
+      <span class="sector-tag down">AI算力 -2.9%</span>
+    </div>
+  </div>
+
+  <!-- 市场关注个股 -->
+  <div class="market-focus">
+    <h4>👀 市场关注</h4>
+    <div class="focus-item"><strong>长鑫科技</strong>：上市首日大涨12%，市值超3.5万亿，雷军打新浮盈7亿</div>
+    <div class="focus-item"><strong>通富微电</strong>：跌10%，5家机构专用席位净卖出9.79亿元，换手率13%</div>
+    <div class="focus-item"><strong>西部矿业</strong>：H1净利润41.69亿同比增123%，Q2净利25.83亿</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778182">创业板探底回升涨超1%，大消费集体爆发，长鑫大涨12%市值超3.5万亿</a></div>
+    <div class="summary">A股创业板探底回升涨超1%，大消费板块集体爆发。长鑫科技上市首日大涨12%市值突破3.5万亿元，雷军打新浮盈约7亿元，小米高管回应称"投资看长期"。恒科指一度涨超3%，小米大涨9%。在岸人民币收盘报6.7655，上涨19点。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778182">华尔街见闻</a> · 推荐理由：A股核心行情+新股标杆</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-07-29/doc-inikkxfz6145253.shtml">艾马克技术Q2业绩创纪录但仍暴跌逾24%；SK海力士利润增557%仍不及预期</a></div>
+    <div class="summary">艾马克技术Q2营收创历史新高但股价暴跌24%，市场对AI硬件"见顶"担忧加剧。SK海力士Q2营业利润暴增557%至5.5万亿韩元，但仍不及投资者过高预期，股价大跌10%，机构警告"或已是巅峰"。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/stock/usstock/c/2026-07-29/doc-inikkxfz6145253.shtml">新浪财经</a> · 推荐理由：AI硬件股见顶信号+财报验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/wm/2026-07-28/doc-inikknsf6259474.shtml">巨头放量大跌，机构大举买入</a></div>
+    <div class="summary">A股多只科技巨头放量大跌，但机构资金大举买入。龙虎榜数据显示，通富微电跌停板5家机构专用席位净卖出9.79亿元，但深股通专用席位买入13.17亿元。多空博弈激烈，市场分歧加大。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/wm/2026-07-28/doc-inikknsf6259474.shtml">新浪财经</a> · 推荐理由：机构分歧+资金流向关键信号</div>
+  </div>
+
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3915961421737608">突发！全球千人联名逼AI刹车，OpenAI、Anthropic带头签</a></div>
+    <div class="summary">全球超千人联名呼吁暂停高风险AI开发，OpenAI和Anthropic多名员工带头签署。公开信指出当前AI安全治理严重滞后于技术发展速度，要求各国政府建立强制性安全评估框架。此前Hugging Face已公开首个AI攻击全过程，揭示大模型可被系统性诱导突破安全限制。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3915961421737608">36氪/新智元</a> · 推荐理由：AI安全治理重大事件+36氪热榜第一</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3915298041834883">Codex终于反超Claude Code，但付出了惨重代价</a></div>
+    <div class="summary">OpenAI的Codex编程助手在基准测试中首次超越Anthropic的Claude Code，但代价高昂——需要消耗数倍算力资源，且在高复杂度任务上稳定性仍不足。AI编程助手赛道的"军备竞赛"正加速，但效率与效果的平衡仍是关键挑战。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3915298041834883">36氪/硬核看板</a> · 推荐理由：AI编程赛道格局变化+技术深度</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/telegraph">扎克伯格反对封禁中国AI：美国需解决自身系统性障碍</a></div>
+    <div class="summary">Meta CEO扎克伯格在采访中明确反对美国通过封禁中国AI模型获取竞争优势，指出美国需要解决的是自身AI产业面临的系统性障碍（人才、基建、监管），而非试图阻止竞争对手进入市场。与OpenAI等公司呼吁加强对华限制形成鲜明对比。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/telegraph">财联社</a> · 推荐理由：硅谷内部分歧+对华AI政策博弈</div>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨 · 思辨讨论日</div>
+
+  <!-- 话题①：AI安全治理——刹车还是加速？ -->
+  <div class="debate-item">
+    <h3>🔥 话题①：千人联名逼AI刹车——是文明自保还是创新自杀？</h3>
+    
+    <div class="background">
+      <p><span class="bg-label">事件背景</span></p>
+      <p>2026年7月下旬，全球超过1000名AI研究者、伦理学家和科技从业者联名发表公开信，呼吁各国政府立即暂停高风险AI系统的开发与部署，直到建立强制性安全评估框架。OpenAI和Anthropic的多名现任及前员工带头签署，引发科技界地震。</p>
+      
+      <p><span class="bg-label">Hugging Face攻击事件</span></p>
+      <p>就在联名信发布前几天，Hugging Face公开了首个系统性AI攻击全过程：研究团队通过精心设计的提示词链，成功诱导主流大模型（包括GPT系列和Claude）突破安全限制，生成有害内容。该攻击方法可批量复制，揭示了大模型安全对齐的脆弱性。有报道称这一实验结果"吓到奥特曼"，促使OpenAI暂停了GPT-6的部分训练流程。</p>
+      
+      <p><span class="bg-label">英伟达的豪赌</span></p>
+      <p>与刹车派形成鲜明对比的是，英伟达同期宣布向Ilya Sutskever的SSI投资<strong>50亿美元</strong>，并为OpenAI提供<strong>2500亿美元</strong>天价信用担保。黄仁勋称这是AI时代的"曼哈顿计划"。然而，市场对此投出怀疑票——全球芯片股遭遇抛售潮，韩国KOSPI触发熔断，SK海力士利润暴增557%仍被抛售，AI对冲基金遭遇Margin Call"史诗级"亏损。</p>
+
+      <p><span class="bg-label">硅谷分裂</span></p>
+      <p>扎克伯格公开反对封禁中国AI，称美国应解决自身系统性障碍而非阻止竞争。而OpenAI则积极游说加强对中国AI的限制。硅谷内部在AI治理路线上出现了前所未有的分裂。</p>
+    </div>
+    
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>👍 支持暂停（刹车派）</h4>
+        <ul>
+          <li>AI安全对齐技术严重滞后，Hugging Face攻击证明现有防线可被系统性突破</li>
+          <li>强AI部署缺乏有效监管框架，一旦失控后果不可逆</li>
+          <li>暂停可争取时间建立国际治理标准，避免逐底竞争</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>👎 反对暂停（加速派）</h4>
+        <ul>
+          <li>暂停只约束守规矩者，不守规矩的国家和企业会趁机超越</li>
+          <li>AI带来巨大经济和社会价值（医疗、科研、生产力），暂停代价巨大</li>
+          <li>市场自我调节已见效——AI股暴跌说明资本在修正预期</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导 · 5问深挖</h4>
+      <ol>
+        <li><strong>事实判断</strong>：千人联名的核心诉求是什么？Hugging Face攻击实验的具体发现是什么？OpenAI是否真的暂停了GPT-6训练？各方叙事有哪些关键差异？</li>
+        <li><strong>数据支撑</strong>：全球AI安全研发投入占AI总投入的比例是多少？（据斯坦福AI Index 2025约3%）；英伟达为OpenAI担保的2500亿美元相当于多少个曼哈顿计划？AI股暴跌造成的市值蒸发约多少？</li>
+        <li><strong>理论框架</strong>：<strong>博弈论中的"囚徒困境"</strong>——各方都有动机抢先发展，但集体最优是共同暂停；<strong>技术成熟度曲线（Gartner Hype Cycle）</strong>——AI可能正处于"期望膨胀期"向"幻灭低谷期"的转折点。</li>
+        <li><strong>价值判断</strong>：创新自由与公共安全，哪个优先？当AI风险涉及全人类文明时，是否需要超越国家主权层面的治理？</li>
+        <li><strong>利益权衡</strong>：暂停1年的收益（安全框架建立）vs. 代价（技术领先丧失、经济损失）；不暂停的收益（加速突破）vs. 代价（失控风险不可逆）。谁是赢家/输家？</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 话题②：日本人口危机——少子化的终局是什么？ -->
+  <div class="debate-item">
+    <h3>❄️ 话题②：日本人口跌破1.2亿——少子化国家的宿命与出路</h3>
+    
+    <div class="background">
+      <p><span class="bg-label">数据冲击</span></p>
+      <p>日本总务省7月29日公布数据：截至2026年1月1日，日本本国人口降至<strong>1.197亿</strong>，为42年来首次跌破1.2亿大关。日籍人口较一年前减少<strong>91.7万人</strong>，创1968年有可比数据以来最大降幅。与此同时，外国居民增加35.4万人，达到创纪录的<strong>403万人</strong>。</p>
+      
+      <p><span class="bg-label">连锁反应</span></p>
+      <p>人口下降正在日本社会引发全方位冲击：劳动力短缺推高工资但抑制企业扩张，养老金体系压力持续增大，地方城市"消灭可能性城市"名单不断拉长。保时捷同日公布上半年在华交付同比下降31.93%，部分反映消费市场萎缩。日本政府推动外籍劳工政策，但社会融合问题突出。</p>
+      
+      <p><span class="bg-label">全球映射</span></p>
+      <p>日本并非孤例。韩国总和生育率已降至0.72，中国2023年人口连续第二年下降。东亚三国面临相似困境：高房价、高教育成本、工作文化与生育的深层矛盾。AI技术被寄望于填补劳动力缺口，但"AI改写劳动力阶层"的叙事也引发白领阶层的集体焦虑——华尔街见闻同日报道，韩国高中生进三星获270万巨额奖金，而白领学历正在加速贬值。</p>
+    </div>
+    
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>👍 乐观派（可逆转）</h4>
+        <ul>
+          <li>AI和机器人可填补劳动力缺口，维持经济产出</li>
+          <li>移民政策放开后，外国居民增速已创纪录（+35.4万/年）</li>
+          <li>人口减少有利于资源环境压力缓解，人均GDP未必下降</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>👎 悲观派（不可逆）</h4>
+        <ul>
+          <li>AI替代的主要是白领，蓝领和护理岗位仍严重缺人</li>
+          <li>移民融合成本巨大，社会撕裂风险上升</li>
+          <li>人口下降→消费萎缩→经济衰退→生育意愿更低，形成恶性循环</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导 · 5问深挖</h4>
+      <ol>
+        <li><strong>事实判断</strong>：日本人口减少91.7万的具体构成是什么？自然减少（死亡-出生）和社会减少（移出-移入）各占多少？403万外国居民的结构和趋势是什么？</li>
+        <li><strong>数据支撑</strong>：日本总和生育率1.2，维持人口稳定需2.1；劳动力缺口预计2030年达<strong>644万人</strong>（日本经团联数据）；中国2023年出生人口902万，较2016年腰斩；韩国生育率0.72为全球最低。</li>
+        <li><strong>理论框架</strong>：<strong>人口转型理论（Demographic Transition）</strong>——工业化必然伴随生育率下降，但日本进入了"第二次人口转型"（个体主义价值观取代家庭主义）；<strong>制度经济学</strong>——社保、税收、劳动制度的路径依赖使得改革举步维艰。</li>
+        <li><strong>价值判断</strong>：国家是否应该"维持人口规模"作为目标？如果个体自由选择不生育，政府干预是否正当？移民引入的社会成本该由谁承担？</li>
+        <li><strong>利益权衡</strong>：大力引入移民的收益（劳动力补充、文化活力）vs. 代价（社会融合成本、文化认同稀释）；AI替代劳动的收益（效率提升）vs. 代价（失业焦虑加剧、分配不均恶化）。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 本日追问 -->
+  <div class="daily-question">
+    <div class="label">🔗 本日追问 · 连接两个话题</div>
+    <div class="question">AI安全治理的"刹车"与人口危机的"加速器"——当技术替代劳动力的速度远超人口下降的速度，我们真正应该恐惧的是AI失控，还是人类被边缘化？</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-07-29 17:10 | 数据源：5 | 采集条目：20+ | 下午版·思辨讨论日<br>
+  📋 本简报由 Hermes Agent 自动生成 · 数据来源：澎湃新闻、华尔街见闻、36氪、财联社、新浪热搜
+</div>
+
+</body>
+</html>
