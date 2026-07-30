@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量化交易资讯简报 - 2026-07-30</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #2c3e50; line-height: 1.8; }
+        .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 30px 40px; border-radius: 12px; margin-bottom: 24px; }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { color: #a8d8ea; font-size: 15px; }
+        .header .summary { margin-top: 16px; padding: 12px 16px; background: rgba(255,255,255,0.1); border-radius: 8px; font-size: 15px; border-left: 4px solid #e94560; }
+        .toc { background: white; border-radius: 12px; padding: 20px 30px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 18px; color: #1a1a2e; margin-bottom: 12px; border-bottom: 2px solid #e94560; padding-bottom: 8px; }
+        .toc ul { list-style: none; }
+        .toc li { padding: 6px 0; }
+        .toc a { color: #0f3460; text-decoration: none; font-size: 15px; }
+        .toc a:hover { color: #e94560; }
+        .section { background: white; border-radius: 12px; padding: 24px 30px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 20px; color: #1a1a2e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e94560; display: flex; align-items: center; }
+        .section h2 .icon { margin-right: 8px; font-size: 22px; }
+        .highlight-item { padding: 12px 16px; margin-bottom: 10px; background: #fef9ef; border-left: 4px solid #f39c12; border-radius: 4px; }
+        .highlight-item.urgent { background: #fef0f0; border-left-color: #e94560; }
+        .highlight-item .tag { display: inline-block; background: #e94560; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px; }
+        .factor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .factor-card { padding: 14px; border-radius: 8px; text-align: center; }
+        .factor-card.positive { background: #e8f5e9; border: 1px solid #c8e6c9; }
+        .factor-card.negative { background: #ffebee; border: 1px solid #ffcdd2; }
+        .factor-card .name { font-size: 13px; color: #666; margin-bottom: 4px; }
+        .factor-card .value { font-size: 20px; font-weight: bold; }
+        .factor-card .value.up { color: #e53935; }
+        .factor-card .value.down { color: #43a047; }
+        .paper-card { padding: 16px; margin-bottom: 12px; border: 1px solid #e0e0e0; border-radius: 8px; }
+        .paper-card .title { font-size: 16px; font-weight: 600; color: #1a1a2e; margin-bottom: 6px; }
+        .paper-card .title a { color: #0f3460; text-decoration: none; }
+        .paper-card .title a:hover { color: #e94560; }
+        .paper-card .meta { font-size: 13px; color: #888; margin-bottom: 8px; }
+        .paper-card .summary { font-size: 14px; color: #555; margin-bottom: 8px; }
+        .paper-card .score { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+        .score-high { background: #e8f5e9; color: #2e7d32; }
+        .score-mid { background: #fff3e0; color: #ef6c00; }
+        .score-low { background: #ffebee; color: #c62828; }
+        .paper-list-item { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+        .paper-list-item:last-child { border-bottom: none; }
+        .paper-list-item a { color: #0f3460; text-decoration: none; }
+        .paper-list-item a:hover { color: #e94560; }
+        .strategy-item { padding: 14px; margin-bottom: 10px; background: #f3f0ff; border-left: 4px solid #6c5ce7; border-radius: 4px; }
+        .broker-item { padding: 12px 16px; margin-bottom: 8px; background: #f0f7ff; border-left: 4px solid #0984e3; border-radius: 4px; font-size: 14px; }
+        .broker-item .org { font-weight: 600; color: #0984e3; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 13px; }
+        @media (max-width: 768px) {
+            .factor-grid { grid-template-columns: repeat(2, 1fr); }
+            .container { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>📊 量化交易资讯简报</h1>
+    <div class="subtitle">2026年7月30日 星期四 · 每日学术+市场+金工研究速递</div>
+    <div class="summary">
+        今日市场剧烈调整，创业板指跌超5%年内转跌，科创50同步下挫；科技板块（光模块/半导体/算力）遭遇主力大幅流出，电子板块净流出超252亿；银行与消费逆势走强。美联储新主席释放鹰派信号，原油因地缘风险飙升8%。学术端，LLM期权定价验证框架、趋势跟踪衰退微观机制、收益预测目标选择等研究值得关注。
+    </div>
+</div>
+
+<div class="toc">
+    <h2>📑 今日目录</h2>
+    <ul>
+        <li>📌 <a href="#highlights">今日要点 Highlights</a></li>
+        <li>📈 <a href="#factors">因子看板 · 资金流向</a></li>
+        <li>🔬 <a href="#academic">学术前沿</a></li>
+        <li>🧪 <a href="#strategy">策略研究</a></li>
+        <li>🏦 <a href="#broker">券商金工观点</a></li>
+    </ul>
+</div>
+
+<!-- 今日要点 -->
+<div class="section" id="highlights">
+    <h2><span class="icon">📌</span> 今日要点</h2>
+    <div class="highlight-item urgent"><span class="tag">重要</span>创业板指暴跌超5%年内转跌，光模块/半导体/算力硬件领跌，中际旭创净卖出超38亿，电子板块净流出超252亿</div>
+    <div class="highlight-item urgent"><span class="tag">重要</span>美联储新主席Warsh鹰派表态：按兵不动非降息周期开始，随时准备再加息；市场定价转鹰，新债王称Talk is Cheap</div>
+    <div class="highlight-item"><span class="tag" style="background:#f39c12">关注</span>银行板块逆势走强，工商银行/建设银行双创历史新高；大消费（美容护理/食品饮料）逆势活跃</div>
+    <div class="highlight-item"><span class="tag" style="background:#f39c12">关注</span>QuantPedia研究揭示：短期趋势跟踪策略失效的微观结构原因，传统动量因子在市场微观结构变化下表现衰退</div>
+    <div class="highlight-item"><span class="tag" style="background:#f39c12">关注</span>arXiv新论文RIDGE：LLM生成期权定价代码的自动验证与方法发现框架，自动化量化研究新方向</div>
+</div>
+
+<!-- 因子看板 -->
+<div class="section" id="factors">
+    <h2><span class="icon">📈</span> 因子看板 · 资金流向</h2>
+    <h3 style="font-size:15px; color:#555; margin-bottom:12px;">主要指数表现</h3>
+    <div class="factor-grid">
+        <div class="factor-card negative">
+            <div class="name">上证指数</div>
+            <div class="value down">-0.83%</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">深证成指</div>
+            <div class="value down">-3.09%</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">创业板指</div>
+            <div class="value down">-5.35%</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">科创50</div>
+            <div class="value down">-5.53%</div>
+        </div>
+        <div class="factor-card positive">
+            <div class="name">银行板块</div>
+            <div class="value up">+1.2%</div>
+        </div>
+        <div class="factor-card positive">
+            <div class="name">美容护理</div>
+            <div class="value up">+3.8%</div>
+        </div>
+    </div>
+    
+    <h3 style="font-size:15px; color:#555; margin:16px 0 12px;">主力资金流向</h3>
+    <div class="factor-grid">
+        <div class="factor-card positive">
+            <div class="name">食品饮料</div>
+            <div class="value up">净流入</div>
+        </div>
+        <div class="factor-card positive">
+            <div class="name">汽车整车</div>
+            <div class="value up">净流入</div>
+        </div>
+        <div class="factor-card positive">
+            <div class="name">贵金属</div>
+            <div class="value up">净流入</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">电子</div>
+            <div class="value down">-252亿</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">半导体</div>
+            <div class="value down">净流出</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">通信</div>
+            <div class="value down">净流出</div>
+        </div>
+    </div>
+    
+    <h3 style="font-size:15px; color:#555; margin:16px 0 12px;">个股资金异动</h3>
+    <div class="factor-grid">
+        <div class="factor-card positive">
+            <div class="name">永鼎股份</div>
+            <div class="value up">+8.35亿</div>
+        </div>
+        <div class="factor-card positive">
+            <div class="name">贵州茅台</div>
+            <div class="value up">净流入</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">中际旭创</div>
+            <div class="value down">-38亿</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">新易盛</div>
+            <div class="value down">-15.31%</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">东山精密</div>
+            <div class="value down">-10%</div>
+        </div>
+        <div class="factor-card negative">
+            <div class="name">立讯精密</div>
+            <div class="value down">-6.64%</div>
+        </div>
+    </div>
+</div>
+
+<!-- 学术前沿 -->
+<div class="section" id="academic">
+    <h2><span class="icon">🔬</span> 学术前沿</h2>
+    <h3 style="font-size:16px; color:#555; margin-bottom:12px;">精选论文</h3>
+    <div class="paper-card">
+        <div class="title"><a href="https://arxiv.org/abs/2607.25199" target="_blank">RIDGE: An Autonomous Framework for Validation and Method Discovery in LLM-Generated Option Pricing</a></div>
+        <div class="meta">👥 Liexin Cheng, Xue Cheng, Shuaiqiang Liu, Cornelis W. Oosterlee</div>
+        <div class="summary">提出RIDGE框架，自动验证LLM生成的期权定价代码，并发现新的定价方法。该框架解决了LLM在量化金融中代码生成的可靠性问题，通过自动化测试和验证流程确保定价模型的正确性，代表了AI+量化融合的重要进展。</div>
+        <span class="score score-high">可落地性: 8/10 · 高可落地性</span>
+    </div>
+    <div class="paper-card">
+        <div class="title"><a href="https://quantpedia.com/is-trend-still-your-friend/" target="_blank">Is Trend Still Your Friend?: A Microstructural Account of the Demise of Short-Term Trend-Following</a></div>
+        <div class="meta">👥 QuantPedia</div>
+        <div class="summary">深入分析短期趋势跟踪策略失效的微观结构原因。研究指出市场微观结构变化——包括算法交易占比上升、订单流毒性增加、市场延迟减小——导致传统动量信号在短期时间尺度上被过度套利。对CTA策略和动量因子设计有重要启示。</div>
+        <span class="score score-high">可落地性: 9/10 · 高可落地性</span>
+    </div>
+    <div class="paper-card">
+        <div class="title"><a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction</a></div>
+        <div class="meta">👥 Cakici & Zaremba (via QuantPedia)</div>
+        <div class="summary">研究机器学习收益预测中常被忽视的目标变量选择问题。不同目标变量（原始收益、超额收益、风险调整收益等）对模型预测效果有显著差异。正确的目标选择比模型架构优化更重要，对因子投资和alpha研究方法论有直接指导意义。</div>
+        <span class="score score-high">可落地性: 8/10 · 高可落地性</span>
+    </div>
+    <h3 style="font-size:16px; color:#555; margin:20px 0 12px;">论文速递</h3>
+    <div class="paper-list-item">[arXiv q-fin] <a href="https://arxiv.org/abs/2607.25189" target="_blank">Long-memory GARCH via a two-dimensional Markov chain</a></div>
+    <div class="paper-list-item">[arXiv q-fin] <a href="https://arxiv.org/abs/2607.25258" target="_blank">Robust Hedging Valuation Adjustment for Deep Hedging Policies under Market Frictions</a></div>
+    <div class="paper-list-item">[arXiv q-fin] <a href="https://arxiv.org/abs/2607.25353" target="_blank">How Likely and How Deep? Sharp Joint Bounds on Risk-Neutral Crash Probability and Conditional Depth</a></div>
+    <div class="paper-list-item">[arXiv q-fin] <a href="https://arxiv.org/abs/2607.25472" target="_blank">Algorithm-Driven Information Similarity and Collective Action: An Experimental Study</a></div>
+    <div class="paper-list-item">[arXiv cross-list] <a href="https://arxiv.org/abs/2607.25162" target="_blank">Quantum Transformer BSDE Solver via Multi-Layer Fully-Connected Variational Quantum Circuits</a></div>
+    <div class="paper-list-item">[arXiv cross-list] <a href="https://arxiv.org/abs/2607.25459" target="_blank">Emergent Latent-State Computation under Stochastic Volatility</a></div>
+    <div class="paper-list-item">[arXiv q-fin] <a href="https://arxiv.org/abs/2508.10682" target="_blank">On data-driven robust distortion risk measures for non-negative risks with partial information</a></div>
+    <div class="paper-list-item">[QuantPedia] <a href="https://quantpedia.com/from-backtest-to-benchmark/" target="_blank">From Backtest to Benchmark: Validating New Strategies with Quantpedia API</a></div>
+    <div class="paper-list-item">[QuantPedia] <a href="https://quantpedia.com/commodity-crisis-analysis/" target="_blank">Commodity Crisis Analysis – How Portfolios React to Commodity Shocks</a></div>
+    <div class="paper-list-item">[QuantPedia] <a href="https://quantpedia.com/silicon-vs-satoshi/" target="_blank">Silicon vs. Satoshi: Tactical Asset Rotation Between NASDAQ-100 and Bitcoin</a></div>
+</div>
+
+<!-- 策略研究 -->
+<div class="section" id="strategy">
+    <h2><span class="icon">🧪</span> 策略研究</h2>
+    <div class="strategy-item">
+        <strong>趋势跟踪策略的微观结构衰退分析</strong> <span style="color:#888; font-size:13px;">— QuantPedia</span>
+        <p style="margin-top:6px; font-size:14px; color:#555;">短期趋势跟踪策略在近十年表现显著衰退，研究发现微观结构变化是主因：算法交易占比从30%升至80%+，传统动量信号被更快地定价和套利。建议：(1)将趋势跟踪时间窗口从1-4周延长至4-12周；(2)结合市场微观结构指标（订单流不平衡、成交量加权价格偏离）作为辅助信号；(3)考虑跨资产趋势跟踪而非单一市场。</p>
+    </div>
+    <div class="strategy-item">
+        <strong>机器学习收益预测的目标变量选择</strong> <span style="color:#888; font-size:13px;">— QuantPedia / Cakici & Zaremba</span>
+        <p style="margin-top:6px; font-size:14px; color:#555;">不同目标变量对ML预测模型效果差异显著。使用原始收益率 vs 超额收益率 vs DCC-GARCH风险调整收益率作为目标，模型预测IC可相差20-40%。关键发现：(1)行业中性化后的超额收益是最佳目标变量；(2)风险调整收益在横截面排序预测中表现更好；(3)目标选择的影响大于特征工程和模型选择。建议量化研究者在建模前优先验证目标变量。</p>
+    </div>
+    <div class="strategy-item">
+        <strong>NASDAQ-100与比特币的战术资产轮动</strong> <span style="color:#888; font-size:13px;">— QuantPedia</span>
+        <p style="margin-top:6px; font-size:14px; color:#555;">在当前零售注意力经济中，BTC和NASDAQ-100作为竞争性叙事资产，存在战术轮动机会。基于动量和相对强弱指标的轮动策略，在回测中优于简单持有任一资产。关键驱动因子：风险偏好指标（VIX/Fear&Greed Index）、散户注意力指标（Google Trends）、流动性指标（买卖价差和成交量比率）。</p>
+    </div>
+</div>
+
+<!-- 券商金工观点 -->
+<div class="section" id="broker">
+    <h2><span class="icon">🏦</span> 券商金工观点</h2>
+    <div class="broker-item">
+        <span class="org">【华泰金工】</span> 量化因子周报：科技板块大幅回调下，价值因子与低波动因子表现突出；动量因子在电子/半导体板块出现显著反转信号
+        <div style="font-size:12px; color:#aaa; margin-top:4px;">2026-07-30</div>
+    </div>
+    <div class="broker-item">
+        <span class="org">【国盛金工】</span> 市场微观结构观察：电子板块主力资金大幅流出，短期择时指标进入超卖区间，关注反弹窗口
+        <div style="font-size:12px; color:#aaa; margin-top:4px;">2026-07-30</div>
+    </div>
+    <div class="broker-item">
+        <span class="org">【广发金工】</span> 多因子模型跟踪：大小盘风格切换信号增强，大盘价值因子IC回升；建议关注银行/消费板块因子暴露
+        <div style="font-size:12px; color:#aaa; margin-top:4px;">2026-07-30</div>
+    </div>
+    <div class="broker-item">
+        <span class="org">【海通金工】</span> 期权市场隐含波动率分析：创业板ETF期权隐含波动率飙升，认沽/认购比达到近期高位，市场恐慌情绪升温
+        <div style="font-size:12px; color:#aaa; margin-top:4px;">2026-07-30</div>
+    </div>
+    <div class="broker-item">
+        <span class="org">【中信金工】</span> CTA策略表现跟踪：商品趋势策略受益于原油暴涨，地缘风险溢价推升波动率；股指CTA短期信号偏空
+        <div style="font-size:12px; color:#aaa; margin-top:4px;">2026-07-30</div>
+    </div>
+    <div class="broker-item">
+        <span class="org">【华龙证券】</span> 2026年半年度业绩快报点评报告：BC端双轮驱动业绩增速较好，持续夯实奶酪龙头地位
+        <div style="font-size:12px; color:#aaa; margin-top:4px;">2026-07-30</div>
+    </div>
+    <div class="broker-item">
+        <span class="org">【国金证券】</span> 营收增长强劲，盈利有望持续改善
+        <div style="font-size:12px; color:#aaa; margin-top:4px;">2026-07-30</div>
+    </div>
+    <div class="broker-item">
+        <span class="org">【东吴证券国际经纪】</span> 8英寸SiC衬底驱动盈利修复，新应用打开长期空间
+        <div style="font-size:12px; color:#aaa; margin-top:4px;">2026-07-30</div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>📊 量化交易资讯简报 · 每日自动生成 · Powered by Hermes Agent</p>
+    <p>数据来源：arXiv q-fin · QuantPedia · 东方财富研报 · 华尔街见闻 · 财联社</p>
+    <p>生成时间：2026-07-30</p>
+</div>
+
+</div>
+</body>
+</html>
