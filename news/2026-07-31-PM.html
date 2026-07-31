@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-07-31 PM · 数据洞察日</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category { margin-bottom: 28px; }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) { .sector-brief { grid-template-columns: 1fr; } }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25); }
+  .sector-card.down { background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.25); }
+  .sector-card.neutral { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.25); }
+  .sector-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .sector-card .name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value { font-size: 14px; font-weight: 500; }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .sector-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sector-tag { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+  .sector-tag.up { background: rgba(63,185,80,0.15); color: #3fb950; }
+  .sector-tag.down { background: rgba(218,54,51,0.15); color: #da3633; }
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .focus-item { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .focus-item strong { color: var(--text-primary); }
+  .news-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+  .news-item .recommend { color: var(--accent-ai); font-style: italic; }
+  .data-dashboard {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .data-dashboard h3 {
+    font-size: 20px;
+    color: var(--accent-ai);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  .data-table th {
+    background: rgba(88,166,255,0.1);
+    color: var(--accent-ai);
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    color: var(--text-secondary);
+  }
+  .data-table tr:hover td { color: var(--text-primary); }
+  .data-table .positive { color: #3fb950; }
+  .data-table .negative { color: #da3633; }
+  .data-table .highlight { color: var(--text-primary); font-weight: 600; }
+  .data-insight {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(121,192,255,0.08);
+    border: 1px solid rgba(121,192,255,0.2);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .data-insight strong { color: var(--accent-ai); }
+  .debate-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+  }
+  .debate-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--accent-debate);
+  }
+  .debate-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .debate-item h3 { font-size: 18px; margin-bottom: 10px; color: var(--accent-debate); }
+  .debate-item .background { color: var(--text-secondary); margin-bottom: 14px; font-size: 14px; line-height: 1.7; }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .debate-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 600px) { .debate-columns { grid-template-columns: 1fr; } }
+  .debate-columns .pro, .debate-columns .con { padding: 12px; border-radius: 8px; }
+  .debate-columns .pro { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); }
+  .debate-columns .con { background: rgba(218,54,51,0.1); border: 1px solid rgba(218,54,51,0.3); }
+  .debate-columns h4 { font-size: 14px; margin-bottom: 8px; }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul { list-style: none; padding: 0; }
+  .debate-columns li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; padding-left: 16px; position: relative; }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions {
+    background: rgba(255,166,87,0.08);
+    border: 1px solid rgba(255,166,87,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .guiding-questions h4 { font-size: 14px; color: var(--accent-debate); margin-bottom: 8px; }
+  .guiding-questions ol { padding-left: 20px; }
+  .guiding-questions li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+  .daily-question {
+    text-align: center;
+    padding: 16px;
+    background: rgba(121,192,255,0.1);
+    border: 1px solid rgba(121,192,255,0.3);
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .daily-question .label { font-size: 13px; color: var(--text-secondary); }
+  .daily-question .question { font-size: 16px; font-weight: 600; color: var(--accent-ai); margin-top: 6px; }
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+  .disclaimer {
+    margin-top: 12px;
+    padding: 10px 16px;
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.2);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报 · 下午版</h1>
+  <div class="date">2026年7月31日 星期五 · 📊 数据洞察日</div>
+  <div class="overview">AI资产泡沫争议升温，达利欧称80年大周期尾声；GPT-5.6最大降价80%引发行业洗牌；A股创业板指涨超3%全线反弹，芯片算力板块领涨；中央政治局会议定调提升资本市场韧性；重庆彭水山体崩塌51人遇难。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> GPT-5.6今起大降价最高80%，OpenAI成立FDE公司推企业部署</div>
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> 创业板指涨超3%收3343点，科创综指涨3.69%，超4600股飘红</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 何立峰与美财政部长通话，日本正式设立国家情报局引中方严正回应</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 达利欧判断教科书式AI资产泡沫，80年一次大周期进入尾声</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 重庆彭水山体崩塌已确认51人遇难仍有10人失联</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(3)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(5)</a> · 📊 <a href="#dashboard" style="color:var(--text-link);text-decoration:none">数据看板</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33688077" target="_blank">重庆彭水山体崩塌灾害找到并确认51人遇难，仍有10名失联人员</a></div>
+    <div class="summary">重庆彭水县鹿角镇7月29日发生山体崩塌灾害，截至目前已找到并确认51人遇难，仍有10名失联人员。搜救工作仍在持续进行，当地已投入大量救援力量和设备，全力搜救失联人员。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33688077" target="_blank">澎湃新闻</a> · 推荐理由：<span class="recommend">重大安全事故+伤亡数据持续更新+多源关注</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33685404" target="_blank">"祖辈所种百年古树被扣押后遭转赠"，官方已成立专项工作组核查</a></div>
+    <div class="summary">网友反映祖辈所种百年古树被当地相关部门扣押后遭转赠他人，引发社会关注。当地政府已成立专项工作组核查此事，承诺依法依规处理，保障群众合法权益。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33685404" target="_blank">澎湃新闻</a> · 推荐理由：<span class="recommend">基层治理争议+产权保护焦点+官方快速回应</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33685546" target="_blank">一家三口打赏主播650万后甩锅给17岁孩子：起诉平台想全额退款，法院驳回全部诉讼请求</a></div>
+    <div class="summary">一家人在直播平台打赏主播累计650万元后，以17岁孩子名义起诉平台要求全额退款，声称未成年人未经同意消费。法院审理后认定证据不足以证明系未成年人行为，驳回全部诉讼请求。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33685546" target="_blank">澎湃新闻</a> · 推荐理由：<span class="recommend">直播打赏监管+未成年人保护+司法裁判尺度</span></div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-30/doc-inikrfcu9519747.shtml" target="_blank">何立峰与美国财政部长贝森特、贸易代表格里尔举行视频通话</a></div>
+    <div class="summary">国务院副总理何立峰与美国财政部长贝森特、贸易代表格里尔举行视频通话，就中美经贸关系等议题交换意见。通话时机正值中美贸易摩擦敏感期，外界关注双方是否就关税和供应链问题达成新共识。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-30/doc-inikrfcu9519747.shtml" target="_blank">新华社</a> · 推荐理由：<span class="recommend">中美高层互动+经贸政策风向+多源交叉验证</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-07-30/doc-inikrfcz4924837.shtml" target="_blank">日本政府正式设立"国家情报局"，外交部：日本为政者应深刻汲取历史教训</a></div>
+    <div class="summary">日本政府正式设立"国家情报局"，整合内外情报体系。中国外交部发言人回应称，日本为政者应深刻汲取历史教训，慎重行事，警惕其突破战后和平体制束缚的动向。同日日本自卫队在太平洋首次试射"战斧"导弹。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-07-30/doc-inikrfcz4924837.shtml" target="_blank">央视</a> · 推荐理由：<span class="recommend">日本安全政策重大转向+中方严正立场+地区安全影响</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-31/doc-inikrvzn9389298.shtml" target="_blank">美多名议员阻挠苹果采购中国芯片，专家：将破坏中美企业产业链合作</a></div>
+    <div class="summary">多名美国国会议员致信苹果公司，要求其停止采购中国产芯片，引发产业链担忧。专家指出此举将破坏中美企业间长期建立的供应链合作关系，推高消费电子成本，最终损害美国企业利益和消费者福利。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-31/doc-inikrvzn9389298.shtml" target="_blank">环球网</a> · 推荐理由：<span class="recommend">中美科技脱钩新动态+供应链冲击+企业利益博弈</span></div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/livenews/3143028" target="_blank">北斗卫星导航系统已全面完成在轨升级</a></div>
+    <div class="summary">中国卫星导航系统管理办公室宣布，北斗卫星导航系统已全面完成在轨升级。系统将丰富发展新导航技术手段，向全球用户提供更稳定可靠的定位导航授时服务，目标2035年前建成更泛在、融合、智能的综合时空体系。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/livenews/3143028" target="_blank">华尔街见闻</a> · 推荐理由：<span class="recommend">国家重大科技基础设施里程碑+全球定位竞争格局</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33687840" target="_blank">宇树科技：8月10日打新，科创板人形机器人第一股</a></div>
+    <div class="summary">宇树科技首次公开发行股票并在科创板上市，初步询价日为8月5日，网下申购日为8月10日。作为国内人形机器人领军企业，其上市备受市场关注，被视为"科创板人形机器人第一股"。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33687840" target="_blank">澎湃新闻</a> · 推荐理由：<span class="recommend">人形机器人赛道IPO+科技创新代表性+市场热度</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33688958" target="_blank">特斯拉正考虑剥离中国业务？特斯拉中国官方回应：不实消息</a></div>
+    <div class="summary">有媒体报道特斯拉正考虑剥离中国业务，特斯拉中国官方迅速回应称"不实消息"。此前特斯拉在华销量面临本土品牌激烈竞争，但上海超级工厂仍是其全球最大生产基地。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33688958" target="_blank">澎湃新闻</a> · 推荐理由：<span class="recommend">外资在华运营风向标+官方快速辟谣+产业链影响</span></div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778421" target="_blank">达利欧重大判断：教科书式AI资产泡沫，80年一次的"大周期"已进入尾声</a></div>
+    <div class="summary">桥水基金创始人达利欧发文称，当前AI资产泡沫呈现"教科书式"特征，与历史上80年一次的大周期尾声高度相似。他指出当前AI股估值已脱离基本面，资本开支增速远超收入增速，历史上类似泡沫最终均以惨烈方式收场。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778421" target="_blank">华尔街见闻</a> · 推荐理由：<span class="recommend">顶级投资者预警+历史规律对照+AI投资核心争议</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778419" target="_blank">四部门联合发布22条措施健全金融机构治理，严禁向股东输送利益</a></div>
+    <div class="summary">国家金融监督管理总局等四部门联合发布22条措施健全金融机构治理，明确严禁金融机构向股东及其关联方输送利益。措施覆盖股权管理、关联交易、薪酬机制等方面，旨在防范系统性金融风险。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778419" target="_blank">华尔街见闻</a> · 推荐理由：<span class="recommend">金融监管重大政策+系统性风险防范+多部门协同</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778408" target="_blank">美股科技巨头财报季悬念："资本开支"与"AI收入"都在增长，谁会赢得叙事？</a></div>
+    <div class="summary">美股科技巨头二季度财报显示，AI资本开支与AI收入同步增长，但市场对二者谁将主导叙事存在分歧。微软创18年最大单日涨幅，亚马逊盘前涨超10%，苹果却因AI进展不及预期跌超6%，分化格局加剧。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778408" target="_blank">华尔街见闻</a> · 推荐理由：<span class="recommend">科技巨头财报深度解读+AI变现拐点+市场分化</span></div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览卡片 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">科创综指</div>
+      <div class="value">+3.69%</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">上证综指</div>
+      <div class="value">+0.72%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">数据待更新</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">芯片半导体 +5%+</span>
+      <span class="sector-tag up">AI应用 +4%+</span>
+      <span class="sector-tag up">电子元件 +4%+</span>
+      <span class="sector-tag up">软件开发 +3%+</span>
+      <span class="sector-tag up">算力基建 +3%+</span>
+    </div>
+  </div>
+
+  <!-- 市场关注个股 -->
+  <div class="market-focus">
+    <h4>📌 市场关注个股</h4>
+    <div class="focus-item">🔸 <strong>宇树科技</strong>：8月10日网下申购，人形机器人第一股登陆科创板</div>
+    <div class="focus-item">🔸 <strong>蓝色光标</strong>：今日涨停，成交85.53亿元，国泰海通武汉紫阳东路净买入1.86亿</div>
+    <div class="focus-item">🔸 <strong>爱丽家居</strong>：9连板，传智教育5连板，短线情绪高涨</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/tob/2026-07-31/doc-inikstfm1244940.shtml" target="_blank">收评：创业板指涨超3%，上涨个股超4600只，AI应用全线大涨</a></div>
+    <div class="summary">A股三大指数集体收涨，创业板指涨3.06%报3343点，科创综指涨3.69%报1819点，深证成指涨2.21%报13578点。上涨个股超4600只，AI应用、芯片半导体、算力板块全线拉升。中央政治局会议定调提升资本市场韧性，政策信号提振市场信心。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/tob/2026-07-31/doc-inikstfm1244940.shtml" target="_blank">新浪财经</a> · 推荐理由：<span class="recommend">A股全线反弹+政策驱动+板块轮动信号</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778379" target="_blank">AI暴力反弹！美股盘前亚马逊涨超10%、苹果跌超6%，韩股收涨17.91%</a></div>
+    <div class="summary">美股盘前AI概念股暴力反弹，亚马逊涨超10%，微软创18年最大单日涨幅。但苹果因AI进展不及预期跌超6%。亚太方面，韩国股市收涨17.91%创历史纪录，日元回吐此前央行干预涨幅，MSCI亚太指数涨5.1%。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778379" target="_blank">华尔街见闻</a> · 推荐理由：<span class="recommend">全球市场剧烈波动+AI分化+韩股异动</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/stock/zqgd/2026-07-31/doc-iniksnxp1305141.shtml" target="_blank">市场超4500股飘红，AI应用全线大涨！工信部发布重要规划</a></div>
+    <div class="summary">A股市场超4500股飘红，AI应用板块全线大涨。工信部发布重要规划推动AI产业发展，相关细分赛道多股绩优且估值较低，市场关注AI应用落地加速带来的投资机会。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/stock/zqgd/2026-07-31/doc-iniksnxp1305141.shtml" target="_blank">新浪财经</a> · 推荐理由：<span class="recommend">政策催化+AI应用主线+普涨格局</span></div>
+  </div>
+
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3918835009351298" target="_blank">突发，GPT-5.6今起大降价，最大幅度80%</a></div>
+    <div class="summary">OpenAI宣布GPT-5.6即日起大幅降价，最高降价幅度达80%。此举被视为应对Anthropic、Google等竞争对手价格战的重要举措，也标志着大模型市场进入"价格战"阶段，中小企业和开发者将直接受益。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3918835009351298" target="_blank">36氪/量子位</a> · 推荐理由：<span class="recommend">大模型价格战标志性事件+行业洗牌信号+开发者影响</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778382" target="_blank">全力推动企业部署AI！微软之后，OpenAI成立"FDE公司"</a></div>
+    <div class="summary">继微软全力推AI企业应用后，OpenAI宣布成立"FDE公司"（Forward Deployed Engineering），专门帮助企业客户部署AI解决方案。此举意味着OpenAI从API提供商转向端到端服务商，与微软在ToB市场形成竞合关系。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778382" target="_blank">华尔街见闻</a> · 推荐理由：<span class="recommend">OpenAI商业模式转型+企业AI部署加速+竞合格局</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778417" target="_blank">60小时击穿后量子密码：AI独自改写密码学的时刻</a></div>
+    <div class="summary">AI系统仅用60小时便攻破了此前被认为安全的后量子密码算法，标志着AI在密码学领域取得重大突破。这一成果可能引发全球网络安全基础设施的大规模升级，各国政府和金融机构需重新评估加密策略。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778417" target="_blank">华尔街见闻</a> · 推荐理由：<span class="recommend">AI安全突破+全球加密体系冲击+基础设施升级需求</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3919027865316744" target="_blank">翁荔刚回OpenAI，Thinking Machines反手甩出新模型Inkling-Small</a></div>
+    <div class="summary">前OpenAI联创翁荔（Lilian Weng）回归OpenAI之际，其此前创办的Thinking Machines发布开源模型Inkling-Small，声称性能反超初代版本。该模型定位轻量化推理，与OpenAI形成有趣的竞合关系。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3919027865316744" target="_blank">36氪/新智元</a> · 推荐理由：<span class="recommend">AI人才流动+开源模型竞争+小模型路线</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3918999971622280" target="_blank">25岁OpenAI神童，拉全球股民陪葬——"AI股神"崩盘复盘</a></div>
+    <div class="summary">25岁的OpenAI前员工创建的AI交易系统此前被捧为"AI股神"，但近期爆仓亏损超450亿元，全球投资者蒙受损失。华尔街一线复盘显示，系统在高波动行情中过度杠杆、风控失效，最终触发连环平仓。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3918999971622280" target="_blank">36氪/新智元</a> · 推荐理由：<span class="recommend">AI金融应用翻车+风控警示+全球市场连锁反应</span></div>
+  </div>
+</div>
+
+<!-- 数据看板（周五·数据洞察日） -->
+<div class="data-dashboard" id="dashboard">
+  <h3>📊 数据看板 · 今日关键数据一览</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>指标</th>
+        <th>数值</th>
+        <th>变化</th>
+        <th>解读</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="highlight">上证综指</td>
+        <td>3832.26</td>
+        <td class="positive">+0.72%</td>
+        <td>温和上涨，大盘企稳</td>
+      </tr>
+      <tr>
+        <td class="highlight">创业板指</td>
+        <td>3343.96</td>
+        <td class="positive">+3.06%</td>
+        <td>大幅反弹，AI+科技领涨</td>
+      </tr>
+      <tr>
+        <td class="highlight">科创综指</td>
+        <td>1819.90</td>
+        <td class="positive">+3.69%</td>
+        <td>涨幅最大，硬科技回暖</td>
+      </tr>
+      <tr>
+        <td class="highlight">深证成指</td>
+        <td>13578.93</td>
+        <td class="positive">+2.21%</td>
+        <td>强于主板，成长股占优</td>
+      </tr>
+      <tr>
+        <td class="highlight">沪深300</td>
+        <td>4588.20</td>
+        <td class="positive">+0.85%</td>
+        <td>蓝筹温和上涨</td>
+      </tr>
+      <tr>
+        <td class="highlight">MSCI亚太</td>
+        <td>269.79</td>
+        <td class="positive">+5.1%</td>
+        <td>亚太普涨，韩股+17.9%领涨</td>
+      </tr>
+      <tr>
+        <td class="highlight">欧元区7月CPI</td>
+        <td>2.9%</td>
+        <td class="negative">+0.1pp</td>
+        <td>高于前值2.8%，通胀粘性</td>
+      </tr>
+      <tr>
+        <td class="highlight">国企1-6月营收</td>
+        <td>40.24万亿</td>
+        <td class="negative">-2.0%</td>
+        <td>收入下降但利润增2.4%</td>
+      </tr>
+      <tr>
+        <td class="highlight">国企1-6月利润</td>
+        <td>2.25万亿</td>
+        <td class="positive">+2.4%</td>
+        <td>利润率改善，降本增效</td>
+      </tr>
+      <tr>
+        <td class="highlight">WTI原油</td>
+        <td>80.12美元</td>
+        <td class="negative">-3%</td>
+        <td>美元走强+需求预期走弱</td>
+      </tr>
+      <tr>
+        <td class="highlight">VIX波动率</td>
+        <td>16.81</td>
+        <td class="positive">-0.28</td>
+        <td>降至逾一周低点，风险偏好回升</td>
+      </tr>
+      <tr>
+        <td class="highlight">美元/日元</td>
+        <td>159</td>
+        <td class="negative">-0.31%</td>
+        <td>日央行加息预期推升日元</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="data-insight">
+    <strong>📈 数据洞察：</strong>今日A股呈现"小盘强、大盘弱"的分化格局——创业板/科创涨幅是上证的4-5倍，反映资金从蓝筹向成长/科技轮动。政策面上，政治局会议"提升资本市场韧性"定调+工信部AI规划形成双重催化。全球视角看，亚太市场集体反弹（韩股+17.9%极端），但达利欧警示的AI泡沫与科技巨头财报分化（亚马逊+10% vs 苹果-6%），暗示市场内部结构矛盾正在加深。国企"增收不增利"转向"增利不增收"（营收-2%、利润+2.4%），折射出降本增效而非需求扩张的复苏路径。
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨</div>
+
+  <div class="debate-item">
+    <h3>话题①：AI是"教科书式泡沫"还是"新基础设施革命"？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件背景</span></p>
+      <p>桥水基金创始人瑞·达利欧7月31日发文，判断当前AI资产泡沫呈现"教科书式"特征，80年一次的大周期已进入尾声。他援引历史泡沫（1929大萧条、2000互联网泡沫）的典型模式——<strong>估值脱离基本面→资本开支增速远超收入增速→散户和机构FOMO追涨→最终以惨烈方式收场</strong>。</p>
+      <p><span class="bg-label">关键数据</span></p>
+      <ol class="timeline">
+        <li>美股科技巨头Q2财报：AI资本开支增速超<strong>40%</strong>，但AI收入增速仅<strong>15-20%</strong>，"剪刀差"持续扩大</li>
+        <li>微软创<strong>18年最大单日涨幅</strong>，亚马逊盘前涨超<strong>10%</strong>，但苹果因AI进展不及预期跌超<strong>6%</strong></li>
+        <li>"AI股神"爆仓亏损超<strong>450亿元</strong>，25岁OpenAI前员工的AI交易系统在高波动中风控失效</li>
+        <li>GPT-5.6降价最高<strong>80%</strong>，大模型价格战意味着"卖铲子"的利润正在被侵蚀</li>
+        <li>25岁OpenAI神童创建的AI基金爆仓，<strong>1100+名AI公司员工</strong>联名请愿政府管控AI发展节奏</li>
+      </ol>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✅ 泡沫论</h4>
+        <ul>
+          <li>资本开支/收入增速"剪刀差"持续扩大，ROI恶化</li>
+          <li>达利欧指出的泡沫特征高度吻合：散户FOMO+估值脱离基本面</li>
+          <li>AI交易系统爆仓是"杠杆+AI幻觉"的危险信号</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>❌ 革命论</h4>
+        <ul>
+          <li>AI已深入生产力各环节，60小时击穿后量子密码证明技术突破真实</li>
+          <li>GPT-5.6降价80%是"规模效应"，类似云计算早期降价路径</li>
+          <li>OpenAI成立FDE公司推企业部署，ToB收入将加速兑现</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导</h4>
+      <ol>
+        <li><strong>事实判断：</strong>当前AI投资的"资本开支-收入"剪刀差具体有多大？各大巨头数据是否一致？</li>
+        <li><strong>数据支撑：</strong>2000年互联网泡沫时期NASDAQ PE峰值约200倍，当前AI龙头PE约40-60倍，估值差距意味着什么？（数据来源：彭博、标普）</li>
+        <li><strong>理论框架：</strong>Gartner技术成熟度曲线——当前AI处于"期望膨胀期"还是"生产力成熟期"？该模型如何解释泡沫与革命的转换条件？</li>
+        <li><strong>价值判断：</strong>若AI投资确实过热，谁承担最大损失？散户vs机构vs风投，风险分配是否公平？</li>
+        <li><strong>利益权衡：</strong>政府若提前"戳破泡沫"vs"继续纵容"，各自的收益和代价是什么？日本1990年代主动刺泡沫的前车之鉴如何参考？</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="debate-item">
+    <h3>话题②：日本设立"国家情报局"+试射战斧——东亚安全格局质变？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件背景</span></p>
+      <p>7月30日，日本政府正式设立"国家情报局"，整合此前分散在公安调查厅、内阁情报调查室等机构的情报职能。同日，日本自卫队在太平洋海域<strong>首次试射"战斧"巡航导弹</strong>。中国外交部发言人毛宁回应称"日本为政者应深刻汲取历史教训，慎重行事"。</p>
+      <p><span class="bg-label">事件经过</span></p>
+      <ol class="timeline">
+        <li><strong>2025年12月</strong>：日本通过新安保战略，明确"反击能力"概念，为进攻性武器采购铺路</li>
+        <li><strong>2026年3月</strong>：日本向美国采购<strong>400枚战斧导弹</strong>，合同金额约<strong>23亿美元</strong></li>
+        <li><strong>2026年7月30日</strong>：国家情报局正式挂牌+自卫队首次试射战斧</li>
+        <li><strong>同日</strong>：韩国媒体爆料"韩国差点击落美军飞机"，反映美韩军事摩擦升级</li>
+        <li><strong>7月31日</strong>：中国外交部严正回应，南部战区与中国海警同时发声"守护黄岩"</li>
+      </ol>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✅ 正常防卫升级</h4>
+        <ul>
+          <li>朝鲜导弹威胁+中东局势升级，日本有正当防卫需求</li>
+          <li>情报体系现代化是主权国家正常权利，中国也有国安系统</li>
+          <li>美日同盟框架下，日本承担更多区域安全责任是趋势</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>❌ 突破和平宪法</h4>
+        <ul>
+          <li>"专守防卫"原则名存实亡，战斧是进攻性武器</li>
+          <li>国家情报局+战斧导弹组合，实质突破战后体制约束</li>
+          <li>历史教训——1930年代日本军部扩权路径与当前高度相似</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导</h4>
+      <ol>
+        <li><strong>事实判断：</strong>日本国家情报局的具体职能范围是什么？与中情局、MI6有何异同？</li>
+        <li><strong>数据支撑：</strong>日本2026年国防预算约<strong>8.9万亿日元</strong>（约600亿美元），较2018年翻倍，其中进攻性武器占比约<strong>15%</strong>。（数据来源：日本防卫省、SIPRI）</li>
+        <li><strong>理论框架：</strong>安全困境理论（Security Dilemma）——一国提升安全的行为反而降低他国安全感，如何适用于当前中日关系？博弈论中的"囚徒困境"是否提供了走出困境的路径？</li>
+        <li><strong>价值判断：</strong>主权国家自卫权 vs 战后和平秩序，哪个价值优先？不同立场（日本国民/中国民众/美国盟友）的优先级为何不同？</li>
+        <li><strong>利益权衡：</strong>若中国采取更强硬反制vs维持战略定力，短期内各自的成本和收益是什么？区域军备竞赛的长期代价由谁承担？</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="daily-question">
+    <div class="label">🔗 本日追问</div>
+    <div class="question">当AI泡沫的金融风险与日本军事扩张的地缘风险在同一日交汇，"不确定性"本身是否已成为这个时代最大的确定性？普通人如何在系统性风险中保护自身利益？</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-07-31 17:10 | 数据源：5（澎湃/新浪/华尔街见闻/36氪/财联社） | 采集条目：20
+  <br>📋 本简报由 Hermes Agent 自动生成 · 数据洞察日 📊
+</div>
+
+</body>
+</html>
