@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>量化交易资讯简报 - 2026-07-31</title>
+ <style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #2c3e50; line-height: 1.8; }
+ .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+ .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 30px 40px; border-radius: 12px; margin-bottom: 24px; }
+ .header h1 { font-size: 28px; margin-bottom: 8px; }
+ .header .subtitle { color: #a8d8ea; font-size: 15px; }
+ .header .summary { margin-top: 16px; padding: 12px 16px; background: rgba(255,255,255,0.1); border-radius: 8px; font-size: 15px; border-left: 4px solid #e94560; }
+ .toc { background: white; border-radius: 12px; padding: 20px 30px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+ .toc h2 { font-size: 18px; color: #1a1a2e; margin-bottom: 12px; border-bottom: 2px solid #e94560; padding-bottom: 8px; }
+ .toc ul { list-style: none; }
+ .toc ul li { padding: 4px 0; }
+ .toc ul li a { color: #0f3460; text-decoration: none; font-size: 15px; }
+ .toc ul li a:hover { color: #e94560; }
+ .section { background: white; border-radius: 12px; padding: 24px 30px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+ .section h2 { font-size: 20px; color: #1a1a2e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e94560; }
+ .highlight-item { padding: 14px 16px; margin-bottom: 10px; background: #fff8e1; border-left: 4px solid #ff9800; border-radius: 4px; font-size: 15px; }
+ .highlight-item strong { color: #e65100; }
+ .factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 12px; }
+ .factor-card { background: #f8f9fa; border-radius: 8px; padding: 14px; text-align: center; }
+ .factor-card .name { font-size: 13px; color: #888; margin-bottom: 4px; }
+ .factor-card .value { font-size: 22px; font-weight: 700; }
+ .factor-card .change { font-size: 13px; margin-top: 2px; }
+ .up { color: #e53935; }
+ .down { color: #2e7d32; }
+ .paper-card { padding: 16px; margin-bottom: 12px; background: #fafafa; border-left: 4px solid #0f3460; border-radius: 4px; }
+ .paper-card .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+ .paper-card .title a { color: #0f3460; text-decoration: none; }
+ .paper-card .title a:hover { color: #e94560; }
+ .paper-card .meta { font-size: 13px; color: #888; margin-bottom: 8px; }
+ .paper-card .summary { font-size: 14px; color: #555; margin-bottom: 8px; }
+ .paper-card .score { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+ .score-high { background: #e8f5e9; color: #2e7d32; }
+ .score-mid { background: #fff3e0; color: #ef6c00; }
+ .score-low { background: #ffebee; color: #c62828; }
+ .paper-list-item { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+ .paper-list-item:last-child { border-bottom: none; }
+ .paper-list-item a { color: #0f3460; text-decoration: none; }
+ .paper-list-item a:hover { color: #e94560; }
+ .strategy-item { padding: 14px; margin-bottom: 10px; background: #f3f0ff; border-left: 4px solid #6c5ce7; border-radius: 4px; }
+ .strategy-item .title { font-weight: 600; font-size: 15px; color: #4a3db8; margin-bottom: 6px; }
+ .strategy-item .desc { font-size: 14px; color: #555; }
+ .broker-item { padding: 12px 16px; margin-bottom: 8px; background: #f0f7ff; border-left: 4px solid #0984e3; border-radius: 4px; font-size: 14px; }
+ .broker-item .source { font-weight: 600; color: #0652DD; }
+ .footer { text-align: center; padding: 20px; color: #999; font-size: 13px; }
+ </style>
+</head>
+<body>
+ <div class="container">
+  <!-- 头部 -->
+  <div class="header">
+   <h1>📊 量化交易资讯简报</h1>
+   <div class="subtitle">2026年7月31日 · 星期五 · 第183期</div>
+   <div class="summary">
+    <strong>今日总结：</strong>中国7月制造业PMI降至49.2，但AI算力板块逆势爆发，电子板块主力净流入超311亿；政治局会议强调"适时调整"宏观政策；QuantPedia发文分析短期趋势跟踪策略衰亡的微观结构原因，arXiv新论文聚焦A股羊群效应与动量反转、跨协方差预测等前沿课题。
+   </div>
+  </div>
+
+  <!-- 目录 -->
+  <div class="toc">
+   <h2>📑 今日目录</h2>
+   <ul>
+    <li>📌 <a href="#highlights">今日要点</a></li>
+    <li>📈 <a href="#factors">因子看板</a></li>
+    <li>🔬 <a href="#academic">学术前沿</a></li>
+    <li>📐 <a href="#strategy">策略研究</a></li>
+    <li>🏦 <a href="#broker">券商金工观点</a></li>
+   </ul>
+  </div>
+
+  <!-- 今日要点 -->
+  <div class="section" id="highlights">
+   <h2>📌 今日要点</h2>
+   <div class="highlight-item">
+    <strong>中国7月PMI降至49.2，高技术制造业逆势扩张</strong> — 制造业PMI回落至收缩区间，但高技术制造业保持扩张，非制造业商务活动指数降至49。经济结构分化明显，政策预期升温。
+   </div>
+   <div class="highlight-item">
+    <strong>AI算力板块全面爆发，电子板块主力净流入超311亿</strong> — 创业板大涨逾4%，AI应用端20余股涨停，长鑫市值破4万亿。受微软Azure收入同比大增43%消息刺激，算力硬件与芯片半导体领涨。
+   </div>
+   <div class="highlight-item">
+    <strong>发改委：将实施更加积极有为的宏观政策</strong> — 发改委新闻发布会表示将着力稳就业、稳企业、稳市场、稳预期，"十五五"时期算力网建设将新增直接投资4万亿元。
+   </div>
+   <div class="highlight-item">
+    <strong>QuantPedia深度分析：短期趋势跟踪策略为何衰亡</strong> — 研究发现趋势跟踪利润在2008年后几近消失，关键因素不是资产类别或流动性，而是波动率归一化tick size（微观结构变量）。
+   </div>
+   <div class="highlight-item">
+    <strong>韩股连续熔断后反弹，全球AI股大涨</strong> — 韩股暴涨超14%，三星、SK海力士飙升25%，日本软银跳升15%。全球AI板块暴力反弹，去杠杆或已接近尾声。
+   </div>
+  </div>
+
+  <!-- 因子看板 -->
+  <div class="section" id="factors">
+   <h2>📈 因子看板 & 市场数据</h2>
+   <h3 style="font-size:15px; color:#555; margin-bottom:12px;">主力资金流向</h3>
+   <div class="factor-grid">
+    <div class="factor-card">
+     <div class="name">电子板块</div>
+     <div class="value up">+311亿</div>
+     <div class="change up">净流入居首</div>
+    </div>
+    <div class="factor-card">
+     <div class="name">半导体板块</div>
+     <div class="value up">净流入</div>
+     <div class="change up">强势流入</div>
+    </div>
+    <div class="factor-card">
+     <div class="name">银行板块</div>
+     <div class="value down">净流出</div>
+     <div class="change down">资金撤离</div>
+    </div>
+    <div class="factor-card">
+     <div class="name">食品饮料</div>
+     <div class="value down">净流出</div>
+     <div class="change down">持续走弱</div>
+    </div>
+    <div class="factor-card">
+     <div class="name">非银金融</div>
+     <div class="value down">净流出</div>
+     <div class="change down">调整中</div>
+    </div>
+    <div class="factor-card">
+     <div class="name">通信板块</div>
+     <div class="value up">净流入</div>
+     <div class="change up">跟随AI</div>
+    </div>
+   </div>
+   <h3 style="font-size:15px; color:#555; margin:16px 0 12px;">个股资金TOP</h3>
+   <table style="width:100%; font-size:14px; border-collapse:collapse;">
+    <tr style="background:#f5f5f5;"><th style="padding:8px; text-align:left;">个股</th><th style="padding:8px;">涨跌幅</th><th style="padding:8px;">主力资金</th></tr>
+    <tr><td style="padding:8px;">东山精密</td><td style="padding:8px; text-align:center;" class="up">+5.87%</td><td style="padding:8px; text-align:center;" class="up">净买入33.4亿</td></tr>
+    <tr><td style="padding:8px;">中际旭创</td><td style="padding:8px; text-align:center;" class="up">+6.21%</td><td style="padding:8px; text-align:center;" class="up">净流入居前</td></tr>
+    <tr><td style="padding:8px;">新易盛</td><td style="padding:8px; text-align:center;" class="up">+8.40%</td><td style="padding:8px; text-align:center;" class="up">净流入居前</td></tr>
+    <tr><td style="padding:8px;">宁德时代</td><td style="padding:8px; text-align:center;" class="down">-0.59%</td><td style="padding:8px; text-align:center;" class="down">净卖出9亿+</td></tr>
+    <tr><td style="padding:8px;">贵州茅台</td><td style="padding:8px; text-align:center;" class="down">-1.83%</td><td style="padding:8px; text-align:center;" class="down">净流出居前</td></tr>
+    <tr><td style="padding:8px;">长江电力</td><td style="padding:8px; text-align:center;" class="down">-2.37%</td><td style="padding:8px; text-align:center;" class="down">净流出居前</td></tr>
+   </table>
+   <h3 style="font-size:15px; color:#555; margin:16px 0 12px;">成交额</h3>
+   <p style="font-size:14px; color:#555;">沪深两市半日成交额突破1.5万亿，较上一日同期放量超3400亿，预计全天成交金额超2.8万亿。</p>
+  </div>
+
+  <!-- 学术前沿 -->
+  <div class="section" id="academic">
+   <h2>🔬 学术前沿</h2>
+
+   <div class="paper-card">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27063" target="_blank">Herding, Momentum, and Reversal in China's A-Share Market: An Agent-Based Network Model with Information Diffusion</a></div>
+    <div class="meta">Jiahao Weng · arXiv q-fin · 2026-07-30</div>
+    <div class="summary">基于Agent的网络模型研究A股市场中的羊群效应、动量与反转现象。投资者在高斯信念下选择买卖或观望，根据邻居投资者行为修正行动概率，通过von Neumann和小世界网络建模局部互动结构，揭示信息扩散延迟与羊群效应如何共同驱动动量和反转。</div>
+    <div class="score score-high">可落地性：★★★★☆ — 直接针对A股市场，模型可参数化用于动量/反转策略择时</div>
+   </div>
+
+   <div class="paper-card">
+    <div class="title"><a href="https://arxiv.org/abs/2601.07687" target="_blank">Physics-Informed Singular-Value Learning for Cross-Covariances Forecasting in Financial Markets</a></div>
+    <div class="meta">Efstratios Manolakis, Christian Bongiorno, Rosario Nunzio Mantegna · arXiv q-fin.ST · 2026-07-30 (v3)</div>
+    <div class="summary">提出基于物理信息的神经估计器参数化跨协方差矩阵清洁器，克服传统非线性收缩方法对平稳性和有界谱假设的依赖。在真实股票收益数据上，该方法能更好地处理依赖漂移和宏观共模因子，提升协方差预测精度。</div>
+    <div class="score score-high">可落地性：★★★★☆ — 可直接应用于投资组合优化和风险模型中的协方差估计</div>
+   </div>
+
+   <div class="paper-card">
+    <div class="title"><a href="https://arxiv.org/abs/2607.26792" target="_blank">Crossing-Free Probabilistic K-Line Forecasts Without Retraining</a></div>
+    <div class="meta">Runyao Yu, Yuchen Tao, Yujie Chen 等 · arXiv q-fin · 2026-07-30</div>
+    <div class="summary">研究概率K线预测中的两个一致性问题：分位数交叉和K线交叉。提出无需重新训练即可保证预测的OHLC四价之间一致性约束的方法，解决了高/低价预测低于开盘/收盘价等逻辑矛盾。</div>
+    <div class="score score-mid">可落地性：★★★☆☆ — 适用于技术分析框架下的概率预测，对量化K线策略有参考价值</div>
+   </div>
+
+   <h3 style="font-size:16px; color:#1a1a2e; margin:20px 0 10px;">📄 论文速递</h3>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.26068" target="_blank">The Human Utility Factor: A Computable Welfare Metric That Reframes AI Governance</a> — Sivasathivel Kandasamy</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.26188" target="_blank">Bitcoin Runs on a Clock: Why Every Price Indicator Dies and the Halving Clock Doesn't</a> — Josh Molnar</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.26405" target="_blank">Multi-Currency AMMs for Decentralized FOREX Markets: Feasibility & Optimal Design</a> — Li, Park, Veneris, Singh</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.27019" target="_blank">Multi-Asset Liquidation in Dark Pools with Adverse Selection</a> — Fu, Ruf, Shi, Xu</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.27070" target="_blank">Early-Warning Signals for Crypto Perpetual Liquidation Cascades</a> — Ramon Marc Garcia Seuma</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.27188" target="_blank">Inverse Learning of Latent Risk-Neutral Densities from Irregular Option Quotes</a> — Shikhman, Galarnyk 等</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2411.17136" target="_blank">Financial Volatility and Risk Forecasting Incorporating Multiple Realized Measures</a> — Zhao, Wang, Gerlach 等</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.27039" target="_blank">Forcing and Duality-Corrected Contracts for Volatility Control</a> — Chiusolo, Hubert, Possamaï, Touzi</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.26245" target="_blank">OpenMarket: Synchronized Polymarket-Binance Dataset for HF Prediction-Market Research</a> — Gregory Young</div>
+   <div class="paper-list-item">🔹 <a href="https://arxiv.org/abs/2607.26109" target="_blank">The Attention-Directing Ability of Teams</a> — Kokshagina, Santolini, Riedl</div>
+  </div>
+
+  <!-- 策略研究 -->
+  <div class="section" id="strategy">
+   <h2>📐 策略研究</h2>
+
+   <div class="strategy-item">
+    <div class="title"><a href="https://quantpedia.com/is-trend-still-your-friend-a-microstructural-account-of-the-demise-of-short-term-trend-following/" target="_blank">Is Trend Still Your Friend? 短期趋势跟踪衰亡的微观结构解释</a></div>
+    <div class="desc"><strong>来源：</strong>QuantPedia · 2026-07-29<br>
+    <strong>核心发现：</strong>分析约100个流动性期货合约（1995-2025），发现趋势跟踪在2008年后表现急剧恶化，但这一衰退具有高度选择性。决定性因素并非资产类别、流动性、市场电子化或策略拥挤，而是<strong>波动率归一化tick size</strong>。2008年后，趋势跟踪利润几乎完全在tick size较小的合约上消失，而在tick size较大的合约上仍保持盈利。<br>
+    <strong>启示：</strong>选择趋势跟踪标的时，应优先考虑波动率归一化tick size较大的市场；短周期趋势策略需结合微观结构分析。</div>
+   </div>
+
+   <div class="strategy-item">
+    <div class="title"><a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction — 收益预测中的目标选择</a></div>
+    <div class="desc"><strong>来源：</strong>QuantPedia · 2026-07-23<br>
+    <strong>核心发现：</strong>Cakici和Zaremba的研究表明，在机器学习股票收益预测中，预测目标的表示方式比模型架构和特征工程影响更大。训练预测股票排名而非原始收益水平的模型，产生了显著更高的预测性能和更稳定的投资组合收益。<br>
+    <strong>启示：</strong>量化模型训练中应使用排序（rank）而非原始收益率作为标签，可显著提升横截面选股效果。</div>
+   </div>
+
+   <div class="strategy-item">
+    <div class="title"><a href="https://quantpedia.com/silicon-vs-satoshi-tactical-asset-rotation-between-nasdaq-100-and-bitcoin/" target="_blank">Silicon vs. Satoshi: 纳斯达克100与比特币之间的战术资产轮动</a></div>
+    <div class="desc"><strong>来源：</strong>QuantPedia · 2026-07-02<br>
+    <strong>核心发现：</strong>比特币和纳斯达克100在现代零售注意力经济中争夺同一池投机资本，两者都受到FOMO、羊群效应和近因偏差的驱动。当科技股主导想象力时，资本聚集在AI交易；当比特币突破时，注意力转向加密货币。基于注意力的战术轮动策略可捕捉这种资金流动模式。<br>
+    <strong>启示：</strong>可构建基于资金流/搜索趋势的动量轮动策略，在科技股与加密资产间切换。</div>
+   </div>
+  </div>
+
+  <!-- 券商金工观点 -->
+  <div class="section" id="broker">
+   <h2>🏦 券商金工观点</h2>
+
+   <div class="broker-item">
+    <span class="source">7月政治局会议点评</span> — 会议强调"适时调整"宏观政策内涵，下半年政策或更积极有为。金工视角看，PMI数据与政策信号或触发因子表现切换，防御因子可能短期占优，但AI/成长因子在政策催化下延续强势。
+   </div>
+
+   <div class="broker-item">
+    <span class="source">发改委新闻发布会</span> — 人工智能相关行业保持30%以上高增长，全国智能算力规模达去年同期2.8倍，国产大模型全球下载量破100亿次。算力产业链因子（AI算力、半导体设备）景气度持续上行，建议关注相关因子暴露。
+   </div>
+
+   <div class="broker-item">
+    <span class="source">市场资金流向观察</span> — 沪深两市半日成交额突破1.5万亿，放量超3400亿。主力资金集中流入电子、半导体、通信板块，银行、食品饮料、非银金融遭净流出。风格因子方面，动量因子在AI板块表现突出，价值因子承压。
+   </div>
+
+   <div class="broker-item">
+    <span class="source">韩国主权基金押注AI</span> — 韩国拟向主权财富基金注资140亿美元，押注AI与数据中心。全球AI资本开支周期延续，算力相关因子中期逻辑不变，但需警惕短期拥挤度风险。
+   </div>
+
+   <div class="broker-item">
+    <span class="source">黄金4000美元震荡月余</span> — 央行与ETF买盘何时回归成市场关注焦点。避险因子在地缘不确定性下仍有支撑，但需关注美联储政策转向对实际利率的影响。
+   </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer">
+   <p>📊 量化交易资讯简报 · 每日自动生成 · 数据来源：arXiv、QuantPedia、华尔街见闻、财联社</p>
+   <p style="margin-top:4px;">生成时间：2026-07-31 · Powered by Hermes Agent</p>
+  </div>
+ </div>
+</body>
+</html>
