@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-07-31 上午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category {
+    margin-bottom: 28px;
+  }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up {
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+  .sector-card.down {
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.25);
+  }
+  .sector-card.neutral {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+  .sector-card .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .sector-card .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .sector-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sector-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .sector-tag.up {
+    background: rgba(63,185,80,0.15);
+    color: #3fb950;
+  }
+  .sector-tag.down {
+    background: rgba(218,54,51,0.15);
+    color: #da3633;
+  }
+  
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .focus-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .focus-item strong {
+    color: var(--text-primary);
+  }
+  
+.news-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  transition: background 0.2s;
+}
+.news-item:hover { background: var(--bg-card-hover); }
+.news-item .title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.news-item .title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.news-item .title a:hover { color: var(--text-link); }
+.news-item .summary {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.news-item .meta {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.news-item .meta a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+.news-item .recommend {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--accent-debate);
+  font-style: italic;
+}
+.footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.disclaimer {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: rgba(218,54,51,0.08);
+  border: 1px solid rgba(218,54,51,0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年7月31日 星期五 · 上午版</div>
+  <div class="overview">政治局会议定调下半年经济，OpenAI GPT-5.6暴降80%引发AI价格战，A股创业板大涨逾4%，全球AI股暴力反弹，日本正式设立国家情报局引发地区安全担忧。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 中央政治局会议决定召开二十届五中全会，强调"适时调整"宏观政策，提升资本市场韧性</div>
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> OpenAI GPT-5.6系列价格最高暴降80%，公布自进化秘籍，翁荔被曝回归</div>
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> 创业板大涨逾4%，AI应用端20余股涨停，沪深成交额突破1.5万亿</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 中国7月制造业PMI降至49.2，高技术制造业逆势扩张；发改委称下半年物价有望平稳</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 重庆彭水山体崩塌确认51人遇难仍10人失联，第12批国采开标企业喊出"从良心出发报价"</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(4)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33688077" target="_blank">重庆彭水山体崩塌灾害找到并确认51人遇难，仍有10名失联人员</a></div>
+    <div class="summary">重庆彭水县鹿角镇山体崩塌灾害搜救工作持续进行，截至目前已找到并确认51人遇难，仍有10名失联人员。现场救援队伍持续搜救，地质灾害防治专家研判后续风险，当地已对周边区域进行安全排查和人员转移安置。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33688077" target="_blank">澎湃新闻</a></div>
+    <div class="recommend">💡 多源交叉验证+重大伤亡事故，持续关注救援进展</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33688463" target="_blank">直击第12批集采开标现场：早上七点前有代表候场，企业喊出"从良心出发报价"</a></div>
+    <div class="summary">第十二批国家组织药品集中带量采购正式开标，早上7点前已有企业代表候场。多家企业报价竞争激烈，有企业代表喊出"从良心出发报价"引发关注。本次集采覆盖更多品种，银行等金融机构到场介绍"集采贷""BD贷"等服务产品，为中选企业提供金融支持。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33688463" target="_blank">澎湃新闻</a></div>
+    <div class="recommend">💡 独家现场+民生关切，集采政策直接影响药价</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33685094" target="_blank">陕西文旅厅：不存在"伪史论者"电话骚扰要求拆唐朝古迹情况，将调查追责</a></div>
+    <div class="summary">针对网传"伪史论者"电话骚扰要求拆除唐朝古迹一事，陕西省文旅厅回应称不存在此类情况，将对造谣者调查追责。澎湃评论指出"唐朝不存在"等伪史论歪风必须刹住，此类言论不仅歪曲历史事实，更对文物保护和文化传承造成严重干扰。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33685094" target="_blank">澎湃新闻</a></div>
+    <div class="recommend">💡 官方辟谣+评论深度，伪史论现象值得警惕</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33684854" target="_blank">中共中央政治局召开会议，决定召开二十届五中全会，分析研究当前经济形势和经济工作</a></div>
+    <div class="summary">中共中央政治局7月30日召开会议，决定今年秋季召开二十届五中全会，主要议程是进一步全面深化改革、推进中国式现代化。会议分析研究当前经济形势，部署下半年经济工作，强调要"适时调整"宏观政策，提升资本市场韧性和信心，推进"六张网"建设，发展智能经济新形态。十大券商解读认为政策更加积极，稳市力度有望增加。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33684854" target="_blank">新华社/澎湃新闻</a> | <a href="https://wallstreetcn.com/articles/3778380" target="_blank">华泰证券点评</a></div>
+    <div class="recommend">💡 最高层定调+多源交叉，下半年经济政策风向标</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-30/doc-inikrfcu9519747.shtml" target="_blank">何立峰与美国财政部长贝森特、贸易代表格里尔举行视频通话</a></div>
+    <div class="summary">国务院副总理何立峰7月30日与美国财政部长贝森特、贸易代表格里尔举行视频通话，就中美经贸关系等议题交换意见。此前贝森特表态称日元"非常低估"，为日本干预站台。此次通话在中美贸易摩擦持续背景下进行，市场关注后续政策走向。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-30/doc-inikrfcu9519747.shtml" target="_blank">新华社</a></div>
+    <div class="recommend">💡 高层互动+贸易政策信号，影响中美经贸全局</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33688538" target="_blank">大外交｜日本国家情报局今开张："专守防卫"正让位于"先发制人"？</a></div>
+    <div class="summary">日本政府7月30日正式设立"国家情报局"，将原分散在各部门的情报职能整合，赋予更大权力。分析认为此举标志日本安全保障政策重大转向，"专守防卫"原则正在被"先发制人"思维取代。该机构可协调军事情报、外交情报和反恐情报，引发周边国家对日本军事扩张的担忧。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33688538" target="_blank">澎湃新闻</a> | <a href="https://news.sina.com.cn/w/2026-07-30/doc-inikrfcz4924837.shtml" target="_blank">央视</a></div>
+    <div class="recommend">💡 多源交叉+地缘安全，东亚格局重大变化</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-30/doc-inikrfcz4923572.shtml" target="_blank">南部战区、中国海警，同时发声：我们共同守护黄岩！</a></div>
+    <div class="summary">南部战区与中国海警就南海黄岩岛问题同时发声，强调"我们共同守护黄岩"。此举展示中国在南海问题上的坚定立场和军事、执法力量的协同配合。近期南海局势持续紧张，中方通过多渠道表达维护领土主权的决心。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-30/doc-inikrfcz4923572.shtml" target="_blank">长安街知事</a></div>
+    <div class="recommend">💡 军方+执法双发声+南海主权信号</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-07-31/doc-inikrvzn9389298.shtml" target="_blank">美多名议员阻挠苹果采购中国芯片，专家：将破坏中美企业产业链合作</a></div>
+    <div class="summary">美国多名国会议员试图阻挠苹果公司采购中国芯片，引发业界广泛关注。专家指出此举将破坏中美企业间的产业链合作，损害全球半导体供应链稳定。苹果CEO库克在最新财报电话会上表示"正为供应链受限苦苦挣扎"，正在评估所有供应选项。摩根大通将苹果目标价从345美元下调至340美元。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-07-31/doc-inikrvzn9389298.shtml" target="_blank">环球网</a> | <a href="https://wallstreetcn.com/articles/3778379" target="_blank">华尔街见闻</a></div>
+    <div class="recommend">💡 政策干预+产业影响，芯片供应链格局受冲击</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3917991880633990" target="_blank">吞并飞书，豆包成"豆办"——字节跳动成立新的豆包产品团队</a></div>
+    <div class="summary">字节跳动将飞书整合进豆包产品线，"豆包"变"豆办"，字节跳动成立新的豆包产品团队，张一鸣"摸着奥特曼过河"，让字节真正像一家To B公司一样思考。此举标志字节从C端AI应用向企业级市场全面进军，飞书的协同办公能力与豆包AI能力深度融合。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3917991880633990" target="_blank">36氪/字母榜</a> | <a href="https://36kr.com/p/3917750378534530" target="_blank">版面之外</a></div>
+    <div class="recommend">💡 独家深度+产业整合信号，字节To B战略升级</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33688698" target="_blank">国家发改委：今年7550亿元中央预算内投资基本下达完毕</a></div>
+    <div class="summary">国家发改委在7月新闻发布会上表示，今年7550亿元中央预算内投资基本下达完毕，"十五五"规划109项重大工程加快实施。新开工了三峡水运新通道、广州新机场等重大工程，有关机构测算"十五五"时期算力网建设将新增直接投资4万亿元，为民间投资创造巨大空间。全球每销售10台人形和四足智能机器人就有8台来自中国。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33688698" target="_blank">澎湃新闻</a> | <a href="https://www.cls.cn/telegraph" target="_blank">财联社</a></div>
+    <div class="recommend">💡 政策数据+投资规模，4万亿算力网建设是科技产业大利好</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778387" target="_blank">中国7月制造业PMI降至49.2，高技术制造业逆势扩张，非制造业商务活动指数降至49</a></div>
+    <div class="summary">中国7月制造业PMI降至49.2，跌破荣枯线，非制造业商务活动指数降至49。不过高技术制造业逆势扩张，呈现结构性分化。发改委表示将实施更加积极有为的宏观政策，增强经济发展和物价回升内生动力，下半年物价有望保持平稳运行，正在制定扩大内需战略实施方案（2026-2030年）。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778387" target="_blank">华尔街见闻</a> | <a href="https://www.cls.cn/telegraph" target="_blank">财联社</a></div>
+    <div class="recommend">💡 关键经济数据+政策对冲信号，PMI走弱但高技术制造亮眼</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778371" target="_blank">亚马逊电话会：在手订单近5000亿美元，CEO豪言"AWS将成万亿美元业务"，内存成本推高资本支出</a></div>
+    <div class="summary">亚马逊发布财报并举行电话会，CEO安迪·贾西豪言AWS将成为万亿美元业务。公司在手订单近5000亿美元，Azure收入同比大增43%刺激微软股价暴涨15.5%。但内存成本推高资本支出引发投资者关注，亚马逊正在加速AI基础设施建设投入。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778371" target="_blank">华尔街见闻</a></div>
+    <div class="recommend">💡 独家深度+全球科技巨头财报，5000亿在手订单震撼市场</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778377" target="_blank">为日本干预站台！美国财长贝森特：日元"非常低估"</a></div>
+    <div class="summary">美国财长贝森特公开表态称日元"非常低估"，为日本干预汇市站台。日元急涨引发日本再度干预汇市猜测，分析师称"顺势出手"时机聪明。但摩根大通指出日本进一步干预外汇市场的空间可能有限，SMBC日兴认为日本央行会议后若日元再度走弱，日本或再次干预。黄金4000美元震荡月余，央行与ETF买盘何时回归受关注。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778377" target="_blank">华尔街见闻</a> | <a href="https://finance.sina.com.cn/world/2026-07-31/doc-inikrmmv1051110.shtml" target="_blank">新浪财经</a></div>
+    <div class="recommend">💡 全球市场+汇率博弈，美日联手干预日元影响深远</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览卡片 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">📈 领涨板块</div>
+      <div class="name">AI应用</div>
+      <div class="value">+20%涨停潮</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">📉 领跌板块</div>
+      <div class="name">银行/白酒</div>
+      <div class="value">净流出居前</div>
+    </div>
+    <div class="sector-card up">
+      <div class="label">💹 北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">电子+311亿</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">AI应用 +20%</span>
+      <span class="sector-tag up">芯片半导体 +5%</span>
+      <span class="sector-tag up">算力硬件 +6%</span>
+      <span class="sector-tag up">黄金 +7%</span>
+      <span class="sector-tag down">银行 -1.6%</span>
+    </div>
+  </div>
+
+  <!-- 市场关注 -->
+  <div class="market-focus">
+    <h4>👁️ 市场关注</h4>
+    <div class="focus-item"><strong>长鑫存储</strong>：上市首日市值破4万亿，成交超1000亿元，创A股上市首日成交纪录</div>
+    <div class="focus-item"><strong>东山精密</strong>：主力资金净买入超33.40亿元位居首位，大涨6.79%</div>
+    <div class="focus-item"><strong>宇树科技</strong>：8月10日科创板网下申购，机器人赛道标杆企业上市在即</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778386" target="_blank">创业板大涨逾4%，算力硬件、芯片半导体爆发，长鑫市值破4万亿，AI大模型股暴涨</a></div>
+    <div class="summary">7月31日A股三大股指集体高开，创业板大涨逾4%，创指开盘大涨5.15%。算力硬件、芯片半导体板块爆发，长鑫存储上市首日市值破4万亿。AI应用端再度拉升，昆仑万维、中文在线等20余股20cm涨停，智谱涨20%。沪深两市成交额突破1.5万亿，较上一日此时放量超3400亿，预计全天超2.8万亿。恒科指涨1%。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778386" target="_blank">华尔街见闻</a> | <a href="https://www.cls.cn/telegraph" target="_blank">财联社</a></div>
+    <div class="recommend">💡 多源交叉+盘面全景，A股迎来久违大涨</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778379" target="_blank">AI暴力反弹！三星、SK海力士飙升25%，韩股暴涨超14%，软银跳升15%，日股大涨</a></div>
+    <div class="summary">全球AI概念股暴力反弹，三星电子、SK海力士飙升25%，韩国KOSPI指数暴涨超14%。软银跳升15%，日经指数大涨。此前韩股连续两日熔断后去杠杆接近尾声。但韩股半年多急涨急跌52次，市场波动性极高。韩国拟向主权财富基金注资140亿美元押注AI与数据中心。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778379" target="_blank">华尔街见闻</a></div>
+    <div class="recommend">💡 全球AI反弹+亚太市场异动，韩股熔断后报复性反弹</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778381" target="_blank">本轮牛市"最大神话"落幕！"AI股神"被击溃，Citadel出手收购全部仓位</a></div>
+    <div class="summary">本轮牛市"最大神话"落幕，被称为"AI股神"的年轻交易员在短短数周内被击溃。Citadel出手收购其全部仓位，"带血的筹码"出了，华尔街押注AI见底。市场不相信"神话"："AI股神"死于杠杆。等不及的预言家——AI神童爆仓记成为市场警示案例。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778381" target="_blank">华尔街见闻</a></div>
+    <div class="recommend">💡 独家深度+市场传奇，杠杆交易的风险教科书</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/stock/usstock/c/2026-07-31/doc-inikrrtx1535815.shtml" target="_blank">7月31日收盘：美股收高纳指涨约680点，微软收高15.5%创18年来最大涨幅</a></div>
+    <div class="summary">美股7月30日收盘三大指数集体收涨，纳指涨约680点。微软收高15.5%创18年来最大单日涨幅，市值暴增约4500亿美元创美股史上最大单日市值增长纪录。受Azure收入同比大增43%和AI业务强劲增长推动，科技股全面反弹。但Meta因研发支出增67%、预告个人智能体，一夜蒸发7800亿。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/stock/usstock/c/2026-07-31/doc-inikrrtx1535815.shtml" target="_blank">新浪财经</a></div>
+    <div class="recommend">💡 关键美股数据+科技巨头分化，微软创纪录与Meta暴跌形成对比</div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3918835009351298" target="_blank">突发，GPT-5.6今起大降价！OpenAI公布自进化秘籍，翁荔被曝回归</a></div>
+    <div class="summary">OpenAI宣布GPT-5.6系列价格最高暴降80%，同时公布GPT-5.6自进化秘籍——AI竟开始自己改代码实现原地飞升，成本砍20%、效率提升15%。此外翁荔（Lilian Weng）被曝回归OpenAI。马斯克发布Grok新模型登智能体测评榜首，比OpenAI家便宜一半，响应仅0.7秒。超1100名AI公司员工联名请愿美国政府管控前沿AI发展。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3918835009351298" target="_blank">36氪/量子位</a> | <a href="https://36kr.com/p/3917509136346498" target="_blank">智东西</a> | <a href="https://36kr.com/p/3917509234699651" target="_blank">36氪</a></div>
+    <div class="recommend">💡 多源交叉+行业地震，AI价格战全面爆发</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3917969453395334" target="_blank">WorkBuddy正在重估腾讯，不止用户和收入</a></div>
+    <div class="summary">WorkBuddy正在重塑腾讯的估值逻辑，其价值不止于用户和收入层面。腾讯AI产品生态加速扩张，结合微信生态和To B能力，形成独特竞争壁垒。与此同时，月之暗面Kimi已完成超35亿美元F轮融资，中国AI大模型竞争进入白热化阶段。Token正在"杀死"AI应用，商业模式面临重构。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3917969453395334" target="_blank">36氪/全天候科技</a></div>
+    <div class="recommend">💡 独家深度+估值重塑，腾讯AI价值重估进行时</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3917796249071239" target="_blank">OpenAI，开源了</a></div>
+    <div class="summary">OpenAI宣布开源，第一批尝鲜的人账单已刷爆。此举被视为OpenAI在GPT-5.6降价之外的又一重大策略调整，既是对开源社区压力的回应，也是为构建更大生态的布局。结合GPT-5.6降价80%和自进化能力，OpenAI正通过"低价+开源"组合拳巩固市场地位。贾扬清再创业造AI军团，让GLM-5.2提速534%。DeepSeek Harness开启内测，V4正式版或已不远。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3917796249071239" target="_blank">36氪/新智元</a></div>
+    <div class="recommend">💡 行业格局+多源交叉，AI开源与闭源的路线之争加剧</div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  ⚠️ 股市数据仅供参考，不构成投资建议。投资有风险，入市需谨慎。
+</div>
+
+<div class="footer">
+  生成时间：2026-07-31 11:00 | 数据源：5（澎湃新闻/华尔街见闻/36氪/财联社/新浪热搜） | 采集条目：20
+</div>
+
+</body>
+</html>
