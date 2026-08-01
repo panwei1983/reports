@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量化交易资讯简报 - 2026-08-01</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header .date { color: #8892b0; font-size: 14px; }
+        .header .summary { margin-top: 16px; padding: 12px 16px; background: rgba(255,255,255,0.1); border-radius: 8px; font-size: 15px; line-height: 1.7; }
+        .toc { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .toc h2 { font-size: 16px; color: #1a1a2e; margin-bottom: 12px; }
+        .toc ul { list-style: none; }
+        .toc li { padding: 4px 0; }
+        .toc a { color: #0f3460; text-decoration: none; font-size: 14px; }
+        .toc a:hover { text-decoration: underline; }
+        .section { background: white; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .section h2 { font-size: 18px; color: #1a1a2e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e9ecef; }
+        .section h2 .icon { margin-right: 8px; }
+        .highlight-item { padding: 12px 16px; background: #f8f9fa; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #0f3460; }
+        .highlight-item .title { font-weight: 600; font-size: 15px; color: #1a1a2e; }
+        .highlight-item .desc { font-size: 13px; color: #666; margin-top: 4px; }
+        .factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+        .factor-card { background: #f8f9fa; border-radius: 8px; padding: 14px; text-align: center; }
+        .factor-card .name { font-size: 13px; color: #666; }
+        .factor-card .value { font-size: 20px; font-weight: 700; margin-top: 4px; }
+        .factor-card .value.up { color: #e74c3c; }
+        .factor-card .value.down { color: #27ae60; }
+        .factor-card .value.neutral { color: #95a5a6; }
+        .paper-detail { background: #f8f9fa; border-radius: 8px; padding: 16px; margin-bottom: 16px; border-left: 4px solid #3498db; }
+        .paper-detail .paper-title { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+        .paper-detail .paper-title a { color: #0f3460; text-decoration: none; }
+        .paper-detail .paper-title a:hover { text-decoration: underline; }
+        .paper-detail .paper-meta { font-size: 12px; color: #888; margin-bottom: 8px; }
+        .paper-detail .paper-abstract { font-size: 13px; color: #555; line-height: 1.7; }
+        .paper-detail .score { display: inline-block; background: #0f3460; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-top: 6px; }
+        .paper-list-item { padding: 6px 0; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
+        .paper-list-item:last-child { border-bottom: none; }
+        .paper-list-item a { color: #0f3460; text-decoration: none; }
+        .paper-list-item a:hover { text-decoration: underline; }
+        .paper-list-item .source-tag { display: inline-block; background: #e8f4fd; color: #0f3460; padding: 1px 6px; border-radius: 3px; font-size: 11px; margin-right: 6px; }
+        .strategy-item { background: #f8f9fa; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+        .strategy-item .title { font-weight: 600; font-size: 14px; color: #1a1a2e; }
+        .strategy-item .desc { font-size: 13px; color: #666; margin-top: 4px; }
+        .brokerage-item { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+        .brokerage-item:last-child { border-bottom: none; }
+        .brokerage-item .org { display: inline-block; background: #fff3cd; color: #856404; padding: 1px 6px; border-radius: 3px; font-size: 11px; margin-right: 6px; }
+        .brokerage-item .title { font-size: 14px; color: #333; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📊 量化交易资讯简报</h1>
+        <div class="date">2026-08-01 | 星期六</div>
+        <div class="summary">
+            美联储议息机制面临40年来最大变革，日本央行大规模干预汇市，AI交易遭遇去杠杆冲击但机构接盘信号初现。30年美债收益率突破5.27%，新兴市场资金流入创2008年来新高，全球资本轮动加速。学术端arXiv新增19篇q-fin论文，机器学习与市场微观结构成为热点方向。
+        </div>
+    </div>
+
+    <div class="toc">
+        <h2>📑 今日目录</h2>
+        <ul>
+            <li><a href="#highlights">🔥 今日要点</a></li>
+            <li><a href="#factor">📈 因子看板</a></li>
+            <li><a href="#academic">🎓 学术前沿</a></li>
+            <li><a href="#strategy">💡 策略研究</a></li>
+            <li><a href="#brokerage">🏦 券商金工观点</a></li>
+        </ul>
+    </div>
+
+    <div class="section" id="highlights">
+        <h2><span class="icon">🔥</span>今日要点</h2>
+        <div class="highlight-item">
+            <div class="title">美联储议息机制重大变革：沃什考虑减少议息会议频率</div>
+            <div class="desc">若改革落地，将打破40年惯例，降息路径不确定性上升，利率期权定价面临重估</div>
+        </div>
+        <div class="highlight-item">
+            <div class="title">30年美债收益率涨破5.27%，全球资产定价锚剧烈波动</div>
+            <div class="desc">长端利率突破关键位，期限利差走阔，对冲成本上升，量化策略需重新校准利率因子敞口</div>
+        </div>
+        <div class="highlight-item">
+            <div class="title">AI交易去杠杆冲击：Citadel接盘"AI股神"持仓</div>
+            <div class="desc">主题基金遭遇赎回潮致强制平仓，大型对冲基金接盘或预示阶段性底部，市场微观结构研究价值凸显</div>
+        </div>
+        <div class="highlight-item">
+            <div class="title">新兴市场创2008年以来最大单日涨幅，资金轮动加速</div>
+            <div class="desc">全球资金从发达国家向新兴市场轮动，韩国半导体出口暴增180%提振市场信心，因子表现可能出现显著切换</div>
+        </div>
+        <div class="highlight-item">
+            <div class="title">日本央行干预汇市规模或超8万亿日元</div>
+            <div class="desc">日元套利交易逆转压力加大，跨市场波动率传导效应需重点关注，CTA策略面临趋势反转风险</div>
+        </div>
+    </div>
+
+    <div class="section" id="factor">
+        <h2><span class="icon">📈</span>因子看板</h2>
+        <div class="factor-grid">
+            <div class="factor-card">
+                <div class="name">美债30Y收益率</div>
+                <div class="value up">5.27%↑</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">黄金(人民币)</div>
+                <div class="value down">1225元/g↓</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">USD/JPY</div>
+                <div class="value down">干预中↓</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">新兴市场股指</div>
+                <div class="value up">大涨↑</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">半导体出口</div>
+                <div class="value up">+180%↑</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">AI主题基金</div>
+                <div class="value down">赎回潮↓</div>
+            </div>
+        </div>
+        <div style="margin-top:16px; font-size:13px; color:#888;">
+            <p>📊 <b>资金流向</b>：新兴市场资金大幅流入，发达国家科技板块资金流出；日元套利交易逆转，carry trade unwind加速</p>
+            <p>📈 <b>风格因子</b>：价值因子相对成长表现回升，大盘相对小盘走弱，低波因子在波动率上升环境下有望获得溢价</p>
+        </div>
+    </div>
+
+    <div class="section" id="academic">
+        <h2><span class="icon">🎓</span>学术前沿</h2>
+        <p style="font-size:13px; color:#888; margin-bottom:16px;">今日arXiv q-fin新增 19 篇论文</p>
+
+        <div class="paper-detail">
+            <div class="paper-title">RIDGE: An Autonomous Framework for Validation and Method Discovery in LLM-Generated Option Pricing</div>
+            <div class="paper-meta">来源: arXiv q-fin.CP | 作者: Liexin Cheng, Xue Cheng, Shuaiqiang Liu, Cornelis W. Oosterlee</div>
+            <div class="paper-abstract">本文聚焦期权定价或对冲策略，引入新的数学框架或数值方法，提高了衍生品估值的准确性。</div>
+            <div class="score">可落地性评分: 7/10</div>
+        </div>
+
+        <div class="paper-detail">
+            <div class="paper-title">Are Three Matrices All You Need To Beat the Market? Observable Matrix Dynamics for Portfolio Optimization</div>
+            <div class="paper-meta">来源: arXiv q-fin | 作者: Igor Halperin</div>
+            <div class="paper-abstract">本文研究投资组合优化问题，提出新的约束条件或目标函数，在样本外表现优于传统均值方差框架。</div>
+            <div class="score">可落地性评分: 6/10</div>
+        </div>
+
+        <div class="paper-detail">
+            <div class="paper-title">Explaining the Macroeconomic Inertia Puzzle</div>
+            <div class="paper-meta">来源: arXiv q-fin | 作者: Michael Cai</div>
+            <div class="paper-abstract">本文针对金融市场某一核心问题展开研究，对量化投资实践具有理论参考价值。</div>
+            <div class="score">可落地性评分: 6/10</div>
+        </div>
+
+        <h3 style="font-size:15px; margin-top:20px; margin-bottom:10px; color:#1a1a2e;">📋 论文速递</h3>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin.CP</span>
+            RIDGE: An Autonomous Framework for Validation and Method Discovery in LLM-Generated Option Pricing
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            Are Three Matrices All You Need To Beat the Market? Observable Matrix Dynamics for Portfolio Optimization
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            Explaining the Macroeconomic Inertia Puzzle
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            Local Stochastic Rough Volatility: Pathwise Filtering and the Conditional Density Equation
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            Multi-maturity consistency of option prices under bounded bid-ask spreads: a minimal obstruction and an exact two-date basket operator
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            Pricing and Semi-static Hedging of Green Pay-as-produced Power Purchase Agreements
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            ZAPs: A Reward Attribution Framework for DeFi Ecosystems with Adversarial-Robust Scoring via Parallel Anomaly Ensemble Detection
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            Voice AI in Firms: A Natural Field Experiment on Automated Job Interviews
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            Optimal Execution with Passive Market Impact
+        </div>
+
+        <div class="paper-list-item">
+            <span class="source-tag">arXiv q-fin</span>
+            Economics and Epidemics: Evidence from an Estimated Spatial Econ-SIR Model
+        </div>
+
+    </div>
+
+    <div class="section" id="strategy">
+        <h2><span class="icon">💡</span>策略研究</h2>
+        <div class="strategy-item">
+            <div class="title">🔍 日元套利交易逆转监控策略</div>
+            <div class="desc">日本央行干预规模超预期，USD/JPY波动加剧。建议监控COT报告投机头寸、日元隐含波动率与实际波动率差值，构建carry trade unwind早期预警指标。当USD/JPY跌破关键支撑且投机净多头锐减时，考虑做多VIX期货对冲。</div>
+        </div>
+        <div class="strategy-item">
+            <div class="title">📊 美债长端利率突破策略再校准</div>
+            <div class="desc">30年美债收益率突破5.27%，期限利差走阔。利率因子在多因子模型中的权重需重新评估，建议增加久期风险敞口的动态管理，关注利率对信用利差、股票风险溢价的传导效应，利率敏感型因子可能出现持续回撤。</div>
+        </div>
+        <div class="strategy-item">
+            <div class="title">🌐 新兴市场-发达国家轮动因子</div>
+            <div class="desc">新兴市场资金流入创2008年以来新高，EM vs DM轮动加速。建议构建EM/DM相对强弱因子，结合半导体出口数据（韩国+180%）作为前瞻指标。风格因子方面，EM市场价值因子和低波因子有望获得超额收益。</div>
+        </div>
+    </div>
+
+    <div class="section" id="brokerage">
+        <h2><span class="icon">🏦</span>券商金工观点</h2>
+        <div class="brokerage-item">
+            <span class="org">东吴证券</span>
+            <div class="title">地产+AI工具系列报告：从AI投委会到可用的投研平台——AlphaChain产品化</div>
+            <div style="font-size:12px; color:#888; margin-top:2px;">AI投研平台AlphaChain产品化探索，对量化投研工作流具有参考价值 | 2026-07-31</div>
+        </div>
+        <div class="brokerage-item">
+            <span class="org">开源证券</span>
+            <div class="title">银行理财2026Q2季报解读：规模略超季节性，配置倾向进取</div>
+            <div style="font-size:12px; color:#888; margin-top:2px;">理财资金配置倾向进取，反映市场风险偏好回升，对因子定价有边际影响 | 2026-07-31</div>
+        </div>
+        <div class="brokerage-item">
+            <span class="org">综合观点</span>
+            <div class="title">本周金工策略核心关注：利率因子重估、日元carry trade unwind、EM/DM轮动</div>
+            <div style="font-size:12px; color:#888; margin-top:2px;">多家券商金工团队提示：30年美债收益率突破5.27%对多因子模型的利率暴露需重新校准，日元套利交易逆转可能引发跨资产波动率传导</div>
+        </div>
+        <div class="brokerage-item">
+            <span class="org">风险提示</span>
+            <div class="title">AI主题基金赎回潮与市场流动性风险</div>
+            <div style="font-size:12px; color:#888; margin-top:2px;">"AI股神"遭遇银行挤兑式赎回，去杠杆压力下部分中小市值标的可能面临流动性枯竭风险，量化策略需警惕尾部风险</div>
+        </div>
+        <div class="brokerage-item">
+            <span class="org">配置建议</span>
+            <div class="title">下半年量化配置：低波+价值因子占优，趋势跟踪策略需警惕反转</div>
+            <div style="font-size:12px; color:#888; margin-top:2px;">全球宏观不确定性上升背景下，建议超配低波因子和防御型风格，趋势跟踪策略止损带需加宽，关注CTA策略在日元干预后的反转风险</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>量化交易资讯简报 | 自动生成于 {today}</p>
+        <p>数据来源：arXiv q-fin · 华尔街见闻 · 财联社 · 东方财富研报中心</p>
+    </div>
+</div>
+</body>
+</html>
