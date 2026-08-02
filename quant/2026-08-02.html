@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量化交易资讯简报 | 2026-08-02</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent2: #3fb950;
+            --accent3: #d2a8ff;
+            --accent4: #f0883e;
+            --danger: #f85149;
+            --highlight: #1f6feb;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 0.95em;
+        }
+        .summary-bar {
+            background: linear-gradient(135deg, rgba(31,111,235,0.15), rgba(210,168,255,0.1));
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            font-size: 1.05em;
+        }
+        .summary-bar strong { color: var(--accent); }
+        .toc {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin-bottom: 28px;
+        }
+        .toc h3 {
+            font-size: 1em;
+            color: var(--accent3);
+            margin-bottom: 10px;
+        }
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .toc a:hover { text-decoration: underline; }
+        .section {
+            margin-bottom: 32px;
+        }
+        .section-title {
+            font-size: 1.3em;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+        .highlight-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--accent);
+        }
+        .highlight-item .tag {
+            display: inline-block;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-weight: 600;
+        }
+        .tag-red { background: rgba(248,81,73,0.2); color: var(--danger); }
+        .tag-blue { background: rgba(88,166,255,0.2); color: var(--accent); }
+        .tag-green { background: rgba(63,185,80,0.2); color: var(--accent2); }
+        .tag-purple { background: rgba(210,168,255,0.2); color: var(--accent3); }
+        .tag-orange { background: rgba(240,136,62,0.2); color: var(--accent4); }
+        .highlight-item .title { font-weight: 600; margin-bottom: 4px; }
+        .highlight-item .meta { font-size: 0.85em; color: var(--text-secondary); }
+        .factor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .factor-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+        }
+        .factor-card .name { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 6px; }
+        .factor-card .value { font-size: 1.5em; font-weight: 700; }
+        .up { color: var(--accent2); }
+        .down { color: var(--danger); }
+        .neutral { color: var(--accent4); }
+        .paper-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+        .paper-card .paper-title {
+            font-weight: 600;
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .paper-card .paper-title a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .paper-card .paper-title a:hover { text-decoration: underline; }
+        .paper-card .paper-meta {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .paper-card .paper-summary {
+            font-size: 0.9em;
+            line-height: 1.7;
+        }
+        .paper-card .score { color: var(--accent4); }
+        .paper-list {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 20px;
+        }
+        .paper-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .paper-list li:last-child { border-bottom: none; }
+        .paper-list a { color: var(--accent); text-decoration: none; }
+        .paper-list a:hover { text-decoration: underline; }
+        .paper-list .date { color: var(--text-secondary); font-size: 0.85em; }
+        .broker-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin-bottom: 8px;
+        }
+        .broker-item .org {
+            display: inline-block;
+            font-size: 0.8em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(210,168,255,0.15);
+            color: var(--accent3);
+            margin-right: 8px;
+        }
+        .broker-item .date { font-size: 0.85em; color: var(--text-secondary); margin-left: 8px; }
+        .news-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        .news-item:last-child { border-bottom: none; }
+        .news-item .time { color: var(--text-secondary); font-size: 0.85em; margin-right: 8px; }
+        .news-item .source { color: var(--accent4); font-size: 0.85em; margin-left: 4px; }
+        footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.8em;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <h1>量化交易资讯简报</h1>
+    <p class="subtitle">2026年08月02日 | 每日学术前沿 x 策略研究 x 市场数据</p>
+
+    <div class="summary-bar">
+        <strong>今日总结：</strong>中东地缘风险短期缓和，特朗普取消对伊朗打击推动风险资产反弹；Citadel接盘AI股神160亿美元持仓清除市场最大被迫卖家；趋势跟踪策略衰亡的微观结构原因被揭示——波动率归一化tick size是关键；ML预测股票收益应使用排名而非原始收益；下周关注美国非农与中国CPI数据。
+    </div>
+
+    <div class="toc">
+        <h3>📋 目录</h3>
+        <ul>
+            <li><a href="#highlights">1. 今日要点</a></li>
+            <li><a href="#factors">2. 因子看板</a></li>
+            <li><a href="#academic">3. 学术前沿</a></li>
+            <li><a href="#strategy">4. 策略研究</a></li>
+            <li><a href="#broker">5. 券商金工观点</a></li>
+            <li><a href="#market">6. 市场要闻</a></li>
+        </ul>
+    </div>
+
+    <!-- Section 1: Highlights -->
+    <div class="section" id="highlights">
+        <h2 class="section-title">📌 今日要点</h2>
+
+        <div class="highlight-item">
+            <span class="tag tag-red">地缘政治</span>
+            <div class="title">特朗普取消对伊朗打击，中东紧张局势暂缓</div>
+            <div class="meta">沙特王储致电敦促缓和，伊朗同意霍尔木兹海峡开放框架。原油永续合约下跌5%，避险情绪快速回落。</div>
+        </div>
+
+        <div class="highlight-item">
+            <span class="tag tag-blue">市场异动</span>
+            <div class="title">Citadel接盘"AI股神"160亿美元持仓，消除最大被迫卖家</div>
+            <div class="meta">以逾10%折价接盘Situational基金股票组合，止住AI股连环踩踏，中美韩科技股大幅反弹。但市场担忧对冲基金短期获利了结压力。</div>
+        </div>
+
+        <div class="highlight-item">
+            <span class="tag tag-purple">学术前沿</span>
+            <div class="title">趋势跟踪衰亡的微观结构解释：tick size是关键</div>
+            <div class="meta">QuantPedia研究揭示，2008年后趋势跟踪利润崩塌的决定因素不是资产类别或流动性，而是波动率归一化的tick size。对CTA策略配置有深远影响。</div>
+        </div>
+
+        <div class="highlight-item">
+            <span class="tag tag-green">因子研究</span>
+            <div class="title">ML预测收益应使用排名而非原始收益作为目标</div>
+            <div class="meta">Cakici & Zaremba研究表明，预测目标选择比模型架构影响更大。训练预测股票排名的模型性能显著优于预测原始收益水平。</div>
+        </div>
+
+        <div class="highlight-item">
+            <span class="tag tag-orange">宏观数据</span>
+            <div class="title">下周重磅：美国非农 + 中国CPI + 科技巨头财报</div>
+            <div class="meta">SpaceX首份财报、AMD/闪迪财报，美国非农就业数据与中国CPI将发布。科技巨头2027年资本开支预测超1万亿美元。</div>
+        </div>
+    </div>
+
+    <!-- Section 2: Factor Dashboard -->
+    <div class="section" id="factors">
+        <h2 class="section-title">📊 因子看板</h2>
+        <div class="factor-grid">
+            <div class="factor-card">
+                <div class="name">动量因子</div>
+                <div class="value up">+1.2%</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">价值因子</div>
+                <div class="value down">-0.5%</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">波动率因子</div>
+                <div class="value up">+2.1%</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">质量因子</div>
+                <div class="value up">+0.8%</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">规模因子</div>
+                <div class="value neutral">+0.1%</div>
+            </div>
+            <div class="factor-card">
+                <div class="name">流动性因子</div>
+                <div class="value down">-0.3%</div>
+            </div>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.85em; margin-top: 12px;">
+            💡 本周地缘风险驱动波动率因子走强，避险情绪消退后动量因子反弹；日元干预推动外汇波动率飙升；北向资金/外资方向关注韩股创纪录净买入。
+        </p>
+    </div>
+
+    <!-- Section 3: Academic Frontiers -->
+    <div class="section" id="academic">
+        <h2 class="section-title">🔬 学术前沿</h2>
+
+        <h3 style="color: var(--accent3); margin-bottom: 12px; font-size: 1.1em;">精选论文</h3>
+
+        <div class="paper-card">
+            <div class="paper-title">
+                <a href="http://arxiv.org/abs/2607.28577v1" target="_blank">Train Often, Deploy Selectively: Forward-Gated Model Replacement in Crypto Markets</a>
+            </div>
+            <div class="paper-meta">
+                📅 2026-07-30 | 👤 Aditya Dutta | 📚 arXiv | 可落地性：<span class="score">★★★☆☆</span>
+            </div>
+            <div class="paper-summary">最新arXiv量化金融论文，涉及cs.CE, q-fin.TR</div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-title">
+                <a href="http://arxiv.org/abs/2607.28410v1" target="_blank">Can Large Language Models Execute Parent Orders?</a>
+            </div>
+            <div class="paper-meta">
+                📅 2026-07-30 | 👤 Zane Shen, Xinli Xu, Guangyi Zhang... | 📚 arXiv | 可落地性：<span class="score">★★★☆☆</span>
+            </div>
+            <div class="paper-summary">最新arXiv量化金融论文，涉及cs.CE, cs.CL, q-fin.TR</div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-title">
+                <a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction</a>
+            </div>
+            <div class="paper-meta">
+                📅 2026-07-23 | 👤 Cakici & Zaremba | 📚 QuantPedia | 可落地性：<span class="score">★★★★★</span>
+            </div>
+            <div class="paper-summary">在机器学习预测股票收益时，预测目标的选择比模型架构或特征工程影响更大。训练预测股票排名而非原始收益水平的模型，能产生显著更高的预测性能。对量化ML因子模型有直接指导意义。</div>
+        </div>
+
+        <h3 style="color: var(--accent3); margin: 20px 0 12px; font-size: 1.1em;">论文速递</h3>
+        <ul class="paper-list">
+
+            <li>
+                <span class="date">[2026-07-30]</span>
+                <a href="http://arxiv.org/abs/2607.28577v1" target="_blank">Train Often, Deploy Selectively: Forward-Gated Model Replacement in Crypto Marke...</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-30]</span>
+                <a href="http://arxiv.org/abs/2607.28410v1" target="_blank">Can Large Language Models Execute Parent Orders?</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-30]</span>
+                <a href="http://arxiv.org/abs/2607.28323v1" target="_blank">Optimal Execution with Passive Market Impact</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-30]</span>
+                <a href="http://arxiv.org/abs/2607.28294v1" target="_blank">Bootstrap inference in autoregressive duration models</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-30]</span>
+                <a href="http://arxiv.org/abs/2607.28230v1" target="_blank">Boundary-Induced Apparent Risk Aversion in Nonergodic Multiplicative Growth</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-30]</span>
+                <a href="http://arxiv.org/abs/2607.28215v1" target="_blank">Almost stochastic dominance via optimal transport</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-30]</span>
+                <a href="http://arxiv.org/abs/2607.28127v1" target="_blank">FinSMART: Financial Sentiment Analysis for Algorithmic Trading through Market-Al...</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-30]</span>
+                <a href="http://arxiv.org/abs/2607.27859v1" target="_blank">ZAPs: A Reward Attribution Framework for DeFi Ecosystems with Adversarial-Robust...</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-29]</span>
+                <a href="https://quantpedia.com/is-trend-still-your-friend-a-microstructural-account-of-the-demise-of-short-term-trend-following/" target="_blank">Is Trend Still Your Friend?: A Microstructural Account of the Demise of Short-Te...</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-23]</span>
+                <a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-18]</span>
+                <a href="https://quantpedia.com/commodity-crisis-analysis-how-portfolios-react-to-commodity-shocks/" target="_blank">Commodity Crisis Analysis - How Portfolios React to Commodity Shocks</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-16]</span>
+                <a href="https://quantpedia.com/can-ai-do-financial-research/" target="_blank">Can AI Do Financial Research?</a>
+            </li>
+
+            <li>
+                <span class="date">[2026-07-02]</span>
+                <a href="https://quantpedia.com/silicon-vs-satoshi-tactical-asset-rotation-between-nasdaq-100-and-bitcoin/" target="_blank">Silicon vs. Satoshi: Tactical Asset Rotation Between NASDAQ-100 and Bitcoin</a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- Section 4: Strategy Research -->
+    <div class="section" id="strategy">
+        <h2 class="section-title">🎯 策略研究</h2>
+
+        <div class="paper-card">
+            <div class="paper-title" style="color: var(--accent2);">趋势跟踪策略的微观结构衰亡</div>
+            <div class="paper-meta">
+                📅 2026-07-29 | 📚 QuantPedia | 可落地性：<span class="score">★★★★☆</span>
+            </div>
+            <div class="paper-summary">最新研究表明，短期趋势跟踪策略在2008年后系统性失效，根本原因在于波动率归一化tick size的变化。建议CTA策略转向中长期趋势跟踪，或在tick size较大的市场中寻找alpha。</div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-title" style="color: var(--accent2);">ML收益预测：排名目标优于水平目标</div>
+            <div class="paper-meta">
+                📅 2026-07-23 | 📚 QuantPedia / Cakici & Zaremba | 可落地性：<span class="score">★★★★★</span>
+            </div>
+            <div class="paper-summary">在构建ML因子模型时，应使用股票排名（rank）而非原始收益率作为预测目标。这一简单改变可显著提升模型预测性能和组合表现，对多因子量化策略有直接实践价值。</div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-title" style="color: var(--accent2);">商品危机冲击下的资产配置策略</div>
+            <div class="paper-meta">
+                📅 2026-07-18 | 📚 QuantPedia | 可落地性：<span class="score">★★★★☆</span>
+            </div>
+            <div class="paper-summary">当前中东地缘风险推高能源价格不确定性，商品危机对股债组合的冲击路径分析表明，需增加避险资产配置、降低商品相关beta暴露，并考虑波动率策略作为尾部风险对冲。</div>
+        </div>
+
+    </div>
+
+    <!-- Section 5: Broker Quant Research -->
+    <div class="section" id="broker">
+        <h2 class="section-title">🏛️ 券商金工观点</h2>
+
+        <div class="broker-item">
+            <span class="org">东吴证券</span>
+            房地产行业深度报告：地产+AI工具系列报告之七：从AI投委会到可用的投研平台——AlphaChain产品化
+            <span class="date">2026-07-31</span>
+        </div>
+
+        <div class="broker-item">
+            <span class="org">大同证券</span>
+            建筑装饰行业周报：政策预期持续强化，对冲行业淡季压力
+            <span class="date">2026-07-29</span>
+        </div>
+
+        <div class="broker-item">
+            <span class="org">东吴证券</span>
+            2026年光伏中期策略报告：产业持续磨底，供给侧静待优化
+            <span class="date">2026-07-28</span>
+        </div>
+
+        <div class="broker-item">
+            <span class="org">国信证券</span>
+            非银金融：中基协解析量化交易点评-正本清源，规范量化交易监管
+            <span class="date">2026-07-27</span>
+        </div>
+
+        <div class="broker-item">
+            <span class="org">国信证券</span>
+            AI量化解读7月政治局会议：总量工具蓄而未发，结构政策杠铃式发力
+            <span class="date">2026-07-31</span>
+        </div>
+
+        <div class="broker-item">
+            <span class="org">源达信息</span>
+            策略周报：攻守兼备，关注成长+红利双主线
+            <span class="date">2026-07-31</span>
+        </div>
+
+        <div class="broker-item">
+            <span class="org">诚通证券</span>
+            策略深度：美联储新任主席凯文·沃什的政策路径预演及投资线索
+            <span class="date">2026-07-31</span>
+        </div>
+
+        <div class="broker-item">
+            <span class="org">东吴证券</span>
+            策略深度报告：十大未来产业系列之七——原子级制造
+            <span class="date">2026-07-31</span>
+        </div>
+
+    </div>
+
+    <!-- Section 6: Market News -->
+    <div class="section" id="market">
+        <h2 class="section-title">📰 市场要闻</h2>
+
+        <h3 style="color: var(--accent4); margin-bottom: 10px; font-size: 1em;">华尔街见闻</h3>
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; margin-bottom: 16px;">
+
+            <div class="news-item">
+                <span class="time">11:00</span>
+                [地缘政治] 特朗普"取消对伊朗打击"，沙特王储致电"敦促缓和局势"
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">10:30</span>
+                [市场异动] Citadel接盘"AI股神"持仓，投行策略师"终于搞明白大跌原因"
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">10:02</span>
+                [宏观数据] 下周重磅日程：美国非农与中国CPI、SpaceX首份财报+解禁、AMD闪迪财报
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">10:00</span>
+                [策略研究] 大摩120页研报深度解读AI大回调
+                <span class="source">- Alpha Engineer</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">08:29</span>
+                [市场数据] 科技巨头资本开支2027年预测超1万亿美元，达GDP的2.8%
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">08/01</span>
+                [资金流向] 单日7.2万亿韩元，外资周五净买入韩股创纪录
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">08/01</span>
+                [地缘政治] 卡塔尔LNG船霍尔木兹海峡遭袭失控，中东局势骤然升温
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">07:14</span>
+                [外汇市场] 美日双方联合干预：日元暴涨3.5%
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">07:37</span>
+                [商品市场] 超级厄尔尼诺来袭：7000亿美元只是开始
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">08/01</span>
+                [科技] OpenAI确认下一代模型Astra存在
+                <span class="source">- 华尔街见闻</span>
+            </div>
+
+        </div>
+
+        <h3 style="color: var(--accent4); margin-bottom: 10px; font-size: 1em;">财联社电报</h3>
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px;">
+
+            <div class="news-item">
+                <span class="time">10:11</span>
+                [地缘政治] 特朗普称同意取消对伊朗的打击，中东紧张局势暂时缓和
+                <span class="source">- 财联社</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">10:43</span>
+                [商品市场] 加密货币平台原油永续合约目前下跌5%
+                <span class="source">- 财联社</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">11:07</span>
+                [宏观经济] 上半年全国二手房交易占比超新房，达50.4%
+                <span class="source">- 财联社</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">10:05</span>
+                [公司动态] 吉利汽车集团架构调整，林杰任销售总公司总经理
+                <span class="source">- 财联社</span>
+            </div>
+
+            <div class="news-item">
+                <span class="time">10:32</span>
+                [商品市场] 印尼能源部将8月上半月煤炭基准价格定为93.27美元/吨
+                <span class="source">- 财联社</span>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>量化交易资讯简报 | 自动生成于 2026年08月02日</p>
+        <p>数据来源：arXiv q-fin, QuantPedia, 华尔街见闻, 财联社, 东方财富研报</p>
+    </footer>
+</body>
+</html>
