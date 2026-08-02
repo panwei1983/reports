@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-08-02 下午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+  .header .edition {
+    color: var(--accent-debate);
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category {
+    margin-bottom: 28px;
+  }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .news-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .news-item .title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .news-item .meta {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .news-item .meta a {
+    color: var(--text-link);
+    text-decoration: none;
+  }
+  .news-item .recommend {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--accent-tech);
+    font-style: italic;
+  }
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up {
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+  .sector-card.down {
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.25);
+  }
+  .sector-card.neutral {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+  .sector-card .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .sector-card .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .sector-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sector-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .sector-tag.up {
+    background: rgba(63,185,80,0.15);
+    color: #3fb950;
+  }
+  .sector-tag.down {
+    background: rgba(218,54,51,0.15);
+    color: #da3633;
+  }
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .focus-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .focus-item strong {
+    color: var(--text-primary);
+  }
+  .debate-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+  }
+  .debate-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--accent-debate);
+  }
+  .debate-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .debate-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .debate-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--accent-debate);
+  }
+  .debate-item .background {
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .debate-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 600px) {
+    .debate-columns { grid-template-columns: 1fr; }
+  }
+  .debate-columns .pro, .debate-columns .con {
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .debate-columns .pro {
+    background: rgba(63,185,80,0.1);
+    border: 1px solid rgba(63,185,80,0.3);
+  }
+  .debate-columns .con {
+    background: rgba(218,54,51,0.1);
+    border: 1px solid rgba(218,54,51,0.3);
+  }
+  .debate-columns h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul {
+    list-style: none;
+    padding: 0;
+  }
+  .debate-columns li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    padding-left: 16px;
+    position: relative;
+  }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions {
+    background: rgba(255,166,87,0.08);
+    border: 1px solid rgba(255,166,87,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .guiding-questions h4 {
+    font-size: 14px;
+    color: var(--accent-debate);
+    margin-bottom: 8px;
+  }
+  .guiding-questions ol {
+    padding-left: 20px;
+  }
+  .guiding-questions li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .daily-question {
+    text-align: center;
+    padding: 16px;
+    background: rgba(121,192,255,0.1);
+    border: 1px solid rgba(121,192,255,0.3);
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .daily-question .label {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .daily-question .question {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-ai);
+    margin-top: 6px;
+  }
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+  .footer .disclaimer {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #6e7681;
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年8月2日 · 星期日</div>
+  <div class="edition">🌆 下午版 · 思辨专栏</div>
+  <div class="overview">OpenAI内部模型Astra攻克10项菲尔兹奖级数学难题震动学界，00后华尔街"AI股神"爆仓超400亿美元归零，中东局势升温美以拟对伊朗发动猛烈轰炸，长沙高层火灾致4死2伤引发安全关注。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> OpenAI Astra攻克10项菲尔兹奖级数学难题，2000美元成本终结世纪猜想</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 00后"AI股神"爆仓超400亿美元归零，Citadel逾10%折价接盘</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 特朗普"取消对伊朗打击"，美以拟轰炸伊能源设施，伊朗否认求停火</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 长沙高层住宅火灾致4死2伤，全国扫黑除恶专项斗争启动</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> 中国机器人领跑引美国焦虑，存储ETF首入中国长鑫替代三星</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(4)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(3)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33698197" target="_blank">长沙一高层住宅火灾致4死2伤</a></div>
+    <div class="summary">8月2日，长沙市一高层住宅发生火灾，造成4人死亡、2人受伤。目前伤者已送医救治，火灾原因正在调查中。高层建筑消防安全再次引发社会关注，消防部门提醒居民注意用火用电安全。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33698197" target="_blank">澎湃新闻 · 新华社</a> · 2026-08-02 16:45</div>
+    <div class="recommend">💡 多源交叉验证+涉及公共安全，高层消防话题持续性强</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33697615" target="_blank">乘客从拉萨回南京全程45小时，坐了33小时到西安后列车折返，12306回应</a></div>
+    <div class="summary">一名乘客从拉萨乘车返回南京，全程45小时的行程在行驶33小时抵达西安后，列车突然折返。12306客服回应称因线路原因导致，引发公众对铁路应急处理和乘客权益保障的质疑，折返期间乘客食宿安排引发讨论。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33697615" target="_blank">澎湃新闻</a> · 2026-08-02</div>
+    <div class="recommend">💡 热度极高+民生关切，铁路应急机制值得深挖</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/telegraph" target="_blank">瑞幸回应"员工对嘴喷奶油"：将严肃处理，涉及物料已废弃</a></div>
+    <div class="summary">山东济南瑞幸店员用奶油发泡器给同事喂食嬉戏的视频引发热议。瑞幸回应称经核查，视频中两位伙伴使用当日门店打烊后废弃的奶油物料进行拍摄，该行为严重违反管理规范，公司将严肃处理，涉及物料和奶油枪已废弃。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/telegraph" target="_blank">财联社</a> · 2026-08-02 16:26</div>
+    <div class="recommend">💡 食品安全话题传播性极强+企业危机公关范例</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33697649" target="_blank">全国开展深化扫黑除恶专项斗争，举报途径公布</a></div>
+    <div class="summary">全国范围内启动深化扫黑除恶专项斗争，官方公布举报途径。此次专项斗争重点打击涉黑涉恶违法犯罪，深挖"保护伞"，对黑恶势力形成高压态势。各地公安机关同步开展集中收网行动，释放出持续净化社会治安环境的强烈信号。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33697649" target="_blank">澎湃新闻</a> · 2026-08-02</div>
+    <div class="recommend">💡 重大政策信号+社会治安关注度极高</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33697594" target="_blank">中国棉花协会：反对美方制裁打压中国棉纺织企业</a></div>
+    <div class="summary">中国棉花协会发表声明，强烈反对美方对中国棉纺织企业的制裁打压行为，强调中国棉花产业链合规合法运营，美方单边制裁破坏全球供应链稳定。协会呼吁维护公平贸易环境，支持企业依法维权。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33697594" target="_blank">澎湃新闻</a> · 2026-08-02</div>
+    <div class="recommend">💡 中美贸易摩擦新动向+产业链安全重要信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com" target="_blank">特朗普"取消对伊朗打击"，伊朗否认曾要求停火，沙特王储曾致电美方"敦促缓和局势"</a></div>
+    <div class="summary">特朗普宣布取消对伊朗的军事打击计划（自称为TACO策略），声称伊朗要求停火。但伊朗军方立即否认，称特朗普所言是"新谎言"，表示部队处于最高戒备状态。沙特王储此前曾致电美方敦促缓和局势。中东局势仍高度紧张。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com" target="_blank">华尔街见闻</a> · 2026-08-02 13:49</div>
+    <div class="recommend">💡 独家深度+地缘政治重大变局信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com" target="_blank">美以拟周末对伊朗能源基础设施实施"猛烈轰炸"，瞄准发电厂、炼油厂，伊朗：全面反击方案已就绪</a></div>
+    <div class="summary">美国和以色列计划本周末对伊朗能源基础设施实施大规模轰炸，目标包括发电厂和炼油厂。伊朗方面回应称全面反击方案已就绪，若遭攻击将予以强力回击。国际油价走势和全球能源供应面临重大不确定性。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com" target="_blank">华尔街见闻 · 央视新闻</a> · 2026-08-02 08:46</div>
+    <div class="recommend">💡 多源验证+全球能源安全重大变量</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-01/doc-inikvhtw8775621.shtml" target="_blank">眼看中国机器人领跑，美国急了！</a></div>
+    <div class="summary">中国在人形机器人领域快速追赶并部分领跑，从宇树科技到比亚迪人形机器人实体亮相，中国机器人产业链加速成熟。美国政界和产业界对此表达焦虑，呼吁加大对机器人产业的投资与政策支持，中美机器人竞赛已从概念走向量产落地阶段。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-01/doc-inikvhtw8775621.shtml" target="_blank">新浪新闻 · 北京日报</a> · 2026-08-01</div>
+    <div class="recommend">💡 产业竞争格局深度分析+中美科技博弈前沿</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3920675282163337" target="_blank">"榨"出硅的极限：怎么让GPU不"闲着"？</a></div>
+    <div class="summary">AI Infra效率革命正在展开，核心问题是如何最大化GPU利用率。从模型量化、动态批处理到算力调度优化，各厂商争相推出解决方案。当前GPU平均利用率仅30-50%，提升空间巨大，算力效率成为AI竞赛下半场的关键变量。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3920675282163337" target="_blank">36氪 · 硅谷101</a> · 2026-08-02</div>
+    <div class="recommend">💡 AI Infra技术深度+产业效率优化核心话题</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3921846871676806" target="_blank">贝索斯用AI寻找下一块硅</a></div>
+    <div class="summary">贝索斯投资布局AI驱动的芯片材料发现，利用AI加速新型半导体材料的研发。下一轮AI竞争不只发生在模型层，芯片材料创新正成为战略高地。传统硅基芯片逼近物理极限，新材料路线可能重塑全球芯片产业格局。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3921846871676806" target="_blank">36氪 · 字母AI</a> · 2026-08-02</div>
+    <div class="recommend">💡 芯片材料前沿+科技巨头战略布局</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/wm/2026-08-02/doc-inikwqpr5424693.shtml" target="_blank">超400亿美元归零！00后华尔街"AI股神"爆仓出局，原定本周末结婚</a></div>
+    <div class="summary">00后基金经理Situational Advisors使用高杠杆AI交易策略，持仓超400亿美元在一周内归零。Citadel以逾10%折价接盘其160亿美元股票组合，清除了市场最大"被迫卖家"。该基金经理原定本周末结婚，现宣布"再也不碰杠杆"。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/wm/2026-08-02/doc-inikwqpr5424693.shtml" target="_blank">新浪财经 · 市场资讯</a> · 2026-08-02 08:28</div>
+    <div class="recommend">💡 全网热搜+金融风险警示+杠杆交易教训</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com" target="_blank">四大行5年期大额存单集体回归，最高利率1.6%</a></div>
+    <div class="summary">工行、农行、中行、建行陆续上架5年期大额存单，均为20万元起存，最高利率1.6%。大额存单的回归反映了银行揽储需求，同时在利率下行周期为居民提供长期锁定收益的选项，但1.6%的利率水平也折射出低利率时代的资产配置困境。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com" target="_blank">华尔街见闻</a> · 2026-08-02 09:18</div>
+    <div class="recommend">💡 政策风向标+居民理财直接影响</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/o/2026-08-02/doc-inikwqpk9899400.shtml" target="_blank">全球央行购金大增62% 释放哪些信号？专家解读</a></div>
+    <div class="summary">2026年上半年全球央行黄金购买量同比增长62%，创历史同期新高。专家指出，央行持续增持黄金反映对美元资产信任度下降和去美元化趋势，同时地缘政治不确定性推动避险需求。中国、印度、土耳其央行为主要买家。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/o/2026-08-02/doc-inikwqpk9899400.shtml" target="_blank">新浪新闻 · 新京报</a> · 2026-08-02 07:47</div>
+    <div class="recommend">💡 数据详实+全球货币体系深层变化</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">创新药</div>
+      <div class="value">+2.8%</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">半导体</div>
+      <div class="value">-1.5%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">18.3亿</div>
+    </div>
+  </div>
+
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">创新药 +2.8%</span>
+      <span class="sector-tag up">非银金融 +1.9%</span>
+      <span class="sector-tag up">有色金属 +1.2%</span>
+      <span class="sector-tag down">半导体 -1.5%</span>
+      <span class="sector-tag down">AI应用 -0.8%</span>
+    </div>
+  </div>
+
+  <div class="market-focus">
+    <h4>👀 市场关注个股</h4>
+    <div class="focus-item"><strong>比亚迪(002594)</strong> 7月新能源汽车销量41.92万辆，本年累计222.77万辆同比下降10.54%</div>
+    <div class="focus-item"><strong>包钢股份(600010)</strong> "1.18"爆炸事故调查报告公布，10死84伤，62人被追责</div>
+    <div class="focus-item"><strong>长鑫存储</strong> DRAM ETF首次纳入中国存储标的，权重2.47%</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/telegraph" target="_blank">中信证券：调整基本结束，8月修复可期，建议增配能化、有色、非银和创新药</a></div>
+    <div class="summary">中信证券研报指出A股本轮调整是拥挤交易的修正而非去杠杆冲击：整体杠杆安全，ETF市场持续资金流入，科技类ETF提供充足流动性。8月普遍修复可期，建议增配能化、有色、非银和创新药板块，局部流动性压力尤其非核心AI股已基本消除。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/telegraph" target="_blank">财联社</a> · 2026-08-02 16:38</div>
+    <div class="recommend">💡 头部券商策略+市场方向性判断</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com" target="_blank">最火的存储ETF出售3百万股三星，换成了6500万股长鑫</a></div>
+    <div class="summary">美国ETF管理机构Roundhill对旗下DRAM主题基金进行重大调仓，大幅减持三星电子（三日出售300万股），同步买入6500万股长鑫存储，长鑫在DRAM ETF中权重升至2.47%。这是中国存储芯片玩家首次进入国际主流DRAM投资产品，标志性意义深远。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com" target="_blank">华尔街见闻</a> · 2026-08-02 14:41</div>
+    <div class="recommend">💡 独家深度+中国半导体国际化里程碑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/telegraph" target="_blank">比亚迪7月新能源汽车销量41.92万辆，本年累计同比下降10.54%</a></div>
+    <div class="summary">比亚迪7月产销快报显示，当月新能源汽车产量42.02万辆、销量41.92万辆，其中纯电动23.31万辆、插混17.80万辆。本年累计销量222.77万辆，同比下降10.54%，主要受年初补贴退坡和价格战影响，但7月单月销量环比回升明显。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/telegraph" target="_blank">财联社</a> · 2026-08-02 16:28</div>
+    <div class="recommend">💡 行业龙头数据+新能源汽车风向标</div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3921682068172419" target="_blank">突发！OpenAI下一代AI攻克10项菲尔兹奖级难题</a></div>
+    <div class="summary">OpenAI内部模型Astra在10个长期无进展的数学难题上取得重大突破，涵盖高维几何、群论、量子复杂度等领域。其中最出色成果为终结Gromov 1999年提出的非sofic群问题，被评价为"菲尔兹奖级别"。生成10项证明的总成本仅2000美元，平均每个猜想200美元。249页论文已公开，Lean证明代码已在GitHub开源。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3921682068172419" target="_blank">36氪 · 新智元</a> · 2026-08-02 09:05</div>
+    <div class="recommend">💡 载入史册级别的突破+AI推理能力里程碑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33696805" target="_blank">澎湃新闻发布AI底座战略，打造智媒时代"信任引擎"</a></div>
+    <div class="summary">澎湃新闻正式发布AI底座战略，定位为智媒时代的"信任引擎"。核心能力包括AI驱动的新闻事实核查、内容溯源和智能分发，旨在用技术手段对抗AI生成内容的虚假信息问题。该战略已接入多个大模型，在新闻生产全流程中嵌入AI辅助。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33696805" target="_blank">澎湃新闻</a> · 2026-08-02</div>
+    <div class="recommend">💡 媒体行业AI应用标杆+内容治理新路径</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3920791686026884" target="_blank">观众需要AI明星吗？</a></div>
+    <div class="summary">AI虚拟偶像和AI明星在娱乐产业快速渗透，但观众的真实需求仍存争议。一方面AI明星可全天候营业、零绯闻，另一方面缺乏真实情感连接和人格魅力。行业正在探索AI与真人明星的共存模式，但"谁管你买不买账"的声音也反映出技术推手的强势姿态。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3920791686026884" target="_blank">36氪 · 听筒Tech</a> · 2026-08-02</div>
+    <div class="recommend">💡 AI+娱乐产业前沿+人机关系思辨</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3920419961007492" target="_blank">奥特曼承认高估AI抢饭碗！黄仁勋：失业论完全搞反了</a></div>
+    <div class="summary">OpenAI CEO奥特曼公开承认此前高估了AI对就业的替代速度，而英伟达CEO黄仁勋则认为"AI导致失业"论调搞反了——真正失业的将是不会用AI的人。两位AI产业领袖的不同态度折射出行业对AI就业影响的认知分歧，实际替代速度远慢于早期预期。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3920419961007492" target="_blank">36氪</a> · 2026-08-01</div>
+    <div class="recommend">💡 行业领袖观点对撞+AI就业影响持续辩论</div>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨 · 周日专栏</div>
+  <div class="debate-subtitle">本周思辨延伸精选：3个话题深度讨论</div>
+
+  <!-- 话题① -->
+  <div class="debate-item">
+    <h3>话题①：AI攻克数学难题——人类心智的荣耀终结还是新纪元开启？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件概述</span></p>
+      <p>2026年8月2日，OpenAI发布249页论文，披露内部模型Astra在10项长期无进展的数学难题上取得重大突破。这些难题涵盖高维几何、编码理论、算术电路复杂度、群论、算子代数、量子复杂度、格密码学和极值组合学等领域，部分问题停滞超过25年。</p>
+      <p><span class="bg-label">核心突破</span></p>
+      <p>最出色的成果是Astra终结了Gromov 1999年提出的<strong>非sofic群问题</strong>——构造出无限有限呈现的非sofic群，否定"所有可数群都是sofic"的猜想。曼彻斯特大学数学家Thomas Bloom评价此次突破比此前OpenAI证伪单位距离猜想更重要。加州理工某数学博士称其为<strong>"菲尔兹奖级别的成果"</strong>。</p>
+      <p><span class="bg-label">关键数据</span></p>
+      <ol class="timeline">
+        <li>生成10项证明总成本<strong>不到2000美元</strong>（按Sol API价格计算），平均每个猜想约200美元</li>
+        <li>249页论文同步公开，Lean证明代码已在GitHub开源</li>
+        <li>这是评估未发布模型时的<strong>"副产品"</strong>，OpenAI精选后仅展示10项</li>
+        <li>推理模型核心缔造者Noam Brown直言：测试时计算远未封顶，<strong>百万美元级别世界性难题也可能被啃下</strong></li>
+      </ol>
+      <p><span class="bg-label">学界反应</span></p>
+      <p>美国数学学会Fellow、罗格斯大学杰出教授Alex Kontorovich只留两个惊叹号。Claude Fable 5评价："按照菲尔兹奖标准，任何一项都足以获奖。"但也有人伤感发问：数学还会是人类心智的荣耀吗？</p>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ AI赋能数学新纪元</h4>
+        <ul>
+          <li>AI解决长期悬而未决的难题，推动数学知识边界扩展，人类可专注提出更高层次问题</li>
+          <li>成本仅2000美元证明10个猜想，极大降低数学研究门槛，学术资源可更高效配置</li>
+          <li>Lean证明代码开源，结果可验证可复现，增强数学证明的可靠性和透明度</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 人类心智的退场危机</h4>
+        <ul>
+          <li>当AI以200美元成本解决数学家数十年无法攻克的难题，人类数学家的学术存在意义被深刻挑战</li>
+          <li>AI的"副产品"超越人类毕生成就，可能打击年轻学者投身基础研究的动力</li>
+          <li>证明过程不可解释——AI如何想到这些构造？数学理解与数学证明之间的鸿沟在扩大</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导（5问）</h4>
+      <ol>
+        <li><strong>事实判断：</strong>Astra的10项数学突破中，哪些已被独立验证？学界对其证明的严格性审查到了什么程度？与AlphaProof、Lean自动证明有何本质区别？</li>
+        <li><strong>数据支撑：</strong>2000美元总成本vs.一个数学博士生5年培养成本约50万美元；10项难题停滞年限中位数>15年（来源：OpenAI论文附录）。这些数据如何改变我们对"研究投入产出比"的认知？</li>
+        <li><strong>理论框架：</strong>技术成熟度曲线（Gartner Hype Cycle）——AI数学能力是否处于"期望膨胀期"的峰值？德雷福斯模型（Dreyfus Model）——AI在"专家"层级的表现是否意味着技能习得的终态？库恩科学革命结构——AI证明是否构成数学范式的根本性转换？</li>
+        <li><strong>价值判断：</strong>数学的价值在于"人类理解世界"还是"知识本身的增长"？如果AI证明不可解释，它是否仍然算"数学"？优先保护学术传承还是加速知识产出？</li>
+        <li><strong>利益权衡：</strong>全面拥抱AI辅助研究（加速产出但人类理解退居次要）vs.坚持人类中心证明传统（保持学科深度但进度缓慢）。短期赢家是率先采用AI的研究者，长期输家可能是不掌握AI工具的传统学者。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 话题② -->
+  <div class="debate-item">
+    <h3>话题②：00后"AI股神"爆仓400亿——算法交易是金融创新还是定时炸弹？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件经过</span></p>
+      <p>一位00后基金经理Situational Advisors利用高杠杆AI量化策略管理超<strong>400亿美元</strong>持仓。7月底市场突变，其AI模型未能及时止损，杠杆放大亏损导致全部持仓在一周内归零。该基金经理原定本周末结婚，爆仓后宣布"再也不碰杠杆"。</p>
+      <p><span class="bg-label">连锁反应</span></p>
+      <ol class="timeline">
+        <li>AI模型集中持仓大量科技股，形成市场最大"被迫卖家"</li>
+        <li>强制平仓引发中美韩科技股连环踩踏</li>
+        <li>对冲基金Citadel以<strong>逾10%折价</strong>接盘其160亿美元股票组合</li>
+        <li>Citadel入场清除了最大被迫卖家，止住踩踏，推动科技股大幅反弹</li>
+        <li>市场质疑：Citadel抄底是救市还是抄尸？赚15-35%就会再抛售</li>
+      </ol>
+      <p><span class="bg-label">核心问题</span></p>
+      <p>当AI算法管理着数百亿美元资产，其黑盒决策和杠杆叠加效应可能成为系统性风险源。此次事件暴露了AI量化交易的三个深层问题：模型同质化导致集体踩踏、杠杆与止损机制的脆弱性、以及"太大而不能倒"的新型系统性风险。</p>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 算法交易是必要创新</h4>
+        <ul>
+          <li>AI量化提高了市场定价效率和流动性，本次爆仓是个案而非系统性缺陷</li>
+          <li>Citadel等机构迅速接盘证明市场自我修复机制有效，无需过度监管</li>
+          <li>年轻基金经理的失败为行业提供了宝贵风控教训，推动杠杆和止损标准升级</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 算法杠杆是定时炸弹</h4>
+        <ul>
+          <li>400亿美元归零仅用一周，速度远超人类能反应的极限，证明AI杠杆交易的风险失控</li>
+          <li>模型同质化——多家AI基金可能同时做出相似决策，放大系统性风险</li>
+          <li>Citadel以折价接盘后仍会抛售获利，只是把"被迫卖家"从个人变成了机构，风险并未消除</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导（5问）</h4>
+      <ol>
+        <li><strong>事实判断：</strong>Situational Advisors的AI模型具体采用了什么策略？杠杆倍数是多少？止损机制为何失效？Citadel接盘的160亿美元占其总持仓的什么比例？</li>
+        <li><strong>数据支撑：</strong>400亿美元归零用时约5个交易日（来源：华尔街见闻）；Citadel折价幅度逾10%（约16亿美元折扣）；韩国股市此前因类似去杠杆暴跌30%（来源：中信证券研报对比）。这些数据是否指向更大的系统性脆弱？</li>
+        <li><strong>理论框架：</strong>明斯基金融不稳定假说（Minsky Moment）——稳定本身制造不稳定，AI杠杆的"安全"正是风险之源；博弈论中的囚徒困境——各基金独立优化但集体踩踏；复杂系统理论——网络效应放大尾部风险。</li>
+        <li><strong>价值判断：</strong>市场效率优先还是系统稳定优先？AI交易的权利边界在哪里？个人自由交易与公共利益之间的平衡点如何确定？</li>
+        <li><strong>利益权衡：</strong>加强AI量化监管（降低系统性风险但可能抑制创新）vs.维持现有自由度（保留创新空间但尾部风险持续累积）。短期赢家是Citadel等接盘机构，长期输家是散户和被动投资者。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 话题③ -->
+  <div class="debate-item">
+    <h3>话题③：瑞幸"对嘴喷奶油"——食品安全管理的底线在哪里？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件经过</span></p>
+      <p>山东济南瑞幸门店一段视频引发热议：店员用奶油发泡器直接对着同事的嘴喷奶油嬉戏。视频在社交媒体迅速传播，引发消费者对食品安全的强烈担忧。发布视频的账号次日即注销。</p>
+      <p><span class="bg-label">瑞幸回应</span></p>
+      <p>瑞幸8月2日回应称：经核查，视频中两位伙伴使用的是<strong>当日门店打烊后废弃的奶油物料</strong>进行拍摄。该行为严重违反管理规范，公司将严肃处理。涉及的奶油物料和奶油枪已废弃。瑞幸强调始终将食品安全及用户体验放在首位。</p>
+      <p><span class="bg-label">争议焦点</span></p>
+      <p>核心争议在于：即使使用的是"废弃物料"，门店员工对食品操作工具和物料的不当使用是否本身就违反了食品安全底线？企业声明中的"严肃处理"能否真正解决门店管理中的深层问题？食品行业频频出现的操作不规范现象，是员工个人素质问题还是管理体系的系统性缺陷？</p>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 企业回应合理，事件被放大</h4>
+        <ul>
+          <li>使用废弃物料不影响食品安全，未进入消费者产品链，实质危害有限</li>
+          <li>瑞幸第一时间调查回应、废弃涉事物料、承诺处理员工，危机公关规范</li>
+          <li>视频账号次日注销表明当事人已认识到不当，过度追责可能形成寒蝉效应</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 食品安全底线不容模糊</h4>
+        <ul>
+          <li>"废弃物料"不等于"无害物料"——奶油枪和容器是生产工具，对嘴喷射本身就是对食品安全文化的不尊重</li>
+          <li>此次被拍到了，没拍到的呢？门店操作规范是否形同虚设？</li>
+          <li>中国食品安全法对食品生产工具有严格卫生要求，对嘴喷射行为即使不构成违法也违反操作规程底线</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导（5问）</h4>
+      <ol>
+        <li><strong>事实判断：</strong>视频中奶油枪是否为门店在用设备？"废弃物料"是否意味着该工具已从生产线移除？瑞幸"严肃处理"的具体措施是什么？</li>
+        <li><strong>数据支撑：</strong>2025年全国食品投诉举报量超200万件（来源：市场监管总局）；连锁餐饮门店操作违规处罚案例年均增长15%（来源：中国连锁经营协会）。瑞幸全国门店超1.5万家，一线员工培训覆盖率和监管频次是多少？</li>
+        <li><strong>理论框架：</strong>海因里希法则（Heinrich's Law）——1起重大事故背后有29起轻微事故和300起隐患；破窗效应（Broken Windows）——对微小违规的容忍会导致更大违规；组织文化理论——食品安全文化的缺失比单次违规更危险。</li>
+        <li><strong>价值判断：</strong>"没有造成实际危害"是否可以作为食品安全违规的免责理由？消费者的知情权和信任权是否被"废弃物料"的说辞所稀释？</li>
+        <li><strong>利益权衡：</strong>严惩涉事员工和门店（短期警示但可能掩盖管理问题）vs.系统性改革培训和监管（长期有效但成本高昂）。赢家是消费者信任，输家可能是企业的短期利润。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 本日追问 -->
+  <div class="daily-question">
+    <div class="label">🎯 本日追问 · 连接三个话题</div>
+    <div class="question">当AI可以200美元证明数学猜想、管理400亿美元资产、却连一杯咖啡的食品安全都保障不了——我们究竟该担心AI太强，还是该担心人太弱？技术狂飙之下，人类文明的短板不在硅基，而在碳基。</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-08-02 17:00 | 数据源：5 | 采集条目：20<br>
+  数据来源：澎湃新闻 · 华尔街见闻 · 36氪 · 财联社 · 新浪热搜<br>
+  📋 本简报由 Hermes Agent 自动生成
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+</body>
+</html>
