@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量化交易资讯简报 | 2026-08-03</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent2: #3fb950;
+            --accent3: #d2a8ff;
+            --accent4: #f0883e;
+            --danger: #f85149;
+            --highlight: #1f6feb;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 0.95em;
+        }
+        .summary-bar {
+            background: linear-gradient(135deg, rgba(31,111,235,0.15), rgba(210,168,255,0.1));
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            font-size: 1.05em;
+        }
+        .summary-bar strong { color: var(--accent); }
+        .toc {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin-bottom: 28px;
+        }
+        .toc h3 {
+            font-size: 1em;
+            color: var(--accent3);
+            margin-bottom: 10px;
+        }
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+        }
+        .toc a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .toc a:hover { text-decoration: underline; }
+        .section { margin-bottom: 32px; }
+        .section-title {
+            font-size: 1.3em;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+        .highlight-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--accent);
+        }
+        .highlight-item .tag {
+            display: inline-block;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-weight: 600;
+        }
+        .tag-red { background: rgba(248,81,73,0.15); color: var(--danger); }
+        .tag-green { background: rgba(63,185,80,0.15); color: var(--accent2); }
+        .tag-blue { background: rgba(88,166,255,0.15); color: var(--accent); }
+        .tag-purple { background: rgba(210,168,255,0.15); color: var(--accent3); }
+        .tag-orange { background: rgba(240,136,62,0.15); color: var(--accent4); }
+        .highlight-item h4 {
+            color: var(--text);
+            margin: 6px 0 4px;
+            font-size: 1em;
+        }
+        .highlight-item p {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        .factor-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .factor-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+        }
+        .factor-card .name { color: var(--text-secondary); font-size: 0.85em; }
+        .factor-card .value { font-size: 1.5em; font-weight: 700; margin: 4px 0; }
+        .factor-card .change { font-size: 0.85em; }
+        .up { color: var(--accent2); }
+        .down { color: var(--danger); }
+        .paper-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+        }
+        .paper-card h4 {
+            color: var(--accent);
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .paper-card h4 a { color: var(--accent); text-decoration: none; }
+        .paper-card h4 a:hover { text-decoration: underline; }
+        .paper-meta {
+            color: var(--text-secondary);
+            font-size: 0.82em;
+            margin-bottom: 8px;
+        }
+        .paper-abstract {
+            color: var(--text);
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        .score {
+            display: inline-block;
+            font-size: 0.8em;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .score-high { background: rgba(63,185,80,0.15); color: var(--accent2); }
+        .score-mid { background: rgba(240,136,62,0.15); color: var(--accent4); }
+        .score-low { background: rgba(248,81,73,0.15); color: var(--danger); }
+        .paper-list {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 18px;
+        }
+        .paper-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9em;
+            list-style: none;
+        }
+        .paper-list li:last-child { border-bottom: none; }
+        .paper-list a { color: var(--accent); text-decoration: none; }
+        .paper-list a:hover { text-decoration: underline; }
+        .paper-list .cat { color: var(--text-secondary); font-size: 0.8em; }
+        .broker-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--accent3);
+        }
+        .broker-item .org { color: var(--accent4); font-size: 0.85em; font-weight: 600; }
+        .broker-item h4 { color: var(--text); font-size: 0.95em; margin: 4px 0; }
+        .broker-item p { color: var(--text-secondary); font-size: 0.85em; }
+        .flow-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88em;
+        }
+        .flow-table th {
+            background: var(--card);
+            color: var(--accent);
+            padding: 8px 12px;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+        .flow-table td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+        }
+        .flow-table tr:nth-child(even) { background: rgba(22,27,34,0.5); }
+        footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.8em;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+<h1>📊 量化交易资讯简报</h1>
+<div class="subtitle">2026年8月3日 · 星期一 · 自动生成</div>
+
+<div class="summary-bar">
+    科创50跌4%芯片股承压，对冲基金去杠杆后高盛录得最大净买入；MLCC涨价潮持续，北向资金与ETF互联互通扩容；arXiv新文聚焦隐含波动率曲面建模与矩阵动态组合优化。
+</div>
+
+<!-- 目录 -->
+<div class="toc">
+    <h3>📑 目录</h3>
+    <ul>
+        <li><a href="#highlights">🔴 今日要点</a></li>
+        <li><a href="#factors">📈 因子看板</a></li>
+        <li><a href="#academic">🎓 学术前沿</a></li>
+        <li><a href="#strategy">🧠 策略研究</a></li>
+        <li><a href="#broker">🏦 券商金工观点</a></li>
+    </ul>
+</div>
+
+<!-- 今日要点 -->
+<div class="section" id="highlights">
+    <h2 class="section-title">🔴 今日要点</h2>
+
+    <div class="highlight-item">
+        <span class="tag tag-red">市场异动</span>
+        <h4>科创50跌4%，电子板块净流出超154亿</h4>
+        <p>今日A股分化明显，科创50指数大跌4%，芯片股集体回调。主力资金大幅流出电子、半导体板块，兆易创新遭净卖出超22亿元。电力、电网设备板块逆势获资金流入，华电辽能涨停。</p>
+    </div>
+
+    <div class="highlight-item">
+        <span class="tag tag-green">资金流向</span>
+        <h4>对冲基金史上最大去杠杆潮后，高盛交易台录得2020年11月以来最大净买入</h4>
+        <p>经历史上最大去杠杆冲击后，高盛Prime账簿录得2020年11月以来最大规模净买入，表明机构资金重新加仓，市场流动性风险有所缓解。</p>
+    </div>
+
+    <div class="highlight-item">
+        <span class="tag tag-orange">行业景气</span>
+        <h4>MLCC涨价潮扩散：太阳诱电9月提价，三星电机上调30%</h4>
+        <p>继村田、国巨7月涨价后，太阳诱电宣布9月提价（年内第二次），三星电机决定9月1日起上调所有MLCC产品价格30%。MLCC概念股走强，裕兴股份涨超10%。</p>
+    </div>
+
+    <div class="highlight-item">
+        <span class="tag tag-blue">政策利好</span>
+        <h4>证监会与香港证监会联合深化合作，ETF互联互通扩容</h4>
+        <p>证监会主席吴清在香港人民币国债期货上市仪式上宣布：支持两地推出更多ETF产品、实施快速注册机制；扩大证券期货专业人员资格互认；深化期货市场合作。</p>
+    </div>
+
+    <div class="highlight-item">
+        <span class="tag tag-purple">学术前沿</span>
+        <h4>arXiv新文：解耦概率预测与套利感知的隐含波动率曲面精炼方法</h4>
+        <p>Hao & Ji提出将隐含波动率曲面建模拆分为概率预测与套利约束精炼两阶段，提升期权定价一致性，为波动率套利策略提供新框架。</p>
+    </div>
+</div>
+
+<!-- 因子看板 -->
+<div class="section" id="factors">
+    <h2 class="section-title">📈 因子看板</h2>
+
+    <div class="factor-board">
+        <div class="factor-card">
+            <div class="name">科创50</div>
+            <div class="value down">-4.0%</div>
+            <div class="change down">芯片股拖累</div>
+        </div>
+        <div class="factor-card">
+            <div class="name">恒生科技</div>
+            <div class="value up">+1.0%</div>
+            <div class="change up">阿里+6%领涨</div>
+        </div>
+        <div class="factor-card">
+            <div class="name">电力板块</div>
+            <div class="value up">强势</div>
+            <div class="change up">资金大幅流入</div>
+        </div>
+        <div class="factor-card">
+            <div class="name">MLCC概念</div>
+            <div class="value up">+5~20%</div>
+            <div class="change up">涨价驱动</div>
+        </div>
+        <div class="factor-card">
+            <div class="name">电子/半导体</div>
+            <div class="value down">-154亿</div>
+            <div class="change down">主力净流出</div>
+        </div>
+        <div class="factor-card">
+            <div class="name">尿素期货</div>
+            <div class="value down">-4%</div>
+            <div class="change down">1661元/吨</div>
+        </div>
+        <div class="factor-card">
+            <div class="name">金银</div>
+            <div class="value down">-9000亿</div>
+            <div class="change down">36h蒸发市值</div>
+        </div>
+        <div class="factor-card">
+            <div class="name">7月PMI</div>
+            <div class="value up">扩张</div>
+            <div class="change up">新出口订单回正</div>
+        </div>
+    </div>
+
+    <h3 style="color:var(--accent3); margin: 20px 0 10px; font-size:1em;">主力资金流向</h3>
+    <table class="flow-table">
+        <tr><th>板块</th><th>方向</th><th>金额</th><th>代表性个股</th></tr>
+        <tr><td>电新/电网设备</td><td class="up">净流入</td><td>显著</td><td>华电辽能 涨停</td></tr>
+        <tr><td>机械设备</td><td class="up">净流入</td><td>—</td><td>绿的谐波 +2%</td></tr>
+        <tr><td>电子/半导体</td><td class="down">净流出</td><td>>154亿</td><td>兆易创新 -8%</td></tr>
+        <tr><td>建筑材料</td><td class="down">净流出</td><td>—</td><td>中国巨石 -9%</td></tr>
+        <tr><td>MLCC概念</td><td class="up">净流入</td><td>—</td><td>风华高科 +5%</td></tr>
+        <tr><td>通信设备</td><td class="up">净流入</td><td>—</td><td>天孚通信 +5%</td></tr>
+    </table>
+</div>
+
+<!-- 学术前沿 -->
+<div class="section" id="academic">
+    <h2 class="section-title">🎓 学术前沿</h2>
+
+    <div class="paper-card">
+        <h4><a href="https://arxiv.org/abs/2607.29220" target="_blank">Decoupled Probabilistic Forecasting and Arbitrage-Aware Refinement of Implied Volatility Surfaces</a></h4>
+        <div class="paper-meta">Lifeng Hao, Shaolin Ji · q-fin.CP · 2026-07</div>
+        <div class="paper-abstract">
+            提出一种两阶段隐含波动率曲面建模框架：第一阶段进行概率预测生成初始曲面，第二阶段通过套利感知精炼确保无套利约束。该方法在保持预测精度的同时严格满足日历套利和蝶式套利约束，为期权做市和波动率套利策略提供更可靠的曲面构建工具。
+        </div>
+        <span class="score score-high">可落地性：★★★★☆ (8/10)</span>
+        <span style="color:var(--text-secondary);font-size:0.82em;margin-left:8px;">直接应用于期权定价与做市系统</span>
+    </div>
+
+    <div class="paper-card">
+        <h4><a href="https://arxiv.org/abs/2607.27461" target="_blank">Are Three Matrices All You Need To Beat the Market? Observable Matrix Dynamics for Portfolio Optimization</a></h4>
+        <div class="paper-meta">Igor Halperin · q-fin.PM, q-fin.RM, q-fin.ST · 2026-07</div>
+        <div class="paper-abstract">
+            探讨是否仅凭三个可观测矩阵（收益率协方差、因子暴露、因子协方差）即可构建超越市场的组合优化方案。作者将组合优化问题映射为矩阵动态系统，提出一种基于可观测量的参数化框架，避免了传统Black-Litterman模型中的隐含假设，为因子投资组合构建提供新范式。
+        </div>
+        <span class="score score-high">可落地性：★★★★☆ (8/10)</span>
+        <span style="color:var(--text-secondary);font-size:0.82em;margin-left:8px;">可直接嵌入多因子组合优化流程</span>
+    </div>
+
+    <div class="paper-card">
+        <h4><a href="https://arxiv.org/abs/2607.27853" target="_blank">FinanceHarness: Autonomous Financial Deep Research Framework</a></h4>
+        <div class="paper-meta">Yijia Xiao, Rujun Han et al. · q-fin.CP, cs.CL, cs.AI · 2026-07</div>
+        <div class="paper-abstract">
+            提出FinanceHarness框架，利用大语言模型自主执行金融深度研究任务。该框架整合了多源数据获取、分析推理与报告生成的完整流水线，可自动完成从数据采集到策略分析的端到端金融研究流程，显著提升量化研究效率。
+        </div>
+        <span class="score score-mid">可落地性：★★★☆☆ (6/10)</span>
+        <span style="color:var(--text-secondary);font-size:0.82em;margin-left:8px;">研究辅助工具，需验证稳定性</span>
+    </div>
+
+    <h3 style="color:var(--accent3); margin: 20px 0 10px; font-size:1em;">📋 论文速递</h3>
+    <ul class="paper-list">
+        <li><a href="https://arxiv.org/abs/2607.29583" target="_blank">Fund Competition under Conflicting ESG Rating Methodologies</a> <span class="cat">q-fin.PR</span></li>
+        <li><a href="https://arxiv.org/abs/2607.28847" target="_blank">Effort-Centric Fairness in Lending Decisions</a> <span class="cat">q-fin.ST, q-fin.RM</span></li>
+        <li><a href="https://arxiv.org/abs/2607.28127" target="_blank">FinSMART: Financial Sentiment Analysis for Algorithmic Trading through Market-Aligned RL</a> <span class="cat">q-fin.ST, q-fin.TR</span></li>
+        <li><a href="https://arxiv.org/abs/2607.27188" target="_blank">Inverse Learning of Latent Risk-Neutral Densities from Irregular Option Quotes</a> <span class="cat">q-fin.CP, q-fin.PR</span></li>
+        <li><a href="https://arxiv.org/abs/2607.26792" target="_blank">Crossing-Free Probabilistic K-Line Forecasts Without Retraining</a> <span class="cat">q-fin.CP, cs.AI</span></li>
+        <li><a href="https://arxiv.org/abs/2607.25599" target="_blank">An Analytic COS Method for Compound Option Valuation</a> <span class="cat">q-fin.CP, q-fin.MF</span></li>
+        <li><a href="https://arxiv.org/abs/2607.25199" target="_blank">RIDGE: Autonomous Framework for Validation in LLM-Generated Option Pricing</a> <span class="cat">q-fin.CP, cs.AI</span></li>
+        <li><a href="https://arxiv.org/abs/2607.25258" target="_blank">Robust Hedging Valuation Adjustment for Deep Hedging under Market Frictions</a> <span class="cat">q-fin.RM, q-fin.CP</span></li>
+        <li><a href="https://arxiv.org/abs/2607.23068" target="_blank">Neural Network-Driven Volatility Drag Mitigation under Aggressive Leverage</a> <span class="cat">q-fin.PM, cs.LG</span></li>
+        <li><a href="https://arxiv.org/abs/2607.27070" target="_blank">Early-Warning Signals are Event-Heterogeneous Across Crypto Liquidation Cascades</a> <span class="cat">q-fin.ST</span></li>
+    </ul>
+</div>
+
+<!-- 策略研究 -->
+<div class="section" id="strategy">
+    <h2 class="section-title">🧠 策略研究</h2>
+
+    <div class="highlight-item">
+        <span class="tag tag-green">情绪因子</span>
+        <h4>FinSMART：市场对齐强化学习的金融情绪分析交易框架</h4>
+        <p>arXiv 2607.28127 — Iacovides等提出FinSMART框架，将金融情绪分析与强化学习结合，通过市场对齐机制使情绪信号直接驱动交易决策。与传统情绪分析仅生成信号不同，该框架端到端优化从文本到交易的映射，在回测中展现了情绪因子增强策略的潜力。</p>
+    </div>
+
+    <div class="highlight-item">
+        <span class="tag tag-blue">波动率套利</span>
+        <h4>隐含波动率曲面无套利精炼：概率预测+约束优化</h4>
+        <p>arXiv 2607.29220 — Hao & Ji的解耦框架将IV曲面构建分为概率预测和套利约束精炼两步。实际应用中，可先用ML模型预测粗曲面，再用优化步骤消除套利机会，避免传统方法中预测精度与无套利约束难以兼得的问题。对期权做市商具有直接应用价值。</p>
+    </div>
+
+    <div class="highlight-item">
+        <span class="tag tag-purple">组合优化</span>
+        <h4>三矩阵组合优化：可观测矩阵动态视角</h4>
+        <p>arXiv 2607.27461 — Igor Halperin提出仅依赖三个可观测矩阵的组合优化框架，将传统的均值-方差优化转化为矩阵动态系统。该方法的亮点在于避免了Black-Litterman等模型中的隐含假设，可直接从因子暴露和协方差矩阵出发，为因子投资提供更具鲁棒性的组合构建路径。</p>
+    </div>
+</div>
+
+<!-- 券商金工观点 -->
+<div class="section" id="broker">
+    <h2 class="section-title">🏦 券商金工观点</h2>
+
+    <div class="broker-item">
+        <div class="org">中金公司</div>
+        <h4>AI之外还有什么值得买</h4>
+        <p>中金刘刚团队提出，在AI主线之外关注结构性机会，包括出海链、高股息和消费修复等方向，量化模型显示非AI板块的因子拥挤度已降至较低水平。</p>
+    </div>
+
+    <div class="broker-item">
+        <div class="org">高盛</div>
+        <h4>人类历史上最大规模资本需求周期，美联储只是看客</h4>
+        <p>高盛旗帜鲜明指出当前处于人类史上最大资本需求周期，AI基础设施、能源转型和供应链重构驱动资本开支超预期，美联储货币政策影响有限。对量化策略而言，资本开支因子值得重点关注。</p>
+    </div>
+
+    <div class="broker-item">
+        <div class="org">大摩（摩根士丹利）</div>
+        <h4>上调韩股至"超配"：去杠杆接近尾声，估值极具吸引力</h4>
+        <p>摩根士丹利将韩国股票评级上调至超配，认为对冲基金去杠杆潮已近尾声，韩国市场估值处于历史低位。韩国作为全球金融风险预警器的角色值得量化模型纳入监测。</p>
+    </div>
+
+    <div class="broker-item">
+        <div class="org">证监会/香港证监会</div>
+        <h4>深化两地市场合作：ETF快速注册、人民币期货扩容</h4>
+        <p>证监会主席吴清宣布多项互联互通新举措：支持两地推出更多ETF产品并实施快速注册机制；深化期货市场合作；扩大专业人员资格互认。对跨境量化策略构成直接利好。</p>
+    </div>
+
+    <div class="broker-item">
+        <div class="org">华尔街见闻/机构观点</div>
+        <h4>美日联合干预：新"广场协议"与日元套利时代终结</h4>
+        <p>市场关注美日可能达成的汇率干预协议，若日元套利交易逆转，将引发全球流动性冲击。量化模型需关注日元汇率波动对A股北向资金的传导效应。</p>
+    </div>
+</div>
+
+<footer>
+    <p>📊 量化交易资讯简报 · 每日自动生成 · 数据来源：华尔街见闻、财联社、东方财富、arXiv</p>
+    <p style="margin-top:6px;">生成时间：2026-08-03 11:10 CST · Powered by Hermes Agent</p>
+</footer>
+
+</body>
+</html>
