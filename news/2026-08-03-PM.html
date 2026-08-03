@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-08-03 PM · 政策解读日</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .edition { color: var(--accent-debate); font-size: 14px; font-weight: 600; margin-top: 4px; }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+    text-align: left;
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category { margin-bottom: 28px; }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25); }
+  .sector-card.down { background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.25); }
+  .sector-card.neutral { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.25); }
+  .sector-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .sector-card .name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value { font-size: 14px; font-weight: 500; }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .sector-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sector-tag { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+  .sector-tag.up { background: rgba(63,185,80,0.15); color: #3fb950; }
+  .sector-tag.down { background: rgba(218,54,51,0.15); color: #da3633; }
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .focus-item { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .focus-item strong { color: var(--text-primary); }
+  .news-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+  /* 政策影响分析表 */
+  .policy-analysis {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: rgba(210,168,255,0.06);
+    border: 1px solid rgba(210,168,255,0.2);
+    border-radius: 8px;
+  }
+  .policy-analysis h5 { font-size: 13px; color: var(--accent-finance); margin-bottom: 8px; }
+  .policy-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .policy-table th { text-align: left; color: var(--text-secondary); font-weight: 500; padding: 4px 8px; border-bottom: 1px solid var(--border); }
+  .policy-table td { padding: 6px 8px; color: var(--text-primary); border-bottom: 1px solid rgba(48,54,61,0.5); }
+  .debate-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+  }
+  .debate-title { font-size: 24px; text-align: center; margin-bottom: 20px; color: var(--accent-debate); }
+  .debate-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .debate-item h3 { font-size: 18px; margin-bottom: 10px; color: var(--accent-debate); }
+  .debate-item .background { color: var(--text-secondary); margin-bottom: 14px; font-size: 14px; line-height: 1.7; }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .debate-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 600px) {
+    .debate-columns { grid-template-columns: 1fr; }
+  }
+  .debate-columns .pro, .debate-columns .con { padding: 12px; border-radius: 8px; }
+  .debate-columns .pro { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); }
+  .debate-columns .con { background: rgba(218,54,51,0.1); border: 1px solid rgba(218,54,51,0.3); }
+  .debate-columns h4 { font-size: 14px; margin-bottom: 8px; }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul { list-style: none; padding: 0; }
+  .debate-columns li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; padding-left: 16px; position: relative; }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions {
+    background: rgba(255,166,87,0.08);
+    border: 1px solid rgba(255,166,87,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .guiding-questions h4 { font-size: 14px; color: var(--accent-debate); margin-bottom: 8px; }
+  .guiding-questions ol { padding-left: 20px; }
+  .guiding-questions li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+  .daily-question {
+    text-align: center;
+    padding: 16px;
+    background: rgba(121,192,255,0.1);
+    border: 1px solid rgba(121,192,255,0.3);
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .daily-question .label { font-size: 13px; color: var(--text-secondary); }
+  .daily-question .question { font-size: 16px; font-weight: 600; color: var(--accent-ai); margin-top: 6px; }
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+  .disclaimer {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(139,92,246,0.06);
+    border: 1px solid rgba(139,92,246,0.15);
+    border-radius: 6px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年8月3日 · 星期一</div>
+  <div class="edition">🌆 下午版 · 📋 政策解读日</div>
+  <div class="overview">新型电力系统"十五五"规划重磅发布，美日15年来首次联合干预汇市，河南"三支一扶"查实作弊，蔡崇信宣布离婚不涉阿里股份，国产大模型集体更新——政策驱动与全球博弈交织的一天。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 河南"三支一扶"查实作弊，相关负责人停职；负责人撒谎被中央考核巡查组当场拆穿</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 新型电力系统"十五五"规划发布：2030年非化石电源达40%，新增储能1.6亿千瓦</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 美日15年来首次联合干预汇市，日元从164拉升至155区间，贝森特称日元被严重低估</div>
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> 科创50跌超5%，核电板块逆势涨停潮，两市缩量5400亿至1.99万亿</div>
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> MiniMax H3、Seedance 2.5、DeepSeek V4同日发布；OpenAI官宣下一代模型Astra</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(4)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-02/doc-inikyarc9656503.shtml" target="_blank">查实作弊！河南通报"三支一扶"核查结果：相关负责人停职</a></div>
+    <div class="summary">河南省通报"三支一扶"招募考试核查结果，确认存在作弊行为，相关涉事负责人已被停职处理。此前多位考生反映考试存在大面积雷同答案和异常高分，引发社会广泛关注。官方承诺将重新组织考试并严肃追责。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-02/doc-inikyarc9656503.shtml" target="_blank">央视新闻</a> · 推荐理由：考试公平是社会底线事件，多源交叉验证+政策信号明确</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/o/2026-08-03/doc-inikyxur6339885.shtml" target="_blank">负责人撒谎，被中央考核巡查组当场拆穿！</a></div>
+    <div class="summary">中央考核巡查组在某地检查时，当地负责人声称某项工作"已完成"，巡查组当场拿出数据和实地核查结果拆穿谎言，暴露出基层形式主义和弄虚作假问题。该事件引发对基层考核机制真实性的广泛讨论。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/o/2026-08-03/doc-inikyxur6339885.shtml" target="_blank">新京报</a> · 推荐理由：中央监督机制罕见公开曝光案例，影响基层治理走向</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33709819" target="_blank">甘肃西和县灯塔村数百村民出现饮水困难：靠背水拉水维持生计</a></div>
+    <div class="summary">甘肃西和县灯塔村数百村民面临严重饮水困难，需靠背水拉水维持基本生活。当地政府回应称正着手解决，但村民反映问题已持续数月。该事件暴露出偏远农村基础设施保障的短板。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33709819" target="_blank">澎湃新闻</a> · 推荐理由：民生基建短板暴露，贴近基层实际</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/detail/2443864" target="_blank">吴清：积极支持符合条件的内地企业在港上市</a></div>
+    <div class="summary">证监会主席吴清表示，将积极支持符合条件的内地企业在香港上市，深化内地与香港资本市场互联互通。此举被视为稳定港交所流动性的重要政策信号，也是内地企业出海融资的关键通道保障。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/detail/2443864" target="_blank">财联社</a> · 推荐理由：证监会高层表态，政策信号+两地市场联动</div>
+    <div class="policy-analysis">
+      <h5>📋 政策影响分析</h5>
+      <table class="policy-table">
+        <tr><th>影响对象</th><th>短期影响</th><th>长期影响</th></tr>
+        <tr><td>内地拟上市企业</td><td>拓宽融资渠道，IPO节奏有望加快</td><td>港交所成为出海融资主阵地，估值体系与A股互补</td></tr>
+        <tr><td>港股市场</td><td>流动性改善预期，新上市标的增多</td><td>强化国际金融中心地位，吸引南向资金持续流入</td></tr>
+        <tr><td>A股投资者</td><td>部分资金可能分流至港股</td><td>两地市场定价更趋理性，互联互通机制深化</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/detail/2443690" target="_blank">事关霍尔木兹！特朗普称今日举行谈判，伊朗重申"不会恢复至战前"</a></div>
+    <div class="summary">特朗普宣布就霍尔木兹海峡安全议题举行谈判，伊朗方面重申立场不会恢复至战前状态。霍尔木兹海峡是全球约20%石油运输的咽喉要道，美伊博弈直接影响全球能源供应格局和中东地缘安全。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/detail/2443690" target="_blank">财联社</a> · 推荐理由：地缘政治核心节点，影响油价与全球供应链</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33709035" target="_blank">美以伊战争制造中东五大矛盾困境</a></div>
+    <div class="summary">分析指出，美以伊军事冲突正在中东制造五大结构性矛盾：安全与发展失衡、主权与干预对立、宗教与世俗撕裂、能源与制裁博弈、难民与邻国承压。任性毁韧性、沃土变危地，中东和平前景面临长期挑战。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33709035" target="_blank">澎湃新闻</a> · 推荐理由：深度结构分析，理解中东困局的全景框架</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-03/doc-inikyxuv6208461.shtml" target="_blank">特朗普：已决定惩罚加拿大</a></div>
+    <div class="summary">特朗普宣布已决定对加拿大采取惩罚性措施，但未透露具体制裁内容。此举可能进一步升级北美贸易摩擦，加元和加拿大股市承压。分析认为，这与美加在乳制品市场准入和数字税方面的争端有关。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-03/doc-inikyxuv6208461.shtml" target="_blank">新浪新闻</a> · 推荐理由：全球贸易格局波动信号，北美关系走向影响广泛</div>
+    <div class="policy-analysis">
+      <h5>📋 政策影响分析</h5>
+      <table class="policy-table">
+        <tr><th>影响对象</th><th>短期影响</th><th>长期影响</th></tr>
+        <tr><td>加拿大经济</td><td>加元贬值，出口企业承压</td><td>可能加速加方寻找替代贸易伙伴，削弱NAFTA框架</td></tr>
+        <tr><td>美国消费者</td><td>加进口商品涨价</td><td>供应链重构成本推高物价</td></tr>
+        <tr><td>中国</td><td>可能间接受益于加方转向</td><td>全球贸易阵营化加剧，多边体系进一步弱化</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33708330" target="_blank">"装得越多，浪费越多"？新能源装机大涨背后仍面临消纳考验</a></div>
+    <div class="summary">中国新能源装机量持续大幅增长，但弃风弃光问题仍未根本解决。专家指出，储能配套不足、电网调度能力有限、跨区输电通道建设滞后，导致部分地区新能源消纳率偏低。"十五五"新型电力系统规划提出新增储能1.6亿千瓦，正是应对消纳难题。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33708330" target="_blank">澎湃新闻</a> · 推荐理由：新能源核心矛盾，政策与现实落差</div>
+    <div class="policy-analysis">
+      <h5>📋 政策影响分析</h5>
+      <table class="policy-table">
+        <tr><th>影响对象</th><th>短期影响</th><th>长期影响</th></tr>
+        <tr><td>新能源运营商</td><td>消纳压力影响收益，配储成本上升</td><td>储能盈利模式成熟后，消纳率将显著提升</td></tr>
+        <tr><td>储能产业链</td><td>规划新增1.6亿千瓦催生订单爆发</td><td>储能成为电力系统"第四要素"，长期景气确定</td></tr>
+        <tr><td>传统火电</td><td>调峰需求增加，利用小时数下降</td><td>向支撑调节电源转型，容量电价机制保障收益</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3923089163922822" target="_blank">2亿枚AI芯片大爆发，人类最大基建集体开工</a></div>
+    <div class="summary">全球AI算力正经历前所未有的大规模扩张，预计到2027年AI芯片部署量将突破2亿枚。全球超大型数据中心建设进入高峰期，AI迭代循环已开启提速——更快的训练→更强的模型→更大的需求→更多的芯片。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3923089163922822" target="_blank">36氪</a> · 推荐理由：AI基建全景数据，理解产业大趋势</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3921745661226377" target="_blank">年薪百万抢电工，Meta急到自己办技校</a></div>
+    <div class="summary">AI竞赛的瓶颈正在从芯片转向电力和人力。Meta开出年薪百万招聘电工，甚至自己创办技术学校培养人才。美国数据中心建设潮导致电力人才严重短缺，电工成为AI时代最紧缺的"基础设施工人"。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3921745661226377" target="_blank">36氪/量子位</a> · 推荐理由：AI产业瓶颈转移的典型案例，人才供给矛盾突出</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33710429" target="_blank">释新闻｜美日时隔15年联合干预汇市，"救日元"为何美国也上心？</a></div>
+    <div class="summary">美东时间7月31日，美日15年来首次联合干预汇市买入日元。日本干预规模约6.4-9.6万亿日元，美方疑似抛售欧元买入日元。贝森特1月即开始研究干预方案，深层动机是防止"抛售日本"演变为"抛售美国"——日元贬值引发日本资金回流，推高美债收益率至4.7%，30年期创19年新高。1998年LTCM危机的前车之鉴警示套利交易无序逆转风险。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33710429" target="_blank">澎湃新闻</a> · 推荐理由：独家深度+全球金融系统性风险分析</div>
+    <div class="policy-analysis">
+      <h5>📋 政策影响分析</h5>
+      <table class="policy-table">
+        <tr><th>影响对象</th><th>短期影响</th><th>长期影响</th></tr>
+        <tr><td>日元套利交易者</td><td>平仓压力增大，短期波动加剧</td><td>日元加息周期开启，套利成本趋势性上升</td></tr>
+        <tr><td>美债市场</td><td>日本资金回流放缓，收益率上行压力减轻</td><td>若日本央行9月加息，美日利差收窄是长期趋势</td></tr>
+        <tr><td>亚洲货币</td><td>人民币贬值压力短期缓解</td><td>美元霸权松动信号，亚洲货币协调干预可能常态化</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/jjxw/2026-08-03/doc-inikzkkr6040444.shtml" target="_blank">美国经济"不可能三角"矛盾交织冲击世界</a></div>
+    <div class="summary">美国正面临增长、通胀与利率的"不可能三角"——高通胀要求维持高利率，但高利率压制增长，增长放缓又推升财政赤字。三大矛盾交织对全球资本流动和汇率稳定形成持续冲击，韩综指单日跌近5%，亚太市场普遍承压。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/jjxw/2026-08-03/doc-inikzkkr6040444.shtml" target="_blank">新浪财经</a> · 推荐理由：宏观框架清晰，全球影响链路完整</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/roll/2026-08-03/doc-inikyarc9696905.shtml" target="_blank">央行明确下阶段八大重点工作，综合运用并适时调整货币政策工具</a></div>
+    <div class="summary">中国人民银行明确下阶段八大重点工作方向，强调综合运用并适时调整货币政策工具，保持流动性合理充裕，防范化解重点领域金融风险。市场解读为降准降息窗口尚未关闭，但节奏取决于外部环境演变。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/roll/2026-08-03/doc-inikyarc9696905.shtml" target="_blank">新浪财经</a> · 推荐理由：货币政策定调，直接影响市场预期</div>
+    <div class="policy-analysis">
+      <h5>📋 政策影响分析</h5>
+      <table class="policy-table">
+        <tr><th>影响对象</th><th>短期影响</th><th>长期影响</th></tr>
+        <tr><td>A股市场</td><td>流动性宽松预期支撑估值底</td><td>结构性改革加速，市场主线从单一走向多线并行</td></tr>
+        <tr><td>债券市场</td><td>利率下行空间打开</td><td>信用分化加剧，高等级债更受青睐</td></tr>
+        <tr><td>房地产</td><td>房贷利率有望继续下调</td><td>行业出清加速，优质房企融资环境改善</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">核聚变/核电</div>
+      <div class="value">多股涨停</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">半导体</div>
+      <div class="value">多股跌停</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">两市成交额</div>
+      <div class="name">1.99万亿</div>
+      <div class="value">较前日缩5446亿</div>
+    </div>
+  </div>
+
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">核聚变 +涨停潮</span>
+      <span class="sector-tag up">环保 ↑</span>
+      <span class="sector-tag up">特高压 ↑</span>
+      <span class="sector-tag up">机器人 ↑</span>
+      <span class="sector-tag down">半导体 ↓↓</span>
+    </div>
+  </div>
+
+  <div class="market-focus">
+    <h4>📌 市场关注个股</h4>
+    <div class="focus-item"><strong>传智教育</strong>：6连板，教育概念龙头，市场关注持续性</div>
+    <div class="focus-item"><strong>一鸣食品</strong>：5连板，消费复苏主线，资金接力明显</div>
+    <div class="focus-item"><strong>中材国际</strong>：签署4.76亿美元尼日利亚合同，海外订单提速</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33710039" target="_blank">A股三大股指收跌：核聚变概念股活跃，超4000股收涨</a></div>
+    <div class="summary">8月3日A股三大指数集体收跌，上证综指跌0.59%报3809.66点，深证成指跌0.96%，创业板指跌1.24%，科创50跌超5%。但个股层面4001只股票上涨、1462只下跌，呈现"指数弱、个股强"格局。两市成交1.99万亿，较前日缩量5446亿。核聚变、光伏、环保、特高压、机器人概念活跃，半导体、存储器、HBM方向领跌。中信证券称8月普遍修复概率提升，华泰证券判断"交易底初现"。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33710039" target="_blank">澎湃新闻</a> · 推荐理由：市场全景数据+机构研判，投资参考价值高</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/detail/2443935" target="_blank">核电板块掀涨停潮：千亿投资"落袋"，产业链迎确定性时刻</a></div>
+    <div class="summary">核电板块今日集体走强多股涨停。消息面上，国家发改委近期密集批复核电项目，总投资将超1700亿元。"十五五"新型电力系统规划明确煤电向支撑调节电源转型，核电作为基荷电源的战略地位进一步强化。机构认为核电产业链进入确定性兑现期。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/detail/2443935" target="_blank">财联社</a> · 推荐理由：政策催化+产业确定性，核电主线清晰</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/detail/2443731" target="_blank">美债彻底陷入"失控边缘"：真正的风暴才刚开始？</a></div>
+    <div class="summary">美国30年期国债收益率触及5.2%创19年新高，10年期升至4.7%区间。美联储加息预期再博弈叠加财政赤字扩大，市场担忧美债进入"失控"状态。若美伊冲突升级推高油价，通胀预期将进一步推升收益率，对全球风险资产形成压力。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/detail/2443731" target="_blank">财联社</a> · 推荐理由：全球资产定价锚，影响A股外资流向</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/detail/2443959" target="_blank">SpaceX首次财报本周重磅登场！市场还将关注这些…</a></div>
+    <div class="summary">SpaceX将于本周公布其首次财报，市场高度关注这家估值超2000亿美元的太空巨头能否兑现盈利预期。除营收外，星链用户增长、发射频率和星舰研发进展也是焦点。财报结果将影响全球商业航天板块估值锚定。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/detail/2443959" target="_blank">财联社</a> · 推荐理由：商业航天里程碑事件，影响A股航天概念估值</div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3922353035433603" target="_blank">MiniMax H3、Seedance 2.5、DeepSeek V4全来了，国产大模型今天有点忙</a></div>
+    <div class="summary">7月31日国产大模型集中更新：MiniMax发布H3模型、Seedance视频生成2.5版、DeepSeek推出V4版本。三家公司同日发新品，反映国产大模型从单点突破进入全面竞争阶段。月之暗面计划本月提交香港IPO申请，Kimi K3加速商业生态重构。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3922353035433603" target="_blank">36氪</a> · 推荐理由：国产AI集中爆发，产业格局重塑信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3921831591341702" target="_blank">OpenAI官宣下一代模型Astra，取得10大未解难题突破，附249页论文</a></div>
+    <div class="summary">OpenAI发布下一代模型Astra，声称在10个长期未解数学和科学难题上取得突破，并附249页论文。相关问题均已开放至少10年且核心结论长期没有进展。如果验证通过，这将是AI在推理能力上的里程碑式跨越。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3921831591341702" target="_blank">36氪/智东西</a> · 推荐理由：AI推理能力突破信号，全球技术前沿动态</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3923151726876544" target="_blank">OpenAI不靠最贵的模型卖钱了，Anthropic：俺也一样</a></div>
+    <div class="summary">OpenAI和Anthropic的收入结构正在转变——最贵的旗舰模型不再是主要收入来源，API调用的中端和轻量模型贡献了更多收入。这反映出企业级AI应用正在从"炫技"走向"实用"，推理成本和部署效率成为竞争关键。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3923151726876544" target="_blank">36氪</a> · 推荐理由：AI商业模式拐点信号，从模型竞赛转向应用竞赛</div>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨 · 政策解读日</div>
+
+  <div class="debate-item">
+    <h3>话题①：美日联合干预汇市——市场稳定器还是新风险源？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件概要</span></p>
+      <p>7月31日，美日15年来首次联合干预汇市买入日元。日本干预规模约6.4-9.6万亿日元，美方疑似抛售欧元买入日元（金额约50-100亿美元）。联合干预后日元从1美元兑164日元升至155区间。</p>
+      <p><span class="bg-label">深层动机</span></p>
+      <p>贝森特1月即开始研究干预方案，5月访日敲定细节。美方核心担忧是"抛售日本"演变为"抛售美国"——日元贬值引发日本资金回流，推高美债收益率至4.7%，30年期触及5.2%创19年新高，对住房贷款利率和中期选举构成压力。</p>
+      <p><span class="bg-label">历史教训</span></p>
+      <p>1998年6月美日联合买入日元后，8月俄罗斯债务违约触发套利交易无序逆转，日元两天暴涨20%，直接导致LTCM破产、美联储紧急救市。当前全球日元套利交易规模远超1998年，无序逆转风险更大。</p>
+      <p><span class="bg-label">后续变数</span></p>
+      <ol class="timeline">
+        <li>日本央行9月召开政策会议，加息压力增大</li>
+        <li>自民党拟推食品消费税"实质归零"，年损5万亿日元税收</li>
+        <li>美伊冲突若推高油价，通胀预期将进一步施压日元</li>
+        <li>G8月底G20财长会议将是政策协调关键节点</li>
+      </ol>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✅ 支持干预</h4>
+        <ul>
+          <li>日元严重低估，干预纠正了市场失灵</li>
+          <li>防止套利交易过度积累，降低系统性风险</li>
+          <li>美日协调行动释放强烈信号，有效震慑投机</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>❌ 质疑干预</h4>
+        <ul>
+          <li>治标不治本，日美利差才是日元贬值根源</li>
+          <li>干预过猛可能触发套利交易踩踏式平仓</li>
+          <li>政治动机（中期选举）可能凌驾于经济理性</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导（5问）</h4>
+      <ol>
+        <li><strong>事实判断：</strong>美日联合干预的核心事实是什么？日方干预6.4-9.6万亿日元、美方疑似50-100亿美元，这在全球外汇市场日均7.5万亿美元交易量中占比几何？</li>
+        <li><strong>数据支撑：</strong>日元从164升至155，约6%的升幅。1998年联合干预后日元两天暴涨20%——当前套利交易规模（估计数万亿美元）vs 1998年，哪个风险更大？美债收益率从4.3%到4.7%再到5.2%，与日元波动的相关性数据如何？</li>
+        <li><strong>理论框架：</strong>蒙代尔-弗莱明模型（三元悖论）如何解释美日干预的可持续性？克鲁格曼的"不可能三角"是否预言了干预终将失败？或者参考第二代货币危机模型——自我实现的预期在汇市中如何运作？</li>
+        <li><strong>价值判断：</strong>联合干预保护的是全球金融系统稳定，还是美国中期选举前降低住房贷款利率的政治利益？日本食品消费税归零的财政缺口由谁承担？</li>
+        <li><strong>利益权衡：</strong>干预成功→日元温和升值→套利交易有序收缩 vs 干预失控→日元暴涨→套利踩踏→全球流动性紧缩。两种情景的概率和代价分别是什么？谁是赢家/输家？</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="debate-item">
+    <h3>话题②：新能源消纳困局——"装得越多"为什么反而"浪费越多"？</h3>
+    <div class="background">
+      <p><span class="bg-label">政策背景</span></p>
+      <p>国家发改委、国家能源局8月3日印发《新型电力系统建设"十五五"规划》，提出到2030年非化石电源电力支撑水平达40%，新增新型储能1.6亿千瓦，车网互动聚合可调充电规模力争5000万千瓦。</p>
+      <p><span class="bg-label">现实矛盾</span></p>
+      <p>中国新能源装机量持续大幅增长，但弃风弃光问题仍未根本解决。储能配套不足、电网调度能力有限、跨区输电通道建设滞后，导致部分地区新能源消纳率偏低。"装得越多，浪费越多"的说法虽显夸张，但确实反映了装机增速与消纳能力的结构性错配。</p>
+      <p><span class="bg-label">关键数据</span></p>
+      <ol class="timeline">
+        <li>2030年目标：非化石电源电力支撑水平40%</li>
+        <li>"十五五"新增新型储能：1.6亿千瓦（2030年总量达3亿千瓦）</li>
+        <li>车网互动聚合可调充电规模：力争5000万千瓦</li>
+        <li>新增省间电力互济规模：约4000万千瓦</li>
+        <li>煤电灵活性改造：2030年现役机组"应改尽改"</li>
+      </ol>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✅ 乐观派</h4>
+        <ul>
+          <li>规划目标明确、路径清晰，储能增速匹配装机</li>
+          <li>车网互动等新机制开辟了灵活性调节新空间</li>
+          <li>特高压建设"十五五"规模达"十四五"两倍，输电瓶颈将缓解</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>❌ 悲观派</h4>
+        <ul>
+          <li>规划目标宏大但执行落地存在时间差</li>
+          <li>储能盈利模式不成熟，商业模式尚未跑通</li>
+          <li>地方保护主义和利益博弈可能拖延跨区互济</li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导（5问）</h4>
+      <ol>
+        <li><strong>事实判断：</strong>新型电力系统"十五五"规划的核心目标是什么？储能1.6亿千瓦、互济4000万千瓦、车网互动5000万千瓦——这些数字与当前装机量/消纳缺口的对应关系如何？</li>
+        <li><strong>数据支撑：</strong>当前弃风弃光率是多少？各省份差异有多大？储能装机成本过去3年下降了约60%，但盈利回报期仍需多久？特高压"十四五"已建多少，"十五五"翻倍是否足够？</li>
+        <li><strong>理论框架：</strong>能源转型的"鸭子曲线"（Duck Curve）如何解释消纳难题？电力市场的边际成本定价理论下，零边际成本的新能源如何与需要容量电价的储能共存？威廉·诺德豪斯的"技术扩散S曲线"能否预测储能部署速度？</li>
+        <li><strong>价值判断：</strong>新能源"装而不用"浪费的是财政补贴和土地资源，但这些沉没成本是否应被视为"必经阶段"？谁在为消纳不足买单——纳税人、电费用户还是新能源企业？</li>
+        <li><strong>利益权衡：</strong>加速储能部署→短期内推高用电成本 vs 维持现状→弃电损失持续累积。哪种路径的总社会成本更低？如果2030年目标推迟3年实现，绿色转型的不可逆损失有多大？</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="daily-question">
+    <div class="label">🔮 本日追问 · 连接两个话题</div>
+    <div class="question">美日联合干预试图用政策力量纠正市场"定价失灵"，新型电力系统规划试图用政策力量纠正能源"消纳失灵"——当市场机制和物理约束同时失灵时，政策干预的边界在哪里？我们如何区分"必要的纠偏"与"扭曲的干预"？</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-08-03 17:00 | 数据源：5（澎湃新闻、新浪热搜、36氪、财联社、百度热搜） | 采集条目：20
+</div>
+
+<div class="disclaimer">
+  ⚠️ 股市数据仅供参考，不构成投资建议。汇率政策分析基于公开信息，不构成交易建议。
+</div>
+
+</body>
+</html>
