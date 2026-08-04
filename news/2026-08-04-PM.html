@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-08-04 PM</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .overview {
+    margin-top: 16px; padding: 12px 20px;
+    background: var(--bg-card); border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px; color: var(--text-primary);
+  }
+  .highlights { display: grid; gap: 8px; margin-top: 16px; }
+  .highlights .hl-row {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px;
+    font-size: 14px; line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 4px;
+    white-space: nowrap; min-width: 36px; text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category { margin-bottom: 28px; }
+  .category-title {
+    font-size: 20px; font-weight: 700;
+    padding: 8px 16px; border-radius: 6px;
+    margin-bottom: 12px; display: flex;
+    align-items: center; gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .sector-brief { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .sector-brief { grid-template-columns: 1fr; } }
+  .sector-card { padding: 14px 16px; border-radius: 8px; text-align: center; }
+  .sector-card.up { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25); }
+  .sector-card.down { background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.25); }
+  .sector-card.neutral { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.25); }
+  .sector-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .sector-card .name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value { font-size: 14px; font-weight: 500; }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  .hot-sectors { margin-bottom: 16px; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+  .hot-sectors h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .sector-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sector-tag { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+  .sector-tag.up { background: rgba(63,185,80,0.15); color: #3fb950; }
+  .sector-tag.down { background: rgba(218,54,51,0.15); color: #da3633; }
+  .market-focus { margin-bottom: 12px; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+  .market-focus h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .focus-item { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .focus-item strong { color: var(--text-primary); }
+  .news-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px 20px; margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+  .news-item .recommend { font-size: 12px; color: var(--accent-debate); margin-top: 4px; }
+  .footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-secondary); font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报 · 下午版</h1>
+  <div class="date">2026年8月4日 星期二 · 纯资讯日</div>
+  <div class="overview">创业板暴涨超5.6%创近期新高，特朗普叫停对伊军事行动重启谈判，工信部发布自动驾驶强制性国标，DeepSeek升至全球调用量第一，央行明日将开展5000亿买断式逆回购。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> 创业板暴涨超5.6%，算力硬件全线反攻，药明康德涨停，光通信"满屏涨停"</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 特朗普再次叫停对伊袭击，宣布重启谈判；伊朗称无谈判计划</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> 工信部发布自动驾驶L3级强制性国标，2027年7月起实施</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 央行明日开展5000亿元买断式逆回购，WTI原油涨2%破81美元</div>
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> DeepSeek升至全球调用量第一，开源vs闭源AI大战终局推演</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(4)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33712250" target="_blank">"餐饮业一夜间再无大师"，中国烹饪协会回应</a></div>
+    <div class="summary">中国烹饪协会就"餐饮业一夜间再无大师"舆论作出回应，称将完善评价体系、规范荣誉称号管理。此前有评论指出部分烹饪大师称号泛滥、评定标准模糊，导致行业公信力受损，协会表示将在下半年启动评级制度改革。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33712250" target="_blank">澎湃新闻</a> · 推荐理由：行业评价体系改革信号+舆论关注度极高</div>
+    <div class="recommend">💡 多源交叉验证+行业公信力话题引发社会共鸣</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33709819" target="_blank">甘肃西和县灯塔村数百村民出现饮水困难：靠背水拉水维持生计</a></div>
+    <div class="summary">甘肃西和县灯塔村数百村民长期面临饮水困难，只能靠背水、拉水维持基本生活。当地政府回应称已着手解决，将加快供水设施建设。村民反映水源枯竭问题已持续数月，严重影响日常生产生活。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33709819" target="_blank">澎湃新闻</a> · 推荐理由：民生疾苦+基层治理考验</div>
+    <div class="recommend">💡 独家调查+关系数百人基本生存权</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-03/doc-inikzzfz4542198.shtml" target="_blank">女子阻止男友吸烟起冲突将其捅死，被判死缓</a></div>
+    <div class="summary">一女子因阻止男友吸烟发生冲突，持刀将男友捅刺致死。法院一审认定其行为构成故意杀人罪，但考虑到被害人有过错在先、被告人有自首情节，判处死刑缓期两年执行。案件引发公众对家庭暴力和过激防卫边界的讨论。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-03/doc-inikzzfz4542198.shtml" target="_blank">新浪新闻</a> · 推荐理由：社会热点案件+法律量刑争议</div>
+    <div class="recommend">💡 热搜关注+司法裁量与社会认知的张力</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33709958" target="_blank">再度反转！特朗普宣布不打了，重启谈判，伊朗：没有计划</a></div>
+    <div class="summary">特朗普再次叫停对伊朗军事行动，宣布重启谈判。伊朗方面则表示"没有计划"进行谈判。此前美伊局势持续升级，霍尔木兹海峡局势紧张。分析认为特朗普在国内选举压力下试图避免战事扩大，但伊朗"有选择地扩大冲突"策略正捆住美国手脚。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33709958" target="_blank">澎湃新闻</a> · 推荐理由：国际局势重大转折+多源验证</div>
+    <div class="recommend">💡 独家深度+地缘政治影响全球市场</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33712928" target="_blank">日本新版《防卫白皮书》为扩军备武铺路</a></div>
+    <div class="summary">日本发布新版《防卫白皮书》，大幅渲染周边安全威胁，为继续扩大军费和武器采购铺路。白皮书涉华内容增多，引发中方关注。分析指出日本正借地区紧张局势推进军事正常化进程，防卫预算已连续多年创新高。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33712928" target="_blank">澎湃新闻</a> · 推荐理由：亚太安全格局变化+政策信号明确</div>
+    <div class="recommend">💡 政策信号+区域安全格局演变</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-04/doc-inimcatr5804103.shtml" target="_blank">"美国将关闭驻加拿大、日本、印尼等领事馆"</a></div>
+    <div class="summary">美国国务院被曝计划关闭驻加拿大、日本、印尼等多个领事馆，以削减外交开支。此举引发盟友不安，加拿大和日本政府已就此事向美方表达关切。分析认为这可能反映美国外交战略收缩趋势，也将影响海外公民服务和签证办理。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-04/doc-inimcatr5804103.shtml" target="_blank">观察者网/新浪</a> · 推荐理由：美国外交布局重大调整+盟友关系影响</div>
+    <div class="recommend">💡 独家报道+全球外交格局变化信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-03/doc-inikzuyp2716660.shtml" target="_blank">中纪委深夜打虎！开除两虎党籍，71岁的她被指退而不休</a></div>
+    <div class="summary">中纪委深夜通报，中共中央批准开除两名官员党籍。其中一名71岁女官员被指"退而不休"，利用原职务影响力为他人谋利。上半年全国已有1535名纪检监察干部被处分，反腐力度持续加大。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-03/doc-inikzuyp2716660.shtml" target="_blank">新浪新闻综合</a> · 推荐理由：反腐高压态势+制度信号</div>
+    <div class="recommend">💡 多源交叉验证+反腐制度常态化信号</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33713556" target="_blank">事关汽车自动驾驶！强制性国家标准正式发布</a></div>
+    <div class="summary">工信部发布《智能网联汽车 自动驾驶系统安全要求》强制性国家标准，拟于2027年7月1日起实施。标准要求L3级自动驾驶系统应具备驾驶人接管能力监测功能，规范人机交互与用户告知要求，防范误用滥用风险。明确就绪、激活、退出等状态信息及信号的提示规范。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33713556" target="_blank">澎湃新闻</a> · 推荐理由：行业标准里程碑+2027年实施时间表</div>
+    <div class="recommend">💡 政策重磅+直接影响自动驾驶产业格局</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33711206" target="_blank">全球最大压缩空气储能项目塌方事故后，行业扩张节奏或生变？</a></div>
+    <div class="summary">全球最大压缩空气储能项目发生塌方事故，引发行业安全审查。该项目被视为新型储能技术标杆，事故可能迫使行业放缓扩张节奏，加强安全标准建设。业内分析认为短期内压缩空气储能项目审批将趋严，但不改长期发展方向。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33711206" target="_blank">澎湃新闻</a> · 推荐理由：新能源安全+行业拐点信号</div>
+    <div class="recommend">💡 独家深度+新型储能产业安全审查影响深远</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-04/doc-inimcatp4200434.shtml" target="_blank">黄仁勋为什么要花7500万捐建一所艺术学校？</a></div>
+    <div class="summary">英伟达CEO黄仁勋斥资7500万美元捐建一所艺术学校，引发热议。分析认为此举折射硅谷巨头在AI时代对人文价值的重新审视，黄仁勋曾公开表达对AI替代创造力的担忧，捐建艺术学校或是其"技术+人文"理念的具体实践。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-04/doc-inimcatp4200434.shtml" target="_blank">观察者网/新浪</a> · 推荐理由：科技巨头人文转向+AI伦理思考</div>
+    <div class="recommend">💡 人物深度+折射AI时代人文焦虑</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778620" target="_blank">罕见干预操作！贝森特抛欧元、指示美联储"借钱"，让日本"别抛美债"</a></div>
+    <div class="summary">美国财长贝森特抛售欧元、指示美联储借入资金，并要求日本"别抛美债"，一系列罕见干预操作引发市场震动。市场担心"套利交易逆转"风险，日本作为全球第三大债权国，一旦海外资产大规模回流将引发全球金融动荡。2024年8月日元急升曾引爆全球波动，如今又临相似临界点。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778620" target="_blank">华尔街见闻</a> · 推荐理由：全球金融市场重大干预+系统性风险</div>
+    <div class="recommend">💡 独家深度+全球金融体系承压信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778635" target="_blank">"石油人民币"？"铁矿石人民币"？人民币国际化正"务实推进"</a></div>
+    <div class="summary">人民币国际化正通过"石油人民币""铁矿石人民币"等大宗商品结算渠道务实推进。分析指出，中国正逐步扩大在能源和矿产领域的本币结算比例，以降低对美元体系的依赖。此举在当前地缘局势下具有战略意义，但短期内仍面临流动性和接受度挑战。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778635" target="_blank">华尔街见闻</a> · 推荐理由：货币体系变革+地缘金融博弈</div>
+    <div class="recommend">💡 深度分析+全球货币格局重塑信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778632" target="_blank">AI投资的逻辑变了：云厂进入收租时代，基础设施产业链承压</a></div>
+    <div class="summary">华尔街分析指出AI投资逻辑正发生根本性转变：云厂商从大规模资本支出转向"收租"模式，开始追求AI投资的ROI回报。这意味着基础设施产业链将面临订单增速放缓压力，而具备应用层变现能力的厂商则迎来估值重估机会。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778632" target="_blank">华尔街见闻</a> · 推荐理由：AI投资范式转变+产业链影响分析</div>
+    <div class="recommend">💡 深度分析+影响AI板块估值逻辑</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览卡片 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">光通信</div>
+      <div class="value">满屏涨停</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">银行</div>
+      <div class="value">小幅回调</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">持续加仓科技</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">光通信 +暴涨</span>
+      <span class="sector-tag up">算力硬件 +强势</span>
+      <span class="sector-tag up">医药（药明康德）+涨停</span>
+      <span class="sector-tag up">半导体 +反弹</span>
+      <span class="sector-tag down">银行 -回调</span>
+    </div>
+  </div>
+
+  <!-- 市场关注 -->
+  <div class="market-focus">
+    <h4>👁️ 市场关注</h4>
+    <div class="focus-item"><strong>药明康德</strong>：涨停，管线+产能+多肽三重共振，外资调研榜首</div>
+    <div class="focus-item"><strong>江南新材</strong>：+10%涨停，拟定增16亿元投向液冷散热模组</div>
+    <div class="focus-item"><strong>创业板指</strong>：暴涨超5.6%，创近期新高，市场情绪显著回暖</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778628" target="_blank">创业板暴涨超5.6%，算力硬件全线反攻、光通信"满屏涨停"，医药股爆发、药明康德涨停，半导体强劲反弹</a></div>
+    <div class="summary">A股三大指数集体大涨，创业板指暴涨超5.6%领涨市场。算力硬件板块全线反攻，光通信概念"满屏涨停"；医药股爆发，药明康德涨停带动板块走强；半导体板块强劲反弹。市场成交量明显放大，北向资金持续流入，科技产业链占外资调研榜首。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778628" target="_blank">华尔街见闻</a> · 推荐理由：市场核心行情+板块轮动信号</div>
+    <div class="recommend">💡 实时行情+多板块共振上涨信号明确</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778641" target="_blank">药明康德的三重共振：管线、产能与多肽</a></div>
+    <div class="summary">药明康德涨停背后是"管线+产能+多肽"三重共振逻辑。公司在手订单持续增长，多肽业务爆发式增长，产能扩张布局领先。外资调研数据中科技产业链占据榜首，药明康德获密集关注。分析认为CXO行业基本面正在修复。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778641" target="_blank">华尔街见闻</a> · 推荐理由：个股深度+行业基本面修复信号</div>
+    <div class="recommend">💡 深度分析+CXO龙头估值修复逻辑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778627" target="_blank">超级周期的结局是双顶还是A杀？—基于全球10个超级周期的复盘</a></div>
+    <div class="summary">中信证券裘翔团队复盘全球10个超级周期，探讨当前周期结局是双顶还是A杀。研究显示超级周期平均持续15-20年，当前大宗商品周期已进入中后段。历史规律表明，需求端变化是决定周期形态的关键，供给端冲击则决定顶部高度。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778627" target="_blank">华尔街见闻</a> · 推荐理由：策略深度+周期判断框架</div>
+    <div class="recommend">💡 策略研究+大类资产配置参考框架</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778645" target="_blank">存储"跌过头"了吗？三星电子"定价相当于没有AI"</a></div>
+    <div class="summary">存储芯片板块经历深度回调后引发"跌过头"讨论。三星电子当前估值被指"定价相当于没有AI"，市场对存储需求前景存在分歧。南亚科7月销售额438.7亿元台币同比大增719.6%，但SK海力士获"跑赢大盘"评级，多空分歧加剧。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778645" target="_blank">华尔街见闻</a> · 推荐理由：板块估值争议+多空分歧信号</div>
+    <div class="recommend">💡 深度分析+存储板块估值锚定参考</div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3923608861404550" target="_blank">口碑持续逆转，DeepSeek成全球AI斩杀线</a></div>
+    <div class="summary">DeepSeek升至全球调用量第一，搅动社媒48小时，口碑持续逆转。从最初被质疑到如今成为行业"斩杀线"，DeepSeek的崛起路径反映开源模型在成本效率上的竞争优势。多个AI产品被迫调整定价策略应对，开源与闭源之争进入新阶段。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3923608861404550" target="_blank">36氪/凤凰网科技</a> · 推荐理由：AI行业格局变化+开源模型里程碑</div>
+    <div class="recommend">💡 行业格局重塑+开源模型竞争力验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778640" target="_blank">开源 vs 闭源——AI大战的终局推演与市场影响</a></div>
+    <div class="summary">华尔街深度推演开源与闭源AI的终局走向。开源模型凭借成本优势和社区生态快速追赶，闭源巨头则通过模型能力和安全壁垒守城。分析认为终局可能是"开源主导应用层、闭源主导前沿能力"的双轨格局，云厂商将从卖模型转向"收租"模式。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778640" target="_blank">华尔街见闻</a> · 推荐理由：AI产业终局推演+投资逻辑</div>
+    <div class="recommend">💡 深度推演+影响AI板块估值体系</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3923895877794183" target="_blank">阿里字节腾讯，为AI办公拼了</a></div>
+    <div class="summary">BAT集体下场抢占AI办公赛道。阿里推出AI办公平台，字节跳动升级豆包办公能力，腾讯整合混元大模型进入企业微信和文档。AI办公成为巨头争夺的下一个工作台入口，从编程助手到智能文档、会议摘要，三大厂商正在从不同切角重塑办公场景。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3923895877794183" target="_blank">36氪/智东西</a> · 推荐理由：巨头战略+AI应用落地风向</div>
+    <div class="recommend">💡 行业动态+AI办公赛道竞争格局</div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>📋 本简报由 Hermes Agent 自动生成 · 纯资讯日（周二）</p>
+  <p style="margin-top:8px;">数据来源：澎湃新闻、华尔街见闻、36氪、财联社、新浪热搜 | 采集条目：20 | 数据源：5</p>
+  <p style="margin-top:8px;">⚠️ 股市数据仅供参考，不构成投资建议</p>
+  <p style="margin-top:8px;">生成时间：2026-08-04 17:00 PM</p>
+</div>
+
+</body>
+</html>
