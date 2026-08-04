@@ -1,396 +1,473 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arXiv 论文周报 - 2026-08-04</title>
-    <link rel="icon" href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/2728.png" type="image/png">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: #0d1117;
-            color: #c9d1d9;
-            line-height: 1.6;
-        }
-        .container { max-width: 960px; margin: 0 auto; padding: 20px; }
-        h1 { color: #58a6ff; margin-bottom: 10px; font-size: 28px; }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #58a6ff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .back-link:hover { text-decoration: underline; }
-        .stats {
-            background: #161b22;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        .stats span { color: #8b949e; font-size: 14px; }
-        .stats strong { color: #c9d1d9; }
-        
-        .category-section { margin-bottom: 30px; }
-        .category-header {
-            padding: 12px 18px;
-            border-radius: 8px 8px 0 0;
-            font-weight: 700;
-            font-size: 17px;
-            border-left: 4px solid;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .category-count {
-            background: rgba(255,255,255,0.15);
-            border-radius: 12px;
-            padding: 2px 10px;
-            font-size: 13px;
-            font-weight: 400;
-        }
-        .papers-container {
-            background: #161b22;
-            padding: 15px;
-            border-radius: 0 0 8px 8px;
-        }
-        
-        .paper-card {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 16px 18px;
-            margin-bottom: 12px;
-            transition: border-color 0.2s, background 0.2s;
-        }
-        .paper-card:hover {
-            border-color: #484f58;
-            background: #161b22;
-        }
-        .paper-card:last-child { margin-bottom: 0; }
-        
-        .paper-title {
-            color: #58a6ff;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .paper-title a {
-            color: inherit;
-            text-decoration: none;
-        }
-        .paper-title a:hover { text-decoration: underline; }
-        
-        .paper-meta {
-            font-size: 12px;
-            color: #8b949e;
-            margin-bottom: 10px;
-        }
-        .paper-meta span { margin-right: 12px; }
-        
-        .paper-abstract {
-            color: #c9d1d9;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #484f58;
-            font-size: 13px;
-            margin-top: 40px;
-            border-top: 1px solid #21262d;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>arXiv 论文周报 - 2026-08-04</title>
+  <link rel="icon" href="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/2728.png" type="image/png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      line-height: 1.6;
+    }
+    /* Sidebar */
+    .toc-sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 260px;
+      height: 100vh;
+      background: #161b22;
+      border-right: 1px solid #30363d;
+      overflow-y: auto;
+      z-index: 100;
+      transition: transform 0.3s;
+      padding: 16px;
+    }
+    .toc-sidebar.collapsed { transform: translateX(-260px); }
+    .toc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .toc-title { color: #58a6ff; font-size: 16px; font-weight: 600; }
+    .toc-toggle {
+      background: none; border: none; color: #8b949e; cursor: pointer; font-size: 18px;
+    }
+    .toc-toggle:hover { color: #c9d1d9; }
+    .toc-content a {
+      display: block; padding: 4px 0; color: #8b949e; text-decoration: none; font-size: 13px;
+    }
+    .toc-content a:hover { color: #58a6ff; }
+    .toc-h2 { font-weight: 600; color: #c9d1d9; margin-top: 8px; }
+    .toc-h3 { padding-left: 16px; font-size: 12px; }
+    .toc-paper { padding-left: 24px; font-size: 11px; color: #6e7681; }
+    /* Main */
+    .main-content {
+      margin-left: 260px;
+      max-width: 860px;
+      margin-right: auto;
+      padding: 20px 24px;
+      transition: margin-left 0.3s;
+    }
+    .toc-sidebar.collapsed ~ .main-content,
+    body.sidebar-collapsed .main-content { margin-left: 0; }
+    .back-nav { margin-bottom: 16px; }
+    .back-nav a {
+      color: #8b949e; text-decoration: none; font-size: 14px;
+    }
+    .back-nav a:hover { color: #58a6ff; }
+    h1 { color: #58a6ff; margin-bottom: 8px; font-size: 28px; }
+    h2 { color: #58a6ff; margin: 24px 0 12px; font-size: 22px; border-bottom: 1px solid #30363d; padding-bottom: 8px; }
+    h3 { font-size: 18px; margin: 16px 0 8px; }
+    .report-meta { color: #8b949e; font-size: 14px; margin-bottom: 16px; }
+    /* Trend */
+    .trend-item {
+      background: #161b22;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      border-left: 3px solid #30363d;
+    }
+    .trend-item strong { color: #ffa657; }
+    /* Category */
+    .category-section { margin-bottom: 24px; }
+    .category-title {
+      padding: 8px 16px;
+      border-radius: 6px 6px 0 0;
+      font-size: 16px;
+      margin-bottom: 0;
+      border-left-width: 4px;
+      border-left-style: solid;
+    }
+    /* Paper Card */
+    .paper-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 0 0 6px 6px;
+      padding: 16px;
+      margin-bottom: 1px;
+    }
+    .paper-card:first-of-type { border-radius: 0; }
+    .paper-title {
+      font-size: 15px; font-weight: 600; margin-bottom: 6px;
+    }
+    .paper-title a { color: #58a6ff; text-decoration: none; }
+    .paper-title a:hover { text-decoration: underline; }
+    .paper-meta {
+      font-size: 13px; color: #8b949e; margin-bottom: 10px;
+    }
+    .paper-meta a { color: #79c0ff; text-decoration: none; }
+    .paper-abstract {
+      font-size: 14px; color: #c9d1d9; line-height: 1.7;
+    }
+    /* Reading List Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #30363d;
+    }
+    th {
+      background: #161b22;
+      color: #8b949e;
+      font-weight: 600;
+    }
+    td a { color: #79c0ff; text-decoration: none; }
+    td a:hover { text-decoration: underline; }
+    /* Ten Questions */
+    .ten-q-section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .tenq-paper-title {
+      font-size: 16px;
+      color: #ffa657;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #30363d;
+    }
+    .question-item {
+      margin-bottom: 12px;
+    }
+    .question-title {
+      font-size: 14px;
+      color: #58a6ff;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .question-answer {
+      font-size: 13px;
+      color: #c9d1d9;
+      line-height: 1.7;
+      padding-left: 16px;
+    }
+    hr { border: none; border-top: 1px solid #30363d; margin: 24px 0; }
+    @media (max-width: 768px) {
+      .toc-sidebar { transform: translateX(-260px); }
+      .toc-sidebar.expanded { transform: translateX(0); }
+      .main-content { margin-left: 0; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-link">← 返回周报列表</a>
-        <h1>📊 arXiv 论文周报</h1>
-        <p style="color: #8b949e; margin-bottom: 20px; font-size: 14px;">2026-08-04 · 搜索/推荐/广告召回排序方向</p>
-        
-        <div class="stats">
-            <span>📄 共 <strong>20</strong> 篇</span>
-            <span>广告系统 <strong>2</strong></span>
-            <span>排序/重排 <strong>2</strong></span>
-            <span>召回/检索 <strong>2</strong></span>
-            <span>推荐系统 <strong>10</strong></span>
-            <span>LLM/RAG <strong>4</strong></span>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header" style="border-color: #f0883e; background: #f0883e15; color: #f0883e;">
-                广告系统
-                <span class="category-count">2篇</span>
-            </div>
-            <div class="papers-container">
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.29000" target="_blank">PaletteID: Prototype-Composed Semantic Identifiers for Multimodal CTR Prediction</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.29000</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">多模态信息能够提升点击率（CTR, Click-Through Rate）预测的准确性，并有效缓解物品冷启动和长尾问题。近期研究通常将预训练的多模态嵌入离散化为语义标识符（SID, Semantic Identifier），使模型能够学习面向推荐的特定任务语义表示。然而，现有方法由于两个主要局限性，仍然只能提供有限的增益。首先，码本分配未能保留语义相关性，且丢弃了原始嵌入空间中的细粒度连续信号。其次，残差码路径高度依赖前缀码，这限制了层次化标识符的有效表示可扩展性。针对这些问题，我们提出了PaletteID（PID, Prototype-based Semantic Identifier），一种基于原型的语义标识符。受调色板色彩组合的启发，PID使用一组紧凑的代表性原型物品作为语义锚点，以桥接预训练多模态内容空间与推荐模型。具体而言，我们首先利用语义质量感知行列式点过程（SQ-DPP, Semantic Quality-Aware Determinantal Point Process）构建原型调色板，该过程同时考虑了局部内容密度和全局语义多样性。然后，对于每个目标物品，PID检索一系列语义相关的原型并将其聚合为信息丰富的PID表示，从而实现丰富且互补的语义建模。在两个公开数据集上的大量实验表明，PID能够持续提升CTR预测效果，并对长尾物品产生更大的增益。与现有的残差SID方法相比，PID还能产生更鲁棒的标识符分配，并提供更具可解释性的token语义。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.29241" target="_blank">RecHarness: A Bandit-Routed Agentic Harness for Self-Evolving Recommender Systems</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.29241</span>
-                        <span>⭐ 3</span>
-                    </div>
-                    <div class="paper-abstract">优化现代推荐模型仍然严重依赖工程师手动迭代架构、目标和训练策略的变更。虽然基于LLM（大语言模型，Large Language Model）的智能体可以自动化这一试错过程，但让LLM同时选择修改方向并生成具体假设，往往会在有限的实验预算下导致不稳定的搜索。受上述挑战启发，我们提出RecHarness，一种用于自动推荐模型优化的Bandit-Routed（多臂老虎机路由，Bandit-Routed）智能体框架。RecHarness将优化过程分为两步：Bandit路由器根据历史验证反馈选择下一个修改方向，而LLM在所选方向内生成具体的优化假设和可执行的代码编辑。为维持长期探索，RecHarness采用跳跃盆地（jump-basin）机制，在局部编辑停滞时激活结构跳跃臂（structural-jump arm）。在多种推荐任务、数据集和模型骨干网络上，RecHarness比LLM推理搜索实现了更稳定的性能提升，并更有效地利用有限的试验预算。在大型短视频广告平台上为期7天的在线A/B测试中，所选候选方案使ADVV提升了2.084%，Revenue（收入）提升了0.534%，Exposure（曝光）提升了0.559%。代码见此https URL。</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header" style="border-color: #58a6ff; background: #58a6ff15; color: #58a6ff;">
-                排序/重排
-                <span class="category-count">2篇</span>
-            </div>
-            <div class="papers-container">
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.24869" target="_blank">Ranked by Position: Order Sensitivity as an Exploitable Attack Surface in LLM Listwise Recommenders</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.24869</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">大型语言模型（LLM, Large Language Model）在推荐系统中作为列表式重排序器（listwise reranker）使用时，在将候选集序列化为提示词的过程中会存在位置偏差（position bias）。我们表明，这种顺序敏感性制造了一个可被利用的攻击面：攻击者仅通过重新排列候选项，即可将标签为0的目标推入top-$k$，而无需更改项目内容、标签或模型参数。我们引入$\mathrm{promo}@k$来量化这一脆弱性，衡量通过排列可将标签为0的目标提升至top-$k$排名的比例。在三个领域（MovieLens、Amazon Books和Amazon Fashion）上的评估表明，在攻击预算$R$ = 50次排序下，$\mathrm{promo}@5$最高可达0.57。此外，常规的排列稳定性无需运行攻击即可预测脆弱性。虽然双向T5编码器评分器（bidirectional T5 encoder scorer）能降低暴露风险，但排列一致性正则化（permutation-consistency regularization）和架构不变性（architectural invariance）能够有效缓解该问题。逐点评分（pointwise scoring）避免了偏差问题，但会降低排序质量。这些结果表明，列表式LLM重排序中的输入候选顺序是一个与安全相关的攻击向量。代码和数据可在该https URL获取。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.23561" target="_blank">Towards a Relevance Posterior in Neural Information Access</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.23561</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">现代信息检索系统通常将相关性（relevance）操作化为推理时计算的条件于查询的分数。这一设计选择已成为主流，使得相关性的替代分解方案鲜少被讨论，尽管文档和查询先验（priors）在概率检索和大规模搜索中有着悠久的历史。随着神经排序模型的计算成本日益增长，且检索流水线扩展至包含多阶段排序、推荐和检索增强生成（RAG, Retrieval-Augmented Generation），这种在查询时评分的一体化视角变得越来越局限。我们认为，现代信息访问系统更自然地被理解为执行近似后验推理（posterior inference），其中相关性通过查询依赖的似然（likelihoods）和查询无关的先验（priors）的分阶段组合而被逐步精化。我们将经典的概率检索形式化框架扩展到当代的学习系统，并展示显式的似然-先验分解如何揭示新的机遇：在将文档级信念与交互级信念解耦的同时，将计算迁移至离线阶段。我们提供了经验证据，表明融入查询无关的文档效用可以补充现有的排序器，并以极少的查询时计算（仅分数融合）提升检索效果。具体而言，一个学习得到的先验通过排序融合改善了第一阶段检索（在TREC DL-2019上nDCG@10提升高达0.046，在TREC DL-2020上提升高达0.029），同时也改善了下游的重排序，其中在LLM重排序器RankZephyr上观察到最大的增益（在TREC DL-2020上nDCG@10提升高达0.054）。最后，我们讨论了这种分解如何与更广泛的信息访问相联系，并概述了在离线先验与在线交互之间显式分配建模容量以设计检索系统的研究方向。</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header" style="border-color: #3fb950; background: #3fb95015; color: #3fb950;">
-                召回/检索
-                <span class="category-count">2篇</span>
-            </div>
-            <div class="papers-container">
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.29173" target="_blank">MERIT: Efficient In-Place Deletion for Dynamic Graph-Based Approximate Nearest Neighbor Indexes</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.29173</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">基于图的索引已成为高维数据上近似最近邻搜索（ANNS, Approximate Nearest Neighbor Search）的主流方法，并在检索增强生成、推荐系统和向量数据库等实际应用中发挥着关键作用。尽管在静态图构建和搜索方面取得了广泛进展，高效的原地删除仍然具有挑战性，因为过时向量必须被移除，同时不能让失效的入边消耗搜索能力，也不能让昂贵的全图维护中断在线服务，例如检索增强生成（RAG, Retrieval-Augmented Generation）和推荐平台。针对这一问题，我们提出了MERIT（基于MST的高效修复与原地更新，MST-based Efficient Repair with In-place updaTes），一个原地更新框架，包含三项核心技术：（1）有界搜索恢复，将已删除顶点的出边邻居与其易于搜索的入边邻居相结合；（2）$k_r$-最小生成树（MST, Minimum Spanning Tree）局部修复，在促进局部连通性的同时为图搜索保留多条路由选择；（3）版本化边失效机制，立即过滤所有指向已删除顶点的失效入边，并在邻接表重写时逐步移除这些边。该框架与分层HNSW索引和单层Vamana索引的集成证明了其在不同图结构上的适用性。在多个真实数据集上的大量实验表明，MERIT以接近插入一个向量的代价处理删除操作，删除速度比现有最优（SOTA, State-of-the-Art）方法快$3.02\times$--$18.87\times$，并且在删除累积过程中保持搜索召回率稳定甚至有所提升。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2608.01255" target="_blank">RaG-Tree: Combining R-Tree and HNSW for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2608.01255</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">多属性范围过滤近似最近邻搜索（MR-ANNS, Multi-attribute Range-filtered Approximate Nearest Neighbor Search）用于检索满足多个属性约束的高维向量，是现代AI应用中的基础操作。现有MR-ANNS索引要么仅利用单一属性进行范围定位，要么沿各属性递归划分对象，这可能限制了其利用属性相关性进行有效范围剪枝以及利用属性-向量相关性进行高效最近邻搜索的能力。本文提出了RaG-Tree，一种将R-tree与分区感知HNSW（Hierarchical Navigable Small World）图相结合的统一索引，用于MR-ANNS。RaG-Tree利用层次化R-tree分区实现有效的范围剪枝，并将每个HNSW图的稀疏性适配至其分区内的局部向量分布，从而实现轻量级索引和高效查询处理。为支持高效查询处理和动态更新，我们开发了一种基于代价的自适应搜索算法，以最小化不必要的图探索，同时提出了一种高效的索引维护机制，用于增量更新受影响的分区感知HNSW图。在三个真实数据集上的大量实验表明，RaG-Tree在查询性能上优于最先进的基线方法，同时提供了轻量级索引和快速的增量更新能力。</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header" style="border-color: #d2a8ff; background: #d2a8ff15; color: #d2a8ff;">
-                推荐系统
-                <span class="category-count">10篇</span>
-            </div>
-            <div class="papers-container">
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.28070" target="_blank">CCFormer: Efficient Cross-Field Interaction and Hierarchical Sequence Compression for Industrial Recommendation at Tencent</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.28070</span>
-                        <span>⭐ 9</span>
-                    </div>
-                    <div class="paper-abstract">工业推荐系统的最新研究表明，基于自注意力机制构建的序列推荐模型可以通过增加序列长度和模型容量来获得可预测的缩放定律收益。然而，实际的推荐系统 impose了严格的延迟和资源约束，使得平衡计算开销与细粒度特征交互变得极具挑战性。本文提出CCFormer，一种高效的Transformer主干网络，统一了跨字段特征交互与压缩长序列建模，用于工业推荐。具体而言，CCFormer将特征字段分离的交叉注意力与长序列子空间token混合相结合，以利用跨异构特征域的长期偏好信号。一种具有逐步扩展感受野的层级序列压缩策略，能够在减少信息损失的同时实现高效的长序列建模。在两个公开基准测试和一个大规模工业数据集上的大量实验表明，CCFormer始终优于最先进的基线方法。在腾讯的视频推荐场景和广告排序场景中进行的在线A/B测试进一步验证了其工业实用性，分别获得了3.57%的点击率（CTR, Click-Through Rate）提升和1.71%的广告收入增长，同时相较于强基线HSTU将模型训练加速了2.21倍。CCFormer已全面部署于腾讯的生产推荐系统中，服务于上述两个场景的主力流量。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.26832" target="_blank">Kairos: Numerically Robust News Recommendation under Item Cold-Start via Cholesky-based LinUCB</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.26832</span>
-                        <span>⭐ 9</span>
-                    </div>
-                    <div class="paper-abstract">区域市场中的算法新闻个性化常常失败，因为现代深度学习模型需要海量的交互数据，而现实中的新闻具有极短的存活时间（TTL, Time-to-Live < 48小时）和浅层的文章池。这种结构性的物品冷启动问题使协同过滤无法获得稳健建模所需的数据。本文提出了Project Kairos，一个通过上下文在线学习方法（LinUCB）来弥合这一数据稀缺问题的框架。为确保连续运行时的数值完整性，Kairos用Cholesky因子的直接秩1更新替换了易出错的Sherman-Morrison逆运算。这即使在病态数据场景下也能保持协方差矩阵的正定性。同时，Matryoshka表征学习（MRL, Matryoshka Representation Learning）的集成解决了推理延迟问题。基于Tagesschau API的实验评估表明，利用特征空间中的语义冗余可实现4.85倍的效率提升，而不会显著损害排序精度。因此，Kairos为资源和数据受限环境下的高性能推荐系统提供了蓝图。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2608.02048" target="_blank">SmartGR: Hierarchy and Beam-Aware Knowledge Distillation for Generative Recommendation</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2608.02048</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">生成式推荐（GR, Generative Recommendation）已成为推荐系统中一种极具前景的范式。扩大GR模型的规模可以提升推荐性能，但同时也会大幅增加推理成本。知识蒸馏通过将大型GR模型的知识迁移到轻量级模型中，提供了一种实用的解决方案。然而，现有的蒸馏方法未考虑到两个GR特有的挑战：语义ID（SID, Semantic ID）层级间蒸馏难度不平衡，以及束搜索过程中错误的前缀剪枝。针对这些挑战，我们提出了SmartGR，一种新型蒸馏框架，该框架利用层级感知SID蒸馏（Hierarchy-Aware SID Distillation）在层级间迁移教师的建模能力，并借助束感知排序蒸馏（Beam-Aware Ranking Distillation）在束搜索过程中蒸馏教师的排序偏好。在四个基准数据集上的大量实验证明了SmartGR的有效性和高效性，在平均实现2.39倍推理加速的同时，性能提升了8.6%。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2608.01732" target="_blank">X-KGRank: A Knowledge Graph RAG Framework for Explainable Recommendations via Pattern Mining and LLM Re-Ranking</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2608.01732</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">现代推荐系统产生的预测无法被用户质询。两种主流改进方法——协同过滤和基于LLM的推理——各自存在不足：协同过滤能够捕捉行为信号但无法提供推理，而大语言模型（LLM, Large Language Model）能生成流畅的解释但会产生幻觉，且缺乏对用户历史记录的扎实依据。我们提出了X-KGRank，一个知识图谱检索增强框架，将结构化协同过滤与基于LLM的解释统一起来。我们从MovieLens-1M数据集（6,040名用户，3,704个项目，988,129次交互）构建了一个包含9,762个节点和999,264条边的异构知识图谱，涵盖三种关系类型（RATED、HAS_GENRE和CO_RATED），并持久化存储于Neo4j中。我们训练了一个采用内容感知SBERT初始化和评分加权BPR（Bayesian Personalized Ranking，贝叶斯个性化排序）目标的LightGCN排序器，并应用了一种流行度选择性路由策略：将长尾项目（3,704个中的1,855个）锚定于知识图谱路径中，而热门项目则从预训练知识中提供，从而将KG（Knowledge Graph，知识图谱）增强生成量减少约50%。在MovieLens-1M测试集的99样本协议下，X-KGRank取得了NDCG@10 = 0.2956和Recall@10 = 0.5371，在两项指标上分别比强流行度基线提升了17.1%，在NDCG@20上提升了15.6%（0.3449 vs. 0.2983），在MRR（Mean Reciprocal Rank，平均倒数排名）上提升了14.6%（0.2435 vs. 0.2124）。在基于三个LLM骨干模型对16个案例的评估中，一个15亿参数模型（Qwen2.5-1.5B）在启发式解释质量上与一个70亿参数模型（Mistral-7B）持平（0.97 vs. 0.94），但定性分析表明较小模型更容易出现事实捏造。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.26500" target="_blank">Multi-Decoder OneRec: Controllable Generative Retrieval for Multi-Objective Industrial Recommendation</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.26500</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">工业推荐系统通过为特定目标的检索路径分配显式配额来构建候选池。这种设计提供了配额控制能力，但随着路径集合的不断增长，建模、训练和服务日益碎片化。基于语义ID（Semantic ID）的生成式检索提供了一种统一的替代方案，然而单一解码器会纠缠目标策略并限制候选互补性。我们提出了Multi-Decoder OneRec，一个结合共享表征、隔离目标适配和协同解码的可控框架。所有目标共享一个用户上下文模块和通用解码器（General Decoder），同时每个目标添加一个隔离的、参数高效的LoRA（Low-Rank Adaptation，低秩适配）专家。在训练阶段，曝光采样下一词元预测（NTP, Next-Token Prediction）更新共享基座，目标过滤NTP（Target-filtered NTP）更新基于事件的专家，KL（Kullback-Leibler）正则化策略优化更新观看时长（Watch-time）专家；梯度路由隔离这些更新，通用解码器提供停止梯度参考。在推理阶段，显式路径配额分配固定预算，多解码器约束束搜索（Multi-Decoder Constrained Beam Search）减少跨路径重叠。我们公开发布了Kwai26，一个大规模多目标基准，包含13.1亿条原始物品级记录、3185万个物品ID（Item-ID）条目以及2503万个具有有效语义ID的物品，同时提供预定义的数据划分和评估协议。在相同的512个物品检索预算下，Multi-Decoder OneRec在四项Recall@512指标上相较单解码器OneRec基线提升了1.69%–5.62%。在生产环境A/B测试中，它带来了每设备应用使用时长0.37%、第7日留存用户0.19%、至少分享一次的设备0.19%以及新内容冷启动（Cold-Start）2.09%的相对提升。这些结果表明，生成式检索可以将共享建模与特定目标控制及互补候选生成相结合。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.26427" target="_blank">PSG: Pair-Space Generation for Efficient Generative Reranking</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.26427</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">现代推荐系统采用生成器-评估器（G-E, Generator-Evaluator）进行列表级重排序：生成器从候选集中产生序列，评估器在序列层面对其打分，以筛选出最优序列进行曝光。自回归（AR, Auto-Regressive）作为生成式推荐的骨干，存在两个局限性。首先，其复杂度随列表长度线性增长，迫使系统在严格的延迟约束下生成更少的序列，从而限制了探索。其次，教师强制（teacher-forcing）造成了训练-测试不匹配；累积误差随长度加剧，降低了生成质量。针对这些问题，我们提出了对偶空间生成（PSG, Pair-Space Generation），这是一种将生成原子从单个物品提升为有序物品对的重新建模。给定$n$个候选物品，PSG在每次请求上操作大小为$n(n-1)$的对词汇表，仅需生成$L/2$个token。对token表示由一个预训练的对token表示模块即时生成，该模块在大规模曝光日志上优化，从而消除了原本会困扰二次规模词汇表的数据稀疏性问题。我们建立了三个理论保证：(i) PSG与物品空间生成是双射的，并诱导出等价的序列分布族，因此不会损失表达能力；(ii) 在对token空间中生成，理论上在中等设置下可实现约$2\times$到$4\times$的加速，在实际工业环境设置下实现$1.83\times$的加速；(iii) 在仅有结果奖励（outcome-only rewards）下，PSG的最坏情况次优性以$O((L/2)^2 \bar{\epsilon})$为界，相比物品空间生成实现了近$4\times$的改进。除了基于基准的验证之外，PSG已在快手上部署，使平台人均停留时长提升了0.178\%，该平台日活跃用户（DAU, Daily Active Users）超过4亿。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.26380" target="_blank">Continuous Online Evaluation of Recommendation Strategies in Social Science Academic Search</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.26380</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">在学术搜索引擎中提供相关推荐是一项复杂的任务，因为学科领域、信息类型和用户偏好具有多样性。在本案例研究中，我们通过在GESIS Search中整合和评估一系列推荐系统来应对这些挑战——GESIS Search是一个面向社会科学的领域特定搜索引擎，为研究人员提供研究数据、出版物、变量和测量工具的访问。为了支持利用实际平台用户对多种推荐策略进行持续的实时评估，我们采用了STELLA评估框架。我们实现并比较了多种算法，包括传统的词汇相似度（lexical similarity）、基于Transformer嵌入（embedding）的语义文档相似度（semantic document similarity），以及基于历史用户会话点击路径的基于会话的推荐（session-based recommendation）。结果表明，用户更偏好基于语义相似度的推荐，其表现优于词项相似度（term-similarity）和基于会话的方法。然而，推荐系统在GESIS Search不同类别中的表现存在差异，表明信息搜寻行为因信息类型而异。总体而言，我们的研究为如何将持续评估融入推荐系统的开发提供了见解，使其更好地契合学术搜索门户中的用户偏好。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.26365" target="_blank">Embedding Items at Scale: Comparing GNN-Based and ID-Based Item Embeddings in the Yandex Ecosystem</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.26365</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">基于Transformer的序列推荐模型处理用户-物品交互序列，严重依赖于物品嵌入策略。现有方法要么使用预训练的物品嵌入，要么与Transformer端到端地联合学习。据我们所知，此前尚无工作在大规模工业场景下从成本和质量两个角度对这些选项进行比较。本文是一项案例研究，在Yandex的两个成熟生产推荐系统——Yandex Market和Yandex Music上，比较了预训练的工业图神经网络（GNN, Graph Neural Network）物品嵌入与端到端可训练的物品嵌入。我们还在从Yandex Lavka生产日志中采样的低资源数据集上对两种方法进行了评估，该数据集和代码均已公开，用于演示目的。结果表明，当训练数据有限时，单独的预训练阶段有所帮助；但对于在大规模数据集上训练的大型模型而言，并不能带来有价值的收益。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.24845" target="_blank">REPREC: Representation Driven Parameter-Efficient Recommendation System</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.24845</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">大语言模型（LLM, Large Language Model）已被应用于序列推荐，将其形式化为自然语言任务。先前的工作通过输入条件化或LLM微调来融入协同信号和序列信号，从而提升了个性化效果。然而，现有方法通常依赖以下一种或多种手段：LLM微调、额外的架构模块、表示蒸馏或针对长交互历史的物品级条件化，这增加了训练复杂度和部署成本。我们提出了REPREC，一个轻量级框架，通过轻量级的用户表示对齐重新构建基于LLM的序列推荐。REPREC将来自冻结序列编码器的固定大小用户嵌入，通过轻量级MLP（多层感知机, Multi-Layer Perceptron）注入器映射为一小组可学习的软标记（soft token），以此对冻结的LLM进行条件化，在训练过程中仅训练注入器，而保持两个预训练主干网络不变。我们在多个基准数据集上进行了详尽的实验，证明REPREC始终优于LoRA（低秩适配, Low-Rank Adaptation），同时兼容不同的预训练序列编码器和LLM主干网络，实现了无需修改任一预训练组件的模块化且适用于生产环境的推荐流水线。在所有数据集中，对于偶尔使用用户和核心用户，性能提升尤为显著，突显了REPREC在低数据场景下的有效性。最后，当在短提示历史下训练并以更长上下文进行评估时，REPREC保持了LoRA 85-100%的性能，同时将每轮训练时间平均减少了1.51倍，展示了在生产部署中推荐质量与计算效率之间的有效平衡。代码可在该https URL获取。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.24092" target="_blank">ConAlign: Conditional Alignment Framework for Balancing Biased and Unbiased Recommendation</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.24092</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">基于观测数据训练的工业推荐系统受到各种偏差的困扰，这些偏差会形成过滤气泡（Filter Bubble），导致用户兴趣坍缩为狭窄的类别，严重损害长期用户参与度。尽管利用无偏均匀数据进行去偏已展现出良好前景，但现有方法由于忽视事实性（有偏）推荐性能以及巨大的计算开销等局限性，仍难以在实际工业部署中应用。为克服这些局限性，我们提出了ConAlign（条件对齐框架，Conditional Alignment Framework），一种面向工业部署的条件去偏方法。ConAlign的核心创新在于一种基于离散门控的条件对齐机制，能够选择性地将知识从有偏塔迁移到无偏塔。遵循选择性干预范式而非全局校正，它在无缝平衡事实准确性与无偏偏好估计的同时，支持实时流式自适应。据我们所知，ConAlign是首个成功部署于大规模工业推荐系统中的流式去偏推荐框架，该系统利用少量无偏随机流量进行去偏。在三个真实数据集上的大量离线实验严格验证了所提框架的有效性。此外，在快手上的大规模在线A/B测试表明，ConAlign在长期用户参与度和兴趣多样性方面取得了显著提升，且延迟开销可忽略不计。!</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-header" style="border-color: #79c0ff; background: #79c0ff15; color: #79c0ff;">
-                LLM/RAG
-                <span class="category-count">4篇</span>
-            </div>
-            <div class="papers-container">
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2608.01192" target="_blank">A Unified Benchmark for Privacy-preserving Vector Search</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2608.01192</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">向量搜索驱动着语义搜索、推荐系统和检索增强生成（RAG, Retrieval-Augmented Generation）。按照设计，响应查询的服务既可以看到查询嵌入（query embedding），通常也能看到与之匹配的语料库（corpus）。这对发出查询的用户和语料库的所有者而言均构成隐私泄露。一系列密码学方案（如SAP、EMVP、BNTM、Tip-toe）旨在解决该泄露问题。然而，由于每种方案均在各自的语料库、威胁模型、参数选择、硬件和度量约定下进行发表和评估，其数值无法直接比较。因此，对于询问"今天应部署哪种方案"的从业者而言，没有可辩护的选择依据。我们通过统一的实验比较填补了这一空白，包括一个明文（Plaintext）基线和四种密码学后端，在相同的工作负载、硬件和度量定义下运行。在该标准下，各方案在隐私、性能和召回率（recall）上分布于帕累托前沿（Pareto frontier），而非对性能施加一个扁平的惩罚。我们发现：SAP的性能与明文匹配；EMVP以CPU上4倍吞吐量代价实现了密码学不可区分性（cryptographic indistinguishability）；BNTM在进一步增加22倍中位延迟代价的条件下提供了恶意服务器可验证性（malicious-server verifiability）；Tiptoe隐藏了聚类选择本身，但与明文相比每查询代价高达190倍。GPU加速对明文和SAP效果显著，但对EMVP或BNTM则不然。我们所有的实验产物均已公开，以确保可复现性。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.25041" target="_blank">ScoreShield: Differentially Private Release of Similarity Scores</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.25041</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">越来越多的应用，如生物识别和检索增强生成（RAG, Retrieval-Augmented Generation），依赖于在文本、图像或音频的向量嵌入之间计算的余弦相似度分数。这些系统通过其API返回相似度分数，用于排序和验证。然而，此类发布可能泄露关于个体记录的信息，并使成员推理攻击成为可能。虽然差分隐私（DP, Differential Privacy）提供了一种原则性的度量来量化攻击风险，但朴素地应用DP机制——例如对向量条目添加i.i.d.高斯噪声——在给定隐私约束下会导致过大的失真（即低效用），且随发布分数数量的增加扩展性很差。我们提出ScoreShield，一种先扰动后投影的机制，该机制添加根据所选分数发布机制的全局敏感性校准的高斯噪声，然后将结果投影到有效余弦对象的可行集上。ScoreShield满足$(\varepsilon,\delta)$-DP，用于发布相似度分数向量和Gram矩阵。我们为风险分析中使用的精确Frobenius度量投影提供了效用保证，并证明了用于大规模Gram发布的实用平均交替投影求解器的可行性收敛性。在记录级替换邻接关系下的全两两余弦Gram发布中，精确投影界将平方Frobenius风险的$n$依赖性从朴素高斯基线的$\Theta(n^3)$改善为固定隐私参数下的$\mathcal{O}(n^2)$，并在低秩Gram处提供了更紧的局部界。我们在RAG、人脸识别、语义检索、图像相似度和推荐系统任务上对该机制进行了评估。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2607.24865" target="_blank">Tokens are All You Need: Dual-purpose Semantic IDs for Achieving LLM-Level I/O Efficiency in recommendation systems</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2607.24865</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">大规模推荐系统由于海量、稠密嵌入表而面临"内存墙（Memory Wall）"瓶颈。虽然生成式检索（Generative Retrieval）使用离散token作为ID，但高维上下文仍依赖于低效的稠密格式。受计算机视觉数据压缩的启发，我们提出双用途语义ID（Dual-purpose Semantic IDs），以实现LLM级I/O效率。我们的方法使用层级量化（Hierarchical Quantization）将连续嵌入压缩为离散语义ID，执行两个并发角色：（1）协同身份（Collaborative Identity）：通过可学习嵌入表建模用户-物品交互；以及（2）内容重建（Content Reconstruction）：使用轻量级语义解码器（Semantic Decoder）进行即时嵌入近似。该方法用按需重建替代大规模向量存储，降低了系统开销和数据足迹。我们通过离线评估以及在一家大型视频分享平台的生产级排序和检索系统中的成功在线部署，验证了我们框架的有效性，表明离散token确实是实现高效、内容丰富推荐所需的全部。</div>
-                </div>
-
-                <div class="paper-card">
-                    <div class="paper-title">
-                        <a href="https://arxiv.org/abs/2608.01450" target="_blank">Real-Time Hybrid Retrieval in Hyperbolic Space for Retrieval-Augmented Generation on Edge Devices</a>
-                    </div>
-                    <div class="paper-meta">
-                        <span>📄 2608.01450</span>
-                        <span>⭐ 6</span>
-                    </div>
-                    <div class="paper-abstract">本文提出了一种为检索增强生成（RAG, Retrieval-Augmented Generation）设计的混合文档检索系统，该系统完全在双曲几何的洛伦兹模型（Lorentz model）内运行。与局限于欧几里得空间的传统稠密检索器不同，该系统通过学习到的 HyTE-H 变换将预训练词嵌入投影到双曲空间中，其指数级体积增长特性适合自然语言的层级组织结构。文档被分割为重叠的块，通过其洛伦兹嵌入进行索引，并通过两阶段流水线进行检索：首先应用 BM25 词法评分，然后使用洛伦兹内积相似度（Lorentzian inner-product similarity）对候选结果重新排序。一个可调参数 $\alpha$ 将 BM25 分数与双曲相似度分数进行混合。该系统在 BEIR 基准套件的五个数据集 SciFact、NFCorpus、ArguAna、SciDocs 和 FiQA 上进行了评估，仅使用词嵌入、不借助微调神经编码器或交叉注意力重排序器（cross-attention rerankers）的情况下，分别取得了 0.654、0.304、0.342、0.150 和 0.217 的 NDCG@10（归一化折损累积增益@10, Normalized Discounted Cumulative Gain@10）分数。该系统支持对用户提供的文档进行实时索引，并能在数万个中等规模文档上实现资源高效的查询，因此双曲检索可以在边缘设备上以交互级延迟运行。</div>
-                </div>
-            </div>
-        </div>
-
+  <nav class="toc-sidebar" id="tocSidebar">
+    <div class="toc-header">
+      <span class="toc-title">📑 目录</span>
+      <button class="toc-toggle" onclick="toggleSidebar()">◀</button>
     </div>
-    <footer>
-        Generated by Hermes Agent · Data from arXiv.org
-    </footer>
+    <div class="toc-content">
+      <a href="#trends" class="toc-h2">📈 本周趋势</a>
+        <a href="#categories" class="toc-h2">📚 分类汇总（20 篇）</a>
+        <a href="#reading-list" class="toc-h2">📋 建议精读</a>
+        <a href="#广告系统-2-篇" class="toc-h3">💰 广告系统（2）</a>
+        <a href="#排序-重排-2-篇" class="toc-h3">📊 排序/重排（2）</a>
+        <a href="#召回-检索-2-篇" class="toc-h3">🔍 召回/检索（2）</a>
+        <a href="#推荐系统-10-篇" class="toc-h3">🎯 推荐系统（10）</a>
+        <a href="#LLM-RAG-4-篇" class="toc-h3">🤖 LLM/RAG（4）</a>
+    </div>
+  </nav>
+
+  <main class="main-content" id="mainContent">
+    <div class="back-nav"><a href="../index.html">← 返回论文列表</a></div>
+
+    <h1>📊 arXiv 论文周报</h1>
+    <div class="report-meta">📅 2026-08-04 ｜ 共 20 篇论文</div>
+
+    <h2 id="trends">📈 一、本周趋势</h2>
+    <div class="trend-item"><strong>广告系统方向</strong>：本周收录2篇论文，热点集中在多模态、CTR预测等方面。</div>
+    <div class="trend-item"><strong>排序/重排方向</strong>：本周收录2篇论文，热点集中在LLM应用、安全与鲁棒性等方面。</div>
+    <div class="trend-item"><strong>召回/检索方向</strong>：本周收录2篇论文，热点集中在图方法、RAG等方面。</div>
+    <div class="trend-item"><strong>推荐系统方向</strong>：本周收录10篇论文，热点集中在LLM应用、知识蒸馏、生成式等方面。</div>
+    <div class="trend-item"><strong>LLM/RAG方向</strong>：本周收录4篇论文，热点集中在LLM应用、隐私保护、向量检索等方面。</div>
+
+    <h2 id="categories">📚 二、分类汇总（20 篇）</h2>
+          <div class="category-section">
+        <h3 id="广告系统-2-篇" class="category-title" style="border-color: #f0883e; background: #f0883e15; color: #f0883e;">
+          💰 广告系统（2 篇）
+        </h3>
+        <div id="paper-2607.29000" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.29000" target="_blank">PaletteID: Prototype-Composed Semantic Identifiers for Multimodal CTR Prediction</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.29000" target="_blank">2607.29000</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">多模态信息能够提升点击率（CTR, Click-Through Rate）预测的准确性，并有效缓解物品冷启动和长尾问题。近期研究通常将预训练的多模态嵌入离散化为语义标识符（SID, Semantic Identifier），使模型能够学习面向推荐的特定任务语义表示。然而，现有方法由于两个主要局限性，仍然只能提供有限的增益。首先，码本分配未能保留语义相关性，且丢弃了原始嵌入空间中的细粒度连续信号。其次，残差码路径高度依赖前缀码，这限制了层次化标识符的有效表示可扩展性。针对这些问题，我们提出了PaletteID（PID, Prototype-based Semantic Identifier），一种基于原型的语义标识符。受调色板色彩组合的启发，PID使用一组紧凑的代表性原型物品作为语义锚点，以桥接预训练多模态内容空间与推荐模型。具体而言，我们首先利用语义质量感知行列式点过程（SQ-DPP, Semantic Quality-Aware Determinantal Point Process）构建原型调色板，该过程同时考虑了局部内容密度和全局语义多样性。然后，对于每个目标物品，PID检索一系列语义相关的原型并将其聚合为信息丰富的PID表示，从而实现丰富且互补的语义建模。在两个公开数据集上的大量实验表明，PID能够持续提升CTR预测效果，并对长尾物品产生更大的增益。与现有的残差SID方法相比，PID还能产生更鲁棒的标识符分配，并提供更具可解释性的token语义。</div>
+        </div>
+        <div id="paper-2607.29241" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.29241" target="_blank">RecHarness: A Bandit-Routed Agentic Harness for Self-Evolving Recommender Systems</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.29241" target="_blank">2607.29241</a>
+            &nbsp;⭐ 3
+          </div>
+          <div class="paper-abstract">优化现代推荐模型仍然严重依赖工程师手动迭代架构、目标和训练策略的变更。虽然基于LLM（大语言模型，Large Language Model）的智能体可以自动化这一试错过程，但让LLM同时选择修改方向并生成具体假设，往往会在有限的实验预算下导致不稳定的搜索。受上述挑战启发，我们提出RecHarness，一种用于自动推荐模型优化的Bandit-Routed（多臂老虎机路由，Bandit-Routed）智能体框架。RecHarness将优化过程分为两步：Bandit路由器根据历史验证反馈选择下一个修改方向，而LLM在所选方向内生成具体的优化假设和可执行的代码编辑。为维持长期探索，RecHarness采用跳跃盆地（jump-basin）机制，在局部编辑停滞时激活结构跳跃臂（structural-jump arm）。在多种推荐任务、数据集和模型骨干网络上，RecHarness比LLM推理搜索实现了更稳定的性能提升，并更有效地利用有限的试验预算。在大型短视频广告平台上为期7天的在线A/B测试中，所选候选方案使ADVV提升了2.084%，Revenue（收入）提升了0.534%，Exposure（曝光）提升了0.559%。代码见此https URL。</div>
+        </div>
+      </div>
+      <div class="category-section">
+        <h3 id="排序-重排-2-篇" class="category-title" style="border-color: #58a6ff; background: #58a6ff15; color: #58a6ff;">
+          📊 排序/重排（2 篇）
+        </h3>
+        <div id="paper-2607.24869" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.24869" target="_blank">Ranked by Position: Order Sensitivity as an Exploitable Attack Surface in LLM Listwise Recommenders</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.24869" target="_blank">2607.24869</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">大型语言模型（LLM, Large Language Model）在推荐系统中作为列表式重排序器（listwise reranker）使用时，在将候选集序列化为提示词的过程中会存在位置偏差（position bias）。我们表明，这种顺序敏感性制造了一个可被利用的攻击面：攻击者仅通过重新排列候选项，即可将标签为0的目标推入top-$k$，而无需更改项目内容、标签或模型参数。我们引入$\mathrm{promo}@k$来量化这一脆弱性，衡量通过排列可将标签为0的目标提升至top-$k$排名的比例。在三个领域（MovieLens、Amazon Books和Amazon Fashion）上的评估表明，在攻击预算$R$ = 50次排序下，$\mathrm{promo}@5$最高可达0.57。此外，常规的排列稳定性无需运行攻击即可预测脆弱性。虽然双向T5编码器评分器（bidirectional T5 encoder scorer）能降低暴露风险，但排列一致性正则化（permutation-consistency regularization）和架构不变性（architectural invariance）能够有效缓解该问题。逐点评分（pointwise scoring）避免了偏差问题，但会降低排序质量。这些结果表明，列表式LLM重排序中的输入候选顺序是一个与安全相关的攻击向量。代码和数据可在该https URL获取。</div>
+        </div>
+        <div id="paper-2607.23561" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.23561" target="_blank">Towards a Relevance Posterior in Neural Information Access</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.23561" target="_blank">2607.23561</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">现代信息检索系统通常将相关性（relevance）操作化为推理时计算的条件于查询的分数。这一设计选择已成为主流，使得相关性的替代分解方案鲜少被讨论，尽管文档和查询先验（priors）在概率检索和大规模搜索中有着悠久的历史。随着神经排序模型的计算成本日益增长，且检索流水线扩展至包含多阶段排序、推荐和检索增强生成（RAG, Retrieval-Augmented Generation），这种在查询时评分的一体化视角变得越来越局限。我们认为，现代信息访问系统更自然地被理解为执行近似后验推理（posterior inference），其中相关性通过查询依赖的似然（likelihoods）和查询无关的先验（priors）的分阶段组合而被逐步精化。我们将经典的概率检索形式化框架扩展到当代的学习系统，并展示显式的似然-先验分解如何揭示新的机遇：在将文档级信念与交互级信念解耦的同时，将计算迁移至离线阶段。我们提供了经验证据，表明融入查询无关的文档效用可以补充现有的排序器，并以极少的查询时计算（仅分数融合）提升检索效果。具体而言，一个学习得到的先验通过排序融合改善了第一阶段检索（在TREC DL-2019上nDCG@10提升高达0.046，在TREC DL-2020上提升高达0.029），同时也改善了下游的重排序，其中在LLM重排序器RankZephyr上观察到最大的增益（在TREC DL-2020上nDCG@10提升高达0.054）。最后，我们讨论了这种分解如何与更广泛的信息访问相联系，并概述了在离线先验与在线交互之间显式分配建模容量以设计检索系统的研究方向。</div>
+        </div>
+      </div>
+      <div class="category-section">
+        <h3 id="召回-检索-2-篇" class="category-title" style="border-color: #3fb950; background: #3fb95015; color: #3fb950;">
+          🔍 召回/检索（2 篇）
+        </h3>
+        <div id="paper-2607.29173" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.29173" target="_blank">MERIT: Efficient In-Place Deletion for Dynamic Graph-Based Approximate Nearest Neighbor Indexes</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.29173" target="_blank">2607.29173</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">基于图的索引已成为高维数据上近似最近邻搜索（ANNS, Approximate Nearest Neighbor Search）的主流方法，并在检索增强生成、推荐系统和向量数据库等实际应用中发挥着关键作用。尽管在静态图构建和搜索方面取得了广泛进展，高效的原地删除仍然具有挑战性，因为过时向量必须被移除，同时不能让失效的入边消耗搜索能力，也不能让昂贵的全图维护中断在线服务，例如检索增强生成（RAG, Retrieval-Augmented Generation）和推荐平台。针对这一问题，我们提出了MERIT（基于MST的高效修复与原地更新，MST-based Efficient Repair with In-place updaTes），一个原地更新框架，包含三项核心技术：（1）有界搜索恢复，将已删除顶点的出边邻居与其易于搜索的入边邻居相结合；（2）$k_r$-最小生成树（MST, Minimum Spanning Tree）局部修复，在促进局部连通性的同时为图搜索保留多条路由选择；（3）版本化边失效机制，立即过滤所有指向已删除顶点的失效入边，并在邻接表重写时逐步移除这些边。该框架与分层HNSW索引和单层Vamana索引的集成证明了其在不同图结构上的适用性。在多个真实数据集上的大量实验表明，MERIT以接近插入一个向量的代价处理删除操作，删除速度比现有最优（SOTA, State-of-the-Art）方法快$3.02\times$--$18.87\times$，并且在删除累积过程中保持搜索召回率稳定甚至有所提升。</div>
+        </div>
+        <div id="paper-2608.01255" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2608.01255" target="_blank">RaG-Tree: Combining R-Tree and HNSW for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2608.01255" target="_blank">2608.01255</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">多属性范围过滤近似最近邻搜索（MR-ANNS, Multi-attribute Range-filtered Approximate Nearest Neighbor Search）用于检索满足多个属性约束的高维向量，是现代AI应用中的基础操作。现有MR-ANNS索引要么仅利用单一属性进行范围定位，要么沿各属性递归划分对象，这可能限制了其利用属性相关性进行有效范围剪枝以及利用属性-向量相关性进行高效最近邻搜索的能力。本文提出了RaG-Tree，一种将R-tree与分区感知HNSW（Hierarchical Navigable Small World）图相结合的统一索引，用于MR-ANNS。RaG-Tree利用层次化R-tree分区实现有效的范围剪枝，并将每个HNSW图的稀疏性适配至其分区内的局部向量分布，从而实现轻量级索引和高效查询处理。为支持高效查询处理和动态更新，我们开发了一种基于代价的自适应搜索算法，以最小化不必要的图探索，同时提出了一种高效的索引维护机制，用于增量更新受影响的分区感知HNSW图。在三个真实数据集上的大量实验表明，RaG-Tree在查询性能上优于最先进的基线方法，同时提供了轻量级索引和快速的增量更新能力。</div>
+        </div>
+      </div>
+      <div class="category-section">
+        <h3 id="推荐系统-10-篇" class="category-title" style="border-color: #d2a8ff; background: #d2a8ff15; color: #d2a8ff;">
+          🎯 推荐系统（10 篇）
+        </h3>
+        <div id="paper-2607.28070" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.28070" target="_blank">CCFormer: Efficient Cross-Field Interaction and Hierarchical Sequence Compression for Industrial Recommendation at Tencent</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.28070" target="_blank">2607.28070</a>
+            &nbsp;⭐ 9
+          </div>
+          <div class="paper-abstract">工业推荐系统的最新研究表明，基于自注意力机制构建的序列推荐模型可以通过增加序列长度和模型容量来获得可预测的缩放定律收益。然而，实际的推荐系统 impose了严格的延迟和资源约束，使得平衡计算开销与细粒度特征交互变得极具挑战性。本文提出CCFormer，一种高效的Transformer主干网络，统一了跨字段特征交互与压缩长序列建模，用于工业推荐。具体而言，CCFormer将特征字段分离的交叉注意力与长序列子空间token混合相结合，以利用跨异构特征域的长期偏好信号。一种具有逐步扩展感受野的层级序列压缩策略，能够在减少信息损失的同时实现高效的长序列建模。在两个公开基准测试和一个大规模工业数据集上的大量实验表明，CCFormer始终优于最先进的基线方法。在腾讯的视频推荐场景和广告排序场景中进行的在线A/B测试进一步验证了其工业实用性，分别获得了3.57%的点击率（CTR, Click-Through Rate）提升和1.71%的广告收入增长，同时相较于强基线HSTU将模型训练加速了2.21倍。CCFormer已全面部署于腾讯的生产推荐系统中，服务于上述两个场景的主力流量。</div>
+        </div>
+        <div id="paper-2607.26832" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.26832" target="_blank">Kairos: Numerically Robust News Recommendation under Item Cold-Start via Cholesky-based LinUCB</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.26832" target="_blank">2607.26832</a>
+            &nbsp;⭐ 9
+          </div>
+          <div class="paper-abstract">区域市场中的算法新闻个性化常常失败，因为现代深度学习模型需要海量的交互数据，而现实中的新闻具有极短的存活时间（TTL, Time-to-Live < 48小时）和浅层的文章池。这种结构性的物品冷启动问题使协同过滤无法获得稳健建模所需的数据。本文提出了Project Kairos，一个通过上下文在线学习方法（LinUCB）来弥合这一数据稀缺问题的框架。为确保连续运行时的数值完整性，Kairos用Cholesky因子的直接秩1更新替换了易出错的Sherman-Morrison逆运算。这即使在病态数据场景下也能保持协方差矩阵的正定性。同时，Matryoshka表征学习（MRL, Matryoshka Representation Learning）的集成解决了推理延迟问题。基于Tagesschau API的实验评估表明，利用特征空间中的语义冗余可实现4.85倍的效率提升，而不会显著损害排序精度。因此，Kairos为资源和数据受限环境下的高性能推荐系统提供了蓝图。</div>
+        </div>
+        <div id="paper-2608.02048" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2608.02048" target="_blank">SmartGR: Hierarchy and Beam-Aware Knowledge Distillation for Generative Recommendation</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2608.02048" target="_blank">2608.02048</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">生成式推荐（GR, Generative Recommendation）已成为推荐系统中一种极具前景的范式。扩大GR模型的规模可以提升推荐性能，但同时也会大幅增加推理成本。知识蒸馏通过将大型GR模型的知识迁移到轻量级模型中，提供了一种实用的解决方案。然而，现有的蒸馏方法未考虑到两个GR特有的挑战：语义ID（SID, Semantic ID）层级间蒸馏难度不平衡，以及束搜索过程中错误的前缀剪枝。针对这些挑战，我们提出了SmartGR，一种新型蒸馏框架，该框架利用层级感知SID蒸馏（Hierarchy-Aware SID Distillation）在层级间迁移教师的建模能力，并借助束感知排序蒸馏（Beam-Aware Ranking Distillation）在束搜索过程中蒸馏教师的排序偏好。在四个基准数据集上的大量实验证明了SmartGR的有效性和高效性，在平均实现2.39倍推理加速的同时，性能提升了8.6%。</div>
+        </div>
+        <div id="paper-2608.01732" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2608.01732" target="_blank">X-KGRank: A Knowledge Graph RAG Framework for Explainable Recommendations via Pattern Mining and LLM Re-Ranking</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2608.01732" target="_blank">2608.01732</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">现代推荐系统产生的预测无法被用户质询。两种主流改进方法——协同过滤和基于LLM的推理——各自存在不足：协同过滤能够捕捉行为信号但无法提供推理，而大语言模型（LLM, Large Language Model）能生成流畅的解释但会产生幻觉，且缺乏对用户历史记录的扎实依据。我们提出了X-KGRank，一个知识图谱检索增强框架，将结构化协同过滤与基于LLM的解释统一起来。我们从MovieLens-1M数据集（6,040名用户，3,704个项目，988,129次交互）构建了一个包含9,762个节点和999,264条边的异构知识图谱，涵盖三种关系类型（RATED、HAS_GENRE和CO_RATED），并持久化存储于Neo4j中。我们训练了一个采用内容感知SBERT初始化和评分加权BPR（Bayesian Personalized Ranking，贝叶斯个性化排序）目标的LightGCN排序器，并应用了一种流行度选择性路由策略：将长尾项目（3,704个中的1,855个）锚定于知识图谱路径中，而热门项目则从预训练知识中提供，从而将KG（Knowledge Graph，知识图谱）增强生成量减少约50%。在MovieLens-1M测试集的99样本协议下，X-KGRank取得了NDCG@10 = 0.2956和Recall@10 = 0.5371，在两项指标上分别比强流行度基线提升了17.1%，在NDCG@20上提升了15.6%（0.3449 vs. 0.2983），在MRR（Mean Reciprocal Rank，平均倒数排名）上提升了14.6%（0.2435 vs. 0.2124）。在基于三个LLM骨干模型对16个案例的评估中，一个15亿参数模型（Qwen2.5-1.5B）在启发式解释质量上与一个70亿参数模型（Mistral-7B）持平（0.97 vs. 0.94），但定性分析表明较小模型更容易出现事实捏造。</div>
+        </div>
+        <div id="paper-2607.26500" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.26500" target="_blank">Multi-Decoder OneRec: Controllable Generative Retrieval for Multi-Objective Industrial Recommendation</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.26500" target="_blank">2607.26500</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">工业推荐系统通过为特定目标的检索路径分配显式配额来构建候选池。这种设计提供了配额控制能力，但随着路径集合的不断增长，建模、训练和服务日益碎片化。基于语义ID（Semantic ID）的生成式检索提供了一种统一的替代方案，然而单一解码器会纠缠目标策略并限制候选互补性。我们提出了Multi-Decoder OneRec，一个结合共享表征、隔离目标适配和协同解码的可控框架。所有目标共享一个用户上下文模块和通用解码器（General Decoder），同时每个目标添加一个隔离的、参数高效的LoRA（Low-Rank Adaptation，低秩适配）专家。在训练阶段，曝光采样下一词元预测（NTP, Next-Token Prediction）更新共享基座，目标过滤NTP（Target-filtered NTP）更新基于事件的专家，KL（Kullback-Leibler）正则化策略优化更新观看时长（Watch-time）专家；梯度路由隔离这些更新，通用解码器提供停止梯度参考。在推理阶段，显式路径配额分配固定预算，多解码器约束束搜索（Multi-Decoder Constrained Beam Search）减少跨路径重叠。我们公开发布了Kwai26，一个大规模多目标基准，包含13.1亿条原始物品级记录、3185万个物品ID（Item-ID）条目以及2503万个具有有效语义ID的物品，同时提供预定义的数据划分和评估协议。在相同的512个物品检索预算下，Multi-Decoder OneRec在四项Recall@512指标上相较单解码器OneRec基线提升了1.69%–5.62%。在生产环境A/B测试中，它带来了每设备应用使用时长0.37%、第7日留存用户0.19%、至少分享一次的设备0.19%以及新内容冷启动（Cold-Start）2.09%的相对提升。这些结果表明，生成式检索可以将共享建模与特定目标控制及互补候选生成相结合。</div>
+        </div>
+        <div id="paper-2607.26427" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.26427" target="_blank">PSG: Pair-Space Generation for Efficient Generative Reranking</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.26427" target="_blank">2607.26427</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">现代推荐系统采用生成器-评估器（G-E, Generator-Evaluator）进行列表级重排序：生成器从候选集中产生序列，评估器在序列层面对其打分，以筛选出最优序列进行曝光。自回归（AR, Auto-Regressive）作为生成式推荐的骨干，存在两个局限性。首先，其复杂度随列表长度线性增长，迫使系统在严格的延迟约束下生成更少的序列，从而限制了探索。其次，教师强制（teacher-forcing）造成了训练-测试不匹配；累积误差随长度加剧，降低了生成质量。针对这些问题，我们提出了对偶空间生成（PSG, Pair-Space Generation），这是一种将生成原子从单个物品提升为有序物品对的重新建模。给定$n$个候选物品，PSG在每次请求上操作大小为$n(n-1)$的对词汇表，仅需生成$L/2$个token。对token表示由一个预训练的对token表示模块即时生成，该模块在大规模曝光日志上优化，从而消除了原本会困扰二次规模词汇表的数据稀疏性问题。我们建立了三个理论保证：(i) PSG与物品空间生成是双射的，并诱导出等价的序列分布族，因此不会损失表达能力；(ii) 在对token空间中生成，理论上在中等设置下可实现约$2\times$到$4\times$的加速，在实际工业环境设置下实现$1.83\times$的加速；(iii) 在仅有结果奖励（outcome-only rewards）下，PSG的最坏情况次优性以$O((L/2)^2 \bar{\epsilon})$为界，相比物品空间生成实现了近$4\times$的改进。除了基于基准的验证之外，PSG已在快手上部署，使平台人均停留时长提升了0.178\%，该平台日活跃用户（DAU, Daily Active Users）超过4亿。</div>
+        </div>
+        <div id="paper-2607.26380" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.26380" target="_blank">Continuous Online Evaluation of Recommendation Strategies in Social Science Academic Search</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.26380" target="_blank">2607.26380</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">在学术搜索引擎中提供相关推荐是一项复杂的任务，因为学科领域、信息类型和用户偏好具有多样性。在本案例研究中，我们通过在GESIS Search中整合和评估一系列推荐系统来应对这些挑战——GESIS Search是一个面向社会科学的领域特定搜索引擎，为研究人员提供研究数据、出版物、变量和测量工具的访问。为了支持利用实际平台用户对多种推荐策略进行持续的实时评估，我们采用了STELLA评估框架。我们实现并比较了多种算法，包括传统的词汇相似度（lexical similarity）、基于Transformer嵌入（embedding）的语义文档相似度（semantic document similarity），以及基于历史用户会话点击路径的基于会话的推荐（session-based recommendation）。结果表明，用户更偏好基于语义相似度的推荐，其表现优于词项相似度（term-similarity）和基于会话的方法。然而，推荐系统在GESIS Search不同类别中的表现存在差异，表明信息搜寻行为因信息类型而异。总体而言，我们的研究为如何将持续评估融入推荐系统的开发提供了见解，使其更好地契合学术搜索门户中的用户偏好。</div>
+        </div>
+        <div id="paper-2607.26365" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.26365" target="_blank">Embedding Items at Scale: Comparing GNN-Based and ID-Based Item Embeddings in the Yandex Ecosystem</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.26365" target="_blank">2607.26365</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">基于Transformer的序列推荐模型处理用户-物品交互序列，严重依赖于物品嵌入策略。现有方法要么使用预训练的物品嵌入，要么与Transformer端到端地联合学习。据我们所知，此前尚无工作在大规模工业场景下从成本和质量两个角度对这些选项进行比较。本文是一项案例研究，在Yandex的两个成熟生产推荐系统——Yandex Market和Yandex Music上，比较了预训练的工业图神经网络（GNN, Graph Neural Network）物品嵌入与端到端可训练的物品嵌入。我们还在从Yandex Lavka生产日志中采样的低资源数据集上对两种方法进行了评估，该数据集和代码均已公开，用于演示目的。结果表明，当训练数据有限时，单独的预训练阶段有所帮助；但对于在大规模数据集上训练的大型模型而言，并不能带来有价值的收益。</div>
+        </div>
+        <div id="paper-2607.24845" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.24845" target="_blank">REPREC: Representation Driven Parameter-Efficient Recommendation System</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.24845" target="_blank">2607.24845</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">大语言模型（LLM, Large Language Model）已被应用于序列推荐，将其形式化为自然语言任务。先前的工作通过输入条件化或LLM微调来融入协同信号和序列信号，从而提升了个性化效果。然而，现有方法通常依赖以下一种或多种手段：LLM微调、额外的架构模块、表示蒸馏或针对长交互历史的物品级条件化，这增加了训练复杂度和部署成本。我们提出了REPREC，一个轻量级框架，通过轻量级的用户表示对齐重新构建基于LLM的序列推荐。REPREC将来自冻结序列编码器的固定大小用户嵌入，通过轻量级MLP（多层感知机, Multi-Layer Perceptron）注入器映射为一小组可学习的软标记（soft token），以此对冻结的LLM进行条件化，在训练过程中仅训练注入器，而保持两个预训练主干网络不变。我们在多个基准数据集上进行了详尽的实验，证明REPREC始终优于LoRA（低秩适配, Low-Rank Adaptation），同时兼容不同的预训练序列编码器和LLM主干网络，实现了无需修改任一预训练组件的模块化且适用于生产环境的推荐流水线。在所有数据集中，对于偶尔使用用户和核心用户，性能提升尤为显著，突显了REPREC在低数据场景下的有效性。最后，当在短提示历史下训练并以更长上下文进行评估时，REPREC保持了LoRA 85-100%的性能，同时将每轮训练时间平均减少了1.51倍，展示了在生产部署中推荐质量与计算效率之间的有效平衡。代码可在该https URL获取。</div>
+        </div>
+        <div id="paper-2607.24092" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.24092" target="_blank">ConAlign: Conditional Alignment Framework for Balancing Biased and Unbiased Recommendation</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.24092" target="_blank">2607.24092</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">基于观测数据训练的工业推荐系统受到各种偏差的困扰，这些偏差会形成过滤气泡（Filter Bubble），导致用户兴趣坍缩为狭窄的类别，严重损害长期用户参与度。尽管利用无偏均匀数据进行去偏已展现出良好前景，但现有方法由于忽视事实性（有偏）推荐性能以及巨大的计算开销等局限性，仍难以在实际工业部署中应用。为克服这些局限性，我们提出了ConAlign（条件对齐框架，Conditional Alignment Framework），一种面向工业部署的条件去偏方法。ConAlign的核心创新在于一种基于离散门控的条件对齐机制，能够选择性地将知识从有偏塔迁移到无偏塔。遵循选择性干预范式而非全局校正，它在无缝平衡事实准确性与无偏偏好估计的同时，支持实时流式自适应。据我们所知，ConAlign是首个成功部署于大规模工业推荐系统中的流式去偏推荐框架，该系统利用少量无偏随机流量进行去偏。在三个真实数据集上的大量离线实验严格验证了所提框架的有效性。此外，在快手上的大规模在线A/B测试表明，ConAlign在长期用户参与度和兴趣多样性方面取得了显著提升，且延迟开销可忽略不计。!</div>
+        </div>
+      </div>
+      <div class="category-section">
+        <h3 id="LLM-RAG-4-篇" class="category-title" style="border-color: #79c0ff; background: #79c0ff15; color: #79c0ff;">
+          🤖 LLM/RAG（4 篇）
+        </h3>
+        <div id="paper-2608.01192" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2608.01192" target="_blank">A Unified Benchmark for Privacy-preserving Vector Search</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2608.01192" target="_blank">2608.01192</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">向量搜索驱动着语义搜索、推荐系统和检索增强生成（RAG, Retrieval-Augmented Generation）。按照设计，响应查询的服务既可以看到查询嵌入（query embedding），通常也能看到与之匹配的语料库（corpus）。这对发出查询的用户和语料库的所有者而言均构成隐私泄露。一系列密码学方案（如SAP、EMVP、BNTM、Tip-toe）旨在解决该泄露问题。然而，由于每种方案均在各自的语料库、威胁模型、参数选择、硬件和度量约定下进行发表和评估，其数值无法直接比较。因此，对于询问"今天应部署哪种方案"的从业者而言，没有可辩护的选择依据。我们通过统一的实验比较填补了这一空白，包括一个明文（Plaintext）基线和四种密码学后端，在相同的工作负载、硬件和度量定义下运行。在该标准下，各方案在隐私、性能和召回率（recall）上分布于帕累托前沿（Pareto frontier），而非对性能施加一个扁平的惩罚。我们发现：SAP的性能与明文匹配；EMVP以CPU上4倍吞吐量代价实现了密码学不可区分性（cryptographic indistinguishability）；BNTM在进一步增加22倍中位延迟代价的条件下提供了恶意服务器可验证性（malicious-server verifiability）；Tiptoe隐藏了聚类选择本身，但与明文相比每查询代价高达190倍。GPU加速对明文和SAP效果显著，但对EMVP或BNTM则不然。我们所有的实验产物均已公开，以确保可复现性。</div>
+        </div>
+        <div id="paper-2607.25041" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.25041" target="_blank">ScoreShield: Differentially Private Release of Similarity Scores</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.25041" target="_blank">2607.25041</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">越来越多的应用，如生物识别和检索增强生成（RAG, Retrieval-Augmented Generation），依赖于在文本、图像或音频的向量嵌入之间计算的余弦相似度分数。这些系统通过其API返回相似度分数，用于排序和验证。然而，此类发布可能泄露关于个体记录的信息，并使成员推理攻击成为可能。虽然差分隐私（DP, Differential Privacy）提供了一种原则性的度量来量化攻击风险，但朴素地应用DP机制——例如对向量条目添加i.i.d.高斯噪声——在给定隐私约束下会导致过大的失真（即低效用），且随发布分数数量的增加扩展性很差。我们提出ScoreShield，一种先扰动后投影的机制，该机制添加根据所选分数发布机制的全局敏感性校准的高斯噪声，然后将结果投影到有效余弦对象的可行集上。ScoreShield满足$(\varepsilon,\delta)$-DP，用于发布相似度分数向量和Gram矩阵。我们为风险分析中使用的精确Frobenius度量投影提供了效用保证，并证明了用于大规模Gram发布的实用平均交替投影求解器的可行性收敛性。在记录级替换邻接关系下的全两两余弦Gram发布中，精确投影界将平方Frobenius风险的$n$依赖性从朴素高斯基线的$\Theta(n^3)$改善为固定隐私参数下的$\mathcal{O}(n^2)$，并在低秩Gram处提供了更紧的局部界。我们在RAG、人脸识别、语义检索、图像相似度和推荐系统任务上对该机制进行了评估。</div>
+        </div>
+        <div id="paper-2607.24865" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2607.24865" target="_blank">Tokens are All You Need: Dual-purpose Semantic IDs for Achieving LLM-Level I/O Efficiency in recommendation systems</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2607.24865" target="_blank">2607.24865</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">大规模推荐系统由于海量、稠密嵌入表而面临"内存墙（Memory Wall）"瓶颈。虽然生成式检索（Generative Retrieval）使用离散token作为ID，但高维上下文仍依赖于低效的稠密格式。受计算机视觉数据压缩的启发，我们提出双用途语义ID（Dual-purpose Semantic IDs），以实现LLM级I/O效率。我们的方法使用层级量化（Hierarchical Quantization）将连续嵌入压缩为离散语义ID，执行两个并发角色：（1）协同身份（Collaborative Identity）：通过可学习嵌入表建模用户-物品交互；以及（2）内容重建（Content Reconstruction）：使用轻量级语义解码器（Semantic Decoder）进行即时嵌入近似。该方法用按需重建替代大规模向量存储，降低了系统开销和数据足迹。我们通过离线评估以及在一家大型视频分享平台的生产级排序和检索系统中的成功在线部署，验证了我们框架的有效性，表明离散token确实是实现高效、内容丰富推荐所需的全部。</div>
+        </div>
+        <div id="paper-2608.01450" class="paper-card">
+          <div class="paper-title"><a href="https://arxiv.org/abs/2608.01450" target="_blank">Real-Time Hybrid Retrieval in Hyperbolic Space for Retrieval-Augmented Generation on Edge Devices</a></div>
+          <div class="paper-meta">
+            📄 <a href="https://arxiv.org/abs/2608.01450" target="_blank">2608.01450</a>
+            &nbsp;⭐ 6
+          </div>
+          <div class="paper-abstract">本文提出了一种为检索增强生成（RAG, Retrieval-Augmented Generation）设计的混合文档检索系统，该系统完全在双曲几何的洛伦兹模型（Lorentz model）内运行。与局限于欧几里得空间的传统稠密检索器不同，该系统通过学习到的 HyTE-H 变换将预训练词嵌入投影到双曲空间中，其指数级体积增长特性适合自然语言的层级组织结构。文档被分割为重叠的块，通过其洛伦兹嵌入进行索引，并通过两阶段流水线进行检索：首先应用 BM25 词法评分，然后使用洛伦兹内积相似度（Lorentzian inner-product similarity）对候选结果重新排序。一个可调参数 $\alpha$ 将 BM25 分数与双曲相似度分数进行混合。该系统在 BEIR 基准套件的五个数据集 SciFact、NFCorpus、ArguAna、SciDocs 和 FiQA 上进行了评估，仅使用词嵌入、不借助微调神经编码器或交叉注意力重排序器（cross-attention rerankers）的情况下，分别取得了 0.654、0.304、0.342、0.150 和 0.217 的 NDCG@10（归一化折损累积增益@10, Normalized Discounted Cumulative Gain@10）分数。该系统支持对用户提供的文档进行实时索引，并能在数万个中等规模文档上实现资源高效的查询，因此双曲检索可以在边缘设备上以交互级延迟运行。</div>
+        </div>
+      </div>
+
+    <h2 id="reading-list">📋 建议精读汇总</h2>
+    <table>
+      <thead>
+        <tr><th>#</th><th>arXiv ID</th><th>标题</th><th>方向</th><th>评分</th></tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1</td>
+        <td><a href="https://arxiv.org/abs/2607.28070" target="_blank">2607.28070</a></td>
+        <td>CCFormer: Efficient Cross-Field Interaction and Hierarchical Sequence Compression for Industrial Recommendation at Tencent</td>
+        <td>推荐系统</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><a href="https://arxiv.org/abs/2607.26832" target="_blank">2607.26832</a></td>
+        <td>Kairos: Numerically Robust News Recommendation under Item Cold-Start via Cholesky-based LinUCB</td>
+        <td>推荐系统</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><a href="https://arxiv.org/abs/2607.29000" target="_blank">2607.29000</a></td>
+        <td>PaletteID: Prototype-Composed Semantic Identifiers for Multimodal CTR Prediction</td>
+        <td>广告系统</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><a href="https://arxiv.org/abs/2607.24869" target="_blank">2607.24869</a></td>
+        <td>Ranked by Position: Order Sensitivity as an Exploitable Attack Surface in LLM Listwise Recommenders</td>
+        <td>排序/重排</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><a href="https://arxiv.org/abs/2607.23561" target="_blank">2607.23561</a></td>
+        <td>Towards a Relevance Posterior in Neural Information Access</td>
+        <td>排序/重排</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><a href="https://arxiv.org/abs/2607.29173" target="_blank">2607.29173</a></td>
+        <td>MERIT: Efficient In-Place Deletion for Dynamic Graph-Based Approximate Nearest Neighbor Indexes</td>
+        <td>召回/检索</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><a href="https://arxiv.org/abs/2608.01255" target="_blank">2608.01255</a></td>
+        <td>RaG-Tree: Combining R-Tree and HNSW for Multi-Attribute Range Filtered Approximate Nearest Neighbor Search</td>
+        <td>召回/检索</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><a href="https://arxiv.org/abs/2608.01192" target="_blank">2608.01192</a></td>
+        <td>A Unified Benchmark for Privacy-preserving Vector Search</td>
+        <td>LLM/RAG</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><a href="https://arxiv.org/abs/2607.25041" target="_blank">2607.25041</a></td>
+        <td>ScoreShield: Differentially Private Release of Similarity Scores</td>
+        <td>LLM/RAG</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><a href="https://arxiv.org/abs/2608.02048" target="_blank">2608.02048</a></td>
+        <td>SmartGR: Hierarchy and Beam-Aware Knowledge Distillation for Generative Recommendation</td>
+        <td>推荐系统</td>
+        <td>6</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <hr>
+    <h2 id="top-papers">🔬 三、Top Papers 论文阅读十问（5 篇）</h2>
+    
+  </main>
+
+  <script>
+    function toggleSidebar() {
+      const sb = document.getElementById('tocSidebar');
+      sb.classList.toggle('collapsed');
+    }
+  </script>
 </body>
 </html>
