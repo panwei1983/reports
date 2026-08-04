@@ -171,11 +171,17 @@
       <a href="#trends" class="toc-h2">📈 本周趋势</a>
         <a href="#categories" class="toc-h2">📚 分类汇总（20 篇）</a>
         <a href="#reading-list" class="toc-h2">📋 建议精读</a>
+        <a href="#top-papers" class="toc-h2">🔬 Top Papers 十问</a>
         <a href="#广告系统-2-篇" class="toc-h3">💰 广告系统（2）</a>
         <a href="#排序-重排-2-篇" class="toc-h3">📊 排序/重排（2）</a>
         <a href="#召回-检索-2-篇" class="toc-h3">🔍 召回/检索（2）</a>
         <a href="#推荐系统-10-篇" class="toc-h3">🎯 推荐系统（10）</a>
         <a href="#LLM-RAG-4-篇" class="toc-h3">🤖 LLM/RAG（4）</a>
+        <a href="#top-paper-1" class="toc-paper">1. 2607.28070</a>
+        <a href="#top-paper-2" class="toc-paper">2. 2607.26832</a>
+        <a href="#top-paper-3" class="toc-paper">3. 2607.29000</a>
+        <a href="#top-paper-4" class="toc-paper">4. 2607.24869</a>
+        <a href="#top-paper-5" class="toc-paper">5. 2607.23561</a>
     </div>
   </nav>
 
@@ -460,7 +466,221 @@
 
     <hr>
     <h2 id="top-papers">🔬 三、Top Papers 论文阅读十问（5 篇）</h2>
-    
+        <div id="top-paper-1" class="ten-q-section">
+      <h3 class="tenq-paper-title">1. CCFormer: Efficient Cross-Field Interaction and Hierarchical Sequence Compression for Industrial Recommendation at Tencent</h3>
+        <div class="question-item">
+          <div class="question-title">1. 论文要解决什么问题？</div>
+          <div class="question-answer">工业推荐系统中，基于自注意力的序列模型虽能通过增加序列长度和模型容量获得缩放定律收益，但实际系统面临严格的延迟和资源约束，导致计算开销与细粒度特征交互之间难以平衡。核心矛盾在于：既要建模长序列偏好和跨字段特征交互，又要在工业级延迟预算内高效运行。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">2. 核心创新点是什么？</div>
+          <div class="question-answer">提出CCFormer，将跨字段特征交互与压缩长序列建模统一到一个高效的Transformer主干网络中，打破了以往将特征交互与序列建模割裂处理的范式。同时设计了具有逐步扩展感受野的层级序列压缩策略，在压缩序列长度的同时最小化信息损失，实现了效率与效果的双重提升。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">3. 现有方法有哪些局限性？</div>
+          <div class="question-answer">现有基于自注意力的序列推荐方法（如HSTU）在追求缩放定律收益时，单纯增加序列长度和模型容量会带来巨大的计算开销，难以满足工业场景的实时性要求。此外，现有方法未能有效统一跨异构特征域的细粒度交互与长序列建模，导致长期偏好信号的利用不充分。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">4. 提出了什么新方法/模型？</div>
+          <div class="question-answer">提出CCFormer模型，一种高效的Transformer主干网络，统一了跨字段特征交互与压缩长序列建模。该模型专门面向工业推荐场景设计，能够在严格延迟约束下同时实现细粒度的跨字段交互和高效的长序列偏好建模，并已在腾讯生产系统中全面部署。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">5. 方法的关键技术细节是什么？</div>
+          <div class="question-answer">关键技术包含三个层面：（1）特征字段分离的交叉注意力（feature-field separated cross attention），实现跨异构特征域的高效交互；（2）长序列子空间token混合（subspace token mixing），利用不同特征域的长期偏好信号；（3）层级序列压缩策略，通过逐步扩展感受野的方式压缩序列，在减少信息损失的同时实现高效的长序列建模。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">6. 实验用了哪些数据集和指标？</div>
+          <div class="question-answer">离线实验使用了两个公开基准测试数据集和一个大规模工业数据集；在线实验在腾讯的视频推荐场景和广告排序场景进行A/B测试。主要评估指标包括点击率（CTR）和广告收入，同时对比了模型训练速度（相对HSTU的加速比）。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">7. 与基线方法相比效果如何？</div>
+          <div class="question-answer">CCFormer在离线实验中始终优于最先进的基线方法；在线A/B测试中，视频推荐场景CTR提升3.57%，广告排序场景广告收入提升1.71%，同时相较于强基线HSTU模型训练加速2.21倍。这表明CCFormer在效果和效率上均实现了显著提升。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">8. 方法有什么不足或局限？</div>
+          <div class="question-answer">摘要未明确讨论局限性，但可推断：层级序列压缩策略虽减少信息损失，压缩过程仍不可避免地丢失部分细粒度信号；特征字段分离的交叉注意力依赖合理的字段划分设计，字段划分粒度选择可能影响效果；此外，实验主要在腾讯生态内验证，跨平台泛化性有待进一步验证。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">9. 对工业界有什么启发？</div>
+          <div class="question-answer">CCFormer证明了将跨字段特征交互与序列压缩建模统一设计比割裂处理更高效，为工业推荐系统的架构设计提供了新范式。层级压缩逐步扩展感受野的思路为长序列建模的工程落地提供了可行方案——2.21倍训练加速和显著的线上收益提升表明，精心设计的压缩策略可以在不牺牲效果的前提下大幅降低计算成本，这对资源受限的工业场景极具实用价值。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">10. 未来可能的研究方向是什么？</div>
+          <div class="question-answer">可探索自适应的层级压缩策略，根据序列内容动态调整压缩比率与感受野扩展速度；将CCFormer扩展至多模态推荐场景，统一跨模态特征交互与序列建模；研究CCFormer在更大规模序列长度下的缩放定律特性；以及将该统一架构迁移至其他序列决策场景（如搜索排序、对话系统）中的可行性。</div>
+        </div>
+    </div>
+    <div id="top-paper-2" class="ten-q-section">
+      <h3 class="tenq-paper-title">2. Kairos: Numerically Robust News Recommendation under Item Cold-Start via Cholesky-based LinUCB</h3>
+        <div class="question-item">
+          <div class="question-title">1. 论文要解决什么问题？</div>
+          <div class="question-answer">区域市场中算法新闻个性化面临的结构性物品冷启动问题：深度学习模型需要海量交互数据，但新闻存活时间极短（TTL<48小时）且文章池浅，导致协同过滤无法获得稳健建模所需的数据，推荐系统在资源和数据受限环境下难以有效运行。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">2. 核心创新点是什么？</div>
+          <div class="question-answer">两大核心创新：一是用Cholesky因子的直接秩1更新替代Sherman-Morrison逆运算，在病态数据下保持协方差矩阵正定性和数值完整性；二是集成Matryoshka表征学习（MRL），利用特征空间语义冗余实现4.85倍效率提升而不显著损害排序精度。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">3. 现有方法有哪些局限性？</div>
+          <div class="question-answer">现代深度学习推荐模型依赖海量交互数据，无法应对短TTL和浅文章池的冷启动场景；传统LinUCB中使用的Sherman-Morrison逆运算在连续运行和病态数据下易出现数值不稳定，导致协方差矩阵丧失正定性；协同过滤方法在物品冷启动时因缺乏交互数据而完全失效。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">4. 提出了什么新方法/模型？</div>
+          <div class="question-answer">Project Kairos框架，基于上下文在线学习方法LinUCB解决数据稀缺问题，同时通过Cholesky因子直接秩1更新确保数值鲁棒性，并集成MRL解决推理延迟问题，形成适用于资源和数据受限环境的高性能推荐系统蓝图。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">5. 方法的关键技术细节是什么？</div>
+          <div class="question-answer">LinUCB中协方差矩阵的更新不采用Sherman-Morrison公式求逆，而是直接对Cholesky分解因子执行秩1更新，从根本上避免逆运算累积的数值误差，保证矩阵正定性；MRL通过训练嵌套的多粒度表征，使推理时可按需截断向量维度，利用语义冗余在低维空间保持信息量，从而降低推理延迟。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">6. 实验用了哪些数据集和指标？</div>
+          <div class="question-answer">基于Tagesschau API（德国公共广播新闻平台）的数据进行实验评估；指标方面涉及效率提升倍数（4.85倍）和排序精度（ranking precision），即衡量推荐效率与准确性之间的权衡。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">7. 与基线方法相比效果如何？</div>
+          <div class="question-answer">利用特征空间语义冗余实现了4.85倍的效率提升，且不会显著损害排序精度，表明在数值鲁棒性和推理效率上均优于传统Sherman-Morrison LinUCB方案，同时保持了可接受的推荐质量。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">8. 方法有什么不足或局限？</div>
+          <div class="question-answer">实验仅在Tagesschau单一数据集上验证，泛化性待考察；"不显著损害排序精度"暗示精度仍有轻微下降，对精度敏感场景需谨慎；LinUCB作为线性模型，对高度非线性的用户-物品交互建模能力有限；框架对特征工程质量有较强依赖。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">9. 对工业界有什么启发？</div>
+          <div class="question-answer">为资源和数据受限的中小型市场推荐系统提供了可落地的技术蓝图：Cholesky秩1更新方案对任何需要长期连续运行的在线学习系统都具有数值稳定性价值；MRL的效率优化思路可直接应用于需要低延迟推理的工业推荐场景，尤其在边缘部署和成本敏感环境中意义重大。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">10. 未来可能的研究方向是什么？</div>
+          <div class="question-answer">可将Cholesky秩1更新扩展到非线性上下文bandit算法中；探索MRL与更多推荐架构的结合以进一步优化效率-精度权衡；在更多领域和大规模数据上验证框架的泛化能力；研究自适应选择MRL截断维度的策略以动态平衡延迟与精度。</div>
+        </div>
+    </div>
+    <div id="top-paper-3" class="ten-q-section">
+      <h3 class="tenq-paper-title">3. PaletteID: Prototype-Composed Semantic Identifiers for Multimodal CTR Prediction</h3>
+        <div class="question-item">
+          <div class="question-title">1. 论文要解决什么问题？</div>
+          <div class="question-answer">论文要解决多模态CTR预测中，将预训练多模态嵌入离散化为语义标识符（SID）时存在的两个关键问题：码本分配无法保留语义相关性并丢失细粒度连续信号，以及残差码路径过度依赖前缀码导致层次化标识符的表示可扩展性受限。这两个问题导致现有SID方法对CTR预测的增益有限。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">2. 核心创新点是什么？</div>
+          <div class="question-answer">核心创新点在于提出了受调色板色彩组合启发的原型语义标识符（PaletteID），用一组紧凑的代表性原型物品作为语义锚点来桥接预训练多模态空间与推荐模型，取代了传统残差量化路径。这一设计同时解决了语义相关性和表示可扩展性两个问题，并提供了更可解释的token语义。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">3. 现有方法有哪些局限性？</div>
+          <div class="question-answer">现有SID方法存在两大局限：一是码本分配未能保留语义相关性，且丢弃了原始嵌入空间中的细粒度连续信号，导致信息损失；二是残差码路径高度依赖前缀码，使得层次化标识符的有效表示可扩展性受限，即后续码的表示能力受限于前面码的质量，形成级联瓶颈。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">4. 提出了什么新方法/模型？</div>
+          <div class="question-answer">提出了PaletteID（PID），一种基于原型的语义标识符方法。PID首先利用语义质量感知行列式点过程（SQ-DPP）构建原型调色板，同时考虑局部内容密度和全局语义多样性；然后为每个目标物品检索一系列语义相关的原型并聚合为信息丰富的PID表示，实现丰富且互补的语义建模。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">5. 方法的关键技术细节是什么？</div>
+          <div class="question-answer">关键技术细节包括：1）SQ-DPP构建原型调色板，联合建模局部内容密度和全局语义多样性，确保原型的代表性和区分性；2）对每个目标物品检索语义相关原型序列并聚合为PID表示，保留了连续信号的细粒度信息；3）原型组合方式避免了残差路径对前缀码的依赖，使标识符分配更加鲁棒且具有可解释性。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">6. 实验用了哪些数据集和指标？</div>
+          <div class="question-answer">实验在两个公开数据集上进行，评估了CTR预测的准确性，并特别关注了长尾物品的增益效果。此外还评估了标识符分配的鲁棒性和token语义的可解释性。摘要未明确提及具体数据集名称和指标细节。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">7. 与基线方法相比效果如何？</div>
+          <div class="question-answer">PaletteID能够持续提升CTR预测效果，且对长尾物品产生更大的增益。与现有残差SID方法相比，PID产生更鲁棒的标识符分配，并提供更具可解释性的token语义，表明其在准确性和可解释性上均有显著优势。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">8. 方法有什么不足或局限？</div>
+          <div class="question-answer">基于摘要可推断的潜在局限包括：原型调色板的大小需要权衡表示能力与计算开销，过小可能无法覆盖语义空间，过大则增加检索和存储成本；SQ-DPP的构建在大规模物品库上的可扩展性可能受限；此外，原型的选择质量直接影响PID表示的效果，可能存在对原型调色板质量的敏感性依赖。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">9. 对工业界有什么启发？</div>
+          <div class="question-answer">PaletteID为工业界多模态推荐系统提供了一种新思路：用原型组合替代残差量化来桥接多模态空间与推荐模型，既保留了连续信号的细粒度信息，又提升了可解释性。其对长尾物品的显著增益尤其适合工业场景中长尾物品占比大的特点，且原型调色板的设计有利于语义debug和运营可解释性。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">10. 未来可能的研究方向是什么？</div>
+          <div class="question-answer">未来可能的方向包括：1）将PaletteID扩展到更广泛的推荐任务（如序列推荐、多任务学习）；2）探索动态原型调色板更新机制以适应物品分布漂移；3）结合用户侧原型设计实现更精细的用户-物品语义匹配；4）研究更高效的原型检索和聚合策略以支撑超大规模工业应用。</div>
+        </div>
+    </div>
+    <div id="top-paper-4" class="ten-q-section">
+      <h3 class="tenq-paper-title">4. Ranked by Position: Order Sensitivity as an Exploitable Attack Surface in LLM Listwise Recommenders</h3>
+        <div class="question-item">
+          <div class="question-title">1. 论文要解决什么问题？</div>
+          <div class="question-answer">论文揭示并量化了LLM作为列表式重排序器时，因位置偏差导致的可被恶意利用的攻击面问题。攻击者无需修改项目内容、标签或模型参数，仅通过重新排列候选项顺序，即可将低质量（标签为0）的目标项推入top-k推荐位置，这是一个此前未被充分重视的安全隐患。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">2. 核心创新点是什么？</div>
+          <div class="question-answer">核心创新在于将LLM重排序中的位置偏差从已知的性能缺陷重新定义为可利用的安全攻击面，并提出了promo@k这一量化脆弱性的指标。此外，发现常规的排列稳定性无需运行攻击即可预测脆弱性程度，为低成本安全评估提供了途径。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">3. 现有方法有哪些局限性？</div>
+          <div class="question-answer">现有列表式LLM重排序方法在将候选集序列化为提示词时不可避免地引入位置偏差，导致排序结果对输入候选顺序高度敏感。这种敏感性使得模型输出可被外部攻击者通过简单的排列操作所操控，而现有研究未将此视为安全威胁加以防范。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">4. 提出了什么新方法/模型？</div>
+          <div class="question-answer">论文提出了promo@k指标来量化攻击脆弱性，即通过排列可将标签为0的目标提升至top-k排名的比例。在防御方面，探索了排列一致性正则化、架构不变性、双向T5编码器评分器以及逐点评分等多种缓解策略，并发现排列稳定性能作为脆弱性的预测信号。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">5. 方法的关键技术细节是什么？</div>
+          <div class="question-answer">攻击方法是在给定攻击预算R=50次排序内，通过搜索不同候选排列来最大化标签为0目标进入top-k的概率。防御方面，排列一致性正则化通过约束不同排列下排序结果的一致性来减少偏差；架构不变性从模型结构层面消除顺序依赖；双向T5编码器利用双向注意力机制降低位置敏感性。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">6. 实验用了哪些数据集和指标？</div>
+          <div class="question-answer">实验在三个领域的推荐数据集上进行：MovieLens、Amazon Books和Amazon Fashion。核心评估指标为promo@k，衡量通过排列可将标签为0目标提升至top-k排名的比例，同时使用排列稳定性作为脆弱性预测指标，并评估了不同防御策略对排序质量的影响。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">7. 与基线方法相比效果如何？</div>
+          <div class="question-answer">在攻击预算R=50下，promo@5最高可达0.57，表明超过一半的低质量目标可通过排列被推入top-5，脆弱性严重。防御方面，双向T5编码器评分器可降低暴露风险，排列一致性正则化和架构不变性能有效缓解该问题，逐点评分虽能避免偏差但会降低排序质量，呈现安全与效果的权衡。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">8. 方法有什么不足或局限？</div>
+          <div class="question-answer">逐点评分虽能消除位置偏差，但会牺牲排序质量，表明安全性与排序效果之间存在固有权衡。此外，攻击预算R=50的设定可能低估了实际攻击者的能力；防御策略在多领域上的效果差异未被充分讨论；排列一致性正则化和架构不变性带来的额外计算开销也未明确量化。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">9. 对工业界有什么启发？</div>
+          <div class="question-answer">工业界部署LLM重排序器时必须将输入候选顺序视为安全相关的攻击向量，攻击者无需接触模型或数据即可操纵推荐结果。应引入排列稳定性检测作为上线前的安全审计环节，并在系统设计中考虑排列一致性约束或架构级不变性，防止恶意方通过操控候选展示顺序来刷量或推送低质内容。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">10. 未来可能的研究方向是什么？</div>
+          <div class="question-answer">未来可探索更高效的排列攻击算法（如基于梯度的候选顺序优化），以及更强的防御机制如因果推断去偏与对抗训练的结合。还可研究该攻击面在其他LLM任务（如检索增强生成、多轮对话排序）中的泛化性，以及如何在保证排序质量的前提下实现完全的排列不变性，破解安全与效果之间的权衡困境。</div>
+        </div>
+    </div>
+    <div id="top-paper-5" class="ten-q-section">
+      <h3 class="tenq-paper-title">5. Towards a Relevance Posterior in Neural Information Access</h3>
+        <div class="question-item">
+          <div class="question-title">1. 论文要解决什么问题？</div>
+          <div class="question-answer">现代信息检索系统将相关性统一建模为查询条件下的推理时评分，这种单一化视角随着神经排序模型计算成本增长和多阶段检索流水线（如RAG）的扩展而变得日益局限。论文要解决的核心问题是如何突破这种查询时评分的垄断范式，为相关性提供一种更具计算效率和建模灵活性的分解方案。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">2. 核心创新点是什么？</div>
+          <div class="question-answer">核心创新在于将现代信息访问系统重新理解为执行近似后验推理，将相关性显式分解为查询依赖的似然（likelihood）和查询无关的先验（prior），从而将文档级信念与交互级信念解耦。这一分解使得大量计算可迁移至离线阶段，仅需极少的查询时计算（分数融合）即可提升检索效果。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">3. 现有方法有哪些局限性？</div>
+          <div class="question-answer">现有方法将相关性单一地操作化为查询条件分数在推理时计算，忽视了文档和查询先验的悠久历史价值。这种一体化视角在神经排序模型日益昂贵、流水线不断扩展（多阶段排序、推荐、RAG）的背景下，无法有效分配计算资源，导致查询时计算负担过重且建模灵活性受限。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">4. 提出了什么新方法/模型？</div>
+          <div class="question-answer">论文提出了基于贝叶斯后验推理框架的相关性分解方法，将经典概率检索形式化扩展到当代学习系统，通过学习查询无关的文档效用先验（learned prior），在排序融合阶段与现有查询依赖的排序器进行分数融合。该方法将先验计算完全离线化，查询时仅需轻量的分数融合操作。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">5. 方法的关键技术细节是什么？</div>
+          <div class="question-answer">关键技术细节包括：(1)显式的似然-先验分解，将相关性建模为P(relevance|query,doc)∝P(query|doc,relevance)·P(doc relevance)；(2)学习查询无关的文档效用先验，使其可完全离线预计算；(3)通过排序融合（rank fusion）将离线先验分数与在线查询条件分数结合，实现最小化的查询时计算开销。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">6. 实验用了哪些数据集和指标？</div>
+          <div class="question-answer">实验使用了TREC Deep Learning Track的两个基准数据集：TREC DL-2019和TREC DL-2020。评估指标主要采用nDCG@10，这是信息检索中衡量排序质量的标准指标。实验覆盖了第一阶段检索和下游重排序（包括LLM重排序器RankZephyr）两个阶段。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">7. 与基线方法相比效果如何？</div>
+          <div class="question-answer">学习先验通过排序融合改善了第一阶段检索，在TREC DL-2019上nDCG@10提升高达0.046，在TREC DL-2020上提升高达0.029。在下游重排序阶段也有改善，尤其在LLM重排序器RankZephyr上增益最大，在TREC DL-2020上nDCG@10提升高达0.054。这表明先验信息对计算密集的重排序器互补性更强。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">8. 方法有什么不足或局限？</div>
+          <div class="question-answer">从摘要可推断，该方法仅通过分数融合整合先验，融合方式较为简单，可能未充分利用先验与似然之间的深层交互。此外，先验的学习依赖于文档效用信号的获取，其质量和泛化性可能受限于训练数据的分布偏差，且论文未讨论先验在极端查询稀疏或文档动态更新场景下的鲁棒性。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">9. 对工业界有什么启发？</div>
+          <div class="question-answer">该工作为工业界提供了一个将计算从在线迁移至离线的系统设计范式，在神经排序模型（尤其是LLM重排序器）计算成本高昂的背景下极具实用价值。通过学习查询无关的文档先验并轻量融合，可在几乎不增加查询时延迟的前提下显著提升排序质量，这对大规模搜索引擎和RAG系统的成本-效果优化有直接指导意义。</div>
+        </div>
+        <div class="question-item">
+          <div class="question-title">10. 未来可能的研究方向是什么？</div>
+          <div class="question-answer">论文明确指出未来方向是在离线先验与在线交互之间显式分配建模容量以设计检索系统，包括探索更丰富的先验建模方式、先验与似然的深层交互机制，以及将该分解框架扩展到推荐和RAG等更广泛的信息访问场景。此外，如何在动态文档集上持续更新先验、以及先验在不同领域和任务间的迁移性也是值得探索的方向。</div>
+        </div>
+    </div>
   </main>
 
   <script>
