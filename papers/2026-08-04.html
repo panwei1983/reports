@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <title>arXiv 论文周报 - 2026年8月4日</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-orange: #ffa657;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #bc8cff;
+            --border: #30363d;
+            --link: #58a6ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* TOC Sidebar */
+        .toc-sidebar {
+            width: 280px;
+            min-width: 280px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 20px 15px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .toc-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .toc-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .toc-content a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .toc-content a:hover {
+            color: var(--accent);
+            background-color: var(--bg-tertiary);
+        }
+
+        .toc-content .toc-h2 {
+            font-weight: 600;
+            margin-top: 8px;
+            color: var(--text-primary);
+        }
+
+        .toc-content .toc-h3 {
+            padding-left: 20px;
+        }
+
+        .toc-content .toc-paper {
+            padding-left: 35px;
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            padding: 30px 40px;
+            margin: 0 auto;
+        }
+
+        /* Headings - 改进层级 */
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: var(--accent);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 12px 0;
+            color: var(--accent-orange);
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 15px 0 8px 0;
+            color: var(--text-primary);
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+
+        .paper-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .paper-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .paper-meta span {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .paper-abstract {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .paper-contribution {
+            font-size: 13px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+            color: var(--accent-green);
+        }
+
+        .paper-link {
+            margin-top: 8px;
+        }
+
+        .paper-link a {
+            color: var(--link);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .paper-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        /* Ten-Q Section */
+        .ten-q-section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+
+        .tenq-paper-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .question-item {
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .question-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .question-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 6px;
+        }
+
+        .question-answer {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-left: 12px;
+            border-left: 2px solid var(--border);
+        }
+
+        .question-answer strong {
+            color: var(--accent-green);
+        }
+
+        .question-answer code {
+            background-color: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .question-answer a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        /* Trend Item */
+        .trend-item {
+            padding: 6px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .trend-item strong {
+            color: var(--accent-green);
+        }
+
+        /* Reading List Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: var(--bg-tertiary);
+            color: var(--accent);
+            padding: 8px 12px;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+        }
+
+        td a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Paragraphs and lists */
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Back navigation */
+        .back-nav {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.9);
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        .back-nav a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .back-nav a:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .toc-sidebar {
+                display: none;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 左侧导航 -->
+    <nav class="toc-sidebar">
+        <div class="toc-header">
+            <span class="toc-title">📋 目录</span>
+            <button class="toc-toggle" onclick="toggleToc()">☰</button>
+        </div>
+        <div class="toc-content">
+            <a href="#trends" class="toc-h2">一、本周趋势</a>
+            <a href="#categories" class="toc-h2">二、分类汇总（20 篇）</a>
+            <a href="#广告系统-2-篇" class="toc-paper">广告系统（2 篇）</a>
+            <a href="#排序-重排-2-篇" class="toc-paper">排序/重排（2 篇）</a>
+            <a href="#召回-检索-11-篇" class="toc-paper">召回/检索（11 篇）</a>
+            <a href="#推荐系统-2-篇" class="toc-paper">推荐系统（2 篇）</a>
+            <a href="#LLM-RAG-2-篇" class="toc-paper">LLM/RAG（2 篇）</a>
+            <a href="#其他-1-篇" class="toc-paper">其他（1 篇）</a>
+            <a href="#reading-list" class="toc-h2">建议精读汇总</a>
+            <a href="#top-papers" class="toc-h2">三、Top Papers 论文阅读十问（3 篇）</a>
+            <a href="#top-paper-1" class="toc-paper">1. 1. X-KGRank: A Knowledge Graph...</a>
+            <a href="#top-paper-2" class="toc-paper">2. 2. Retrieval Augmented Biomedi...</a>
+            <a href="#top-paper-3" class="toc-paper">3. 3. OxygenREC-v2: Internalizing...</a>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-content">
+        <div class="back-nav"><a href="index.html">← 返回周报列表</a></div>
+        <h1>📊 搜索/推荐/广告召回排序论文周报</h1>
+        <div class="report-meta" style="color: var(--text-secondary); margin-bottom: 20px;">2026年8月4日 | 共 20 篇论文，6 个方向</div>
+        <h2 id="trends">📈 一、本周趋势</h2>
+     <div class="trend-item"><strong>广告系统</strong>：2 篇</div>
+     <div class="trend-item"><strong>排序/重排</strong>：2 篇</div>
+     <div class="trend-item"><strong>召回/检索</strong>：11 篇</div>
+     <div class="trend-item"><strong>推荐系统</strong>：2 篇</div>
+     <div class="trend-item"><strong>LLM/RAG</strong>：2 篇</div>
+     <div class="trend-item"><strong>其他</strong>：1 篇</div>
+     <div class="trend-item">生成式推荐/检索持续成为热点，多篇论文探索将检索和排序统一到生成框架中</div>
+     <div class="trend-item">多模态嵌入与检索方向活跃，抖音等大厂发布技术报告</div>
+     <div class="trend-item">重排序研究关注 LLM 的列表排序攻击面及多智能体重排</div>
+     <div class="trend-item">隐私保护向量搜索成为新方向，差分隐私与相似度分数释放</div>
+     <div class="trend-item">RAG 方向聚焦双曲空间实时检索、多粒度证据图、OCR 视觉压缩等新范式</div>
+     <div class="trend-item">知识图谱与推荐结合，实现可解释推荐</div>
+     <div class="trend-item">CTR 预测探索多模态原型语义标识符</div>
+     <div class="trend-item">端侧 RAG 与去中心化边缘协作成为落地新方向</div>
+     <div class="trend-item">广告方向关注用户决策感知模拟和广告感官生成理解</div>
+        <h2 id="categories">📚 二、分类汇总（20 篇）</h2>
+        <div class="category-section">
+          <h3 id="广告系统-2-篇" class="category-title">广告系统（2 篇）</h3>
+     <div class="paper-card" id="paper-1">
+       <div class="paper-title">⭐ 1. Beyond Action Imitation: Learning a Decision-Aware User Simulator for Online Advertising</div>
+       <div class="paper-meta"><span>👤 ：Zipeng Chen, Jiaer Zheng, Xiangyang Xu, Xinyu Lin, Zhaobin Wang, Zhaohui Liu, Qianjin Xiang, Xiaoyu Zhao, Zhuozhen Yu, Guangshuo Wang, Daxing Chen, Junwei Pan, Zhangbin Zhu, Chengguo Yin, Hao Chen, Ta</span><span>📄 arXiv: 2607.26893</span></div>
+       <div class="paper-abstract">：Recent advances in LLM-based user simulation have shown promise for offline evaluation of recommendation</div>
+     </div>
+     <div class="paper-card" id="paper-2">
+       <div class="paper-title">⭐ 2. Sense it with your eyes: Sensation Generation and Understanding for Advertisements</div>
+       <div class="paper-meta"><span>👤 ：Aysan Aghazadeh, Sina Malakouti, Adriana Kovashka</span><span>📄 arXiv: 2607.25314</span></div>
+       <div class="paper-abstract">：Sensory advertising</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="排序-重排-2-篇" class="category-title">排序/重排（2 篇）</h3>
+     <div class="paper-card" id="paper-3">
+       <div class="paper-title">⭐ 3. Retrieval Augmented Biomedical Question Answering with Weak Question Recovery and Neural Reranking for BioASQ Task 14b</div>
+       <div class="paper-meta"><span>👤 ：Xueying Zhao, Lee Mai, Balaji Anandganesh</span><span>📄 arXiv: 2608.01468</span></div>
+       <div class="paper-abstract">：This work presents DS@GT ARC BioASQ team's work for a biomedical question answering pipeline, integrating multi-source query expansion, neural reranking, retrieval</div>
+     </div>
+     <div class="paper-card" id="paper-4">
+       <div class="paper-title">⭐ 4. Ranked by Position: Order Sensitivity as an Exploitable Attack Surface in LLM Listwise Recommenders</div>
+       <div class="paper-meta"><span>👤 ：Ge Zhang, Jingru Cheng, Huiyuan Chen</span><span>📄 arXiv: 2607.24869</span></div>
+       <div class="paper-abstract">：Large language models (LLMs) used as listwise rerankers in recommendation</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="召回-检索-11-篇" class="category-title">召回/检索（11 篇）</h3>
+     <div class="paper-card" id="paper-5">
+       <div class="paper-title">⭐ 5. X-KGRank: A Knowledge Graph RAG Framework for Explainable Recommendations via Pattern Mining and LLM Re-Ranking</div>
+       <div class="paper-meta"><span>👤 ：Meenakshi Rajpurohit, Jainish Patel</span><span>📄 arXiv: 2608.01732</span></div>
+       <div class="paper-abstract">：…while large language models (LLMs) generate fluent explanations but hallucinate and are poorly grounded in a user's history. We present X-KGRank, a knowledge graph retrieval</div>
+     </div>
+     <div class="paper-card" id="paper-6">
+       <div class="paper-title">⭐ 6. OxygenREC-v2: Internalizing Discrimination into Generative Recommendation</div>
+       <div class="paper-meta"><span>👤 ：Guo Tang, Hanye Wu, Changjiang Han, Qingyang Li, Ming Zhang, Xiangyu Qian, Yanchen Qiao, Huanjie Wang, Zhi Ma, Zhen Li, Yaqiang Zang, Pinghua Gong</span><span>📄 arXiv: 2607.24255</span></div>
+       <div class="paper-abstract">：Generative recommendation unifies retrieval and ranking</div>
+     </div>
+     <div class="paper-card" id="paper-7">
+       <div class="paper-title">⭐ 7. A Unified Benchmark for Privacy-preserving Vector Search</div>
+       <div class="paper-meta"><span>👤 ：Anne-Marie Kermarrec, Rafael Pires, Mathis Randl, Martijn de Vos</span><span>📄 arXiv: 2608.01192</span></div>
+       <div class="paper-abstract">：Vector search powers semantic search, recommendation systems, and retrieval</div>
+     </div>
+     <div class="paper-card" id="paper-8">
+       <div class="paper-title">⭐ 8. DualG-MRAG: Decoupling Macro-Reasoning and Micro-Matching for Multimodal Retrieval-Augmented Generation</div>
+       <div class="paper-meta"><span>👤 ：Jiacheng Tao, Qingyun Sun, Haonan Yuan, Ziwei Zhang, Jianxin Li</span><span>📄 arXiv: 2607.28580</span></div>
+       <div class="paper-abstract">：While Multimodal Retrieval</div>
+     </div>
+     <div class="paper-card" id="paper-9">
+       <div class="paper-title">⭐ 9. Douyin Multimodal Embedding Model Technical Report</div>
+       <div class="paper-meta"><span>👤 ：Haonan Chen, Chu Li, Zhicheng Wang, Yuanwei Liu, Yuanjiang Wang, Shaohua Jiang, Zhicheng Dou</span><span>📄 arXiv: 2608.02148</span></div>
+       <div class="paper-abstract">：…establishes a unified multimodal embedding space with broad modality and task coverage. Stage 2 supplements semantic sufficiency, the property that an embedding is grounded in retrieval</div>
+     </div>
+     <div class="paper-card" id="paper-10">
+       <div class="paper-title">⭐ 10. ScoreShield: Differentially Private Release of Similarity Scores</div>
+       <div class="paper-meta"><span>👤 ：Behrooz Razeghi, Parsa Rahimi</span><span>📄 arXiv: 2607.25041</span></div>
+       <div class="paper-abstract">：…and retrieval-augmented generation (RAG), rely on cosine similarity scores computed between vector embeddings of text, images, or audio. These systems return similarity scores through</div>
+     </div>
+     <div class="paper-card" id="paper-11">
+       <div class="paper-title">⭐ 11. OneShot: Index-in-Ranking with Neural Scoring for Large-Scale Retrieval</div>
+       <div class="paper-meta"><span>👤 ：Ziwei Li, Shuyao Li, Xufeng Cai, Xue Zou, Yiming Ma, Huiting Lu, Wujie Yan, Zhichen Zhao, Yang Lu, Zhe Wang, Rui Luo, Zhengyu Su, Dan Zhang, Yimin Tan, Ji Liu</span><span>📄 arXiv: 2607.27475</span></div>
+       <div class="paper-abstract">：In modern recommendation</div>
+     </div>
+     <div class="paper-card" id="paper-12">
+       <div class="paper-title">⭐ 12. Multi-Decoder OneRec: Controllable Generative Retrieval for Multi-Objective Industrial Recommendation</div>
+       <div class="paper-meta"><span>👤 ：You Wang, Zhao Liu, Guoping Tang, Yiqing Yang, Shuo Su, Jing Liu, Naifu Zhou, Xiaoyou Zhou, Wei Jiang, Jian Liang, Xiao Lv, Ruiming Tang, Liyin Hong, Wenwu Ou</span><span>📄 arXiv: 2607.26500</span></div>
+       <div class="paper-abstract">：Industrial recommender</div>
+     </div>
+     <div class="paper-card" id="paper-13">
+       <div class="paper-title">⭐ 13. Guess Where You Go: Generative Next Point-of-Interest Recommendation in Amap</div>
+       <div class="paper-meta"><span>👤 ：Penglong Zhai, Bowen Zheng, Jie Li, Yifang Yuan, Yue Liu, Sicong Wang, Mingyang Yin, Tingting Hu, Shuaijun Guo, Fanyi Di, Xin Li</span><span>📄 arXiv: 2607.26073</span></div>
+       <div class="paper-abstract">：Generative retrieval enables recommender</div>
+     </div>
+     <div class="paper-card" id="paper-14">
+       <div class="paper-title">⭐ 14. Real-Time Hybrid Retrieval in Hyperbolic Space for Retrieval-Augmented Generation on Edge Devices</div>
+       <div class="paper-meta"><span>👤 ：Aradhya Chakrabarti</span><span>📄 arXiv: 2608.01450</span></div>
+       <div class="paper-abstract">：This paper presents a hybrid document retrieval</div>
+     </div>
+     <div class="paper-card" id="paper-15">
+       <div class="paper-title">⭐ 15. RAGOCR: Optical Compression of Retrieval-Augmented Text via Visual Representation</div>
+       <div class="paper-meta"><span>👤 ：Jiayang Yu, Jialun Zhong, Lei Zou</span><span>📄 arXiv: 2608.00765</span></div>
+       <div class="paper-abstract">：Retrieval</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="推荐系统-2-篇" class="category-title">推荐系统（2 篇）</h3>
+     <div class="paper-card" id="paper-16">
+       <div class="paper-title">⭐ 16. MARS: Multi-Agent Re-ranking for Repeat-Order Food Delivery Recommendation</div>
+       <div class="paper-meta"><span>👤 ：Jiahao Tian, Zhenkai Wang</span><span>📄 arXiv: 2607.25420</span></div>
+       <div class="paper-abstract">：Large language models (LLMs) are increasingly used in recommender</div>
+     </div>
+     <div class="paper-card" id="paper-17">
+       <div class="paper-title">⭐ 17. Hierarchical Residual Policy Optimization for Generative Recommendations</div>
+       <div class="paper-meta"><span>👤 ：Kaifeng Guo, Yiming Yang, Jingtong Gao, Guolei Zeng, Fukang Yang, Yukang Liang, Peng Jiang, Qingpeng Cai, Xiangyu Zhao</span><span>📄 arXiv: 2608.00750</span></div>
+       <div class="paper-abstract">：Generative recommenders</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="LLM-RAG-2-篇" class="category-title">LLM/RAG（2 篇）</h3>
+     <div class="paper-card" id="paper-18">
+       <div class="paper-title">⭐ 18. Enhancing LLMs with Context-Specific Knowledge for Mitigating Misinformation in SMEs: A RAG-based Modeling and Analysis</div>
+       <div class="paper-meta"><span>👤 ：Md. Samiul Islam, Iqbal H. Sarker, Chadni Islam, Ahmad Mohsin, Ahmed Ibrahim, Helge Janicke</span><span>📄 arXiv: 2608.00006</span></div>
+       <div class="paper-abstract">：Large Language Models (LLMs</div>
+     </div>
+     <div class="paper-card" id="paper-19">
+       <div class="paper-title">⭐ 19. From Cloud to Crowd: Democratizing LLM Service with Decentralized Edge Collaboration for RAG</div>
+       <div class="paper-meta"><span>👤 ：Jiaxing Li, Hengzhi Wang, Feng Wang, Chi Xu, Danyang Song, Ruixiao Zhang, Edith C. H. Ngai, Jiangchuan Liu</span><span>📄 arXiv: 2608.00922</span></div>
+       <div class="paper-abstract">：The rapid advancement of large language models (LLMs</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="其他-1-篇" class="category-title">其他（1 篇）</h3>
+     <div class="paper-card" id="paper-20">
+       <div class="paper-title">⭐ 20. PaletteID: Prototype-Composed Semantic Identifiers for Multimodal CTR Prediction</div>
+       <div class="paper-meta"><span>👤 ：Huanyu Liu, Baining Chen, Hui Liu, Zengyang Li, Ziyi Huang</span><span>📄 arXiv: 2607.29000</span></div>
+       <div class="paper-abstract">：Multimodal information can improve the accuracy of click-through rate (CTR</div>
+     </div>
+        </div>
+        <h2 id="reading-list">📋 建议精读汇总</h2>
+        
+        <h2 id="top-papers">🔬 三、Top Papers 论文阅读十问（3 篇）</h2>
+     <div class="ten-q-section" id="top-paper-1">
+       <h3 class="tenq-paper-title">1. 1. X-KGRank: A Knowledge Graph RAG Framework for Explainable Recommendations via Pattern Mining and LLM Re-Ranking</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-2">
+       <h3 class="tenq-paper-title">2. 2. Retrieval Augmented Biomedical Question Answering with Weak Question Recovery and Neural Reranking for BioASQ Task 14b</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-3">
+       <h3 class="tenq-paper-title">3. 3. OxygenREC-v2: Internalizing Discrimination into Generative Recommendation</h3>
+     </div>
+
+    </main>
+
+    <script>
+        function toggleToc() {
+            const sidebar = document.querySelector('.toc-sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
