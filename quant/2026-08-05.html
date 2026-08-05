@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量化交易资讯简报 | 2026-08-05</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --card: #1a1d28;
+  --border: #2a2d3a;
+  --accent: #4f8ef7;
+  --accent2: #f59e0b;
+  --text: #e2e8f0;
+  --muted: #8892a8;
+  --tag-academic: #8b5cf6;
+  --tag-strategy: #10b981;
+  --tag-broker: #f59e0b;
+  --tag-market: #ef4444;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.container { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
+.header { text-align: center; padding: 32px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+.header h1 { font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #4f8ef7, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header .date { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.summary { background: linear-gradient(135deg, #1e2235, #252a3a); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 28px; }
+.summary p { font-size: 16px; line-height: 1.8; }
+.toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+.toc h2 { font-size: 16px; margin-bottom: 12px; color: var(--accent); }
+.toc ol { padding-left: 20px; }
+.toc li { margin-bottom: 6px; }
+.toc a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.toc a:hover { color: var(--accent); }
+.section { margin-bottom: 32px; }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.section-header h2 { font-size: 20px; font-weight: 600; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+.tag-academic { background: rgba(139,92,246,0.15); color: var(--tag-academic); }
+.tag-strategy { background: rgba(16,185,129,0.15); color: var(--tag-strategy); }
+.tag-broker { background: rgba(245,158,11,0.15); color: var(--tag-broker); }
+.tag-market { background: rgba(239,68,68,0.15); color: var(--tag-market); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; transition: border-color 0.2s; }
+.card:hover { border-color: var(--accent); }
+.card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { color: var(--accent); }
+.card .meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.card .desc { font-size: 14px; color: #c4cad8; line-height: 1.7; }
+.card .score { display: inline-block; margin-top: 8px; padding: 2px 10px; border-radius: 8px; font-size: 12px; background: rgba(79,142,247,0.12); color: var(--accent); }
+.highlight-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; padding: 12px 16px; background: rgba(79,142,247,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
+.highlight-item .num { min-width: 24px; height: 24px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+.highlight-item .content { font-size: 15px; line-height: 1.7; }
+.factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.factor-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; text-align: center; }
+.factor-card .name { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+.factor-card .value { font-size: 22px; font-weight: 700; }
+.factor-card .change { font-size: 13px; margin-top: 4px; }
+.up { color: #ef4444; }
+.down { color: #10b981; }
+.paper-list { list-style: none; }
+.paper-list li { padding: 8px 0; border-bottom: 1px solid rgba(42,45,58,0.5); font-size: 14px; }
+.paper-list li:last-child { border-bottom: none; }
+.paper-list li a { color: var(--text); text-decoration: none; }
+.paper-list li a:hover { color: var(--accent); }
+.paper-list li .source { color: var(--muted); font-size: 12px; margin-left: 8px; }
+.broker-item { padding: 10px 0; border-bottom: 1px solid rgba(42,45,58,0.5); }
+.broker-item:last-child { border-bottom: none; }
+.broker-item .org { font-size: 13px; color: var(--tag-broker); font-weight: 500; }
+.broker-item .title { font-size: 15px; margin-top: 4px; }
+.footer { text-align: center; padding: 24px 0; border-top: 1px solid var(--border); margin-top: 40px; color: var(--muted); font-size: 13px; }
+@media (max-width: 600px) {
+  .container { padding: 16px 12px; }
+  .header h1 { font-size: 22px; }
+  .factor-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 头部 -->
+<div class="header">
+  <h1>📊 量化交易资讯简报</h1>
+  <div class="date">2026年8月5日 星期三 · 自动生成</div>
+</div>
+
+<!-- 一句话总结 -->
+<div class="summary">
+  <p>A股放量突破1.5万亿成交额，半导体与AI产业链强势领涨，Conformal Kelly策略与隐含波动率生成模型引领学术前沿，短期趋势跟踪衰退的微观结构解释值得关注。</p>
+</div>
+
+<!-- 目录 -->
+<div class="toc">
+  <h2>📑 今日目录</h2>
+  <ol>
+    <li><a href="#highlights">今日要点 Highlights</a></li>
+    <li><a href="#factors">因子看板</a></li>
+    <li><a href="#academic">学术前沿</a></li>
+    <li><a href="#strategy">策略研究</a></li>
+    <li><a href="#broker">券商金工观点</a></li>
+  </ol>
+</div>
+
+<!-- 今日要点 -->
+<div class="section" id="highlights">
+  <div class="section-header">
+    <h2>🔥 今日要点</h2>
+    <span class="tag tag-market">市场+学术</span>
+  </div>
+
+  <div class="highlight-item">
+    <div class="num">1</div>
+    <div class="content">沪深两市成交额突破1.5万亿，较上一日此时放量超2800亿，预计全天超2.5万亿；沪指涨1%，科创50涨超3%，有色金属净流入超80亿，半导体产业链爆发</div>
+  </div>
+
+  <div class="highlight-item">
+    <div class="num">2</div>
+    <div class="content">Conformal Kelly论文将保形预测区间与分数凯利仓位管理结合，6年开发期年化28.5%净对数增长、夏普比1.0，为量化仓位管理提供新框架</div>
+  </div>
+
+  <div class="highlight-item">
+    <div class="num">3</div>
+    <div class="content">QuantPedia重磅研究揭示短期趋势跟踪衰亡的微观结构原因：波动率归一化tick size是决定性因素，而非资产类别、流动性或策略拥挤度</div>
+  </div>
+
+  <div class="highlight-item">
+    <div class="num">4</div>
+    <div class="content">AI解读新闻引发市场异变：投资人Gavin Baker警告，AI盲从式交易使行业在6周内走完3年行情周期，市场微观结构正在被概率算法重塑</div>
+  </div>
+
+  <div class="highlight-item">
+    <div class="num">5</div>
+    <div class="content">隐含波动率面生成新框架：基于潜在流匹配的无套利IVS生成方法，结合日历价差、蝶式套利惩罚的VAE压缩，为期权做市提供创新工具</div>
+  </div>
+</div>
+
+<!-- 因子看板 -->
+<div class="section" id="factors">
+  <div class="section-header">
+    <h2>📈 因子看板</h2>
+    <span class="tag tag-market">数据</span>
+  </div>
+
+  <div class="factor-grid">
+    <div class="factor-card">
+      <div class="name">沪指</div>
+      <div class="value up">+1.00%</div>
+      <div class="change">放量上攻</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">科创50</div>
+      <div class="value up">+3.00%+</div>
+      <div class="change">半导体领涨</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">创业板指</div>
+      <div class="value up">+0.05%</div>
+      <div class="change">窄幅震荡</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">成交额</div>
+      <div class="value" style="color:var(--accent2)">1.5万亿+</div>
+      <div class="change">较前日放量2800亿</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">有色金属</div>
+      <div class="value up">净流入80亿+</div>
+      <div class="change">主力资金首位</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">电子/计算机</div>
+      <div class="value up">净流入</div>
+      <div class="change">半导体+AI双驱</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">通信设备</div>
+      <div class="value down">净流出</div>
+      <div class="change">FCC光模块禁令冲击</div>
+    </div>
+    <div class="factor-card">
+      <div class="name">韩国综指</div>
+      <div class="value up">+4.00%+</div>
+      <div class="change">美伊协议预期推动</div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px; font-size:14px; color:var(--muted);">
+    <p><strong>资金流向：</strong>主力净流入有色金属（80亿+）、电子、计算机板块；净流出通信、电网设备、食品饮料。个股方面，工业富联净买入超14亿，紫金矿业、紫光股份获大额流入；长鑫科技净卖出超20亿，新易盛、中际旭创受FCC禁令传闻冲击净流出居前。</p>
+    <p style="margin-top:8px;"><strong>板块热点：</strong>液冷服务器概念震荡走高（中金预测2026液冷放量元年，全球市场规模达1147亿元）；玻纤概念走强（花旗报告8月电子布价格涨17-18%）；半导体芯片全线爆发。</p>
+  </div>
+</div>
+
+<!-- 学术前沿 -->
+<div class="section" id="academic">
+  <div class="section-header">
+    <h2>🎓 学术前沿</h2>
+    <span class="tag tag-academic">arXiv q-fin</span>
+  </div>
+
+  <!-- 精选论文 1 -->
+  <div class="card">
+    <h3><a href="https://arxiv.org/abs/2608.01494" target="_blank">Conformal Kelly: Conformal Prediction Intervals as the Scale in Fractional Kelly Position Sizing</a></h3>
+    <div class="meta">Robert Jacob Ryan | arXiv q-fin.PM | 2026-08-04</div>
+    <div class="desc">本文将保形预测（Conformal Prediction）区间与分数凯利仓位管理相结合，提出一种自适应仓位框架：当预测不确定性增大时收缩仓位，不确定性减小时放大仓位。在6年开发窗口（2016-2021）内，含交易成本和严格杠杆限制下，实现28.5%年化净对数增长和1.0夏普比。该方法为量化策略的仓位管理提供了无需分布假设的系统性框架，实操性极强。</div>
+    <div class="score">可落地性评分：⭐⭐⭐⭐⭐ 9/10 — 可直接应用于任何有信号输出的量化策略仓位管理</div>
+  </div>
+
+  <!-- 精选论文 2 -->
+  <div class="card">
+    <h3><a href="https://arxiv.org/abs/2608.00616" target="_blank">Latent Flow Matching for Arbitrage-Aware Implied Volatility Surface Generation</a></h3>
+    <div class="meta">Oscar Brooks, Dusica Bajalica, Yating Lui, Imen Ben Tahar | arXiv q-fin | 2026-08-04</div>
+    <div class="desc">提出一种无套利隐含波动率面生成的潜在流匹配框架。首先用变分自编码器将高维IVS压缩至低维潜在空间，并以可微的日历价差、看涨价差和蝶式套利惩罚进行正则化；再用流匹配模型学习从高斯先验到经验潜在分布的传输映射，实现高质量IVS生成。为期权做市和波动率曲面建模提供了创新工具。</div>
+    <div class="score">可落地性评分：⭐⭐⭐⭐ 8/10 — 对期权策略和做市有直接应用价值</div>
+  </div>
+
+  <!-- 精选论文 3 -->
+  <div class="card">
+    <h3><a href="https://arxiv.org/abs/2608.00885" target="_blank">Optimal Trading of Microstructure Mean Reversion</a></h3>
+    <div class="meta">Lucas Rabechini Amaral | arXiv q-fin | 2026-08-04</div>
+    <div class="desc">在秒级尺度上，观测中间价包含围绕潜在有效价格的平稳均值回归误差。本文构建了一个订单簿模型，其自身委托流产生该误差，并求解使长期平均净利润率（扣除买卖价差）最大化的交易规则。在大tick流动性资产中，价差为1-2个tick，中间价在半tick网格上的奇偶性精确决定了交易时机。为高频均值回归策略提供了微观结构理论基础。</div>
+    <div class="score">可落地性评分：⭐⭐⭐⭐ 7/10 — 对高频做市策略有理论指导意义</div>
+  </div>
+
+  <!-- 论文速递列表 -->
+  <div class="card" style="margin-top:8px;">
+    <h3 style="color:var(--muted); font-size:14px; margin-bottom:12px;">📄 论文速递</h3>
+    <ul class="paper-list">
+      <li><a href="https://arxiv.org/abs/2608.00567" target="_blank">Optimal Inflation Rate: A Meta-Analysis</a><span class="source">q-fin</span></li>
+      <li><a href="https://arxiv.org/abs/2608.00127" target="_blank">Drawdown Risk Beyond Brownian Motion: A Monte-Carlo Framework</a><span class="source">q-fin</span></li>
+      <li><a href="https://arxiv.org/abs/2608.00761" target="_blank">AI and Exchange Rate Predictability</a><span class="source">q-fin — ChatGPT/DeepSeek预测汇率</span></li>
+      <li><a href="https://arxiv.org/abs/2608.00858" target="_blank">Data-Driven Measures of High-Frequency Trading</a><span class="source">q-fin — ML区分HFT策略类型</span></li>
+      <li><a href="https://arxiv.org/abs/2608.00988" target="_blank">Exactly Solvable Model for the Diffusive Price-Dynamics Paradox</a><span class="source">q-fin.ST</span></li>
+      <li><a href="https://arxiv.org/abs/2608.02355" target="_blank">Path Portfolio Optimization: Defect, Lift, and the Price of Path Complexity</a><span class="source">q-fin.PM — 路径签名组合优化</span></li>
+      <li><a href="https://arxiv.org/abs/2608.02311" target="_blank">AI Governance for Institutional Readiness in Finance</a><span class="source">q-fin.ST — AI治理架构</span></li>
+      <li><a href="https://arxiv.org/abs/2601.07687" target="_blank">Physics-Informed Singular-Value Learning for Cross-Covariances Forecasting</a><span class="source">q-fin.ST — 物理信息协方差预测</span></li>
+      <li><a href="https://arxiv.org/abs/2602.00383" target="_blank">Null-Validated Topological Signatures of Financial Market Dynamics</a><span class="source">q-fin.ST — 拓扑特征分析</span></li>
+      <li><a href="https://arxiv.org/abs/2608.01607" target="_blank">AI Financial Advice: Supply, Demand, and Life Cycle Implications</a><span class="source">q-fin.PM — GPT-5.2理财建议评估</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 策略研究 -->
+<div class="section" id="strategy">
+  <div class="section-header">
+    <h2>🧪 策略研究</h2>
+    <span class="tag tag-strategy">QuantPedia</span>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://quantpedia.com/is-trend-still-your-friend-a-microstructural-account-of-the-demise-of-short-term-trend-following/" target="_blank">Is Trend Still Your Friend? 短期趋势跟踪衰亡的微观结构解释</a></h3>
+    <div class="meta">QuantPedia | 2026-07-29</div>
+    <div class="desc">趋势跟踪曾是金融中最持久的异象之一，但2008年后表现急剧恶化。分析约100个流动性期货合约（1995-2025）发现，衰亡具有高度选择性：决定性因素不是资产类别、流动性、市场电子化或策略拥挤度，而是波动率归一化tick size。2008年后，趋势跟踪利润几乎完全在高归一化tick合约上消失，而低归一化tick合约仍保持盈利。这对CTA策略的合约选择和参数优化有重要启示。</div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction 回归预测中目标变量的选择</a></h3>
+    <div class="meta">QuantPedia | 2026-07-23</div>
+    <div class="desc">Cakici和Zaremba的研究指出，在ML股票收益预测中，预测目标的选择比模型架构或特征工程影响更大。训练预测股票排名而非原始收益水平的模型，在横截面预测能力上获得大幅提升。这一发现对构建Alpha因子和量化选股模型有直接指导意义——建议将学习目标从回归改为排序/分类。</div>
+  </div>
+
+  <div class="card">
+    <h3><a href="https://quantpedia.com/from-backtest-to-benchmark-validating-new-strategies-with-quantpedia-api/" target="_blank">From Backtest to Benchmark: Validating New Strategies with Quantpedia API</a></h3>
+    <div class="meta">QuantPedia | 2026-07-27</div>
+    <div class="desc">一个盈利的回测很少是研究的终点。更关键的问题是：策略是真正新颖的，还是只是已知因子/规则的变体？QuantPedia API现在支持将策略收益曲线与已知因子库做归因分析，帮助研究者验证策略的原创性和增量alpha贡献。这为量化研究的"去重"流程提供了系统化工具。</div>
+  </div>
+</div>
+
+<!-- 券商金工观点 -->
+<div class="section" id="broker">
+  <div class="section-header">
+    <h2>🏦 券商金工观点</h2>
+    <span class="tag tag-broker">市场综合</span>
+  </div>
+
+  <div class="card">
+    <div class="broker-item">
+      <div class="org">中金公司</div>
+      <div class="title">2026年将迎来液冷放量元年，全球智算中心液冷市场规模将达1147亿元，同比增长273%，2027年仍有望保持高增长。液冷IDC产业链具备强Alpha属性。</div>
+    </div>
+    <div class="broker-item">
+      <div class="org">高盛</div>
+      <div class="title">大幅上调中国大模型收入预期，认为性价比只是起点，能力才是真正的底牌。同时详解韩国存储"8大焦点"，关注估值、长协、库存、长鑫冲击、回购等核心议题。</div>
+    </div>
+    <div class="broker-item">
+      <div class="org">汇丰银行</div>
+      <div class="title">受AI行情驱动的印度股票资金外流已基本落幕，超80%主动型全球新兴市场基金仍低配印度，仅调回中性配置就有望带来250亿美元流入。</div>
+    </div>
+    <div class="broker-item">
+      <div class="org">花旗</div>
+      <div class="title">8月电子布价格现年内最大单月涨幅，1080/2116/7628系列均价+17-18%，年内累计+118-165%，玻纤产业链景气回升显著。</div>
+    </div>
+    <div class="broker-item">
+      <div class="org">市场综合</div>
+      <div class="title">美伊协议预期升温推动亚太股市走高，油价续跌；FCC光模块禁令传闻冲击A股通信设备板块，但"易中天"（中际旭创、新易盛、天孚通信）集体回应称FCC尚未出台相关限制文件。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 底部 -->
+<div class="footer">
+  <p>📊 量化交易资讯简报 · 由 Hermes Agent 自动生成</p>
+  <p style="margin-top:4px;">数据来源：arXiv q-fin · QuantPedia · 华尔街见闻 · 财联社 · 东方财富</p>
+  <p style="margin-top:4px;">生成时间：2026-08-05 11:10 CST</p>
+</div>
+
+</div>
+</body>
+</html>

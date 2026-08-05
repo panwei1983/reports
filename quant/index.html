@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>量化交易资讯简报 - 索引</title>
- <style>
- * { margin: 0; padding: 0; box-sizing: border-box; }
- body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #2c3e50; line-height: 1.8; }
- .container { max-width: 800px; margin: 0 auto; padding: 30px; }
- h1 { text-align: center; color: #1a1a2e; margin-bottom: 30px; }
- .report-list { list-style: none; }
- .report-list li { background: white; border-radius: 8px; margin-bottom: 10px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
- .report-list li a { color: #0f3460; text-decoration: none; font-size: 16px; font-weight: 600; }
- .report-list li a:hover { color: #e94560; }
- .report-list li .date { color: #999; font-size: 14px; margin-left: 10px; }
- .footer { text-align: center; padding: 20px; color: #999; font-size: 13px; margin-top: 30px; }
- </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量化交易资讯简报索引</title>
+<style>
+:root { --bg: #0f1117; --card: #1a1d28; --border: #2a2d3a; --accent: #4f8ef7; --text: #e2e8f0; --muted: #8892a8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; font-weight: 700; background: linear-gradient(135deg, #4f8ef7, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+.subtitle { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+.report-list { list-style: none; }
+.report-list li { padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; transition: border-color 0.2s; }
+.report-list li:hover { border-color: var(--accent); }
+.report-list a { color: var(--text); text-decoration: none; font-size: 16px; font-weight: 500; }
+.report-list a:hover { color: var(--accent); }
+.report-list .date { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.footer { text-align: center; padding: 24px 0; border-top: 1px solid var(--border); margin-top: 40px; color: var(--muted); font-size: 13px; }
+</style>
 </head>
 <body>
- <div class="container">
+<div class="container">
   <h1>📊 量化交易资讯简报</h1>
+  <div class="subtitle">每日自动采集学术论文、策略研究与市场数据 · Hermes Agent</div>
+
   <ul class="report-list">
-   <li><a href="2026-08-03.html">2026-08-03</a><span class="date">科创50跌4%+对冲基金去杠杆后净买入+MLCC涨价潮+IV曲面建模</span></li>
-   <li><a href="2026-08-02.html">2026-08-02</a></li>
-   <li><a href="2026-08-01.html">2026-08-01</a><span class="date">美联储议息变革+日元干预+AI交易去杠杆</span></li>
-</ul>
+    <li>
+      <a href="2026-08-05.html">2026年8月5日 · Conformal Kelly仓位管理 + IVS流匹配生成 + 短期趋势跟踪衰亡微观结构</a>
+      <div class="date">A股放量1.5万亿，科创50涨3%+，有色金属净流入80亿</div>
+    </li>
+    <li>
+      <a href="2026-08-04.html">2026年8月4日 · 量化日报</a>
+      <div class="date">前一交易日</div>
+    </li>
+  </ul>
+
   <div class="footer">
-   <p>Powered by Hermes Agent · 数据来源：arXiv、QuantPedia、华尔街见闻、财联社</p>
+    <p>自动生成 · 数据来源：arXiv · QuantPedia · 华尔街见闻 · 财联社 · 东方财富</p>
   </div>
- </div>
+</div>
 </body>
 </html>
