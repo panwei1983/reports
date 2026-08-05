@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-08-05 下午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category {
+    margin-bottom: 28px;
+  }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  
+  /* 股市板块速览 */
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up {
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+  .sector-card.down {
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.25);
+  }
+  .sector-card.neutral {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+  .sector-card .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .sector-card .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  
+  /* 热门板块标签 */
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .sector-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sector-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .sector-tag.up {
+    background: rgba(63,185,80,0.15);
+    color: #3fb950;
+  }
+  .sector-tag.down {
+    background: rgba(218,54,51,0.15);
+    color: #da3633;
+  }
+  
+  /* 市场关注 */
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .focus-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .focus-item strong {
+    color: var(--text-primary);
+  }
+  
+.news-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .news-item .title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .news-item .meta {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .news-item .meta a {
+    color: var(--text-link);
+    text-decoration: none;
+  }
+  .debate-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px solid var(--border);
+  }
+  .debate-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--accent-debate);
+  }
+  .debate-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .debate-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--accent-debate);
+  }
+  .debate-item .background {
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .debate-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 600px) {
+    .debate-columns { grid-template-columns: 1fr; }
+  }
+  .debate-columns .pro, .debate-columns .con {
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .debate-columns .pro {
+    background: rgba(63,185,80,0.1);
+    border: 1px solid rgba(63,185,80,0.3);
+  }
+  .debate-columns .con {
+    background: rgba(218,54,51,0.1);
+    border: 1px solid rgba(218,54,51,0.3);
+  }
+  .debate-columns h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul {
+    list-style: none;
+    padding: 0;
+  }
+  .debate-columns li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    padding-left: 16px;
+    position: relative;
+  }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions {
+    background: rgba(255,166,87,0.08);
+    border: 1px solid rgba(255,166,87,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .guiding-questions h4 {
+    font-size: 14px;
+    color: var(--accent-debate);
+    margin-bottom: 8px;
+  }
+  .guiding-questions ol {
+    padding-left: 20px;
+  }
+  .guiding-questions li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .daily-question {
+    text-align: center;
+    padding: 16px;
+    background: rgba(121,192,255,0.1);
+    border: 1px solid rgba(121,192,255,0.3);
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .daily-question .label {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .daily-question .question {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-ai);
+    margin-top: 6px;
+  }
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+  .disclaimer {
+    margin-top: 12px;
+    padding: 10px 16px;
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.2);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报 · 下午版</h1>
+  <div class="date">2026年8月5日 星期三 · 思辨讨论日</div>
+  <div class="overview">中美博弈升级：商务部反制美涉华措施并加强无人机出口管制；沪指涨超1%科创50暴涨5%+，半导体板块大爆发；DeepSeek重启融资估值5000亿；美伊谈判转机推动油价回落；华为尊界V800上市起售76.6万元</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 商务部对美反制升级：加强无人机两用物项出口管制，若美方执意加码将进一步反制</div>
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> 科创50暴涨逾5%，半导体全线爆发，"易中天"集体回应美国光模块禁令</div>
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> DeepSeek重启融资投前估值5000亿元，千问迎战Kimi和DeepSeek阿里胜算几何</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 美伊协议预期升温油价下跌，摩根大通称西芒杜铁矿或成人民币国际化突破口</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> 马斯克联手英伟达造太空AI算力网络Starmind，余承东称手机须大规模涨价</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(4)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33719470" target="_blank">河南出台带薪休假新政：领导干部要带头休假，推动全员应休尽休</a></div>
+    <div class="summary">河南省近日发布带薪年休假新政策，明确要求各级领导干部带头落实休假制度，推动机关事业单位全员"应休尽休"。新政将休假落实情况纳入考核指标，对未按规定安排休假的单位进行通报，被视为应对"加班文化"的制度性突破。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33719470" target="_blank">澎湃新闻</a> · 推荐理由：制度性反内卷信号+多省跟进预期</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33719947" target="_blank">官方通报西安赛格商场坠亡事件</a></div>
+    <div class="summary">西安赛格国际购物中心发生坠亡事件，官方通报确认系高坠死亡，排除刑事案件。事件引发公众对商场安全防护措施的关注，涉事商场已配合调查并加强安全巡查。近年来商场高空坠落事故频发，安全标准执行仍存盲区。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33719947" target="_blank">澎湃新闻</a> · 推荐理由：公共安全事件+社会关注度高</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-04/doc-inimequv3898964.shtml" target="_blank">广西桂林通报"某卫生巾疑现虫卵"：对涉事企业开展现场核查并监督抽检</a></div>
+    <div class="summary">广西桂林七星区通报称，针对网传"某品牌卫生巾疑现虫卵"事件，已第一时间对涉事企业开展现场核查，并对同款产品进行监督抽检。此前有消费者曝光购买卫生巾发现活体虫卵，引发女性用品安全讨论，涉事企业股价一度承压。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-04/doc-inimequv3898964.shtml" target="_blank">新浪新闻</a> · 推荐理由：消费品安全+女性健康关注度</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778739" target="_blank">商务部：加强无人机两用物项对美国出口管制，如美方执意出台新的对华限制性措施，中方将进一步反制</a></div>
+    <div class="summary">中国商务部宣布加强无人机相关两用物项对美出口管制，并对美国联邦通信委员会、国土安全部的涉华消极措施实施反制。商务部强调，若美方继续加码限制，中方将采取进一步反制措施。此举是对美国拟禁止进口中国新款光模块等系列限制的回应。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778739" target="_blank">华尔街见闻</a> · 推荐理由：中美博弈核心动态+双向反制升级</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33715601" target="_blank">国防部回应日本新版《防卫白皮书》：炒作所谓"中国威胁"，完全是贼喊捉贼</a></div>
+    <div class="summary">中国国防部发言人就日本新版《防卫白皮书》回应称，日方持续炒作"中国威胁论"，完全是贼喊捉贼。朝鲜方面金与正也警告称，日本一旦掌握先发制人打击能力，人类很可能再遭受悲剧惨祸，绝不能放任日本走向军事大国化。东亚安全格局持续紧张。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33715601" target="_blank">澎湃新闻</a> · 推荐理由：东亚地缘安全+多方表态联动</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-05/doc-inimfshm5227122.shtml" target="_blank">金与正警告：日本若掌握先发制人打击能力将威胁人类安全，朝鲜将制定更明确军事选项</a></div>
+    <div class="summary">朝鲜劳动党中央委员会副部长金与正发表谈话，警告日本一旦掌握先发制人打击能力，人类很可能再遭受悲剧惨祸。她表示朝鲜将根据日本动态制定更明确的军事选项，绝不能放任日本走向军事大国化。此前日本新版防卫白皮书大幅增加防务预算。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-05/doc-inimfshm5227122.shtml" target="_blank">新浪新闻</a> · 推荐理由：朝鲜罕见直接对日发声+地区安全博弈</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-05/doc-inimffsv4801158.shtml" target="_blank">高市早苗最大政治难题：日本食品价格困局</a></div>
+    <div class="summary">日本首相高市早苗支持率因应对高生活成本行动迟缓而持续承压。她早在2月大选期间便承诺下调食品消费税，但执政联盟内部对此分歧严重。日本内阁已批准食品消费税降低两年的临时措施，但能否有效缓解通胀压力仍待观察。日元贬值叠加进口依赖，使食品价格涨幅远超G7平均水平。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-05/doc-inimffsv4801158.shtml" target="_blank">新浪新闻</a> · 推荐理由：日本政局走向+民生通胀全球共性</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3926107290531973" target="_blank">震撼，马斯克联手老黄扔出星际大脑！AI算力中心射上天</a></div>
+    <div class="summary">SpaceX创始人马斯克宣布与英伟达合作打造太空AI计算网络"Starmind"，利用星链卫星部署轨道数据中心。马斯克在Q2财报会上表示，SpaceX将完全使用英伟达架构平台，并计划用火箭技术建造数据中心。该项目旨在解决地面算力瓶颈，实现全球低延迟AI推理覆盖。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3926107290531973" target="_blank">36氪</a> · 推荐理由：太空+AI融合前沿+产业格局潜在变革</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/jjxw/2026-08-05/doc-inimhawm4645428.shtml" target="_blank">余承东：手机要大规模涨价，否则都在亏损销售</a></div>
+    <div class="summary">华为常务董事余承东在尊界时代旗舰MPV发布会上表示，手机行业需要大规模涨价，目前大部分品牌都在亏损销售。他透露华为鸿蒙智行全系累计交付超过148万辆。尊界V800同日上市，起售价76.6万元。此前余承东还出现口误将24999元报成2499元，何刚现场帮补救。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/jjxw/2026-08-05/doc-inimhawm4645428.shtml" target="_blank">新浪科技</a> · 推荐理由：手机涨价信号+华为生态布局</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778731" target="_blank">三星、SK海力士在华工厂测试中国芯片制造设备，防范美国管制升级</a></div>
+    <div class="summary">据媒体报道，三星电子和SK海力士正在其中国工厂测试中国本土芯片制造设备，以防范美国出口管制进一步升级导致设备断供。两家公司此前已获得美国对华出口管制豁免，但考虑到政策不确定性，正加速推进设备替代方案。韩国警方已立案调查三星、SK海力士CEO涉嫌"绩效奖金"背信罪。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778731" target="_blank">华尔街见闻</a> · 推荐理由：半导体供应链重构+中美技术脱钩</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33713612" target="_blank">鸿蒙智行回应"竹知了"事件：相关投诉均有明确侵权事实</a></div>
+    <div class="summary">鸿蒙智行就"竹知了"自媒体事件发布声明，称相关投诉均有明确侵权事实，不存在仅为正常制作展示内容的情况。该事件此前引发大量车主和自媒体讨论，涉及自媒体测评内容合规性和车企维权边界问题。声明发布后争议仍未平息。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33713612" target="_blank">澎湃新闻</a> · 推荐理由：车企与自媒体博弈+行业治理新议题</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778711" target="_blank">美伊协议预期升温，日韩股市收高，油价下跌、金价上涨</a></div>
+    <div class="summary">美伊谈判出现转机，伊朗国家电视台表示海峡重新开放取决于美国改变行为。特朗普称霍尔木兹海峡很快开放否则伊朗将遭打击。受此影响国际油价下跌，日韩股市收高（SK海力士涨5.7%），金价接近一个月高点，美股黄金矿业股盘前普涨。霍尔木兹海峡局势仍是全球能源市场最大变量。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778711" target="_blank">华尔街见闻</a> · 推荐理由：地缘政治核心变量+全球资产定价锚</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778704" target="_blank">人民币国际化新路径：摩根大通称西芒杜铁矿或成"铁矿石人民币"突破口</a></div>
+    <div class="summary">摩根大通最新报告指出，人民币国际化未必先从"石油人民币"突破，更可能先从"铁矿石人民币"打开缺口。沉睡近30年的几内亚西芒杜铁矿（储量超30亿吨、投资超200亿美元）正成为人民币国际化试验场。中国企业出钱、采矿、修铁路、建港口，铁矿石未来用什么货币交易、由谁定价成为关键。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778704" target="_blank">华尔街见闻</a> · 推荐理由：人民币国际化新思路+资源定价权博弈</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778736" target="_blank">沃什面前只有两条路：要么引爆"金融危机2.0"，要么点燃"美元危机1.0"？</a></div>
+    <div class="summary">随着美联储新任主席沃什的政策路径引发市场震荡，分析师提出"两难困境"：继续紧缩可能引爆新一轮金融危机，而转向宽松则可能点燃美元信用危机。达力欧警告AI泡沫接近2000年水平，"股市财富不等于现金"。贝森特为沃什辩护称市场正经历美联储过度指引的"排毒"过程。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778736" target="_blank">华尔街见闻</a> · 推荐理由：全球流动性拐点+美元体系深层矛盾</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览卡片 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">贵金属</div>
+      <div class="value">+7.65%</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">集运概念</div>
+      <div class="value">-3.2%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">+58亿元</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">半导体 +5.8%</span>
+      <span class="sector-tag up">贵金属 +7.65%</span>
+      <span class="sector-tag up">光模块 +4.2%</span>
+      <span class="sector-tag up">AI应用 +3.5%</span>
+      <span class="sector-tag down">航运 -3.2%</span>
+    </div>
+  </div>
+
+  <!-- 市场关注个股 -->
+  <div class="market-focus">
+    <h4>👀 市场关注</h4>
+    <div class="focus-item"><strong>金诚信 +10%</strong>：签约刚果(金)铜矿及内蒙古钨矿合同，总金额约11.93亿美元及1.7亿元</div>
+    <div class="focus-item"><strong>顺络电子 +5.02%</strong>：专利诉讼一审胜诉，原告村田上诉至最高院，二审尚未开庭</div>
+    <div class="focus-item"><strong>东山精密</strong>：回应美国光模块禁令传闻，称目前仅为市场消息，持续跟踪海外监管动态</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778711" target="_blank">沪指涨超1%，科创50暴涨逾5%，半导体大爆发，"易中天"集体回应美国光模块禁令</a></div>
+    <div class="summary">A股三大指数集体上涨，上证指数报3878.43点(+1.47%)，深证成指+1.86%，创业板指+1.32%，中证500+2.65%。科创50暴涨逾5%，半导体板块全线爆发。中际旭创、易飞扬、天孚通信("易中天")集体回应美国拟禁止进口中国新款光模块传闻。港股科网股盘中反弹。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778711" target="_blank">华尔街见闻</a> · 推荐理由：A股大涨核心主线+科技反制概念</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.cls.cn/telegraph" target="_blank">美股存储板块盘前走低，SK海力士跌3.5%，美光跌2%</a></div>
+    <div class="summary">美股存储芯片板块盘前集体走低，SK海力士跌幅扩大至3.5%，美光科技跌2%。TrendForce报告显示DRAM现货价格上涨势头自7月下旬以来有所减弱，NAND闪存价格反弹动能不足。SK海力士称尚未就子公司Solidigm的5万亿韩元Pre-IPO融资做出决定。</div>
+    <div class="meta">来源：<a href="https://www.cls.cn/telegraph" target="_blank">财联社</a> · 推荐理由：存储周期拐点信号+AI供应链估值重估</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778741" target="_blank">上海楼市淡季不淡：一楼盘100套房30分钟售罄，7月新房成交前四楼盘全是"10万+"</a></div>
+    <div class="summary">上海楼市7月成交火热，某楼盘100套房30分钟售罄，平均每分钟销售1亿元。7月新房成交前四楼盘均为单价10万+豪宅项目。多地楼市同比保持增长，上海豪宅项目开盘即日光。7月全国乘用车零售150.6万辆，同比降18%，但新能源渗透率持续提升。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778741" target="_blank">华尔街见闻</a> · 推荐理由：楼市分化加剧+核心城市豪宅独立行情</div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/wm/2026-08-05/doc-inimfmyv1554159.shtml" target="_blank">独家：DeepSeek重启融资，投前估值5000亿元</a></div>
+    <div class="summary">据独家消息，DeepSeek已重启融资，投前估值达5000亿元人民币（约700亿美元），较此前估值大幅跃升。该公司凭借开源大模型在全球AI竞赛中异军突起，调用量已升至全球第一。如融资完成，DeepSeek将成为中国估值最高的AI初创公司之一，仅次于月之暗面Kimi的上一轮估值。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/wm/2026-08-05/doc-inimfmyv1554159.shtml" target="_blank">新浪财经独家</a> · 推荐理由：中国AI估值新标杆+开源商业化模式验证</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3924957421975944" target="_blank">千问迎战Kimi、DeepSeek，阿里的胜算在哪？</a></div>
+    <div class="summary">阿里千问大模型在最新基准测试中跑分亮眼，但用户口碑与实际体验仍有落差。在Kimi K3开源搅局、DeepSeek调用量登顶的背景下，阿里如何将技术优势转化为市场胜势成为焦点。分析指出，阿里的电商数据和云计算生态是独特壁垒，但C端心智占领仍面临挑战。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3924957421975944" target="_blank">36氪</a> · 推荐理由：中国AI三强格局+商业化路径分化</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3925157533677958" target="_blank">中国版「生物DeepSeek」诞生，4个牛津学霸让AI接管生命科学</a></div>
+    <div class="summary">牛津归国团队创办津渡生科，推出全球首个原始预训练多组学大模型GeneLLM，被业内称为"生物DeepSeek"。该模型从基因序列、蛋白质结构到细胞功能进行全链路建模，可用于药物靶点发现和精准医疗。团队已获数亿元融资，正与多家药企开展合作。分子之心创始人许锦波也指出，AI正推动生物药研发从"大规模筛选"转向"可编程设计"。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3925157533677958" target="_blank">36氪</a> · 推荐理由：AI+生命科学前沿突破+中国原创模型</div>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨 · 思辨讨论日</div>
+
+  <!-- 话题①：美国光模块禁令与中国科技反制 -->
+  <div class="debate-item">
+    <h3>话题①：美国光模块禁令与中国科技反制——脱钩是回不去了，但代价谁来扛？</h3>
+    
+    <div class="background">
+      <p><span class="bg-label">事件背景</span></p>
+      <p>2026年8月初，多家媒体披露特朗普政府正在起草行政命令，拟禁止进口中国新款光模块。光模块是AI数据中心核心部件，中国企业在全球光模块市场占据约60%份额，中际旭创、新易盛、天孚通信("易中天")等为英伟达、谷歌等北美云厂商的核心供应商。消息传出后，"易中天"三家公司迅速发布声明回应。</p>
+      <p><span class="bg-label">中方反制升级</span></p>
+      <p>中国商务部随即宣布加强无人机两用物项对美出口管制，并对美国联邦通信委员会、国土安全部涉华消极措施实施反制。商务部明确表示，若美方执意出台新的对华限制性措施，中方将进一步反制。这是继稀土管制后，中方在科技领域对美反制的又一次升级。</p>
+      <p><span class="bg-label">市场反应</span></p>
+      <ol class="timeline">
+        <li>A股光模块板块不跌反涨，中际旭创等涨停，市场将禁令解读为"国产替代加速"信号</li>
+        <li>科创50暴涨逾5%，半导体板块全线爆发，北向资金净流入58亿元</li>
+        <li>东山精密回应称"目前仅为市场消息"，三星、SK海力士加速测试中国本土芯片设备</li>
+        <li>英特尔EMIB先进封装良率获联发科确认"已达到非常不错的水准"，谷歌TPU可能转单英特尔</li>
+      </ol>
+      <p><span class="bg-label">核心数据</span></p>
+      <p>中国企业占全球光模块市场约<strong>60%</strong>份额；全球AI数据中心光模块市场2026年预计超<strong>200亿美元</strong>；鸿海7月销售额同比大增<strong>54%</strong>（AI产品需求驱动）；台积电扩大AI芯片CoW封装外包，产能瓶颈有望缓解。</p>
+    </div>
+    
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 反制有理：科技主权不可退让</h4>
+        <ul>
+          <li>中国在全球光模块市场占据主导地位（60%份额），美方禁令反而暴露其对中国供应链的依赖</li>
+          <li>商务部反制措施精准打击美方痛点（无人机两用物项、合规性测试公司），显示反制工具箱充足</li>
+          <li>A股半导体板块不跌反涨，市场已将脱钩压力转化为国产替代动力</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 脱钩代价：双输格局无人幸免</h4>
+        <ul>
+          <li>光模块禁令将推高美国AI数据中心建设成本，延缓算力扩张，损害谷歌、Meta等巨头利益</li>
+          <li>中国光模块企业失去北美高端市场订单，营收和研发投入受限，长期竞争力受损</li>
+          <li>三星、SK海力士被迫测试中国设备"备胎"，全球半导体供应链效率下降，成本最终转嫁消费者</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导 · 5问深挖</h4>
+      <ol>
+        <li><strong>事实判断：</strong>美国光模块禁令的具体范围是什么？是否包含所有中国产光模块，还是仅限"新款"？中方的无人机出口管制实际影响美方哪些领域？各方叙事差异在哪里？</li>
+        <li><strong>数据支撑：</strong>中国光模块企业北美营收占比数据（中际旭创海外营收约70%）；美国AI数据中心建设成本因供应链替代增加的幅度（预计15-30%）；全球半导体设备国产化率现状（光刻<5%，刻蚀约20%）。</li>
+        <li><strong>理论框架：</strong>博弈论中的"相互确保伤害"（Mutually Assured Damage）模型：当双方都有能力伤害对方时，合作均衡优于对抗均衡，但信任缺失可能导致"囚徒困境"。制度经济学中的"路径依赖"：全球供应链已深度互嵌，脱钩的切换成本远超预期。</li>
+        <li><strong>价值判断：</strong>科技主权vs.全球分工效率，哪个更值得优先保护？短期市场波动vs.长期产业安全，如何权衡？消费者利益vs.国家战略利益，谁优先？</li>
+        <li><strong>利益权衡：</strong>若美方坚持禁令→中国光模块企业加速转向国内和东南亚市场，但高端产品毛利下降；若中方反制升级→美国无人机、农业、消费品受冲击，但中国出口企业也面临订单流失。谁是赢家？谁最先扛不住？</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 话题②：DeepSeek 5000亿估值与AI泡沫 -->
+  <div class="debate-item">
+    <h3>话题②：DeepSeek估值5000亿——AI泡沫还是价值发现？</h3>
+    
+    <div class="background">
+      <p><span class="bg-label">事件背景</span></p>
+      <p>2026年8月5日，独家消息披露DeepSeek已重启融资，投前估值达<strong>5000亿元人民币</strong>（约700亿美元）。此前DeepSeek凭借开源大模型在全球AI竞赛中异军突起，调用量已升至全球第一。36氪同日发表《千问迎战Kimi、DeepSeek，阿里的胜算在哪？》，指出中国AI三强格局形成。</p>
+      <p><span class="bg-label">估值争议</span></p>
+      <p>5000亿元估值意味着DeepSeek的市销率（PS）可能超过50倍（假设2026年营收100亿元级别）。对比之下，OpenAI最新估值约3000亿美元，Anthropic约600亿美元。达力欧同日警告AI泡沫接近<strong>2000年互联网泡沫</strong>水平，称"股市财富不等于现金"。硅基流动港股IPO招股书数据与官方推文严重不符，11项发明专利撑起77.4亿估值，增长负责人IPO前夕突然离职。</p>
+      <p><span class="bg-label">行业动态</span></p>
+      <ol class="timeline">
+        <li>SpaceX业绩炸裂但股价暴跌——高盛力挺称AI业务颠覆估值逻辑，花旗长期看到900美元</li>
+        <li>AMD史上最好财报，换来9%暴跌——"市场要的不是好，是加速"</li>
+        <li>鸿海7月销售额同比大增54%，AI产品需求强劲，预计Q3 AI机架出货续增</li>
+        <li>大摩拟转售150亿美元数据中心银行贷款——AI基建债成烫手山芋</li>
+        <li>淡水泉最新表态：7月AI行情回调更多是情绪，而非基本面变化</li>
+      </ol>
+    </div>
+    
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✓ 价值发现：AI是真正的基础设施革命</h4>
+        <ul>
+          <li>DeepSeek调用量全球第一，已证明产品市场匹配度（PMF），开源模式带来网络效应壁垒</li>
+          <li>AI正从"技术概念"进入"生产工具"阶段——西门子能源考虑在燃气轮机车间部署AI，非科技公司也开始买单</li>
+          <li>全球AI资本开支仍在加速（鸿海+54%、台积电扩封装），产业链数据验证需求真实性</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>✗ 泡沫预警：估值脱离基本面</h4>
+        <ul>
+          <li>5000亿估值vs.百亿级营收，PS超50倍，远超任何成熟科技公司的估值水平</li>
+          <li>硅基流动招股书造假、增长负责人离职——AI创业公司质量参差不齐，融资泡沫明显</li>
+          <li>大摩转售150亿AI基建债无人接盘，说明机构投资者对AI回报周期已产生疑虑</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导 · 5问深挖</h4>
+      <ol>
+        <li><strong>事实判断：</strong>DeepSeek 5000亿估值基于什么逻辑？是营收倍数法、用户价值法还是战略溢价？不同估值方法得出的结论差异有多大？</li>
+        <li><strong>数据支撑：</strong>2000年互联网泡沫期间纳斯达克整体PS约15倍，当前AI头部公司PS普遍30-80倍；DeepSeek调用量全球第一的具体数据（DAU、API调用量、付费转化率）；全球AI资本开支2024-2026年CAGR超40%。</li>
+        <li><strong>理论框架：</strong>技术成熟度曲线（Gartner Hype Cycle）：当前AI可能处于"期望膨胀期"顶点，随后将进入"幻灭低谷期"。凯恩斯选美理论：投资者不是在选最好的公司，而是在猜其他投资者会选什么，这解释了"好财报反跌"的现象。</li>
+        <li><strong>价值判断：</strong>估值泡沫是否一定是坏事？2000年互联网泡沫虽然破裂，但留下了光纤基础设施和亚马逊等伟大公司。AI泡沫若破裂，会留下什么？散户接盘vs.机构套利，谁在承担风险？</li>
+        <li><strong>利益权衡：</strong>若AI估值回归理性→DeepSeek等公司融资困难，研发放缓，但淘汰低质量项目；若泡沫继续膨胀→短期财富效应推动消费和投资，但破裂时对金融系统和养老金冲击更大。你愿意在哪一侧下注？</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 本日追问 -->
+  <div class="daily-question">
+    <div class="label">🎯 本日追问 · 连接两个话题</div>
+    <div class="question">当中美科技脱钩遇上AI估值泡沫——脱钩让中国AI公司失去北美市场，是否会加速泡沫破裂？还是"被迫内循环"反而给了DeepSeek们一个无法被证伪的估值故事？</div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  ⚠️ 股市数据仅供参考，不构成投资建议
+</div>
+
+<div class="footer">
+  生成时间：2026-08-05 17:30 | 数据源：5 | 采集条目：20<br>
+  数据来源：澎湃新闻、新浪热搜、华尔街见闻、36氪、财联社<br>
+  📋 本简报由 Hermes Agent 自动生成
+</div>
+
+</body>
+</html>
