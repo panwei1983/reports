@@ -3,42 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>量化交易资讯简报索引</title>
+<title>量化交易资讯简报 | 索引</title>
 <style>
-:root { --bg: #0f1117; --card: #1a1d28; --border: #2a2d3a; --accent: #4f8ef7; --text: #e2e8f0; --muted: #8892a8; }
+:root {
+  --bg: #0f1117;
+  --card: #1a1d28;
+  --border: #2a2d3a;
+  --text: #e4e4e7;
+  --muted: #8b8fa3;
+  --accent: #6366f1;
+  --accent2: #22d3ee;
+}
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
-h1 { font-size: 26px; font-weight: 700; background: linear-gradient(135deg, #4f8ef7, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
-.subtitle { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
-.report-list { list-style: none; }
-.report-list li { padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; transition: border-color 0.2s; }
-.report-list li:hover { border-color: var(--accent); }
-.report-list a { color: var(--text); text-decoration: none; font-size: 16px; font-weight: 500; }
-.report-list a:hover { color: var(--accent); }
-.report-list .date { color: var(--muted); font-size: 13px; margin-top: 4px; }
-.footer { text-align: center; padding: 24px 0; border-top: 1px solid var(--border); margin-top: 40px; color: var(--muted); font-size: 13px; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.7; padding:40px 24px; }
+.container { max-width:720px; margin:0 auto; }
+h1 { font-size:1.5rem; font-weight:700; margin-bottom:8px; }
+h1 span { color:var(--accent); }
+.subtitle { color:var(--muted); font-size:0.85rem; margin-bottom:32px; }
+.report-list { list-style:none; }
+.report-list li { margin-bottom:12px; }
+.report-list a { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px 20px; text-decoration:none; color:var(--text); transition:border-color 0.2s; }
+.report-list a:hover { border-color:var(--accent); }
+.date-badge { flex-shrink:0; background:var(--accent); color:#fff; border-radius:6px; padding:4px 10px; font-size:0.78rem; font-weight:600; }
+.report-info { flex:1; }
+.report-info .title { font-size:0.9rem; font-weight:500; }
+.report-info .meta { color:var(--muted); font-size:0.75rem; }
+.new-tag { background:rgba(74,222,128,0.15); color:#4ade80; border-radius:4px; padding:2px 8px; font-size:0.7rem; font-weight:600; }
+footer { text-align:center; color:var(--muted); font-size:0.75rem; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
 </style>
 </head>
 <body>
 <div class="container">
-  <h1>📊 量化交易资讯简报</h1>
-  <div class="subtitle">每日自动采集学术论文、策略研究与市场数据 · Hermes Agent</div>
+<h1>📊 量化交易资讯简报 <span>索引</span></h1>
+<p class="subtitle">每日学术论文 · 市场数据 · 策略研究 · 券商金工</p>
 
-  <ul class="report-list">
-    <li>
-      <a href="2026-08-05.html">2026年8月5日 · Conformal Kelly仓位管理 + IVS流匹配生成 + 短期趋势跟踪衰亡微观结构</a>
-      <div class="date">A股放量1.5万亿，科创50涨3%+，有色金属净流入80亿</div>
-    </li>
-    <li>
-      <a href="2026-08-04.html">2026年8月4日 · 量化日报</a>
-      <div class="date">前一交易日</div>
-    </li>
-  </ul>
+<ul class="report-list">
+<li>
+<a href="2026-08-06.html">
+<span class="date-badge">08-06</span>
+<span class="report-info">
+<span class="title">2026-08-06 量化交易资讯简报</span>
+<span class="meta">黄金大涨4% · A股放量反弹 · 杠杆ETF套利 · 无套利IVS生成</span>
+</span>
+<span class="new-tag">NEW</span>
+</a>
+</li>
+<li>
+<a href="2026-08-05.html">
+<span class="date-badge">08-05</span>
+<span class="report-info">
+<span class="title">2026-08-05 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-08-03.html">
+<span class="date-badge">08-03</span>
+<span class="report-info">
+<span class="title">2026-08-03 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-08-02.html">
+<span class="date-badge">08-02</span>
+<span class="report-info">
+<span class="title">2026-08-02 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-08-01.html">
+<span class="date-badge">08-01</span>
+<span class="report-info">
+<span class="title">2026-08-01 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-07-31.html">
+<span class="date-badge">07-31</span>
+<span class="report-info">
+<span class="title">2026-07-31 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-07-30.html">
+<span class="date-badge">07-30</span>
+<span class="report-info">
+<span class="title">2026-07-30 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-07-29.html">
+<span class="date-badge">07-29</span>
+<span class="report-info">
+<span class="title">2026-07-29 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-07-27.html">
+<span class="date-badge">07-27</span>
+<span class="report-info">
+<span class="title">2026-07-27 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-07-26.html">
+<span class="date-badge">07-26</span>
+<span class="report-info">
+<span class="title">2026-07-26 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+<li>
+<a href="2026-07-24.html">
+<span class="date-badge">07-24</span>
+<span class="report-info">
+<span class="title">2026-07-24 量化交易资讯简报</span>
+<span class="meta">学术论文 · 市场数据 · 策略研究</span>
+</span>
+</a>
+</li>
+</ul>
 
-  <div class="footer">
-    <p>自动生成 · 数据来源：arXiv · QuantPedia · 华尔街见闻 · 财联社 · 东方财富</p>
-  </div>
 </div>
+
+<footer>
+<p>量化交易资讯简报 | 每日自动生成 | Generated by Hermes Agent</p>
+</footer>
+
 </body>
 </html>

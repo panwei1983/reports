@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量化交易资讯简报 | 2026-08-06</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --card: #1a1d28;
+  --border: #2a2d3a;
+  --text: #e4e4e7;
+  --muted: #8b8fa3;
+  --accent: #6366f1;
+  --accent2: #22d3ee;
+  --green: #4ade80;
+  --red: #f87171;
+  --yellow: #fbbf24;
+  --tag-bg: rgba(99,102,241,0.15);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; line-height:1.7; padding:0 0 60px; }
+.container { max-width:960px; margin:0 auto; padding:20px 24px; }
+h1 { font-size:1.6rem; font-weight:700; margin-bottom:4px; }
+h1 span { color:var(--accent); }
+.subtitle { color:var(--muted); font-size:0.85rem; margin-bottom:24px; }
+.summary { background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(34,211,238,0.08)); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:28px; font-size:1rem; line-height:1.8; }
+.toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 24px; margin-bottom:28px; }
+.toc h2 { font-size:0.9rem; color:var(--muted); margin-bottom:10px; letter-spacing:0.05em; }
+.toc ul { list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; }
+.toc a { color:var(--accent2); text-decoration:none; font-size:0.88rem; }
+.toc a:hover { text-decoration:underline; }
+.section { margin-bottom:32px; }
+.section-title { font-size:1.15rem; font-weight:700; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid var(--accent); display:inline-block; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin-bottom:12px; }
+.card h3 { font-size:0.95rem; font-weight:600; margin-bottom:6px; }
+.card h3 a { color:var(--accent2); text-decoration:none; }
+.card h3 a:hover { text-decoration:underline; }
+.card p { color:var(--muted); font-size:0.85rem; margin-bottom:6px; }
+.tag { display:inline-block; background:var(--tag-bg); color:var(--accent); border-radius:4px; padding:2px 8px; font-size:0.75rem; margin-right:4px; }
+.tag.green { background:rgba(74,222,128,0.15); color:var(--green); }
+.tag.red { background:rgba(248,113,113,0.15); color:var(--red); }
+.tag.yellow { background:rgba(251,191,36,0.15); color:var(--yellow); }
+.score { font-weight:700; }
+.score.high { color:var(--green); }
+.score.mid { color:var(--yellow); }
+.score.low { color:var(--red); }
+.highlight-item { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; }
+.highlight-num { flex-shrink:0; width:28px; height:28px; background:var(--accent); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; }
+.highlight-text { flex:1; }
+.highlight-text strong { display:block; margin-bottom:2px; }
+.highlight-text span { color:var(--muted); font-size:0.85rem; }
+.factor-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+.factor-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:12px 14px; text-align:center; }
+.factor-card .name { font-size:0.85rem; color:var(--muted); margin-bottom:4px; }
+.factor-card .value { font-size:1.3rem; font-weight:700; }
+.factor-card .value.up { color:var(--green); }
+.factor-card .value.down { color:var(--red); }
+.paper-list { list-style:none; }
+.paper-list li { padding:8px 0; border-bottom:1px solid var(--border); font-size:0.88rem; }
+.paper-list li:last-child { border-bottom:none; }
+.paper-list li a { color:var(--accent2); text-decoration:none; }
+.paper-list li a:hover { text-decoration:underline; }
+.paper-list li .meta { color:var(--muted); font-size:0.78rem; }
+.broker-item { padding:10px 0; border-bottom:1px solid var(--border); }
+.broker-item:last-child { border-bottom:none; }
+.broker-item .org { color:var(--accent); font-size:0.8rem; font-weight:600; }
+.broker-item .title { font-size:0.9rem; margin:4px 0; }
+.broker-item .date { color:var(--muted); font-size:0.78rem; }
+footer { text-align:center; color:var(--muted); font-size:0.75rem; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📊 量化交易资讯简报 | <span>2026-08-06</span></h1>
+<p class="subtitle">每日学术论文 · 市场数据 · 策略研究 · 券商金工</p>
+
+<div class="summary">
+A股三大股指盘中集体翻红，有色金属与半导体产业链强势领涨，创业板指涨逾1%；黄金单日大涨4%创近期新高；TMT基金遭遇历史级重创，摩根大通指出AI交易将越来越依赖散户资金；arXiv新论文聚焦隐含波动率曲面生成与杠杆ETF套利机制。
+</div>
+
+<div class="toc">
+<h2>📑 目录</h2>
+<ul>
+<li><a href="#highlights">今日要点</a></li>
+<li><a href="#factors">因子看板</a></li>
+<li><a href="#academic">学术前沿</a></li>
+<li><a href="#strategy">策略研究</a></li>
+<li><a href="#broker">券商金工观点</a></li>
+<li><a href="#market">市场数据</a></li>
+</ul>
+</div>
+
+<!-- ==================== 今日要点 ==================== -->
+<div class="section" id="highlights">
+<div class="section-title">🔥 今日要点</div>
+
+<div class="highlight-item">
+<div class="highlight-num">1</div>
+<div class="highlight-text">
+<strong>黄金单日大涨4%，隔夜市场最亮资产</strong>
+<span>金价突破关键阻力位，地缘风险（伊朗-阿曼海峡协议）叠加避险需求推动，黄金成为隔夜市场最强品种。</span>
+</div>
+</div>
+
+<div class="highlight-item">
+<div class="highlight-num">2</div>
+<div class="highlight-text">
+<strong>A股放量反弹：半导体+先进封装+电子特气三线爆发</strong>
+<span>沪深两市成交额突破1.5万亿，较上日放量超40亿，预计全天近2.6万亿。先进封装概念持续反弹，长电科技涨停；电子特气概念走强，和远气体2连板。</span>
+</div>
+</div>
+
+<div class="highlight-item">
+<div class="highlight-num">3</div>
+<div class="highlight-text">
+<strong>TMT基金遭遇历史级重创，摩根大通：AI交易将越来越依赖散户资金</strong>
+<span>机构资金流出TMT板块显著，摩根大通警示AI交易对散户资金的依赖度上升，市场结构可能发生质变。</span>
+</div>
+</div>
+
+<div class="highlight-item">
+<div class="highlight-num">4</div>
+<div class="highlight-text">
+<strong>arXiv新论文：杠杆ETF收盘再平衡套利机制研究</strong>
+<span>Yinhong Zhao发表"Preying on Leveraged ETFs"，分析套利者如何利用杠杆ETF收盘再平衡机制进行套利，以韩国市场2026年极端波动为案例。</span>
+</div>
+</div>
+
+<div class="highlight-item">
+<div class="highlight-num">5</div>
+<div class="highlight-text">
+<strong>美日干预1000亿美元后，套利交易影响几何？</strong>
+<span>日本央行已动用约1000亿美元干预汇市，市场关注后续工具及对套利交易的持续影响。</span>
+</div>
+</div>
+</div>
+
+<!-- ==================== 因子看板 ==================== -->
+<div class="section" id="factors">
+<div class="section-title">📈 因子看板</div>
+
+<div class="factor-grid">
+<div class="factor-card">
+<div class="name">创业板指</div>
+<div class="value up">+1.0%+</div>
+</div>
+<div class="factor-card">
+<div class="name">沪指</div>
+<div class="value up">+0.33%</div>
+</div>
+<div class="factor-card">
+<div class="name">深成指</div>
+<div class="value up">+0.64%</div>
+</div>
+<div class="factor-card">
+<div class="name">恒科指</div>
+<div class="value down">-1.0%+</div>
+</div>
+<div class="factor-card">
+<div class="name">黄金</div>
+<div class="value up">+4.0%</div>
+</div>
+<div class="factor-card">
+<div class="name">沪镍</div>
+<div class="value down">-2.0%+</div>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<h3>💰 资金流向</h3>
+<p><strong>主力净流入：</strong>电子、机械设备、通信板块</p>
+<p><strong>主力净流出：</strong>电新行业（超68亿）、文化传媒、计算机</p>
+<p><strong>个股亮点：</strong>长电科技净买入超14亿（涨停）；长鑫科技净卖出超20亿</p>
+<p><strong>南向资金：</strong>净买入30亿港元</p>
+<p><strong>成交额：</strong>沪深两市突破1.5万亿，预计全天近2.6万亿</p>
+</div>
+</div>
+
+<!-- ==================== 学术前沿 ==================== -->
+<div class="section" id="academic">
+<div class="section-title">🎓 学术前沿</div>
+
+<div class="card">
+<h3>1. <a href="https://arxiv.org/abs/2608.00616" target="_blank">Latent Flow Matching for Arbitrage-Aware Implied Volatility Surface Generation</a></h3>
+<p><span class="tag">arXiv q-fin.CP</span> <span class="tag green">精选</span></p>
+<p><strong>作者：</strong>Oscar Brooks, Dusica Bajalica, Yating Liu, Imen Ben Tahar</p>
+<p><strong>核心观点：</strong>提出基于隐空间流匹配的无套利隐含波动率曲面生成框架。先通过变分自编码器将高维曲面压缩至低维隐空间，并引入可微分日历差价、看涨差价和蝶式套利惩罚项进行正则化，再用流匹配模型学习从高斯先验到经验隐分布的传输映射。该方法可生成无套利约束的IVS，对期权做市和风险管理具有直接应用价值。</p>
+<p><strong>可落地性评分：</strong><span class="score high">4/5</span> — 无套利IVS生成直接可用于期权定价和风控系统</p>
+</div>
+
+<div class="card">
+<h3>2. <a href="https://arxiv.org/abs/2608.03703" target="_blank">Preying on Leveraged ETFs</a></h3>
+<p><span class="tag">arXiv q-fin</span> <span class="tag green">精选</span></p>
+<p><strong>作者：</strong>Yinhong Zhao</p>
+<p><strong>核心观点：</strong>研究套利者如何利用杠杆ETF收盘再平衡机制进行套利。杠杆ETF必须在收盘时按当日涨跌方向交易，其需求随价格上涨而增加，套利者提前买入并在收盘时放大订单量，随后在制造的价格上抛售。以韩国市场2026年极端波动为案例验证，发现盘前美国新闻出现反转模式，与套利行为一致。</p>
+<p><strong>可落地性评分：</strong><span class="score high">4/5</span> — 可直接应用于A股杠杆ETF再平衡窗口的套利策略设计</p>
+</div>
+
+<div class="card">
+<h3>3. <a href="https://arxiv.org/abs/2608.03925" target="_blank">Option Pricing with Time-Changed Fractional Brownian Motion: A Fractional Variance Gamma Model</a></h3>
+<p><span class="tag">arXiv q-fin</span> <span class="tag green">精选</span></p>
+<p><strong>作者：</strong>Robert Jarrow, Jayen Tan</p>
+<p><strong>核心观点：</strong>提出分数方差Gamma模型，通过在随机Gamma活动时间上评估分数布朗运动来解决fBm非半鞅性质导致的套利定价难题。活动时间代表累计执行交易量，该模型保留了fBm的长程依赖、路径粗糙性和反常扩散等特性，同时恢复了无套利框架，为期权定价提供了新思路。</p>
+<p><strong>可落地性评分：</strong><span class="score mid">3/5</span> — 理论创新性强，但实际落地需进一步验证参数估计</p>
+</div>
+
+<div class="card">
+<h3>📜 论文速递</h3>
+<ul class="paper-list">
+<li><a href="https://arxiv.org/abs/2608.02817" target="_blank">Reviving Micro Real Rigidities: The Importance of Demand Shocks</a> <span class="meta">— S. Borağan Aruoba 等 | 菜单成本模型中需求冲击与货币非中性</span></li>
+<li><a href="https://arxiv.org/abs/2608.02917" target="_blank">Mandate without Managers: AMMs as Verifiable Portfolio Products</a> <span class="meta">— Feinstein 等 | AMM作为可验证投资组合产品</span></li>
+<li><a href="https://arxiv.org/abs/2608.03466" target="_blank">A Unifying Perspective on the Collapse to the Mean for Law-Invariant Functionals</a> <span class="meta">— Felix-Benedikt Liebrich | 律不变泛函的均值坍缩现象</span></li>
+<li><a href="https://arxiv.org/abs/2608.03504" target="_blank">Stochastic Choice with Advertising</a> <span class="meta">— Henrik Petri 等 | 广告对消费者选择的影响建模</span></li>
+<li><a href="https://arxiv.org/abs/2608.02778" target="_blank">Neural Networks with Local Converging Inputs for Efficient Options Pricing</a> <span class="meta">— Harris Cobb 等 | 神经网络局部收敛输入提升多资产期权定价效率</span></li>
+<li><a href="https://arxiv.org/abs/2608.02828" target="_blank">Proper-score Observation-driven Filters</a> <span class="meta">— Giulia Livieri 等 | 适当评分驱动的观测滤波器</span></li>
+<li><a href="https://arxiv.org/abs/2608.03616" target="_blank">Measuring the Engine of a Liquidation Cascade</a> <span class="meta">— Ramon Marc Garcia Seuma | 加密货币永续合约清算级联的分支比测量</span></li>
+<li><a href="https://arxiv.org/abs/2606.08232" target="_blank">Hour-Aware Adaptive Risk Management for Memecoin Trading on Solana DEXs</a> <span class="meta">— Arati Uday Kamat | Solana DEX上Memecoin交易的时间感知风控</span></li>
+<li><a href="https://arxiv.org/abs/2607.02795" target="_blank">Coordinated Sniper Cohorts on Pump.fun</a> <span class="meta">— Arati Uday Kamat | Solana pump.fun协调狙击钱包检测</span></li>
+</ul>
+</div>
+</div>
+
+<!-- ==================== 策略研究 ==================== -->
+<div class="section" id="strategy">
+<div class="section-title">🧪 策略研究</div>
+
+<div class="card">
+<h3>1. 杠杆ETF收盘再平衡套利策略</h3>
+<p><span class="tag">策略研究</span> <span class="tag yellow">套利</span></p>
+<p><strong>来源：</strong>arXiv论文 "Preying on Leveraged ETFs"（2026-08-05）</p>
+<p><strong>策略逻辑：</strong>杠杆ETF在收盘前必须按当日涨跌方向进行再平衡交易，其需求随价格上涨而增加（正反馈）。套利者可在收盘前提前建仓，利用ETF再平衡订单放大价格波动，随后在收盘后抛售获利。该策略在韩国市场2026年极端波动期间得到验证。</p>
+<p><strong>适用场景：</strong>A股杠杆ETF（如沪深300ETF、创业板ETF的杠杆版本）收盘前15分钟的再平衡窗口。</p>
+<p><strong>风险提示：</strong>需关注监管政策变化、再平衡量估算误差、以及与ETF做市商的竞争。</p>
+</div>
+
+<div class="card">
+<h3>2. 无套利隐含波动率曲面生成与期权做市</h3>
+<p><span class="tag">策略研究</span> <span class="tag green">期权</span></p>
+<p><strong>来源：</strong>arXiv论文 "Latent Flow Matching for Arbitrage-Aware IVS Generation"（2026-08-05）</p>
+<p><strong>策略逻辑：</strong>通过流匹配模型生成满足无套利约束的隐含波动率曲面，可用于期权做市中的合理报价和风险对冲。相比传统参数化方法（如SABR），该深度学习方法可生成更丰富的曲面形态，同时保证无日历差价、看涨差价和蝶式套利。</p>
+<p><strong>适用场景：</strong>50ETF期权、300ETF期权的做市报价和曲面拟合。</p>
+</div>
+
+<div class="card">
+<h3>3. 先进封装产业链投资机会</h3>
+<p><span class="tag">市场策略</span> <span class="tag green">产业</span></p>
+<p><strong>来源：</strong>财联社市场数据（2026-08-06）</p>
+<p><strong>策略逻辑：</strong>Yole预估全球先进封装市场规模从2025年540亿美元增至2031年1090亿美元，CAGR约12.4%。A股先进封装概念持续反弹，长电科技涨停，通富微电、华天科技涨超5%。AI驱动下HBM等先进封装需求持续增长。</p>
+<p><strong>相关标的：</strong>长电科技、通富微电、华天科技、盛合晶微</p>
+</div>
+</div>
+
+<!-- ==================== 券商金工观点 ==================== -->
+<div class="section" id="broker">
+<div class="section-title">🏛️ 券商金工观点</div>
+
+<div class="card">
+<div class="broker-item">
+<div class="org">国联民生宏观</div>
+<div class="title">美债在定价什么？——当前美债定价逻辑解析</div>
+<div class="date">2026-08-06</div>
+</div>
+<div class="broker-item">
+<div class="org">摩根大通</div>
+<div class="title">TMT基金遭遇历史级重创，AI交易将越来越依赖散户资金</div>
+<div class="date">2026-08-06</div>
+</div>
+<div class="broker-item">
+<div class="org">华尔街见闻</div>
+<div class="title">1000亿美元干预之后：美日还有哪些工具？如何影响套利交易？</div>
+<div class="date">2026-08-06</div>
+</div>
+<div class="broker-item">
+<div class="org">国金证券</div>
+<div class="title">有色金属行业研究：钼——当AI遇上能化与制造，价格剑指新高</div>
+<div class="date">2026-08-06</div>
+</div>
+<div class="broker-item">
+<div class="org">东吴证券</div>
+<div class="title">汽车行业深度报告：AI系列深度15期——Transformer如何开启AI第二次爆发？</div>
+<div class="date">2026-08-06</div>
+</div>
+</div>
+</div>
+
+<!-- ==================== 市场数据 ==================== -->
+<div class="section" id="market">
+<div class="section-title">📊 市场数据</div>
+
+<div class="card">
+<h3>A股盘面</h3>
+<p><strong>指数表现：</strong>创业板指涨逾1%，沪指涨0.33%，深成指涨0.64%，恒科指跌超1%</p>
+<p><strong>成交额：</strong>沪深两市突破1.5万亿（较上日同期放量超40亿），预计全天近2.6万亿</p>
+<p><strong>上涨个股：</strong>近2000只</p>
+</div>
+
+<div class="card">
+<h3>板块异动</h3>
+<p><strong>强势板块：</strong>有色金属（爆发）、半导体产业链（再拉升）、先进封装（持续反弹）、电子特气（持续走强）、算力硬件（反弹）、6G</p>
+<p><strong>弱势板块：</strong>科网股（普跌）、电新行业（净流出超68亿）、文化传媒、计算机</p>
+</div>
+
+<div class="card">
+<h3>个股异动</h3>
+<p><strong>涨停：</strong>长电科技（+10%，先进封装龙头，主力净买入14亿）、景旺电子（+10%）、和远气体（+10%，2连板）、滨化股份（+10%）</p>
+<p><strong>大涨：</strong>甬矽电子+9.81%、劲拓股份+10.67%、胜宏科技+7.65%、中巨芯+18.70%</p>
+<p><strong>大跌：</strong>宁德时代-4.42%、长鑫科技-3.59%</p>
+</div>
+
+<div class="card">
+<h3>海外市场</h3>
+<p><strong>黄金：</strong>单日大涨4%，隔夜市场最强品种</p>
+<p><strong>SK海力士：</strong>盘前一度跌停30%，Nextrade引入波动熔断机制</p>
+<p><strong>AppLovin：</strong>Q2营收、指引低于预期，盘后重挫</p>
+<p><strong>迪士尼：</strong>摩根大通将目标价从140美元下调至137美元</p>
+<p><strong>新加坡海峡时报指数：</strong>上涨1%至5,637.22点</p>
+</div>
+
+<div class="card">
+<h3>重要事件</h3>
+<p>🔴 <strong>DeepSeek拟上调API服务定价，预计涨幅较大</strong> — 关注AI算力成本变化</p>
+<p>🔴 <strong>伊朗-阿曼接近达成协议</strong> — 海峡现有两条航道将关闭，"收费标准"仍是核心分歧</p>
+<p>🔴 <strong>央行独立性争议</strong> — 沃什上任后多次与特朗普"私下通话"</p>
+<p>🔴 <strong>黑客浪潮袭击华尔街</strong> — Point72、千禧、城堡等顶级对冲基金遭"语音钓鱼"攻击</p>
+<p>🔴 <strong>微软AI营收严重依赖OpenAI</strong> — 营收占比或达70%</p>
+</div>
+</div>
+
+</div>
+
+<footer>
+<p>量化交易资讯简报 | 每日自动生成 | 数据来源：arXiv、华尔街见闻、财联社、东方财富</p>
+<p>Generated by Hermes Agent · 2026-08-06</p>
+</footer>
+
+</body>
+</html>
