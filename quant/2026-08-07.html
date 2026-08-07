@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量化交易资讯简报 - 2026-08-07</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d;
+    --text: #e6edf3; --text2: #8b949e; --accent: #58a6ff;
+    --green: #3fb950; --red: #f85149; --orange: #d29922; --purple: #bc8cff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif; line-height:1.7; }
+  .container { max-width:960px; margin:0 auto; padding:20px; }
+  h1 { font-size:1.8em; margin-bottom:8px; }
+  .subtitle { color:var(--text2); margin-bottom:24px; font-size:0.95em; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px 24px; margin-bottom:28px; }
+  .toc a { color:var(--accent); text-decoration:none; margin-right:16px; font-size:0.9em; }
+  .toc a:hover { text-decoration:underline; }
+  .section { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px 24px; margin-bottom:20px; }
+  .section h2 { font-size:1.3em; margin-bottom:14px; color:var(--accent); border-bottom:1px solid var(--border); padding-bottom:8px; }
+  .highlight-item { padding:10px 0; border-bottom:1px solid var(--border); }
+  .highlight-item:last-child { border-bottom:none; }
+  .highlight-item .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.75em; margin-right:8px; font-weight:600; }
+  .tag-red { background:#f8514933; color:var(--red); }
+  .tag-green { background:#3fb95033; color:var(--green); }
+  .tag-blue { background:#58a6ff33; color:var(--accent); }
+  .tag-orange { background:#d2992233; color:var(--orange); }
+  .tag-purple { background:#bc8cff33; color:var(--purple); }
+  .paper-card { margin-bottom:16px; padding:12px; background:var(--bg); border-radius:6px; border:1px solid var(--border); }
+  .paper-card h3 { font-size:1em; margin-bottom:6px; }
+  .paper-card h3 a { color:var(--accent); text-decoration:none; }
+  .paper-card h3 a:hover { text-decoration:underline; }
+  .paper-meta { font-size:0.82em; color:var(--text2); margin-bottom:6px; }
+  .paper-abstract { font-size:0.88em; color:var(--text2); }
+  .score { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.8em; font-weight:600; }
+  .score-high { background:#3fb95033; color:var(--green); }
+  .score-mid { background:#d2992233; color:var(--orange); }
+  .score-low { background:#f8514933; color:var(--red); }
+  .broker-item { padding:8px 0; border-bottom:1px solid var(--border); font-size:0.9em; }
+  .broker-item:last-child { border-bottom:none; }
+  .broker-org { color:var(--orange); font-weight:600; margin-right:8px; }
+  .factor-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; margin-top:12px; }
+  .factor-item { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:10px 12px; text-align:center; }
+  .factor-name { font-size:0.85em; color:var(--text2); }
+  .factor-val { font-size:1.2em; font-weight:700; margin-top:4px; }
+  .news-list { list-style:none; }
+  .news-list li { padding:6px 0; border-bottom:1px solid var(--border); font-size:0.9em; }
+  .news-list li:last-child { border-bottom:none; }
+  .news-list li::before { content:""; display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:8px; vertical-align:middle; }
+  .news-list li.up::before { background:var(--green); }
+  .news-list li.down::before { background:var(--red); }
+  .news-list li.neutral::before { background:var(--accent); }
+  .quick-list { list-style:none; }
+  .quick-list li { padding:4px 0; font-size:0.88em; }
+  .quick-list li::before { content:"\25b8 "; color:var(--accent); }
+  footer { text-align:center; color:var(--text2); font-size:0.8em; margin-top:30px; padding:20px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>量化交易资讯简报</h1>
+<p class="subtitle">2026-08-07 | AI驱动选股与算力硬件成市场主线，集成电路出口同比翻倍，因子研究聚焦LLM与加密货币执行优化</p>
+
+<div class="toc">
+  <strong>目录：</strong>
+  <a href="#highlights">今日要点</a>
+  <a href="#factors">因子看板</a>
+  <a href="#academic">学术前沿</a>
+  <a href="#strategy">策略研究</a>
+  <a href="#broker">券商金工观点</a>
+  <a href="#market">市场数据</a>
+</div>
+
+<div class="section" id="highlights">
+<h2>今日要点</h2>
+<div class="highlight-item">
+  <span class="tag tag-green">市场</span>
+  <strong>创业板涨超1%，算力硬件拉升</strong> -- CPO、PCB大涨，创新药反弹；主力资金净流入电子板块超149亿元，光迅科技涨停获净买入超17亿
+</div>
+<div class="highlight-item">
+  <span class="tag tag-red">宏观</span>
+  <strong>集成电路出口同比增99.5%</strong> -- 1-7月累计出口2160亿美元，半导体产业链景气度持续验证；原油进口同比降24.3%
+</div>
+<div class="highlight-item">
+  <span class="tag tag-blue">学术</span>
+  <strong>LLM金融情感分类可预测收益</strong> -- arXiv最新论文用QLoRA微调大模型做金融情感分类，发现分类结果对收益有预测力，为文本因子提供新方法论
+</div>
+<div class="highlight-item">
+  <span class="tag tag-purple">产业</span>
+  <strong>马斯克Terafab芯片工厂启动</strong> -- 初期投资168亿美元，重点布局DRAM及新型存储；台积电突破单层MoS2晶体管
+</div>
+<div class="highlight-item">
+  <span class="tag tag-orange">海外</span>
+  <strong>若通胀数据强劲，沃什将在9月加息</strong> -- 标普500 EPS增长45%但一半来自投资收益；特朗普对多晶硅加征关税
+</div>
+</div>
+
+<div class="section" id="factors">
+<h2>因子看板</h2>
+<div class="factor-grid">
+  <div class="factor-item">
+    <div class="factor-name">电子板块资金</div>
+    <div class="factor-val" style="color:var(--green)">+149亿</div>
+  </div>
+  <div class="factor-item">
+    <div class="factor-name">通信板块资金</div>
+    <div class="factor-val" style="color:var(--green)">净流入</div>
+  </div>
+  <div class="factor-item">
+    <div class="factor-name">半导体板块资金</div>
+    <div class="factor-val" style="color:var(--green)">净流入</div>
+  </div>
+  <div class="factor-item">
+    <div class="factor-name">计算机板块</div>
+    <div class="factor-val" style="color:var(--red)">净流出</div>
+  </div>
+  <div class="factor-item">
+    <div class="factor-name">文化传媒</div>
+    <div class="factor-val" style="color:var(--red)">净流出</div>
+  </div>
+  <div class="factor-item">
+    <div class="factor-name">沪深成交额</div>
+    <div class="factor-val" style="color:var(--orange)">1.5万亿</div>
+  </div>
+</div>
+<p style="margin-top:14px;font-size:0.88em;color:var(--text2);">
+  <strong>资金主线</strong>：电子/通信/半导体持续获主力资金流入，AI算力硬件产业链（CPO、PCB、光芯片）为当前最强主线。计算机与传媒板块资金流出，短期关注风格切换信号。
+</p>
+</div>
+
+<div class="section" id="academic">
+<h2>学术前沿</h2>
+
+<div class="paper-card">
+  <h3><a href="" target="_blank">From Financial Sentiment Classification to Return Predictability: A QLoRA Benchmark of Large Language Models</a></h3>
+  <div class="paper-meta">
+    arXiv q-fin | Fusheng Luo | <span class="score score-high">可落地性: 高</span>
+  </div>
+  <div class="paper-abstract">本文使用QLoRA高效微调方法对大语言模型进行金融情感分类，建立从文本到收益预测的端到端框架。研究发现，LLM的情感分类结果对股票收益具有显著预测力，为文本因子挖掘提供了新方法论，具备直接落地价值。</div>
+</div>
+
+<div class="paper-card">
+  <h3><a href="" target="_blank">AutoQuant: An Auditable Expert-System Framework for Execution-Constrained Auto-Tuning in Cryptocurrency Perpetual Futures</a></h3>
+  <div class="paper-meta">
+    arXiv q-fin.TR | Kaihong Deng | <span class="score score-high">可落地性: 高</span>
+  </div>
+  <div class="paper-abstract">提出AutoQuant框架，在加密货币交易中实现执行约束下的自动参数调优，强调可审计性。为高频交易和加密货币做市策略提供系统化参数优化方案，适用于实盘执行场景。</div>
+</div>
+
+<div class="paper-card">
+  <h3><a href="" target="_blank">Generalized Mean Absolute Directional Loss for Machine Learning Trading Models</a></h3>
+  <div class="paper-meta">
+    arXiv q-fin.TR | Jakub Micha\'nk\'ow, Pawe{\l} Sakowski, Robert \'Slepaczuk | <span class="score score-high">可落地性: 高</span>
+  </div>
+  <div class="paper-abstract">提出广义均值绝对方向损失函数，专门针对机器学习交易模型设计，优化方向预测而非幅度预测，对量化策略的信号生成模块具有直接应用价值。</div>
+</div>
+<h3 style="margin-top:20px;font-size:1.05em;">论文速递</h3><ul class="quick-list">
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">From Financial Sentiment Classification to Return Predictability: A QLoRA Benchmark of Large Language Models</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">AutoQuant: An Auditable Expert-System Framework for Execution-Constrained Auto-Tuning in Cryptocurrency Perpetual Futures</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin.TR]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Does generative AI narrow education-based productivity gaps? Evidence from a randomized experiment</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Public Trader Identity: Adverse Selection and Return Predictability</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Quantifying Different Gains from Trade in Quality</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Low-rank and graphon limits for dynamic threshold distress contagion in heterogeneous financial networks</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Optimal Life Insurance Decision in Mean-Variance DC Management with Mortality Improvements</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Attributing Differences Between Forecast Runs to Input Changes, With Applications to CCAR and CECL Exercises</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">From Long to Short: How Interest Rates Shape Life Insurance Markets</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Open Information: A Defining Perspective on Web Datasets for Carbon Pricing</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">The Role of Risk Sharing in Attenuating Business Cycles Within Currency Unions</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Portfolio Allocation under Heterogeneous Scales and Multifractality</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Adaptive Finite-Budget Training for CVaR Risk-Aware Q-Learning</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Robust Control under Stationary Ambiguity</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Optimal Design of Automated Market Makers on Decentralized Exchanges</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Generalized Mean Absolute Directional Loss for Machine Learning Trading Models</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin.TR]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">How Likely and How Deep? Sharp Joint Bounds on Risk-Neutral Crash Probability and Conditional Depth from Option Bid-Ask Quotes</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin.CP]</span></li>
+<li><a href="" target="_blank" style="color:var(--accent);text-decoration:none;">Variable annuities: A closer look at ratchet guarantees, hybrid contract designs, and taxation</a> <span style="color:var(--text2);font-size:0.82em;">[arXiv q-fin.PM]</span></li>
+</ul>
+</div>
+
+<div class="section" id="strategy">
+<h2>策略研究</h2>
+<div class="paper-card">
+  <h3>LLM情感因子：从文本到收益预测的新范式</h3>
+  <div class="paper-meta">基于 arXiv 论文 | QLoRA微调方法 | 文本因子</div>
+  <div class="paper-abstract">
+    arXiv最新论文验证了QLoRA微调大模型进行金融情感分类，分类结果对收益具有显著预测力。<strong>落地建议</strong>：1) 使用QLoRA对中文财经文本微调，构建A股情感因子；2) 结合传统技术因子做因子合成；3) 注意过拟合风险，建议用Walk-Forward验证。该方向是当前文本因子最活跃的研究主线。
+  </div>
+</div>
+<div class="paper-card">
+  <h3>加密货币执行优化：AutoQuant可审计自动调参框架</h3>
+  <div class="paper-meta">基于 arXiv 论文 | 执行算法 | 加密货币</div>
+  <div class="paper-abstract">
+    针对加密货币市场的执行约束问题，提出AutoQuant自动参数调优框架，具备可审计性。<strong>落地建议</strong>：1) 框架思路可迁移至A股TWAP/VWAP执行优化；2) 可审计性设计满足合规要求；3) 适合做市策略的参数自动调整。加密货币与A股在微观结构上的差异需要在迁移时注意。
+  </div>
+</div>
+<div class="paper-card">
+  <h3>方向性损失函数：为交易模型定制的ML目标函数</h3>
+  <div class="paper-meta">基于 arXiv 论文 | 机器学习 | 损失函数设计</div>
+  <div class="paper-abstract">
+    提出广义均值绝对方向损失（GMADL），优化方向预测精度而非幅度预测，更贴合交易信号的评估需求。<strong>落地建议</strong>：1) 在分类/排序模型中替换传统交叉熵损失；2) 对多因子打分模型的训练目标函数做改进；3) 适合日频/周频的涨跌方向预测场景。
+  </div>
+</div>
+</div>
+<div class="section" id="broker"><h2>券商金工观点</h2>
+<div class="broker-item"><span class="broker-org">[万和证券]</span>万和财富早班车 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[万联证券]</span>万联晨会 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[中银证券]</span>中银晨会聚焦 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[国信证券]</span>晨会纪要 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[山西证券]</span>研究早观点 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[金元证券]</span>金元晨报 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[开源证券]</span>开源晨会 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[招银国际]</span>策略观点：政策温和宽松 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[艾瑞股份]</span>2026H1中国移动互联网流量半年报告 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+<div class="broker-item"><span class="broker-org">[中山证券]</span>A股市场点评：通信、电子领涨 <span style="color:var(--text2);font-size:0.8em;">(2026-08-07)</span></div>
+</div>
+
+<div class="section" id="market">
+<h2>市场数据</h2>
+<h3 style="font-size:1em;margin-bottom:10px;">华尔街见闻要闻</h3>
+<ul class="news-list">
+<li class="up">创业板涨超1%，算力硬件拉升，CPO、PCB大涨，创新药反弹</li>
+<li class="neutral">高盛韩国交易员：市场对存储基本面预期过于悲观</li>
+<li class="neutral">马斯克Terafab AI芯片超级工厂项目启动，初期投资168亿美元</li>
+<li class="neutral">若未来几周通胀数据强劲，沃什将准备在9月加息</li>
+<li class="down">特朗普宣布对多晶硅及其衍生产品加征关税</li>
+<li class="up">标普500成分股EPS增长45%，但一半来自投资收益，1/3来自AI基建</li>
+<li class="up">蓄势突破后的黄金 — 华泰证券张继强</li>
+<li class="neutral">有色乘风起：地缘和利率仅是表象，供给短缺锚定三重驱动力</li>
+</ul>
+<h3 style="font-size:1em;margin:16px 0 10px;">财联社电报</h3><ul class="news-list">
+<li class="up">沪深两市成交额突破1.5万亿，较上一日此时缩量超500亿</li>
+<li class="up">1-7月集成电路累计出口2160亿美元，同比增长99.5%</li>
+<li class="up">主力资金净流入电子、通信、半导体等板块，电子板块净流入超149亿元</li>
+<li class="up">光迅科技涨停，主力净买入超17亿；长电科技遭净卖出超11亿</li>
+<li class="up">磷化铟概念反复走强，云南锗业4连板</li>
+<li class="up">玻纤概念震荡走强，电子布8月均价环比上涨17%-18%</li>
+<li class="neutral">光伏硅料八巨头签署倡议：不得低于成本价销售</li>
+<li class="down">7月大豆进口1147.7万吨，同比下降1.6%；原油进口下降24.3%</li>
+<li class="neutral">台积电等研发出单层MoS2顶栅晶体管</li>
+<li class="up">超30万亿元！前7月中国货物贸易进出口延续增长态势</li>
+</ul>
+</div>
+
+<footer>
+  <p>量化交易资讯简报 | 2026-08-07 | 由 Hermes AI 自动生成</p>
+  <p>数据来源：arXiv q-fin | 东方财富研报 | 华尔街见闻 | 财联社</p>
+</footer>
+
+</div>
+</body>
+</html>
