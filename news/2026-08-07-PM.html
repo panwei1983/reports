@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-08-07 PM</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .overview {
+    margin-top: 16px; padding: 12px 20px; background: var(--bg-card);
+    border-radius: 8px; border-left: 4px solid var(--text-link);
+    font-size: 15px; color: var(--text-primary); text-align: left;
+  }
+  .highlights { display: grid; gap: 8px; margin-top: 16px; }
+  .highlights .hl-row {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px; font-size: 14px; line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 4px; white-space: nowrap; min-width: 36px; text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category { margin-bottom: 28px; }
+  .category-title {
+    font-size: 20px; font-weight: 700; padding: 8px 16px;
+    border-radius: 6px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .sector-brief { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .sector-brief { grid-template-columns: 1fr; } }
+  .sector-card { padding: 14px 16px; border-radius: 8px; text-align: center; }
+  .sector-card.up { background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25); }
+  .sector-card.down { background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.25); }
+  .sector-card.neutral { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.25); }
+  .sector-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .sector-card .name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value { font-size: 14px; font-weight: 500; }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  .hot-sectors { margin-bottom: 16px; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+  .hot-sectors h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .sector-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sector-tag { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+  .sector-tag.up { background: rgba(63,185,80,0.15); color: #3fb950; }
+  .sector-tag.down { background: rgba(218,54,51,0.15); color: #da3633; }
+  .market-focus { margin-bottom: 12px; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+  .market-focus h4 { font-size: 14px; color: var(--accent-market); margin-bottom: 10px; }
+  .focus-item { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 6px; }
+  .focus-item strong { color: var(--text-primary); }
+  .news-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px 20px; margin-bottom: 10px; transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+  .data-dashboard {
+    margin-top: 32px; padding-top: 24px; border-top: 2px solid var(--border);
+  }
+  .data-dashboard h2 {
+    font-size: 24px; text-align: center; margin-bottom: 20px; color: var(--accent-market);
+  }
+  .data-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px; margin-bottom: 16px;
+  }
+  .data-card h3 { font-size: 16px; color: var(--accent-market); margin-bottom: 12px; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .data-table th { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-weight: 600; }
+  .data-table td { padding: 8px 12px; border-bottom: 1px solid rgba(48,54,61,0.5); color: var(--text-primary); }
+  .data-table .up { color: #3fb950; }
+  .data-table .down { color: #da3633; }
+  .data-highlight { font-size: 28px; font-weight: 700; margin: 8px 0; }
+  .data-highlight.up { color: #3fb950; }
+  .data-highlight.down { color: #da3633; }
+  .data-label { font-size: 12px; color: var(--text-secondary); }
+  .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .data-grid { grid-template-columns: 1fr; } }
+  .data-cell { background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.2); border-radius: 8px; padding: 16px; text-align: center; }
+  .footer {
+    margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-secondary); font-size: 12px;
+  }
+  .disclaimer { margin-top: 12px; padding: 10px 16px; background: rgba(218,54,51,0.08); border: 1px solid rgba(218,54,51,0.2); border-radius: 6px; font-size: 12px; color: var(--text-secondary); text-align: center; }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年8月7日 · 星期五 · 📐 数据洞察日 · 下午版</div>
+  <div class="overview">DeepSeek宣布涨价引爆AI定价战，GPT-5.6全员免费对冲；宇树科技IPO定价150.8元创年内新高；A股三大股指齐涨超1%芯片出口同比增117%；台风"白海豚"逼近浙闽沿海；中国央行连续21个月增持黄金，金价突破4300美元。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> DeepSeek宣布涨价，GPT-5.6全员免费+Meta推出Muse Code骨折价还击</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 中国7月芯片出口同比大增117%，原油进口环比增22%，央行连续21月增持黄金</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 特朗普签署出生公民权行政令打击"生育旅游"，美国新核战略曝光</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 台风"白海豚"逼近浙闽，福建提升防台应急响应至三级</div>
+    <div class="hl-row"><span class="hl-tag tag-market">股市</span> A股三大股指齐涨超1%，CRO、PCB掀涨停潮，宇树科技IPO定价150.8元</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(3)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(4)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a> · 📐 <a href="#dashboard" style="color:var(--text-link);text-decoration:none">数据看板</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-07/doc-inimmyev3287429.shtml" target="_blank">台风"白海豚"直奔浙闽沿海，或北上制造极端降雨，福建提升防台应急响应至三级</a></div>
+    <div class="summary">今年第13号台风"白海豚"14时中心距温州偏东约740公里，中心最大风力15级（强台风级），预计9日夜间至10日早晨在浙江宁波至福建宁德一带沿海登陆。体型近似13个浙江面积，福建海事局启动II级防台应急响应，浙江调整防台应急响应为Ⅳ级，沿海多地停航停工。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-07/doc-inimmyev3287429.shtml" target="_blank">新浪新闻综合</a> · 推荐理由：多源交叉验证+直接影响华东沿海居民安全</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33737072" target="_blank">利用未成年人喊网友"爸爸"博流量，多个主播账号被封禁</a></div>
+    <div class="summary">主播利用未成年人喊网友"爸爸"博流量，"母女合拍"等多账号因违反未成年人保护规定被封禁。监管部门持续加大短视频平台涉未成年人内容治理力度，近期已处罚多个违规账号，平台被要求完善审核机制。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33737072" target="_blank">澎湃新闻</a> · 推荐理由：社会关切+未成年人保护政策信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-07/doc-inimmayv4479085.shtml" target="_blank">"接不到戏，收入基本断了"，38岁演员求职景区NPC：工作量断崖式下跌</a></div>
+    <div class="summary">38岁演员自述接不到戏后收入基本中断，转行求职景区NPC工作。影视行业近两年项目数量锐减，大量中腰部演员面临生存困境，工作量断崖式下跌，折射出演艺行业结构性调整对从业者的影响。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-07/doc-inimmayv4479085.shtml" target="_blank">每日经济新闻</a> · 推荐理由：行业就业困境缩影+社会关注度最高</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-07/doc-inimmtwx3257087.shtml" target="_blank">特朗普签署针对出生公民权的行政令，将严厉打击"生育旅游"</a></div>
+    <div class="summary">特朗普签署行政令针对出生公民权，将严厉打击"生育旅游"行为。该行政令改变长期以来美国宪法第14修正案对出生公民权的解释，预计将面临法律挑战，影响数百万在美出生儿童的公民身份认定。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-07/doc-inimmtwx3257087.shtml" target="_blank">环球网</a> · 推荐理由：重大政策变化+影响范围广</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-07/doc-inimnent3192059.shtml" target="_blank">美国新核战略曝光：一旦与中国或俄罗斯爆发战争，美方可能动用战术核武器</a></div>
+    <div class="summary">美国新核战略文件曝光，首次明确将中国和俄罗斯列为核威慑对象，并暗示在大国冲突中可能动用战术核武器。该战略标志着美国核政策从战略威慑向实战化转变，引发国际社会对核军备竞赛升级的担忧。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-07/doc-inimnent3192059.shtml" target="_blank">中国新闻网</a> · 推荐理由：独家深度+地缘安全重大信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-07/doc-inimmtwp4236675.shtml" target="_blank">伊朗拟设霍尔木兹海峡新规瞄准美以，美国"硬蹭"谈判桌</a></div>
+    <div class="summary">伊朗与阿曼达成协议，拟禁止美以船只通行霍尔木兹海峡。特朗普称"伊朗撑不了太久"，承认部分弹药供应"相对紧张"。伊朗总统称"没有力量能让伊朗屈服"。海峡局势持续紧张，全球原油供应面临不确定性。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-07/doc-inimmtwp4236675.shtml" target="_blank">新华网</a> · 推荐理由：地缘冲突升级+影响全球能源格局</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33735915" target="_blank">德国沙盘推演"对华贸易战"：寻找中国"软肋"就能解决德国困境吗？</a></div>
+    <div class="summary">德国智库进行对华贸易战沙盘推演，试图寻找中国"软肋"以解决德国经济困境。推演结果显示，德国经济对中国依赖度远超预期，贸易战将导致德国汽车、化工等核心产业遭受重创，损失远超预期。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33735915" target="_blank">澎湃新闻·外交学人</a> · 推荐理由：独家深度+中欧经贸关系重要参考</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/tech/discovery/2026-08-06/doc-inimkfvm3942457.shtml" target="_blank">华为昇腾攻克训推一致难题：Logdiff直接干到0、性能还提升60%</a></div>
+    <div class="summary">华为昇腾团队宣布攻克大模型训练与推理一致性难题，Logdiff指标降至0，推理性能提升60%。该突破解决了国产AI芯片训推差异的长期痛点，对国产算力替代具有重要意义，有望加速昇腾在AI训练场景的规模化部署。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/tech/discovery/2026-08-06/doc-inimkfvm3942457.shtml" target="_blank">快科技</a> · 推荐理由：国产算力关键突破+技术验证可信</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/tech/discovery/2026-08-06/doc-inimkfvc3086182.shtml" target="_blank">我国成立6G星地融合工作组，华为、中兴、小米、OPPO、vivo和荣耀等参与</a></div>
+    <div class="summary">我国成立6G星地融合工作组，华为、中兴、小米、OPPO、vivo、荣耀等主要手机厂商和通信企业参与。工作组将推动6G卫星通信与地面网络融合标准制定，加速6G技术从实验室走向商用。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/tech/discovery/2026-08-06/doc-inimkfvc3086182.shtml" target="_blank">快科技</a> · 推荐理由：6G标准推进+全产业链参与</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/tech/discovery/2026-08-06/doc-inimizpi4676579.shtml" target="_blank">百年宿敌变一家人！日本精工与NTN联姻，只为对抗中国价格战</a></div>
+    <div class="summary">日本两大轴承巨头精工（NSK）与NTN宣布合并，百年竞争对手首次联手。合并背景是来自中国轴承企业的价格战压力，中国产品凭借成本优势快速抢占全球市场份额。合并后新公司年营收将超2万亿日元，但能否抵御中国价格战仍存疑。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/tech/discovery/2026-08-06/doc-inimizpi4676579.shtml" target="_blank">快科技</a> · 推荐理由：产业格局变化+中国制造全球竞争力折射</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com" target="_blank">中国7月原油进口环比增22%，煤炭进口同比增20%，芯片出口同比大增117%</a></div>
+    <div class="summary">中国7月贸易数据出炉：原油进口环比增长22%，煤炭进口同比增长20%，芯片出口同比大增117%。前7个月货物贸易进出口超30万亿元，出口结构持续优化，高技术产品出口增速显著，芯片出口成为最大亮点。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com" target="_blank">华尔街见闻</a> · 推荐理由：核心经济数据+出口结构变化信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com" target="_blank">中国央行连续21个月增持黄金，7月购金力度提速</a></div>
+    <div class="summary">中国央行连续第21个月增持黄金储备，7月购金力度明显提速。与此同时，现货黄金突破4300美元/盎司，纽约期金突破4370美元。瑞银预测明年上半年金价有望回到5000美元，全球去美元化趋势下央行购金需求持续增长。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com" target="_blank">华尔街见闻</a> · 推荐理由：央行政策信号+全球黄金定价影响</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-07/doc-inimmiic3443760.shtml" target="_blank">美国拟禁中国光模块？业内：又一次压力测试而已</a></div>
+    <div class="summary">美国拟对中国光模块实施禁令，业内分析认为这更像是一次"压力测试"。中国光模块企业已在全球市场占据主导地位，美国禁令短期内难以找到替代供应。中际旭创午后跳水引发市场关注，但整体光模块产业链韧性较强。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-07/doc-inimmiic3443760.shtml" target="_blank">每日经济新闻</a> · 推荐理由：科技博弈+产业链影响分析</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33737946" target="_blank">内地居民买香港保险收益要缴税？税务总局回应：并非新政，更不是专门针对香港保险市场</a></div>
+    <div class="summary">国家税务总局相关负责人指出，中国税收居民需就全球所得履行纳税义务，境外保险收益也属应纳税所得范畴，这并非新政策，更不是专门针对香港保险市场，无需过度解读。此前香港保险购买热潮引发税收关注。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33737946" target="_blank">澎湃新闻·金改实验室</a> · 推荐理由：政策澄清+影响跨境保险市场</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">CRO/PCB</div>
+      <div class="value">掀涨停潮</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">光模块</div>
+      <div class="value">中际旭创跳水</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">净流入</div>
+      <div class="value">A股齐涨</div>
+    </div>
+  </div>
+
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">CRO +涨停潮</span>
+      <span class="sector-tag up">PCB +涨停潮</span>
+      <span class="sector-tag up">存储芯片 +走高</span>
+      <span class="sector-tag up">黄金 +突破4300</span>
+      <span class="sector-tag down">光模块 -跳水</span>
+    </div>
+  </div>
+
+  <div class="market-focus">
+    <h4>👀 市场关注</h4>
+    <div class="focus-item"><strong>宇树科技</strong>：IPO定价150.8元/股，估值610亿，DeepSeek斥资1.41亿战配，网上申购日8月10日</div>
+    <div class="focus-item"><strong>中际旭创</strong>：午后大幅跳水，市场关注美国光模块禁令影响</div>
+    <div class="focus-item"><strong>翰宇药业</strong>：替尔泊肽注射液首仿上市申请获受理，涨8.45%</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com" target="_blank">A股三大股指齐涨超1%，CRO、PCB掀涨停潮，港股AI大模型双雄再爆发</a></div>
+    <div class="summary">A股三大股指齐涨超1%，CRO、PCB板块掀涨停潮。中际旭创午后跳水拖累光模块板块。港股方面，AI大模型概念股再度爆发。市场整体情绪向好，超4500只个股上涨，成交额突破1.2万亿。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com" target="_blank">华尔街见闻</a> · 推荐理由：市场全景+板块轮动信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-07/doc-inimmazc0437726.shtml" target="_blank">宇树科技估值610亿，王兴兴身家超180亿，美团红杉腾讯阿里共同分羹</a></div>
+    <div class="summary">宇树科技IPO定价150.8元/股，对应估值610亿元，创始人王兴兴身家超180亿。美团、红杉、腾讯、阿里等头部机构均为股东。DeepSeek斥资1.41亿参与战配，网上申购日为8月10日，中一签需缴款7.54万元。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-07/doc-inimmazc0437726.shtml" target="_blank">第一财经网</a> · 推荐理由：年内最高价IPO+机器人赛道标杆</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/stock/zqgd/2026-08-07/doc-inimmtwv0176282.shtml" target="_blank">加息突变！美联储最新发声，美股全线下跌</a></div>
+    <div class="summary">知情人士称美联储沃什将准备在9月加息，市场预期骤变。美联储主席释放鹰派信号，美股全线下跌。美日联手入市干预汇率后，日元已回吐近一半涨幅。国金证券分析称"美联储没有前瞻指引的新世界"。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/stock/zqgd/2026-08-07/doc-inimmtwv0176282.shtml" target="_blank">券商中国</a> · 推荐理由：全球货币政策转向信号+影响A股</div>
+  </div>
+
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3928685883308165" target="_blank">DeepSeek宣布大幅涨价：V4-Flash单日处理8万亿Token，大半来自免费试用</a></div>
+    <div class="summary">DeepSeek官宣即将大幅上调API服务定价，其V4-Flash单日处理8万亿Token，大半来自免费试用。梁文锋告别"价格屠夫"标签，涨价后用户能否买账成为焦点。与此同时，DeepSeek斥资1.41亿参与宇树科技战配，商业化布局加速。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3928685883308165" target="_blank">36氪</a> · 推荐理由：AI定价转折点+行业格局影响</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3928686064171400" target="_blank">GPT-5.6全员免费！下一代巨兽Astra打响闪电战</a></div>
+    <div class="summary">OpenAI宣布GPT-5.6 Sol改进版上线，同时将GPT-5.6 Luna向所有免费用户开放。下一代模型Astra打响闪电战，与DeepSeek涨价形成鲜明对比。OpenAI同时推出AI音箱产品，果味设计但比苹果多走一步。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3928686064171400" target="_blank">36氪·新智元</a> · 推荐理由：AI定价战+行业格局重塑</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/5284344" target="_blank">AMD收购Taalas：将大模型"刻入"硅片，推理性能有望革命性提升</a></div>
+    <div class="summary">AMD宣布收购AI推理芯片初创公司Taalas，核心技术是将大模型直接蚀刻到硅片中，实现推理性能的量级提升。该技术路线不同于传统GPU推理，有望大幅降低AI推理成本和延迟。同时，SK海力士宣布投资380亿美元扩建存储芯片产能。</div>
+    <div class="meta">来源：<a href="https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/5284344" target="_blank">The Register</a> · 推荐理由：AI芯片技术路线变革+HN热度637</div>
+  </div>
+</div>
+
+<!-- 数据看板（周五特色模块） -->
+<div class="data-dashboard" id="dashboard">
+  <h2>📐 数据洞察看板</h2>
+
+  <div class="data-card">
+    <h3>📊 中国7月进出口关键数据</h3>
+    <div class="data-grid">
+      <div class="data-cell">
+        <div class="data-label">芯片出口同比</div>
+        <div class="data-highlight up">+117%</div>
+        <div class="data-label">高技术产品出口最大亮点</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">原油进口环比</div>
+        <div class="data-highlight up">+22%</div>
+        <div class="data-label">7月进口回暖明显</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">煤炭进口同比</div>
+        <div class="data-highlight up">+20%</div>
+        <div class="data-label">能源需求持续增长</div>
+      </div>
+    </div>
+    <table class="data-table">
+      <tr><th>指标</th><th>数值</th><th>变化</th><th>趋势</th></tr>
+      <tr><td>前7月货物贸易进出口</td><td>超30万亿元</td><td>—</td><td class="up">↑ 稳增长</td></tr>
+      <tr><td>芯片出口</td><td>同比大增</td><td>+117%</td><td class="up">↑↑ 爆发</td></tr>
+      <tr><td>原油进口</td><td>环比增长</td><td>+22%</td><td class="up">↑ 回暖</td></tr>
+      <tr><td>煤炭进口</td><td>同比增长</td><td>+20%</td><td class="up">↑ 稳增</td></tr>
+    </table>
+  </div>
+
+  <div class="data-card">
+    <h3>💰 全球黄金与央行购金趋势</h3>
+    <div class="data-grid">
+      <div class="data-cell">
+        <div class="data-label">现货黄金</div>
+        <div class="data-highlight up">4300+</div>
+        <div class="data-label">美元/盎司</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">央行增持月数</div>
+        <div class="data-highlight up">21个月</div>
+        <div class="data-label">中国央行连续增持</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">瑞银目标价</div>
+        <div class="data-highlight up">5000</div>
+        <div class="data-label">明年上半年</div>
+      </div>
+    </div>
+    <table class="data-table">
+      <tr><th>时间节点</th><th>金价(美元/盎司)</th><th>央行购金</th><th>驱动因素</th></tr>
+      <tr><td>2026年1月</td><td>~3200</td><td>持续增持</td><td>去美元化+避险</td></tr>
+      <tr><td>2026年4月</td><td>~3600</td><td>加速增持</td><td>地缘冲突升级</td></tr>
+      <tr><td>2026年7月</td><td>4300+</td><td>力度提速</td><td>霍尔木兹海峡+美联储</td></tr>
+      <tr><td>2027H1预测</td><td>5000</td><td>—</td><td>瑞银预测</td></tr>
+    </table>
+  </div>
+
+  <div class="data-card">
+    <h3>🤖 AI定价战对比</h3>
+    <table class="data-table">
+      <tr><th>厂商</th><th>策略</th><th>核心产品</th><th>定价变化</th></tr>
+      <tr><td>DeepSeek</td><td class="down">涨价</td><td>V4-Flash</td><td>大幅上调API定价</td></tr>
+      <tr><td>OpenAI</td><td class="up">免费</td><td>GPT-5.6 Luna</td><td>全员免费开放</td></tr>
+      <tr><td>Meta</td><td class="up">骨折价</td><td>Muse Spark 1.2</td><td>更低价格+数据税</td></tr>
+    </table>
+  </div>
+
+  <div class="data-card">
+    <h3>📈 A股市场数据速览</h3>
+    <div class="data-grid">
+      <div class="data-cell">
+        <div class="data-label">三大股指</div>
+        <div class="data-highlight up">+1%+</div>
+        <div class="data-label">齐涨</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">宇树科技IPO</div>
+        <div class="data-highlight">150.8元</div>
+        <div class="data-label">估值610亿</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">SK海力士投资</div>
+        <div class="data-highlight">380亿$</div>
+        <div class="data-label">扩建芯片产能</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-08-07 17:00 | 数据源：5（澎湃/新浪/华尔街见闻/36氪/财联社/HN） | 采集条目：20
+  <br>📐 周五数据洞察日 · 关键数据趋势分析+对比表格
+</div>
+
+</body>
+</html>
