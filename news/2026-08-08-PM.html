@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-08-08 下午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .date { color: var(--text-secondary); font-size: 16px; }
+  .header .edition { color: var(--accent-debate); font-size: 14px; margin-top: 4px; }
+  .header .overview {
+    margin-top: 16px; padding: 12px 20px; background: var(--bg-card);
+    border-radius: 8px; border-left: 4px solid var(--text-link);
+    font-size: 15px; color: var(--text-primary); text-align: left;
+  }
+  .highlights { display: grid; gap: 8px; margin-top: 16px; }
+  .highlights .hl-row {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px; font-size: 14px; line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 4px; white-space: nowrap; min-width: 36px; text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category { margin-bottom: 28px; }
+  .category-title {
+    font-size: 20px; font-weight: 700; padding: 8px 16px;
+    border-radius: 6px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  .news-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px 20px; margin-bottom: 10px; transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .news-item .title a { color: var(--text-primary); text-decoration: none; }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .news-item .meta { margin-top: 8px; font-size: 12px; color: var(--text-secondary); }
+  .news-item .meta a { color: var(--text-link); text-decoration: none; }
+  .news-item .recommend { color: var(--accent-debate); font-style: italic; }
+  /* 本周回顾 */
+  .review-section {
+    margin-top: 32px; padding-top: 24px; border-top: 2px solid var(--border);
+  }
+  .review-title { font-size: 24px; text-align: center; margin-bottom: 20px; color: var(--accent-debate); }
+  .review-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 22px; margin-bottom: 14px;
+  }
+  .review-item h3 { font-size: 16px; color: var(--accent-debate); margin-bottom: 8px; }
+  .review-item .event-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px; }
+  .review-item .update { font-size: 13px; color: var(--text-link); line-height: 1.6; }
+  .review-item .update strong { color: var(--accent-tech); }
+  .debate-section {
+    margin-top: 32px; padding-top: 24px; border-top: 2px solid var(--border);
+  }
+  .debate-title { font-size: 24px; text-align: center; margin-bottom: 20px; color: var(--accent-debate); }
+  .debate-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px; margin-bottom: 16px;
+  }
+  .debate-item h3 { font-size: 18px; margin-bottom: 10px; color: var(--accent-debate); }
+  .debate-item .background { color: var(--text-secondary); margin-bottom: 14px; font-size: 14px; line-height: 1.7; }
+  .debate-item .background p { margin-bottom: 10px; }
+  .debate-item .background .bg-label { display: inline-block; background: rgba(255,166,87,0.15); color: var(--accent-debate); font-weight: 600; padding: 1px 8px; border-radius: 4px; font-size: 13px; margin-bottom: 4px; }
+  .debate-item .background ol.timeline { padding-left: 20px; margin: 8px 0; }
+  .debate-item .background ol.timeline li { margin-bottom: 4px; font-size: 13px; line-height: 1.6; }
+  .debate-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+  @media (max-width: 600px) { .debate-columns { grid-template-columns: 1fr; } }
+  .debate-columns .pro, .debate-columns .con { padding: 12px; border-radius: 8px; }
+  .debate-columns .pro { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); }
+  .debate-columns .con { background: rgba(218,54,51,0.1); border: 1px solid rgba(218,54,51,0.3); }
+  .debate-columns h4 { font-size: 14px; margin-bottom: 8px; }
+  .debate-columns .pro h4 { color: var(--accent-tech); }
+  .debate-columns .con h4 { color: var(--accent-politics); }
+  .debate-columns ul { list-style: none; padding: 0; }
+  .debate-columns li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; padding-left: 16px; position: relative; }
+  .debate-columns .pro li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-tech); }
+  .debate-columns .con li::before { content: "✗"; position: absolute; left: 0; color: var(--accent-politics); }
+  .guiding-questions {
+    background: rgba(255,166,87,0.08); border: 1px solid rgba(255,166,87,0.2);
+    border-radius: 8px; padding: 14px 18px; margin-bottom: 10px;
+  }
+  .guiding-questions h4 { font-size: 14px; color: var(--accent-debate); margin-bottom: 8px; }
+  .guiding-questions ol { padding-left: 20px; }
+  .guiding-questions li { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.6; }
+  .daily-question {
+    text-align: center; padding: 16px;
+    background: rgba(121,192,255,0.1); border: 1px solid rgba(121,192,255,0.3);
+    border-radius: 8px; margin-top: 16px;
+  }
+  .daily-question .label { font-size: 13px; color: var(--text-secondary); }
+  .daily-question .question { font-size: 16px; font-weight: 600; color: var(--accent-ai); margin-top: 6px; }
+  .footer {
+    margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-secondary); font-size: 12px;
+  }
+  .footer .disclaimer { margin-top: 8px; color: #8b6914; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年8月8日 星期六</div>
+  <div class="edition">🌆 下午版 · 本周回顾日</div>
+  <div class="overview">本周中东局势剧变——沙巴土三国签署《麦加共同防务协议》重塑中东格局，伊朗与阿曼达成霍尔木兹海峡协议框架；台风"白海豚"直逼浙闽沿海，浙江启动二级防台响应；OpenAI紧急叫停Astra模型开发，AI安全边界再引争议；7月非农爆冷打击加息预期，标普道指创新高；北京楼市新政落地，非京籍购房门槛降至一年。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 沙巴土三国签《麦加共同防务协议》，伊朗警告"一纸协议无法保障安全"</div>
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 台风"白海豚"14级强台风逼近浙闽，浙江提升防台响应至Ⅱ级</div>
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> OpenAI暂停Astra模型开发，奥特曼称其具备发现零日漏洞能力</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 7月非农爆冷打击加息预期，标普道指收创新高，黄金逼空三天涨300美元</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> SpaceX解禁后两日暴涨23%，期权成交创纪录；DeepSeek宣布大幅涨价</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(4)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a> · 🔄 <a href="#review" style="color:var(--text-link);text-decoration:none">本周回顾(10)</a> · 💭 <a href="#debate" style="color:var(--text-link);text-decoration:none">思辨(2)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33742880" target="_blank">台风"白海豚"未来三天强降雨影响7省市，浙江上海等地位于台风危险半圆</a></div>
+    <div class="summary">今年第13号台风"白海豚"（强台风级）中心位于温州以东约520公里海面，中心最大风力14级（45米/秒），预计9日晚至10日晨在浙江舟山到福建福鼎一带沿海登陆。浙江已将防台风应急响应提升至Ⅱ级，交通运输部启动台风二级防御响应，7省市将受强降雨影响。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33742880" target="_blank">澎湃新闻</a> · <span class="recommend">推荐理由：多源交叉验证+影响范围广，7省市预警</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-08/doc-inimpwvx2872527.shtml" target="_blank">台风、强对流双预警齐发，"白海豚"将于9日晚上至10日早晨登陆浙闽沿海</a></div>
+    <div class="summary">中央气象台继续发布台风橙色预警，"白海豚"七级风圈半径420-450公里，十级风圈半径220-250公里，十二级风圈半径100公里。浙江沿海将有9-12级大风，中央气象台同时发布强对流蓝色预警，浙江、上海等地处于台风危险半圆区域。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-08/doc-inimpwvx2872527.shtml" target="_blank">红星新闻/新浪</a> · <span class="recommend">推荐理由：权威气象预警+精确路径预报</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33742913" target="_blank">多名避暑老人因山洪被困陕西蓝田秦岭山里，县应急局：人员都安全</a></div>
+    <div class="summary">陕西蓝田秦岭山区多名避暑老人因山洪被困，县应急局确认所有人员安全，但道路暂时不通。7月30日以来陕西多地持续强降雨，国铁西安局多条线路曾临时停运，8月8日已恢复开行。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33742913" target="_blank">澎湃新闻</a> · <span class="recommend">推荐理由：本地灾害+应急响应跟进</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33736773" target="_blank">佛山一中学教师招聘笔试前13名被淘汰、后5名进体检名单？市教育局通报</a></div>
+    <div class="summary">佛山一中学教师招聘笔试前13名被淘汰、后5名进体检名单引发质疑，市教育局发布通报。随后官方再通报"特教老师招聘违规"，多人受到党纪政务处分和组织处理，反映招聘程序严重违规问题。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33736773" target="_blank">澎湃新闻</a> · <span class="recommend">推荐理由：公众关注度高+问责结果公布</span></div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-08/doc-inimpwvz4480771.shtml" target="_blank">美国"不可靠"，沙巴土三国签协议，印度紧张："伊斯兰版北约"来了？</a></div>
+    <div class="summary">8月7日，土耳其总统埃尔多安、巴基斯坦总理夏巴兹访问沙特，与沙特王储穆罕默德·本·萨勒曼签署《麦加共同防务协议》，旨在"增强针对任何侵略行为的集体威慑力"，规定对三国中任何一国的武装攻击视为对三国的攻击。伊朗官员回应称"一纸协议无法保障沙特安全"，印度对此高度紧张。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-08/doc-inimpwvz4480771.shtml" target="_blank">环球网</a> · <span class="recommend">推荐理由：中东格局重大变化+多国反应</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33738559" target="_blank">大外交｜美方"边谈边施压"侵蚀中美战略稳定基础，中方反制"一日三连"</a></div>
+    <div class="summary">美方在谈判同时持续对华施压，侵蚀中美战略稳定基础。中方一日内连发三项反制措施，涵盖贸易、外交和军事领域。美参议院法案拟对中印加税100%，中方坚决反对。同时美媒报道称美国防部副部长"执着于访华"。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33738559" target="_blank">澎湃新闻</a> · <span class="recommend">推荐理由：独家深度+政策信号解读</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-07/doc-inimnent3214434.shtml" target="_blank">美国施压一年多，阿根廷还是和中国签了</a></div>
+    <div class="summary">在美国施压一年多之后，阿根廷仍与中国签署合作协议，体现中拉合作持续深化。此举被视为美国"脱钩"战略在拉美受挫的标志，中国与拉美经济合作纽带进一步巩固。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-07/doc-inimnent3214434.shtml" target="_blank">观察者网</a> · <span class="recommend">推荐理由：地缘博弈+南南合作趋势</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33736615" target="_blank">兵韬志略｜日本发布2026防卫白皮书，"总体战"动员值得警惕</a></div>
+    <div class="summary">日本发布2026防卫白皮书，首次系统提出"总体战"动员框架，涉及民防、经济动员、信息战等全方位备战体系。高市早苗相关表态遭批评"真是耻辱"，白皮书对中国的针对性描述引发中方高度关注。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33736615" target="_blank">澎湃新闻</a> · <span class="recommend">推荐理由：军事安全+政策信号解读</span></div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3929185899314567" target="_blank">SpaceX对手破产了——卫星鼻祖之死</a></div>
+    <div class="summary">卫星互联网领域的先驱企业正式宣告破产，被SpaceX的星链业务挤压至绝境。作为卫星通信行业的鼻祖级企业，其破产标志着低轨卫星互联网市场已进入赢家通吃阶段，SpaceX以发射成本优势实现了对传统卫星运营商的降维打击。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3929185899314567" target="_blank">投资界/36氪</a> · <span class="recommend">推荐理由：行业格局巨变+商业航天竞争白热化</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3929008963245955" target="_blank">这届大学新生，快买不起电脑了——PC的大涨价时代</a></div>
+    <div class="summary">受全球芯片供应紧张、AI PC配置要求提升以及关税影响，笔记本电脑价格持续上涨，大学新生面临"买不起电脑"的困境。AI PC标配大内存和高算力芯片推高了入门门槛，主流笔记本价格较去年同期上涨约15%-20%。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3929008963245955" target="_blank">硅基研究室/36氪</a> · <span class="recommend">推荐理由：消费端影响+AI硬件成本传导</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3928861549869446" target="_blank">OpenAI 音箱：果味设计，但比苹果多走一步</a></div>
+    <div class="summary">OpenAI发布首款AI硬件产品——无屏幕的"甜甜圈"形音箱，采用果味极简设计但比苹果多走一步。该设备内置AI语音助手，支持自然语言交互，无需屏幕即可完成复杂任务，标志着OpenAI从纯软件向硬件生态的战略延伸。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3928861549869446" target="_blank">爱范儿/36氪</a> · <span class="recommend">推荐理由：AI硬件新形态+产品创新分析</span></div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778924" target="_blank">非农爆冷打击加息预期，标普道指收创新高，本周美油跌近8%、期金反弹超7%</a></div>
+    <div class="summary">7月非农数据大幅不及预期，打击美联储加息预期，标普和道指收创历史新高。本周美油跌近8%，期金反弹超7%。纽约联储数据显示消费者7月一年通胀预期微降至3.6%，但失业预期上升。贝莱德固收CIO称AI正让就业数据失效，加息"已无意义"。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778924" target="_blank">华尔街见闻</a> · <span class="recommend">推荐理由：多资产联动+宏观政策拐点信号</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778975" target="_blank">特朗普再出手！正式重启罢免美联储理事库克程序，美联储独立性再遭冲击</a></div>
+    <div class="summary">特朗普正式重启罢免美联储理事库克的程序，这是对美联储独立性的又一次重大冲击。美联储9月加息概率再降，经济学家预计核心CPI创五年新低。"新美联储通讯社"称9月是否加息还得看通胀。日程安排显示沃什不曾在6月份与特朗普有过任何通话。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778975" target="_blank">华尔街见闻</a> · <span class="recommend">推荐理由：央行独立性危机+政策走向关键</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33740158" target="_blank">北京：非京籍家庭购房社保个税缴纳年限下调为一年</a></div>
+    <div class="summary">北京进一步优化调整房地产政策，非京籍家庭购房社保个税缴纳年限下调为一年，五环内限购松绑，精准惠及新市民和年轻群体。房贷利率下探至2.8%以下，但银行设置客户资质与合作渠道门槛。专家解读称此举旨在激活刚需购房需求。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33740158" target="_blank">澎湃新闻</a> · <span class="recommend">推荐理由：一线城市楼市政策重大调整</span></div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778985" target="_blank">AAOI业绩爆了，带飞整个光通信</a></div>
+    <div class="summary">AAOI（Applied Optoelectronics）业绩超预期，带动整个光通信板块大涨。英伟达预判AI光模块需求激增20倍，但磷化铟扩产举步维艰，原料+工艺双重制约，AI光模块核心材料受市场关注。光通信成为AI算力链中的新热点。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778985" target="_blank">华尔街见闻</a> · <span class="recommend">推荐理由：业绩驱动+产业链传导逻辑</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778979" target="_blank">SpaceX解禁后两日暴涨23%，期权成交创纪录，空头回补或进一步推升股价</a></div>
+    <div class="summary">SpaceX在解禁后两个交易日内暴涨23%，期权成交创历史纪录。空头回补可能进一步推升股价。SpaceX将自建发电厂保障电力供应，同时其竞争对手卫星互联网鼻祖已宣告破产，市场格局进一步向SpaceX集中。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778979" target="_blank">华尔街见闻</a> · <span class="recommend">推荐理由：市场关注度高+资金流向显著</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3930156837518471" target="_blank">宇树科技中签率不足长鑫十五分之一；东航宣布提前14天可免费退改票；雪佛兰将停止在华销售</a></div>
+    <div class="summary">宇树科技以150.8元/股发行、219倍市盈率登陆科创板，但网上中签率预计仅0.02%-0.03%，不足长鑫十五分之一，反映人形机器人概念股的极度抢手。东航宣布国内客票提前14天可免费退改。雪佛兰将停止在华销售，通用汽车在华战略收缩。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3930156837518471" target="_blank">8点1氪/36氪</a> · <span class="recommend">推荐理由：IPO市场热度+消费政策+行业退出</span></div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3930193006837125" target="_blank">突发 | ChatGPT最强模型紧急踩刹车，奥特曼：你（Astra）吓到我了</a></div>
+    <div class="summary">OpenAI紧急暂停部分Astra模型开发，原因是Astra或具备发现并利用零日漏洞的能力。奥特曼亲自表态"你（Astra）吓到我了"，GPT-5.6宣布全员免费，但下一代巨兽Astra的闪电战被紧急叫停。这一事件重新点燃了AI安全边界和可控性的核心争议。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3930193006837125" target="_blank">爱范儿/36氪</a> · <span class="recommend">推荐理由：AI安全重大事件+行业风向标</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3928804830804097" target="_blank">梁文锋，告别"价格屠夫"——DeepSeek涨价后，用户还能买账吗？</a></div>
+    <div class="summary">DeepSeek宣布大幅上调API服务定价，其V4-Flash单日处理8万亿Token，大半来自免费试用。梁文锋告别"价格屠夫"定位，意味着国产大模型从烧钱抢市场转向商业化盈利。涨价后用户能否买账，成为国产AI商业化路径的关键检验。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3928804830804097" target="_blank">中国企业家杂志/36氪</a> · <span class="recommend">推荐理由：定价策略重大转向+行业拐点</span></div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778982" target="_blank">Apollo首席经济学家：AI烧钱速度创历史之最，警惕"次贷危机式"逆转冲击</a></div>
+    <div class="summary">Apollo首席经济学家警告，AI行业烧钱速度创历史之最，警惕"次贷危机式"逆转冲击。当前AI投资回报率远低于资本投入，若回报持续不及预期，资本可能突然撤离，引发类似2008年次贷危机的连锁反应。AI办公超级入口争夺战全面打响，五路玩家齐下场。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778982" target="_blank">华尔街见闻</a> · <span class="recommend">推荐理由：风险预警+宏观视角独特</span></div>
+  </div>
+</div>
+
+<!-- 本周回顾 -->
+<div class="review-section" id="review">
+  <div class="review-title">🔄 本周回顾 · Top 10 热点复盘</div>
+
+  <div class="review-item">
+    <h3>1️⃣ 沙巴土三国签署《麦加共同防务协议》</h3>
+    <div class="event-desc">8月7日，土耳其、巴基斯坦、沙特三国签署联合防务协议，被视为"伊斯兰版北约"雏形。协议规定对三国中任何一国的武装攻击视为对三国的攻击，旨在增强集体威慑力。</div>
+    <div class="update"><strong>最新进展：</strong>伊朗官员回应称"一纸协议无法保障沙特安全"，印度对此高度紧张。美国将解除对伊朗封锁的前提是伊朗与阿曼达成霍尔木兹海峡协议。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>2️⃣ 伊朗与阿曼达成霍尔木兹海峡协议框架</h3>
+    <div class="event-desc">伊朗与阿曼已明确霍尔木兹海峡协议总体框架，美国表示一旦达成恢复不受阻碍商业航运的协议将解除对伊朗的封锁。伊朗总统称谈判中从未让步，美方24小时内改变立场。</div>
+    <div class="update"><strong>最新进展：</strong>伊朗酝酿禁止美以船只通行，特朗普称谈判"取得进展"。美国将行动视实际表现而定，与伊朗履行承诺情况挂钩。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>3️⃣ OpenAI暂停Astra模型开发</h3>
+    <div class="event-desc">OpenAI发现Astra模型或具备发现并利用零日漏洞的能力，紧急暂停部分开发。奥特曼亲自表态"你（Astra）吓到我了"，同时宣布GPT-5.6全员免费。</div>
+    <div class="update"><strong>最新进展：</strong>事件引发AI安全边界讨论升级，业界对强AI能力突破安全护栏的担忧加剧。OpenAI发布首款AI硬件"甜甜圈"音箱，从纯软件向硬件延伸。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>4️⃣ 7月非农爆冷，美联储加息预期降温</h3>
+    <div class="event-desc">7月非农数据大幅不及预期，打击美联储加息预期。标普和道指收创历史新高，黄金三天涨300美元上演逼空行情。</div>
+    <div class="update"><strong>最新进展：</strong>特朗普正式重启罢免美联储理事库克程序，美联储独立性再遭冲击。贝莱德固收CIO称AI正让就业数据失效，加息"已无意义"。经济学家料核心CPI创五年新低。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>5️⃣ 北京楼市新政落地</h3>
+    <div class="event-desc">北京进一步优化房地产政策，非京籍家庭购房社保个税缴纳年限下调为一年，五环内限购松绑，精准惠及新市民和年轻群体。</div>
+    <div class="update"><strong>最新进展：</strong>房贷利率下探至2.8%以下，但银行设置客户资质与合作渠道门槛。专家解读称此举旨在激活刚需购房需求，市场反应有待观察。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>6️⃣ DeepSeek宣布大幅涨价</h3>
+    <div class="event-desc">DeepSeek官宣即将大幅上调API服务定价，其V4-Flash单日处理8万亿Token，大半来自免费试用。梁文锋告别"价格屠夫"定位。</div>
+    <div class="update"><strong>最新进展：</strong>涨价后用户能否买账成为国产AI商业化路径的关键检验。AI办公超级入口争夺战全面打响，字节豆包、腾讯等五路玩家齐下场。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>7️⃣ 台风"白海豚"逼近浙闽沿海</h3>
+    <div class="event-desc">今年第13号台风"白海豚"（强台风级）中心最大风力14级，预计9日晚至10日晨在浙江舟山到福建福鼎一带沿海登陆。</div>
+    <div class="update"><strong>最新进展：</strong>浙江提升防台风应急响应至Ⅱ级，交通运输部启动台风二级防御响应。7省市将受强降雨影响，浙江沿海将有9-12级大风。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>8️⃣ SpaceX解禁后暴涨</h3>
+    <div class="event-desc">SpaceX解禁后两个交易日内暴涨23%，期权成交创纪录，同时其卫星互联网竞争对手宣告破产。</div>
+    <div class="update"><strong>最新进展：</strong>SpaceX将自建发电厂保障电力供应，低轨卫星互联网市场进入赢家通吃阶段。空头回补可能进一步推升股价。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>9️⃣ 宇树科技登陆科创板</h3>
+    <div class="event-desc">宇树科技以150.8元/股发行、219倍市盈率登陆科创板，人形机器人概念股极度抢手，网上中签率预计仅0.02%-0.03%。</div>
+    <div class="update"><strong>最新进展：</strong>具身智能赛道本周融资活跃，帕西尼感知科技完成10亿元战略融资为本周最大。一级市场本周150起融资，具身智能、脑机接口等细分活跃。</div>
+  </div>
+
+  <div class="review-item">
+    <h3>🔟 泉州市委书记张毅恭任上被查</h3>
+    <div class="event-desc">泉州市委书记张毅恭涉嫌严重违纪违法任上被查，中国东方电气集团原党组副书记宋致远也接受审查调查。</div>
+    <div class="update"><strong>最新进展：</strong>金融监管总局原局长李云泽被罢免全国人大代表，反腐力度持续加大。佛山教师招聘违规案多人受处分。</div>
+  </div>
+</div>
+
+<!-- 今日思辨 -->
+<div class="debate-section" id="debate">
+  <div class="debate-title">🧠 今日思辨</div>
+
+  <div class="debate-item">
+    <h3>话题①：OpenAI紧急叫停Astra——AI安全边界在哪里？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件经过</span></p>
+      <p>OpenAI在开发下一代旗舰模型Astra时，发现其具备<strong>发现并利用零日漏洞</strong>的能力——这是网络安全领域最危险的攻击类型之一。奥特曼亲自表态"你（Astra）吓到我了"，紧急暂停部分Astra开发。与此同时，GPT-5.6宣布全员免费，形成"放一马、收一马"的鲜明对比。</p>
+      <p><span class="bg-label">Astra是什么？</span></p>
+      <p>Astra是OpenAI正在开发的下一代旗舰模型，定位超越GPT-5.6。据华尔街见闻报道，Astra或具备发现并利用零日漏洞的能力，这意味着它能自主发现软件系统中未公开的安全缺陷并加以利用。这一能力远超此前AI模型的"安全测试"范畴，进入了<strong>主动攻击</strong>领域。</p>
+      <p><span class="bg-label">连锁反应</span></p>
+      <ol class="timeline">
+        <li>OpenAI紧急暂停Astra部分开发，奥特曼亲自表态</li>
+        <li>GPT-5.6同日宣布全员免费，被视为"安抚市场"之举</li>
+        <li>AI安全社区再次呼吁建立AI能力红线</li>
+        <li>Apollo首席经济学家警告AI烧钱速度创历史之最，警惕"次贷危机式"逆转</li>
+        <li>贝莱德固收CIO称AI正让就业数据失效，加息"已无意义"</li>
+      </ol>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✅ 应继续推进Astra开发</h4>
+        <ul>
+          <li>发现零日漏洞的能力可用于<strong>防御性安全审计</strong>，提前修补系统漏洞</li>
+          <li>AI能力突破不可阻挡，<strong>暂停只会让竞争对手率先突破</strong></li>
+          <li>OpenAI已主动暂停，说明<strong>自我监管机制有效</strong></li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>❌ 应严格限制Astra级AI能力</h4>
+        <ul>
+          <li>零日漏洞利用能力一旦泄露，<strong>可被用于网络战和恐怖攻击</strong></li>
+          <li>AI自我监管不可靠，<strong>商业利益驱动下安全标准会持续降低</strong></li>
+          <li>全球尚无AI安全红线共识，<strong>缺乏国际法约束</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导</h4>
+      <ol>
+        <li><strong>事实判断：</strong>Astra发现零日漏洞的能力具体表现是什么？OpenAI的"暂停"是暂停全部还是部分开发？当前AI安全测试标准能否覆盖此类能力？</li>
+        <li><strong>数据支撑：</strong>2025年全球零日漏洞利用攻击增长约40%（来源：Google Project Zero）；AI安全事件数量年增60%以上（来源：Stanford AI Index）。AI网络安全市场规模预计2026年达400亿美元。</li>
+        <li><strong>理论框架：</strong>科技伦理中的"预防原则"（Precautionary Principle）——当技术可能造成不可逆伤害时，举证责任应在推进方而非限制方。博弈论中的"囚徒困境"——任何一方暂停研发而对手不暂停，将导致自身劣势。</li>
+        <li><strong>价值判断：</strong>科技创新自由 vs. 公共安全——谁的利益优先？国家安全需求（AI辅助防御）vs. 滥用风险（AI武器化），哪个权重更大？</li>
+        <li><strong>利益权衡：</strong>继续开发的收益：AI安全审计能力提升、防御性安全增强、技术领先优势；代价：零日漏洞武器化风险、AI军备竞赛加速。暂停开发的收益：降低即时风险、争取监管窗口期；代价：竞争对手不暂停则自身落后、安全防御能力提升滞后。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="debate-item">
+    <h3>话题②：沙巴土三国"伊斯兰版北约"——中东安全格局正在重塑？</h3>
+    <div class="background">
+      <p><span class="bg-label">事件经过</span></p>
+      <p>8月7日，土耳其总统埃尔多安、巴基斯坦总理夏巴兹访问沙特，与沙特王储穆罕默德·本·萨勒曼在麦加举行联合防务会议，签署《麦加共同防务协议》。协议规定对三国中任何一国的武装攻击视为对三国的攻击，旨在"增强针对任何侵略行为的集体威慑力"。此举被印度媒体称为"伊斯兰版北约"。</p>
+      <p><span class="bg-label">背景脉络</span></p>
+      <p>沙特长期以来依赖美国安全保护，但近年来美国在中东的"不可靠"表现（伊朗冲突中的反复、对盟友态度摇摆）促使沙特寻求新的安全框架。土耳其作为北约成员国却与西方关系紧张，巴基斯坦拥有核武器，三国组合具有独特的军事互补性。</p>
+      <p><span class="bg-label">各方反应</span></p>
+      <ol class="timeline">
+        <li><strong>伊朗：</strong>议员雷扎伊称"一纸协议无法保障沙特安全"，正如几十年依赖美国也未能奏效</li>
+        <li><strong>印度：</strong>高度紧张，担心巴基斯坦-土耳其-沙特三角形成对印包围</li>
+        <li><strong>美国：</strong>与伊朗达成霍尔木兹海峡协议框架后表示将解除对伊朗封锁</li>
+        <li><strong>伊朗总统：</strong>称谈判中从未让步，美方24小时内改变立场</li>
+      </ol>
+    </div>
+    <div class="debate-columns">
+      <div class="pro">
+        <h4>✅ 中东自主安全框架的积极信号</h4>
+        <ul>
+          <li>减少对美国的单边依赖，<strong>中东国家自主性增强</strong></li>
+          <li>伊斯兰国家内部团结，<strong>有利于地区稳定</strong></li>
+          <li>集体安全机制可<strong>降低冲突升级风险</strong></li>
+        </ul>
+      </div>
+      <div class="con">
+        <h4>❌ 新的对抗阵营可能加剧紧张</h4>
+        <ul>
+          <li>三方协议可能<strong>激化与伊朗的对抗</strong>，中东分裂加剧</li>
+          <li>土耳其作为北约成员却与沙特、巴基斯坦结盟，<strong>阵营交叉增加误判风险</strong></li>
+          <li>印度紧张可能导致<strong>南亚军备竞赛升级</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="guiding-questions">
+      <h4>🔍 思辨引导</h4>
+      <ol>
+        <li><strong>事实判断：</strong>《麦加共同防务协议》的具体条款是什么？是否包含自动军事干预条款？与北约第5条有何异同？</li>
+        <li><strong>数据支撑：</strong>2025年中东军费开支约2000亿美元（来源：SIPRI）；沙特2025年军费约750亿美元，土耳其约250亿美元，巴基斯坦约120亿美元。美国2025年对中东军售约500亿美元。</li>
+        <li><strong>理论框架：</strong>国际关系中的"均势理论"（Balance of Power）——当一方力量过大时，其他方会联合制衡。安全困境（Security Dilemma）——一方增强安全的举措可能被另一方视为威胁，导致螺旋升级。</li>
+        <li><strong>价值判断：</strong>中东国家自主安全权 vs. 全球安全秩序稳定——谁优先？宗教文化认同的安全联盟 vs. 民族国家利益，哪个更可靠？</li>
+        <li><strong>利益权衡：</strong>三方结盟的收益：降低对美依赖、增强集体威慑、提升地区话语权；代价：激化与伊朗对抗、增加与印度紧张、可能引发军备竞赛。维持现状的收益：避免新的阵营对抗；代价：继续依赖美国保护、中东自主性受限。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="daily-question">
+    <div class="label">💡 本日追问</div>
+    <div class="question">当AI发现了它不该发现的能力，当小国找到了它不该找到的联盟——技术突破与地缘重组，是否都在遵循同样的逻辑：旧秩序的裂缝，终将被新力量填满？</div>
+  </div>
+</div>
+
+<div class="footer">
+  生成时间：2026-08-08 17:00 | 数据源：5 | 采集条目：20+10<br>
+  数据来源：澎湃新闻 · 华尔街见闻 · 36氪 · 财联社 · 新浪热搜
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议。新闻摘要由AI生成，请以原文为准。</div>
+</div>
+
+</body>
+</html>
