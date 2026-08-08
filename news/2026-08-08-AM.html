@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 每日资讯简报 | 2026-08-08 上午版</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📰%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-link: #58a6ff;
+    --accent-society: #f0883e;
+    --accent-politics: #da3633;
+    --accent-tech: #3fb950;
+    --accent-finance: #d2a8ff;
+    --accent-ai: #79c0ff;
+    --accent-market: #22d3ee;
+    --accent-debate: #ffa657;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+  .header .overview {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border-left: 4px solid var(--text-link);
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+  .highlights {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .highlights .hl-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hl-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: center;
+  }
+  .hl-tag.tag-ai { background: rgba(139,92,246,0.2); color: #a78bfa; }
+  .hl-tag.tag-finance { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .hl-tag.tag-society { background: rgba(244,63,94,0.2); color: #fb7185; }
+  .hl-tag.tag-politics { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .hl-tag.tag-tech { background: rgba(6,182,212,0.2); color: #22d3ee; }
+  .hl-tag.tag-market { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .category {
+    margin-bottom: 28px;
+  }
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .category-title.society { background: rgba(240,136,62,0.15); color: var(--accent-society); border-left: 4px solid var(--accent-society); }
+  .category-title.politics { background: rgba(218,54,51,0.15); color: var(--accent-politics); border-left: 4px solid var(--accent-politics); }
+  .category-title.tech { background: rgba(63,185,80,0.15); color: var(--accent-tech); border-left: 4px solid var(--accent-tech); }
+  .category-title.finance { background: rgba(210,168,255,0.15); color: var(--accent-finance); border-left: 4px solid var(--accent-finance); }
+  .category-title.market { background: rgba(34,211,238,0.15); color: var(--accent-market); border-left: 4px solid var(--accent-market); }
+  .category-title.ai { background: rgba(121,192,255,0.15); color: var(--accent-ai); border-left: 4px solid var(--accent-ai); }
+  
+  /* 股市板块速览 */
+  .sector-brief {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) {
+    .sector-brief { grid-template-columns: 1fr; }
+  }
+  .sector-card {
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .sector-card.up {
+    background: rgba(63,185,80,0.08);
+    border: 1px solid rgba(63,185,80,0.25);
+  }
+  .sector-card.down {
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.25);
+  }
+  .sector-card.neutral {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.25);
+  }
+  .sector-card .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .sector-card .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .sector-card.up .name { color: #3fb950; }
+  .sector-card.down .name { color: #da3633; }
+  .sector-card.neutral .name { color: #58a6ff; }
+  .sector-card .value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .sector-card.up .value { color: #3fb950; }
+  .sector-card.down .value { color: #da3633; }
+  .sector-card.neutral .value { color: #58a6ff; }
+  
+  /* 热门板块标签 */
+  .hot-sectors {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .hot-sectors h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .sector-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .sector-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .sector-tag.up {
+    background: rgba(63,185,80,0.15);
+    color: #3fb950;
+  }
+  .sector-tag.down {
+    background: rgba(218,54,51,0.15);
+    color: #da3633;
+  }
+  
+  /* 市场关注 */
+  .market-focus {
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .market-focus h4 {
+    font-size: 14px;
+    color: var(--accent-market);
+    margin-bottom: 10px;
+  }
+  .focus-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .focus-item strong {
+    color: var(--text-primary);
+  }
+  
+.news-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+  }
+  .news-item:hover { background: var(--bg-card-hover); }
+  .news-item .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .news-item .title a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .news-item .title a:hover { color: var(--text-link); }
+  .news-item .summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .news-item .meta {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .news-item .meta a {
+    color: var(--text-link);
+    text-decoration: none;
+  }
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+  .footer .disclaimer {
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: rgba(218,54,51,0.08);
+    border: 1px solid rgba(218,54,51,0.2);
+    border-radius: 6px;
+    font-size: 11px;
+    color: #8b949e;
+  }
+</style>
+</head>
+<body>
+
+<div style="margin-bottom:16px"><a href="index.html" style="color:var(--text-link);text-decoration:none;font-size:14px">🏠 返回目录</a></div>
+
+<div class="header">
+  <h1>📰 每日资讯简报</h1>
+  <div class="date">2026年8月8日 · 星期六 · 上午版 🌅</div>
+  <div class="overview">台风"白海豚"直扑浙闽沿海，伊朗与阿曼达成霍尔木兹海峡协议框架，OpenAI紧急暂停Astra模型开发，DeepSeek宣布大幅涨价告别"价格屠夫"，黄金三天涨300美元创历史新高，北京楼市新政松绑非京籍购房。</div>
+  <div class="highlights">
+    <div class="hl-row"><span class="hl-tag tag-society">社会</span> 台风"白海豚"即将登陆浙闽，浙江提升防台响应至Ⅱ级，多地停工停课</div>
+    <div class="hl-row"><span class="hl-tag tag-politics">时政</span> 伊朗与阿曼达成霍尔木兹协议框架，美将解除对伊封锁，中方对美反制"一日三连"</div>
+    <div class="hl-row"><span class="hl-tag tag-ai">AI</span> OpenAI暂停Astra模型开发，DeepSeek宣布大幅涨价，GPT-5.6全员免费开放</div>
+    <div class="hl-row"><span class="hl-tag tag-finance">财经</span> 黄金三天涨300美元上演逼空，非农爆冷打击加息预期，标普道指创新高</div>
+    <div class="hl-row"><span class="hl-tag tag-tech">科技</span> 英伟达拟向Lancium投资30亿美元建AI电力设施，华为发布麒麟8030芯片</div>
+  </div>
+</div>
+
+<div class="toc" style="margin-bottom:24px;padding:12px 20px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border);font-size:14px;color:var(--text-secondary);">
+  🏘️ <a href="#society" style="color:var(--text-link);text-decoration:none">社会(4)</a> · 🏛️ <a href="#politics" style="color:var(--text-link);text-decoration:none">时政(4)</a> · 🔬 <a href="#tech" style="color:var(--text-link);text-decoration:none">科技(3)</a> · 💰 <a href="#finance" style="color:var(--text-link);text-decoration:none">财经(3)</a> · 📊 <a href="#market" style="color:var(--text-link);text-decoration:none">股市(3)</a> · 🤖 <a href="#ai" style="color:var(--text-link);text-decoration:none">人工智能(3)</a>
+</div>
+
+<!-- 社会新闻 -->
+<div class="category" id="society">
+  <div class="category-title society">🏘️ 社会</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33742880" target="_blank">台风"白海豚"未来三天强降雨影响7省市，浙江上海等地位于台风危险半圆</a></div>
+    <div class="summary">今年第13号台风"白海豚"（强台风级）中心位于浙江温州市以东约520公里海面，中心最大风力14级（45米/秒），七级风圈半径420-450公里。预计9日晚至10日晨在浙江舟山至福建福鼎沿海登陆，影响浙沪闽等7省市。浙江已将防台风应急响应提升至Ⅱ级，交通运输部启动台风二级防御响应，多地停工停课。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33742880" target="_blank">澎湃新闻</a> | 推荐理由：多源交叉验证+直接影响超5000万人</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33742913" target="_blank">多名避暑老人因山洪被困陕西蓝田秦岭山里，县应急局：人员都安全</a></div>
+    <div class="summary">受持续强降雨影响，陕西蓝田秦岭山区突发山洪，多名避暑老人被困。县应急局确认所有被困人员均安全，但道路暂时未通。7月30日以来陕西多地持续强降雨，国铁西安局管内线路一度停运，8月8日已恢复开行。四川宜宾同日发生4.9级地震，震源深度6千米。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33742913" target="_blank">澎湃新闻</a> | 推荐理由：极端天气叠加地质灾害+民生关注度高</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/s/2026-08-07/doc-inimnzse9914295.shtml" target="_blank">已婚男被指强奸18岁女子，时隔5年被刑拘，一审判5年双方均不服</a></div>
+    <div class="summary">一名已婚男子被指控强奸18岁女子，时隔5年后才被刑事拘留，一审判决5年有期徒刑，但控辩双方均不服提起上诉。案件涉及追诉时效、证据认定等法律争议，引发社会对司法程序效率和被害人权益保护的关注。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/s/2026-08-07/doc-inimnzse9914295.shtml" target="_blank">新浪新闻</a> | 推荐理由：司法公正争议+社会关注度持续升温</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33735577" target="_blank">主播利用未成年人喊网友"爸爸"博流量，"母女合拍"多账号被封禁</a></div>
+    <div class="summary">多名主播利用未成年人拍摄短视频，诱导未成年人喊网友"爸爸"博取流量，"母女合拍"类账号被集中封禁。监管部门持续打击利用未成年人牟利的短视频乱象，强调平台应强化内容审核与未成年人保护机制。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33735577" target="_blank">澎湃新闻</a> | 推荐理由：未成年人保护+平台监管风向标</div>
+  </div>
+</div>
+
+<!-- 时政新闻 -->
+<div class="category" id="politics">
+  <div class="category-title politics">🏛️ 时政</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33738559" target="_blank">大外交｜美方"边谈边施压"侵蚀中美战略稳定基础，中方反制"一日三连"</a></div>
+    <div class="summary">美方在对华谈判中持续施压，侵蚀中美战略稳定基础。中方在同一天内采取三项反制措施：对美参议院法案拟对中印加税100%表示坚决反对，对美智库炮制剧本搅动南海予以揭露，国防部声明中国军队坚决反制任何闹海挑衅图谋。美参议院法案拟对中印加税100%引发广泛关注。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33738559" target="_blank">澎湃新闻</a> | 推荐理由：多源交叉验证+中美关系关键信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778974" target="_blank">伊朗与阿曼已明确协议总体框架，伊朗酝酿禁美以船只通行霍尔木兹海峡</a></div>
+    <div class="summary">伊朗与阿曼已明确霍尔木兹海峡协议总体框架。据报道，一旦宣布达成恢复不受阻碍商业航运的协议，美国将解除对伊朗港口的封锁。但伊朗总统强调谈判中从未让步，同时酝酿禁止美以船只通行霍尔木兹海峡。特朗普称谈判"取得进展"，但伊朗内部对协议措辞存在分歧。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778974" target="_blank">华尔街见闻</a> | 推荐理由：独家深度+中东地缘核心变量</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/c/2026-08-07/doc-inimnent3214434.shtml" target="_blank">美国施压一年多，阿根廷还是和中国签了</a></div>
+    <div class="summary">在美国施压一年多之后，阿根廷仍与中国续签了合作协议，被称为"最长续期"。这标志着中国与拉美国家关系持续深化，美国"离间"策略在拉美遭遇挫败。阿根廷选择与中国保持合作，反映出全球南方国家在大国博弈中的战略自主倾向。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/c/2026-08-07/doc-inimnent3214434.shtml" target="_blank">观察者网/新浪</a> | 推荐理由：独家深度+南南合作信号</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://news.sina.com.cn/w/2026-08-08/doc-inimpwvz4480771.shtml" target="_blank">沙巴土三国签协议，印度紧张："伊斯兰版北约"来了？</a></div>
+    <div class="summary">沙特、巴基斯坦、土耳其三国签署重要协议，被外界称为"伊斯兰版北约"。印度对此高度紧张，认为该联盟可能改变南亚及中东战略格局。三国协议内容涉及防务合作与安全保障，标志着伊斯兰世界军事合作进入新阶段，对美国在中东的影响力构成潜在挑战。</div>
+    <div class="meta">来源：<a href="https://news.sina.com.cn/w/2026-08-08/doc-inimpwvz4480771.shtml" target="_blank">环球网/新浪</a> | 推荐理由：多源交叉验证+地缘格局重大变量</div>
+  </div>
+</div>
+
+<!-- 科技新闻 -->
+<div class="category" id="tech">
+  <div class="category-title tech">🔬 科技</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778979" target="_blank">英伟达拟向Lancium投资最高30亿美元，支持AI数据中心电力基础设施</a></div>
+    <div class="summary">英伟达已同意向电力基础设施开发商Lancium投资20亿美元，并承诺追加10亿美元。交易对Lancium估值约100亿美元。Lancium由黑石集团支持，负责开发位于美国得州的AI数据中心电力项目，服务OpenAI和甲骨文等客户。AI算力需求激增正倒逼电力基础设施大规模扩容。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778979" target="_blank">华尔街见闻/财联社</a> | 推荐理由：独家深度+AI基建核心动向</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3928804830804097" target="_blank">梁文锋，告别"价格屠夫"——DeepSeek宣布大幅涨价</a></div>
+    <div class="summary">DeepSeek官宣即将大幅上调API服务定价。此前其V4-Flash单日处理8万亿Token，大半来自免费试用。从"价格屠夫"到大幅涨价，反映出国产大模型从补贴获客转向商业化变现的战略转折。市场关注涨价后用户留存率及对竞争格局的影响。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3928804830804097" target="_blank">36氪</a> | 推荐理由：独家深度+AI行业商业模式转折点</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://finance.sina.com.cn/tech/discovery/2026-08-07/doc-inimmyem4192367.shtml" target="_blank">华为畅享100 Pro Max首发麒麟8030：麒麟最强8系芯片</a></div>
+    <div class="summary">华为畅享100 Pro Max首发搭载麒麟8030处理器，定位麒麟最强8系芯片。同时华为阔直板手机确定归属Pura X系列，预计7000元起。存储暴涨背景下，iPhone 18 Pro系列国行预计万元起步。国产品牌在中高端芯片和终端市场的竞争持续加剧。</div>
+    <div class="meta">来源：<a href="https://finance.sina.com.cn/tech/discovery/2026-08-07/doc-inimmyem4192367.shtml" target="_blank">新浪科技</a> | 推荐理由：国产芯片突破+消费电子竞争格局</div>
+  </div>
+</div>
+
+<!-- 财经新闻 -->
+<div class="category" id="finance">
+  <div class="category-title finance">💰 财经</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778966" target="_blank">三天涨300美元！黄金上演逼空，瑞银喊出明年5000美元</a></div>
+    <div class="summary">黄金价格三天暴涨300美元，上演逼空行情。瑞银预测明年金价可达5000美元/盎司。驱动因素包括：油价刺激通胀预期、非农爆冷削弱加息预期，黄金"双面得利"。纽约联储数据显示美消费者7月一年通胀预期微降至3.6%，但失业预期上升。特朗普重启罢免美联储理事库克程序，美联储独立性再遭冲击。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778966" target="_blank">华尔街见闻</a> | 推荐理由：独家深度+全球资产定价核心变量</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778924" target="_blank">非农爆冷打击加息预期，标普道指收创新高，本周美油跌近8%</a></div>
+    <div class="summary">美国7月非农数据爆冷，打击加息预期，标普和道指收创历史新高。"新美联储通讯社"称9月是否加息还得看通胀。贝莱德固收CIO认为AI正让就业数据失效，加息"已无意义"。经济学家料核心CPI将创五年新低。美国财政部"改口"引爆市场猜测：或削减长债供给。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778924" target="_blank">华尔街见闻</a> | 推荐理由：多源交叉验证+全球金融市场风向标</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://www.thepaper.cn/newsDetail_forward_33740158" target="_blank">北京：非京籍家庭购房社保个税缴纳年限下调为一年</a></div>
+    <div class="summary">北京发布楼市新政，非京籍家庭购房社保个税缴纳年限从此前的5年下调为1年，五环内限购松绑，精准惠及新市民和年轻群体。房贷利率下探至2.8%以下，但银行设置客户资质与合作渠道门槛。这是北京近年来最大幅度的房地产政策松绑，意在提振市场信心。</div>
+    <div class="meta">来源：<a href="https://www.thepaper.cn/newsDetail_forward_33740158" target="_blank">澎湃新闻/华尔街见闻</a> | 推荐理由：多源交叉验证+楼市政策重大信号</div>
+  </div>
+</div>
+
+<!-- 股市新闻 -->
+<div class="category" id="market">
+  <div class="category-title market">📊 股市</div>
+
+  <!-- 板块速览卡片 -->
+  <div class="sector-brief">
+    <div class="sector-card up">
+      <div class="label">领涨板块</div>
+      <div class="name">光通信</div>
+      <div class="value">AAOI业绩引爆板块</div>
+    </div>
+    <div class="sector-card down">
+      <div class="label">领跌板块</div>
+      <div class="name">原油相关</div>
+      <div class="value">本周美油跌近8%</div>
+    </div>
+    <div class="sector-card neutral">
+      <div class="label">北向资金</div>
+      <div class="name">暂停交易</div>
+      <div class="value">周六休市</div>
+    </div>
+  </div>
+
+  <!-- 热门板块标签 -->
+  <div class="hot-sectors">
+    <h4>🔥 热门板块</h4>
+    <div class="sector-tags">
+      <span class="sector-tag up">光通信 +AAOI带动</span>
+      <span class="sector-tag up">黄金 +逼空行情</span>
+      <span class="sector-tag up">SpaceX +解禁暴涨23%</span>
+      <span class="sector-tag down">原油 -本周跌近8%</span>
+      <span class="sector-tag up">储能 +长时储能量产</span>
+    </div>
+  </div>
+
+  <!-- 市场关注个股 -->
+  <div class="market-focus">
+    <h4>👁️ 市场关注</h4>
+    <div class="focus-item"><strong>SpaceX</strong>：解禁后两日暴涨23%，期权成交创纪录，空头回补或进一步推升股价</div>
+    <div class="focus-item"><strong>Palantir</strong>：创2024年以来最强单周表现，AI应用龙头回归</div>
+    <div class="focus-item"><strong>宇树科技</strong>：以150.8元/股发行、219倍市盈率登陆科创板，网上中签率仅0.02%-0.03%</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778985" target="_blank">AAOI业绩爆了，带飞整个光通信板块</a></div>
+    <div class="summary">AAOI（Applied Optoelectronics）业绩大超预期，带动整个光通信板块上涨。英伟达预判AI光模块需求将激增20倍，但磷化铟扩产举步维艰，原料+工艺双重制约。AI光模块核心材料受市场高度关注，相关概念股获资金追捧。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778985" target="_blank">华尔街见闻</a> | 推荐理由：独家深度+光通信产业链核心变量</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://wallstreetcn.com/articles/3778979" target="_blank">SpaceX解禁后两日暴涨23%，期权成交创纪录</a></div>
+    <div class="summary">SpaceX解禁后两日股价暴涨23%，期权成交量创历史纪录。空头回补可能进一步推升股价。与此同时，SpaceX竞争对手OneWeb（卫星互联网鼻祖）宣布破产，行业洗牌加速。SpaceX在商业航天领域的垄断地位进一步巩固。</div>
+    <div class="meta">来源：<a href="https://wallstreetcn.com/articles/3778979" target="_blank">华尔街见闻/36氪</a> | 推荐理由：多源交叉验证+商业航天格局变化</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3930156837518471" target="_blank">宇树科技中签率不足长鑫十五分之一，219倍市盈率登陆科创板</a></div>
+    <div class="summary">宇树科技以150.8元/股发行、219倍市盈率登陆科创板，网上中签率预计仅0.02%-0.03%，不足长鑫存储十五分之一。人形机器人赛道持续火爆，但高估值引发市场对泡沫的担忧。本周一级市场150起融资，具身智能、脑机接口等细分活跃。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3930156837518471" target="_blank">36氪/财联社</a> | 推荐理由：多源交叉验证+人形机器人资本热度</div>
+  </div>
+</div>
+
+<!-- AI新闻 -->
+<div class="category" id="ai">
+  <div class="category-title ai">🤖 人工智能</div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3930193006837125" target="_blank">ChatGPT最强模型紧急踩刹车！OpenAI暂停部分Astra模型开发</a></div>
+    <div class="summary">OpenAI紧急暂停部分Astra模型开发，原因是Astra或具备发现并利用零日漏洞的能力，安全风险超出预期。奥特曼称"Astra吓到我了"。此前GPT-5.6已向全员免费开放，下一代巨兽Astra打响闪电战，但安全审查迫使踩刹车，反映出AI能力突破与安全治理之间的深层矛盾。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3930193006837125" target="_blank">36氪/华尔街见闻</a> | 推荐理由：多源交叉验证+AI安全重大事件</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3928686064171400" target="_blank">GPT-5.6全员免费！下一代巨兽Astra打响闪电战</a></div>
+    <div class="summary">OpenAI宣布GPT-5.6全员免费开放，十亿人不限量使用。同时下一代模型Astra启动开发，定位更强能力的AI系统。但Astra的安全风险很快被发现，导致开发暂停。Apollo首席经济学家警告AI烧钱速度创历史之最，警惕"次贷危机式"逆转冲击。贝莱德固收CIO称AI正让就业数据失效。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3928686064171400" target="_blank">36氪/华尔街见闻</a> | 推荐理由：多源交叉验证+AI行业格局变化</div>
+  </div>
+
+  <div class="news-item">
+    <div class="title"><a href="https://36kr.com/p/3928841938966400" target="_blank">五路玩家齐下场，AI办公超级入口争夺战全面打响</a></div>
+    <div class="summary">字节跳动豆包、微软Copilot、谷歌Workspace、OpenAI ChatGPT、金山WPS五路玩家齐聚AI办公赛道，超级入口争夺战全面打响。赵祺接管豆包方向，字节能否打赢AI办公这场仗备受关注。AI办公进入"战国时代"，从单点工具向全流程智能化演进。</div>
+    <div class="meta">来源：<a href="https://36kr.com/p/3928841938966400" target="_blank">36氪</a> | 推荐理由：独家深度+AI商业化核心赛道</div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>📋 本简报由 Hermes Agent 自动生成</p>
+  <p style="margin-top: 6px;">数据来源：澎湃新闻 · 华尔街见闻 · 36氪 · 财联社 · 新浪热搜 | 共5源 · 采集条目20</p>
+  <p style="margin-top: 6px;">生成时间：2026-08-08 11:10</p>
+  <div class="disclaimer">⚠️ 股市数据仅供参考，不构成投资建议</div>
+</div>
+
+</body>
+</html>
