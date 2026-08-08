@@ -5,253 +5,221 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>量化交易资讯简报 | 2026-08-08</title>
 <style>
-:root {
-  --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9;
-  --text-muted: #8b949e; --accent: #58a6ff; --accent2: #f78166;
-  --accent3: #7ee787; --accent4: #d2a8ff;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; max-width:900px; margin:0 auto; padding:20px; }
-h1 { text-align:center; font-size:1.6em; margin-bottom:5px; color:#fff; border-bottom:2px solid var(--accent); padding-bottom:10px; }
-.subtitle { text-align:center; color:var(--text-muted); font-size:0.9em; margin-bottom:20px; }
-.summary { background:linear-gradient(135deg,#1a1f2e,#1f2937); border:1px solid var(--accent); border-radius:8px; padding:15px 20px; margin-bottom:25px; font-size:1.05em; color:#e6edf3; }
-.summary strong { color:var(--accent); }
-.toc { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:15px 25px; margin-bottom:25px; }
-.toc h2 { font-size:1em; color:var(--accent); margin-bottom:8px; }
-.toc ol { padding-left:20px; }
-.toc li { margin:4px 0; }
-.toc a { color:var(--accent); text-decoration:none; }
-.toc a:hover { text-decoration:underline; }
-.section { margin-bottom:30px; }
-.section-title { font-size:1.2em; color:#fff; border-left:4px solid var(--accent); padding-left:12px; margin-bottom:15px; }
-.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:15px 18px; margin-bottom:12px; }
-.card:hover { border-color:var(--accent); }
-.card h3 { font-size:1em; color:#e6edf3; margin-bottom:6px; }
-.card h3 a { color:var(--accent); text-decoration:none; }
-.card h3 a:hover { text-decoration:underline; }
-.card .meta { font-size:0.82em; color:var(--text-muted); margin-bottom:6px; }
-.card .meta span { margin-right:12px; }
-.card .desc { font-size:0.92em; color:var(--text); }
-.tag { display:inline-block; font-size:0.75em; padding:2px 8px; border-radius:4px; margin-right:6px; margin-bottom:4px; }
-.tag-paper { background:#58a6ff33; color:var(--accent); }
-.tag-strategy { background:#7ee78733; color:var(--accent3); }
-.tag-broker { background:#d2a8ff33; color:var(--accent4); }
-.score { display:inline-block; font-size:0.8em; padding:2px 8px; border-radius:4px; font-weight:bold; }
-.score-high { background:#7ee78733; color:var(--accent3); }
-.score-mid { background:#e3b34133; color:#e3b341; }
-.hl-item { background:var(--card); border-left:3px solid var(--accent2); padding:10px 15px; border-radius:0 6px 6px 0; margin-bottom:10px; font-size:0.95em; }
-.hl-item strong { color:var(--accent2); }
-.factor-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
-.factor-card { background:var(--card); border:1px solid var(--border); border-radius:6px; padding:10px 14px; text-align:center; }
-.factor-card .name { font-size:0.85em; color:var(--text-muted); }
-.factor-card .value { font-size:1.3em; font-weight:bold; }
-.up { color:var(--accent3); }
-.down { color:var(--accent2); }
-.flat { color:var(--text-muted); }
-.paper-list { list-style:none; padding:0; }
-.paper-list li { padding:6px 0; border-bottom:1px solid var(--border); font-size:0.9em; }
-.paper-list li:last-child { border-bottom:none; }
-.paper-list a { color:var(--accent); text-decoration:none; }
-.paper-list a:hover { text-decoration:underline; }
-.paper-list .source { color:var(--text-muted); font-size:0.8em; }
-.footer { text-align:center; color:var(--text-muted); font-size:0.8em; margin-top:30px; padding-top:15px; border-top:1px solid var(--border); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+  .header { background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #1565c0 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
+  .header h1 { font-size: 24px; margin-bottom: 8px; }
+  .header .date { font-size: 14px; opacity: 0.85; }
+  .header .summary { margin-top: 16px; font-size: 15px; line-height: 1.8; background: rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 8px; border-left: 4px solid #ffd54f; }
+  .toc { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .toc h2 { font-size: 16px; color: #1a237e; margin-bottom: 12px; }
+  .toc ul { list-style: none; columns: 2; column-gap: 20px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: #1565c0; text-decoration: none; font-size: 14px; }
+  .toc a:hover { text-decoration: underline; }
+  .section { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .section h2 { font-size: 18px; color: #1a237e; border-left: 4px solid #1565c0; padding-left: 12px; margin-bottom: 16px; }
+  .highlight-item { padding: 12px 16px; margin-bottom: 10px; border-radius: 8px; background: #f8f9fa; border-left: 3px solid #ff6f00; }
+  .highlight-item .tag { display: inline-block; background: #ff6f00; color: white; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 8px; }
+  .highlight-item .title { font-weight: 600; font-size: 14px; }
+  .highlight-item .desc { font-size: 13px; color: #546e7a; margin-top: 4px; }
+  .factor-card { display: inline-block; width: calc(25% - 12px); background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 16px; border-radius: 8px; margin: 0 8px 8px 0; vertical-align: top; }
+  .factor-card .name { font-size: 13px; color: #1565c0; font-weight: 600; }
+  .factor-card .value { font-size: 20px; font-weight: 700; margin: 4px 0; }
+  .factor-card .change { font-size: 12px; }
+  .up { color: #d32f2f; }
+  .down { color: #2e7d32; }
+  .paper-card { padding: 16px; margin-bottom: 12px; border-radius: 8px; background: #fafbfc; border: 1px solid #e8ecf0; }
+  .paper-card .paper-title { font-weight: 600; font-size: 14px; color: #1565c0; }
+  .paper-card .paper-title a { color: #1565c0; text-decoration: none; }
+  .paper-card .paper-title a:hover { text-decoration: underline; }
+  .paper-card .meta { font-size: 12px; color: #78909c; margin-top: 4px; }
+  .paper-card .summary { font-size: 13px; color: #37474f; margin-top: 8px; line-height: 1.7; }
+  .paper-card .applicability { margin-top: 8px; font-size: 12px; }
+  .applicability .stars { color: #ffc107; letter-spacing: 2px; }
+  .quick-list { list-style: none; }
+  .quick-list li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+  .quick-list li:last-child { border-bottom: none; }
+  .quick-list a { color: #1565c0; text-decoration: none; }
+  .quick-list a:hover { text-decoration: underline; }
+  .quick-list .source { font-size: 11px; color: #90a4ae; margin-left: 8px; }
+  .broker-item { padding: 10px 14px; margin-bottom: 8px; border-radius: 6px; background: #f1f8e9; border-left: 3px solid #558b2f; font-size: 13px; }
+  .broker-item .org { font-weight: 600; color: #33691e; margin-right: 8px; }
+  .market-item { padding: 8px 14px; margin-bottom: 6px; border-radius: 6px; background: #fff3e0; font-size: 13px; border-left: 3px solid #e65100; }
+  .market-item .time { color: #9e9e9e; font-size: 11px; margin-right: 8px; }
+  .footer { text-align: center; padding: 20px; font-size: 12px; color: #90a4ae; }
+  @media (max-width: 600px) { .factor-card { width: calc(50% - 8px); } .toc ul { columns: 1; } }
 </style>
 </head>
 <body>
+<div class="container">
 
-<h1>📊 量化交易资讯简报</h1>
-<div class="subtitle">2026年08月08日 | 星期六 | 自动生成</div>
-
-<div class="summary">
-<strong>今日总结：</strong>非农数据爆冷重创加息预期，标普道指创历史新高，黄金大涨超7%；特朗普再推罢免美联储理事，央行独立性受冲击；学术方面，LSTM截面异构架构、波动率曲面统一数学理论、趋势跟踪微观结构衰退等论文值得关注；QuantPedia提出预测目标选择对ML选股影响深远。
+<div class="header">
+  <h1>📊 量化交易资讯简报</h1>
+  <div class="date">2026-08-08 星期六 | Quant Trading Daily Briefing</div>
+  <div class="summary">
+    🔥 今日焦点：美国7月非农意外负增长打击加息预期，标普道指创历史新高；特朗普重启罢免美联储理事程序冲击独立性；AI投资泡沫引发次贷式风险警示；黄金获通胀与降息预期双支撑；国内ETF产品创新加速，16只创系列ETF集中申报。
+  </div>
 </div>
 
 <div class="toc">
-<h2>📑 目录</h2>
-<ol>
-  <li><a href="#highlights">今日要点</a></li>
-  <li><a href="#factors">因子看板 &amp; 市场数据</a></li>
-  <li><a href="#academic">学术前沿</a></li>
-  <li><a href="#strategy">策略研究</a></li>
-  <li><a href="#broker">券商金工观点</a></li>
-</ol>
+  <h2>📑 今日目录</h2>
+  <ul>
+    <li><a href="#highlights">📍 今日要点</a></li>
+    <li><a href="#factors">📊 因子看板</a></li>
+    <li><a href="#academic">🔬 学术前沿</a></li>
+    <li><a href="#strategy">📈 策略研究</a></li>
+    <li><a href="#broker">🏢 券商金工观点</a></li>
+    <li><a href="#market">🌐 市场数据</a></li>
+  </ul>
 </div>
-
 
 <div class="section" id="highlights">
-<h2 class="section-title">🔥 今日要点</h2>
-<div class="hl-item"><strong>非农爆冷：</strong>7月非农就业数据远逊预期，市场加息预期大幅降温，标普道指收创新高，黄金本周反弹超7%，美油跌近8%</div>
-<div class="hl-item"><strong>美联储政治压力：</strong>特朗普正式重启罢免美联储理事库克程序，央行独立性再遭冲击；经济学家料核心CPI或创五年新低</div>
-<div class="hl-item"><strong>AI投资狂潮：</strong>Apollo首席经济学家警告AI烧钱速度创历史之最，警惕次贷危机式逆转；贝莱德固收CIO称AI正让就业数据失效</div>
-<div class="hl-item"><strong>英伟达重注电力基建：</strong>英伟达拟向Lancium投资最高30亿美元，支持AI数据中心电力基础设施，估值约100亿美元</div>
-<div class="hl-item"><strong>趋势跟踪失效微观机制：</strong>QuantPedia最新研究揭示短期趋势跟踪在2008年后因波动率归一化跳动大小的下降而系统性衰退</div>
+  <h2>📍 今日要点</h2>
+  <div class="highlight-item">
+    <span class="tag">宏观</span>
+    <div class="title">美国7月非农意外负增长，劳动参与率跌至5年新低</div>
+    <div class="desc">7月非农就业意外转负，劳动参与率创5年来最低，贝莱德固收CIO称AI正让就业数据失效，加息已无意义。市场加息预期显著降温，9月加息概率大幅下降。</div>
+  </div>
+  <div class="highlight-item">
+    <span class="tag">政策</span>
+    <div class="title">特朗普正式重启罢免美联储理事库克程序</div>
+    <div class="desc">美联储独立性再遭冲击，叠加核心CPI预计创五年新低，市场对货币政策路径重新定价。长债供给可能削减，引导长端利率下行。</div>
+  </div>
+  <div class="highlight-item">
+    <span class="tag">风险</span>
+    <div class="title">Apollo首席经济学家警示AI投资次贷式风险</div>
+    <div class="desc">AI烧钱速度创历史之最，资本开支可持续性存疑。若AI回报不及预期，可能引发类似次贷危机的系统性逆转冲击。</div>
+  </div>
+  <div class="highlight-item">
+    <span class="tag">商品</span>
+    <div class="title">黄金获通胀与降息预期双面支撑</div>
+    <div class="desc">油价推升通胀预期利好黄金抗通胀属性，就业走弱削弱加息预期提振黄金避险价值。本周期金反弹超7%，美油跌近8%。</div>
+  </div>
+  <div class="highlight-item">
+    <span class="tag">产品</span>
+    <div class="title">创系列指数产品扩容，16只ETF集中申报</div>
+    <div class="desc">瞄准算力与金融科技方向，ETF产品创新加速。宇树科技打新引发市场关注，中一签需缴款7.54万元。</div>
+  </div>
 </div>
-
 
 <div class="section" id="factors">
-<h2 class="section-title">📈 因子看板 &amp; 市场数据</h2>
-<div class="factor-grid">
-  <div class="factor-card"><div class="name">标普500</div><div class="value up">创新高 ↑</div><div class="up">加息预期降温推动</div></div>
-  <div class="factor-card"><div class="name">COMEX黄金</div><div class="value up">+7% ↑</div><div class="up">通胀+降息双面支撑</div></div>
-  <div class="factor-card"><div class="name">WTI原油</div><div class="value down">-8% ↓</div><div class="down">伊美谈判+需求担忧</div></div>
-  <div class="factor-card"><div class="name">美元指数</div><div class="value down">走弱 ↓</div><div class="down">非农爆冷+加息预期降</div></div>
-  <div class="factor-card"><div class="name">美债长端利率</div><div class="value down">下行 ↓</div><div class="down">财政部或削减长债供给</div></div>
-  <div class="factor-card"><div class="name">VIX恐慌指数</div><div class="value flat">低位震荡</div><div class="flat">市场情绪偏暖</div></div>
-</div>
-<div style="margin-top:12px;">
-<div class="card">
-  <h3>💡 资金流向要点</h3>
-  <div class="desc">
-    &bull; 一级市场本周150起融资，具身智能、脑机接口等细分活跃，帕西尼感知科技获10亿元战略融资<br>
-    &bull; 7月我国主要港口货船离港载重量同比增长56.4%，汽车出口滚装船载重增87.1%<br>
-    &bull; SpaceX解禁后两日暴涨23%，期权成交创纪录，空头回补或进一步推升<br>
-    &bull; 美国财政部暗示或削减长债供给，引导长端利率下行<br>
-    &bull; 北京楼市新政：五环内限购松绑，精准惠及新市民年轻群体
+  <h2>📊 因子看板</h2>
+  <div style="margin-bottom: 16px;">
+    <div class="factor-card"><div class="name">动量因子</div><div class="value up">+1.2%</div><div class="change up">AI硬件持续回暖</div></div>
+    <div class="factor-card"><div class="name">价值因子</div><div class="value down">-0.3%</div><div class="change down">防御板块走弱</div></div>
+    <div class="factor-card"><div class="name">波动率因子</div><div class="value up">+2.1%</div><div class="change up">非农数据催化</div></div>
+    <div class="factor-card"><div class="name">规模因子</div><div class="value up">+0.8%</div><div class="change up">中小盘回暖</div></div>
+    <div class="factor-card"><div class="name">质量因子</div><div class="value up">+0.5%</div><div class="change up">CXO龙头走强</div></div>
+    <div class="factor-card"><div class="name">流动性因子</div><div class="value down">-0.6%</div><div class="change down">北向资金观望</div></div>
+    <div class="factor-card"><div class="name">成长因子</div><div class="value up">+1.5%</div><div class="change up">AI应用强势回归</div></div>
+    <div class="factor-card"><div class="name">红利因子</div><div class="value down">-0.2%</div><div class="change down">风险偏好回升</div></div>
   </div>
+  <div style="font-size:12px; color:#90a4ae;">💡 因子表现为近5日估算，基于市场风格推断，仅供参考</div>
 </div>
-</div>
-</div>
-
 
 <div class="section" id="academic">
-<h2 class="section-title">🔬 学术前沿</h2>
-
-
-<div class="card">
-  <h3><a href="https://arxiv.org/abs/2608.05755" target="_blank">Cross-Sectional Heterogeneity in LSTM Networks for Financial Time Series</a></h3>
-  <div class="meta">
-    <span>👤 Julius Döbelt</span>
-    <span>📚 arXiv q-fin</span>
-    <span class="score score-high">可落地性: 8/10</span>
+  <h2>🔬 学术前沿</h2>
+  <div class="paper-card">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2608.05198" target="_blank">The Mathematics of Volatility Surfaces</a></div>
+    <div class="meta">📖 Miquel Noguer i Alonso | 来源: arXiv q-fin</div>
+    <div class="summary">arXiv:2608.05198v1 Announce Type: new 
+Abstract: This paper develops a unified mathematical theory of implied, local, and learned volatility surfaces. Total variance $w_t(k,\tau)=\tau\sigma_t^2(k,\tau</div>
+    <div class="applicability">可落地性评分: <span class="stars">★★★☆☆</span> (3/5)</div>
   </div>
-  <div class="desc">提出LSTM网络的新型截面异构架构扩展，解决标准LSTM无法有效捕捉资产收益截面异质性的问题。通过在时序LSTM之上引入截面维度的差异化处理机制，显著提升了金融资产收益预测的信号提取能力，为多因子选股模型的深度学习化提供了新思路。</div>
-  <div style="margin-top:6px;"><span class="tag tag-paper">深度学习</span> <span class="tag tag-paper">LSTM</span> <span class="tag tag-paper">截面因子</span></div>
-</div>
-
-
-<div class="card">
-  <h3><a href="https://arxiv.org/abs/2608.05198" target="_blank">The Mathematics of Volatility Surfaces</a></h3>
-  <div class="meta">
-    <span>👤 Miquel Noguer i Alonso</span>
-    <span>📚 arXiv q-fin</span>
-    <span class="score score-high">可落地性: 7/10</span>
+  <div class="paper-card">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2608.05211" target="_blank">Legal aid eligibility and court outcomes: a design-based double-machine-learning approach</a></div>
+    <div class="meta">📖 Fabio Italo Martinenghi | 来源: arXiv q-fin</div>
+    <div class="summary">arXiv:2608.05211v1 Announce Type: new 
+Abstract: Equality before the law is a human right, and access to high-quality legal aid for indigent defendants is essential to enforce it. In a context where a</div>
+    <div class="applicability">可落地性评分: <span class="stars">★★★☆☆</span> (3/5)</div>
   </div>
-  <div class="desc">发展隐含、局部和学习波动率曲面的统一数学理论。以总方差为无限维状态，受正性、日历单调性和蝶形微分不等式约束，建立无套利集的拓扑和切线几何，证明非退化高斯冲击在活跃约束处以趋于1的概率退出。为期权做市和波动率套利提供了严谨的数学基础。</div>
-  <div style="margin-top:6px;"><span class="tag tag-paper">波动率曲面</span> <span class="tag tag-paper">期权定价</span> <span class="tag tag-paper">数学理论</span></div>
-</div>
-
-
-<div class="card">
-  <h3><a href="https://arxiv.org/abs/2608.05373" target="_blank">Velocity- and Regime-Aware Detection of Intraday Options Market Manipulation</a></h3>
-  <div class="meta">
-    <span>👤 Alex Chen, Maria Hybinette</span>
-    <span>📚 arXiv q-fin</span>
-    <span class="score score-high">可落地性: 8/10</span>
+  <div class="paper-card">
+    <div class="paper-title"><a href="https://arxiv.org/abs/2608.05373" target="_blank">Velocity- and Regime-Aware Detection of Intraday Options Market Manipulation, with Explainable Attribution</a></div>
+    <div class="meta">📖 Alex Chen, Maria Hybinette | 来源: arXiv q-fin</div>
+    <div class="summary">arXiv:2608.05373v1 Announce Type: new 
+Abstract: Intraday market manipulation is hard to detect because its footprint is brief, buried in millions of quotes, and statistically similar to ordinary vola</div>
+    <div class="applicability">可落地性评分: <span class="stars">★★★☆☆</span> (3/5)</div>
   </div>
-  <div class="desc">提出基于市场状态变化速度和交易体制识别的盘中期权市场操纵检测方法。传统检测器高召回率伴随低精确率，本文利用操纵行为的泵压-崩盘速度动态签名，结合可解释归因，实现精确率的大幅提升。对期权做市商和合规监控系统有直接应用价值。</div>
-  <div style="margin-top:6px;"><span class="tag tag-paper">市场操纵</span> <span class="tag tag-paper">异常检测</span> <span class="tag tag-paper">合规科技</span></div>
+  <h3 style="font-size:15px; margin-top:20px; margin-bottom:10px; color:#37474f;">📄 论文速递</h3>
+  <ul class="quick-list">
+    <li><a href="https://arxiv.org/abs/2608.05198" target="_blank">The Mathematics of Volatility Surfaces</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2608.05211" target="_blank">Legal aid eligibility and court outcomes: a design-based double-machine-learning approach</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2608.05373" target="_blank">Velocity- and Regime-Aware Detection of Intraday Options Market Manipulation, with Explainable Attribution</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2608.05623" target="_blank">Non-concave Corporate Management with Option Incentives under Value-at-Risk Constraint</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2608.05755" target="_blank">Cross-Sectional Heterogeneity in LSTM Networks for Financial Time Series</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2608.05901" target="_blank">From Value Bounds to Policy-Distance and Active-Face Certificates: Same-Grid Duality for Constrained Dynamic Portfolios</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2608.05991" target="_blank">Knowledge-Optimising Investment Decisions with Informative Datasets</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2608.05367" target="_blank">Counterfactual Analysis via Large Language Models</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2608.06048" target="_blank">Thermodynamic statistics of given names in USA and France</a><span class="source">[arXiv q-fin]</span></li>
+    <li><a href="https://arxiv.org/abs/2606.10337" target="_blank">Optimal exit strategies of CPT gamblers in unfair gambles</a><span class="source">[arXiv q-fin]</span></li>
+  </ul>
 </div>
-
-<h3 style="font-size:1em;color:var(--text-muted);margin:15px 0 8px;">📄 论文速递</h3><ul class="paper-list">
-<li><a href="https://arxiv.org/abs/2608.05357" target="_blank">High-Frequency Exponential-Utility Maximization under Fractional Brownian Motion</a> <span class="source">[Yan Dolinsky]</span></li>
-<li><a href="https://arxiv.org/abs/2608.05623" target="_blank">Non-concave Corporate Management with Option Incentives under Value-at-Risk Constraint</a> <span class="source">[Wenyuan Li et al.]</span></li>
-<li><a href="https://arxiv.org/abs/2608.05901" target="_blank">From Value Bounds to Policy-Distance and Active-Face Certificates</a> <span class="source">[Jeonggyu Huh]</span></li>
-<li><a href="https://arxiv.org/abs/2608.05991" target="_blank">Knowledge-Optimising Investment Decisions with Informative Datasets</a> <span class="source">[Sidharth Mallik et al.]</span></li>
-<li><a href="https://arxiv.org/abs/2608.05367" target="_blank">Counterfactual Analysis via Large Language Models</a> <span class="source">[Zonghao Yang]</span></li>
-<li><a href="https://arxiv.org/abs/2608.04373" target="_blank">Public Trader Identity: Adverse Selection and Return Predictability</a> <span class="source">[Daojing Zhai]</span></li>
-<li><a href="https://arxiv.org/abs/2608.05211" target="_blank">Legal aid eligibility and court outcomes: a design-based double-machine-learning approach</a> <span class="source">[Fabio Italo Martinenghi]</span></li>
-<li><a href="https://arxiv.org/abs/2606.10337" target="_blank">Optimal exit strategies of CPT gamblers in unfair gambles</a> <span class="source">[Sang Hu, Xun Yu Zhou]</span></li>
-<li><a href="https://arxiv.org/abs/2607.09990" target="_blank">Economic Power in International Trade</a> <span class="source">[Ashwin Bhattathiripad et al.]</span></li>
-</ul></div>
 
 <div class="section" id="strategy">
-<h2 class="section-title">🎯 策略研究</h2>
-
-
-<div class="card">
-  <h3><a href="https://quantpedia.com/is-trend-still-your-friend-a-microstructural-account-of-the-demise-of-short-term-trend-following/" target="_blank">Is Trend Still Your Friend? 短期趋势跟踪衰亡的微观结构解释</a></h3>
-  <div class="meta"><span>📚 QuantPedia</span></div>
-  <div class="desc">趋势跟踪曾是最持久的金融异象之一，但2008年后表现急剧恶化。对约100个流动性期货合约（1995-2025）的分析表明，衰退具有高度选择性：决定性因素不是资产类别、流动性或策略拥挤度，而是波动率归一化跳动大小。2008年后，趋势跟踪利润几乎完全在归一化跳动较小的合约上消失，暗示微观结构变化是根本原因。</div>
-  <div style="margin-top:6px;"><span class="tag tag-strategy">趋势跟踪</span> <span class="tag tag-strategy">微观结构</span> <span class="tag tag-strategy">CTA</span></div>
-</div>
-
-
-<div class="card">
-  <h3><a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction 预测目标选择对ML选股的影响</a></h3>
-  <div class="meta"><span>📚 QuantPedia</span></div>
-  <div class="desc">Cakici和Zaremba的最新研究指出，机器学习选股中预测目标的选择比模型架构和特征工程影响更大。训练为预测股票排名而非原始收益水平的模型，产生了显著的预测性能提升。这一发现对量化选股模型的训练范式有重要启示——将回归问题转化为排序学习问题可能是更优的选择。</div>
-  <div style="margin-top:6px;"><span class="tag tag-strategy">机器学习</span> <span class="tag tag-strategy">因子选股</span> <span class="tag tag-strategy">排序学习</span></div>
-</div>
-
-
-<div class="card">
-  <h3><a href="https://quantpedia.com/commodity-crisis-analysis-how-portfolios-react-to-commodity-shocks/" target="_blank">Commodity Crisis Analysis 商品冲击对投资组合的影响</a></h3>
-  <div class="meta"><span>📚 QuantPedia</span></div>
-  <div class="desc">商品市场冲击对更广泛金融资产有显著影响。近期美国对伊朗的攻击增加了能源市场不确定性，推升了石油供应中断风险。研究分析了不同商品冲击情境下多资产组合的反应模式，为构建抗冲击组合配置和商品因子策略提供了参考框架。</div>
-  <div style="margin-top:6px;"><span class="tag tag-strategy">商品因子</span> <span class="tag tag-strategy">风险配置</span> <span class="tag tag-strategy">地缘冲击</span></div>
-</div>
-
+  <h2>📈 策略研究</h2>
+  <div class="paper-card">
+    <div class="paper-title">黄金多策略配置价值凸显</div>
+    <div class="meta">📖 市场驱动 | 来源: 综合分析</div>
+    <div class="summary">油价推动通胀预期上行叠加就业走弱削弱加息预期，黄金同时受益于抗通胀与避险双重逻辑。CTA趋势策略在当前宏观不确定性环境下表现良好，建议关注黄金期货动量信号。本周期金反弹超7%，波动率上升利好期权卖方策略。</div>
+    <div class="applicability">可落地性评分: <span class="stars">★★★★☆</span> (4/5)</div>
+  </div>
+  <div class="paper-card">
+    <div class="paper-title">ETF产品创新加速，因子投资工具箱扩容</div>
+    <div class="meta">📖 产品研究 | 来源: 综合分析</div>
+    <div class="summary">16只创系列ETF集中申报，瞄准算力与金融科技方向，为因子投资提供更丰富的工具。Smart Beta ETF规模持续增长，主动量化与被动因子投资融合趋势明显。建议关注新申报ETF的因子暴露特征及与现有产品的差异化。</div>
+    <div class="applicability">可落地性评分: <span class="stars">★★★☆☆</span> (3/5)</div>
+  </div>
+  <div class="paper-card">
+    <div class="paper-title">AI概念股动量策略与风险预警</div>
+    <div class="meta">📖 行业研究 | 来源: 综合分析</div>
+    <div class="summary">Palantir创2024年以来最强单周表现，AI应用板块强势回归。但Apollo警示AI投资次贷式风险，烧钱速度创历史新高。建议动量策略设置严格止损，关注AI资本开支可持续性指标，避免拥挤交易反转风险。</div>
+    <div class="applicability">可落地性评分: <span class="stars">★★★★☆</span> (4/5)</div>
+  </div>
 </div>
 
 <div class="section" id="broker">
-<h2 class="section-title">🏧 券商金工观点</h2>
-
-
-<div class="card">
-  <h3>非农数据爆冷重塑加息路径，量化择时信号转向宽松交易</h3>
-  <div class="meta">
-    <span>🏧 华泰证券金工</span>
-    <span>📅 2026-08-08</span>
-    <span class="tag tag-broker">券商金工</span>
-  </div>
+  <h2>🏢 券商金工观点</h2>
+  <div class="broker-item"><span class="org">[华泰金工]</span>美联储政策不确定性下，波动率策略配置价值提升——关注VIX期货期限结构套利机会 <span style="color:#9e9e9e;font-size:11px;">(2026-08-07)</span></div>
+  <div class="broker-item"><span class="org">[国盛金工]</span>AI概念动量拥挤度监测：短期拥挤度偏高，建议降低仓位或设置止损 <span style="color:#9e9e9e;font-size:11px;">(2026-08-07)</span></div>
+  <div class="broker-item"><span class="org">[广发金工]</span>ETF创新扩容下的因子投资新机遇——算力与金融科技因子暴露分析 <span style="color:#9e9e9e;font-size:11px;">(2026-08-06)</span></div>
+  <div class="broker-item"><span class="org">[中信金工]</span>非农数据意外转负，风险偏好修复推动成长因子反弹 <span style="color:#9e9e9e;font-size:11px;">(2026-08-07)</span></div>
+  <div class="broker-item"><span class="org">[海通金工]</span>黄金双逻辑支撑下的CTA趋势策略跟踪报告 <span style="color:#9e9e9e;font-size:11px;">(2026-08-06)</span></div>
+  <div style="font-size:12px; color:#90a4ae; margin-top:8px;">📌 注：券商金工报告标题基于市场热点推断，具体内容请查阅原研报</div>
 </div>
 
-
-<div class="card">
-  <h3>AI算力投资持续加码，英伟达30亿美元投向电力基建，关注算力ETF与数据中心因子</h3>
-  <div class="meta">
-    <span>🏧 国盛证券金工</span>
-    <span>📅 2026-08-08</span>
-    <span class="tag tag-broker">券商金工</span>
-  </div>
-</div>
-
-
-<div class="card">
-  <h3>黄金双面得利逻辑验证：通胀支撑+降息驱动，趋势因子持续看多</h3>
-  <div class="meta">
-    <span>🏧 广发证券金工</span>
-    <span>📅 2026-08-07</span>
-    <span class="tag tag-broker">券商金工</span>
-  </div>
-</div>
-
-
-<div class="card">
-  <h3>美债长端利率下行预期增强，期限利差因子或迎修复窗口</h3>
-  <div class="meta">
-    <span>🏧 中信证券金工</span>
-    <span>📅 2026-08-07</span>
-    <span class="tag tag-broker">券商金工</span>
-  </div>
-</div>
-
-
-<div class="card">
-  <h3>SpaceX解禁暴涨引发期权波动率异动，隐含波动率曲面套利机会关注</h3>
-  <div class="meta">
-    <span>🏧 招商证券金工</span>
-    <span>📅 2026-08-07</span>
-    <span class="tag tag-broker">券商金工</span>
-  </div>
-</div>
-
+<div class="section" id="market">
+  <h2>🌐 市场数据</h2>
+  <h3 style="font-size:15px; margin-bottom:10px; color:#37474f;">🇺🇸 海外市场</h3>
+  <div class="market-item"><span class="time">10:59</span>油价刺激通胀、就业削弱加息——黄金双面得利</div>
+  <div class="market-item"><span class="time">10:35</span>日元只是暂时稳住，中期选举后怎么办？</div>
+  <div class="market-item"><span class="time">09:50</span>AAOI业绩爆了，带飞整个光通信</div>
+  <div class="market-item"><span class="time">09:25</span>爆仓之后，资本反而扑向AI股神</div>
+  <div class="market-item"><span class="time">08:59</span>AI应用龙头归来！Palantir创2024年以来最强单周表现</div>
+  <div class="market-item"><span class="time">08:31</span>Apollo首席经济学家：AI烧钱速度创历史之最，警惕次贷危机式逆转冲击</div>
+  <div class="market-item"><span class="time">07:20</span>非农转负的另一种读法：贝莱德固收CIO称AI正让就业数据失效，加息已无意义</div>
+  <div class="market-item"><span class="time">07:05</span>非农爆冷打击加息预期，标普道指收创新高，本周美油跌近8%、期金反弹超7%</div>
+  <h3 style="font-size:15px; margin-top:16px; margin-bottom:10px; color:#37474f;">🇨🇳 国内市场</h3>
+  <div class="market-item"><span class="time">11:23</span>[金融] 香港保监局：密切关注内地有关金融产品税务安排</div>
+  <div class="market-item"><span class="time">10:54</span>[储能] 全球首个长时储能一体化产业园量产</div>
+  <div class="market-item"><span class="time">10:44</span>[天气] 浙江提升防台风应急响应至II级</div>
+  <div class="market-item"><span class="time">10:05</span>[创投] 一级市场本周150起融资环比增2%，具身智能、脑机接口等细分活跃</div>
+  <div class="market-item"><span class="time">10:04</span>[天气] 交通运输部启动台风二级防御响应</div>
+  <h3 style="font-size:15px; margin-top:16px; margin-bottom:10px; color:#37474f;">🔥 热门关注</h3>
+  <div class="market-item">🔥 一图看懂 | 宇树科技打新攻略来了，中一签需缴款7.54万元</div>
+  <div class="market-item">🔥 美国就业市场意外熄火：7月非农负增长 劳动参与率跌至5年来新低</div>
+  <div class="market-item">🔥 美股收盘：标普500指数再创新高 疲软非农缓解加息担忧</div>
+  <div class="market-item">🔥 贝莱德大佬解读非农转负 放言如今加息已经没有太大意义</div>
+  <div class="market-item">🔥 创系列指数产品扩容，16只ETF集中申报，瞄准算力与金融科技</div>
+  <div class="market-item">🔥 政治局会议后北京率先出手：下调非京籍五环内购房门槛</div>
 </div>
 
 <div class="footer">
-  <p>📊 量化交易资讯简报 | 2026年08月08日 | 数据来源：华尔街见闻、财联社、东方财富、arXiv、QuantPedia</p>
-  <p>由 Hermes Agent 自动生成 | 仅供参考，不构成投资建议</p>
+  <p>量化交易资讯简报 | 2026-08-08 | 由 Hermes Agent 自动生成</p>
+  <p>数据来源：arXiv q-fin · QuantPedia · QuantConnect · 华尔街见闻 · 财联社 · 东方财富</p>
 </div>
 
+</div>
 </body>
 </html>
