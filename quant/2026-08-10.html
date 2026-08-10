@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量化交易资讯简报 | 2026-08-10</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --card: #1a1d29;
+  --border: #2a2d3a;
+  --accent: #6c8cff;
+  --accent2: #4ecdc4;
+  --text: #e1e4ed;
+  --text2: #8b8fa3;
+  --red: #ff6b6b;
+  --green: #51cf66;
+  --orange: #ffa94d;
+  --purple: #b197fc;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  line-height: 1.7;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+h1 { font-size: 28px; margin-bottom: 4px; color: var(--accent); }
+h2 { font-size: 20px; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+h3 { font-size: 16px; margin: 16px 0 8px; color: var(--accent2); }
+.summary { color: var(--text2); font-size: 15px; margin-bottom: 24px; }
+.toc { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 24px; margin-bottom: 32px; }
+.toc a { color: var(--accent); text-decoration: none; display: block; padding: 4px 0; }
+.toc a:hover { text-decoration: underline; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--accent); }
+.highlight-item { margin-bottom: 12px; padding-left: 16px; border-left: 3px solid var(--accent); }
+.factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.factor-box { background: var(--bg); border-radius: 8px; padding: 12px; text-align: center; }
+.factor-box .label { font-size: 13px; color: var(--text2); }
+.factor-box .value { font-size: 22px; font-weight: 700; margin: 4px 0; }
+.up { color: var(--green); }
+.down { color: var(--red); }
+.neutral { color: var(--orange); }
+.paper-tag { display: inline-block; background: var(--accent); color: var(--bg); font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+.paper-title { font-weight: 600; margin-bottom: 4px; }
+.paper-title a { color: var(--text); text-decoration: none; }
+.paper-title a:hover { color: var(--accent); }
+.paper-meta { font-size: 13px; color: var(--text2); margin-bottom: 8px; }
+.paper-summary { font-size: 14px; color: var(--text2); line-height: 1.6; }
+.score { display: inline-block; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 13px; }
+.score-high { background: rgba(81,207,102,0.15); color: var(--green); }
+.score-mid { background: rgba(255,169,77,0.15); color: var(--orange); }
+.score-low { background: rgba(255,107,107,0.15); color: var(--red); }
+.paper-list { list-style: none; }
+.paper-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.paper-list li:last-child { border-bottom: none; }
+.paper-list li a { color: var(--accent); text-decoration: none; }
+.paper-list li a:hover { text-decoration: underline; }
+.broker-item { margin-bottom: 12px; }
+.broker-item .broker-name { font-weight: 700; color: var(--purple); margin-right: 8px; }
+.market-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.market-item:last-child { border-bottom: none; }
+.market-item .time { font-size: 12px; color: var(--text2); }
+.market-item .title { font-weight: 600; margin: 4px 0; }
+.market-item .content { font-size: 14px; color: var(--text2); }
+.footer { text-align: center; color: var(--text2); font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+.badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+.badge-hot { background: rgba(255,107,107,0.2); color: var(--red); }
+.badge-new { background: rgba(108,140,255,0.2); color: var(--accent); }
+</style>
+</head>
+<body>
+
+<h1>📊 量化交易资讯简报</h1>
+<p class="summary">2026年8月10日 星期一 | A股结构性分化加剧：算力链遭重挫资金回流消费医药，arXiv密集发布组合优化与因子研究新进展</p>
+
+<div class="toc">
+<strong>📋 目录</strong>
+<a href="#highlights">1. 今日要点 Highlights</a>
+<a href="#factors">2. 因子看板</a>
+<a href="#academic">3. 学术前沿</a>
+<a href="#strategy">4. 策略研究</a>
+<a href="#broker">5. 券商金工观点</a>
+<a href="#market">6. 市场数据速览</a>
+</div>
+
+<!-- ==================== 今日要点 ==================== -->
+<h2 id="highlights">1. 今日要点</h2>
+
+<div class="card">
+<div class="highlight-item">
+  <span class="badge badge-hot">重要</span>
+  <strong>主力资金大幅撤离电子通信板块</strong>：电子板块净流出超199亿元，中际旭创遭净卖出超52亿元。资金转向医药、食品饮料、电网设备等防御板块，贵州茅台获净买入超5亿元。市场风格切换信号明显。
+</div>
+<div class="highlight-item">
+  <span class="badge badge-hot">重要</span>
+  <strong>CPO/算力硬件集体重挫</strong>：光迅科技逼近跌停，中际旭创跌超7%，A+H市值再度跌破1万亿。高溢价LOF品种（全球芯片、国投白银）亦大幅下杀，溢价收敛风险释放。
+</div>
+<div class="highlight-item">
+  <span class="badge badge-new">研究</span>
+  <strong>arXiv高频发布 Wasserstein 稳健组合优化论文</strong>：Hsieh & Gan 提出认证式高维Wasserstein分布鲁棒组合优化，为long-only组合提供可证明的近似解，兼具理论与实践价值。
+</div>
+<div class="highlight-item">
+  <span class="badge badge-new">研究</span>
+  <strong>因子-图联合框架突破组合分散化瓶颈</strong>：Chehab 等人提出将因子暴露与图结构融合的联合框架，既捕获系统性风险又刻画异质冲击传染路径，为多因子+网络混合策略提供新思路。
+</div>
+<div class="highlight-item">
+  <span class="badge badge-new">研究</span>
+  <strong>LSTM截面异质性建模提升收益预测</strong>：Döbelt 研究LSTM网络中截面异质性的处理方式，发现个股特异性参数共享策略显著改善低信噪比下的预测效果。
+</div>
+</div>
+
+<!-- ==================== 因子看板 ==================== -->
+<h2 id="factors">2. 因子看板</h2>
+
+<div class="card">
+<h3>主力资金流向（截至午盘）</h3>
+<div class="factor-grid">
+  <div class="factor-box">
+    <div class="label">电子板块</div>
+    <div class="value down">-199亿+</div>
+  </div>
+  <div class="factor-box">
+    <div class="label">通信板块</div>
+    <div class="value down">大幅净流出</div>
+  </div>
+  <div class="factor-box">
+    <div class="label">医药板块</div>
+    <div class="value up">净流入</div>
+  </div>
+  <div class="factor-box">
+    <div class="label">食品饮料</div>
+    <div class="value up">净流入</div>
+  </div>
+  <div class="factor-box">
+    <div class="label">电网设备</div>
+    <div class="value up">净流入</div>
+  </div>
+  <div class="factor-box">
+    <div class="label">成交额</div>
+    <div class="value neutral">1.5万亿+</div>
+  </div>
+</div>
+
+<h3 style="margin-top:16px;">风格因子信号</h3>
+<div class="factor-grid">
+  <div class="factor-box">
+    <div class="label">大盘 vs 小盘</div>
+    <div class="value up">大盘占优</div>
+  </div>
+  <div class="factor-box">
+    <div class="label">价值 vs 成长</div>
+    <div class="value up">价值回暖</div>
+  </div>
+  <div class="factor-box">
+    <div class="label">动量因子</div>
+    <div class="value down">反转加速</div>
+  </div>
+  <div class="factor-box">
+    <div class="label">波动率</div>
+    <div class="value neutral">显著上升</div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 学术前沿 ==================== -->
+<h2 id="academic">3. 学术前沿</h2>
+
+<h3>🔍 精选论文深度解读</h3>
+
+<div class="card">
+<div class="paper-title">
+  <span class="paper-tag">组合优化</span>
+  <a href="https://arxiv.org/abs/2608.07032v1" target="_blank">Certified High-Dimensional Wasserstein Robust Portfolio Optimization</a>
+</div>
+<div class="paper-meta">👨‍🔬 Chung-Han Hsieh, Rong Gan | 📅 2026-08-07</div>
+<div class="paper-summary">
+  本文开发了一种可认证的、可扩展的高维Wasserstein分布鲁棒组合优化方法。针对期望效用最大化问题，在1阶Wasserstein模糊集下，传统对偶方法会生成半无限凸规划。作者对long-only组合（带box约束支撑和矩约束）证明了对偶间隙为零，并给出了可证明的近似精度。该框架在50+维资产空间中仍可高效求解。<br>
+  <strong>核心观点：</strong>Wasserstein DRO可被精确对偶化为有限维凸问题，无需牺牲鲁棒性即可实现高维资产配置，为实盘鲁棒组合优化提供可行路径。
+</div>
+<p style="margin-top:8px;">可落地性评分：<span class="score score-high">★★★★★ 9/10</span> — 理论完备，可直接转化为凸优化求解器实现</p>
+</div>
+
+<div class="card">
+<div class="paper-title">
+  <span class="paper-tag">因子模型</span>
+  <a href="https://arxiv.org/abs/2608.06618v1" target="_blank">Beyond Co-Movement: Locality by Exposures Enables a Joint Factor-Graph Framework for Portfolio Diversification</a>
+</div>
+<div class="paper-meta">👨‍🔬 Sara Chehab, Giorgos Iacovides, Parisa Yazdanparast 等 | 📅 2026-08-06</div>
+<div class="paper-summary">
+  现有组合构建方法要么忽略异质冲击（传统因子模型），要么忽略系统性风险的潜在数据结构（图方法）。本文提出联合因子-图框架：因子暴露定义资产在系统性风险空间的"位置"，图邻接关系刻画异质冲击的传染路径。实证表明，该混合框架在分散化效果和尾部风险控制上显著优于纯因子或纯图方法。<br>
+  <strong>核心观点：</strong>将因子暴露作为"位置编码"嵌入图网络，可同时捕获系统性风险和异质传染，实现更优的组合分散化。
+</div>
+<p style="margin-top:8px;">可落地性评分：<span class="score score-high">★★★★☆ 8/10</span> — 框架清晰，需自建因子-图双层网络</p>
+</div>
+
+<div class="card">
+<div class="paper-title">
+  <span class="paper-tag">ML预测</span>
+  <a href="https://arxiv.org/abs/2608.05755v1" target="_blank">Cross-Sectional Heterogeneity in LSTM Networks for Financial Time Series</a>
+</div>
+<div class="paper-meta">👨‍🔬 Julius Döbelt | 📅 2026-08-06</div>
+<div class="paper-summary">
+  金融资产收益预测最大的挑战是低信噪比和半强式市场有效。虽然LSTM网络在捕获时序依赖方面表现出色，但截面异质性（不同股票间的参数共享 vs 个股特异性）的处理方式对预测性能影响显著。本文系统研究了LSTM中截面异质性的建模策略，发现适度的参数共享优于完全共享或完全独立。<br>
+  <strong>核心观点：</strong>在LSTM多股票收益预测中，行业级参数共享策略在偏差-方差权衡上表现最优，过度的截面聚合会抹杀个股信号。
+</div>
+<p style="margin-top:8px;">可落地性评分：<span class="score score-mid">★★★★☆ 7/10</span> — 工程可实现，但需大量调参和交叉验证</p>
+</div>
+
+<h3>📚 论文速递</h3>
+<div class="card">
+<ul class="paper-list">
+  <li>🔹 <a href="https://arxiv.org/abs/2608.07400v1" target="_blank">FinRank: An Evidence-Grounded Benchmark for Financial QA and Retrieval over SEC Filings</a> — 金融问答中证据归因的新基准 (2026-08-07)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.07122v1" target="_blank">Lambda-quantiles under the Microscope</a> — Lambda分位数的一般化理论与非单调情形 (2026-08-07)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.05991v1" target="_blank">Knowledge-Optimising Investment Decisions with Informative Datasets</a> — 信息数据集的知识优化投资决策框架 (2026-08-06)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.05901v1" target="_blank">From Value Bounds to Policy-Distance Certificates: Same-Grid Duality for Constrained Dynamic Portfolios</a> — 约束动态组合的值域-策略距离对偶 (2026-08-06)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.05373v1" target="_blank">Velocity- and Regime-Aware Detection of Intraday Options Market Manipulation</a> — 速度-体制感知的日内期权操纵检测 (2026-08-05)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.05367v1" target="_blank">Counterfactual Analysis via Large Language Models</a> — LLM在反事实分析中的应用：在线借贷场景 (2026-08-05)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.05357v1" target="_blank">High-Frequency Exponential-Utility Maximization under Fractional Brownian Motion</a> — 分数布朗运动下高频指数效用最大化 (2026-08-05)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.04987v1" target="_blank">Portfolio Allocation under Heterogeneous Scales and Multifractality</a> — 多重分形与异质尺度下的组合配置 (2026-08-05)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.04832v1" target="_blank">Robust Control under Stationary Ambiguity</a> — 平稳模糊下的鲁棒控制 (2026-08-05)</li>
+  <li>🔹 <a href="https://arxiv.org/abs/2608.05198v1" target="_blank">The Mathematics of Volatility Surfaces</a> — 波动率曲面的统一数学理论 (2026-08-04)</li>
+</ul>
+</div>
+
+<!-- ==================== 策略研究 ==================== -->
+<h2 id="strategy">4. 策略研究</h2>
+
+<div class="card">
+<div class="paper-title">
+  <span class="paper-tag">策略</span>
+  <a href="https://arxiv.org/abs/2608.05623v1" target="_blank">Non-concave Corporate Management with Option Incentives under VaR Constraint</a>
+</div>
+<div class="paper-meta">👨‍🔬 Wenyuan Li, Haoqi Lyu, Pengyu Wei | 📅 2026-08-06</div>
+<div class="paper-summary">
+  研究VaR约束下管理者期权激励的非凹性决策问题。当管理者持有看涨期权激励时，效用函数呈非凹结构，传统动态规划方法失效。本文证明VaR约束反而能抑制管理者的"赌博"动机，使风险承担行为趋于理性。对量化策略设计的启示：<strong>在组合优化中嵌入风险约束时，非凹效用可能导致局部最优解远离全局最优</strong>，需采用全局优化或分段凹化技术。
+</div>
+<p style="margin-top:8px;">可落地性评分：<span class="score score-mid">★★★☆☆ 6/10</span> — 理论洞察有价值，直接落地需适配</p>
+</div>
+
+<div class="card">
+<div class="paper-title">
+  <span class="paper-tag">另类数据</span>
+  <a href="https://arxiv.org/abs/2608.04929v1" target="_blank">Open Information: A Defining Perspective on Web Datasets for Carbon Pricing</a>
+</div>
+<div class="paper-meta">👨‍🔬 Sidharth Mallik, Anastasios Megaritis, Waymond Rodgers | 📅 2026-08-05</div>
+<div class="paper-summary">
+  提出"开放信息"（Open Information）框架，将社交媒体、门户网站等Web数据集作为碳定价预测的新信息源。研究发现，Web数据的引入改变了传统信息集的信息结构，产生"涌现"效应——即Web数据的边际信息价值超过其单独贡献。对量化策略的启示：<strong>另类数据的价值不仅在于增量信息，更在于改变既有信息集的统计结构</strong>，碳交易策略可从中获益。
+</div>
+<p style="margin-top:8px;">可落地性评分：<span class="score score-mid">★★★☆☆ 6/10</span> — 思路新颖，碳交易品种适用性待验证</p>
+</div>
+
+<div class="card">
+<div class="paper-title">
+  <span class="paper-tag">市场微观结构</span>
+  <a href="https://arxiv.org/abs/2608.04373v2" target="_blank">Public Trader Identity: Adverse Selection and Return Predictability</a>
+</div>
+<div class="paper-meta">👨‍🔬 Daojing Zhai | 📅 2026-08-05</div>
+<div class="paper-summary">
+  研究去中心化交易所公开交易者身份后的信息效应。当每笔订单都附带持久的伪名钱包地址时，知情交易者的匿名性被打破，逆向选择成本下降，但同时也产生了新的可预测性信号——可从特定钱包的历史行为中推断交易意图。对量化策略的启示：<strong>链上身份信息可作为短期价格预测的补充特征</strong>，尤其是在DEX流动性池中。
+</div>
+<p style="margin-top:8px;">可落地性评分：<span class="score score-high">★★★★☆ 8/10</span> — 可直接用于链上量化策略的特征工程</p>
+</div>
+
+<!-- ==================== 券商金工 ==================== -->
+<h2 id="broker">5. 券商金工观点</h2>
+
+<div class="card">
+<div class="broker-item">
+  <span class="broker-name">中邮证券</span>
+  <strong>券商新局：跨境套利窗口下的头部聚焦</strong>（2026-08-07）<br>
+  <span style="font-size:13px;color:var(--text2)">关注跨境套利策略窗口期，头部券商在资本中介和衍生品创设方面的优势持续扩大，建议关注券商ETF的结构性机会。</span>
+</div>
+<div class="broker-item">
+  <span class="broker-name">东吴证券</span>
+  <strong>通胀回落，科技产业重获估值弹性</strong>（2026-08-10）<br>
+  <span style="font-size:13px;color:var(--text2)">7月通胀数据回落超预期，利率敏感型科技板块估值弹性恢复。量化角度关注成长因子的均值回归信号，中小市值成长股因子IC值边际改善。</span>
+</div>
+<div class="broker-item">
+  <span class="broker-name">国金证券</span>
+  <strong>非银估值具备修复空间；FCC禁令草案扰动光模块</strong>（2026-08-09）<br>
+  <span style="font-size:13px;color:var(--text2)">港险征税影响有限，非银板块估值修复逻辑不变。光模块方向受FCC禁令草案扰动，短期波动加大，关注事件驱动型因子表现。</span>
+</div>
+<div class="broker-item">
+  <span class="broker-name">开源证券</span>
+  <strong>功率龙头业绩超预期并上调指引；7月美护线上yoy+11%</strong>（2026-08-10）<br>
+  <span style="font-size:13px;color:var(--text2)">功率半导体龙头业绩超预期，关注盈利惊喜因子的截面表现。美护线上增速稳定，消费类因子或在板块切换中受益。</span>
+</div>
+</div>
+
+<!-- ==================== 市场数据 ==================== -->
+<h2 id="market">6. 市场数据速览</h2>
+
+<div class="card">
+<h3>A股盘面（截至午盘）</h3>
+<div class="market-item">
+  <div class="time">10:45</div>
+  <div class="title down">创业板指跌逾2%，算力硬件领跌</div>
+  <div class="content">指数分化：创业板指-2.09%，沪指+0.29%，深成指-0.94%。算力硬件、半导体芯片跌幅居前，沪深京三市下跌个股近1900只。</div>
+</div>
+<div class="market-item">
+  <div class="time">10:49</div>
+  <div class="title">沪深两市成交额突破1.5万亿，较上一日此时放量超1200亿</div>
+  <div class="content">预计全天成交金额超2.7万亿，市场活跃度维持高位，但资金方向与前期截然不同。</div>
+</div>
+<div class="market-item">
+  <div class="time">10:57</div>
+  <div class="title down">CPO概念持续走弱：光迅科技逼近跌停，中际旭创跌超7%</div>
+  <div class="content">光迅科技-9.84%，中际旭创-7.54%，新易盛-6.97%，东山精密-7.38%，长芯博创-6.19%，联讯仪器-7.52%。中际旭创A+H总市值再度跌破1万亿。</div>
+</div>
+<div class="market-item">
+  <div class="time">10:57</div>
+  <div class="title">主力资金监控：电子板块净流出超199亿</div>
+  <div class="content">净流入：医药、食品饮料、电网设备。净流出：电子(-199亿+)、通信、半导体。个股方面：贵州茅台净买入超5亿居首，中际旭创净卖出超52亿居首。</div>
+</div>
+<div class="market-item">
+  <div class="time">10:49</div>
+  <div class="title down">多支高溢价LOF大幅下跌</div>
+  <div class="content">全球芯片LOF（501225）触及跌停，溢价率18.02%。国投白银LOF（161226）跌幅5.9%，溢价率19.55%。溢价收敛风险释放。</div>
+</div>
+<div class="market-item">
+  <div class="time">11:10</div>
+  <div class="title up">光刻胶概念异动拉升：国风新材涨停</div>
+  <div class="content">国风新材+10.05%，百合花+5.16%，兴福电子+2.50%，雅克科技+1.55%。银河证券研报指出半导体材料国产化率不足15%，高端光刻胶替代空间大。</div>
+</div>
+<div class="market-item">
+  <div class="time">10:33</div>
+  <div class="title up">工业母机概念震荡拉升：恒进感应、华中数控涨超10%</div>
+  <div class="content">恒进感应+11.64%，华中数控+9.46%，华东数控+9.96%。1-6月数控金属切削机床产量19.4万台，同比增24%。</div>
+</div>
+</div>
+
+<div class="card">
+<h3>宏观与全球</h3>
+<div class="market-item">
+  <div class="time">华尔街见闻</div>
+  <div class="title">本周重磅：美国CPI、宇树科技打新、腾讯/京东/茅台/中芯国际财报</div>
+  <div class="content">8月10日当周关注：美国7月CPI数据（或影响降息预期）、宇树科技港交所打新、科技巨头与消费龙头财报密集发布。</div>
+</div>
+<div class="market-item">
+  <div class="time">华尔街见闻</div>
+  <div class="title">美国财政进入被动紧缩周期，黄金逻辑从"交易"转向"配置"</div>
+  <div class="content">财政赤字收窄推动实际利率上行预期减弱，黄金中长期配置价值凸显，短期交易型资金或逐步让位于配置型资金。</div>
+</div>
+<div class="market-item">
+  <div class="time">华尔街见闻</div>
+  <div class="title">AI应用公司毛利首次"体检"：Canva主动降速、Figma自吞推理成本</div>
+  <div class="content">AI应用层毛利率面临推理成本压力，商业模式可持续性存疑。对量化选股的启示：关注AI应用公司的毛利率变动趋势。</div>
+</div>
+<div class="market-item">
+  <div class="time">11:18</div>
+  <div class="title">纽交所总裁：全球企业上市热潮将持续至2027年</div>
+  <div class="content">纽约证券交易所总裁对亚洲及全球上市项目储备感到乐观，IPO市场景气度有望延续。</div>
+</div>
+</div>
+
+<div class="footer">
+  <p>📊 量化交易资讯简报 | 由 Hermes Agent 自动生成 | 2026-08-10</p>
+  <p>数据来源：arXiv q-fin · 华尔街见闻 · 财联社 · 东方财富研报中心</p>
+</div>
+
+</body>
+</html>
