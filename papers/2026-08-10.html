@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <title>arXiv 论文周报 - 2026年8月10日</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-orange: #ffa657;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #bc8cff;
+            --border: #30363d;
+            --link: #58a6ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* TOC Sidebar */
+        .toc-sidebar {
+            width: 280px;
+            min-width: 280px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 20px 15px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .toc-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .toc-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .toc-content a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .toc-content a:hover {
+            color: var(--accent);
+            background-color: var(--bg-tertiary);
+        }
+
+        .toc-content .toc-h2 {
+            font-weight: 600;
+            margin-top: 8px;
+            color: var(--text-primary);
+        }
+
+        .toc-content .toc-h3 {
+            padding-left: 20px;
+        }
+
+        .toc-content .toc-paper {
+            padding-left: 35px;
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            padding: 30px 40px;
+            margin: 0 auto;
+        }
+
+        /* Headings - 改进层级 */
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: var(--accent);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 12px 0;
+            color: var(--accent-orange);
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 15px 0 8px 0;
+            color: var(--text-primary);
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+
+        .paper-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .paper-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .paper-meta span {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .paper-abstract {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .paper-contribution {
+            font-size: 13px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+            color: var(--accent-green);
+        }
+
+        .paper-link {
+            margin-top: 8px;
+        }
+
+        .paper-link a {
+            color: var(--link);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .paper-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        /* Ten-Q Section */
+        .ten-q-section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+
+        .tenq-paper-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .question-item {
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .question-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .question-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 6px;
+        }
+
+        .question-answer {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-left: 12px;
+            border-left: 2px solid var(--border);
+        }
+
+        .question-answer strong {
+            color: var(--accent-green);
+        }
+
+        .question-answer code {
+            background-color: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .question-answer a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        /* Trend Item */
+        .trend-item {
+            padding: 6px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .trend-item strong {
+            color: var(--accent-green);
+        }
+
+        /* Reading List Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: var(--bg-tertiary);
+            color: var(--accent);
+            padding: 8px 12px;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+        }
+
+        td a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Paragraphs and lists */
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Back navigation */
+        .back-nav {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.9);
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        .back-nav a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .back-nav a:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .toc-sidebar {
+                display: none;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 左侧导航 -->
+    <nav class="toc-sidebar">
+        <div class="toc-header">
+            <span class="toc-title">📋 目录</span>
+            <button class="toc-toggle" onclick="toggleToc()">☰</button>
+        </div>
+        <div class="toc-content">
+            <a href="#trends" class="toc-h2">一、本周趋势</a>
+            <a href="#categories" class="toc-h2">二、分类汇总（20 篇）</a>
+            <a href="#召回-检索-8-篇" class="toc-paper">召回/检索（8 篇）</a>
+            <a href="#排序-重排-4-篇" class="toc-paper">排序/重排（4 篇）</a>
+            <a href="#推荐系统-5-篇" class="toc-paper">推荐系统（5 篇）</a>
+            <a href="#广告系统-1-篇" class="toc-paper">广告系统（1 篇）</a>
+            <a href="#LLM-RAG-2-篇" class="toc-paper">LLM/RAG（2 篇）</a>
+            <a href="#reading-list" class="toc-h2">建议精读汇总</a>
+            <a href="#top-papers" class="toc-h2">三、Top Papers 论文阅读十问（5 篇）</a>
+            <a href="#top-paper-1" class="toc-paper">1. 1. LLM-OSDA: An Optimal-Stoppi...</a>
+            <a href="#top-paper-2" class="toc-paper">2. 2. X-KGRank: A Knowledge Graph...</a>
+            <a href="#top-paper-3" class="toc-paper">3. 3. Position Bias Undermines Pr...</a>
+            <a href="#top-paper-4" class="toc-paper">4. 4. GRACE: Generative Recommend...</a>
+            <a href="#top-paper-5" class="toc-paper">5. 5. SPEAR: Selection-aware Pers...</a>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-content">
+        <div class="back-nav"><a href="index.html">← 返回周报列表</a></div>
+        <h1>📊 搜索/推荐/广告召回排序论文周报</h1>
+        <div class="report-meta" style="color: var(--text-secondary); margin-bottom: 20px;">2026年8月10日 | 共 20 篇论文，5 个方向</div>
+        <h2 id="trends">📈 一、本周趋势</h2>
+     <div class="trend-item"><strong>召回/检索</strong>方向有 8 篇论文入选</div>
+     <div class="trend-item"><strong>排序/重排</strong>方向有 4 篇论文入选</div>
+     <div class="trend-item"><strong>推荐系统</strong>方向有 5 篇论文入选</div>
+     <div class="trend-item"><strong>广告系统</strong>方向有 1 篇论文入选</div>
+     <div class="trend-item"><strong>LLM/RAG</strong>方向有 2 篇论文入选</div>
+     <div class="trend-item">整体趋势观察：</div>
+     <div class="trend-item">检索方向继续活跃，BM25 和稠密检索的研究持续深入</div>
+     <div class="trend-item">排序/重排方向关注效率和精度平衡</div>
+     <div class="trend-item">推荐系统向多行为、跨域和会话化演进</div>
+     <div class="trend-item">LLM/RAG 方向持续火热，检索增强生成应用场景不断扩展</div>
+     <div class="trend-item">---</div>
+        <h2 id="categories">📚 二、分类汇总（20 篇）</h2>
+        <div class="category-section">
+          <h3 id="召回-检索-8-篇" class="category-title">召回/检索（8 篇）</h3>
+     <div class="paper-card" id="paper-1">
+       <div class="paper-title">⭐ 1. GRACE: Generative Recommender Acceleration Engine for Real-Time Ads Retrieval</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Productionizing generative recommenders for high-volume, real-time ads 检索 creates two serving challenges: eligibility, ensuring that each generated ad is eligible for the request under the advertiser&#39;s audience targeting rules, and compute, which requires meeting strict latency and GPU cost requirements while remaining capable of generating thousands of ads per request with wide-beam decoding. This paper presents GRACE, a serving system for ads 生成式检索（生成式检索（Generative 检索）） that addresses both challenges. For eligibility, GRACE introduces Generative Target Matching (GTM), which extends catalog-valid constrained decoding with personalized filtering over Semantic ID (SID) prefixes using bitmask and Bloom filter matchers derived from targeting rules. SID-level GTM improves final ad-level target matching pass rate from 23.55% to 40.42% over constrained decoding alone. For compute-cost and latency, GRACE targets encoder-decoder Transformers, which are more lightweight than LLMs. It redesigns the decoder around the wide-beam, short-sequence regime, covering 注意力 kernels, KV cache, and beam search optimizations. On NVIDIA GH200, compared with the faster of Flash注意力-2 and FlashAttention-3 基线方法s, GRACE improves cross-attention latency by 68.0 times and self-attention latency by 23.4-25.8 times across decode steps. Together, these changes reduce decoder latency by 11.1 times, keeping ads generative retrieval within latency and compute requirements.</div>
+     </div>
+     <div class="paper-card" id="paper-2">
+       <div class="paper-title">⭐ 2. SPEAR: Selection-aware Personalized End-to-end Adaptive Rewriting and Retrieval for Community Search</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：查询 reformulation bridges 用户意图 and 检索 in e-commerce search, yet production systems optimize rewrite quality and retrieval effectiveness separately, leaving the two stages structurally misaligned. Path-based architectures unify them end-to-end but were designed for 个性化, where relevance is not an explicit constraint-search additionally requires the rewrite to remain faithful to the user&#39;s stated 查询 intent. Transplanted directly, these models learn a shortcut we term the generic-word dominance effect: they favor generic rewrites that score well on paths but drift from query intent. To address this, we propose SPEAR (Selection-aware Personalized End-to-end Adaptive Rewriting and 检索), which integrates three components that each target one failure mode: (1) a dual-嵌入表示 backbone with auxiliary loss and gradient isolation that shields recall-side semantics from being eroded by CTR-driven 排序 signals; (2) a multiplicative gating aggregator that lets a rewrite score high only when both its confidence and item relevance are strong, eliminating the generic-word shortcut; (3) a Dynamic Rewrite Selector that jointly generates request-specific rewrite weights and user-query-conditioned scale and bias terms, allowing both rewrite preference and relevance 校准 to adapt to each request. Offline evaluation on 100K held-out industrial search sessions shows that the proposed framework improves rewrite semantic similarity@10 by +18.2 and click recall@10 by +99.5 over the production 基线方法. In online A/B testing, SPEAR achieves +0.259 in query-view CTR and +0.733 in average reading depth, confirming that improved rewrite selection translates into stronger retrieval and deeper user engagement. The proposed SPEAR system has been fully deployed in Dewu&#39;s community search platform since 2025. Our code is available at this https URL.</div>
+     </div>
+     <div class="paper-card" id="paper-3">
+       <div class="paper-title">⭐ 3. Disentangled Contrastive Learning for Zero-Shot Multilingual Dense Retrieval</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Multilingual 稠密检索（稠密检索（Dense 检索）） aims to handle queries and 文档s across different languages based on a unified retriever model. The challenge lies in enabling robust 检索 transfer to low-resource languages where annotated retrieval data is often scarce. Although previous studies transfer high-resource supervision to low-resource languages in multilingual semantic representation learning, the shared representation often entangles semantic and linguistic features, which may interfere with optimizing semantic relevance for retrieval. Different from existing methods that focus on learning language-agnostic semantic features under such entanglement, we propose a disentangled 对比学习（对比学习（Contrastive Learning））~(DCL) method for multilingual dense retrieval by separating multilingual representations into semantic and linguistic subspaces. Specifically, we design disentangled optimization objectives based on hierarchical semantic alignment and language debiasing contrastive learning. By aligning retrieval-relevant semantics across languages at both sentence and token levels while capturing language-specific variations in the linguistic subspace, these objectives reduce language-induced interference in 语义匹配（Semantic Matching）. We jointly optimize them with the retrieval objective to facilitate stable zero-shot transfer from English supervision to multilingual dense retrieval. Extensive experiments on mMARCO and MIRACL show that our method consistently outperforms several strong 基线方法s, demonstrating its effectiveness and 泛化能力 ability.</div>
+     </div>
+     <div class="paper-card" id="paper-4">
+       <div class="paper-title">⭐ 4. Search, Inspect, Fetch: Exploiting Structure-Aware Boolean Retrieval for Deep-Research Agents</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Industrial recommenders increasingly adopt the pretrain-then-transfer paradigm, yet behavioral distribution drift raises two questions: what to learn from behavior sequences, and how to transfer the learned knowledge while the pretrained model is continually refreshed. To resolve them, we propose Knowledge-Geometry Decoupling (KGD). For what to learn, conventional next-token prediction treats adjacency as dependency and may encode spurious transitions across unrelated sessions. We introduce Behavioral Multi-Token Prediction (BMTP) to retain only collaboratively or semantically related future items as supervision, yielding cleaner and more transferable behavioral knowledge. For how to transfer, pretrained knowledge and task-specific geometry impose conflicting optimization demands on shared parameters. To handle it, KGD assigns them to separate parameter sets: a refreshable encoder owns behavioral knowledge, while a task learner reads contextualized encoder states through read-only cross-注意力 and writes task-specific geometry through Anchored 校准 Residual (ACR) orthogonal to the pretrained 嵌入表示. The decoupled ownership enables continual knowledge refresh without task-gradient interference or invalidating downstream adaptation. KGD improves over strong pretrain-transfer 基线方法s by 4-12% on eight public 基准测试s and sustains its advantage over a 90-day production stream where baselines show no gains. KGD has been fully deployed in Shopee. In a live A/B test on Shopee Homepage Search, it increases GMV per user by 1.75% and advertising revenue by 1.53%, demonstrating its high practical value. We provide the core implementation of KGD at this https URL.</div>
+     </div>
+     <div class="paper-card" id="paper-5">
+       <div class="paper-title">⭐ 5. Coverage Matters: MarginMerge for Compressing Multi-Vector Visual Document Retrievers</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：As lifelong learning agents accumulate lifelong growing skill banks, retrieving the correct skill becomes an increasingly important bottleneck. Most current skill 检索 methods treat each skill as one flat 文档 by concatenating fields such as the name, description, and body. However, skills are naturally structured, multi-field objects, where each field provides different information about when and how the skill should be used. In this work, we study whether preserving this structure improves skill retrieval. We represent each skill as its separate components, and compute sparse and dense similarities for each field independently, exposing a naturally tensorized, field-aware representation of the skill bank. We then combine these field-level scores either with uniform weights or with a small learned MLP. Across two different skill retrieval 基准测试s, SkillRet and SRA-Bench, we find that keeping fields separate improves 混合检索（混合检索（Hybrid 检索））, and learning over the field-level scores gives the strongest and most consistent results. Our field-aware MLP reaches $77.95$ Recall@10 on SkillRet and $83.78$ Recall@10 on SRA-Bench, outperforming the corresponding concatenated learned 基线方法s. We also find that the advantage grows as the skill bank becomes larger, suggesting that field-aware skill retrieval becomes especially useful in the setting where retrieval is most difficult. Our results show that skill representation itself matters, and that simply preserving the structure already present in skill files can substantially improve retrieval.</div>
+     </div>
+     <div class="paper-card" id="paper-6">
+       <div class="paper-title">⭐ 6. Hierarchical BM25: Lexical Search at Billion-Document Scale</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：A flat BM25 index over one billion 文档s occupies about 400 GB. Holding it in memory requires DRAM proportional to corpus size. Serving it from disk takes 4-12 seconds per 查询. Exact top-k lexical 检索 at this scale is therefore impractical within an interactive latency budget. Hierarchical BM25 gives up exact 排序 in exchange for fixed bounds on memory and latency. A resident coarse index selects which of ~1K topical, size-balanced document groups a query visits, using two signals: the total frequency of each query term within a group, and, for informative terms spread too thinly across groups for frequency totals to reflect, whether several of them appear together in one document. Selected groups are then searched exhaustively and scored against ~100 KB of global statistics. Every returned score therefore equals the flat index&#39;s score, and the approximation is confined to selection alone. The resident footprint is ~4.4 GB, independent of corpus size. Sixteen-term queries over one billion documents return in ~300 ms (4.7x to 5.6x the throughput of a flat multi-threaded index), and a warmed cache sustains ~32 queries per second versus under 3 for flat 索引. At a 500K-document configuration, visiting 5-10% of clusters recovers 0.83-0.92 of the exhaustive result score. Billion-scale recall and a direct comparison against document-reordered BlockMax-WAND remain open.</div>
+     </div>
+     <div class="paper-card" id="paper-7">
+       <div class="paper-title">⭐ 7. CeQe: Grounding Lexical Retrieval in Semantic Evidence</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Lexical 检索 (BM25) captures exact keyword matches and weights terms by corpus-wide significance, but it is blind to the semantic vocabulary gap: when a relevant 文档 phrases an answer differently from the 查询, BM25 never retrieves it, and no amount of downstream 重排（重排（Re排序）） or fusion can recover a document that was never in the candidate set. We present 交叉编码器（Cross-Encoder） 查询扩展（查询 Expansion） (CE-QE), which reads the per-token relevance attributions of a 交叉编码器（Cross-Encoder） applied to top 语义搜索（语义搜索（Semantic Search）） results, selects the terms the cross-encoder treats as decisive, and appends them to the BM25 query. Unlike classical pseudo-relevance feedback, which reuses BM25&#39;s own (possibly wrong) top results, CE-QE seeds expansion from the semantic retriever&#39;s results, avoiding self-reinforcing query drift. Unlike recent generative 查询扩展（Query Expansion） (HyDE, Query2doc), which prompts a 大语言模型（LLM, 大语言模型（LLM, Large Language Model）） to hallucinate text from its parametric knowledge, every CE-QE expansion term is copied verbatim from a retrieved 段落, so it cannot introduce vocabulary the corpus does not contain, and its only added cost is attribution extraction on a cross-encoder a hybrid pipeline already runs for 重排（重排（Rerank））ing. On seven BEIR datasets, CE-QE improves lexical recall substantially where query and answer vocabulary diverge (e.g., NQ Recall@100 from 0.32 to 0.47), and its score-fusion variant (SESF) beats cross-encoder score fusion by 2.5% on Recall@100 and beats SPLADEv2 and ColBERTv2 by 5.3% and 4.6% on nDCG@10, while leaving the underlying BM25 index completely unmodified.</div>
+     </div>
+     <div class="paper-card" id="paper-8">
+       <div class="paper-title">⭐ 8. PHA-Net: Prototype-based Hierarchical Alignment Network for Text-Video Retrieval</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：With the emergence of large-scale image-text 预训练（预训练（Pre-training）） models, e.g., CLIP, text-video 检索 has experienced substantial advances in recent years. Existing best-performing methods involve aligning cross-modal semantics at individual, local, and global levels simultaneously, raising concerns about the intrinsic semantic mismatch between concise texts and rich videos. A canonical approach is to integrate multiple language-video 注意力 modules into the hierarchical framework while this paradigm only optimizes visual representations with prohibitive computational costs. In this paper, we propose a new prototype-based hierarchical alignment network (PHA-Net) to align individual/local/global level representations across modalities. Concretely, we introduce multiple modality-shared prototypes as the bridge to efficiently optimize text and video representations for cross-modal alignment. Then, we argue that the imbalanced semantic distribution in clustered tokens may undermine retrieval performance, as tokens with weak semantics are of little interest. To reduce the impact of these tokens, a proposed prototype-supported token merge module is responsible for enhancing tokens with strong semantics and suppressing others with weak semantics via prototype semantics guidance. Moreover, we devise a prototype contrastive loss to encourage textual and visual prototypes to focus on different semantic information. The idea of this auxiliary loss is to ensure higher similarity between textual and visual prototypes from the same prototype than those from different prototypes. Extensive experiments on four 基准测试s confirm the effectiveness of our PHA-Net, which achieves significant improvements in the sum of all recalls on MSR-VTT (8.8%), ActivityNet (19.2%), VATEX (0.7%), and Charades (4.9%). Code is available at this https URL.</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="排序-重排-4-篇" class="category-title">排序/重排（4 篇）</h3>
+     <div class="paper-card" id="paper-9">
+       <div class="paper-title">⭐ 9. X-KGRank: A Knowledge Graph RAG Framework for Explainable Recommendations via Pattern Mining and LLM Re-Ranking</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Modern 推荐系统（推荐系统（Recommender System））s produce predictions that users cannot interrogate. The two dominant improvements, 协同过滤（协同过滤（Collaborative Filtering）） and LLM-based reasoning, each fall short: collaborative filtering captures behavioural signals but offers no reasoning, while 大语言模型（LLM, 大语言模型（LLM, 大语言模型（LLM, Large Language Model）s）） (LLMs) generate fluent explanations but hallucinate and are poorly grounded in a user&#39;s history. We present X-KGRank, a 知识图谱（KG, 知识图谱（KG, Knowledge Graph）） 检索 augmented framework that unifies structural collaborative filtering with LLM-based explanation. From the MovieLens-1M dataset (6,040 users, 3,704 items, 988,129 interactions) we construct a heterogeneous knowledge graph of 9,762 nodes and 999,264 edges spanning three relation types (RATED, HAS_GENRE, and CO_RATED) persisted in Neo4j. We train a LightGCN ranker with content-aware SBERT initialization and a rating weighted BPR objective, and apply a popularity selective routing strategy that grounds long-tail items (1,855 of 3,704) in knowledge-graph paths while serving popular items from pre-trained knowledge, reducing KG-augmented generations by roughly 50%. On the MovieLens-1M test set under a 99-sample protocol, X-KGRank achieves NDCG@10 = 0.2956 and Recall@10 = 0.5371, improving over a strong popularity 基线方法 by 17.1% on both metrics, by 15.6% on NDCG@20 (0.3449 vs. 0.2983), and by 14.6% on MRR (0.2435 vs. 0.2124). Across three LLM backbones evaluated on 16 cases, a 1.5-billion-parameter model (Qwen2.5-1.5B) matches a 7-billion-parameter model (Mistral-7B) on heuristic explanation quality (0.97 vs. 0.94), yet qualitative analysis shows the smaller model is more prone to factual fabrication.</div>
+     </div>
+     <div class="paper-card" id="paper-10">
+       <div class="paper-title">⭐ 10. Position Bias Undermines Preference Consistency in Listwise LLM-Based Reranking</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Multi-vector visual 文档 retrievers such as ColPali and ColQwen achieve strong 检索 by storing fine-grained patch 嵌入表示s, but this produces large indexes and costly late-interaction scoring. We argue that effective compression should preserve 查询-relevant coverage, meaning the diverse document regions that may become the strongest MaxSim match across queries, rather than selecting patches independently by salience. This view also explains why dense rendered pages are easier to compress than natural images. We introduce MarginMerge, a compression method for frozen multi-vector retrievers. It selects coverage-aware anchors, clusters document patches, and uses a lightweight shared network to synthesize one representative per cluster. Compression is performed once during 索引, while retrieval keeps the standard MaxSim interface. Across six datasets on both ColQwen2.5 and ColPali, MarginMerge achieves the highest matched query-agnostic average at 5% and 10% vector retention. Compared with the uncompressed index using the same backbone, it preserves between 97% and 99% of average nDCG@5 while reducing stored document vectors by between 90% and 95%. At 5% retention, it also reduces 排序 flips relative to geometric merging on all six ColQwen2.5 datasets by approximately 41% on average. The same model transfers to unseen datasets and retention ratios without retraining.</div>
+     </div>
+     <div class="paper-card" id="paper-11">
+       <div class="paper-title">⭐ 11. Training Documents Reranker with Search Rubrics for Deep Research Agent</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Multi-armed bandit algorithms, especially Thompson sampling, are widely used in online 推荐. Despite their ability to adapt from online feedback, these methods often suffer from cold-start limitations when newly introduced arms have little or no interaction history. In our setting, the candidate arms are user-generated textual comments, whose semantic content can reveal a title&#39;s appeal before sufficient interaction feedback is available. We therefore use 大语言模型（LLM, 大语言模型（LLM, 大语言模型（LLM, Large Language Model）s）） (LLMs) to extract semantic signals from comment text and convert them into informative Bayesian priors that warm-start Thompson sampling under sparse early-stage feedback. To account for aggregate segment-level differences in response patterns, we maintain and update posteriors separately for each gender-age segment. In a real-world online A/B/C test, we compare a uniform prior with two LLM-based designs: a Gender Prior for demographic-affinity cues and a Content Prior for title-specific identity cues. The results show that LLM-based priors are most beneficial in sparse-feedback regimes -- with the largest gains emerging once a small amount of interaction evidence has accumulated -- and that prior design leads to distinct funnel-level effects. We further analyze prior-reward alignment and demographic heterogeneity, finding that click-oriented alignment is strongest for the Gender Prior and that treatment effects vary substantially across demographic segments. These findings suggest that LLM-derived priors can serve as a practical warm-start mechanism for text-rich bandit recommendation, while also revealing deployment trade-offs.</div>
+     </div>
+     <div class="paper-card" id="paper-12">
+       <div class="paper-title">⭐ 12. Tevatron Meets Megatron: Expert-Parallel LLM Reranker Training on an Academic Budget</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Modern 重排（重排（Re排序）） recipes---billion-scale 交叉编码器（交叉编码器（Cross-Encoder））s, mixture-of-experts (MoE) backbones, and distillation against strong teachers---have outpaced the training infrastructure available to most academic groups. Existing Tevatron 重排（重排（Rerank））er training relies on the Hugging Face Trainer with DeepSpeed or PyTorch FSDP1, but these backends lack efficient support for large-scale MoE training. We present Tevatron 3.0, which integrates a Megatron-Core training backend into Tevatron while preserving its data pipeline, evaluation workflow, and Hugging Face-compatible checkpoints. We 基准测试 existing distributed training configurations against the new backend, showing that Megatron matches FSDP reranker quality and training efficiency under comparable data-parallel settings, is up to 22% faster in the recommended single-node configuration, and supports both LoRA and full-parameter 微调（微调（Fine-tuning））. Crucially, expert parallelism enables training a 30B-parameter Qwen3-30B-A3B MoE reranker, which is infeasible with PyTorch FSDP1. Using this framework, we conduct a controlled comparison of MoE versus dense models, LoRA versus full-parameter tuning, and distillation versus contrastive training on BEIR-15 with three first-stage retrievers, and report serving throughput for Hugging Face and vLLM. We find that the MoE reranker matches dense 8B quality while activating less than half as many parameters and achieving substantially higher inference throughput. We will release the framework and trained checkpoints.</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="推荐系统-5-篇" class="category-title">推荐系统（5 篇）</h3>
+     <div class="paper-card" id="paper-13">
+       <div class="paper-title">⭐ 13. HyperAgent4POI: Dynamic Semantic Message Passing on Multi-Agent Hypergraphs for Missing-Modality Recommendation</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Next Point-of-Interest (POI) 推荐 benefits from textual and visual content that describes venue semantics, yet such content is often incomplete in real-world services. Missing modalities weaken POI representations and reduce the semantic evidence available for 排序. The resulting representations also provide unreliable evidence for modeling higher-order user--POI interactions. We propose HyperAgent4POI, which uses Dynamic Semantic Message Passing (DSMP) to perform modality completion and soft incidence refinement within each hypergraph layer. Persistent node agents share a frozen Llama backbone and use role-specific adapters to produce node-to-hyperedge messages. Semantic hyperedge motifs formed from these messages guide soft incidence scoring and modality completion. Final node representations are cached for online ranking without LLM calls. Experiments on three real-world LBSN datasets show consistent ranking gains over 15 基线方法s across modality-missing rates, while cached inference provides practical online efficiency. Under a 60% modality-missing rate, HyperAgent4POI improves NDCG@20 over the strongest baseline by 8.2% on average across the three datasets.</div>
+     </div>
+     <div class="paper-card" id="paper-14">
+       <div class="paper-title">⭐ 14. Exponential Reward Weighting for Fine-Tuning Generative Recommenders under Sparse and Noisy Feedback</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：In 推荐系统（推荐系统（推荐 System））s, users interact with only a small fraction of a vast item catalog, producing feedback that is both sparse and noisy. This challenges post-training generative recommenders: reward models trained from logged interactions often fail to generalize, while directly optimizing imperfect rewards can lead to reward over-optimization. We propose Exponential reward-weighted 微调（微调（Fine-tuning）） (Exp-RSFT), where each logged interaction is weighted by $\exp(r/\lambda)$, avoids this failure by optimizing directly on the logged rewards, with the temperature $\lambda$ regularizing against their noise. We theoretically show that Exp-RSFT&#39;s suboptimality decomposes into two costs: a coverage cost arising from limitations of the logging policy and a noise cost from imperfect feedback. The temperature $\lambda$ balances these competing effects, yielding an optimal tradeoff between exploiting high-reward behavior and 鲁棒性 to noise. Across three public 基准测试s and a large-scale industrial dataset, we verify this theoretical prediction: performance follows an inverted-U trend as a function of $\lambda$, while PPO and DPO often over-optimize unreliable reward models and degrade 推荐 quality. Exp-RSFT consistently improves 排序 performance without requiring online exploration or preference data.</div>
+     </div>
+     <div class="paper-card" id="paper-15">
+       <div class="paper-title">⭐ 15. GARDRec: Decision-Level Graph Grounding for Large Language Model Recommendation</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Large language models (LLMs) offer new opportunities for 推荐 by interpreting item descriptions, user instructions, and external knowledge through natural-language prompts. However, existing graph-augmented LLM recommenders often use 知识图谱（KG, 知识图谱（KG, Knowledge Graph））s mainly as prompt-level evidence, leaving 排序 decisions weakly constrained by structured user-item relations. This is problematic for next-item recommendation, where the model must compare candidates under the same user context while preserving temporal preference, collaborative signals, and attribute matches. To address this issue, we propose \emph{GARDRec}, a Graph-grounded Adaptive Reasoning and Decision-aware 推荐 framework for LLM-based next-物品排序. GARDRec constructs semantic-structural item representations from textual node features and graph propagation, derives personalized graph contexts from temporally weighted histories and first-order neighborhoods, and aligns graph-derived representations with a frozen LLM through continuous multimodal prompts. Explicit interaction and matching features are injected through late-stage decision branches, while inter-candidate 注意力 and restricted generative likelihood support final ranking. Experiments on three public 基准测试s with multiple LLM backbones show that GARDRec generally improves candidate-ranking performance over representative 基线方法s. 消融 and diagnostic analyses verify the contributions of graph projection, neighborhood 检索, explicit decision features, ranking loss, and generative 校准.</div>
+     </div>
+     <div class="paper-card" id="paper-16">
+       <div class="paper-title">⭐ 16. MODE: Mutual Optimality in Direct Effects of Reciprocal Recommendations in Matching Markets</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Matching platforms such as job posting services and online dating platforms have become widely used over the past decade. For a matching platform to be successful, it is crucial to design appropriate reciprocal 推荐系统（推荐系统（推荐 System））s (RRSs) that consider the preferences of users on both sides (job candidates and employers) and prevent opportunities from being concentrated too heavily on a few popular users. However, prioritizing concentration mitigation too much can lead to recommending undesirable results to some individual users, resulting in their dissatisfaction. In this paper, we formulate the concept of ``optimality of direct effects&#39;&#39; of the 推荐 list for an individual user, given the recommendations to other users. Furthermore, we propose a novel method, MODE, that computes mutually optimal recommendations in direct effects. Experiments with synthetic and real-world data demonstrate that MODE surpasses other existing methods in terms of mutual optimality of direct effects, exhibits faster processing speeds, and enables a higher expected number of matches.</div>
+     </div>
+     <div class="paper-card" id="paper-17">
+       <div class="paper-title">⭐ 17. LLM-Derived Priors for Thompson Sampling in Cold-Start Comment Recommendation</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Multi-agent 协同过滤（协同过滤（Collaborative Filtering）） (CF) systems coordinate autonomous LLM-powered user and item agents through natural-language interaction to refine preferences and generate 推荐s. These systems inherit vulnerabilities from both their data-driven nature and their multi-agent interactions, which manifest in distinct ways. Understanding how connectivity modulates vulnerability in these systems could facilitate the development of more robust recommendation pipelines. In this work, we adapt attacks and defenses from the general multi-agent systems (MAS) literature to the agent-based CF setting, evaluating them under systematically varied connectivity in the AgentCF framework, where CF connectivity is characterized along two axes: (i) candidate count (the number of item candidates per turn per user, measuring user-side interaction density) and (ii) catalog concentration (the degree of item catalog overlap across users). Our contributions include: (1) Adaptation: we reproduce MAS-inspired attacks and defenses in the agentic CF domain, confirming partial transferability of original observations. (2) Characterization: we characterize how the two aspects of connectivity shape attack and defense outcomes, revealing role asymmetries between user and item agents, non-monotonic temporal dynamics in attack efficacy, and divergent patterns across dissemination and extraction attack goals. Additionally, as an exploratory extension, we assess the applicability of epidemic-inspired static metrics in 排序 CF configurations by expected attack outcome, potentially enabling cost-efficient 鲁棒性 assessment. Implementation is available at this https URL</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="广告系统-1-篇" class="category-title">广告系统（1 篇）</h3>
+     <div class="paper-card" id="paper-18">
+       <div class="paper-title">⭐ 18. LLM-OSDA: An Optimal-Stopping Dynamic Auction for Native Advertising in Multi-Turn LLM Conversations</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：LLM-native advertising embeds sponsored content directly into model-generated responses, shifting the unit of sale from a fixed slot to a moment within an evolving conversation. Existing LLM ad-auction mechanisms primarily operate within a single response, settling the winner but not the timing. The extension is nontrivial: with one native insertion opportunity per session, the stopping time depends on bids, coupling timing with allocation, so static truthfulness arguments no longer apply. We propose the LLM-based Optimal Stopping Dynamic Auction (LLM-OSDA), a dynamic cost-per-click auction that integrates Bellman optimal stopping, winner allocation, and envelope pricing. A bid-independent LLM layer estimates contextual click quality and seamlessly renders the winning ad, while bids enter only the committed auction mechanism. Under an exact Bellman oracle, the expected discounted-click allocation is monotone in each advertiser&#39;s bid, and the corresponding envelope payment makes truthful bidding weakly dominant in expectation. For practical deployment, a learned StopNet approximates the Bellman action values. We show that its decisions differ from the optimal policy only near the stopping boundary and bound the resulting incentive loss in terms of its approximation error. Experiments on a simulated conversational advertising corpus show that LLM-OSDA improves net revenue by 11 percent over the strongest fixed-timing 基线方法 while maintaining comparable user retention. Code is at this https URL.</div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="LLM-RAG-2-篇" class="category-title">LLM/RAG（2 篇）</h3>
+     <div class="paper-card" id="paper-19">
+       <div class="paper-title">⭐ 19. Advancing Relevance Measurement with Vision-Language Models for Web-Scale Search</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Relevance evaluation plays a crucial role in personalized search systems, serving as a guardrail alongside user engagement metrics to ensure that 搜索结果s align with user queries and intent. While human annotation is the traditional method for relevance evaluation, its high cost and long turnaround time limit its 可扩展性. In this work, we present a VLM-based automated relevance evaluation pipeline deployed within Pinterest Search for online A/B experiments. We rigorously validate the alignment between VLM-generated judgments and human annotations, demonstrating that VLMs can provide reliable relevance measurement for experiments while greatly improving the evaluation efficiency. Leveraging VLM-based labeling further unlocks opportunities to expand the 查询 set, optimize sampling design, and efficiently assess a wider range of search experiences at scale. This approach leads to higher-quality relevance metrics and significantly reduces the Minimum Detectable Effects (MDEs) in online experiment measurements.</div>
+     </div>
+     <div class="paper-card" id="paper-20">
+       <div class="paper-title">⭐ 20. A Physics-Chemistry-Informed Neural Network (PCINN) for Real-Time Spatial-ALD Coverage Prediction and Reliable Kinetics Inversion</div>
+       <div class="paper-meta"></div>
+       <div class="paper-abstract">：Spatial atomic layer deposition (SALD) is a leading atmospheric-pressure, high-throughput route to industrial ALD, but design and control are limited by the cost of predicting surface coverage: high-fidelity CFD is far too slow for operating-window scans, while analytic models miss transport modulation such as the gas curtain. We present a physics-chemistry-informed neural network (PCINN), a hybrid surrogate with CFD-level accuracy at real-time speed: a 查询 returns coverage in about 7 ms, roughly 5x10^4 times faster than a CFD solve, reaching a test R^2_log = 0.998 (leave-one-out R^2_raw = 0.974) from only 30 training cases spanning four orders of magnitude in coverage. The architecture is not a black box: a small network learns only the operating-condition to near-wall concentration closure, while the known surface kinetics is a hard-coded, trainable chemistry layer integrated along the substrate trajectory. This single-scalar bottleneck keeps it accurate under sparse data, interpretable and invertible. We add a full identifiability analysis (Fisher information, profile likelihood). The adsorption energy E_ads and desorption rate k_des are robustly identifiable; k_ads is not separately identifiable at a single temperature (only k_ads*c_wall is). Across four temperatures the prefactor nu and E_ads bind along a weakly identifiable degeneracy valley of slope 0.065 eV/decade, derived analytically as k_B T_eff ln(10) and turned into a reliability diagnostic: a seven-chemistry mismatch matrix shows it is invariant under any single-Arrhenius mismatch and shifts only when a second thermally activated process appears, so a slope departure flags unmodelled site heterogeneity. Data come from simulation with known ground truth inverted by the same kinetic form, so the study verifies pipeline self-consistency and the identifiability boundary, not real parameters.</div>
+     </div>
+        </div>
+        <h2 id="reading-list">📋 建议精读汇总</h2>
+        
+        <h2 id="top-papers">🔬 三、Top Papers 论文阅读十问（5 篇）</h2>
+     <div class="ten-q-section" id="top-paper-1">
+       <h3 class="tenq-paper-title">1. 1. LLM-OSDA: An Optimal-Stopping Dynamic Auction for Native Advertising in Multi-Turn LLM Conversations</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-2">
+       <h3 class="tenq-paper-title">2. 2. X-KGRank: A Knowledge Graph RAG Framework for Explainable Recommendations via Pattern Mining and LLM Re-Ranking</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-3">
+       <h3 class="tenq-paper-title">3. 3. Position Bias Undermines Preference Consistency in Listwise LLM-Based Reranking</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-4">
+       <h3 class="tenq-paper-title">4. 4. GRACE: Generative Recommender Acceleration Engine for Real-Time Ads Retrieval</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-5">
+       <h3 class="tenq-paper-title">5. 5. SPEAR: Selection-aware Personalized End-to-end Adaptive Rewriting and Retrieval for Community Search</h3>
+     </div>
+
+    </main>
+
+    <script>
+        function toggleToc() {
+            const sidebar = document.querySelector('.toc-sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
