@@ -613,6 +613,52 @@
        <h3 class="tenq-paper-title">1. 1. Position Bias Undermines Preference Consistency in Listwise LLM-Based Reranking</h3>
        <div class="question-item">
          <div class="question-title">Q1：解决什么问题？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q2：是否是新问题？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q3：科学假设是什么？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q4：相关研究如何归类？关键论文/研究者是谁？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q5：核心方法是什么？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q6：实验如何设计？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q7：用了什么数据集？代码是否开源？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q8：结果是否支持假设？证据是否充分？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q9：核心贡献是什么？</div>
+         <div class="question-answer"></div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q10：局限与下一步方向是什么？</div>
+         <div class="question-answer"><strong>业务启发</strong>
+- 可落地链路：重排 — 直接适用于 LLM-based reranker 的可靠性评估与选型
+- 业务价值：高。LLM 重排的排列敏感性是生产部署的硬伤，PPI/GPI/LOC 可作为上线"可靠性门禁"指标
+- 落地风险/成本：中。指标需多次排列推理（n=20），成本约 20 倍单次推理；可作为离线评估/定期巡检
+- 优先级：高 — 对任何使用或计划使用 LLM 重排的推荐/RAG 系统都有直接指导意义
+- 建议动作：精读 + 小实验 — 精读三个指标的数学定义，在 LLM 重排 pipeline 上跑小规模 PPI/GPI/LOC 评估
+---</div>
+       </div>
+       <div class="question-item">
+         <div class="question-title">Q1：解决什么问题？</div>
          <div class="question-answer">Decoder-only LLM 作为 listwise reranker 时，输入候选的排列顺序（即位置偏差）会不当影响模型打分、成对偏好和最终排序，而推荐候选本质是无序集合，reranker 不应依赖序列化时使用的任意顺序。核心问题是：<strong>位置偏差如何破坏 LLM reranker 产生的偏好系统的一致性</strong>。</div>
        </div>
        <div class="question-item">
