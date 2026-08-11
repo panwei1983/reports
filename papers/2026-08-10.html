@@ -845,44 +845,48 @@
        <h3 class="tenq-paper-title">4. 4. Teacher Retains Full Tokens, Student Merges Efficiently: TM20K for E-Commerce Search</h3>
        <div class="question-item">
          <div class="question-title">Q1：解决什么问题？</div>
-         <div class="question-answer">超长用户行为序列建模在推荐系统中能同时捕捉长短期兴趣，但序列长度的扩展给训练效率和服务吞吐带来了巨大负担。现有方法要么通过搜索/聚类压缩序列以牺牲细粒度信息为代价，要么依赖轻量级目标注意力结构无法充分提取序列特征。本文旨在平衡超长序列建模的有效性与效率。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q2：是否是新问题？</div>
-         <div class="question-answer">并非全新问题。超长行为序列建模的效率-效果权衡是推荐系统领域的持续研究热点，此前已有搜索型压缩（如SIM）、聚类型压缩（如ETA）及轻量级目标注意力等多种方案。但将序列长度扩展至20K并在工业级广告系统中落地，结合全Transformer建模与知识蒸馏的范式，具有一定的创新性。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q3：科学假设是什么？</div>
-         <div class="question-answer">核心假设是：教师模型使用全序列token进行全注意力训练，学生模型通过token合并压缩序列长度后，再经知识蒸馏从教师模型迁移知识，可以在几乎不损失性能的前提下大幅压缩序列长度。同时，师生模型均采用全注意力机制（而非纯目标-序列注意力）能实现更有效的序列特征提取。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q4：相关研究如何归类？关键论文/研究者是谁？</div>
-         <div class="question-answer">根据摘要，相关研究可归为三类：(1) 搜索型压缩方法——在超长序列上进行搜索式压缩，代价是丢失细粒度信息；(2) 聚类型压缩方法——通过聚类压缩序列，同样牺牲细粒度信息；(3) 轻量级目标注意力结构——如各种target attention变体，序列特征提取能力不足。论文来自字节跳动电商广告团队，作者包括Xinchun Li、Duoru Zheng等12人，属于工业界实践导向的研究。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q5：核心方法是什么？</div>
-         <div class="question-answer">核心方法是TM20K范式，包含两个关键组件：(1) 全Transformer建模——师生模型均采用全注意力机制而非纯目标序列注意力，实现有效的序列扩展；(2) 两阶段知识蒸馏框架——首先为学生模型提出多种简单但动机明确的token合并方法压缩序列长度，然后训练一个一次性教师模型使用全序列token进行重度训练，通过知识蒸馏进一步提升学生模型性能。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q6：实验如何设计？</div>
-         <div class="question-answer">实验在字节跳动电商广告推荐系统中进行真实线上部署验证。核心实验设计包括：将电商行为序列长度扩展至20K，对比TM20K与在线SOTA模型在关键业务指标（如ADSS）和服务成本（如服务延迟）上的表现。具体测量了ADSS提升幅度（+1.036%）和服务延迟变化（仅+5.6%），以验证效果与效率的平衡。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q7：用了什么数据集？代码是否开源？</div>
-         <div class="question-answer">数据集为字节跳动电商广告推荐系统的真实线上生产数据，而非公开学术数据集。从arXiv页面信息来看，论文提交于2026年8月7日，页面未显示明确的代码开源链接（虽有"Links to Code"等工具入口，但未标注具体仓库），考虑到涉及商业系统，代码大概率未开源。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q8：结果是否支持假设？证据是否充分？</div>
-         <div class="question-answer">结果支持核心假设：TM20K在将序列长度扩展至20K的同时，ADSS提升1.036%，服务延迟仅增加5.6%，训练和服务成本与在线SOTA模型基本持平。这证明了token合并+知识蒸馏的范式能在压缩序列的同时保持性能。证据来自真实线上系统部署，具有较强的实践说服力，但缺乏在公开数据集上的对比实验和消融实验细节（受限于摘要信息）。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q9：核心贡献是什么？</div>
-         <div class="question-answer">(1) 提出师生模型均采用全注意力机制的序列建模范式，区别于以往纯目标注意力方案；(2) 为学生模型设计了多种简单且动机明确的token合并方法，在显著压缩序列长度的同时保持可接受的性能；(3) 提出两阶段知识蒸馏框架，通过一次性重度训练的教师模型提升学生模型表现；(4) 在字节跳动电商广告系统中成功部署，将序列长度扩展至20K，实现ADSS +1.036%且服务延迟仅+5.6%。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q10：局限与下一步方向是什么？</div>
-         <div class="question-answer">局限方面：(1) 实验仅在单一工业场景验证，缺乏公开数据集的广泛性验证；(2) 摘要未详细披露token合并方法的具体设计和消融实验结果；(3) 教师模型为"一次性"训练，其知识迁移的上限可能受限。下一步方向可能包括：探索更优的token合并策略、研究多教师蒸馏方案、将范式推广到更长序列（如50K+）或其他推荐场景。
-
+         <div class="question-answer"><strong>业务启发</strong>
+- 可落地链路：蒸馏 + 精排/CTR-CVR — 直接适用于电商广告精排CVR模型中的超长用户序列建模
+- 业务价值：线上ADSS +1.036%、ADVV +0.780%，在成熟广告系统中属于显著收益；延迟仅+5.6%
+- 落地风险/成本：需训练一次性teacher模型（GPU显存86G，batch size仅96）；LITM/PATM/LPTM需针对业务调优；QK Norm对训练稳定性至关重要
+- 优先级：中 — 思路清晰、工程实用性强，但高度依赖特定基础设施
+- 建议动作：精读 — 两阶段蒸馏+token merge范式值得借鉴，position-wise自适应压缩和layer-wise金字塔压缩可迁移到其他超长序列场景
 ---
 
 <strong>业务启发</strong>
