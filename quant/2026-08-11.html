@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量化交易资讯简报 | 2026-08-11</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-secondary: #8b949e;
+  --accent: #58a6ff;
+  --accent-green: #3fb950;
+  --accent-orange: #d29922;
+  --accent-red: #f85149;
+  --accent-purple: #bc8cff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 0;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 20px; }
+header {
+  background: linear-gradient(135deg, #1a1e2e 0%, #2d1b3d 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(88,166,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+header h1 {
+  font-size: 1.8em;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+header .summary {
+  font-size: 1.05em;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  line-height: 1.6;
+}
+.meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 0.85em;
+  color: var(--text-secondary);
+}
+.toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.toc h3 { color: var(--accent); margin-bottom: 12px; font-size: 1em; }
+.toc ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+.toc a { color: var(--text-secondary); text-decoration: none; font-size: 0.9em; transition: color 0.2s; }
+.toc a:hover { color: var(--accent); }
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.section h2 {
+  font-size: 1.3em;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section h2 .icon { font-size: 1.1em; }
+.highlight-item {
+  padding: 14px 16px;
+  border-left: 3px solid var(--accent);
+  background: rgba(88,166,255,0.05);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 12px;
+}
+.highlight-item.green { border-left-color: var(--accent-green); background: rgba(63,185,80,0.05); }
+.highlight-item.orange { border-left-color: var(--accent-orange); background: rgba(210,153,34,0.05); }
+.highlight-item.red { border-left-color: var(--accent-red); background: rgba(248,81,73,0.05); }
+.highlight-item.purple { border-left-color: var(--accent-purple); background: rgba(188,140,255,0.05); }
+.highlight-item h4 { margin-bottom: 4px; font-size: 1em; }
+.highlight-item p { font-size: 0.9em; color: var(--text-secondary); }
+.paper-card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+.paper-card:hover { border-color: var(--accent); }
+.paper-card h4 { margin-bottom: 6px; }
+.paper-card h4 a { color: var(--accent); text-decoration: none; }
+.paper-card h4 a:hover { text-decoration: underline; }
+.paper-card .meta-line { font-size: 0.82em; color: var(--text-secondary); margin-bottom: 8px; }
+.paper-card .abstract { font-size: 0.9em; color: var(--text-secondary); line-height: 1.6; }
+.score {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+.score.high { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+.score.medium { background: rgba(210,153,34,0.15); color: var(--accent-orange); }
+.score.low { background: rgba(248,81,73,0.15); color: var(--accent-red); }
+.factor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.factor-item {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-align: center;
+}
+.factor-item .name { font-size: 0.85em; color: var(--text-secondary); }
+.factor-item .value { font-size: 1.4em; font-weight: 700; margin: 4px 0; }
+.factor-item.up .value { color: var(--accent-green); }
+.factor-item.down .value { color: var(--accent-red); }
+.factor-item.flat .value { color: var(--text-secondary); }
+.brief-list { list-style: none; }
+.brief-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92em;
+}
+.brief-list li:last-child { border-bottom: none; }
+.brief-list .tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  margin-right: 6px;
+  font-weight: 600;
+}
+.tag.arxiv { background: rgba(248,81,73,0.15); color: var(--accent-red); }
+.tag.quantpedia { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+.tag.market { background: rgba(210,153,34,0.15); color: var(--accent-orange); }
+.tag.broker { background: rgba(188,140,255,0.15); color: var(--accent-purple); }
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>📊 量化交易资讯简报</h1>
+  <div class="meta">
+    <span>📅 2026年8月11日 星期二</span>
+    <span>⏰ 数据截至 11:10</span>
+  </div>
+  <div class="summary">
+    LLM驱动的因子进化搜索框架登上arXiv，QuantPedia揭示短期趋势跟踪衰退的微观结构根源，A股创新药与数据中心电源板块爆发，主力资金大幅撤离有色金属——LLM+因子挖掘与AIDC电源成为今日量化焦点。
+  </div>
+</header>
+
+<nav class="toc">
+  <h3>📑 今日目录</h3>
+  <ul>
+    <li><a href="#highlights">🔥 今日要点</a></li>
+    <li><a href="#factors">📈 因子看板</a></li>
+    <li><a href="#academic">🎓 学术前沿</a></li>
+    <li><a href="#strategy">🧪 策略研究</a></li>
+    <li><a href="#broker">🏛️ 券商金工观点</a></li>
+    <li><a href="#market">💹 市场数据</a></li>
+  </ul>
+</nav>
+
+<!-- ========== 今日要点 ========== -->
+<section class="section" id="highlights">
+  <h2><span class="icon">🔥</span> 今日要点</h2>
+
+  <div class="highlight-item purple">
+    <h4>LLM+进化算法自动挖掘Alpha因子</h4>
+    <p>arXiv新论文《Evolutionary Factor Searching for Sparse Portfolio Optimization Using Large Language Models》提出利用大语言模型与进化算法自动生成和迭代Alpha因子的框架，将资产选择重构为因子搜索问题，为量化因子挖掘开辟新范式。⭐ 可落地性高</p>
+  </div>
+
+  <div class="highlight-item green">
+    <h4>短期趋势跟踪衰退的微观结构解释</h4>
+    <p>QuantPedia深度分析指出，2008年后短期趋势跟踪策略盈利在波动率归一化tick size较小的合约上几乎完全消失，而非流动性、资产类别或策略拥挤所致。这对CTA策略设计有重要启示。</p>
+  </div>
+
+  <div class="highlight-item orange">
+    <h4>A股主力资金大幅撤离有色金属，流入通信与计算机</h4>
+    <p>财联社数据显示，今日早盘有色金属板块净流出超49亿元，紫金矿业遭净卖出超11亿；资金净流入通信、计算机、光学光电子板块。N超纯新股大涨672%，新易盛、中际旭创获资金追捧。</p>
+  </div>
+
+  <div class="highlight-item red">
+    <h4>黄金突破4250美元关键阻力位</h4>
+    <p>瑞银研报指出，金价上破4250美元关键阻力位，若维持在4200–4250美元上方将确认短期反转，下一目标4450–4500美元。RSI与MACD动能走强。</p>
+  </div>
+
+  <div class="highlight-item">
+    <h4>回报预测的目标选择比模型架构更重要</h4>
+    <p>QuantPeda转载Cakici & Zaremba研究发现，在ML收益预测中，训练目标的选择（如预测排名而非原始收益率）对性能的影响远大于模型架构或特征工程，这对ML因子开发具有实践意义。</p>
+  </div>
+</section>
+
+<!-- ========== 因子看板 ========== -->
+<section class="section" id="factors">
+  <h2><span class="icon">📈</span> 因子看板</h2>
+
+  <div class="factor-grid">
+    <div class="factor-item up">
+      <div class="name">通信板块</div>
+      <div class="value">净流入</div>
+      <div class="name">主力资金积极</div>
+    </div>
+    <div class="factor-item up">
+      <div class="name">计算机板块</div>
+      <div class="value">净流入</div>
+      <div class="name">光模块/算力</div>
+    </div>
+    <div class="factor-item down">
+      <div class="name">有色金属</div>
+      <div class="value">-49亿</div>
+      <div class="name">大幅净流出</div>
+    </div>
+    <div class="factor-item up">
+      <div class="name">创新药/CXO</div>
+      <div class="value">强势</div>
+      <div class="name">6连板+涨停潮</div>
+    </div>
+    <div class="factor-item up">
+      <div class="name">黄金</div>
+      <div class="value">4250↑</div>
+      <div class="name">突破关键阻力</div>
+    </div>
+    <div class="factor-item up">
+      <div class="name">原油</div>
+      <div class="value">+4~5%</div>
+      <div class="name">低硫燃油领涨</div>
+    </div>
+    <div class="factor-item down">
+      <div class="name">恒指/恒科</div>
+      <div class="value">下跌</div>
+      <div class="name">港股走弱</div>
+    </div>
+    <div class="factor-item up">
+      <div class="name">人形机器人</div>
+      <div class="value">+10%</div>
+      <div class="name">全球出货量3x</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 学术前沿 ========== -->
+<section class="section" id="academic">
+  <h2><span class="icon">🎓</span> 学术前沿</h2>
+
+  <div class="paper-card">
+    <h4><a href="https://arxiv.org/abs/2507.17211" target="_blank">Evolutionary Factor Searching for Sparse Portfolio Optimization Using Large Language Models</a></h4>
+    <div class="meta-line">
+      <span class="tag arxiv">arXiv q-fin</span>
+      Jiandong Chen, Haochen Luo, Yuan Zhang, Chen Liu, Qingfu Zhang | 2026-08-10
+    </div>
+    <div class="abstract">
+      提出利用大语言模型（LLM）与进化算法（EA）自动生成和迭代Alpha因子的框架——Evolutionary Factor Search（EFS）。该框架将资产选择问题重构为因子搜索问题，LLM负责生成候选因子表达式，EA负责进化筛选与组合优化。该方法能自适应不同市场环境，解决了传统静态目标在动态市场中的不足，在稀疏组合优化中展现出优于传统方法的性能。<br>
+      <strong>可落地性评分：</strong> <span class="score high">8/10</span> — 可直接应用于因子挖掘流水线，需LLM API调用成本
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <h4><a href="https://arxiv.org/abs/2608.06618" target="_blank">Beyond Co-Movement: Locality by Exposures Enables a Joint Factor-Graph Framework for Portfolio Diversification</a></h4>
+    <div class="meta-line">
+      <span class="tag arxiv">arXiv q-fin</span>
+      Sara Chehab, Giorgos Iacovides, Parisa Yazdanparast, Danilo Mandic | 2026-08-10
+    </div>
+    <div class="abstract">
+      提出联合因子-图框架，将因子模型与图网络结合进行组合分散化。传统方法要么忽略特质冲击（因子模型），要么忽略系统收益的潜在结构（图方法）。本文通过暴露度定义的局部性将两种互补视角融合，使资产配置直接基于底层市场结构而非可观测的共动性，实现了更优的分散化效果。<br>
+      <strong>可落地性评分：</strong> <span class="score medium">6/10</span> — 理论创新性强，需图神经网络实现能力
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <h4><a href="https://arxiv.org/abs/2512.22476" target="_blank">AutoQuant: An Auditable Expert-System Framework for Execution-Constrained Auto-Tuning in Cryptocurrency Perpetual Futures</a></h4>
+    <div class="meta-line">
+      <span class="tag arxiv">arXiv q-fin.TR</span>
+      Kaihong Deng | 2026-08-10
+    </div>
+    <div class="abstract">
+      针对加密货币永续合约回测中的参数搜索问题，提出可审计的执行感知框架AutoQuant。研究在BTC/USDT、ETH/USDT、SOL/USDT和AVAX/USDT上验证，发现高摩擦市场中看似良好的结果可能反映了隐藏的实现选择而非信号质量，强调参数搜索中需避免评估窗口复用和执行时序偏差。<br>
+      <strong>可落地性评分：</strong> <span class="score high">7/10</span> — 对加密量化回测有直接指导意义
+    </div>
+  </div>
+
+  <h3 style="margin-top:20px;margin-bottom:12px;font-size:1em;color:var(--text-secondary);">📄 论文速递</h3>
+  <ul class="brief-list">
+    <li><span class="tag arxiv">arXiv</span> <a href="https://arxiv.org/abs/2608.07251" style="color:var(--accent);text-decoration:none;">Reading Copom's Tone: A Weighted LLM Framework for Hawkish-Dovish Sentiment</a> — 用加权LLM框架量化巴西央行声明的鹰鸽倾向</li>
+    <li><span class="tag arxiv">arXiv</span> <a href="https://arxiv.org/abs/2608.07032" style="color:var(--accent);text-decoration:none;">Certified High-Dimensional Wasserstein Robust Portfolio Optimization</a> — 高维Wasserstein分布鲁棒组合优化的可认证近似方法</li>
+    <li><span class="tag arxiv">arXiv</span> <a href="https://arxiv.org/abs/2608.07122" style="color:var(--accent);text-decoration:none;">Lambda-quantiles under the Microscope</a> — 非单调Lambda函数下的广义分位数理论研究</li>
+    <li><span class="tag arxiv">arXiv</span> <a href="https://arxiv.org/abs/2408.03181" style="color:var(--accent);text-decoration:none;">Correlation Emergence in Two Coupled Simulated Limit Order Books</a> — 两个耦合限价订单簿中相关性涌现的微观模拟</li>
+    <li><span class="tag arxiv">arXiv</span> <a href="https://arxiv.org/abs/2607.27853" style="color:var(--accent);text-decoration:none;">FinanceHarness: Autonomous Financial Deep Research Framework</a> — 基于LLM的自主金融深度研究框架</li>
+    <li><span class="tag arxiv">arXiv</span> <a href="https://arxiv.org/abs/2605.14976" style="color:var(--accent);text-decoration:none;">Multi-regime Markov-switching Models with TVTP: U.S. Treasury Yields</a> — 时变转移概率多体制马尔可夫切换模型在美债收益率中的应用</li>
+    <li><span class="tag arxiv">arXiv</span> <a href="https://arxiv.org/abs/2608.07011" style="color:var(--accent);text-decoration:none;">Linguistic Pattern Based Optimization of Facility Layout Problems</a> — 基于语言模式的设施布局优化</li>
+    <li><span class="tag arxiv">arXiv</span> <a href="https://arxiv.org/abs/2211.13905" style="color:var(--accent);text-decoration:none;">A Scalable Bilevel Framework for Renewable Energy Scheduling</a> — 可再生能源调度的可扩展双层优化框架</li>
+  </ul>
+</section>
+
+<!-- ========== 策略研究 ========== -->
+<section class="section" id="strategy">
+  <h2><span class="icon">🧪</span> 策略研究</h2>
+
+  <div class="paper-card">
+    <h4><a href="https://quantpedia.com/is-trend-still-your-friend-a-microstructural-account-of-the-demise-of-short-term-trend-following/" target="_blank">Is Trend Still Your Friend? 短期趋势跟踪衰亡的微观结构解读</a></h4>
+    <div class="meta-line">
+      <span class="tag quantpedia">QuantPedia</span> 2026-07-29
+    </div>
+    <div class="abstract">
+      趋势跟踪曾是最持久的金融异象之一，但2008年后表现急剧恶化。对约100个流动性期货合约的分析显示，衰退具有高度选择性——决定因素并非资产类别、流动性或策略拥挤，而是波动率归一化tick size。2008年后，趋势跟踪利润在波动率归一化tick较小的合约上几乎完全消失。这对CTA策略设计意味着：短期趋势信号可能需要过滤微观结构条件，或在tick size较大的市场/时间框架中寻找alpha。
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <h4><a href="https://quantpedia.com/getting-the-target-right-in-return-prediction/" target="_blank">Getting the Target Right in Return Prediction</a></h4>
+    <div class="meta-line">
+      <span class="tag quantpedia">QuantPedia</span> 2026-07-23
+    </div>
+    <div class="abstract">
+      Cakici和Zaremba的研究强调，在ML收益预测中，训练目标的选择比模型架构或特征工程更重要。预测股票排名（rank）而非原始收益率水平能产生显著更优的预测性能。这意味着在ML因子模型开发中，应优先考虑使用排名目标函数（如Pairwise Learning-to-Rank）替代MSE回归。
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <h4><a href="https://quantpedia.com/from-backtest-to-benchmark-validating-new-strategies-with-quantpedia-api/" target="_blank">From Backtest to Benchmark: Validating New Strategies with Quantpedia API</a></h4>
+    <div class="meta-line">
+      <span class="tag quantpedia">QuantPedia</span> 2026-07-27
+    </div>
+    <div class="abstract">
+      探讨如何验证新策略是否真正具有增量alpha，还是已知因子的变体。QuantPedia的Multi-Factor回归分析工具可以将策略收益分解为已知因子暴露，帮助研究者判断策略新颖性。这对策略研发中的"去相关"和"增量alpha评估"有实用价值。
+    </div>
+  </div>
+</section>
+
+<!-- ========== 券商金工观点 ========== -->
+<section class="section" id="broker">
+  <h2><span class="icon">🏛️</span> 券商金工观点</h2>
+
+  <ul class="brief-list">
+    <li>
+      <span class="tag broker">国元证券</span>
+      <strong>海外MNC与CXO中报盈喜，创新药研发投入景气延续</strong> — 多家海外MNC与CXO披露中报盈喜并上调2026年全年指引，CXO订单端改善向业绩兑现，全球创新药研发投入与产业链需求仍处高景气区间，利好因子：创新药/CXO情绪因子。
+    </li>
+    <li>
+      <span class="tag broker">瑞银</span>
+      <strong>黄金突破4250美元关键阻力位，短期反转信号确认</strong> — 金价上破4250美元，若维持在4200-4250美元上方确认反转，下一目标4450-4500美元。RSI与MACD动能走强但未超买。利好因子：动量因子、避险情绪因子。
+    </li>
+    <li>
+      <span class="tag broker">机构</span>
+      <strong>数据中心电源架构面临变革，800VDC/SST/SiC/GaN迎价值量提升</strong> — 随Rubin及MW级机架推进，传统UPS架构遇效率、占地、散热瓶颈，800VDC、固态变压器、高功率磁性元件及SiC/GaN有望受益。利好因子：AIDC电源/半导体材料因子。
+    </li>
+    <li>
+      <span class="tag broker">开源证券</span>
+      <strong>AIDC用电专题：燃气轮机与柴发迎来黄金机遇</strong> — AI数据中心用电需求激增，燃气轮机与柴油发电作为备电方案进入高速增长期。利好因子：电力设备/备电因子。
+    </li>
+    <li>
+      <span class="tag broker">东吴证券</span>
+      <strong>新型电力系统建设"十五五"规划印发，全国用电负荷四创新高</strong> — 电力体制改革与用电需求双重驱动，电力板块基本面持续改善。利好因子：电力/公用事业因子。
+    </li>
+  </ul>
+</section>
+
+<!-- ========== 市场数据 ========== -->
+<section class="section" id="market">
+  <h2><span class="icon">💹</span> 市场数据</h2>
+
+  <h3 style="font-size:1em;margin-bottom:10px;">A股盘面</h3>
+  <ul class="brief-list">
+    <li><span class="tag market">盘面</span> 创业板盘中拉升涨超1%，CRO/创新药继续爆发，商业航天陷调整</li>
+    <li><span class="tag market">资金</span> 主力资金净流入通信、计算机、光学光电子；净流出有色金属(-49亿)、小金属、工业金属</li>
+    <li><span class="tag market">个股</span> N超纯+672.66% | 风华高科+10.00% | 万邦医药+20.00% | 百花医药6连板 | 中恒电气涨停 | 新易盛+4.33% | 中际旭创+3.17%</li>
+    <li><span class="tag market">流出</span> 紫金矿业-3.61%（净卖出11亿+）| 工业富联-2.89% | 亨通光电-1.53%</li>
+  </ul>
+
+  <h3 style="font-size:1em;margin:16px 0 10px;">板块异动</h3>
+  <ul class="brief-list">
+    <li><span class="tag market">创新药</span> 万邦医药20cm涨停，百花医药6连板，哈药股份/甘李药业涨停，振东制药+14.26%，博瑞医药+9.78%</li>
+    <li><span class="tag market">IDC电源</span> 中恒电气涨停，阳光电源+5.35%，潍柴重机+5.51%，申菱环境+6.23%</li>
+    <li><span class="tag market">人形机器人</span> 斯菱智驱+9.77%，拓斯达/五洲新春跟涨；全球H1出货量同比+3x，中国占97%+</li>
+    <li><span class="tag market">原油</span> 低硫燃油+5%+，燃料油/SC原油+4%+；ADNOC第八次现货招标</li>
+    <li><span class="tag market">MLCC</span> 持续涨价，关注是否一枝独秀还是重蹈存储覆辙</li>
+  </ul>
+
+  <h3 style="font-size:1em;margin:16px 0 10px;">全球宏观</h3>
+  <ul class="brief-list">
+    <li><span class="tag market">日本</span> 联合干预后市场焦点转向日央行加息时机</li>
+    <li><span class="tag market">美国</span> 英伟达联合Apollo/贝莱德/黑石/高盛/KKR撬动5000亿美元建AI数据中心，黄仁勋否认"循环融资"质疑</li>
+    <li><span class="tag market">AI</span> Anthropic 3个月砸600亿美元算力投资，与比特币矿企Riot签91亿长约；OpenAI斥70亿美元回购员工股份，估值8520亿美元</li>
+    <li><span class="tag market">中概</span> 中国AI模型从"价格战"走向"智能战"，阿里发布Qwen3.8-Max，DeepSeek预告全面上调API价格</li>
+  </ul>
+</section>
+
+</div>
+
+<footer>
+  <p>📊 量化交易资讯简报 | 自动生成于 2026-08-11 | 数据来源：arXiv, QuantPedia, 华尔街见闻, 财联社, 东方财富</p>
+</footer>
+
+</body>
+</html>
