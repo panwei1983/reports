@@ -670,44 +670,48 @@
        <h3 class="tenq-paper-title">2. 2. Exact Adaptive Hybrid Retrieval Without Fixed Top-L Cutoffs</h3>
        <div class="question-item">
          <div class="question-title">Q1：解决什么问题？</div>
-         <div class="question-answer">现代RAG系统通常对稠密检索器和稀疏检索器分别截取固定Top-$L$结果进行融合，将未读取的后续贡献视为零。但截断融合并不一般等价于完整列表融合——"unread cross-list ranks can change Top-$K$ membership or order even when the observed candidates contain every item in the complete-list Top-$K$"，且因查询和语料更新导致排序分布变化，从历史查询选定的截断深度无法可靠迁移。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q2：是否是新问题？</div>
-         <div class="question-answer">问题本身（截断融合≠完整融合）在信息检索领域已有认知，但本文的新颖之处在于将其重新定义为<strong>执行层面</strong>问题：不再试图预测最优截断深度，而是将"通道深度"视为请求级运行时状态（request-specific execution state），通过边界裁剪动态决定何时停止读取，从而在保证结果精确性的前提下自适应调节执行成本。这一"以精确性为约束、以深度为变量"的逆向建模视角在已有混合检索文献中较少见。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q3：科学假设是什么？</div>
-         <div class="question-answer">核心假设有两条：(1) 完整列表加权RRF（weighted RRF）的有序Top-$K$可以作为明确的检索目标，且通过融合边界可以判断未读排名是否仍能改变Top-$K$，从而"requests further ranks only while they can change the Top-$K$"；(2) 基于PVS和PBM的可恢复精确排名机制能在不预设Top-$L$的前提下，使每次成功请求"match complete-list fusion"，同时实现显著的执行效率提升。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q4：相关研究如何归类？关键论文/研究者是谁？</div>
-         <div class="question-answer">从摘要和元信息可识别以下相关研究方向：(a) <strong>混合检索融合</strong>——稠密+稀疏检索器融合，代表性方法为Reciprocal Rank Fusion (RRF)及其加权变体（weighted RRF）；(b) <strong>稠密检索加速</strong>——涉及标量量化（Scalar Quantization）类方法，本文提出Per-Vector Scalar Quantization (PVS)；(c) <strong>稀疏检索加速</strong>——涉及倒排索引的block-max剪枝技术，本文提出Posting Block-Max (PBM)；(d) <strong>RAG系统中的检索组件</strong>——作为应用场景。作者为Chunran Zhang，论文归类于cs.IR。注：正文提供的仅为arXiv页面元数据，未包含完整Related Work章节的具体引用列表，以上归类基于摘要中的方法名称推断。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q5：核心方法是什么？</div>
-         <div class="question-answer">EAHR（Exact Adaptive Hybrid Retrieval）以完整列表加权RRF定义的有序Top-$K$为检索目标，将通道深度视为请求级执行状态而非预设参数。其关键组件包括：(1) <strong>Per-Vector Scalar Quantization (PVS)</strong>——产生可恢复的精确稠密排名；(2) <strong>Posting Block-Max (PBM)</strong>——产生可恢复的精确稀疏排名；(3) <strong>融合边界机制</strong>——计算未读跨列表排名对Top-$K$的潜在影响上界，仅当其仍能改变Top-$K$成员或顺序时才请求更多排名，否则提前终止。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q6：实验如何设计？</div>
-         <div class="question-answer">实验覆盖<strong>5个测试集合</strong>和<strong>5个时间语料快照</strong>（temporal corpus snapshots），共形成<strong>150个查询-快照组合</strong>。Baseline包括：(a) 完整列表加权RRF（作为正确性参照）；(b) 从历史查询选定固定深度的截断融合（作为效率对比）。评价指标包括：(1) 正确性——EAHR是否精确复现完整列表有序Top-20；(2) 效率——在warm-cache、interleaved、order-balanced协议下，穷举批处理执行与EAHR的配对几何平均延迟比（paired geometric-mean latency ratios）。关键对比设置在TREC-DL 2019和TREC-DL 2020上报告。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q7：用了什么数据集？代码是否开源？</div>
-         <div class="question-answer">数据集包括<strong>5个测试集合</strong>（其中明确提及TREC-DL 2019和TREC-DL 2020）和<strong>5个时间语料快照</strong>，共150个查询-快照组合。论文规格为10页、4图、1表。关于代码开源：arXiv页面提供了"Links to Code"（CatalyzeX、DagsHub等平台入口），但未在摘要中明确声明代码仓库URL，需查看正文确认。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q8：结果是否支持假设？证据是否充分？</div>
-         <div class="question-answer">结果支持两条核心假设：(1) <strong>正确性</strong>——"EAHR reproduced the complete-list ordered Top-20 in all 150 query-snapshot combinations"，即100%精确匹配，无任何遗漏或顺序错误；(2) <strong>效率</strong>——穷举批处理与EAHR的配对几何平均延迟比在TREC-DL 2019上为<strong>23.35×</strong>，在TREC-DL 2020上为<strong>30.28×</strong>，表明EAHR大幅减少执行成本。同时验证了"fixed depths selected from historical queries did not transfer reliably"，即固定深度不可靠。证据较为充分：150个组合覆盖5集合×5快照，且采用配对几何平均和warm-cache interleaved order-balanced协议控制实验偏差。但论文也坦诚"anti-correlated rankings exhausted both lists, and some difficult queries were slower with EAHR"，即并非所有请求都能加速。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q9：核心贡献是什么？</div>
-         <div class="question-answer">(1) 提出EAHR方法，首次在不预设Top-$L$截断的前提下，通过融合边界动态裁剪实现与完整列表加权RRF完全一致的Top-$K$结果——"Every successful request therefore matches complete-list fusion without a preset Top-$L$"。(2) 提出PVS和PBM两种可恢复精确排名机制，使稠密和稀疏通道均支持按需续取。(3) 实验证明固定深度不可迁移，而EAHR在全部150个组合中精确复现结果并实现23-30×的几何平均加速比。</div>
+         <div class="question-answer"></div>
        </div>
        <div class="question-item">
          <div class="question-title">Q10：局限与下一步方向是什么？</div>
-         <div class="question-answer">明确局限：(1) "EAHR does not guarantee a speedup for every request"——当稠密与稀疏排名<strong>反相关</strong>（anti-correlated）时，两条列表均需穷尽，某些困难查询反而更慢；(2) 固定深度在历史查询上选定的值"did not transfer reliably"，暗示跨域/跨时迁移仍是开放问题。潜在下一步方向（基于问题结构推断）：研究更紧的融合边界以减少反相关场景下的冗余读取；探索查询级难度预测以提前识别需要穷尽的请求；将EAHR扩展到多于两个检索通道的融合场景。
-
+         <div class="question-answer"><strong>业务启发</strong>
+- 可落地链路：召回/RAG — 直接适用于 dense+sparse 混合召回阶段
+- 业务价值：消除 Top-L 超参调优成本，保证融合结果一致性，大语料延迟降低 30x
+- 落地风险/成本：需自研/改造检索引擎支持 resumable ranking；尾延迟风险需 fallback；代码未开源
+- 优先级：中 — 理论贡献明确但落地需深度改造
+- 建议动作：精读 + 小实验
 ---
 
 <strong>业务启发</strong>
