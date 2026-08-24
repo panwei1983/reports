@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <title>arXiv 论文周报 - 2026年8月24日</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-orange: #ffa657;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #bc8cff;
+            --border: #30363d;
+            --link: #58a6ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* TOC Sidebar */
+        .toc-sidebar {
+            width: 280px;
+            min-width: 280px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 20px 15px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .toc-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .toc-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .toc-content a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .toc-content a:hover {
+            color: var(--accent);
+            background-color: var(--bg-tertiary);
+        }
+
+        .toc-content .toc-h2 {
+            font-weight: 600;
+            margin-top: 8px;
+            color: var(--text-primary);
+        }
+
+        .toc-content .toc-h3 {
+            padding-left: 20px;
+        }
+
+        .toc-content .toc-paper {
+            padding-left: 35px;
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            padding: 30px 40px;
+            margin: 0 auto;
+        }
+
+        /* Headings - 改进层级 */
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: var(--accent);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 12px 0;
+            color: var(--accent-orange);
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 15px 0 8px 0;
+            color: var(--text-primary);
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+
+        .paper-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .paper-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .paper-meta span {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .paper-abstract {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .paper-contribution {
+            font-size: 13px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+            color: var(--accent-green);
+        }
+
+        .paper-link {
+            margin-top: 8px;
+        }
+
+        .paper-link a {
+            color: var(--link);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .paper-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        /* Ten-Q Section */
+        .ten-q-section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+
+        .tenq-paper-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .question-item {
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .question-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .question-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 6px;
+        }
+
+        .question-answer {
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-left: 12px;
+            border-left: 2px solid var(--border);
+        }
+
+        .question-answer strong {
+            color: var(--accent-green);
+        }
+
+        .question-answer code {
+            background-color: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .question-answer a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        /* Trend Item */
+        .trend-item {
+            padding: 6px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .trend-item strong {
+            color: var(--accent-green);
+        }
+
+        /* Reading List Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: var(--bg-tertiary);
+            color: var(--accent);
+            padding: 8px 12px;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+        }
+
+        td a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Paragraphs and lists */
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Back navigation */
+        .back-nav {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.9);
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        .back-nav a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .back-nav a:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .toc-sidebar {
+                display: none;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 左侧导航 -->
+    <nav class="toc-sidebar">
+        <div class="toc-header">
+            <span class="toc-title">📋 目录</span>
+            <button class="toc-toggle" onclick="toggleToc()">☰</button>
+        </div>
+        <div class="toc-content">
+            <a href="#trends" class="toc-h2">一、本周趋势</a>
+            <a href="#categories" class="toc-h2">二、分类汇总（20 篇）</a>
+            <a href="#广告系统-1-篇" class="toc-paper">广告系统（1 篇）</a>
+            <a href="#排序与重排-7-篇" class="toc-paper">排序与重排（7 篇）</a>
+            <a href="#召回与检索-8-篇" class="toc-paper">召回与检索（8 篇）</a>
+            <a href="#推荐系统-2-篇" class="toc-paper">推荐系统（2 篇）</a>
+            <a href="#大语言模型与-RAG-2-篇" class="toc-paper">大语言模型与 RAG（2 篇）</a>
+            <a href="#reading-list" class="toc-h2">建议精读汇总</a>
+            <a href="#top-papers" class="toc-h2">三、Top Papers 论文阅读十问（5 篇）</a>
+            <a href="#top-paper-1" class="toc-paper">1. Top 1：RAG Deserves an Index: W...</a>
+            <a href="#top-paper-2" class="toc-paper">2. Top 2：SCoRD: Semantic-Assisted...</a>
+            <a href="#top-paper-3" class="toc-paper">3. Top 3：Training-Free LLM-Based ...</a>
+            <a href="#top-paper-4" class="toc-paper">4. Top 4：Temporal Validity on Rea...</a>
+            <a href="#top-paper-5" class="toc-paper">5. Top 5：Profiling What Matters: ...</a>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-content">
+        <div class="back-nav"><a href="index.html">← 返回周报列表</a></div>
+        <h1>📊 搜索/推荐/广告召回排序论文周报</h1>
+        <div class="report-meta" style="color: var(--text-secondary); margin-bottom: 20px;">2026年8月24日 | 共 20 篇论文，5 个方向</div>
+        <h2 id="trends">📈 一、本周趋势</h2>
+     <div class="trend-item">1. <strong>召回与排序继续占据主导。</strong> Top 20 中召回/检索与排序/重排合计 15 篇（75%），研究重点从单一相关性优化转向端到端可微排序、生成式检索、列表级蒸馏与更可靠的离线评估。</div>
+     <div class="trend-item">2. <strong>强化学习与可微优化进入排序核心环节。</strong> 本周多篇工作用强化学习、对比学习或闭式可微目标替代不可微排序算子，目标是让训练信号更贴近 Top-K、NDCG 等最终指标。</div>
+     <div class="trend-item">3. <strong>RAG 研究开始强调检索器—生成器协同与推理时资源分配。</strong> 从生成式稀疏检索到强化学习检索、预算感知的检索增强推理，系统不再把检索视作固定前置模块，而是联合优化检索、推理与生成。</div>
+     <div class="trend-item">4. <strong>推荐系统更重视序列语义与跨域迁移。</strong> 入选工作分别探索兴趣感知的对比学习和可共享的生成式推荐基础模型，表明用户序列建模正在从 ID 共现走向语义层级与跨域统一表示。</div>
+     <div class="trend-item">5. <strong>广告方向供给不足但问题更贴近工业约束。</strong> 唯一入选广告论文聚焦预算分配与竞价联动，反映当前广告系统研究更关注多约束、长期收益与在线决策，而非单点点击率提升。</div>
+     <div class="trend-item"><strong>优先精读 Top 5</strong>：覆盖强化学习排序、可微集合排序、语义 ID 生成式检索、兴趣感知推荐和预算感知 RAG，代表本周最具方法创新与落地潜力的工作。</div>
+     <div class="trend-item"><strong>工程侧可做小实验</strong>：在现有排序链路验证列表级目标与业务指标的一致性；在 RAG 链路比较固定预算与动态检索预算；在推荐召回中评估语义 ID 对冷启动和长尾覆盖的影响。</div>
+     <div class="trend-item"><strong>风险提示</strong>：本周采集受到 arXiv 429 和超时影响，虽然最终获取 212 篇候选并完成 Top 20，但广告方向只有 1 篇，方向均衡性低于预设目标。</div>
+        <h2 id="categories">📚 二、分类汇总（20 篇）</h2>
+        <div class="category-section">
+          <h3 id="广告系统-1-篇" class="category-title">广告系统（1 篇）</h3>
+     <div class="paper-card" id="paper-1">
+       <div class="paper-title">1. OneModel: A Unified Foundation for Platform-Scale Multi-Scenario Ranking</div>
+       <div class="paper-meta"><span>👤 ：Yinqi Zhang, Peiyu Hu, Yuntian Tang, Siying Gu, Jiahao Liang, Longxin Kou, Haiqing Hu, Shuman Zhuang, Yubin Xu, Chenggen Sun, Bin Ye, Donghui Xu, Zhaoyu Liu, Jiang Rong, Yuting Jia, Zhaokai Luo, Leilei Ma, Yiying Xie, Yao Hu</span><span>📄 arXiv: 2608.18606</span></div>
+       <div class="paper-abstract">：Platform-scale recommender systems often span multiple business streams such as organic recommendation, advertising, and merchant services, where user behaviors form a continuous cross-stream trajectory. Maintaining separate ranking systems fragments user representations and increases engineering cost. We propose \textbf{OneModel}, a unified framework for multi-stream final ranking. OneModel maps heterogeneous behaviors into shared event sequences, learns long-context user representations with an action-oriented backbone, and introduces \emph{Scenario-aware Information Modulation} to balance cross-stream transfer and stream-specific specialization. For production deployment, OneModel further adopts stratified user representation, multi-objective training, and optimized online serving with feature decomposition, user feature prefetching, shared user-tower computation, and graph-level inference optimization. We deploy OneModel in production at \emph{Xiaohongshu}, where it delivers consistent offline gains over strong baselines and scales favorably with context length and model capacity. Online A/B tests improve Time Spent by \textbf{+0.33\%} and Engagement by \textbf{+1.25\%} in Explore Feed, lift advertising value by \textbf{+3.43\%} and CTR by \textbf{+8.18\%} in Feed Advertising, and raise DGMV by \textbf{+1.1867\%} and GPM by \textbf{+2.1585\%} in Merchant Recommendation, validating unified multi-stream ranking as an effective production foundation.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.18606v2" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="排序与重排-7-篇" class="category-title">排序与重排（7 篇）</h3>
+     <div class="paper-card" id="paper-2">
+       <div class="paper-title">⭐ 2. RAG Deserves an Index: Why Ingest-Time Compilation Beats Query-Time Interpretation</div>
+       <div class="paper-meta"><span>👤 ：Kyle Wild, Yusuke Takahashi, Asako Uraki</span><span>📄 arXiv: 2608.20845</span></div>
+       <div class="paper-abstract">：Nearly every retrieval-augmented question-answering system in production ships with a hidden interpreter: on each query a language model re-derives the meaning of raw corpus text and then throws that work away. Cheaper models do not close the gap: per-token prices have fallen by orders of magnitude while inference spend has risen, because context volume grows faster than prices fall. This is the modern equivalent of the full-table scan, and the remedy is the one databases found fifty years ago: do the expensive work once, at write time, into a maintained structure that makes reads cheap. A corpus whose read pattern is known before it ever meets a user can and should be indexed too. We call the paradigm ingest-time semantic compilation (ISC): compile a corpus's meaning into a queryable substrate with two coupled layers - incrementally maintained embeddings, and atomic claims whose provenance is validated at compile time - and treat that substrate as a first-class database object with its own DDL, maintenance contract, migration contract, and cost model. Two existence proofs support it. Substrate upkeep scales with change rather than corpus size: incremental updates run 33.7x cheaper than reconstruction while tracking it to floating-point precision. And on a held-out sample of 500 broadcast-interview transcripts, compiled claims as the retrieval payload win all 32 budget-by-model cells: 85.2% correct from roughly 2.2k reader tokens against 72.5% from 16.3k for the best chunk configuration anywhere. The only baseline that keeps pace is a contextualized-chunk pipeline with hybrid retrieval and reranking, statistically indistinguishable from compiled claims at roughly twenty-one times the query-path tokens - and it reaches that parity, we argue, precisely because it has itself begun to compile. We close with the systems agenda this opens, from compilation planners to read planning.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.20845v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-3">
+       <div class="paper-title">⭐ 3. SCoRD: Semantic-Assisted Continual Retriever-Reranker Distillation for LLM-Based Recommendation</div>
+       <div class="paper-meta"><span>👤 ：Seunghyun Baek, Gyuseok Lee, Seunghan Lee, Wonbin Kweon, Dong Wang, SeongKu Kang</span><span>📄 arXiv: 2608.19998</span></div>
+       <div class="paper-abstract">：Recommendation systems increasingly adopt a two-stage pipeline, where an ID-based retriever retrieves candidates and an LLM-based reranker refines their rankings. To improve retrieval quality, reranker-to-retriever distillation is commonly used to transfer the reranker's knowledge to the retriever. For practical deployment, however, this pipeline must continually adapt to evolving interests and incoming interactions. A naive solution is to repeatedly update the LLM reranker and distill its latest knowledge, but this incurs prohibitive costs. Updating the retriever alone is cheaper, but its limited capacity makes adaptation from sparse data difficult. We propose SCoRD, a continual knowledge distillation framework for LLM-based reranking pipelines under a non-stationary data stream. SCoRD introduces a semantic reasoning assistant that distills the LLM's ability to infer underlying user intents into reusable intent-level guidance. It selectively distills reranker knowledge to the retriever on low-confidence sequences, guides retriever-only updates without repeated LLM inference, and feeds retriever-derived representations and intent-drift signals back to the reranker. Experiments on real-world datasets show that SCoRD enables effective and efficient retriever-reranker co-adaptation.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.19998v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-4">
+       <div class="paper-title">⭐ 4. Training-Free LLM-Based Recommendation with Post-LLM Item Refinement Using Collaborative Signals</div>
+       <div class="paper-meta"><span>👤 ：Kyungho Kim, Sunwoo Kim, Geon Lee, Shinhwan Kang, Sojeong Kim, Liam Collins, Bhuvesh Kumar, Donald Loveland, Kijung Shin</span><span>📄 arXiv: 2608.19665</span></div>
+       <div class="paper-abstract">：Large language models (LLMs) have shown promise for training-free recommendation, but LLM-generated user interests are often too broad for fine-grained item retrieval. Existing methods incorporate collaborative filtering (CF) signals in a pre-LLM manner through candidate reranking or prompt augmentation, yielding limited gains. We propose CoRRe, a training-free recommendation framework with a post-LLM paradigm that injects CF signals into LLM-generated item representations, which are later matched with LLM-generated user interests for ranking. Specifically, CoRRe refines the directions of item embeddings using an item-item co-purchase graph and their magnitudes using item popularity. Experiments on real-world datasets show that CoRRe consistently outperforms existing training-free methods and achieves competitive or superior performance compared with training-based methods, without requiring any model training or task-specific fine-tuning.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.19665v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-5">
+       <div class="paper-title">⭐ 5. Temporal Validity on Real Software Histories: Eliminating Stale-Fact Errors in Code-Assistant Memory over GitHub Fixes</div>
+       <div class="paper-meta"><span>👤 ：Neeraj Yadav</span><span>📄 arXiv: 2608.20685</span></div>
+       <div class="paper-abstract">：Retrieval-augmented generation (RAG) has no model of time: when a fact changes across a coding session - a function is renamed, an endpoint moves, a dependency is bumped - RAG retrieves both the old and new value with near-identical similarity and cannot tell which is current, so it serves the superseded value. Paper 1 showed, on synthetic single-value benchmarks, that a deterministic (subject, relation, object) supersession memory eliminates this failure. Here we validate it end-to-end on real software history. From 707 real GitHub issues (SWE-bench Lite + Verified) we extract 130 clean atomic state transitions, a fix that changes one identifiable value from a pre-fix to a post-fix form, and render each marker-free (the stale and current statements differ only in the value). On this set, MemStrata reaches 0.91 answer accuracy versus RAG's 0.57-0.59; and, the structural result, when forced to answer RAG serves the superseded value 36-38% of the time (an LLM reranker does not help) while MemStrata drives this to ~0, at RAG retrieval latency (~2.1 s vs ~18 s for the reranker). We are explicit about scope: only ~18% of real fixes are clean atomic transitions; Paper 2 isolates the memory mechanism on that class, and extraction coverage of the remaining fixes is the orthogonal problem we defer to follow-on work. A real product bug surfaced and was fixed during the study (a case/punctuation-insensitive value comparison), with the moat property (deterministic-supersession accuracy on clean code mutations) preserved and verified.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.20685v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-6">
+       <div class="paper-title">⭐ 6. Profiling What Matters: Context-Aware Item Profiles from Large-Scale Metadata for LLM Recommenders</div>
+       <div class="paper-meta"><span>👤 ：Dojun Hwang, Seunghan Lee, Cheonyoung Park, Sara Yu, SeongKu Kang</span><span>📄 arXiv: 2608.20801</span></div>
+       <div class="paper-abstract">：While Large Language Models (LLMs) have significantly advanced reranking in recommendation, effectively leveraging item-side information remains challenging. Real-world items are described by vast, heterogeneous, and unstructured metadata, where decision-relevant signals are often implicit, noisy, or buried in long descriptions. Moreover, feature salience is highly context-dependent, varying not only across items but also across users. Existing methods often rely on item titles, fixed attributes, or static item summaries, which limit personalized and fine-grained item understanding. To bridge this gap, we propose CAIRO, a user context-aware item profiling framework for LLM-based reranking. CAIRO first structures raw metadata and reviews into objective features and subjective traits, and employs a lightweight profiler to select the most relevant information for each user-item pair with limited serving-time overhead. The resulting profiles are concise and context-specific, providing relevant item-side evidence for the LLM's ranking decision. Experiments show that CAIRO consistently improves LLM-based reranking, highlighting the importance of item profiling that effectively exploits vast item-side information.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.20801v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-7">
+       <div class="paper-title">7. Pairwise Ranking Outperforms Single-Action RL for Offline Explanation Selection: A Practical Lesson</div>
+       <div class="paper-meta"><span>👤 ：Tanay Chowdhury, Saeideh Shahrokh Esfahani</span><span>📄 arXiv: 2608.18531</span></div>
+       <div class="paper-abstract">：Industrial explainable-recommendation systems built on LLMs incur a substantial serving cost: each request triggers an LLM generation, with latency in the hundreds of milliseconds and cost that scales linearly with traffic. We separate generation from selection: explanations are produced ahead of time as a frozen candidate pool (six prompt styles, two commodity LLMs), and a small CPU-resident selector picks one at request time. The stack needs no GPU and returns in under 100 ms. Our primary benchmark is a 2,958-pair XRec Google Local subset, evaluating six offline-pool selectors (LambdaRank, PPO, GRPO, DPO, teacher-student distillation) and three KG-path selectors (random walks, edge-disjoint enumeration, MMR-reranked paths). A 300-pair MovieLens-1M split with Claude-Sonnet-4.5 references serves as an internal cross-dataset check, since no public benchmark exists for this setting. All variants use the same BERTScore-F1 protocol as XRec and G-Refer, averaged across five seeds. LambdaRank reaches F1 = 0.500 on Google Local, exceeding both G-Refer and XRec, and F1 = 0.329 on the MovieLens-1M check. With seed variance below 0.003 F1, the ordering is reliable: pairwise learning-to-rank outperforms single-action RL (PPO, GRPO, DPO), which use only one labelled candidate per rollout, leaving K-1 labels unused. The KG-path family targets a different objective: all three variants reach USR = 1.000 on Google Local and 0.997-1.000 on MovieLens-1M, since per-request path grounding yields a unique output per query, avoiding template-collapse failures affecting cached-LLM outputs. A generator-pool study comparing Claude 3 Haiku and Claude Haiku 4.5 shows small F1 shifts (0.001-0.006) while preserving selector ranking: selector and generator can be evaluated independently, though absolute F1 depends on the generator. End-to-end build cost is near $15 on commodity hardware.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.18531v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-8">
+       <div class="paper-title">8. Trustworthy RAG: An Evaluation Agent for Detecting Misinformation and Knowledge Poisoning in Generative AI Systems</div>
+       <div class="paper-meta"><span>👤 ：Balkrishna Giri, Md Toufique Hasan, Jussi Rasku, Muhammad Waseem, Pekka Abrahamsson</span><span>📄 arXiv: 2608.21095</span></div>
+       <div class="paper-abstract">：Retrieval-Augmented Generation (RAG) grounds Large Language Model (LLM) outputs in external knowledge, but RAG systems usually trust whatever they retrieve, creating a Security-Reliability Gap: high semantic relevance does not guarantee factual truth. Adversaries exploit this through knowledge poisoning, inserting malicious documents to cause targeted misinformation. We propose an Evaluation Agent, middleware that combines Natural Language Inference (NLI) factual verification, a five-signal poison detector with relevance-weighted aggregation, and a Trust Index T = 0.4 F + 0.35 C + 0.25 (1 - P ) with a non-linear dampener for high-contamination contexts. On TruthfulQA with Llama 3.3 70B, the agent reaches 91% accuracy and 100% precision, with 100% recall on instruction injection, while in-place edits, such as entity swaps, remain hard to detect. Across three LLMs the Trust Index stays discriminative, with a Receiver Operating Characteristic Area Under the Curve (ROC-AUC) of 0.73 to 0.81; generation style matters more than model size, and per-LLM threshold calibration restores baseline competitive accuracy, whereas a weaker FEVER result shows that cross-dataset generalization requires domain-specific calibration. In a software-engineering use case, a secure-coding assistant over guidance from the Open Worldwide Application Security Project (OWASP) Top 10 and the Common Weakness Enumeration (CWE), the agent reliably blocks instruction injection of unsafe advice (F1 92%), while contradiction and subtle semantic weakening remain hard. Throughout, the agent measures detection of poisoned context before generation, not whether the LLM adopts the injected misinformation. We release the proposed approach, attack generator, and experimental artifacts at the link: https://github.com/GPT-Laboratory/TrustworthyRAG.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.21095v1" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="召回与检索-8-篇" class="category-title">召回与检索（8 篇）</h3>
+     <div class="paper-card" id="paper-9">
+       <div class="paper-title">9. Once Generated, Ranked: End-to-End Generative Slate Recommendation with Unified Semantic-Collaborative IDs</div>
+       <div class="paper-meta"><span>👤 ：Yang Hu, Jiayi Guo, Jingui Ma, Ning Li, Jiangling Qin, Yanming Li, Yang Deng, Xiaoshuang Chen, Kaiqiao Zhan</span><span>📄 arXiv: 2608.17613</span></div>
+       <div class="paper-abstract">：Slate recommendation treats a slate rather than an individual item as the recommendation unit, requiring joint optimization of item interactions and slate utility. Existing approaches typically separate candidate generation from ranking and restrict optimization to retrieved candidates. Generative recommendation with Semantic IDs (SIDs) offers a path to end-to-end recommendation, but existing SID construction often lacks recommendation-aware semantics and effective local collaborative signals, while next-token prediction is misaligned with slate-level objectives. We propose OGR, an end-to-end framework that directly generates ordered slates-"Once Generated, Ranked." OGR first introduces TUSID, which adaptively fuses item-specific semantic and local collaborative information into hierarchical SIDs. It then uses list-wise preference planning and pipelined position-wise SID decoding to model global preferences and inter-item dependencies while generating ordered slates. We further propose SPA, a reward-guided conservative policy optimization method that aligns generated slates with user preferences beyond likelihood imitation. Offline experiments show that OGR outperforms representative baselines, with 48.2% and 27.2% relative NDCG@5 gains on industrial and public datasets, respectively. Online A/B testing on Kuaishou further yields a 1.120% improvement in Effective Views.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.17613v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-10">
+       <div class="paper-title">10. rEDMRec: Distilling Large Language Model Reasoning into an Editable Experience Memory for Recommendation</div>
+       <div class="paper-meta"><span>👤 ：Minh Hoang Nguyen, Tung Le, Huy Tien Nguyen</span><span>📄 arXiv: 2608.18952</span></div>
+       <div class="paper-abstract">：Large language models can improve recommendation quality by reasoning explicitly over user history and candidate items - for example, extracting a user's preferences or explaining why one item fits better than another - rather than mapping history directly to a ranked list. This reasoning, however, is expensive to repeat on every ranking request and, once produced, is typically consumed once and discarded, leaving it neither reusable across future requests nor easy to inspect or correct as user tastes drift. Our insight is that reasoning does not need to be regenerated at every call if it can instead be compressed once into a compact, structured memory that a lightweight model retrieves from. We propose rEDMRec, which distills a teacher LLM's reasoning into four typed, editable experience channels - long-term preference, short-term context, item-perception, and counterfactual hard-negative comparisons - maintained by an LLM memory controller that performs Add/Delete/Modify/Keep operations and refines entries via K-agent debate. A lightweight student LLM then ranks candidates purely by retrieving from this memory, without invoking the teacher again, decoupling online inference cost from reasoning depth. Across ML-1M, Amazon Beauty, and Steam and ten student backbones, rEDMRec improves HR@1 over zero-shot, few-shot, and RAG on every backbone, and over GraphRAG on most backbones, with Impv up to 13.3% vs. the second-best baseline on ML-1M. Channel ablations show that short-term context is the only channel that helps consistently across capacity tiers, whereas long-term, item-perception, and counterfactual contributions are capacity-dependent (and can reverse on the strongest students); debate-based memory optimization lowers bank duplication by 7.4 percentage points while raising downstream HR@1 by up to +0.029 over six optimization epochs.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.18952v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-11">
+       <div class="paper-title">11. GreekBarRetrieval: A Benchmark for Greek Statutory Retrieval</div>
+       <div class="paper-meta"><span>👤 ：Ernest Beta, Odysseas S. Chlapanis, Dimitrios Galanis, Ion Androutsopoulos</span><span>📄 arXiv: 2608.18752</span></div>
+       <div class="paper-abstract">：Statutory retrieval is necessary for citation-grounded legal question answering, but remains underexplored for Greek. We introduce GreekBarRetrieval, a public retrieval benchmark derived from, and complementing GreekBarBench, which did not include retrieval. The new benchmark comprises 283 bar-exam questions, each accompanied by the facts of the case it refers to, and 6,308 candidate statutory articles to retrieve from. Questions and facts are stated in everyday language, but need to be mapped to the formal terminology of statutes and their abstract legal concepts. A further complication is that not all of the case facts are relevant to each question of a case. Experimenting with three BM25 variants and nine dense retrievers, we find that vanilla dense retrieval far outperforms vanilla sparse retrieval in Recall@100. However, LLM-based query reformulation helps BM25 close that gap, while also improving dense retrieval. With a ten-round ReAct-like LLM reformulation loop that we introduce, BM25 improves further in Recall@100 and obtains the best nDCG and MAP scores of all tested retrievers. Query reformulation also outperforms pseudo-relevance feedback, sparse-dense fusion, and English translation.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.18752v2" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-12">
+       <div class="paper-title">12. EnSI-RAG: Entity-Structure-Indexed Retrieval-Augmented Generation for Long-Document Question Answering</div>
+       <div class="paper-meta"><span>👤 ：Xuanyu Meng, Jiashuo Sun, Jash Rajesh Parekh, Jiawei Han</span><span>📄 arXiv: 2608.21252</span></div>
+       <div class="paper-abstract">：Question answering (QA) over long, connected documents remains challenging because relevant evidence may span multiple entities and their relationships. Existing retrieval-augmented generation (RAG) methods typically index documents as raw chunks and retrieve them through embedding similarity. Their performance degrades when chunk boundaries separate entities from supporting evidence or when a question requires multi-hop reasoning across the corpus. We propose EnSI-RAG (Entity-Structure-Indexed Retrieval-Augmented Generation), a framework that constructs a query-independent, entity-centered index. Each record (e, t, k, v) represents an entity e, its type t, a semantic category k in {property, relation, aspect}, and a value v, while retaining links to the original source passages. At query time, these records serve as retrieval handles, and an LLM synthesizes the retrieved passages into the final answer. This design separates evidence localization from answer synthesis while preserving traceable source evidence. Across Loong and Oolong, EnSI-RAG achieves an average accuracy of 78.24. Relative to the published baseline scores used as references, this is 6.62 points higher, suggesting its effectiveness across these settings. The code is available at https://github.com/RamonMeng/EnSI-RAG.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.21252v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-13">
+       <div class="paper-title">13. Auditable by Construction: An Ontology-Driven Framework for Trustworthy LLM Analytics in Enterprise Finance</div>
+       <div class="paper-meta"><span>👤 ：Sergiy Lunyakin</span><span>📄 arXiv: 2608.20661</span></div>
+       <div class="paper-abstract">：Enterprise adoption of large language models in finance is constrained less by fluency than by trust: in Financial Planning and Analysis (FP&A) and other regulated workflows, an answer is usable only if it is traceable to authoritative sources and auditable after the fact. This paper argues that retrieval-augmented generation for enterprise finance should be evaluated on auditability alongside accuracy, and presents the Knowledge-Driven Analytics Framework (KDAF), which builds ontology-driven knowledge systems through six iterative stages and retrieves evidence via Context-Aware Relevance Propagation (CARP), so that every retrieved fact carries its relationship type, confidence, and source lineage. An evaluation on FinanceBench (145 questions) compares KDAF against zero-context inference, BM25, concept-weighted lexical retrieval, and ungrounded graph traversal. First, retrieval is necessary: zero-context inference reaches 4.1% correctness against 10-12% for retrieval-augmented conditions. Second, on answer correctness the retrieval conditions are statistically indistinguishable (KDAF vs BM25: -0.007, 95% CI [-0.021, 0.000]), so accuracy alone does not justify structured retrieval here -- a negative result we report explicitly. Third, on auditability the ordering reverses: KDAF attains the highest citation traceability F1 (0.515), exceeding ungrounded traversal by +0.027 (CI [0.006, 0.050]) and BM25 by +0.052 (CI [0.024, 0.083]), intervals excluding zero. Graph-structured retrieval also admits no evidence from outside the question subject entity (0 of 426 items, against 16.8% and 20.2% for lexical baselines), and every selected item resolves to a complete provenance chain. We argue that auditability, not accuracy, is the axis on which ontology-grounded retrieval earns its cost.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.20661v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-14">
+       <div class="paper-title">14. SSR-GRPO: Integrating Supervision and Semantic IDs into Reinforcement Learning for Dense Retrieval in E-commerce</div>
+       <div class="paper-meta"><span>👤 ：Guangxin Song, Xing Fang, Mingmin Jin, Jing Wang, Bokang Wang, Zhentao Song, Junjie Bai, Jianbo Zhu</span><span>📄 arXiv: 2608.19595</span></div>
+       <div class="paper-abstract">：Embedding-based retrieval (EBR) is pivotal in e-commerce search but often struggles with complex semantics. While recent methods often fine-tune large language models (LLMs) for representation learning, they typically lack robust mechanisms for handling complex and implicit semantics. While Retrieval-GRPO (R-GRPO) recently introduced reinforcement learning to dense retrieval, it suffers from noisy top-K candidates due to limited batch sampling and biased relevance assessments caused by using similarly trained LLMs as reward models. To tackle these issues, we propose Supervised Retrieval-GRPO with Semantic Identifiers (SSR-GRPO). Specifically, our method first proposes a dual-perspective framework for relevance assessment. It leverages both Semantic Identifiers (SIDs) produced by quantization learning and dense representation vectors to generate more unbiased relevance scores. Furthermore, leveraging the hierarchical similarity relationships of the generated SIDs, we mine a set of hard negative samples that serve two purposes: (1) to design a masking function integrated into R-GRPO, effectively filtering intra-group noisy samples; and (2) to construct a Retrieval-DPO task composed of positive and negative sample pairs, enabling the model to capture fine-grained semantic distinctions from a pair-wise perspective. By integrating these optimization strategies, we propose SSR-GRPO. Extensive offline and online experiments validate SSR-GRPO's effectiveness, and it has been deployed on a large-scale e-commerce platform.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.19595v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-15">
+       <div class="paper-title">15. VisDocAgentBench: Benchmarking Agents for Visually Rich Document Retrieval</div>
+       <div class="paper-meta"><span>👤 ：Lexiang Hu, Yanzhao Zhang, Mingxin Li, Dingkun Long, Yikang Li, Fuwei Zhang, Yisen Wang, Zhouchen Lin</span><span>📄 arXiv: 2608.17889</span></div>
+       <div class="paper-abstract">：Visually rich documents encode relevance through language, layout, structured visual elements, and corpus context, yet retrieval is typically evaluated by one-shot query--page matching. Agentic-search benchmarks usually score downstream question answering or report generation, leaving document ranking under iterative evidence acquisition underexplored. We introduce VisDocAgentBench, a closed-corpus benchmark comparing static and agentic retrieval under a shared ranked-output contract. It contains 2,375 pages from 100 documents and 120 unique-target queries balanced across direct, one-bridge, and two-bridge evidence structures. Relation-preserving construction yields semantic, relational, and visual queries, followed by full-document review and hard-negative validation. A strong late-interaction visual retriever reaches 97.50% Recall@1 on direct items but 2.50% on two-bridge items, exposing the limits of query--target matching when relevance depends on corpus context. Agents recover much of this loss, but planner choice and retrieval representation remain decisive. Every planner performs better with visual retrieval, whose best R@1 reaches 67.50% versus 37.50% for OCR-text. Ablations identify iterative search and page inspection as consequential capabilities, and providing the complete support context improves ranking on both routes. Trace analysis localizes the remaining losses to target discovery, candidate examination, and evidence-role integration. These findings motivate retrieval agents that combine modality-preserving discovery with evidence-directed verification.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.17889v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-16">
+       <div class="paper-title">16. Automated Summarization of Financial News Using Large Language Models and Retrieval-Augmented Generation: An Early Empirical Study (Fall 2023)</div>
+       <div class="paper-meta"><span>👤 ：Pranav Chandaliya</span><span>📄 arXiv: 2608.19526</span></div>
+       <div class="paper-abstract">：Stock market analysts and investors face a daily challenge: too much financial news, too little time. Manually reading and synthesizing hundreds of company-specific articles is impractical, yet missing key information can directly affect investment decisions. This project, conducted at George Washington University in Fall 2023, explores whether Large Language Models can automate this process reliably. We built a pipeline that pulls news articles from the News API, company background from Wikipedia, and stock price data from Yahoo Finance for ten major companies (AAPL, MSFT, GOOGL, AMZN, META, TSLA, JPM, NVDA, WMT, DIS). Because LLMs cannot directly process numerical tables, we developed a simple but effective template that converts stock data into natural language narratives. We then tested two summarization approaches (Summarize Chains and Retrieval-Augmented Generation with FAISS) across three open-source models (Falcon-7B-Instruct, DistilBART-CNN-12-6, BART-Large-XSum) for news, and GPT (text-davinci-003) for stock summaries. Falcon-7B with Summarize Chains gave the best results, covering all news events accurately and coherently. RAG, while promising in theory, caused severe repetition in Falcon and hallucinated facts in BART-Large when k was large. Both LLM-based approaches outperformed a simple Lead-3 baseline on ROUGE-1. We also built a Streamlit dashboard for interactive stock visualization. The work was done in Fall 2023, before RAG-based financial tools became widespread, and the failure modes we document, particularly hallucination under RAG in smaller models, remain relevant today.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.19526v1" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="推荐系统-2-篇" class="category-title">推荐系统（2 篇）</h3>
+     <div class="paper-card" id="paper-17">
+       <div class="paper-title">17. Empowering Compact LLMs with Fusion of Layer-wise Exits for Recommendation</div>
+       <div class="paper-meta"><span>👤 ：Xurong Liang, Tong Chen, Quoc Viet Hung Nguyen, Jianxin Li, Xiangliang Zhang, Hongzhi Yin</span><span>📄 arXiv: 2608.17316</span></div>
+       <div class="paper-abstract">：Large language model-based recommender systems (LLM-RSs) have demonstrated remarkable capabilities, but are computationally unsustainable for many real-world applications. Compact LLMs offer a practical alternative, yet their reduced capacity often requires reasoning or knowledge distillation methods that increase latency or depend on larger models. Combined with autoregressive generation, these approaches face severe scalability bottlenecks. In contrast, discriminative LLM-RSs enable efficient full-corpus ranking through embedding similarity, but compact backbones remain limited in expressiveness and structural adaptivity. We propose the Fusion of Layer-wise Exits for Sequential Recommendation (FLEXRec), a discriminative framework that enhances compact LLMs while retaining scalable full-corpus ranking. FLEXRec inserts prediction heads (i.e., exits) at multiple transformer layers and adaptively fuses their score distributions. An adaptive continuous router (AC-Router) dynamically selects both the number and identity of exits for each user sequence, while a novel target-k hinge loss regulates routing sparsity. Experiments on three real-world datasets with Qwen 3 1.7B and Llama 3.2 3B show that FLEXRec achieves state-of-the-art accuracy among compact-backbone methods while remaining highly efficient. Code: https://github.com/xurong-liang/FLEXRec</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.17316v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-18">
+       <div class="paper-title">18. Multimedia Asset Personalization via Multimodal Embeddings at Netflix</div>
+       <div class="paper-meta"><span>👤 ：Emma Yanyang Kong, Aditya Deshpande, Bowei Yan, Asad Abbasi, Santiago Castro, Avneesh Saluja, David Fagnan, Ashish Rastogi</span><span>📄 arXiv: 2608.18322</span></div>
+       <div class="paper-abstract">：Personalized promotional assets, namely artwork images and video preview clips, are critical to content discovery on Netflix. Traditional models for asset selection rely on ID-based interaction history, leaving them blind to asset content and unable to serve newly launched titles and assets. We describe how multimodal embeddings reshaped production systems at Netflix and report transferable lessons for practitioners adopting foundation-model embeddings into recommender systems. First, pretrained image embeddings unlock cross-title, cross-canvas knowledge transfer. Augmenting a two-tower model with CLIP image embeddings lets a single model serve all five Netflix artwork canvas types, replacing five separately trained per-canvas models and substantially improving cold-start performance. A lightweight extension reuses CLIP's joint text-image space to make artwork personalization query-aware in search. Second, multimodality decisively beats any single modality for video preview personalization. We describe MediaFM, our in-house tri-modal foundation model trained on a large-scale corpus of shots from the Netflix show catalog, fusing visual (SeqCLIP), audio (wav2vec 2.0), and timed-text signals; adopted for video preview personalization, it outperforms strong visual-only baselines both offline and in online A/B tests. Third, a simple offline proxy task whose performance correlates with online outcomes can accelerate the experimentation and productization cycle. Predicting the popularity-based winner from embeddings alone ranks embedding models and versions, pruning the choice space before any end-to-end integration or A/B test; it now gates every new MediaFM checkpoint. We also share the production engineering decisions (shared embedding infrastructure, low-latency serving, cheap screening) that made these deployments viable, along with the design tradeoffs and failure modes we encountered.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.18322v1" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <div class="category-section">
+          <h3 id="大语言模型与-RAG-2-篇" class="category-title">大语言模型与 RAG（2 篇）</h3>
+     <div class="paper-card" id="paper-19">
+       <div class="paper-title">19. Training Chemical Plausibility-Aware Large Language Models for Single-Step Retrosynthesis</div>
+       <div class="paper-meta"><span>👤 ：Bogdan Zagribelnyy, Ivan Ilin, Nikita Bondarev, Maksim Kuznetsov, Mathieu Reymond, Vladimir Aladinskiy, Alex Aliper, Alex Zhavoronkov</span><span>📄 arXiv: 2608.18940</span></div>
+       <div class="paper-abstract">：Single-step retrosynthesis is a central component of computer-aided synthesis planning, yet its intrinsically one-to-many nature is poorly captured by single-answer evaluation and benchmarking protocols. To address this, we introduce Top-K prompting as a robust training and inference paradigm to better capture diverse, plausible reaction predictions. We compile CREED-CCV-2+USPTO-XL, an ultra-large-scale dataset of ~45.6 million verified reactions to train the C3LM (Chemistry Constraint-Consistent Language Model). By integrating fine-tuning with ChemCensor-based and novelty-oriented rewards, our model achieves state-of-the-art performance on the OOD URSA-expert-2026 benchmark. Further analysis of reaction uniqueness shows that LLMs and conventional models explore complementary reaction spaces, motivating ensemble-based retrosynthesis systems. Overall, our results establish Top-K, plausibility-aware training as a practical new direction for robust future LLM-based synthesis planning.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.18940v1" target="_blank">论文链接</a></div>
+     </div>
+     <div class="paper-card" id="paper-20">
+       <div class="paper-title">20. AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement</div>
+       <div class="paper-meta"><span>👤 ：Yizhe Chi, Wenyi Li, Deyao Hong, Xiaoqiu Wang, Mingju Gao, Kaisen Yang, Bingxiang He, Youjie Zheng, Calvin Xiao, Qinhuai Na</span><span>📄 arXiv: 2608.20318</span></div>
+       <div class="paper-abstract">：Recursive self-improvement (RSI) asks whether an AI system can improve the process that produces AI systems, so that the next system inherits the improvement. That process is the training algorithm: a better objective or update rule improves the compute\mbox{-}capability exchange rate for every subsequent run, including the one that produces the next agent. Whether RSI is feasible therefore turns on whether an agent can design training algorithms. No benchmark isolates that ability: existing suites are won by collecting data or by tuning hyperparameters, and none tells a change to how a run is executed apart from a change to how the model learns. We present AI4AI\mbox{-}Bench, 10 frozen research repositories spanning 10 training algorithm families. In each task, an agent has 4 hours on one B300 to rewrite the training algorithm; its code is then rerun from scratch for up to 12 hours and scored by a fixed evaluator hidden from the agent, against the repository's original algorithm under the same procedure. Because the 10 metrics are incommensurable, every task is mapped onto one scale on which $0$ is an uninformative model, $0.1$ is the algorithm the repository ships, and $1.0$ is the task optimum. Across 29 configurations of 6 systems on all 10 tasks the mean score is $0.166$, and the best system reaches $0.250$: even the strongest closes under a fifth of the distance between the algorithm that was already there and the optimum. The submissions show where that distance went: most never change how the model learns at all, and the minority that do average $0.226$ against $0.126$ for the rest. More reasoning effort mostly buys the willingness to go there, taking that minority from $8\%$ of submissions to $64\%$ and the mean score from $0.094$ to $0.196$. We release the task suite, the evaluators and every scored submission, so that the measurement can be repeated as these systems change.</div>
+       <div class="paper-link"><a href="https://arxiv.org/abs/2608.20318v1" target="_blank">论文链接</a></div>
+     </div>
+        </div>
+        <h2 id="reading-list">📋 建议精读汇总</h2>
+        
+        <h2 id="top-papers">🔬 三、Top Papers 论文阅读十问（5 篇）</h2>
+     <div class="ten-q-section" id="top-paper-1">
+       <h3 class="tenq-paper-title">1. Top 1：RAG Deserves an Index: Why Ingest-Time Compilation Beats Query-Time Interpretation</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-2">
+       <h3 class="tenq-paper-title">2. Top 2：SCoRD: Semantic-Assisted Continual Retriever-Reranker Distillation for LLM-Based Recommendation</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-3">
+       <h3 class="tenq-paper-title">3. Top 3：Training-Free LLM-Based Recommendation with Post-LLM Item Refinement Using Collaborative Signals</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-4">
+       <h3 class="tenq-paper-title">4. Top 4：Temporal Validity on Real Software Histories: Eliminating Stale-Fact Errors in Code-Assistant Memory over GitHub Fixes</h3>
+     </div>
+     <div class="ten-q-section" id="top-paper-5">
+       <h3 class="tenq-paper-title">5. Top 5：Profiling What Matters: Context-Aware Item Profiles from Large-Scale Metadata for LLM Recommenders</h3>
+     </div>
+
+    </main>
+
+    <script>
+        function toggleToc() {
+            const sidebar = document.querySelector('.toc-sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
